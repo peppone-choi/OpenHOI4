@@ -1,9 +1,11 @@
 //! Data pack loading boundary (REQ-GEN-02 / AC-M0-03).
 //!
-//! Only manifest metadata and numeric defines are loaded here. Content registries,
-//! pack merging, reference integrity and CLI validation belong to later WPs.
+//! The M0 entry point loads manifest metadata and numeric defines. The separate
+//! `map` entry point validates M1 geometry, state and VP definitions. Full content
+//! registries, pack merging and CLI validation belong to later WPs.
 //! Numeric defines have no defaults. I/O stays outside the simulation layer.
 pub mod m0;
+pub mod map;
 mod raw;
 
 use raw::Source;

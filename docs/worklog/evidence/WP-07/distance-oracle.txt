@@ -1,0 +1,3 @@
+Independent decimal calculation: floor(sqrt(13)*2^32)= 15485724812
+scale=2; exact expected distance bits= 30971449624
+lower square <= 13*2^64 < upper square: True

@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ProvinceDefinition",
+  "type": "object",
+  "properties": {
+    "coastal": {
+      "type": "boolean"
+    },
+    "id": {
+      "type": "integer",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0
+    },
+    "island": {
+      "description": "Suppresses only the disconnected-component warning, never pixel errors.",
+      "type": "boolean"
+    },
+    "kind": {
+      "$ref": "#/$defs/ProvinceKind"
+    },
+    "rgb": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "format": "uint8",
+        "maximum": 255,
+        "minimum": 0
+      },
+      "maxItems": 3,
+      "minItems": 3
+    },
+    "terrain": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "rgb",
+    "kind",
+    "terrain",
+    "coastal",
+    "island"
+  ],
+  "$defs": {
+    "ProvinceKind": {
+      "type": "string",
+      "enum": [
+        "land",
+        "sea",
+        "lake"
+      ]
+    }
+  }
+}

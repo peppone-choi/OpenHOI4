@@ -1,0 +1,7 @@
+workdir=E:/openhoi/.orchestrator/wt/WP-07
+HEAD=1bfea48511c6b75efb0dd26ee6e980a90d77da04
+branch=codex/wp07-map-data
+initial git status --short: empty
+npm --prefix client ci: exit 0; added 94 packages; 0 vulnerabilities
+npm --prefix client run build: exit 0; tsc --noEmit; Vite 36 modules built
+Note: combined documentation read ended exit 1 because nonexistent fixed.rs/check_licenses.py reads; no such verification claimed.

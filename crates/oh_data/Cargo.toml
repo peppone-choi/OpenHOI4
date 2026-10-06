@@ -16,3 +16,4 @@ schemars = { version = "=1.2.2", features = ["semver1"] }
 fixed = "=1.31.0"
 semver = "=1.0.28"
 serde_json = "=1.0.151"
+png = "=0.18.1"

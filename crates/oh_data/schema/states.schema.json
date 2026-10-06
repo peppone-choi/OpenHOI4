@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "StatesDocument",
+  "type": "object",
+  "properties": {
+    "state": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/StateDefinition"
+      }
+    },
+    "victory_point": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/VictoryPoint"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "state"
+  ],
+  "$defs": {
+    "StateDefinition": {
+      "type": "object",
+      "properties": {
+        "buildings": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "id": {
+          "type": "integer",
+          "format": "uint16",
+          "maximum": 65535,
+          "minimum": 0
+        },
+        "infrastructure": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name_key": {
+          "type": "string"
+        },
+        "population": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "provinces": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "uint16",
+            "maximum": 65535,
+            "minimum": 0
+          }
+        },
+        "resources": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name_key",
+        "provinces",
+        "population",
+        "resources",
+        "buildings",
+        "infrastructure"
+      ]
+    },
+    "VictoryPoint": {
+      "type": "object",
+      "properties": {
+        "name_key": {
+          "type": "string"
+        },
+        "points": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "province": {
+          "type": "integer",
+          "format": "uint16",
+          "maximum": 65535,
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "province",
+        "points",
+        "name_key"
+      ]
+    }
+  }
+}
