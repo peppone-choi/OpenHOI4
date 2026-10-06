@@ -4,8 +4,8 @@
   "historical_original_head": "9fbc05a1e29062f93bb362450aaddc2068aa41e9",
   "workflow": {
     "path": ".github/workflows/wp08-dpr-diagnostic.yml",
-    "bytes": 2129,
-    "sha256": "c8ac91bd96ff765f88b068ae4234b3495a5bc8b91aab0d55a69864d5ee4b6739"
+    "bytes": 2621,
+    "sha256": "446ca28365b7eb1dc05e894476158f1b5bdfa2099c3b073069625560df689d55"
   },
   "files": [
     {
@@ -35,8 +35,8 @@
     },
     {
       "path": "prep_linux.py",
-      "bytes": 5642,
-      "sha256": "73aad5630bf7a9922112bff8f118ecc62ac70abdb9101f2d0cc981f8a69d245d"
+      "bytes": 6198,
+      "sha256": "a1883d9e483dabc875d79bf352ec9b1ba1dbef82e1032e8b7ea56f5f348caa40"
     },
     {
       "path": "probe-template.ts",
@@ -50,13 +50,18 @@
     },
     {
       "path": "README.txt",
-      "bytes": 4096,
-      "sha256": "71f2f24e0ab85f4456187ca61286bbfce5ac58b1f35f2de4d319a44fcda9adfa"
+      "bytes": 4494,
+      "sha256": "5631841905f0d1d2b71bb640376c7f6a80bbaa022e5e5d78a9e11cf30cfb337b"
+    },
+    {
+      "path": "record_fixture_inputs.py",
+      "bytes": 1967,
+      "sha256": "e5fdbf1342939dde0f10c03c3178347105f8bdb842528100ff160172f979a4ec"
     },
     {
       "path": "run_linux.py",
-      "bytes": 6543,
-      "sha256": "d4209170a94e14460dcdccd3b4699137ac52a98756e851802d01407ec9470348"
+      "bytes": 10193,
+      "sha256": "b09f32a21288eef87b1276002a5f8b3f9dd9680f6cd4c8cbd991262d4c054ec4"
     },
     {
       "path": "summarize_profiles.py",
@@ -69,5 +74,5 @@
       "sha256": "bbee87b4ffe48f21bc647d1ae5af020d7dca59ee848f26d4742cc9cc08d0b0fc"
     }
   ],
-  "scope": "Dedicated diagnostic branch only. Exact toolkit bytes preserved by tools-only -text attributes. Parent reviews exact local commit before one push. No Linux execution/independent PASS/integration approval."
+  "scope": "UNEXECUTED proposal only; not authorized for commit/push/run. Exact c900 preserved. New four-port/global-finally preparation candidate requires CEO review."
 }

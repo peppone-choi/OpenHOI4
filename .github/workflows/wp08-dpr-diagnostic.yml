@@ -19,6 +19,7 @@ jobs:
       - name: Verify committed diagnostic manifest before product checkout
         run: python harness/tools/wp08-dpr-diag/verify_manifest.py --workflow harness/.github/workflows/wp08-dpr-diagnostic.yml
       - uses: actions/checkout@v7.0.1
+        id: product_source
         with:
           ref: b73f0ce344138d5fb3909eca5d43c786aac49b15
           fetch-depth: 0
@@ -32,7 +33,10 @@ jobs:
       - name: Build exact product with unchanged lock files
         working-directory: source
         run: |
+          python ../harness/tools/wp08-dpr-diag/record_fixture_inputs.py --checkpoint before
           npm --prefix client ci
+          npm --prefix client test
+          python ../harness/tools/wp08-dpr-diag/record_fixture_inputs.py
           npm --prefix client run build
           cargo build -p oh_server --locked
           cargo run -p oh_proto --locked --example wire_fixtures
@@ -46,6 +50,10 @@ jobs:
           cp -R ../harness/tools/wp08-dpr-diag/. target/wp08-dpr-ci2/
           python target/wp08-dpr-ci2/prep_linux.py
           python target/wp08-dpr-ci2/run_linux.py
+      - name: Record source after even if setup or diagnostic aborts
+        if: always() && steps.product_source.outcome == 'success'
+        working-directory: source
+        run: python ../harness/tools/wp08-dpr-diag/record_fixture_inputs.py --checkpoint after
       - name: Upload raw diagnostics even on actual failures
         if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a

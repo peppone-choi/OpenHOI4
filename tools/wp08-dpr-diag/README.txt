@@ -18,8 +18,13 @@ isolated follow-up, deploy, tag or additional paid service. Original CI's existi
 push triggers remain unchanged and can run independently; distinguish results.
 
 One fixed experiment on a separate exact source checkout:
-19471 original M0 config/three projects36 -> full M1 original/probe82;
-19472 original M0 config/three projects36 -> full M1 strict candidate82.
+19471 original M0 config/three projects36 ->19472 full M1 original/probe82;
+19473 original M0 config/three projects36 ->19474 full M1 strict candidate82.
+UNAPPROVED next-run proposal: original npm test restores both ledger HTMLs before
+build; fixture bytes/SHA are recorded and checked. Every segment also confirms
+its captured PID and LISTEN are gone. Abort/launch/observer failures persist
+partial results and global source-after in finally. The prior one-run is exhausted;
+no further commit/push/run is authorized by these proposed files.
 Original workers, browser options/GPU preferences, six Chromium DPR values,
 full PNG decode/capture, rawGL, old contexts, camera, authority, lifetime,
 cardinality and final cleanup remain. Per-test30s/expect5s/retry0/skip0 unchanged.
