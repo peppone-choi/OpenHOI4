@@ -1,0 +1,13 @@
+{
+  "head": "79140fbfc9966fc5104df735f068615633181d5b",
+  "run": 37491594894,
+  "conclusion": "failure",
+  "url": "https://github.com/peppone-choi/OpenHOI4/actions/runs/37491594894",
+  "artifact": {
+    "id": 11424919665,
+    "name": "wp05-protocol-browser-evidence",
+    "api_digest": "sha256:304081a8ea7c55a0329509c4e2f202dd527b6ed7d717cfaa42403dfab81bb09b",
+    "verified_zip_sha256": "304081a8ea7c55a0329509c4e2f202dd527b6ed7d717cfaa42403dfab81bb09b",
+    "bytes": 2229604
+  }
+}

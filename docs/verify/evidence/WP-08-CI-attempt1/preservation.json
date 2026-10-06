@@ -1,0 +1,22 @@
+[
+  {
+    "path": "ci-failure.json",
+    "source_sha256": "1c626d40af5956b24cf018a3ee30c4650312169963a6e5ab1a56e164396d858f",
+    "bytes": 496,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "7212847b3c5e155d7716d0841078cff801d7d0338c33e7e07caab0580f0fea7a"
+  },
+  {
+    "path": "failed-job.log",
+    "source_sha256": "93af46283f82354edfdf7d3af5cae6d22e8f26845e623a8d19a52f798cdcca6c",
+    "bytes": 88946,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "b089c44c815f3c06c7f533e1a0a481c36180756f0df4675c5ed1ee6d675e1f1e"
+  },
+  {
+    "path": "original-ci-artifact.zip",
+    "source_sha256": "304081a8ea7c55a0329509c4e2f202dd527b6ed7d717cfaa42403dfab81bb09b",
+    "bytes": 2229604,
+    "raw_archive": "original-evidence-bytes.zip"
+  }
+]

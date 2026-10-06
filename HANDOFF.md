@@ -2,9 +2,9 @@
 
 | 항목 | 값 |
 |---|---|
-| 작성 시각 | 2026-10-07, M1-r1 W1 통합 후 WP-08 수정 새독립 검증 중 |
+| 작성 시각 | 2026-10-07, M1-r1 WP-08 Windows 새PASS 통합 후 Linux CI 실패 P06 중 |
 | 현재 마일스톤 | M0 PASS 보존. M1 진행 중 |
-| 기본 브랜치 CI | main b1da8f46fa7d2e849121424d5d2cf1ac36bfacd3의 [CI](https://github.com/peppone-choi/OpenHOI4/actions/runs/37474935905), [Core](https://github.com/peppone-choi/OpenHOI4/actions/runs/37474935898), [Simulation](https://github.com/peppone-choi/OpenHOI4/actions/runs/37474935881) 모두 success. 실제 M1 3OS 아티팩트 SHA와 hash60448355cecffa9d 일치도 직접 확인. 이후 문서 HEAD CI는 별도 확인 |
+| 기본 브랜치 CI | main79140fbfc9966fc5104df735f068615633181d5b의 [일반CI](https://github.com/peppone-choi/OpenHOI4/actions/runs/37491594894) client FAIL·다른6jobs success, [Core](https://github.com/peppone-choi/OpenHOI4/actions/runs/37491595077)와 [Simulation](https://github.com/peppone-choi/OpenHOI4/actions/runs/37491594793) success. 전체CI 녹색 아님. 이전 b1da8f4 세CI/실제M1 세OS SHA/hash60448355cecffa9d 일치 증거는 보존 |
 
 ## 실제 상태와 이전 인수인계의 차이 (재개 시 기록)
 
@@ -25,13 +25,13 @@ M0 게이트 `d6ae2c8`의 AC7 PASS와 당시 동일 HEAD CI15jobs·7artifactZIP 
 | WP10 | 통합됨 | codex/wp10-ledger, WP-10 | 계산 기반 PASS, 실제 적용·조회 WP09 |
 | WP12 | 수정 독립 PASS·통합됨 | codex/wp12-localization, WP-12 | 실제 원장 WP09 후속 |
 | WP09 | 통합됨 | codex/wp09-national-state, WP-09; 구현206fb45/mainb1da8f4 | 실제 국가/주·원장·M1 hash/CLI/3OS PASS, 지도선택 WP08 후속 |
-| WP08 | 첫 독립 FAIL 보존, 수정87c1a99 새독립검증 중 | codex/wp08-map-rendering, WP-08; verify2 detached87c1a99 | 새PASS·부모불변성→main통합·P07·같은HEAD CI |
+| WP08 | Windows87c1a99 새독립PASS·main통합 후 LinuxCI FAIL, P06 중 | codex/wp08-map-rendering, WP-08; verify2 detached87c1a99 PASS 보존 | 초기화/정리오류와Linux가용성 진단→최소수정·새독립검증·통합CI |
 | WP11 | 다음 RUN 예정 | 아직 없음 | 실제 M1 mutable state·예약명령 save-resume |
 | M1 게이트 | 미판정 | 없음 | WP11까지 전체통합·독립 새검증 |
 
 ## 세션 상태와 실행 경로
 
-사용자가 승인한 앱 별도 local 채팅·WP별명시 Git worktree 경로를 썼다. 모델·인증·샌드박스·승인·네트워크 설정은 변경하지 않았다. 모든 구현 명령은 WP worktree, 검증은 정확한 구현커밋 detached별도 worktree다. 부모도 검증 전후 HEAD/index/추적목록/각SHA/diff/status를 비교했다. 현재 채팅ID/실제상태/경로/커밋은 `.orchestrator/app-threads.json` 및 종료 시 보존복사본을 참조한다. 원본 첫 WP12/WP08 FAIL 검증 worktree는 보존했다. 현재 실행 중인 채팅은 WP08 수정 새검증 `01a111db-1a89-78a1-b2b8-c8c20c812bfc` host local, E:/openhoi/.orchestrator/wt/WP-08-verify2 detached87c1a99이다. W1·WP09·WP08 구현/첫검증과 별도 UI플레이는 종료했다. [보존 registry](docs/plans/evidence/M1-r1/app-threads.json)는 이후 종료 시 갱신할 사본이다. 미병합자료를 삭제하지 않았다. 새 검증 첫 메시지에서 부모가 준비파일 오류 출력을 잘못 전달해 즉시 전문으로 정정했다. 정정 전 main 문서/Git 읽기만 했고 파일 수정·세션 생성·프로세스 조작은 없음을 검증자가 보고했다. 실제 검증 시작은 지정 worktree 2458 tracked clean에서 별도 기록했다.
+사용자가 승인한 앱 별도 local 채팅·WP별명시 Git worktree 경로를 썼다. 모델·인증·샌드박스·승인·네트워크 설정은 변경하지 않았다. 모든 구현 명령은 WP worktree, 검증은 정확한 구현커밋 detached별도 worktree다. 부모도 검증 전후 HEAD/index/추적목록/각SHA/diff/status를 비교했다. 현재 채팅ID/실제상태/경로/커밋은 `.orchestrator/app-threads.json` 및 종료 시 보존복사본을 참조한다. 원본 첫 WP12/WP08 FAIL 검증 worktree는 보존했다. 현재 실행 중인 채팅은 기존 WP08 구현 01a11186-8f53-75c2-b9fb-873b27d8af82의 LinuxCI P06이다. WP08 새검증01a111db-1a89-78a1-b2b8-c8c20c812bfc는87c1a99 Windows PASS와2458파일불변성을 제출하고 종료했으며 main9dcf199에 통합했다. 새 제품 수정에는 새 독립 검증이 필요하다. [보존 registry](docs/plans/evidence/M1-r1/app-threads.json)는 이후 종료 시 갱신할 사본이다. 미병합자료를 삭제하지 않았다. 새 검증 첫 메시지에서 부모가 준비파일 오류 출력을 잘못 전달해 즉시 전문으로 정정했다. 정정 전 main 문서/Git 읽기만 했고 파일 수정·세션 생성·프로세스 조작은 없음을 검증자가 보고했다. 실제 검증 시작은 지정 worktree 2458 tracked clean에서 별도 기록했다.
 
 WP08 f58c0c6의 [첫 독립 FAIL 전문](docs/verify/WP-08.attempt1.md)과 273개 원본 증거를 보존했다. unit130/M1 E2E135/M0 E2E60·실제 WebGPU/WebGL2·픽셀·해시는 통과했지만, valid-CORS metadata와 index redirect가 다른 origin 응답을 받는 실제 결함으로 최종 FAIL이다. CORS가 잘못 구성된 최초 helper 실패와 수정된 실제 재현을 구분했다. 부모1905 tracked SHA/index/list/diff/status 불변 확인. 구현 채팅이 수정하고 새 독립 채팅이 정확한 수정 커밋을 검증한다.
 
@@ -88,3 +88,5 @@ OPEN01~12는 일괄 기본안승인 철회 후 모두 개별 사용자답변으�
 WP09 후속 검증: M1 실제server15/M0server60·독립브라우저110·TOML변조29·Fx최하위bit/expiry/queue/config/다중주실패원자성 PASS. 부모1515 tracked SHA/index/list/diffstatus 무변경. M1 365일seed1 두회 b595dc2a1e5b4f8c, 1000tick60448355cecffa9d. [전문](docs/verify/WP-09.md), [세OS 원본ZIP metadata](docs/verify/evidence/WP-09/main-ci/same-head-ci.json).
 
 WP11 착수 전 [저장 경계 점검](docs/plans/WP-11-resume-review.md)을 읽는다. 현재 Simulation은 seed/date/tick을 보존하며 지속 RNG cursor가 없다. 존재하지 않는 cursor를 저장했다고 주장하지 않는다. State/TimeConfig/ordered queue/WorldInputs/base/만료된 modifier/Defs identity를 field별 계약에 포함하고 새 유효 import·원자적 교체·독립 재개 fixture를 먼저 설계한다. [스키마 기획](docs/plans/schema-planning.md)과 위키 본문 [접근 제한 기록](docs/research/schema-source-review.md)을 따른다.
+
+현재 LinuxCI 실패 증거와 범위: [조사](docs/research/WP-08-linux-renderer-ci.md), [원본CI SHA](docs/verify/evidence/WP-08-CI-attempt1/ci-failure.json). Firefox18FAIL/81PASS·gl=null 정리 추가예외를 보존했다. W2는 main CI 실패 때문에 완료 계수하지 않았다. 임시단발 브랜치한정 capability probe는 구현자가 작성하고 부모가 검토/푸시, 실제headless/headed·원시픽셀·context를 대조한 뒤 최종main에는 제거한다. 테스트/prefs/security/OS 설정을 우회하지 않는다. 신규 게임규칙·전역하네스가 아니다.
