@@ -1,0 +1,16 @@
+{
+  "commit": "f58c0c61322287f48318bce47ca51deb7daebcc9",
+  "pid": 19656,
+  "exe": "E:/openhoi/.orchestrator/wt/WP-08/target/wp08/play-final/oh_server.exe",
+  "exe_sha256": "3215ef41356d73b04f104c7bb3e36c408b424cfc017ba4ff57c8c97d9ca8e970",
+  "url": "http://127.0.0.1:19418",
+  "scripts": [
+    {
+      "url": "http://127.0.0.1:19418/assets/index-COkwvm1N.js",
+      "sha256": "6f61dfa80318f7c7606fcc8aea538fc1e3a93854628cc79ce839e8453fb5d130",
+      "bytes": 1169358,
+      "local_path": ".orchestrator\\wt\\WP-08\\client\\dist\\assets\\index-COkwvm1N.js",
+      "matches_dist": true
+    }
+  ]
+}
