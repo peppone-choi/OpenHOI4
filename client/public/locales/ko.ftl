@@ -31,6 +31,7 @@ language-ko = 한국어
 no-value = —
 speed-choice = 속도 { $speed }
 unknown-message = 서버 메시지를 표시할 수 없습니다
+invalid-server-message = 잘못된 서버 메시지로 연결을 종료했습니다
 ledger-title = 수치 원장
 ledger-base = 기본값
 ledger-final = 최종값

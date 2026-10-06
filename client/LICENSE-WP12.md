@@ -7,7 +7,9 @@ The original WP-12 code contributions in `src/i18n.tsx`, `src/components/`,
 and the WP-12 changes to `src/App.tsx`, `src/shell.css` and the server's
 `crates/oh_server/build.rs` are licensed under the GNU General Public License,
 version 3 or any later version (`GPL-3.0-or-later`). They are supplied without
-warranty. The license text is in [licenses/GPL-3.0.txt](licenses/GPL-3.0.txt).
+warranty. P-06 adds original receive validation contributions in `src/network.ts`,
+`src/networkValidation.test.ts` and `e2e/malformed.spec.ts` under the same
+GPL-3.0-or-later terms. The license text is in [licenses/GPL-3.0.txt](licenses/GPL-3.0.txt).
 
 The original WP-12 `public/locales/ko.ftl` and `public/locales/en.ftl` translations
 are licensed under Creative Commons Attribution-ShareAlike 4.0 International

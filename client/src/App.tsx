@@ -25,7 +25,10 @@ export function App() {
       if (message.type === 'Notice') setNotice(message.key);
       if (message.type === 'CommandResult') setNotice(message.reason_key);
       setState(current => applyServerMessage(current, message));
-    }, () => setConnection('disconnected'));
+    }, reasonKey => {
+      setConnection('disconnected');
+      if (reasonKey) setNotice(reasonKey);
+    });
     socket.current = client;
     return () => { client.close(); socket.current = null; };
   }, []);

@@ -3,7 +3,7 @@ import { encode, decode } from '@msgpack/msgpack';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import type { ClientMessage } from '../src/proto/protocol';
-const evidence = '../docs/worklog/evidence/WP-12';
+const evidence = process.env.OH_E2E_EVIDENCE ?? '../docs/worklog/evidence/WP-12';
 mkdirSync(evidence, { recursive: true });
 
 test('REQ-LOC-01 REQ-LOC-02 actual Rust executable ko/en switch and local CJK font', async ({ page, request, browser }, info) => {

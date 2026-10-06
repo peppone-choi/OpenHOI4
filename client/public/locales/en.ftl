@@ -31,6 +31,7 @@ language-ko = 한국어
 no-value = —
 speed-choice = Speed { $speed }
 unknown-message = The server sent an unavailable message
+invalid-server-message = Invalid server message; connection closed
 ledger-title = Value ledger
 ledger-base = Base value
 ledger-final = Final value
