@@ -1,0 +1,45 @@
+
+Running 30 tests using 3 workers
+
+(node:9520) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:34896) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:32240) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  3 [chromium] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 metadata CORS redirect sends no foreign request on first load (807ms)
+  ok  2 [chrome] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 metadata CORS redirect sends no foreign request on first load (865ms)
+  ok  1 [edge] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 metadata CORS redirect sends no foreign request on first load (883ms)
+  ok  4 [chromium] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 metadata CORS redirect sends no foreign request after valid selection (1.0s)
+  ok  5 [chrome] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 metadata CORS redirect sends no foreign request after valid selection (1.1s)
+  ok  6 [edge] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 metadata CORS redirect sends no foreign request after valid selection (1.1s)
+  ok  7 [chromium] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 index CORS redirect sends no foreign request on first load (480ms)
+  ok  8 [chrome] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 index CORS redirect sends no foreign request on first load (611ms)
+  ok  9 [edge] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 index CORS redirect sends no foreign request on first load (632ms)
+  ok 10 [chromium] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 index CORS redirect sends no foreign request after valid selection (951ms)
+  ok 13 [chromium] › e2e-m1\map-redirect.spec.ts:137:56 › WP08 P06 metadata same-origin redirect is also rejected before follow (294ms)
+  ok 11 [chrome] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 index CORS redirect sends no foreign request after valid selection (1.0s)
+  ok 12 [edge] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 index CORS redirect sends no foreign request after valid selection (1.1s)
+  ok 14 [chromium] › e2e-m1\map-redirect.spec.ts:137:56 › WP08 P06 index same-origin redirect is also rejected before follow (366ms)
+  ok 15 [chrome] › e2e-m1\map-redirect.spec.ts:137:56 › WP08 P06 metadata same-origin redirect is also rejected before follow (524ms)
+  ok 16 [edge] › e2e-m1\map-redirect.spec.ts:137:56 › WP08 P06 metadata same-origin redirect is also rejected before follow (528ms)
+(node:19668) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 17 [chrome] › e2e-m1\map-redirect.spec.ts:137:56 › WP08 P06 index same-origin redirect is also rejected before follow (401ms)
+  ok 18 [edge] › e2e-m1\map-redirect.spec.ts:137:56 › WP08 P06 index same-origin redirect is also rejected before follow (422ms)
+(node:30624) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 20 [webkit] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 metadata CORS redirect sends no foreign request on first load (938ms)
+  ok 21 [webkit] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 metadata CORS redirect sends no foreign request after valid selection (2.1s)
+  ok 19 [firefox] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 metadata CORS redirect sends no foreign request on first load (3.3s)
+  ok 22 [webkit] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 index CORS redirect sends no foreign request on first load (905ms)
+  ok 23 [firefox] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 metadata CORS redirect sends no foreign request after valid selection (1.5s)
+  ok 25 [firefox] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 index CORS redirect sends no foreign request on first load (1.0s)
+  ok 24 [webkit] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 index CORS redirect sends no foreign request after valid selection (2.5s)
+  ok 27 [webkit] › e2e-m1\map-redirect.spec.ts:137:56 › WP08 P06 metadata same-origin redirect is also rejected before follow (741ms)
+  ok 26 [firefox] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 index CORS redirect sends no foreign request after valid selection (2.2s)
+  ok 28 [webkit] › e2e-m1\map-redirect.spec.ts:137:56 › WP08 P06 index same-origin redirect is also rejected before follow (874ms)
+  ok 29 [firefox] › e2e-m1\map-redirect.spec.ts:137:56 › WP08 P06 metadata same-origin redirect is also rejected before follow (560ms)
+  ok 30 [firefox] › e2e-m1\map-redirect.spec.ts:137:56 › WP08 P06 index same-origin redirect is also rejected before follow (452ms)
+
+  30 passed (16.0s)

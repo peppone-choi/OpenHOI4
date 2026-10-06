@@ -1,0 +1,53 @@
+{
+  "implementation": "red WP08 P06; original independent fixture f58c0c6",
+  "scenario": "m1",
+  "case": "actual cross-origin metadata redirect, valid CORS plus unaltered server schema/hash",
+  "expected": "same-origin response boundary must reject with localized map-data error before GPU creation",
+  "actual": "map rendered",
+  "alerts": [],
+  "intercepts": [
+    {
+      "url": "http://127.0.0.1:19420/maps/testland/metadata",
+      "method": "GET"
+    },
+    {
+      "url": "http://localhost:19420/maps/testland/metadata",
+      "method": "GET"
+    }
+  ],
+  "requests": [
+    "http://127.0.0.1:19420/?forceWebGL=1",
+    "http://127.0.0.1:19420/assets/index-COkwvm1N.js",
+    "http://127.0.0.1:19420/assets/index-B9cOsW2B.css",
+    "http://127.0.0.1:19420/fonts/NotoSansKR.ttf",
+    "http://127.0.0.1:19420/pack/localisation/en/map.ftl",
+    "http://127.0.0.1:19420/pack/localisation/en/national.ftl",
+    "http://127.0.0.1:19420/pack/localisation/ko/map.ftl",
+    "http://127.0.0.1:19420/pack/localisation/ko/national.ftl",
+    "http://127.0.0.1:19420/maps/testland/metadata",
+    "http://localhost:19420/maps/testland/metadata",
+    "http://127.0.0.1:19420/maps/testland/index.bin?pack=b8d30ba577f303c3"
+  ],
+  "crossOriginRequests": [
+    "http://localhost:19420/maps/testland/metadata"
+  ],
+  "diagnostics": {
+    "testid": "province-map",
+    "backend": "webgl2",
+    "textureLimit": "16384",
+    "adapter": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1660 Ti (0x00002182) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "device": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+    "shaderLanguage": "glsl",
+    "shaderLength": "16167",
+    "frames": "3",
+    "selected": "",
+    "mode": "map-mode-owner",
+    "updatedBytes": "0",
+    "updateMs": "0.09999999962747097",
+    "frameMs": "55.60000000024835"
+  },
+  "errors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+}

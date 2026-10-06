@@ -46,6 +46,10 @@
 
 ## 참조 그래프·다중성·오류 원자성
 
+2026-10-07 P-06 전송 계약 보강: metadata와 index.bin은 현재 페이지 `location.origin`을 기준으로 만든 절대 HTTP URL에서만 요청한다. Fetch `mode: same-origin`과 `redirect: error`를 함께 사용해 CORS 허용 여부와 무관하게 다른 origin과 모든 HTTP redirect(같은 origin도 포함)를 요청 단계에서 거부한다. 최종 Response.url을 확인하는 것만으로는 이미 발생한 외부 요청을 취소할 수 없으므로 그것을 경계로 삼지 않는다. 기존 정상 endpoint/query pack hash/cache 기본 동작은 유지한다. 오류는 map-data-error ko/en, 새 GPU/canvas 생성 전 실패하며 부모 WorldView/선택/원장/시간을 변경하지 않는다. metadata/index 각각 첫 load와 기존 정상 선택 이후 identity reload의 실제 302·CORS 200 양성 대조/외부 GET 0을 검사한다. 과거 외부 요청0 기록은 정상 경로에 한정된 증거이며 독립 검증의 유효 CORS redirect FAIL을 취소하지 않는다.
+
+오류 경계별 기대값: 초기 로드 실패는 map 안내/canvas0과 정상 권위 패널이다. pack identity 변경으로 재로드하다가 전송 실패하면 이전 renderer가 effect cleanup으로 해제되어 canvas0이며 날짜/시각/tick/worldTick·선택 province·국가·주·원장 값을 보존한다. 이전 카메라의 실행 중 지도를 보존한다고 주장하지 않고 새 geometry를 옛 정의와 섞지 않는다. 기존 malformed/world lookup 부분갱신 거부는 HTTP 재로드와 다른 경계이고 기존 지도/선택/카메라·원장·시간을 보존하는 별도 회귀다. 재로드의 Welcome identity 주입은 fault fixture이며 실제 GUI 플레이 증거가 아니다. 브라우저 오류 이벤트는 엔진별 차이가 있어 actual source HTTP302/Location, native follow+CORS200 원본 body, browser 요청 목록과 foreign server GET 수로 경계를 판정한다. WebKit은 정확한 차단 source URL의 access-control 진단을 pageerror로 보고하기도 하므로 그 값만 예상 네트워크 진단으로 기록하고 그 외 JS 오류는 거부한다.
+
 map 1→N dense index↔실제 Province ID 일대일. 육지 province N→1 state, state 1→N provinces. owner/controller는 각각 N→1 nation이며 물은 null이다. 주인은 control_override로 대체하지 않는다. 국가 capital→province는 검증된 육지 refs. 순환 게임 관계를 새로 만들지 않는다. 나라와 state의 ID 공간은 서로 별도다.
 
 oh_data가 중복/미존재 ID·PNG/CSV 불일치·state 육지 대응·palette 누락을 팩 로드시 거부한다. WP-08은 HTTP metadata shape/범위/identity/전체 dense IDs, raw length/hash/indices와 lookup WorldView 완결 refs를 초기 GPU 생성 전에 대조한다. 실패 시 빈/누락 데이터를 external 다운로드로 숨기지 않고 현지화 오류를 표시한다. malformed world wire는 WP-09 runtime guard가 마지막 유효 상태를 보존하며 socket을 닫는다. 상세 Query는 전체 WorldView refs를 잃지 않게 existing arrays에 ID로 병합한다. 조회 실패는 authority state를 변경하지 않는다. renderer 초기화/compile 실패는 새 WebGL2로 대체하고 둘 다 실패 시 안내한다. camera 이동은 map 밖 선택 null을 보존한다.
@@ -67,6 +71,7 @@ M1 기초 world fields는 연결되어 있으나 전투/인력/생산/철도/점
 | sea/lake/ID0/high sparse | null≠ID0, 65535 선택 가능, clear=-1 | RG8/validity·Yflip·CPU/GPU 일치 |
 | pan/zoom/outside | pointer anchored zoom, outside→null, reset→정확 초기 좌표 | camera 및 viewport |
 | missing/index length/hash/meta | 404·409·잘못된 DTO/bytes→현지화 오류, 외부 요청0 | 원자 실패/다운로드 없음 |
+| metadata/index CORS redirect | 다른 origin의 실제 유효 CORS200 body/header를 positive control로 확인한 뒤, app의302에서 외부 GET0·ko/en 오류·canvas0·기존 정상 WorldView/선택/시간/원장 보존 | P-06 독립FAIL 회귀; 같은 origin redirect도 따라가지 않음 |
 | adapter/init/insecure/limits/no backend | 실제 fallback shader pixels, 모두 실패 안내 ko/en | mock flags만 PASS 금지 |
 | frozen camera screenshots | 동일 픽셀 기준과 채널±1, boundary interior oracle | 환경/viewport/DPR/backend/date/seed 기록 |
 | 기존 M0/M1 회귀·hash | 기존 E2E60+15/TS regeneration/365day hashes2 | 후속 WP 검증과 혼동 금지 |

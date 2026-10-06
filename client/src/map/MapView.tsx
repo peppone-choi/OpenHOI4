@@ -5,6 +5,12 @@ import { decodeIndex,fnv,validateWorldDisplay } from './model';
 import { createMap } from './renderer';
 import { isMapMetadata } from '../network';
 type MapInstance=Awaited<ReturnType<typeof createMap>>;
+/** Reject redirects before any target request; map files belong to this host. */
+async function fetchMapResource(path:string,signal:AbortSignal){
+ const response=await fetch(new URL(path,location.origin).href,{signal,mode:'same-origin',redirect:'error'});
+ if(!response.ok)throw new Error('map-data-error');
+ return response;
+}
 export function MapView({world,packHash,selected,onSelect}:{world:WorldView;packHash:string;selected:number|null;onSelect:(id:number|null)=>void}){
  const {t}=useLocalization();const host=useRef<HTMLDivElement>(null),instance=useRef<MapInstance|null>(null);
  const [mode,setMode]=useState('map-mode-owner'),[hover,setHover]=useState<number|null>(null),[error,setError]=useState<string|null>(null),[ready,setReady]=useState(false);
@@ -14,11 +20,11 @@ export function MapView({world,packHash,selected,onSelect}:{world:WorldView;pack
   async function load(){
    try{
     validateWorldDisplay(world);
-    const response=await fetch(`/maps/${encodeURIComponent(world.map_id)}/metadata`,{signal:controller.signal});if(!response.ok)throw new Error('map-data-error');
+    const response=await fetchMapResource(`/maps/${encodeURIComponent(world.map_id)}/metadata`,controller.signal);
     const candidate:unknown=await response.json();
     if(!isMapMetadata(candidate)||candidate.pack_hash!==packHash||candidate.map_id!==world.map_id||candidate.width!==world.width||candidate.height!==world.height||JSON.stringify(candidate.province_ids)!==JSON.stringify(world.province_ids))throw new Error('map-data-error');
     const meta=candidate;
-    const raw=await fetch(`/maps/${encodeURIComponent(world.map_id)}/index.bin?pack=${encodeURIComponent(packHash)}`,{signal:controller.signal});if(!raw.ok)throw new Error('map-data-error');
+    const raw=await fetchMapResource(`/maps/${encodeURIComponent(world.map_id)}/index.bin?pack=${encodeURIComponent(packHash)}`,controller.signal);
     const buffer=await raw.arrayBuffer();const bytes=new Uint8Array(buffer);if(buffer.byteLength!==Number(meta.byte_length)||fnv(bytes)!==meta.index_hash||raw.headers.get('x-pack-hash')!==packHash)throw new Error('map-data-error');
     const index=decodeIndex(buffer,world.width,world.height,world.province_ids);
     if(stopped)return;
