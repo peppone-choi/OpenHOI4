@@ -28,8 +28,10 @@
       "verificationCommit": null,
       "status": "integrated-main-CI-success",
       "appExit": "해당 없음(앱 실행)",
-      "cursor": "6bb48d09-9737-4f1d-937c-541fce312e0f:1",
-      "integrationEvidenceHead": "b8ebf6925ee89bf44a31584306a5e0264233abb1"
+      "cursor": "6bb48d09-9737-4f1d-937c-541fce312e0f:2",
+      "integrationEvidenceHead": "b8ebf6925ee89bf44a31584306a5e0264233abb1",
+      "appStatus": "notLoaded",
+      "turnStatus": "completed"
     },
     {
       "run": "M1-r1",
@@ -43,8 +45,10 @@
       "verificationCommit": null,
       "status": "integrated-main-CI-success",
       "appExit": "해당 없음(앱 실행)",
-      "cursor": "69159ba1-53af-4942-a295-27ee0fa7abf7:5",
-      "integrationEvidenceHead": "b8ebf6925ee89bf44a31584306a5e0264233abb1"
+      "cursor": "dd5abf38-f9f8-44cd-a420-302aa4248298:1",
+      "integrationEvidenceHead": "b8ebf6925ee89bf44a31584306a5e0264233abb1",
+      "appStatus": "idle",
+      "turnStatus": "completed"
     },
     {
       "run": "M1-r1",
@@ -58,9 +62,11 @@
       "verificationCommit": "8831613169bd8b176e14d1069a2679d43c44822e",
       "status": "integrated-main-CI-success",
       "appExit": "해당 없음(앱 실행)",
-      "cursor": "14c4c3c1-03f5-4c9a-98be-55f6242181a4:1",
+      "cursor": "14c4c3c1-03f5-4c9a-98be-55f6242181a4:3",
       "mergeCommit": "14fa0310aa13c8aecfd8cd9a249300f82b02ee7a",
-      "integrationEvidenceHead": "4ed5e57c2bdfedf0dbf31445ffb009e8816af334"
+      "integrationEvidenceHead": "4ed5e57c2bdfedf0dbf31445ffb009e8816af334",
+      "appStatus": "notLoaded",
+      "turnStatus": "completed"
     },
     {
       "run": "M1-r1",
@@ -75,8 +81,10 @@
       "verificationCommit": null,
       "status": "integrated-main-CI-success",
       "appExit": "해당 없음(앱 실행)",
-      "cursor": "95279343-6e50-49a6-a92c-6fc73237b3b1:5",
-      "integrationEvidenceHead": "b8ebf6925ee89bf44a31584306a5e0264233abb1"
+      "cursor": "4613d32e-fe4b-4502-ad74-bf0f87383b50:1",
+      "integrationEvidenceHead": "b8ebf6925ee89bf44a31584306a5e0264233abb1",
+      "appStatus": "notLoaded",
+      "turnStatus": "completed"
     },
     {
       "run": "M1-r1",
@@ -90,8 +98,10 @@
       "status": "PASS-invariance-confirmed",
       "beforeSnapshot": "E:/openhoi/.orchestrator/evidence/WP-10.verify.before.json",
       "appExit": "해당 없음(앱 실행)",
-      "cursor": "954f9dc9-6458-43ed-8042-e8835ce8ae10:3",
-      "finalReport": "docs/verify/WP-10.md"
+      "cursor": "954f9dc9-6458-43ed-8042-e8835ce8ae10:4",
+      "finalReport": "docs/verify/WP-10.md",
+      "appStatus": "notLoaded",
+      "turnStatus": "completed"
     },
     {
       "run": "M1-r1",
@@ -106,8 +116,10 @@
       "status": "PASS-invariance-confirmed",
       "beforeSnapshot": "E:/openhoi/.orchestrator/evidence/WP-01-ai-policy.verify.before.json",
       "appExit": "해당 없음(앱 실행)",
-      "cursor": "f67411b2-2c3a-4182-8dba-2332feadca1b:1",
-      "finalReport": "docs/verify/WP-01.ai-policy-r1.md"
+      "cursor": "f67411b2-2c3a-4182-8dba-2332feadca1b:3",
+      "finalReport": "docs/verify/WP-01.ai-policy-r1.md",
+      "appStatus": "notLoaded",
+      "turnStatus": "completed"
     },
     {
       "run": "M1-r1",
@@ -121,8 +133,10 @@
       "status": "PASS-invariance-confirmed",
       "beforeSnapshot": "E:/openhoi/.orchestrator/evidence/WP-07.verify.before.json",
       "appExit": "해당 없음(앱 실행)",
-      "cursor": "74515009-1473-4ab7-960d-74b82c0a20c9:1",
-      "finalReport": "docs/verify/WP-07.md"
+      "cursor": "74515009-1473-4ab7-960d-74b82c0a20c9:2",
+      "finalReport": "docs/verify/WP-07.md",
+      "appStatus": "notLoaded",
+      "turnStatus": "completed"
     },
     {
       "run": "M1-r1",
@@ -136,7 +150,10 @@
       "status": "FAIL-invariance-confirmed",
       "beforeSnapshot": "E:/openhoi/.orchestrator/evidence/WP-12.verify.before.json",
       "appExit": "해당 없음(앱 실행)",
-      "finalReport": "docs/verify/WP-12.attempt1.md"
+      "finalReport": "docs/verify/WP-12.attempt1.md",
+      "appStatus": "notLoaded",
+      "turnStatus": "completed",
+      "cursor": "a7297988-9dcf-4333-9bf9-93a740207886:2"
     },
     {
       "run": "M1-r1",
@@ -152,7 +169,9 @@
       "beforeSnapshot": "E:/openhoi/.orchestrator/evidence/WP-12.verify2.before.json",
       "appExit": "해당 없음(앱 실행)",
       "finalReport": "docs/verify/WP-12.md",
-      "cursor": "b012780c-62d4-490c-8441-8deb02510a2a:14"
+      "cursor": "b012780c-62d4-490c-8441-8deb02510a2a:15",
+      "appStatus": "notLoaded",
+      "turnStatus": "completed"
     },
     {
       "run": "M1-r1",
@@ -166,9 +185,11 @@
       "status": "integrated-main-CI-success",
       "appExit": "해당 없음(앱 실행)",
       "verificationCommit": "206fb457f7478501009a763f8a1bea43c0d3937a",
-      "cursor": "51c4cb7f-98d4-4128-ab89-b1ea671de664:20",
+      "cursor": "51c4cb7f-98d4-4128-ab89-b1ea671de664:21",
       "mergeCommit": "198d0b29bd1e81c7fd856b703737619bfef997f9",
-      "integrationEvidenceHead": "b1da8f46fa7d2e849121424d5d2cf1ac36bfacd3"
+      "integrationEvidenceHead": "b1da8f46fa7d2e849121424d5d2cf1ac36bfacd3",
+      "appStatus": "notLoaded",
+      "turnStatus": "completed"
     },
     {
       "run": "M1-r1",
@@ -183,7 +204,9 @@
       "beforeSnapshot": "E:/openhoi/.orchestrator/evidence/WP-09.verify.before.json",
       "appExit": "해당 없음(앱 실행)",
       "finalReport": "docs/verify/WP-09.md",
-      "cursor": "dc507471-aaab-4271-96d8-6aae72a20571:16"
+      "cursor": "dc507471-aaab-4271-96d8-6aae72a20571:17",
+      "appStatus": "notLoaded",
+      "turnStatus": "completed"
     },
     {
       "run": "M1-r1",
@@ -206,7 +229,9 @@
         "legacyPreview": "19418=f58,19425=87,19431=2c retained; automatic termination review blocked"
       },
       "mergeCommit": "9dcf19947006dd62fcfde48d7f9204a71d4b8e38",
-      "diagnosticCommit": "a15f64f7b241f7d64cce5b39ab9b95c0142e9b86"
+      "diagnosticCommit": "a15f64f7b241f7d64cce5b39ab9b95c0142e9b86",
+      "appStatus": "idle",
+      "turnStatus": "completed"
     },
     {
       "run": "M1-r1",
@@ -220,8 +245,10 @@
       "status": "FAIL-invariance-confirmed",
       "beforeSnapshot": "E:/openhoi/.orchestrator/evidence/WP-08.verify.before.json",
       "appExit": "해당 없음(앱 실행)",
-      "cursor": "a5cbb3ab-ede3-469d-8c50-829b57354bf8:21",
-      "finalReport": "docs/verify/WP-08.attempt1.md"
+      "cursor": "a5cbb3ab-ede3-469d-8c50-829b57354bf8:22",
+      "finalReport": "docs/verify/WP-08.attempt1.md",
+      "appStatus": "notLoaded",
+      "turnStatus": "completed"
     },
     {
       "run": "M1-r1",
@@ -236,8 +263,10 @@
       "beforeSnapshot": "E:/openhoi/.orchestrator/evidence/M1.play.before.json",
       "appExit": "해당 없음(앱 실행)",
       "task": "ui-play",
-      "cursor": "e7f0584a-c5c4-458b-aef9-7164e00fb2ca:14",
-      "finalReport": "docs/play/M1-r1.md"
+      "cursor": "e7f0584a-c5c4-458b-aef9-7164e00fb2ca:15",
+      "finalReport": "docs/play/M1-r1.md",
+      "appStatus": "notLoaded",
+      "turnStatus": "completed"
     },
     {
       "run": "M1-r1",
@@ -252,9 +281,11 @@
       "status": "PASS-invariance-confirmed",
       "beforeSnapshot": "E:/openhoi/.orchestrator/evidence/WP-08.verify2.before.json",
       "appExit": "해당 없음(앱 실행)",
-      "cursor": "2f323306-5aee-4793-8a19-b18d033003a0:26",
+      "cursor": "2f323306-5aee-4793-8a19-b18d033003a0:27",
       "promptDelivery": "첫 준비파일 오류 출력 즉시 전문 정정; 초기 main 문서/Git 읽기만, 추적 변경·세션/프로세스조작 없음. 실제 검증은 지정2458tracked detached worktree",
-      "finalReport": "docs/verify/WP-08.md"
+      "finalReport": "docs/verify/WP-08.md",
+      "appStatus": "notLoaded",
+      "turnStatus": "completed"
     },
     {
       "run": "M1-r1",
@@ -270,7 +301,9 @@
       "beforeSnapshot": "E:/openhoi/.orchestrator/evidence/WP-08.verify3.before.json",
       "appExit": "해당 없음(앱 실행)",
       "cursor": "9ee6b16d-f678-4854-80bd-a57fe6a64b75:16",
-      "finalReport": "docs/verify/WP-08.attempt3.md"
+      "finalReport": "docs/verify/WP-08.attempt3.md",
+      "appStatus": "idle",
+      "turnStatus": "completed"
     },
     {
       "run": "M1-r1",
@@ -288,7 +321,9 @@
       "scope": "CI argv-only delta; independently prove 2c product/test byte identity and directly test selection/actual native case/Linux106, preserve prior full product verification",
       "finalReport": "docs/verify/WP-08.attempt4.md",
       "cursor": "ad6cbd6d-ba22-45d2-9725-5e45c940ceb4:7",
-      "runtimeIndependence": "initial native before collision; final resize independent PID9344 port19438; 19437 epoch excluded"
+      "runtimeIndependence": "initial native before collision; final resize independent PID9344 port19438; 19437 epoch excluded",
+      "appStatus": "idle",
+      "turnStatus": "completed"
     },
     {
       "run": "M1-r1",
@@ -305,7 +340,9 @@
       "appExit": "해당 없음(앱 실행)",
       "scope": "fresh full actual GPU/UI/HTTP/lifecycle/schema P05; resize and native GPU pipeline failure red-green; exclusive19443/19444",
       "cursor": "d0459c4a-a703-4632-b15a-759f207a80ad:13",
-      "finalReport": "docs/verify/WP-08.attempt5.md"
+      "finalReport": "docs/verify/WP-08.attempt5.md",
+      "appStatus": "idle",
+      "turnStatus": "completed"
     },
     {
       "run": "M1-r1",
@@ -322,7 +359,9 @@
       "appExit": "해당 없음(앱 실행)",
       "scope": "fresh full 205 default single-worker/GPU/UI/HTTP/lifecycle; live DPR fractional/native capture; latest planning copied §5.11 read-only; current19453/54 old19455-58",
       "cursor": "84a354ff-354d-412e-abe5-36b6e6f8516a:41",
-      "finalReport": "docs/verify/WP-08.attempt6.md"
+      "finalReport": "docs/verify/WP-08.attempt6.md",
+      "appStatus": "idle",
+      "turnStatus": "completed"
     }
   ],
   "groupsIntegratedThisRun": [

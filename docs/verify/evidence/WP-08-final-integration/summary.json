@@ -1,0 +1,260 @@
+{
+  "head": "ebc1c5b56c883250c60b75540649a693bddca86f",
+  "results": [
+    {
+      "name": "npm-ci",
+      "command": [
+        "npm.cmd",
+        "--prefix",
+        "client",
+        "ci"
+      ],
+      "exit": 0,
+      "log": "E:\\openhoi\\.orchestrator\\evidence\\M1-W2-WP08-final.integration\\npm-ci.log"
+    },
+    {
+      "name": "client-test",
+      "command": [
+        "npm.cmd",
+        "--prefix",
+        "client",
+        "test"
+      ],
+      "exit": 0,
+      "log": "E:\\openhoi\\.orchestrator\\evidence\\M1-W2-WP08-final.integration\\client-test.log"
+    },
+    {
+      "name": "client-build",
+      "command": [
+        "npm.cmd",
+        "--prefix",
+        "client",
+        "run",
+        "build"
+      ],
+      "exit": 0,
+      "log": "E:\\openhoi\\.orchestrator\\evidence\\M1-W2-WP08-final.integration\\client-build.log"
+    },
+    {
+      "name": "fmt",
+      "command": [
+        "C:/Users/user/.cargo/bin/cargo.exe",
+        "fmt",
+        "--check"
+      ],
+      "exit": 0,
+      "log": "E:\\openhoi\\.orchestrator\\evidence\\M1-W2-WP08-final.integration\\fmt.log"
+    },
+    {
+      "name": "clippy",
+      "command": [
+        "C:/Users/user/.cargo/bin/cargo.exe",
+        "clippy",
+        "--workspace",
+        "--all-targets",
+        "--locked",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "exit": 0,
+      "log": "E:\\openhoi\\.orchestrator\\evidence\\M1-W2-WP08-final.integration\\clippy.log"
+    },
+    {
+      "name": "rust-tests",
+      "command": [
+        "C:/Users/user/.cargo/bin/cargo.exe",
+        "test",
+        "--workspace",
+        "--locked"
+      ],
+      "exit": 0,
+      "log": "E:\\openhoi\\.orchestrator\\evidence\\M1-W2-WP08-final.integration\\rust-tests.log"
+    },
+    {
+      "name": "hash-1",
+      "command": [
+        "C:/Users/user/.cargo/bin/cargo.exe",
+        "run",
+        "-p",
+        "oh_cli",
+        "--locked",
+        "--",
+        "run",
+        "--scenario",
+        "testland",
+        "--days",
+        "365",
+        "--seed",
+        "1",
+        "--hash-out"
+      ],
+      "exit": 0,
+      "log": "E:\\openhoi\\.orchestrator\\evidence\\M1-W2-WP08-final.integration\\hash-1.log"
+    },
+    {
+      "name": "hash-2",
+      "command": [
+        "C:/Users/user/.cargo/bin/cargo.exe",
+        "run",
+        "-p",
+        "oh_cli",
+        "--locked",
+        "--",
+        "run",
+        "--scenario",
+        "testland",
+        "--days",
+        "365",
+        "--seed",
+        "1",
+        "--hash-out"
+      ],
+      "exit": 0,
+      "log": "E:\\openhoi\\.orchestrator\\evidence\\M1-W2-WP08-final.integration\\hash-2.log"
+    },
+    {
+      "name": "client-typecheck",
+      "command": [
+        "npm.cmd",
+        "--prefix",
+        "client",
+        "run",
+        "typecheck"
+      ],
+      "exit": 0,
+      "log": "E:\\openhoi\\.orchestrator\\evidence\\M1-W2-WP08-final.integration\\client-typecheck.log"
+    },
+    {
+      "name": "npm-licenses",
+      "command": [
+        "npm.cmd",
+        "--prefix",
+        "client",
+        "run",
+        "licenses"
+      ],
+      "exit": 0,
+      "log": "E:\\openhoi\\.orchestrator\\evidence\\M1-W2-WP08-final.integration\\npm-licenses.log"
+    },
+    {
+      "name": "assets",
+      "command": [
+        "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-X",
+        "utf8",
+        "tools/check_assets.py",
+        "--release"
+      ],
+      "exit": 0,
+      "log": "E:\\openhoi\\.orchestrator\\evidence\\M1-W2-WP08-final.integration\\assets.log"
+    },
+    {
+      "name": "policy-tests",
+      "command": [
+        "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools/tests",
+        "-p",
+        "test_wp01.py",
+        "-v"
+      ],
+      "exit": 0,
+      "log": "E:\\openhoi\\.orchestrator\\evidence\\M1-W2-WP08-final.integration\\policy-tests.log"
+    },
+    {
+      "name": "docs",
+      "command": [
+        "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-X",
+        "utf8",
+        "tools/check_docs.py"
+      ],
+      "exit": 0,
+      "log": "E:\\openhoi\\.orchestrator\\evidence\\M1-W2-WP08-final.integration\\docs.log"
+    },
+    {
+      "name": "m1-hash-1",
+      "command": [
+        "C:/Users/user/.cargo/bin/cargo.exe",
+        "run",
+        "-p",
+        "oh_cli",
+        "--locked",
+        "--",
+        "run",
+        "--pack",
+        "data/packs/testland",
+        "--scenario",
+        "m1",
+        "--days",
+        "365",
+        "--seed",
+        "1",
+        "--hash-out"
+      ],
+      "exit": 0,
+      "log": "E:\\openhoi\\.orchestrator\\evidence\\M1-W2-WP08-final.integration\\m1-hash-1.log"
+    },
+    {
+      "name": "m1-hash-2",
+      "command": [
+        "C:/Users/user/.cargo/bin/cargo.exe",
+        "run",
+        "-p",
+        "oh_cli",
+        "--locked",
+        "--",
+        "run",
+        "--pack",
+        "data/packs/testland",
+        "--scenario",
+        "m1",
+        "--days",
+        "365",
+        "--seed",
+        "1",
+        "--hash-out"
+      ],
+      "exit": 0,
+      "log": "E:\\openhoi\\.orchestrator\\evidence\\M1-W2-WP08-final.integration\\m1-hash-2.log"
+    },
+    {
+      "name": "m1-capture",
+      "command": [
+        "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-X",
+        "utf8",
+        "crates/oh_sim/tools/check_sim_determinism.py",
+        "capture",
+        "--m1",
+        "--out",
+        "E:\\openhoi\\.orchestrator\\evidence\\M1-W2-WP08-final.integration\\m1-capture"
+      ],
+      "exit": 0,
+      "log": "E:\\openhoi\\.orchestrator\\evidence\\M1-W2-WP08-final.integration\\m1-capture.log"
+    }
+  ],
+  "validate": "미실행: 전체 validate는 WP-24 후속이며 현재 명령 없음",
+  "hashes": [
+    [
+      "b039d35666b77fc2"
+    ],
+    [
+      "b039d35666b77fc2"
+    ]
+  ],
+  "m1_hashes": [
+    [
+      "b595dc2a1e5b4f8c"
+    ],
+    [
+      "b595dc2a1e5b4f8c"
+    ]
+  ]
+}

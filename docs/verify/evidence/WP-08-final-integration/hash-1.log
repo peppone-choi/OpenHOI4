@@ -1,0 +1,8 @@
+cwd: E:\openhoi
+command: C:/Users/user/.cargo/bin/cargo.exe run -p oh_cli --locked -- run --scenario testland --days 365 --seed 1 --hash-out
+b039d35666b77fc2
+   Compiling oh_cli v0.1.0 (E:\openhoi\crates\oh_cli)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.89s
+     Running `target\debug\oh_cli.exe run --scenario testland --days 365 --seed 1 --hash-out`
+
+exit: 0

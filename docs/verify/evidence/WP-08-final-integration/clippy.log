@@ -1,0 +1,6 @@
+cwd: E:\openhoi
+command: C:/Users/user/.cargo/bin/cargo.exe clippy --workspace --all-targets --locked -- -D warnings
+   Compiling oh_server v0.1.0 (E:\openhoi\crates\oh_server)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.34s
+
+exit: 0

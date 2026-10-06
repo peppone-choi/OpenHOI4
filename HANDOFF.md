@@ -2,7 +2,7 @@
 
 | 항목 | 값 |
 |---|---|
-| 작성 시각 | 2026-10-07, M1-r1 WP-08 exact9fbc 독립6 PASS·종료 후5008 불변 확인, main 통합 전 |
+| 작성 시각 | 2026-10-07, M1-r1 WP-08 exact9fbc 독립6 PASS·종료 후5008 불변 확인, main ebc1c5b 통합·P07 모두PASS, 새main CI 전 |
 | 현재 마일스톤 | M0 PASS 보존. M1 진행 중 |
 | 기본 브랜치 CI | main79140fbfc9966fc5104df735f068615633181d5b의 [일반CI](https://github.com/peppone-choi/OpenHOI4/actions/runs/37491594894) client FAIL·다른6jobs success, [Core](https://github.com/peppone-choi/OpenHOI4/actions/runs/37491595077)와 [Simulation](https://github.com/peppone-choi/OpenHOI4/actions/runs/37491594793) success. 전체CI 녹색 아님. 이전 b1da8f4 세CI/실제M1 세OS SHA/hash60448355cecffa9d 일치 증거는 보존 |
 
@@ -25,7 +25,7 @@ M0 게이트 `d6ae2c8`의 AC7 PASS와 당시 동일 HEAD CI15jobs·7artifactZIP 
 | WP10 | 통합됨 | codex/wp10-ledger, WP-10 | 계산 기반 PASS, 실제 적용·조회 WP09 |
 | WP12 | 수정 독립 PASS·통합됨 | codex/wp12-localization, WP-12 | 실제 원장 WP09 후속 |
 | WP09 | 통합됨 | codex/wp09-national-state, WP-09; 구현206fb45/mainb1da8f4 | 실제 국가/주·원장·M1 hash/CLI/3OS PASS, 지도선택 WP08 후속 |
-| WP08 | exact9fbc 독립6 전체PASS·종료 후5008 불변·branch세CI green | codex/wp08-map-rendering, WP-08; verify6 detached9fbc/전용19453~58·종료 | main 통합/P07/main CI 예정; W2 미계수 |
+| WP08 | exact9fbc 독립6 전체PASS·종료 후5008 불변·main ebc1c5b 통합/P07 PASS | codex/wp08-map-rendering, WP-08; verify6 detached9fbc/전용19453~58·종료 | 새main CI 예정; W2 미계수 |
 | WP11 | 다음 RUN 예정 | 아직 없음 | 실제 M1 mutable state·예약명령 save-resume |
 | M1 게이트 | 미판정 | 없음 | WP11까지 전체통합·독립 새검증 |
 
