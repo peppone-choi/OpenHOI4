@@ -1,0 +1,9 @@
+
+> openhoi-client@0.1.0 proto:generate
+> cargo run -p oh_proto --example generate
+
+    Blocking waiting for file lock on build directory
+   Compiling oh_proto v0.1.0 (E:\openhoi\.orchestrator\wt\WP-12\crates\oh_proto)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 19.42s
+     Running `E:\openhoi\.orchestrator\wt\WP-12\target\debug\examples\generate.exe`
+exit=0

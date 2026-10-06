@@ -1,0 +1,30 @@
+{
+  "project": "chromium",
+  "browser": "153.0.8010.12",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "server": "Rust embedded executable, no Vite",
+  "locale": "ko then en; paused authoritative time",
+  "font": {
+    "loaded": [
+      {
+        "family": "Noto Sans KR",
+        "status": "loaded"
+      }
+    ],
+    "check": true,
+    "applied": "\"Noto Sans KR\", sans-serif",
+    "weightAxis": "\"wght\" 400"
+  },
+  "requests": [
+    "http://127.0.0.1:19412/",
+    "http://127.0.0.1:19412/assets/index-DwHtWFQc.js",
+    "http://127.0.0.1:19412/assets/index-CkSGOuq1.css",
+    "http://127.0.0.1:19412/fonts/NotoSansKR.ttf"
+  ],
+  "mime": "font/ttf",
+  "bytes": 10414588,
+  "sha256": "194018e6b2b293a7964f037b25c0249ce1418bc9ab3c971060a03aa57861e252"
+}

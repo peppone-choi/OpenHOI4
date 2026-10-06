@@ -1,0 +1,11 @@
+google/fonts commit=b38c5c93af322c45f633e17ac440ec1e6c94d489
+
+Algorithm : SHA256
+Hash      : 194018E6B2B293A7964F037B25C0249CE1418BC9AB3C971060A03AA57861E252
+Path      : E:\openhoi\.orchestrator\wt\WP-12\client\public\fonts\NotoSansKR.ttf
+
+Algorithm : SHA256
+Hash      : 1C05C68C34F9708415AADA51F17E1B0092D2CEA709BF4A94CD38114F9E73D7D9
+Path      : E:\openhoi\.orchestrator\wt\WP-12\client\public\fonts\OFL.txt
+
+

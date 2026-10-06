@@ -151,3 +151,39 @@ license = "CC-BY-SA-4.0"
 modified = false
 ai_generated = false
 notes = "Directly authored synthetic M1 map fixture, no historical or third-party game material. D-10 confirmed 2026-10-06; no WP-23 content."
+
+[[asset]]
+path = "client/public/locales/ko.ftl"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original Fluent Korean UI text for WP-12. M0 JSON records and files preserved."
+
+[[asset]]
+path = "client/public/locales/en.ftl"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original Fluent English UI text for WP-12. M0 JSON records and files preserved."
+
+[[asset]]
+path = "client/public/fonts/NotoSansKR.ttf"
+author = "Adobe; Google; Noto contributors"
+source = "https://github.com/google/fonts/blob/b38c5c93af322c45f633e17ac440ec1e6c94d489/ofl/notosanskr/NotoSansKR%5Bwght%5D.ttf"
+license = "OFL-1.1"
+modified = false
+ai_generated = false
+notes = "Unmodified variable font; local filename only. Original copyright/reserved font notice preserved in OFL.txt. Full font includes Hangul and CJK glyphs."
+
+[[asset]]
+path = "client/public/fonts/OFL.txt"
+author = "Adobe; Google; Noto contributors"
+source = "https://github.com/google/fonts/blob/b38c5c93af322c45f633e17ac440ec1e6c94d489/ofl/notosanskr/OFL.txt"
+license = "OFL-1.1"
+modified = false
+ai_generated = false
+notes = "Unmodified upstream copyright and SIL Open Font License 1.1; shipped with embedded font."

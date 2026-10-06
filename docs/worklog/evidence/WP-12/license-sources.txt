@@ -1,0 +1,13 @@
+GPL-3.0.txt: https://raw.githubusercontent.com/spdx/license-list-data/main/text/GPL-3.0-or-later.txt (SPDX official GNU license copy; GNU.org original timed out).
+CC-BY-SA-4.0.txt: https://creativecommons.org/licenses/by-sa/4.0/legalcode.txt (Creative Commons official license text).
+OFL.txt: exact unmodified Google/fonts upstream revision, see font-source.txt.
+
+Algorithm : SHA256
+Hash      : FB981668C18A279E285FC4D83FBA1E836CC84DD4DAA73C9697D3CFD2D8ACA6E0
+Path      : E:\openhoi\.orchestrator\wt\WP-12\client\licenses\GPL-3.0.txt
+
+Algorithm : SHA256
+Hash      : 28A9529C7D0BB4DC51F4BF5C116A3D16EF247A052F7591466768DDF563FD1CF5
+Path      : E:\openhoi\.orchestrator\wt\WP-12\client\licenses\CC-BY-SA-4.0.txt
+
+

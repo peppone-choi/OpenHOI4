@@ -22,6 +22,8 @@ fn collect(root: &Path, dir: &Path, out: &mut Vec<(String, String)>) {
                 Some("js") => "text/javascript; charset=utf-8",
                 Some("css") => "text/css; charset=utf-8",
                 Some("json") => "application/json; charset=utf-8",
+                Some("ftl" | "txt") => "text/plain; charset=utf-8",
+                Some("ttf") => "font/ttf",
                 _ => "application/octet-stream",
             };
             out.push((
