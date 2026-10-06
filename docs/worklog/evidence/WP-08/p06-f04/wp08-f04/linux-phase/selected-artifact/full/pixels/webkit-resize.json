@@ -1,0 +1,466 @@
+{
+  "browser": "26.6",
+  "captures": [
+    {
+      "label": "initial",
+      "camera": {
+        "width": 16.877470355731223,
+        "height": 6.521739130434782,
+        "x": 4,
+        "y": 3,
+        "zoom": 1
+      },
+      "gpu": {
+        "pixel": [
+          40,
+          100,
+          180,
+          255
+        ],
+        "error": 0,
+        "lost": false
+      },
+      "actual": [
+        40,
+        100,
+        180
+      ],
+      "expected": [
+        40,
+        100,
+        180
+      ]
+    },
+    {
+      "label": "resized",
+      "camera": {
+        "width": 8.43351821355552,
+        "height": 5.130181702607957,
+        "x": 3.689079896811639,
+        "y": 2.8445399484058194,
+        "zoom": 1.2712491503214047
+      },
+      "gpu": {
+        "pixel": [
+          77,
+          111,
+          155,
+          255
+        ],
+        "error": 0,
+        "lost": false
+      },
+      "actual": [
+        77,
+        111,
+        155
+      ],
+      "expected": [
+        77,
+        111,
+        155
+      ]
+    },
+    {
+      "label": "restored",
+      "camera": {
+        "width": 13.276288406143014,
+        "height": 5.130181702607957,
+        "x": 3.689079896811639,
+        "y": 2.8445399484058194,
+        "zoom": 1.2712491503214047
+      },
+      "gpu": {
+        "pixel": [
+          77,
+          111,
+          155,
+          255
+        ],
+        "error": 0,
+        "lost": false
+      },
+      "actual": [
+        77,
+        111,
+        155
+      ],
+      "expected": [
+        77,
+        111,
+        155
+      ]
+    },
+    {
+      "label": "reset",
+      "camera": {
+        "width": 16.877470355731223,
+        "height": 6.521739130434782,
+        "x": 4,
+        "y": 3,
+        "zoom": 1
+      },
+      "gpu": {
+        "pixel": [
+          77,
+          111,
+          155,
+          255
+        ],
+        "error": 0,
+        "lost": false
+      },
+      "actual": [
+        77,
+        111,
+        155
+      ],
+      "expected": [
+        77,
+        111,
+        155
+      ]
+    }
+  ],
+  "oracle": [
+    {
+      "mode": "Ownership",
+      "id": 10,
+      "actual": [
+        40,
+        100,
+        180
+      ],
+      "expected": [
+        40,
+        100,
+        180
+      ]
+    },
+    {
+      "mode": "Ownership",
+      "id": 20,
+      "actual": [
+        40,
+        100,
+        180
+      ],
+      "expected": [
+        40,
+        100,
+        180
+      ]
+    },
+    {
+      "mode": "Ownership",
+      "id": 30,
+      "actual": [
+        180,
+        70,
+        40
+      ],
+      "expected": [
+        180,
+        70,
+        40
+      ]
+    },
+    {
+      "mode": "Ownership",
+      "id": 40,
+      "actual": [
+        180,
+        70,
+        40
+      ],
+      "expected": [
+        180,
+        70,
+        40
+      ]
+    },
+    {
+      "mode": "Ownership",
+      "id": 30,
+      "actual": [
+        180,
+        70,
+        40
+      ],
+      "expected": [
+        180,
+        70,
+        40
+      ]
+    },
+    {
+      "mode": "Ownership",
+      "id": 50,
+      "actual": [
+        65,
+        105,
+        145
+      ],
+      "expected": [
+        65,
+        105,
+        145
+      ]
+    },
+    {
+      "mode": "Terrain",
+      "id": 10,
+      "actual": [
+        77,
+        111,
+        155
+      ],
+      "expected": [
+        77,
+        111,
+        155
+      ]
+    },
+    {
+      "mode": "Terrain",
+      "id": 20,
+      "actual": [
+        155,
+        135,
+        95
+      ],
+      "expected": [
+        155,
+        135,
+        95
+      ]
+    },
+    {
+      "mode": "Terrain",
+      "id": 30,
+      "actual": [
+        130,
+        165,
+        95
+      ],
+      "expected": [
+        130,
+        165,
+        95
+      ]
+    },
+    {
+      "mode": "Terrain",
+      "id": 40,
+      "actual": [
+        155,
+        135,
+        95
+      ],
+      "expected": [
+        155,
+        135,
+        95
+      ]
+    },
+    {
+      "mode": "Terrain",
+      "id": 30,
+      "actual": [
+        130,
+        165,
+        95
+      ],
+      "expected": [
+        130,
+        165,
+        95
+      ]
+    },
+    {
+      "mode": "Terrain",
+      "id": 50,
+      "actual": [
+        65,
+        105,
+        145
+      ],
+      "expected": [
+        65,
+        105,
+        145
+      ]
+    },
+    {
+      "mode": "States",
+      "id": 10,
+      "actual": [
+        140,
+        95,
+        170
+      ],
+      "expected": [
+        140,
+        95,
+        170
+      ]
+    },
+    {
+      "mode": "States",
+      "id": 20,
+      "actual": [
+        140,
+        95,
+        170
+      ],
+      "expected": [
+        140,
+        95,
+        170
+      ]
+    },
+    {
+      "mode": "States",
+      "id": 30,
+      "actual": [
+        185,
+        155,
+        70
+      ],
+      "expected": [
+        185,
+        155,
+        70
+      ]
+    },
+    {
+      "mode": "States",
+      "id": 40,
+      "actual": [
+        185,
+        155,
+        70
+      ],
+      "expected": [
+        185,
+        155,
+        70
+      ]
+    },
+    {
+      "mode": "States",
+      "id": 30,
+      "actual": [
+        185,
+        155,
+        70
+      ],
+      "expected": [
+        185,
+        155,
+        70
+      ]
+    },
+    {
+      "mode": "States",
+      "id": 50,
+      "actual": [
+        65,
+        105,
+        145
+      ],
+      "expected": [
+        65,
+        105,
+        145
+      ]
+    },
+    {
+      "mode": "Control",
+      "id": 10,
+      "actual": [
+        40,
+        100,
+        180
+      ],
+      "expected": [
+        40,
+        100,
+        180
+      ]
+    },
+    {
+      "mode": "Control",
+      "id": 20,
+      "actual": [
+        180,
+        70,
+        40
+      ],
+      "expected": [
+        180,
+        70,
+        40
+      ]
+    },
+    {
+      "mode": "Control",
+      "id": 30,
+      "actual": [
+        180,
+        70,
+        40
+      ],
+      "expected": [
+        180,
+        70,
+        40
+      ]
+    },
+    {
+      "mode": "Control",
+      "id": 40,
+      "actual": [
+        180,
+        70,
+        40
+      ],
+      "expected": [
+        180,
+        70,
+        40
+      ]
+    },
+    {
+      "mode": "Control",
+      "id": 30,
+      "actual": [
+        180,
+        70,
+        40
+      ],
+      "expected": [
+        180,
+        70,
+        40
+      ]
+    },
+    {
+      "mode": "Control",
+      "id": 50,
+      "actual": [
+        65,
+        105,
+        145
+      ],
+      "expected": [
+        65,
+        105,
+        145
+      ]
+    }
+  ],
+  "errors": [],
+  "worlds": 112,
+  "scope": "display-only latest terrain palette fixture; authority values and geometry unchanged"
+}

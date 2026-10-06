@@ -1,0 +1,337 @@
+{
+  "browser": "154.0.8037.98",
+  "scope": "live CDP DPR1↔2, fixed CSS box",
+  "steps": [
+    {
+      "dpr": 2,
+      "backend": "webgpu",
+      "buffer": {
+        "width": 1708,
+        "height": 660,
+        "expectedWidth": 1708,
+        "expectedHeight": 660
+      },
+      "actual": [
+        77,
+        111,
+        155
+      ],
+      "expected": [
+        77,
+        111,
+        155
+      ],
+      "gpu": null,
+      "image": {
+        "width": 2560,
+        "height": 1440,
+        "capture": "native full viewport without clip"
+      },
+      "camera": {
+        "width": 13.276288406143014,
+        "height": 5.130181702607957,
+        "x": 3.689079896811639,
+        "y": 2.8445399484058194,
+        "zoom": 1.2712491503214047
+      },
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "authority": {
+        "tick": "0",
+        "date": "2000-01-01",
+        "hour": "0"
+      },
+      "resources": {
+        "media": 0,
+        "listeners": 6,
+        "observers": 1,
+        "rafs": 2
+      }
+    },
+    {
+      "dpr": 1.5,
+      "backend": "webgpu",
+      "buffer": {
+        "width": 1281,
+        "height": 495,
+        "expectedWidth": 1281,
+        "expectedHeight": 495
+      },
+      "actual": [
+        77,
+        111,
+        155
+      ],
+      "expected": [
+        77,
+        111,
+        155
+      ],
+      "gpu": null,
+      "image": {
+        "width": 1920,
+        "height": 1080,
+        "capture": "native full viewport without clip"
+      },
+      "camera": {
+        "width": 13.276288406143014,
+        "height": 5.130181702607957,
+        "x": 3.689079896811639,
+        "y": 2.8445399484058194,
+        "zoom": 1.2712491503214047
+      },
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "authority": {
+        "tick": "0",
+        "date": "2000-01-01",
+        "hour": "0"
+      },
+      "resources": {
+        "media": 0,
+        "listeners": 6,
+        "observers": 1,
+        "rafs": 2
+      }
+    },
+    {
+      "dpr": 1,
+      "backend": "webgpu",
+      "buffer": {
+        "width": 854,
+        "height": 330,
+        "expectedWidth": 854,
+        "expectedHeight": 330
+      },
+      "actual": [
+        77,
+        111,
+        155
+      ],
+      "expected": [
+        77,
+        111,
+        155
+      ],
+      "gpu": null,
+      "image": {
+        "width": 1280,
+        "height": 720,
+        "capture": "native full viewport without clip"
+      },
+      "camera": {
+        "width": 13.276288406143014,
+        "height": 5.130181702607957,
+        "x": 3.689079896811639,
+        "y": 2.8445399484058194,
+        "zoom": 1.2712491503214047
+      },
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "authority": {
+        "tick": "0",
+        "date": "2000-01-01",
+        "hour": "0"
+      },
+      "resources": {
+        "media": 0,
+        "listeners": 6,
+        "observers": 1,
+        "rafs": 2
+      }
+    },
+    {
+      "dpr": 2,
+      "backend": "webgpu",
+      "buffer": {
+        "width": 1708,
+        "height": 660,
+        "expectedWidth": 1708,
+        "expectedHeight": 660
+      },
+      "actual": [
+        77,
+        111,
+        155
+      ],
+      "expected": [
+        77,
+        111,
+        155
+      ],
+      "gpu": null,
+      "image": {
+        "width": 2560,
+        "height": 1440,
+        "capture": "native full viewport without clip"
+      },
+      "camera": {
+        "width": 13.276288406143014,
+        "height": 5.130181702607957,
+        "x": 3.689079896811639,
+        "y": 2.8445399484058194,
+        "zoom": 1.2712491503214047
+      },
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "authority": {
+        "tick": "0",
+        "date": "2000-01-01",
+        "hour": "0"
+      },
+      "resources": {
+        "media": 0,
+        "listeners": 6,
+        "observers": 1,
+        "rafs": 2
+      }
+    },
+    {
+      "dpr": 1.5,
+      "backend": "webgpu",
+      "buffer": {
+        "width": 1281,
+        "height": 495,
+        "expectedWidth": 1281,
+        "expectedHeight": 495
+      },
+      "actual": [
+        77,
+        111,
+        155
+      ],
+      "expected": [
+        77,
+        111,
+        155
+      ],
+      "gpu": null,
+      "image": {
+        "width": 1920,
+        "height": 1080,
+        "capture": "native full viewport without clip"
+      },
+      "camera": {
+        "width": 13.276288406143014,
+        "height": 5.130181702607957,
+        "x": 3.689079896811639,
+        "y": 2.8445399484058194,
+        "zoom": 1.2712491503214047
+      },
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "authority": {
+        "tick": "0",
+        "date": "2000-01-01",
+        "hour": "0"
+      },
+      "resources": {
+        "media": 0,
+        "listeners": 6,
+        "observers": 1,
+        "rafs": 2
+      }
+    },
+    {
+      "dpr": 1,
+      "backend": "webgpu",
+      "buffer": {
+        "width": 854,
+        "height": 330,
+        "expectedWidth": 854,
+        "expectedHeight": 330
+      },
+      "actual": [
+        77,
+        111,
+        155
+      ],
+      "expected": [
+        77,
+        111,
+        155
+      ],
+      "gpu": null,
+      "image": {
+        "width": 1280,
+        "height": 720,
+        "capture": "native full viewport without clip"
+      },
+      "camera": {
+        "width": 13.276288406143014,
+        "height": 5.130181702607957,
+        "x": 3.689079896811639,
+        "y": 2.8445399484058194,
+        "zoom": 1.2712491503214047
+      },
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "authority": {
+        "tick": "0",
+        "date": "2000-01-01",
+        "hour": "0"
+      },
+      "resources": {
+        "media": 0,
+        "listeners": 6,
+        "observers": 1,
+        "rafs": 2
+      }
+    }
+  ],
+  "errors": [],
+  "resources": {
+    "media": 0,
+    "listeners": 0,
+    "observers": 0,
+    "rafs": 0
+  },
+  "surface": {
+    "dpr": 1,
+    "resolution1": true,
+    "resolution2": false,
+    "canvas": null,
+    "dataset": {
+      "testid": "province-map",
+      "textureLimit": "8192",
+      "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+      "device": "WebGPU device",
+      "camera": "{\"width\":17.912884444939447,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+      "shaderLanguage": "wgsl",
+      "shaderLength": "10386",
+      "selected": "30",
+      "mode": "map-mode-terrain",
+      "updatedBytes": "0",
+      "updateMs": "0",
+      "frameMs": "17.24869565218687",
+      "hover": "",
+      "lastChangedBytes": "20",
+      "lastUpdateMs": "0.8000000007450581",
+      "totalChangedBytes": "20"
+    }
+  }
+}

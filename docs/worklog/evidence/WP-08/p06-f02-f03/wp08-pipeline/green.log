@@ -1,0 +1,175 @@
+
+Running 10 tests using 3 workers
+
+(node:10120) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:17384) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:9412) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  3 [chromium] › e2e-m1\map-pipeline.spec.ts:5:32 › REQ-PLAT-03 actual device pipeline rejection falls back to GL pixels (979ms)
+  ok  4 [chromium] › e2e-m1\map-pipeline.spec.ts:5:32 › REQ-PLAT-03 actual device pipeline rejection with unavailable GL shows notice (390ms)
+(node:11868) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  5 [firefox] › e2e-m1\map-pipeline.spec.ts:5:32 › REQ-PLAT-03 actual device pipeline rejection falls back to GL pixels (3.0s)
+  x   1 [chrome] › e2e-m1\map-pipeline.spec.ts:5:32 › REQ-PLAT-03 actual device pipeline rejection falls back to GL pixels (5.4s)
+  x   2 [edge] › e2e-m1\map-pipeline.spec.ts:5:32 › REQ-PLAT-03 actual device pipeline rejection falls back to GL pixels (5.4s)
+(node:38436) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  6 [firefox] › e2e-m1\map-pipeline.spec.ts:5:32 › REQ-PLAT-03 actual device pipeline rejection with unavailable GL shows notice (720ms)
+(node:26584) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:9336) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  9 [webkit] › e2e-m1\map-pipeline.spec.ts:5:32 › REQ-PLAT-03 actual device pipeline rejection falls back to GL pixels (1.6s)
+  ok 10 [webkit] › e2e-m1\map-pipeline.spec.ts:5:32 › REQ-PLAT-03 actual device pipeline rejection with unavailable GL shows notice (851ms)
+  x   7 [chrome] › e2e-m1\map-pipeline.spec.ts:5:32 › REQ-PLAT-03 actual device pipeline rejection with unavailable GL shows notice (5.4s)
+  x   8 [edge] › e2e-m1\map-pipeline.spec.ts:5:32 › REQ-PLAT-03 actual device pipeline rejection with unavailable GL shows notice (5.4s)
+
+
+  1) [chrome] › e2e-m1\map-pipeline.spec.ts:5:32 › REQ-PLAT-03 actual device pipeline rejection falls back to GL pixels
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  getByTestId('province-map')
+    Expected: "webgl2"
+    Received: "webgpu"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms
+      - waiting for getByTestId('province-map')
+        3 × locator resolved to <div class="province-map" aria-label="Province map" data-testid="province-map"></div>
+          - unexpected value "null"
+        - locator resolved to <div data-frames="4" data-selected="" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="24.200000000186265" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782,…>…</div>
+        - unexpected value "webgpu"
+        - locator resolved to <div data-frames="34" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.541176470544407" data-update-ms="0.10000000149011612" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>
+        - unexpected value "webgpu"
+        - locator resolved to <div data-frames="65" data-selected="" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.126153846142383" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782…>…</div>
+        - unexpected value "webgpu"
+        - locator resolved to <div data-frames="96" data-selected="" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.977083333341096" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782…>…</div>
+        - unexpected value "webgpu"
+        - locator resolved to <div data-selected="" data-frames="127" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.90078740156307" data-update-ms="0.10000000149011612" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>
+        - unexpected value "webgpu"
+        - locator resolved to <div data-selected="" data-frames="157" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.856050955404523" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.52173913043478…>…</div>
+        - unexpected value "webgpu"
+        - locator resolved to <div data-selected="" data-frames="188" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.824468085106382" data-update-ms="0.09999999776482582" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height…>…</div>
+        - unexpected value "webgpu"
+        - locator resolved to <div data-selected="" data-frames="219" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.800913242002327" data-update-ms="0.19999999925494194" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height…>…</div>
+        - unexpected value "webgpu"
+        - locator resolved to <div data-selected="" data-frames="249" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.784738955817307" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.52173913043478…>…</div>
+        - unexpected value "webgpu"
+
+
+      13 |  await page.goto('/');const map=page.getByTestId('province-map');
+      14 |  if(noGL){await expect(page.getByRole('alert')).toContainText('could not initialize WebGPU or WebGL2');await expect(map.locator('canvas')).toHaveCount(0);await page.getByRole('combobox').selectOption('ko');await expect(page.getByRole('alert')).toContainText('초기화할 수 없습니다');await page.getByRole('combobox').selectOption('en');}
+    > 15 |  else{await expect(map).toHaveAttribute('data-backend','webgl2');await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);await expect(map.locator('canvas')).toHaveCount(1);await expect(page.getByRole('alert')).toHaveCount(0);await page.mouse.move(0,0);const b=(await map.boundingBox())!,c=JSON.parse((await map.getAttribute('data-camera'))!),actual=png(await map.screenshot({path:`${evidence}/${info.project.name}-pipeline-${noGL}.png`})).pixel((1-c.x)/c.width*b.width+b.width/2,(1-c.y)/c.height*b.height+b.height/2);for(let i=0;i<3;i++)expect(Math.abs(actual[i]-[40,100,180][i])).toBeLessThanOrEqual(1);}
+         |                         ^
+      16 |  const probe=await page.evaluate(()=>(window as Window&{__gpuFailure:{devices:number;destroyed:number;triggers:number}}).__gpuFailure);
+      17 |  if(info.project.name==='chrome'||info.project.name==='edge')expect(probe.devices).toBeGreaterThan(0);
+      18 |  if(probe.devices){expect(probe.triggers).toBeGreaterThan(0);expect(probe.destroyed).toBe(probe.devices);expect(consoleErrors.some(e=>e.includes('WP08 actual pipeline rejection'))).toBe(true);}
+        at E:\openhoi\.orchestrator\wt\WP-08\client\e2e-m1\map-pipeline.spec.ts:15:25
+
+    Error Context: test-results\map-pipeline-REQ-PLAT-03-a-08472-ion-falls-back-to-GL-pixels-chrome\error-context.md
+
+  2) [chrome] › e2e-m1\map-pipeline.spec.ts:5:32 › REQ-PLAT-03 actual device pipeline rejection with unavailable GL shows notice
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: getByRole('alert')
+    Expected substring: "could not initialize WebGPU or WebGL2"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toContainText" getByRole('alert') with timeout 5000ms
+      - waiting for getByRole('alert')
+
+
+      12 |  },noGL);
+      13 |  await page.goto('/');const map=page.getByTestId('province-map');
+    > 14 |  if(noGL){await expect(page.getByRole('alert')).toContainText('could not initialize WebGPU or WebGL2');await expect(map.locator('canvas')).toHaveCount(0);await page.getByRole('combobox').selectOption('ko');await expect(page.getByRole('alert')).toContainText('초기화할 수 없습니다');await page.getByRole('combobox').selectOption('en');}
+         |                                                 ^
+      15 |  else{await expect(map).toHaveAttribute('data-backend','webgl2');await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);await expect(map.locator('canvas')).toHaveCount(1);await expect(page.getByRole('alert')).toHaveCount(0);await page.mouse.move(0,0);const b=(await map.boundingBox())!,c=JSON.parse((await map.getAttribute('data-camera'))!),actual=png(await map.screenshot({path:`${evidence}/${info.project.name}-pipeline-${noGL}.png`})).pixel((1-c.x)/c.width*b.width+b.width/2,(1-c.y)/c.height*b.height+b.height/2);for(let i=0;i<3;i++)expect(Math.abs(actual[i]-[40,100,180][i])).toBeLessThanOrEqual(1);}
+      16 |  const probe=await page.evaluate(()=>(window as Window&{__gpuFailure:{devices:number;destroyed:number;triggers:number}}).__gpuFailure);
+      17 |  if(info.project.name==='chrome'||info.project.name==='edge')expect(probe.devices).toBeGreaterThan(0);
+        at E:\openhoi\.orchestrator\wt\WP-08\client\e2e-m1\map-pipeline.spec.ts:14:49
+
+    Error Context: test-results\map-pipeline-REQ-PLAT-03-a-fd1fb-unavailable-GL-shows-notice-chrome\error-context.md
+
+  3) [edge] › e2e-m1\map-pipeline.spec.ts:5:32 › REQ-PLAT-03 actual device pipeline rejection falls back to GL pixels
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  getByTestId('province-map')
+    Expected: "webgl2"
+    Received: "webgpu"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms
+      - waiting for getByTestId('province-map')
+        3 × locator resolved to <div class="province-map" aria-label="Province map" data-testid="province-map"></div>
+          - unexpected value "null"
+        - locator resolved to <div class="province-map" data-backend="webgpu" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-device="WebGPU device" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}">…</div>
+        - unexpected value "webgpu"
+        - locator resolved to <div data-frames="31" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.612903225806452" data-update-ms="0.09999999776482582" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>
+        - unexpected value "webgpu"
+        - locator resolved to <div data-frames="61" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.147540983606557" data-update-ms="0.09999999776482582" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>
+        - unexpected value "webgpu"
+        - locator resolved to <div data-frames="91" data-selected="" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.98901098901099" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782,…>…</div>
+        - unexpected value "webgpu"
+        - locator resolved to <div data-selected="" data-frames="122" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.907377049174222" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.52173913043478…>…</div>
+        - unexpected value "webgpu"
+        - locator resolved to <div data-selected="" data-frames="152" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.861184210516512" data-update-ms="0.10000000149011612" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height…>…</div>
+        - unexpected value "webgpu"
+        - locator resolved to <div data-selected="" data-frames="183" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.827322404363443" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.52173913043478…>…</div>
+        - unexpected value "webgpu"
+        - locator resolved to <div data-selected="" data-frames="214" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.80373831775701" data-update-ms="0.10000000149011612" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>
+        - unexpected value "webgpu"
+        - locator resolved to <div data-selected="" data-frames="245" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.786938775513246" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.52173913043478…>…</div>
+        - unexpected value "webgpu"
+
+
+      13 |  await page.goto('/');const map=page.getByTestId('province-map');
+      14 |  if(noGL){await expect(page.getByRole('alert')).toContainText('could not initialize WebGPU or WebGL2');await expect(map.locator('canvas')).toHaveCount(0);await page.getByRole('combobox').selectOption('ko');await expect(page.getByRole('alert')).toContainText('초기화할 수 없습니다');await page.getByRole('combobox').selectOption('en');}
+    > 15 |  else{await expect(map).toHaveAttribute('data-backend','webgl2');await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);await expect(map.locator('canvas')).toHaveCount(1);await expect(page.getByRole('alert')).toHaveCount(0);await page.mouse.move(0,0);const b=(await map.boundingBox())!,c=JSON.parse((await map.getAttribute('data-camera'))!),actual=png(await map.screenshot({path:`${evidence}/${info.project.name}-pipeline-${noGL}.png`})).pixel((1-c.x)/c.width*b.width+b.width/2,(1-c.y)/c.height*b.height+b.height/2);for(let i=0;i<3;i++)expect(Math.abs(actual[i]-[40,100,180][i])).toBeLessThanOrEqual(1);}
+         |                         ^
+      16 |  const probe=await page.evaluate(()=>(window as Window&{__gpuFailure:{devices:number;destroyed:number;triggers:number}}).__gpuFailure);
+      17 |  if(info.project.name==='chrome'||info.project.name==='edge')expect(probe.devices).toBeGreaterThan(0);
+      18 |  if(probe.devices){expect(probe.triggers).toBeGreaterThan(0);expect(probe.destroyed).toBe(probe.devices);expect(consoleErrors.some(e=>e.includes('WP08 actual pipeline rejection'))).toBe(true);}
+        at E:\openhoi\.orchestrator\wt\WP-08\client\e2e-m1\map-pipeline.spec.ts:15:25
+
+    Error Context: test-results\map-pipeline-REQ-PLAT-03-a-08472-ion-falls-back-to-GL-pixels-edge\error-context.md
+
+  4) [edge] › e2e-m1\map-pipeline.spec.ts:5:32 › REQ-PLAT-03 actual device pipeline rejection with unavailable GL shows notice
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: getByRole('alert')
+    Expected substring: "could not initialize WebGPU or WebGL2"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toContainText" getByRole('alert') with timeout 5000ms
+      - waiting for getByRole('alert')
+
+
+      12 |  },noGL);
+      13 |  await page.goto('/');const map=page.getByTestId('province-map');
+    > 14 |  if(noGL){await expect(page.getByRole('alert')).toContainText('could not initialize WebGPU or WebGL2');await expect(map.locator('canvas')).toHaveCount(0);await page.getByRole('combobox').selectOption('ko');await expect(page.getByRole('alert')).toContainText('초기화할 수 없습니다');await page.getByRole('combobox').selectOption('en');}
+         |                                                 ^
+      15 |  else{await expect(map).toHaveAttribute('data-backend','webgl2');await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);await expect(map.locator('canvas')).toHaveCount(1);await expect(page.getByRole('alert')).toHaveCount(0);await page.mouse.move(0,0);const b=(await map.boundingBox())!,c=JSON.parse((await map.getAttribute('data-camera'))!),actual=png(await map.screenshot({path:`${evidence}/${info.project.name}-pipeline-${noGL}.png`})).pixel((1-c.x)/c.width*b.width+b.width/2,(1-c.y)/c.height*b.height+b.height/2);for(let i=0;i<3;i++)expect(Math.abs(actual[i]-[40,100,180][i])).toBeLessThanOrEqual(1);}
+      16 |  const probe=await page.evaluate(()=>(window as Window&{__gpuFailure:{devices:number;destroyed:number;triggers:number}}).__gpuFailure);
+      17 |  if(info.project.name==='chrome'||info.project.name==='edge')expect(probe.devices).toBeGreaterThan(0);
+        at E:\openhoi\.orchestrator\wt\WP-08\client\e2e-m1\map-pipeline.spec.ts:14:49
+
+    Error Context: test-results\map-pipeline-REQ-PLAT-03-a-fd1fb-unavailable-GL-shows-notice-edge\error-context.md
+
+  4 failed
+    [chrome] › e2e-m1\map-pipeline.spec.ts:5:32 › REQ-PLAT-03 actual device pipeline rejection falls back to GL pixels
+    [chrome] › e2e-m1\map-pipeline.spec.ts:5:32 › REQ-PLAT-03 actual device pipeline rejection with unavailable GL shows notice
+    [edge] › e2e-m1\map-pipeline.spec.ts:5:32 › REQ-PLAT-03 actual device pipeline rejection falls back to GL pixels
+    [edge] › e2e-m1\map-pipeline.spec.ts:5:32 › REQ-PLAT-03 actual device pipeline rejection with unavailable GL shows notice
+  6 passed (13.3s)

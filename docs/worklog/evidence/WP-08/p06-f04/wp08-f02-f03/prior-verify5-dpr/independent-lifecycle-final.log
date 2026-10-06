@@ -1,0 +1,11 @@
+{"args": ["node", "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify5\\target\\wp08-verify5\\lifecycle.cjs"], "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify5", "start": "2026-10-06T17:49:29.304920+00:00"}
+chrome false DPR-ONLY FAIL; other lifecycle PASS
+chrome true DPR-ONLY FAIL; other lifecycle PASS
+edge false DPR-ONLY FAIL; other lifecycle PASS
+edge true DPR-ONLY FAIL; other lifecycle PASS
+chromium false DPR-ONLY FAIL; other lifecycle PASS
+chromium true DPR-ONLY FAIL; other lifecycle PASS
+firefox false PASS
+firefox true PASS
+webkit false PASS
+webkit true PASS

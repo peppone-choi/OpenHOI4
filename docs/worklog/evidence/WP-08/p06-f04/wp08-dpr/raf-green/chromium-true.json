@@ -1,0 +1,82 @@
+{
+  "browser": "153.0.8010.12",
+  "scope": "live CDP DPR1↔2, fixed CSS box",
+  "steps": [
+    {
+      "dpr": 2,
+      "backend": "webgl2",
+      "actual": [
+        77,
+        111,
+        155
+      ],
+      "expected": [
+        77,
+        111,
+        155
+      ],
+      "camera": {
+        "width": 13.276288406143014,
+        "height": 5.130181702607957,
+        "x": 3.689079896811639,
+        "y": 2.8445399484058194,
+        "zoom": 1.2712491503214047
+      },
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "authority": {
+        "tick": "0",
+        "date": "2000-01-01",
+        "hour": "0"
+      },
+      "resources": {
+        "media": 0,
+        "listeners": 6,
+        "observers": 1,
+        "rafs": 2
+      }
+    }
+  ],
+  "errors": [],
+  "resources": {
+    "media": 0,
+    "listeners": 6,
+    "observers": 1,
+    "rafs": 2
+  },
+  "surface": {
+    "dpr": 1,
+    "resolution1": true,
+    "resolution2": false,
+    "canvas": {
+      "width": 854,
+      "height": 330,
+      "cssWidth": 854,
+      "cssHeight": 330
+    },
+    "dataset": {
+      "testid": "province-map",
+      "textureLimit": "8192",
+      "adapter": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "device": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+      "shaderLanguage": "glsl",
+      "shaderLength": "16167",
+      "selected": "30",
+      "mode": "map-mode-terrain",
+      "updatedBytes": "0",
+      "updateMs": "0.10000000149011612",
+      "frameMs": "19.406666666517655",
+      "hover": "",
+      "lastChangedBytes": "20",
+      "lastUpdateMs": "1.0999999977648258",
+      "totalChangedBytes": "20",
+      "backend": "webgl2",
+      "frames": "15"
+    }
+  }
+}

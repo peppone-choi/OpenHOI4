@@ -1,0 +1,19 @@
+{
+  "testid": "province-map",
+  "backend": "webgpu",
+  "textureLimit": "8192",
+  "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+  "device": "WebGPU device",
+  "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+  "shaderLanguage": "wgsl",
+  "shaderLength": "10386",
+  "frames": "63",
+  "selected": "",
+  "mode": "map-mode-owner",
+  "updatedBytes": "4",
+  "updateMs": "0.3999999985098839",
+  "frameMs": "18.236507936484283",
+  "lastChangedBytes": "4",
+  "lastUpdateMs": "0.3999999985098839",
+  "totalChangedBytes": "4"
+}

@@ -1,0 +1,60 @@
+{
+  "resource": "index",
+  "reload": false,
+  "controlEvidence": {
+    "status": 200,
+    "url": "http://127.0.0.1:12905/payload",
+    "redirected": true,
+    "cors": "cors",
+    "packHash": "b8d30ba577f303c3",
+    "controlRedirects": [
+      {
+        "status": 302,
+        "location": "http://127.0.0.1:12905/payload"
+      }
+    ],
+    "redirectProbe": {
+      "status": 302,
+      "location": "http://127.0.0.1:12905/payload"
+    },
+    "bodyLength": 96,
+    "bodySha256": "2673c2d45c8b460abbdd7cb6c2f18777029210b25370ec8e07fb3ee7fcaa418c"
+  },
+  "sourceOrigin": "http://127.0.0.1:12906",
+  "foreignURL": "http://127.0.0.1:12905/payload",
+  "foreignHits": [],
+  "requests": [
+    "http://127.0.0.1:12906/?forceWebGL=1",
+    "http://127.0.0.1:12906/assets/index-C11MJPRn.js",
+    "http://127.0.0.1:12906/assets/index-B9cOsW2B.css",
+    "http://127.0.0.1:12906/fonts/NotoSansKR.ttf",
+    "http://127.0.0.1:12906/pack/localisation/en/map.ftl",
+    "http://127.0.0.1:12906/pack/localisation/en/national.ftl",
+    "http://127.0.0.1:12906/pack/localisation/ko/map.ftl",
+    "http://127.0.0.1:12906/pack/localisation/ko/national.ftl",
+    "http://127.0.0.1:12906/maps/testland/metadata",
+    "http://127.0.0.1:12906/maps/testland/index.bin?pack=b8d30ba577f303c3"
+  ],
+  "rejectedRequestStartIndex": 0,
+  "actualSourceRedirects": [
+    {
+      "url": "/maps/testland/index.bin?pack=b8d30ba577f303c3",
+      "status": 302,
+      "location": "http://127.0.0.1:12905/payload"
+    }
+  ],
+  "failures": [
+    {
+      "url": "http://127.0.0.1:12906/maps/testland/index.bin?pack=b8d30ba577f303c3",
+      "error": "net::ERR_FAILED"
+    }
+  ],
+  "responseEvents": [],
+  "errors": [],
+  "cameraBefore": null,
+  "rendererOutcome": "initial load creates no renderer; identity reload disposes previous renderer, keeps authority UI/selection only",
+  "alerts": [
+    "지도 데이터를 불러올 수 없습니다. 동봉된 시나리오 파일을 확인하세요."
+  ],
+  "canvasCount": 0
+}

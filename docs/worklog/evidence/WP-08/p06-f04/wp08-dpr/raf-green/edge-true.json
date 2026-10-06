@@ -1,0 +1,43 @@
+{
+  "browser": "154.0.4258.53",
+  "scope": "live CDP DPR1↔2, fixed CSS box",
+  "steps": [],
+  "errors": [],
+  "resources": {
+    "media": 0,
+    "listeners": 6,
+    "observers": 1,
+    "rafs": 2
+  },
+  "surface": {
+    "dpr": 1,
+    "resolution1": true,
+    "resolution2": false,
+    "canvas": {
+      "width": 854,
+      "height": 330,
+      "cssWidth": 854,
+      "cssHeight": 330
+    },
+    "dataset": {
+      "testid": "province-map",
+      "textureLimit": "16384",
+      "adapter": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1660 Ti (0x00002182) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "device": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+      "shaderLanguage": "glsl",
+      "shaderLength": "16167",
+      "selected": "30",
+      "mode": "map-mode-terrain",
+      "updatedBytes": "0",
+      "updateMs": "0.10000000149011612",
+      "frameMs": "40.399999998509884",
+      "hover": "",
+      "lastChangedBytes": "20",
+      "lastUpdateMs": "1.199999999254942",
+      "totalChangedBytes": "20",
+      "backend": "webgl2",
+      "frames": "1"
+    }
+  }
+}

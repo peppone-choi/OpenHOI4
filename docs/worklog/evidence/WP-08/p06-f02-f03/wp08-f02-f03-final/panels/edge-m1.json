@@ -1,0 +1,13 @@
+{
+  "browser": "154.0.4258.53",
+  "project": "edge",
+  "scenario": "m1",
+  "seed": "1",
+  "errors": [],
+  "worldTick": "0",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "render": "actual Rust M1 DOM panels; WP08 GPU map pending"
+}

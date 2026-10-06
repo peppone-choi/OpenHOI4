@@ -1,0 +1,14 @@
+{
+  "browser": "26.6",
+  "noGL": false,
+  "probe": {
+    "devices": 0,
+    "destroyed": 0,
+    "triggers": 0
+  },
+  "errors": [],
+  "consoleErrors": [],
+  "tick": "2",
+  "backend": "webgl2",
+  "scope": "no native adapter; actual GL availability/notice control"
+}

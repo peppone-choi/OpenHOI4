@@ -1,0 +1,314 @@
+{
+  "config": {
+    "argv": [
+      "/opt/hostedtoolcache/node/24.4.0/x64/bin/node",
+      "/home/runner/work/OpenHOI4/OpenHOI4/client/node_modules/.bin/playwright",
+      "test",
+      "--config",
+      "playwright.resize-probe.config.ts",
+      "--project=chromium",
+      "--project=webkit",
+      "--workers",
+      "1",
+      "map-resize.spec.ts"
+    ],
+    "configFile": "/home/runner/work/OpenHOI4/OpenHOI4/client/playwright.resize-probe.config.ts",
+    "rootDir": "/home/runner/work/OpenHOI4/OpenHOI4/client/e2e-m1",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "ci": {
+        "commitHref": "https://github.com/peppone-choi/OpenHOI4/commit/a15f64f7b241f7d64cce5b39ab9b95c0142e9b86",
+        "commitHash": "a15f64f7b241f7d64cce5b39ab9b95c0142e9b86",
+        "buildHref": "https://github.com/peppone-choi/OpenHOI4/actions/runs/37509083162"
+      },
+      "gitCommit": {
+        "shortHash": "a15f64f",
+        "hash": "a15f64f7b241f7d64cce5b39ab9b95c0142e9b86",
+        "subject": "test(map): diagnose Linux resize phases without changing oracle",
+        "body": "test(map): diagnose Linux resize phases without changing oracle\n",
+        "author": {
+          "name": "pepponechoi",
+          "email": "peppone.choi@gmail.com",
+          "time": 1791309467000
+        },
+        "committer": {
+          "name": "pepponechoi",
+          "email": "peppone.choi@gmail.com",
+          "time": 1791309467000
+        },
+        "branch": "codex/wp08-map-rendering"
+      },
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/isolated/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/peppone-choi/OpenHOI4/commit/a15f64f7b241f7d64cce5b39ab9b95c0142e9b86",
+            "commitHash": "a15f64f7b241f7d64cce5b39ab9b95c0142e9b86",
+            "buildHref": "https://github.com/peppone-choi/OpenHOI4/actions/runs/37509083162"
+          },
+          "gitCommit": {
+            "shortHash": "a15f64f",
+            "hash": "a15f64f7b241f7d64cce5b39ab9b95c0142e9b86",
+            "subject": "test(map): diagnose Linux resize phases without changing oracle",
+            "body": "test(map): diagnose Linux resize phases without changing oracle\n",
+            "author": {
+              "name": "pepponechoi",
+              "email": "peppone.choi@gmail.com",
+              "time": 1791309467000
+            },
+            "committer": {
+              "name": "pepponechoi",
+              "email": "peppone.choi@gmail.com",
+              "time": 1791309467000
+            },
+            "branch": "codex/wp08-map-rendering"
+          },
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/home/runner/work/OpenHOI4/OpenHOI4/client/e2e-m1",
+        "testIgnore": [],
+        "testMatch": [
+          "national.spec.ts",
+          "malformed-world.spec.ts",
+          "map.spec.ts",
+          "map-redirect.spec.ts",
+          "map-capability.spec.ts",
+          "map-resize.spec.ts",
+          "map-pipeline.spec.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/isolated/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/peppone-choi/OpenHOI4/commit/a15f64f7b241f7d64cce5b39ab9b95c0142e9b86",
+            "commitHash": "a15f64f7b241f7d64cce5b39ab9b95c0142e9b86",
+            "buildHref": "https://github.com/peppone-choi/OpenHOI4/actions/runs/37509083162"
+          },
+          "gitCommit": {
+            "shortHash": "a15f64f",
+            "hash": "a15f64f7b241f7d64cce5b39ab9b95c0142e9b86",
+            "subject": "test(map): diagnose Linux resize phases without changing oracle",
+            "body": "test(map): diagnose Linux resize phases without changing oracle\n",
+            "author": {
+              "name": "pepponechoi",
+              "email": "peppone.choi@gmail.com",
+              "time": 1791309467000
+            },
+            "committer": {
+              "name": "pepponechoi",
+              "email": "peppone.choi@gmail.com",
+              "time": 1791309467000
+            },
+            "branch": "codex/wp08-map-rendering"
+          },
+          "actualWorkers": 1
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "/home/runner/work/OpenHOI4/OpenHOI4/client/e2e-m1",
+        "testIgnore": [],
+        "testMatch": [
+          "national.spec.ts",
+          "malformed-world.spec.ts",
+          "map.spec.ts",
+          "map-redirect.spec.ts",
+          "map-capability.spec.ts",
+          "map-resize.spec.ts",
+          "map-pipeline.spec.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/isolated/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/peppone-choi/OpenHOI4/commit/a15f64f7b241f7d64cce5b39ab9b95c0142e9b86",
+            "commitHash": "a15f64f7b241f7d64cce5b39ab9b95c0142e9b86",
+            "buildHref": "https://github.com/peppone-choi/OpenHOI4/actions/runs/37509083162"
+          },
+          "gitCommit": {
+            "shortHash": "a15f64f",
+            "hash": "a15f64f7b241f7d64cce5b39ab9b95c0142e9b86",
+            "subject": "test(map): diagnose Linux resize phases without changing oracle",
+            "body": "test(map): diagnose Linux resize phases without changing oracle\n",
+            "author": {
+              "name": "pepponechoi",
+              "email": "peppone.choi@gmail.com",
+              "time": 1791309467000
+            },
+            "committer": {
+              "name": "pepponechoi",
+              "email": "peppone.choi@gmail.com",
+              "time": 1791309467000
+            },
+            "branch": "codex/wp08-map-rendering"
+          },
+          "actualWorkers": 1
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "/home/runner/work/OpenHOI4/OpenHOI4/client/e2e-m1",
+        "testIgnore": [],
+        "testMatch": [
+          "national.spec.ts",
+          "malformed-world.spec.ts",
+          "map.spec.ts",
+          "map-redirect.spec.ts",
+          "map-capability.spec.ts",
+          "map-resize.spec.ts",
+          "map-pipeline.spec.ts"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "../target/wp08/resize-probe/isolated/report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": {
+      "command": "\"/home/runner/work/OpenHOI4/OpenHOI4/target/debug/oh_server\" --port 19440 --pack-root ../data/packs",
+      "url": "http://127.0.0.1:19440",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "map-resize.spec.ts",
+      "file": "map-resize.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "REQ-MAP-05 resize and reset preserve presentation pixels and camera authority",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 31405,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:16:34.588Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/isolated/results/map-resize-REQ-MAP-05-resi-440c3-pixels-and-camera-authority-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de1f7520e46654feef07-ca62a497c698fe97be0d",
+          "file": "map-resize.spec.ts",
+          "line": 8,
+          "column": 1
+        },
+        {
+          "title": "REQ-MAP-05 resize and reset preserve presentation pixels and camera authority",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7963,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:17:08.229Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/isolated/results/map-resize-REQ-MAP-05-resi-440c3-pixels-and-camera-authority-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de1f7520e46654feef07-47c4346bb48cd5ba7a28",
+          "file": "map-resize.spec.ts",
+          "line": 8,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-06T18:16:33.812Z",
+    "duration": 42969.691,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

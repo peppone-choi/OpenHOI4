@@ -1,0 +1,6 @@
+
+> openhoi-client@0.1.0 build
+> tsc --noEmit && vite build
+
+e2e-m1/map-pipeline.spec.ts(16,39): error TS2352: Conversion of type 'Window & typeof globalThis' to type 'Window & { __gpuFailure: { devices: number; destroyed: number; triggers: number; }; }' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Property '__gpuFailure' is missing in type 'Window & typeof globalThis' but required in type '{ __gpuFailure: { devices: number; destroyed: number; triggers: number; }; }'.
