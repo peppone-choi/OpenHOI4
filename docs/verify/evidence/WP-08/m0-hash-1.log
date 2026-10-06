@@ -1,0 +1,6 @@
+{"argv": ["C:\\Users\\user\\.cargo\\bin\\cargo.exe", "run", "-p", "oh_cli", "--", "run", "--scenario", "testland", "--days", "365", "--seed", "1", "--hash-out"], "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify2", "environment": {"OH_BROWSER_PRODUCTS": "1", "OH_TEST_PORT": "19414", "OH_E2E_EVIDENCE": "../target/wp08-verify2/e2e", "OH_MALFORMED_EVIDENCE": "../target/wp08-verify2/malformed", "OH_MAP_EVIDENCE": "../target/wp08-verify2/map", "OH_MAP_REDIRECT_EVIDENCE": "../target/wp08-verify2/redirect"}}
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.23s
+     Running `target\debug\oh_cli.exe run --scenario testland --days 365 --seed 1 --hash-out`
+b039d35666b77fc2
+
+exit=0

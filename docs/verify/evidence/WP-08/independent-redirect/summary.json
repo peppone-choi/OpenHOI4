@@ -1,0 +1,13 @@
+{
+  "commit": "87c1a99a30de25732376d628958c68d37ce64cda",
+  "cases": 100,
+  "allPassed": true,
+  "statuses": [
+    301,
+    302,
+    303,
+    307,
+    308
+  ],
+  "basis": "native HTTP Location + browser follow positive control with exact payload; source count1, follow count0, localized errors, canvas0, authority panels"
+}

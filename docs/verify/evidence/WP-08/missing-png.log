@@ -1,0 +1,4 @@
+{"argv": ["E:\\openhoi\\.orchestrator\\wt\\WP-08-verify2\\target\\debug\\oh_server.exe", "--port", "19417", "--pack-root", "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify2\\target\\wp08-verify2\\missing-pack"], "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify2", "environment": {"OH_BROWSER_PRODUCTS": "1", "OH_TEST_PORT": "19414", "OH_E2E_EVIDENCE": "../target/wp08-verify2/e2e", "OH_MALFORMED_EVIDENCE": "../target/wp08-verify2/malformed", "OH_MAP_EVIDENCE": "../target/wp08-verify2/map", "OH_MAP_REDIRECT_EVIDENCE": "../target/wp08-verify2/redirect"}}
+startup error: E:\openhoi\.orchestrator\wt\WP-08-verify2\target\wp08-verify2\missing-pack\testland\maps\testland\provinces.png:1:1 — 지정된 파일을 찾을 수 없습니다. (os error 2)
+
+exit=1

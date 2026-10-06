@@ -1,0 +1,21 @@
+{
+  "commit": "f58c0c61322287f48318bce47ca51deb7daebcc9",
+  "scenario": "m1",
+  "case": "actual cross-origin index redirect, valid CORS/exposed x-pack-hash, unaltered bytes/length/FNV",
+  "expected": "same-origin response boundary must reject with localized map-data error before GPU creation",
+  "actual": "map rejected",
+  "alerts": [
+    "Map data could not be loaded. Check the bundled scenario files."
+  ],
+  "intercepts": [
+    {
+      "url": "http://127.0.0.1:19415/maps/testland/index.bin?pack=b8d30ba577f303c3",
+      "method": "GET"
+    }
+  ],
+  "crossOriginRequests": [],
+  "diagnostics": {
+    "testid": "province-map"
+  },
+  "errors": []
+}

@@ -1,0 +1,8 @@
+{"argv": ["node", "target/wp08-verify2/continuity.cjs"], "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify2", "environment": {"OH_BROWSER_PRODUCTS": "1", "OH_TEST_PORT": "19414", "OH_E2E_EVIDENCE": "../target/wp08-verify2/e2e", "OH_MALFORMED_EVIDENCE": "../target/wp08-verify2/malformed", "OH_MAP_EVIDENCE": "../target/wp08-verify2/map", "OH_MAP_REDIRECT_EVIDENCE": "../target/wp08-verify2/redirect"}}
+chrome time/world/ko/en/resize/selection/frame PASS
+edge time/world/ko/en/resize/selection/frame PASS
+chromium time/world/ko/en/resize/selection/frame PASS
+firefox time/world/ko/en/resize/selection/frame PASS
+webkit time/world/ko/en/resize/selection/frame PASS
+
+exit=0

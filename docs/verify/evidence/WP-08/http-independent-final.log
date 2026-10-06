@@ -1,0 +1,34 @@
+{"argv": ["C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe", "target/wp08-verify2/http_oracle.py"], "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify2", "environment": {"OH_BROWSER_PRODUCTS": "1", "OH_TEST_PORT": "19414", "OH_E2E_EVIDENCE": "../target/wp08-verify2/e2e", "OH_MALFORMED_EVIDENCE": "../target/wp08-verify2/malformed", "OH_MAP_EVIDENCE": "../target/wp08-verify2/map", "OH_MAP_REDIRECT_EVIDENCE": "../target/wp08-verify2/redirect"}}
+{"name": "missing-png", "argv": ["E:\\openhoi\\.orchestrator\\wt\\WP-08-verify2\\target\\debug\\oh_server.exe", "--port", "19417", "--pack-root", "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify2\\target\\wp08-verify2\\missing-pack"], "exit": 1, "seconds": 0.02}
+{"argv": ["E:\\openhoi\\.orchestrator\\wt\\WP-08-verify2\\target\\debug\\oh_server.exe", "--port", "19417", "--pack-root", "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify2\\target\\wp08-verify2\\missing-pack"], "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify2", "environment": {"OH_BROWSER_PRODUCTS": "1", "OH_TEST_PORT": "19414", "OH_E2E_EVIDENCE": "../target/wp08-verify2/e2e", "OH_MALFORMED_EVIDENCE": "../target/wp08-verify2/malformed", "OH_MAP_EVIDENCE": "../target/wp08-verify2/map", "OH_MAP_REDIRECT_EVIDENCE": "../target/wp08-verify2/redirect"}}
+startup error: E:\openhoi\.orchestrator\wt\WP-08-verify2\target\wp08-verify2\missing-pack\testland\maps\testland\provinces.png:1:1 — 지정된 파일을 찾을 수 없습니다. (os error 2)
+
+exit=1
+
+{
+  "indexOracle": {
+    "pixels": 48,
+    "ids": [
+      10,
+      20,
+      30,
+      40,
+      50,
+      60
+    ],
+    "rawSHA256": "2673c2d45c8b460abbdd7cb6c2f18777029210b25370ec8e07fb3ee7fcaa418c",
+    "fnv": "09eff2825e821465",
+    "method": "stdlib PNG RGB filters + independent CSV palette -> dense ID; byte-for-byte HTTP LEu16 comparison"
+  },
+  "http": {
+    "/maps/testland/index.bin": 409,
+    "/maps/testland/index.bin?pack=wrong": 409,
+    "/maps/testland/index.bin?pack=": 409,
+    "/maps/testland/index.bin?pack=B8D30BA577F303C3": 409,
+    "/maps/unknown/metadata": 404,
+    "/maps/unknown/index.bin?pack=b8d30ba577f303c3": 404
+  },
+  "repeatCacheIdentity": true
+}
+
+exit=0

@@ -1,0 +1,4 @@
+{"argv": ["C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe", "crates/oh_sim/tools/check_sim_determinism.py", "capture", "--m1", "--out", "target/wp08-verify2/m1-capture"], "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify2", "environment": {"OH_BROWSER_PRODUCTS": "1", "OH_TEST_PORT": "19414", "OH_E2E_EVIDENCE": "../target/wp08-verify2/e2e", "OH_MALFORMED_EVIDENCE": "../target/wp08-verify2/malformed", "OH_MAP_EVIDENCE": "../target/wp08-verify2/map", "OH_MAP_REDIRECT_EVIDENCE": "../target/wp08-verify2/redirect"}}
+actual simulation: 1000 ticks, seed 1, two runs: 60448355cecffa9d
+
+exit=0

@@ -1,0 +1,3 @@
+{"argv": ["git", "archive", "--format=tar", "--output", "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify2\\target\\wp08-verify2\\f58-source.tar", "f58c0c61322287f48318bce47ca51deb7daebcc9", "Cargo.toml", "Cargo.lock", "rust-toolchain.toml", "deny.toml", "crates", "client", "data", "assets", "tools"], "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify2", "environment": {"OH_BROWSER_PRODUCTS": "1", "OH_TEST_PORT": "19414", "OH_E2E_EVIDENCE": "../target/wp08-verify2/e2e", "OH_MALFORMED_EVIDENCE": "../target/wp08-verify2/malformed", "OH_MAP_EVIDENCE": "../target/wp08-verify2/map", "OH_MAP_REDIRECT_EVIDENCE": "../target/wp08-verify2/redirect"}}
+
+exit=0

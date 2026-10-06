@@ -1,0 +1,3 @@
+import {defineConfig} from '../../client/node_modules/@playwright/test';
+import m1 from '../../client/playwright.m1.config';
+export default defineConfig({...m1,testDir:'../../client/e2e-m1',testMatch:'map-redirect.spec.ts',use:{...m1.use,baseURL:'http://127.0.0.1:19416'},projects:[{name:'chromium',use:{browserName:'chromium'}}],webServer:{command:'"E:/openhoi/.orchestrator/wt/WP-08-verify2/target/wp08-verify2/f58-build/debug/oh_server.exe" --port 19416 --pack-root "E:/openhoi/.orchestrator/wt/WP-08-verify2/target/wp08-verify2/f58-source/data/packs"',url:'http://127.0.0.1:19416',reuseExistingServer:false}});

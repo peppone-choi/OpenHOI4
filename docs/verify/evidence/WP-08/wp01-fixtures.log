@@ -1,0 +1,694 @@
+{"argv": ["C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe", "tools/tests/test_wp01.py"], "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify2", "environment": {"OH_BROWSER_PRODUCTS": "1", "OH_TEST_PORT": "19414", "OH_E2E_EVIDENCE": "../target/wp08-verify2/e2e", "OH_MALFORMED_EVIDENCE": "../target/wp08-verify2/malformed", "OH_MAP_EVIDENCE": "../target/wp08-verify2/map", "OH_MAP_REDIRECT_EVIDENCE": "../target/wp08-verify2/redirect"}}
+...............$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpnlgeljz4
+exit=0
+assets: 0 error(s)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpz96mnx6_ --release
+exit=1
+assets: 3 error(s)
+[ASSET] data/packs/demo/defines.toml: AI-generated asset: path must refer to an image for release (OPEN-09)
+[ASSET] data/packs/demo/defines.toml: AI-generated asset: ai_provenance must be a table
+[ASSET] data/packs/demo/defines.toml: AI-generated asset: distribution_review must be a table
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpzs69djk7
+exit=1
+assets: 1 error(s)
+[ASSET] data/packs/demo/defines.toml: ai_generated must be a boolean
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmphzuu_ivn
+exit=1
+assets: 1 error(s)
+[ASSET] data/packs/demo/defines.toml: duplicate record
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp26b8iv8k
+exit=1
+assets: 2 error(s)
+[ASSET] assets/missing.png: missing file
+[ASSET] data/packs/demo/defines.toml: unregistered asset/data file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmptr9yu14f
+exit=1
+assets: 1 error(s)
+[ASSET] data/packs/demo/defines.toml: missing author
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp95vd05mo --release
+exit=0
+assets: 0 error(s)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp95vd05mo --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/font.woff2: font license must be OFL-1.1
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp95vd05mo --release
+exit=0
+assets: 0 error(s)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp991rhw19
+exit=0
+assets: 0 error(s)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpe_6lb9sw --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: asset_sha256 does not match the referenced file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpe_6lb9sw --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: usage_terms_sha256 does not match the referenced file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpe_6lb9sw --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: evidence_sha256 does not match the referenced file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp0ylsvxnw --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: unapproved license 'CC-BY-NC-4.0'
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp49qvog4s --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: usage_terms_sha256 does not match the referenced file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp49qvog4s --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: usage_terms_sha256 must be a lowercase SHA-256 digest
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp49qvog4s --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: usage_terms_sha256 must be a lowercase SHA-256 digest
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp49qvog4s --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: evidence_sha256 does not match the referenced file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp49qvog4s --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: evidence_sha256 must be a lowercase SHA-256 digest
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp49qvog4s --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: evidence_sha256 must be a lowercase SHA-256 digest
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp49qvog4s --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: asset_sha256 does not match the referenced file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp49qvog4s --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: asset_sha256 must be a lowercase SHA-256 digest
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp49qvog4s --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: asset_sha256 must be a lowercase SHA-256 digest
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp_1dnvxda --release
+exit=0
+assets: 0 error(s)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp7val3l5o --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: reviewed_at must be a valid timestamp with seconds and timezone (YYYY-MM-DDTHH:MM:SSZ or +/-HH:MM)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp7val3l5o --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: reviewed_at must be a valid timestamp with seconds and timezone (YYYY-MM-DDTHH:MM:SSZ or +/-HH:MM)
+
+..$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp7val3l5o --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: reviewed_at must be a valid timestamp with seconds and timezone (YYYY-MM-DDTHH:MM:SSZ or +/-HH:MM)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp7val3l5o --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: reviewed_at must be a valid timestamp with seconds and timezone (YYYY-MM-DDTHH:MM:SSZ or +/-HH:MM)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp9p7aw304 --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: tool must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp9p7aw304 --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: usage_terms_path must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp9p7aw304 --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: usage_terms_sha256 must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp9p7aw304 --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: ai_provenance must be a table
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp9p7aw304 --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: status must be 'approved' for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp9p7aw304 --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: reviewer must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp9p7aw304 --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: reviewed_at must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp9p7aw304 --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: evidence_path must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp9p7aw304 --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: evidence_sha256 must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp9p7aw304 --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: asset_sha256 must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp9p7aw304 --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: distribution_review must be a table
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpzjreve8c --release
+exit=1
+assets: 3 error(s)
+[ASSET] data/packs/demo/defines.toml: AI-generated asset: path must refer to an image for release (OPEN-09)
+[ASSET] data/packs/demo/defines.toml: AI-generated asset: asset_sha256 does not match the referenced file
+[ASSET] assets/fixture.png: unregistered asset/data file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp7d5zx16z --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: usage_terms_path must reference an existing nonempty file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp7d5zx16z --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: usage_terms_path must reference an existing nonempty file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp7d5zx16z --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: usage_terms_path must be a normalized relative POSIX path
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp7d5zx16z --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: usage_terms_path must be a normalized relative POSIX path
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp7d5zx16z --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: usage_terms_path must be a normalized relative POSIX path
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp7d5zx16z --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: usage_terms_path must be a normalized relative POSIX path
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp7d5zx16z --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: usage_terms_path must reference an existing nonempty file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp7d5zx16z --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: evidence_path must reference an existing nonempty file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp7d5zx16z --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: evidence_path must reference an existing nonempty file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp7d5zx16z --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: evidence_path must be a normalized relative POSIX path
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp7d5zx16z --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: evidence_path must be a normalized relative POSIX path
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp7d5zx16z --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: evidence_path must be a normalized relative POSIX path
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp7d5zx16z --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: evidence_path must be a normalized relative POSIX path
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp7d5zx16z --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: evidence_path must reference an existing nonempty file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpwybyiqfb --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: status must be 'approved' for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpwybyiqfb --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: status must be 'approved' for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpwybyiqfb --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: status must be 'approved' for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpwybyiqfb --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: status must be 'approved' for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: tool must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: tool must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: tool must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: tool must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: tool must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: usage_terms_path must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: usage_terms_path must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: usage_terms_path must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: usage_terms_path must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: usage_terms_path must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: usage_terms_sha256 must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: usage_terms_sha256 must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: usage_terms_sha256 must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: usage_terms_sha256 must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: usage_terms_sha256 must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: ai_provenance must be a table
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: ai_provenance must be a table
+
+.......$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: ai_provenance must be a table
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: status must be 'approved' for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: status must be 'approved' for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: status must be 'approved' for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: status must be 'approved' for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: status must be 'approved' for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: reviewer must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: reviewer must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: reviewer must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: reviewer must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: reviewer must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: reviewed_at must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: reviewed_at must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: reviewed_at must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: reviewed_at must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: reviewed_at must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: evidence_path must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: evidence_path must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: evidence_path must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: evidence_path must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: evidence_path must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: evidence_sha256 must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: evidence_sha256 must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: evidence_sha256 must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: evidence_sha256 must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: evidence_sha256 must be a nonempty string
+
+........
+----------------------------------------------------------------------
+Ran 32 tests in 8.018s
+
+OK
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: asset_sha256 must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: asset_sha256 must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: asset_sha256 must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: asset_sha256 must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: asset_sha256 must be a nonempty string
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: distribution_review must be a table
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: distribution_review must be a table
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp78lk6ppp --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset: distribution_review must be a table
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpsqk_4bh6
+exit=1
+assets: 2 error(s)
+[ASSET] ../outside.png: path must be a normalized relative POSIX path
+[ASSET] data/packs/demo/defines.toml: unregistered asset/data file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpf9zum4q_
+exit=1
+assets: 1 error(s)
+[ASSET] data/packs/demo/defines.toml: unapproved license 'CC-BY-NC-4.0'
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpagqcyd9_
+exit=1
+assets: 1 error(s)
+[ASSET] data/packs/demo/defines.toml: unregistered asset/data file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpjbut_ksq
+exit=1
+assets: 1 error(s)
+[ASSET] client/src/assets/logo.svg: unregistered asset/data file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp59fc3r_f
+exit=1
+assets: 1 error(s)
+[ASSET] client/src/locales/ko.ftl: unregistered asset/data file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpncwyx5o7
+exit=1
+assets: 1 error(s)
+[ASSET] client/public/unlisted.svg: unregistered asset/data file
+
+$ C:\Users\user\.cargo\bin\cargo.EXE deny --manifest-path C:\Users\user\AppData\Local\Temp\tmp71iehlqe\Cargo.toml --config E:\openhoi\.orchestrator\wt\WP-08-verify2\deny.toml check licenses bans
+exit=6
+bans FAILED, licenses FAILED
+error[banned]: crate 'bincode = 0.1.0' is explicitly banned
+   ┌─ E:\openhoi\.orchestrator\wt\WP-08-verify2\deny.toml:14:19
+   │
+14 │ deny = [{ name = "bincode" }]
+   │                   ━━━━━━━ banned here
+   │
+   ├ bincode v0.1.0
+     └── fixture-root v0.1.0
+
+error[rejected]: failed to satisfy license requirements
+  ┌─ C:\Users\user\AppData\Local\Temp\tmp71iehlqe\gpl-dep\Cargo.toml:5:10
+  │
+5 │ license="GPL-3.0-only"
+  │          ━━━━━━━━━━━━
+  │          │
+  │          rejected: license is not explicitly allowed
+  │
+  ├ GPL-3.0-only - GNU General Public License v3.0 only:
+  ├   - OSI approved
+  ├   - FSF Free/Libre
+  ├   - Copyleft
+  ├ gpl-dep v0.1.0
+    └── fixture-root v0.1.0
+
+warning[license-not-encountered]: license was not encountered
+  ┌─ E:\openhoi\.orchestrator\wt\WP-08-verify2\deny.toml:3:18
+  │
+3 │ allow = ["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Zlib", "MPL-2.0", "Unicode-3.0", "BSL-1.0", "CC0-1.0"]
+  │                  ━━━━━━━━━━ unmatched license allowance
+
+warning[license-not-encountered]: license was not encountered
+  ┌─ E:\openhoi\.orchestrator\wt\WP-08-verify2\deny.toml:3:32
+  │
+3 │ allow = ["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Zlib", "MPL-2.0", "Unicode-3.0", "BSL-1.0", "CC0-1.0"]
+  │                                ━━━━━━━━━━━━ unmatched license allowance
+
+warning[license-not-encountered]: license was not encountered
+  ┌─ E:\openhoi\.orchestrator\wt\WP-08-verify2\deny.toml:3:48
+  │
+3 │ allow = ["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Zlib", "MPL-2.0", "Unicode-3.0", "BSL-1.0", "CC0-1.0"]
+  │                                                ━━━━━━━━━━━━ unmatched license allowance
+
+warning[license-not-encountered]: license was not encountered
+  ┌─ E:\openhoi\.orchestrator\wt\WP-08-verify2\deny.toml:3:105
+  │
+3 │ allow = ["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Zlib", "MPL-2.0", "Unicode-3.0", "BSL-1.0", "CC0-1.0"]
+  │                                                                                                         ━━━━━━━ unmatched license allowance
+
+warning[license-not-encountered]: license was not encountered
+  ┌─ E:\openhoi\.orchestrator\wt\WP-08-verify2\deny.toml:3:116
+  │
+3 │ allow = ["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Zlib", "MPL-2.0", "Unicode-3.0", "BSL-1.0", "CC0-1.0"]
+  │                                                                                                                    ━━━━━━━ unmatched license allowance
+
+warning[license-not-encountered]: license was not encountered
+  ┌─ E:\openhoi\.orchestrator\wt\WP-08-verify2\deny.toml:3:64
+  │
+3 │ allow = ["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Zlib", "MPL-2.0", "Unicode-3.0", "BSL-1.0", "CC0-1.0"]
+  │                                                                ━━━ unmatched license allowance
+
+warning[license-not-encountered]: license was not encountered
+  ┌─ E:\openhoi\.orchestrator\wt\WP-08-verify2\deny.toml:3:79
+  │
+3 │ allow = ["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Zlib", "MPL-2.0", "Unicode-3.0", "BSL-1.0", "CC0-1.0"]
+  │                                                                               ━━━━━━━ unmatched license allowance
+
+warning[license-not-encountered]: license was not encountered
+  ┌─ E:\openhoi\.orchestrator\wt\WP-08-verify2\deny.toml:3:90
+  │
+3 │ allow = ["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Zlib", "MPL-2.0", "Unicode-3.0", "BSL-1.0", "CC0-1.0"]
+  │                                                                                          ━━━━━━━━━━━ unmatched license allowance
+
+warning[license-not-encountered]: license was not encountered
+  ┌─ E:\openhoi\.orchestrator\wt\WP-08-verify2\deny.toml:3:71
+  │
+3 │ allow = ["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Zlib", "MPL-2.0", "Unicode-3.0", "BSL-1.0", "CC0-1.0"]
+  │                                                                       ━━━━ unmatched license allowance
+
+
+$ node E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_npm_licenses.cjs --root C:\Users\user\AppData\Local\Temp\tmp58g0t989
+exit=1
+npm licenses: 1 dependencies; 1 error(s)
+[LICENSE] node_modules/fixture-dep@1.0.0: unapproved license "MIT AND GPL-3.0-only"
+
+$ node E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_npm_licenses.cjs --root C:\Users\user\AppData\Local\Temp\tmphsa37lns
+exit=1
+npm licenses: 1 dependencies; 1 error(s)
+[LICENSE] node_modules/fixture-dep@1.0.0: unapproved license "Apache-2.0 WITH LLVM-exception"
+
+$ node E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_npm_licenses.cjs --root C:\Users\user\AppData\Local\Temp\tmp87z0qsit
+exit=1
+npm licenses: 1 dependencies; 1 error(s)
+[LICENSE] node_modules/fixture-dep@1.0.0: unapproved license "GPL-3.0-only"
+
+$ node E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_npm_licenses.cjs --root C:\Users\user\AppData\Local\Temp\tmpj1fmg1tt
+exit=0
+npm licenses: 1 dependencies; 0 error(s)
+
+$ node E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_npm_licenses.cjs --root C:\Users\user\AppData\Local\Temp\tmpqs9_8s1h
+exit=0
+npm licenses: 1 dependencies; 0 error(s)
+
+$ node E:\openhoi\.orchestrator\wt\WP-08-verify2\tools\check_npm_licenses.cjs --root C:\Users\user\AppData\Local\Temp\tmphoblq4s4
+exit=1
+npm licenses: 1 dependencies; 1 error(s)
+[LICENSE] node_modules/fixture-dep@1.0.0: unapproved license undefined
+
+
+exit=0
