@@ -121,7 +121,8 @@
     "path": "cors-valid-index-redirect.cjs",
     "source_sha256": "66c4145a48c21b57fb835e40a3a7273097836ca1a19c2c1a0f0a2002daf46393",
     "bytes": 2431,
-    "raw_archive": "original-evidence-bytes.zip"
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "66c4145a48c21b57fb835e40a3a7273097836ca1a19c2c1a0f0a2002daf46393"
   },
   {
     "path": "cors-valid-index-redirect.json",
@@ -148,7 +149,8 @@
     "path": "cors-valid-redirect.cjs",
     "source_sha256": "72c2e83ec8f7f1df1c1c54dea30552dec05bbc946d9e6fa846774acfecd3c08d",
     "bytes": 2280,
-    "raw_archive": "original-evidence-bytes.zip"
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "72c2e83ec8f7f1df1c1c54dea30552dec05bbc946d9e6fa846774acfecd3c08d"
   },
   {
     "path": "cors-valid-redirect.json",
