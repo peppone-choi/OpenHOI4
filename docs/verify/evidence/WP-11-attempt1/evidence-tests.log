@@ -1,0 +1,13 @@
+test_cached_same_process (test_save_evidence.EvidenceFailures.test_cached_same_process) ... ok
+test_different_head (test_save_evidence.EvidenceFailures.test_different_head) ... ok
+test_dirty_source (test_save_evidence.EvidenceFailures.test_dirty_source) ... ok
+test_failed_command (test_save_evidence.EvidenceFailures.test_failed_command) ... ok
+test_hash_and_fixture_bytes_disagreement (test_save_evidence.EvidenceFailures.test_hash_and_fixture_bytes_disagreement) ... ok
+test_m0_run_cannot_replace_resume (test_save_evidence.EvidenceFailures.test_m0_run_cannot_replace_resume) ... ok
+test_missing_os (test_save_evidence.EvidenceFailures.test_missing_os) ... ok
+test_rawbit_canonical_mismatch (test_save_evidence.EvidenceFailures.test_rawbit_canonical_mismatch) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 21.205s
+
+OK

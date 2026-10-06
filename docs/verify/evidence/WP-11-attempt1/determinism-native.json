@@ -1,0 +1,74 @@
+[
+  {
+    "mode": "m0",
+    "command": [
+      "target/debug/oh_cli.exe",
+      "run",
+      "--scenario",
+      "testland",
+      "--days",
+      "365",
+      "--seed",
+      "1",
+      "--hash-out"
+    ],
+    "exit": 0,
+    "stdout": "b039d35666b77fc2\n",
+    "stderr": ""
+  },
+  {
+    "mode": "m0",
+    "command": [
+      "target/debug/oh_cli.exe",
+      "run",
+      "--scenario",
+      "testland",
+      "--days",
+      "365",
+      "--seed",
+      "1",
+      "--hash-out"
+    ],
+    "exit": 0,
+    "stdout": "b039d35666b77fc2\n",
+    "stderr": ""
+  },
+  {
+    "mode": "m1",
+    "command": [
+      "target/debug/oh_cli.exe",
+      "run",
+      "--pack",
+      "data/packs/testland",
+      "--scenario",
+      "m1",
+      "--ticks",
+      "1000",
+      "--seed",
+      "1",
+      "--hash-out"
+    ],
+    "exit": 0,
+    "stdout": "60448355cecffa9d\n",
+    "stderr": ""
+  },
+  {
+    "mode": "m1",
+    "command": [
+      "target/debug/oh_cli.exe",
+      "run",
+      "--pack",
+      "data/packs/testland",
+      "--scenario",
+      "m1",
+      "--ticks",
+      "1000",
+      "--seed",
+      "1",
+      "--hash-out"
+    ],
+    "exit": 0,
+    "stdout": "60448355cecffa9d\n",
+    "stderr": ""
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "path": "WP11.verify.before.json",
+    "bytes": 3418968,
+    "sha256": "478942d83e29c0052497cc61379cbb779e9c6d421f67198067108374ec9bf09b"
+  },
+  {
+    "path": "WP11.verify.after.json",
+    "bytes": 3418968,
+    "sha256": "157a95444316197e9045178f20827b81044f786f51b18048e99325bee9ca6b93"
+  },
+  {
+    "path": "WP11.verify.after.index",
+    "bytes": 1266001,
+    "sha256": "c54b8ab2312e19c307f4da89f77632eb524bfc785e0edf11e67b430fe6d015cb"
+  },
+  {
+    "path": "WP11.verify.postcheck.json",
+    "bytes": 747,
+    "sha256": "0e83b271ef5f008f1e4e06a23226e7331acf618e4eeba50f9da22dc7e9a3cf9b"
+  }
+]

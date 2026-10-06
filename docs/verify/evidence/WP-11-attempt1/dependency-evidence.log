@@ -1,0 +1,87 @@
+official license/checksum checks 15
+raw red green evidence directory ['raw-output.sha256.json', 'raw-output.zip']
+raw archive sha b4fa155394dd256d2a2304a8e799037422fc741e0dc7254dfce4dc16d9350491 members ['client-tests.txt', 'deny.txt', 'evidence-tests.txt', 'final-clippy.txt', 'final-tests.txt', 'native-red.txt', 'req-green.txt', 'req-red.txt', 'server-native.txt', 'dependency-official.json']
+digest record keys dict_keys(['archive_sha256', 'members'])
+native-red.txt ee19e1bf5db3712e4df87ad2289c4638d837830eaf73ecf9914d2ea516e83453 nario testland resolves data/packs/examples/m0/testland (manifest ID m0_testland).
+
+Inputs: manifest.toml, defines.toml, scenarios/testland/scenario.toml under that pack.
+
+This self-contained empty example is distinct from data/packs/testland (WP-03 skeleton / later WP-23 content).
+
+
+
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+
+
+
+failures:
+
+    req_sav_02_new_native_process_resumes_real_m1
+
+
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s
+
+
+
+error: test failed, to rerun pass `-p oh_cli --test save_native`
+
+
+req-green.txt 44d615d18e726be8d82a53187b3cd5e98860f90bd185a01b8bb0e9fdc1911e5a e [unoptimized + debuginfo] target(s) in 1.75s
+
+     Running tests\save_native.rs (target\debug\deps\save_native-4cabd52ca46316af.exe)
+
+
+
+running 1 test
+
+test req_sav_02_new_native_process_resumes_real_m1 ... ok
+
+
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.28s
+
+
+
+     Running tests\save.rs (target\debug\deps\save-1f7d4e3c6ecc5f1b.exe)
+
+
+
+running 2 tests
+
+test req_sav_02_m1_continue_after_restore ... ok
+
+test req_sav_01_complete_m1_roundtrip ... ok
+
+
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+
+
+
+req-red.txt 65a170237fc1a5e02042fa319a9bd2428d01d5c8c169b5dec8b418bbaa0cca3a .1.0 (E:\openhoi\.orchestrator\wt\WP-11\crates\oh_save)
+
+error[E0432]: unresolved imports `oh_save::SaveContext`, `oh_save::decode`, `oh_save::encode`
+
+ --> crates\oh_save\tests\save.rs:1:15
+
+  |
+
+1 | use oh_save::{SaveContext, decode, encode};
+
+  |               ^^^^^^^^^^^  ^^^^^^  ^^^^^^ no `encode` in the root
+
+  |               |            |
+
+  |               |            no `decode` in the root
+
+  |               no `SaveContext` in the root
+
+
+
+For more information about this error, try `rustc --explain E0432`.
+
+error: could not compile `oh_save` (test "save") due to 1 previous error

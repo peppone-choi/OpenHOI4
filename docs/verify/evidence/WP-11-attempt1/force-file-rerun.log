@@ -1,0 +1,14 @@
+localization exit 1 oh_cli: PackMismatch: stored PackV1 { id: "testland", version: "0.1.0", content_hash: 14387335574258922130 }; current PackV1 { id: "testland", version: "0.1.0", content_hash: 1670651614821254282 }
+localization force exit 0 oh_cli: PackMismatch: stored PackV1 { id: "testland", version: "0.1.0", content_hash: 14387335574258922130 }; current PackV1 { id: "testland", version: "0.1.0", content_hash: 1670651614821254282 }
+version exit 1 oh_cli: PackMismatch: stored PackV1 { id: "testland", version: "0.1.0", content_hash: 14387335574258922130 }; current PackV1 { id: "testland", version: "0.1.1", content_hash: 10863683005609826497 }
+version force exit 0 oh_cli: PackMismatch: stored PackV1 { id: "testland", version: "0.1.0", content_hash: 14387335574258922130 }; current PackV1 { id: "testland", version: "0.1.1", content_hash: 10863683005609826497 }
+defines exit 1 oh_cli: DefinitionsMismatch: definitions/defines
+start exit 1 oh_cli: InvalidState: date/tick
+id exit 1 oh_cli: PackMismatch: id/list/scenario
+definitions exit 1 oh_cli: DefinitionsMismatch: definitions/defines
+checksum False exit 1 oh_cli: Compression: Restored data doesn't match checksum
+checksum True exit 1 oh_cli: Compression: Restored data doesn't match checksum
+output self-reference exit 1 oh_cli: SavePath: destination inside pack
+paused advance atomic file exit 1 oh_cli: PausedCannotAdvance: no current-tick resume
+paused zero advance exit 0
+all force/file preservation cases 13

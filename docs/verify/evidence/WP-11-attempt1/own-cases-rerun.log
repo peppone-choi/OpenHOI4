@@ -1,0 +1,73 @@
+"state/date/year" atomic rejection
+"state/date/month" atomic rejection
+"state/date/day" atomic rejection
+"state/hour" atomic rejection
+"state/tick" atomic rejection
+"state/speed" atomic rejection
+"state/speed" atomic rejection
+"config/initial_speed" atomic rejection
+"world" atomic rejection
+"world/definitions_hash" atomic rejection
+"world/inputs/nations/0/government" atomic rejection
+"world/inputs/nations/0/tag" atomic rejection
+"world/inputs/nations/0/support/0/1" atomic rejection
+"world/inputs/nations/0/support/0/0" atomic rejection
+"world/inputs/states/0/owner" atomic rejection
+"world/inputs/states/0/population" atomic rejection
+"world/inputs/states/0/base" atomic rejection
+"world/inputs/states/0/resources/0/0" atomic rejection
+"world/inputs/states/0/buildings/0/0" atomic rejection
+"world/inputs/states/0/buildings/0/1" atomic rejection
+"world/inputs/states/0/modifiers/0/source" atomic rejection
+"world/inputs/states/0/modifiers/0/target_stat" atomic rejection
+"world/inputs/states/0/infrastructure" atomic rejection
+"world/inputs/states/0/ledger/tick" atomic rejection
+"world/inputs/states/0/ledger/value" atomic rejection
+"world/inputs/states/0/ledger/target_stat" atomic rejection
+"world/inputs/states/0/ledger/entries/1/source" atomic rejection
+"world/inputs/states/0/ledger/entries/1/op" atomic rejection
+"world/inputs/states/0/ledger/entries/1/value" atomic rejection
+"world/inputs/states/0/ledger/entries/1/accumulated" atomic rejection
+"world/inputs/provinces/0/state" atomic rejection
+"world/inputs/provinces/0/owner" atomic rejection
+"world/inputs/provinces/0/controller" atomic rejection
+"world/inputs/provinces/4/owner" atomic rejection
+"duplicate ['world', 'inputs', 'nations']" atomic rejection
+"duplicate ['world', 'inputs', 'states']" atomic rejection
+"duplicate ['world', 'inputs', 'provinces']" atomic rejection
+"duplicate ['world', 'inputs', 'nations', 0, 'support']" atomic rejection
+"duplicate ['world', 'inputs', 'states', 0, 'resources']" atomic rejection
+"duplicate ['world', 'inputs', 'states', 0, 'buildings']" atomic rejection
+"duplicate ['queue']" atomic rejection
+"reverse ['world', 'inputs', 'nations']" atomic rejection
+"reverse ['world', 'inputs', 'states']" atomic rejection
+"reverse ['world', 'inputs', 'provinces']" atomic rejection
+"reverse ['world', 'inputs', 'nations', 0, 'support']" atomic rejection
+"reverse ['world', 'inputs', 'states', 0, 'modifiers']" atomic rejection
+"reverse ['world', 'inputs', 'states', 0, 'ledger', 'entries']" atomic rejection
+"reverse ['queue']" atomic rejection
+"missing ['world', 'inputs', 'nations']" atomic rejection
+"missing ['world', 'inputs', 'states']" atomic rejection
+"missing ['world', 'inputs', 'provinces']" atomic rejection
+"queue invalid speed 0" atomic rejection
+"queue invalid speed 6" atomic rejection
+"past queue" atomic rejection
+"valid speed 1" accepted
+"valid speed 2" accepted
+"valid speed 3" accepted
+"valid speed 4" accepted
+"valid speed 5" accepted
+"government not registered nonempty" accepted
+"signed bits -9223372036854775808" accepted
+"signed bits 9223372036854775807" accepted
+"signed bits -1" accepted
+"signed bits 0" accepted
+"signed bits 1" accepted
+"fractional DTO boundary 23" accepted
+"fractional DTO boundary 24" accepted
+"fractional DTO boundary 25" accepted
+"expired duplicates retained" accepted
+"same source Add Mul signed" accepted
+"active duplicate" atomic rejection
+"overflow before later cancellation" atomic rejection
+invalid live export/executor cases 2

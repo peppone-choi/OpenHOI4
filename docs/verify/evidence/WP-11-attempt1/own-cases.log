@@ -1,0 +1,4 @@
+
+thread 'main' (29976) panicked at src\main.rs:24:88:
+called `Result::unwrap()` on an `Err` value: Os { code: 2, kind: NotFound, message: "지정된 파일을 찾을 수 없습니다." }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

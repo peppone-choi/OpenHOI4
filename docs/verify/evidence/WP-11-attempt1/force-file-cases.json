@@ -1,0 +1,247 @@
+[
+  {
+    "name": "localization",
+    "command": [
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\debug\\oh_cli.exe",
+      "resume",
+      "--load",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\wp11-independent\\own-native\\saved.ohsave",
+      "--pack",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\wp11-independent\\pack-localization",
+      "--ticks",
+      "0",
+      "--hash-out"
+    ],
+    "exit": 1,
+    "stdout": "",
+    "stderr": "oh_cli: PackMismatch: stored PackV1 { id: \"testland\", version: \"0.1.0\", content_hash: 14387335574258922130 }; current PackV1 { id: \"testland\", version: \"0.1.0\", content_hash: 1670651614821254282 }\n",
+    "old_sha": "bd868e41cd1dc803accade0c2c009df716710e07d723268aa7db26908352b099"
+  },
+  {
+    "name": "localization force",
+    "command": [
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\debug\\oh_cli.exe",
+      "resume",
+      "--load",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\wp11-independent\\own-native\\saved.ohsave",
+      "--pack",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\wp11-independent\\pack-localization",
+      "--ticks",
+      "0",
+      "--hash-out",
+      "--force"
+    ],
+    "exit": 0,
+    "stdout": "157ba3949a3ac857\n",
+    "stderr": "oh_cli: PackMismatch: stored PackV1 { id: \"testland\", version: \"0.1.0\", content_hash: 14387335574258922130 }; current PackV1 { id: \"testland\", version: \"0.1.0\", content_hash: 1670651614821254282 }\n",
+    "old_sha": "bd868e41cd1dc803accade0c2c009df716710e07d723268aa7db26908352b099"
+  },
+  {
+    "name": "version",
+    "command": [
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\debug\\oh_cli.exe",
+      "resume",
+      "--load",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\wp11-independent\\own-native\\saved.ohsave",
+      "--pack",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\wp11-independent\\pack-version",
+      "--ticks",
+      "0",
+      "--hash-out"
+    ],
+    "exit": 1,
+    "stdout": "",
+    "stderr": "oh_cli: PackMismatch: stored PackV1 { id: \"testland\", version: \"0.1.0\", content_hash: 14387335574258922130 }; current PackV1 { id: \"testland\", version: \"0.1.1\", content_hash: 10863683005609826497 }\n",
+    "old_sha": "bd868e41cd1dc803accade0c2c009df716710e07d723268aa7db26908352b099"
+  },
+  {
+    "name": "version force",
+    "command": [
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\debug\\oh_cli.exe",
+      "resume",
+      "--load",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\wp11-independent\\own-native\\saved.ohsave",
+      "--pack",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\wp11-independent\\pack-version",
+      "--ticks",
+      "0",
+      "--hash-out",
+      "--force"
+    ],
+    "exit": 0,
+    "stdout": "157ba3949a3ac857\n",
+    "stderr": "oh_cli: PackMismatch: stored PackV1 { id: \"testland\", version: \"0.1.0\", content_hash: 14387335574258922130 }; current PackV1 { id: \"testland\", version: \"0.1.1\", content_hash: 10863683005609826497 }\n",
+    "old_sha": "bd868e41cd1dc803accade0c2c009df716710e07d723268aa7db26908352b099"
+  },
+  {
+    "name": "defines",
+    "command": [
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\debug\\oh_cli.exe",
+      "resume",
+      "--load",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\wp11-independent\\own-native\\saved.ohsave",
+      "--pack",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\wp11-independent\\pack-defines",
+      "--ticks",
+      "0",
+      "--hash-out",
+      "--force"
+    ],
+    "exit": 1,
+    "stdout": "",
+    "stderr": "oh_cli: DefinitionsMismatch: definitions/defines\n",
+    "old_sha": "bd868e41cd1dc803accade0c2c009df716710e07d723268aa7db26908352b099"
+  },
+  {
+    "name": "start",
+    "command": [
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\debug\\oh_cli.exe",
+      "resume",
+      "--load",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\wp11-independent\\own-native\\saved.ohsave",
+      "--pack",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\wp11-independent\\pack-start",
+      "--ticks",
+      "0",
+      "--hash-out",
+      "--force"
+    ],
+    "exit": 1,
+    "stdout": "",
+    "stderr": "oh_cli: InvalidState: date/tick\n",
+    "old_sha": "bd868e41cd1dc803accade0c2c009df716710e07d723268aa7db26908352b099"
+  },
+  {
+    "name": "id",
+    "command": [
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\debug\\oh_cli.exe",
+      "resume",
+      "--load",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\wp11-independent\\own-native\\saved.ohsave",
+      "--pack",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\wp11-independent\\pack-id",
+      "--ticks",
+      "0",
+      "--hash-out",
+      "--force"
+    ],
+    "exit": 1,
+    "stdout": "",
+    "stderr": "oh_cli: PackMismatch: id/list/scenario\n",
+    "old_sha": "bd868e41cd1dc803accade0c2c009df716710e07d723268aa7db26908352b099"
+  },
+  {
+    "name": "definitions",
+    "command": [
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\debug\\oh_cli.exe",
+      "resume",
+      "--load",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\wp11-independent\\own-native\\saved.ohsave",
+      "--pack",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\wp11-independent\\pack-definitions",
+      "--ticks",
+      "0",
+      "--hash-out",
+      "--force"
+    ],
+    "exit": 1,
+    "stdout": "",
+    "stderr": "oh_cli: DefinitionsMismatch: definitions/defines\n",
+    "old_sha": "bd868e41cd1dc803accade0c2c009df716710e07d723268aa7db26908352b099"
+  },
+  {
+    "name": "checksum False",
+    "command": [
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\debug\\oh_cli.exe",
+      "resume",
+      "--load",
+      "target\\wp11-independent\\corrupt.ohsave",
+      "--pack",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\wp11-independent\\own-pack",
+      "--ticks",
+      "0",
+      "--hash-out"
+    ],
+    "exit": 1,
+    "stdout": "",
+    "stderr": "oh_cli: Compression: Restored data doesn't match checksum\n",
+    "old_sha": "bd868e41cd1dc803accade0c2c009df716710e07d723268aa7db26908352b099"
+  },
+  {
+    "name": "checksum True",
+    "command": [
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\debug\\oh_cli.exe",
+      "resume",
+      "--load",
+      "target\\wp11-independent\\corrupt.ohsave",
+      "--pack",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\wp11-independent\\own-pack",
+      "--ticks",
+      "0",
+      "--hash-out",
+      "--force"
+    ],
+    "exit": 1,
+    "stdout": "",
+    "stderr": "oh_cli: Compression: Restored data doesn't match checksum\n",
+    "old_sha": "bd868e41cd1dc803accade0c2c009df716710e07d723268aa7db26908352b099"
+  },
+  {
+    "name": "output self-reference",
+    "command": [
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\debug\\oh_cli.exe",
+      "resume",
+      "--load",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\wp11-independent\\own-native\\saved.ohsave",
+      "--pack",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\wp11-independent\\own-pack",
+      "--ticks",
+      "0",
+      "--hash-out",
+      "--save-out",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\wp11-independent\\own-pack\\bad.ohsave"
+    ],
+    "exit": 1,
+    "stdout": "",
+    "stderr": "oh_cli: SavePath: destination inside pack\n",
+    "old_sha": "bd868e41cd1dc803accade0c2c009df716710e07d723268aa7db26908352b099"
+  },
+  {
+    "name": "paused advance atomic file",
+    "command": [
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\debug\\oh_cli.exe",
+      "resume",
+      "--load",
+      "target\\wp11-independent\\native\\run-1\\paused.ohsave",
+      "--pack",
+      "target\\wp11-independent\\native\\run-1\\pack",
+      "--ticks",
+      "24",
+      "--hash-out",
+      "--save-out",
+      "target\\wp11-independent\\native\\run-1\\paused.ohsave"
+    ],
+    "exit": 1,
+    "stdout": "",
+    "stderr": "oh_cli: PausedCannotAdvance: no current-tick resume\n",
+    "old_sha": "bd868e41cd1dc803accade0c2c009df716710e07d723268aa7db26908352b099"
+  },
+  {
+    "name": "paused zero advance",
+    "command": [
+      "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify\\target\\debug\\oh_cli.exe",
+      "resume",
+      "--load",
+      "target\\wp11-independent\\native\\run-1\\paused.ohsave",
+      "--pack",
+      "target\\wp11-independent\\native\\run-1\\pack",
+      "--ticks",
+      "0",
+      "--hash-out"
+    ],
+    "exit": 0,
+    "stdout": "04f3fbbca0c44703\n",
+    "stderr": "",
+    "old_sha": "bd868e41cd1dc803accade0c2c009df716710e07d723268aa7db26908352b099"
+  }
+]

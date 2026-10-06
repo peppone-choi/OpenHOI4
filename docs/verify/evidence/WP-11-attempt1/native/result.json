@@ -1,0 +1,16 @@
+{
+  "head": "227c1a2e606ccbb0cbc9712b0dd7a6e15ffadb30",
+  "dirty": false,
+  "platform": "Windows",
+  "fixture_sha256": "57b13c62ef1a6f88ade1851d0b3ae398157f95ca5bc246068eac3b2a964322fa",
+  "fixture_repeats": [
+    "57b13c62ef1a6f88ade1851d0b3ae398157f95ca5bc246068eac3b2a964322fa",
+    "57b13c62ef1a6f88ade1851d0b3ae398157f95ca5bc246068eac3b2a964322fa"
+  ],
+  "split_hash": "4eb703aad086c7aa",
+  "resumed_hash": "d19d028857bb7485",
+  "helper_sha256": "74390834609bbc4948f0d26fd3e1d74919d2b79c5c520c7373cc9342c28c50d4",
+  "cli_sha256": "97253298e14e5ca23fec5a14eb08955a52fd24d4ab52d5702d3a041391647473",
+  "pack_hash": 12861016185528173627,
+  "canonical_sha256": "e7376ea46cfaee09b976b97c12bc6f082e94bd6000f97ef013840b0675ee151c"
+}
