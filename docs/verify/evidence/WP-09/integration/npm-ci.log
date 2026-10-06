@@ -1,0 +1,11 @@
+cwd: E:\openhoi
+command: npm.cmd --prefix client ci
+
+added 95 packages, and audited 96 packages in 1s
+
+22 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+exit: 0

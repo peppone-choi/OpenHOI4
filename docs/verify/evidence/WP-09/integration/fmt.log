@@ -1,0 +1,4 @@
+cwd: E:\openhoi
+command: C:/Users/user/.cargo/bin/cargo.exe fmt --check
+
+exit: 0

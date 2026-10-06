@@ -1,0 +1,8 @@
+cwd: E:\openhoi
+command: npm.cmd --prefix client run typecheck
+
+> openhoi-client@0.1.0 typecheck
+> tsc --noEmit
+
+
+exit: 0
