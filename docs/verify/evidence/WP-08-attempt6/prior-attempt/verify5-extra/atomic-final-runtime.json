@@ -1,0 +1,35 @@
+{
+  "start": "2026-10-06T17:52:58.388999+00:00",
+  "pid": 12268,
+  "root": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify5",
+  "exe": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify5\\target\\debug\\oh_server.exe",
+  "exeSHA": "de5f898811722d51bd3eed00e2481ed8e813017286c9d82bc5b3d82a2a27039a",
+  "args": [
+    "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify5\\target\\debug\\oh_server.exe",
+    "--port",
+    "19443",
+    "--pack-root",
+    "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify5\\data\\packs"
+  ],
+  "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify5",
+  "port": 19443,
+  "http200": true,
+  "assets": [
+    {
+      "path": "/assets/index-B1tYOzvX.js",
+      "length": 1170714,
+      "sha": "e3885777875c6137d7313fd7fe28fd898cfb339ee56088a911cf534287fe149d"
+    },
+    {
+      "path": "/assets/index-B9cOsW2B.css",
+      "length": 4398,
+      "sha": "0dd7e4ddfeed406768af619ad687ab1ec009b7847fac69e181a778b2be151e6e"
+    }
+  ],
+  "netstat": [
+    "  TCP    127.0.0.1:19443        0.0.0.0:0              LISTENING       12268"
+  ],
+  "end": "2026-10-06T17:55:09.777057+00:00",
+  "exit": 1,
+  "portReleased": true
+}

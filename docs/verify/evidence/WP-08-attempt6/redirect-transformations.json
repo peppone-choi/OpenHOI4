@@ -1,0 +1,65 @@
+[
+  {
+    "source": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\prior-attempt\\verify5-extra\\redirect-matrix\\config.ts",
+    "dest": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\redirect-matrix\\config.ts",
+    "sourceSHA256": "a3a032a2e3a9fb498c0e866f722dec281b255f368aecc980986864bffbeeaa8c",
+    "executedSHA256": "51b6b04a48d2d236c7a186d635bd0268a598583207b4b41c52f8fdeacfe9806c",
+    "changes": "absolute own dependency root / upstream19454 / source19457 / foreign19458 only; no assertions modified"
+  },
+  {
+    "source": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\prior-attempt\\verify5-extra\\redirect-matrix\\proxy301.ts",
+    "dest": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\redirect-matrix\\proxy301.ts",
+    "sourceSHA256": "2d96e7b3500d9f03df3231f12b1705cbda15e1100471466b521ad27f1e954490",
+    "executedSHA256": "84463912994db097fdf4a452c4e382f068afc3d124ba9db563bdc1f74252e99c",
+    "changes": "absolute own dependency root / upstream19454 / source19457 / foreign19458 only; no assertions modified"
+  },
+  {
+    "source": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\prior-attempt\\verify5-extra\\redirect-matrix\\proxy303.ts",
+    "dest": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\redirect-matrix\\proxy303.ts",
+    "sourceSHA256": "8d883a928ad02ca91b08f627861276e85402ecf521dea023735daf630b7296b6",
+    "executedSHA256": "760096df5e155eda418bdfcb30917837b1f8fab20b51377b8e281ec8bfd72fe3",
+    "changes": "absolute own dependency root / upstream19454 / source19457 / foreign19458 only; no assertions modified"
+  },
+  {
+    "source": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\prior-attempt\\verify5-extra\\redirect-matrix\\proxy307.ts",
+    "dest": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\redirect-matrix\\proxy307.ts",
+    "sourceSHA256": "f1c461f9d655799ef0478cb955b1335e1392ea529c68cc06b77d1f730bd05dfc",
+    "executedSHA256": "ef8178c9bb462d2762dbee5606eea907d1c2204ce43266c76e7a8e554340048a",
+    "changes": "absolute own dependency root / upstream19454 / source19457 / foreign19458 only; no assertions modified"
+  },
+  {
+    "source": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\prior-attempt\\verify5-extra\\redirect-matrix\\proxy308.ts",
+    "dest": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\redirect-matrix\\proxy308.ts",
+    "sourceSHA256": "2e29cdda9f445d2e04805aa87a6b043ad2fed63dbba94f10745d9936c12f5c76",
+    "executedSHA256": "48d0f3c4e3cdbd50d272862b7cada0c2da5009587293a685a002bb5e755c965a",
+    "changes": "absolute own dependency root / upstream19454 / source19457 / foreign19458 only; no assertions modified"
+  },
+  {
+    "source": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\prior-attempt\\verify5-extra\\redirect-matrix\\redirect301.spec.ts",
+    "dest": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\redirect-matrix\\redirect301.spec.ts",
+    "sourceSHA256": "1637f770ad081273c3870b41f3a1a4a9a5f4d5afcaff10a7b1a3b610ba36c191",
+    "executedSHA256": "bdabc96f9f7df922191ca1c5348a0d6fb335c6b9942e2fc6e612710d64b2ce80",
+    "changes": "absolute own dependency root / upstream19454 / source19457 / foreign19458 only; no assertions modified"
+  },
+  {
+    "source": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\prior-attempt\\verify5-extra\\redirect-matrix\\redirect303.spec.ts",
+    "dest": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\redirect-matrix\\redirect303.spec.ts",
+    "sourceSHA256": "e50584d2ccb76ace1ddfe6e34a26ecd85aaac54cf4e1736286cf3a86a5fcd6b3",
+    "executedSHA256": "9871d6475dc8aec1b987d31bac30e978947539389d0e25ea4fc61bfa5bbac28b",
+    "changes": "absolute own dependency root / upstream19454 / source19457 / foreign19458 only; no assertions modified"
+  },
+  {
+    "source": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\prior-attempt\\verify5-extra\\redirect-matrix\\redirect307.spec.ts",
+    "dest": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\redirect-matrix\\redirect307.spec.ts",
+    "sourceSHA256": "7749bf770e95c187d58f283fe6baddf311371c5106d67af4e14675ee13a25996",
+    "executedSHA256": "d4ad352b97a45a2bd0a25f8f205552ffac11ec8d1ccafbae6dd7df6bf9fb2014",
+    "changes": "absolute own dependency root / upstream19454 / source19457 / foreign19458 only; no assertions modified"
+  },
+  {
+    "source": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\prior-attempt\\verify5-extra\\redirect-matrix\\redirect308.spec.ts",
+    "dest": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\redirect-matrix\\redirect308.spec.ts",
+    "sourceSHA256": "f69fa6fdf8f50df80b6ecc4c2e59ab88fa9521135646545fac85a4c45d59f5aa",
+    "executedSHA256": "f0c407a0a740c5eb6a8e141c94ff1bcf6722b74bd0f468c41edd70787776dc4b",
+    "changes": "absolute own dependency root / upstream19454 / source19457 / foreign19458 only; no assertions modified"
+  }
+]

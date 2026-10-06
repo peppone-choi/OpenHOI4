@@ -1,0 +1,7 @@
+{
+  "original": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\crates\\oh_server\\tests\\lifecycle.py",
+  "originalSHA256": "8c830876b35a6f9d28c4c7fcb748eef24e15658b84d111d2026fe4094324a7d9",
+  "executed": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\lifecycle.py",
+  "executedSHA256": "6cd5953a5a886a4dbd0742122f0d3214bef2b5f98c81bb56030d6d26ffdad674",
+  "adjustments": "absolute ROOT, own evidence isolated cwd, reserved19454; actual CtrlC/HTTP/WS/exit assertions unchanged"
+}

@@ -1,0 +1,64 @@
+[
+  {
+    "label": "proto-compile",
+    "argv": [
+      "rustc",
+      "--edition=2024",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\generate.rs",
+      "--extern",
+      "oh_proto=E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\debug\\deps\\liboh_proto-05d581eadafcf7b4.rlib",
+      "-L",
+      "dependency=E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\debug\\deps",
+      "-o",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\generate.exe"
+    ],
+    "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6",
+    "start": "2026-10-06T19:04:59.442808+00:00",
+    "env": null,
+    "launcher_pid": 36172,
+    "exit": 0,
+    "end": "2026-10-06T19:04:59.911809+00:00"
+  },
+  {
+    "label": "proto-generate",
+    "argv": [
+      "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\generate.exe"
+    ],
+    "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6",
+    "start": "2026-10-06T19:04:59.911809+00:00",
+    "env": null,
+    "launcher_pid": 23664,
+    "exit": 0,
+    "end": "2026-10-06T19:04:59.985809+00:00"
+  },
+  {
+    "label": "proto-diff",
+    "argv": [
+      "git",
+      "--no-optional-locks",
+      "diff",
+      "--exit-code",
+      "--",
+      "client/src/proto"
+    ],
+    "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6",
+    "start": "2026-10-06T19:04:59.993808+00:00",
+    "env": null,
+    "launcher_pid": 24792,
+    "exit": 0,
+    "end": "2026-10-06T19:05:00.042808+00:00"
+  },
+  {
+    "label": "server-lifecycle",
+    "argv": [
+      "python",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\lifecycle.py"
+    ],
+    "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6",
+    "start": "2026-10-06T19:05:00.062808+00:00",
+    "env": null,
+    "launcher_pid": 18116,
+    "exit": 0,
+    "end": "2026-10-06T19:05:00.961016+00:00"
+  }
+]

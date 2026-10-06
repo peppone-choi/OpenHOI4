@@ -1,0 +1,23 @@
+[
+  {
+    "url": "https://registry.npmjs.org/three/0.186.1",
+    "status": 200,
+    "version": "0.186.1",
+    "license": "MIT",
+    "sha256": "0305c00b56fcf7ded1d9fa5f166b98f070111273663b616b39e75f1f7bccde65"
+  },
+  {
+    "url": "https://registry.npmjs.org/@types%2fthree/0.186.0",
+    "status": 200,
+    "version": "0.186.0",
+    "license": "MIT",
+    "sha256": "c3c0d3fa4863e62f3d2f5769f9d3c4a0412da0a15e801099233caffda48d7a40"
+  },
+  {
+    "url": "https://registry.npmjs.org/@playwright%2ftest/1.63.0",
+    "status": 200,
+    "version": "1.63.0",
+    "license": "Apache-2.0",
+    "sha256": "b73e1d67cc9ff3d0b759ee7e98a9058cff75dbcd93cbb2ab9b7b535b79272286"
+  }
+]

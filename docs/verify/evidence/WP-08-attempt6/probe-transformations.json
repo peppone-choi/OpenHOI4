@@ -1,0 +1,274 @@
+[
+  {
+    "source": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\prior-attempt\\verify3-originals\\resize-probe.cjs",
+    "executed": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\red62-probes\\resize-probe.cjs",
+    "originalSHA": "1be6b67e6ce38bdac3f21aadd64c5a74134e75fce3b0576f9bab7b050d706d5d",
+    "executedSHA": "06bfdd183c5114c61baa81b56fd47532fd3d5c71eaec6e20dd4d86e0c6b01ae9",
+    "replacements": [
+      [
+        "../../client/node_modules/@playwright/test",
+        "E:/openhoi/.orchestrator/wt/WP-08-verify6/target/wp08-verify6/red62-source/client/node_modules/@playwright/test"
+      ],
+      [
+        "../../client/e2e-m1/png.ts",
+        "file:///E:/openhoi/.orchestrator/wt/WP-08-verify6/target/wp08-verify6/red62-source/client/e2e-m1/png.ts"
+      ],
+      [
+        "127.0.0.1:19428",
+        "127.0.0.1:19455"
+      ],
+      [
+        "127.0.0.1:19427",
+        "127.0.0.1:19455"
+      ]
+    ]
+  },
+  {
+    "source": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\prior-attempt\\verify3-originals\\gpu-compile-failure.cjs",
+    "executed": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\red62-probes\\gpu-compile-failure.cjs",
+    "originalSHA": "4fdfe601e6151f1de5471e6c3f5093d736e6735342190f1825949604b80bbea8",
+    "executedSHA": "8849e1b2ba4d4ec62db0ecb0f86ef082093fbeea68484df0675a1a7a969b670c",
+    "replacements": [
+      [
+        "../../client/node_modules/@playwright/test",
+        "E:/openhoi/.orchestrator/wt/WP-08-verify6/target/wp08-verify6/red62-source/client/node_modules/@playwright/test"
+      ],
+      [
+        "../../client/e2e-m1/png.ts",
+        "file:///E:/openhoi/.orchestrator/wt/WP-08-verify6/target/wp08-verify6/red62-source/client/e2e-m1/png.ts"
+      ],
+      [
+        "127.0.0.1:19428",
+        "127.0.0.1:19455"
+      ],
+      [
+        "127.0.0.1:19427",
+        "127.0.0.1:19455"
+      ]
+    ]
+  },
+  {
+    "source": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\prior-attempt\\verify3-originals\\initialization.cjs",
+    "executed": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\red62-probes\\initialization.cjs",
+    "originalSHA": "be2560ecb2c75bf6067e93b7939647d673a49de29f874fb7b64e6e92dcae739c",
+    "executedSHA": "4d94de868d041ba20fb7225c1cce122ff59764e74eeb80956f827a0c8801a4a4",
+    "replacements": [
+      [
+        "../../client/node_modules/@playwright/test",
+        "E:/openhoi/.orchestrator/wt/WP-08-verify6/target/wp08-verify6/red62-source/client/node_modules/@playwright/test"
+      ],
+      [
+        "../../client/e2e-m1/png.ts",
+        "file:///E:/openhoi/.orchestrator/wt/WP-08-verify6/target/wp08-verify6/red62-source/client/e2e-m1/png.ts"
+      ],
+      [
+        "127.0.0.1:19428",
+        "127.0.0.1:19455"
+      ],
+      [
+        "127.0.0.1:19427",
+        "127.0.0.1:19455"
+      ]
+    ]
+  },
+  {
+    "source": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\prior-attempt\\verify5-extra\\ready-probe.cjs",
+    "executed": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\red62-probes\\ready-probe.cjs",
+    "originalSHA": "df467783eb35116d54bdfb0badd3602a9a0a4b31c5071efd7d20c752aa8060d0",
+    "executedSHA": "93c9449f341358a6b65bec17c390aa48373211425a8221a6ae8615307019aa8a",
+    "replacements": [
+      [
+        "path.resolve(__dirname,'../..')",
+        "'E:/openhoi/.orchestrator/wt/WP-08-verify6/target/wp08-verify6/red62-source'"
+      ],
+      [
+        "require('node:path').resolve(__dirname,'../..')",
+        "'E:/openhoi/.orchestrator/wt/WP-08-verify6/target/wp08-verify6/red62-source'"
+      ],
+      [
+        "127.0.0.1:19444",
+        "127.0.0.1:19455"
+      ],
+      [
+        "127.0.0.1:19443",
+        "127.0.0.1:19455"
+      ]
+    ]
+  },
+  {
+    "source": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\prior-attempt\\lifecycle.cjs",
+    "executed": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\red953-probes\\lifecycle.cjs",
+    "originalSHA": "c56e6a18e1ccfc4c7f208b2334adc9845bf35a963250c25507b5973760b740eb",
+    "executedSHA": "838204b538baed6a007cfbce25dd1a5db4eaa82608a56f457892cf61c89361c6",
+    "replacements": [
+      [
+        "path.resolve(__dirname,'../..')",
+        "'E:/openhoi/.orchestrator/wt/WP-08-verify6/target/wp08-verify6/red953-source'"
+      ],
+      [
+        "127.0.0.1:19443",
+        "127.0.0.1:19456"
+      ]
+    ]
+  },
+  {
+    "source": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\prior-attempt\\verify3-originals\\resize-probe.cjs",
+    "executed": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\current-probes\\resize-probe.cjs",
+    "originalSHA": "1be6b67e6ce38bdac3f21aadd64c5a74134e75fce3b0576f9bab7b050d706d5d",
+    "executedSHA": "40f9b510dbc72a592ab605cf432e8fe23b759011e556334059a458c12a7fc5b3",
+    "replacements": [
+      [
+        "../../client/node_modules/@playwright/test",
+        "E:/openhoi/.orchestrator/wt/WP-08-verify6/client/node_modules/@playwright/test"
+      ],
+      [
+        "../../client/e2e-m1/png.ts",
+        "file:///E:/openhoi/.orchestrator/wt/WP-08-verify6/client/e2e-m1/png.ts"
+      ],
+      [
+        "127.0.0.1:19428",
+        "127.0.0.1:19453"
+      ],
+      [
+        "127.0.0.1:19427",
+        "127.0.0.1:19453"
+      ]
+    ]
+  },
+  {
+    "source": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\prior-attempt\\verify3-originals\\gpu-compile-failure.cjs",
+    "executed": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\current-probes\\gpu-compile-failure.cjs",
+    "originalSHA": "4fdfe601e6151f1de5471e6c3f5093d736e6735342190f1825949604b80bbea8",
+    "executedSHA": "375b7c7433300958dbe7d9a9be522ccbd440ec145a3d968b91ca7504f410fbff",
+    "replacements": [
+      [
+        "../../client/node_modules/@playwright/test",
+        "E:/openhoi/.orchestrator/wt/WP-08-verify6/client/node_modules/@playwright/test"
+      ],
+      [
+        "../../client/e2e-m1/png.ts",
+        "file:///E:/openhoi/.orchestrator/wt/WP-08-verify6/client/e2e-m1/png.ts"
+      ],
+      [
+        "127.0.0.1:19428",
+        "127.0.0.1:19453"
+      ],
+      [
+        "127.0.0.1:19427",
+        "127.0.0.1:19453"
+      ]
+    ]
+  },
+  {
+    "source": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\prior-attempt\\verify3-originals\\initialization.cjs",
+    "executed": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\current-probes\\initialization.cjs",
+    "originalSHA": "be2560ecb2c75bf6067e93b7939647d673a49de29f874fb7b64e6e92dcae739c",
+    "executedSHA": "7a4b7ab2da7295c5eb776e632586cfae2d80f19c7994b955d113fb0a8ae39699",
+    "replacements": [
+      [
+        "../../client/node_modules/@playwright/test",
+        "E:/openhoi/.orchestrator/wt/WP-08-verify6/client/node_modules/@playwright/test"
+      ],
+      [
+        "../../client/e2e-m1/png.ts",
+        "file:///E:/openhoi/.orchestrator/wt/WP-08-verify6/client/e2e-m1/png.ts"
+      ],
+      [
+        "127.0.0.1:19428",
+        "127.0.0.1:19453"
+      ],
+      [
+        "127.0.0.1:19427",
+        "127.0.0.1:19453"
+      ]
+    ]
+  },
+  {
+    "source": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\prior-attempt\\verify5-extra\\ready-probe.cjs",
+    "executed": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\current-probes\\ready-probe.cjs",
+    "originalSHA": "df467783eb35116d54bdfb0badd3602a9a0a4b31c5071efd7d20c752aa8060d0",
+    "executedSHA": "1d8423d2f9781b112594b058b02e9ff7b7a90c42c26e55861620f3266a693c3e",
+    "replacements": [
+      [
+        "path.resolve(__dirname,'../..')",
+        "'E:/openhoi/.orchestrator/wt/WP-08-verify6'"
+      ],
+      [
+        "require('node:path').resolve(__dirname,'../..')",
+        "'E:/openhoi/.orchestrator/wt/WP-08-verify6'"
+      ],
+      [
+        "127.0.0.1:19444",
+        "127.0.0.1:19453"
+      ],
+      [
+        "127.0.0.1:19443",
+        "127.0.0.1:19453"
+      ]
+    ]
+  },
+  {
+    "source": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\prior-attempt\\verify5-extra\\live-pipeline.cjs",
+    "executed": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\current-probes\\live-pipeline.cjs",
+    "originalSHA": "23342716add3078dbde64079b2426fe6c1a2d7a2567bb053c24fad9eb3418344",
+    "executedSHA": "4c67f52e468ab2056ae41b95e996bdc0ca2ca816c09609e2ce6a90fdce71ed91",
+    "replacements": [
+      [
+        "path.resolve(__dirname,'../..')",
+        "'E:/openhoi/.orchestrator/wt/WP-08-verify6'"
+      ],
+      [
+        "require('node:path').resolve(__dirname,'../..')",
+        "'E:/openhoi/.orchestrator/wt/WP-08-verify6'"
+      ],
+      [
+        "127.0.0.1:19444",
+        "127.0.0.1:19453"
+      ],
+      [
+        "127.0.0.1:19443",
+        "127.0.0.1:19453"
+      ]
+    ]
+  },
+  {
+    "source": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\prior-attempt\\verify5-extra\\atomic.cjs",
+    "executed": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\current-probes\\atomic.cjs",
+    "originalSHA": "15a41dd02d7d5c19ed467df443e1bb88eac81b8f8887b1573e6ed4e8b9f74638",
+    "executedSHA": "1bd960862277c9dfdae0c57b5e1269a04aafed417e63bb91097c7e3361fc3382",
+    "replacements": [
+      [
+        "path.resolve(__dirname,'../..')",
+        "'E:/openhoi/.orchestrator/wt/WP-08-verify6'"
+      ],
+      [
+        "require('node:path').resolve(__dirname,'../..')",
+        "'E:/openhoi/.orchestrator/wt/WP-08-verify6'"
+      ],
+      [
+        "127.0.0.1:19444",
+        "127.0.0.1:19453"
+      ],
+      [
+        "127.0.0.1:19443",
+        "127.0.0.1:19453"
+      ]
+    ]
+  },
+  {
+    "source": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\prior-attempt\\lifecycle.cjs",
+    "executed": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\current-probes\\lifecycle.cjs",
+    "originalSHA": "c56e6a18e1ccfc4c7f208b2334adc9845bf35a963250c25507b5973760b740eb",
+    "executedSHA": "08c3f93f5c78db78662dda260be4dca6020b7e55a6e489856a3eb6db2342a633",
+    "replacements": [
+      [
+        "path.resolve(__dirname,'../..')",
+        "'E:/openhoi/.orchestrator/wt/WP-08-verify6'"
+      ],
+      [
+        "127.0.0.1:19443",
+        "127.0.0.1:19453"
+      ]
+    ]
+  }
+]

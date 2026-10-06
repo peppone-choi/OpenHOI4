@@ -1,0 +1,229 @@
+
+Running 205 tests using 1 worker
+
+(node:38004) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/205] [chrome] › e2e-m1\malformed-world.spec.ts:5:1 › M1 malformed decoded ledger preserves last valid panel and closes connection
+[2/205] [chrome] › e2e-m1\map-capability.spec.ts:6:1 › REQ-PLAT-03 native backend capability renders pixels or preserves authority with localized notice
+[3/205] [chrome] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority preferred
+[4/205] [chrome] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority forced GL
+[5/205] [chrome] › e2e-m1\map-pipeline.spec.ts:5:65 › REQ-PLAT-03 actual device pipeline rejection falls back to GL pixels
+[6/205] [chrome] › e2e-m1\map-pipeline.spec.ts:5:65 › REQ-PLAT-03 actual device pipeline rejection with GL unavailable shows notice
+[7/205] [chrome] › e2e-m1\map-pipeline.spec.ts:5:65 › REQ-PLAT-03 actual device pipeline rejection with GL shader shows notice
+[8/205] [chrome] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 metadata CORS redirect sends no foreign request on first load
+[9/205] [chrome] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 metadata CORS redirect sends no foreign request after valid selection
+[10/205] [chrome] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 index CORS redirect sends no foreign request on first load
+[11/205] [chrome] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 index CORS redirect sends no foreign request after valid selection
+[12/205] [chrome] › e2e-m1\map-redirect.spec.ts:140:56 › WP08 P06 metadata same-origin redirect is also rejected before follow
+[13/205] [chrome] › e2e-m1\map-redirect.spec.ts:140:56 › WP08 P06 index same-origin redirect is also rejected before follow
+[14/205] [chrome] › e2e-m1\map-resize.spec.ts:7:1 › REQ-MAP-05 resize and reset preserve presentation pixels and camera authority
+[15/205] [chrome] › e2e-m1\map.spec.ts:11:1 › REQ-MAP-04/05 PLAT-03 actual map pixels, modes, pick and viewport
+[16/205] [chrome] › e2e-m1\map.spec.ts:40:1 › REQ-PLAT-03 preferred actual backend produces the same map RGB and source shader
+[17/205] [chrome] › e2e-m1\map.spec.ts:48:1 › REQ-MAP-04 changed server RGB updates only affected lookup texel on actual backend
+[18/205] [chrome] › e2e-m1\map.spec.ts:52:1 › REQ-MAP-04/05 RG8 high dense byte and LUT second row pick real ID65535
+[19/205] [chrome] › e2e-m1\map.spec.ts:59:33 › REQ-MAP-05 independent three border pixel oracle, u16 sentinel and camera preferred
+[20/205] [chrome] › e2e-m1\map.spec.ts:59:33 › REQ-MAP-05 independent three border pixel oracle, u16 sentinel and camera WebGL2
+[21/205] [chrome] › e2e-m1\map.spec.ts:93:93 › REQ-PLAT-03 missingGPU falls back to actual WebGL2 pixels
+[22/205] [chrome] › e2e-m1\map.spec.ts:93:93 › REQ-PLAT-03 nullAdapter falls back to actual WebGL2 pixels
+[23/205] [chrome] › e2e-m1\map.spec.ts:93:93 › REQ-PLAT-03 adapterReject falls back to actual WebGL2 pixels
+[24/205] [chrome] › e2e-m1\map.spec.ts:93:93 › REQ-PLAT-03 deviceReject falls back to actual WebGL2 pixels
+[25/205] [chrome] › e2e-m1\map.spec.ts:93:93 › REQ-PLAT-03 insecure falls back to actual WebGL2 pixels
+[26/205] [chrome] › e2e-m1\map.spec.ts:104:37 › REQ-PLAT-03 no backend shows localized notices
+[27/205] [chrome] › e2e-m1\map.spec.ts:104:37 › REQ-PLAT-03 no backend shows localized notices after preferred rejection
+[28/205] [chrome] › e2e-m1\map.spec.ts:114:1 › REQ-PLAT-03 actual WebGL2 texture limit is checked before texture creation
+[29/205] [chrome] › e2e-m1\map.spec.ts:118:1 › REQ-MAP-04 missing bundled index fails visibly without external download
+[30/205] [chrome] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary oldVersion rejects atomically
+[31/205] [chrome] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary futureVersion rejects atomically
+[32/205] [chrome] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary wrongPack rejects atomically
+[33/205] [chrome] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary duplicateIds rejects atomically
+[34/205] [chrome] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary badStyle rejects atomically
+[35/205] [chrome] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary shortBytes rejects atomically
+[36/205] [chrome] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary wrongHash rejects atomically
+[37/205] [chrome] › e2e-m1\map.spec.ts:132:70 › REQ-MAP-05 dangling preserves last valid map and closes wire
+[38/205] [chrome] › e2e-m1\map.spec.ts:132:70 › REQ-MAP-05 changedDimensions preserves last valid map and closes wire
+[39/205] [chrome] › e2e-m1\map.spec.ts:132:70 › REQ-MAP-05 changedDense preserves last valid map and closes wire
+[40/205] [chrome] › e2e-m1\national.spec.ts:6:1 › AC-M1-03 actual Rust M1 panels, separate owner/control, ledger, languages and time
+[41/205] [chrome] › e2e-m1\national.spec.ts:31:1 › REQ-NAT-01 MAP-08 actual query metadata, dense mapping, colors and refusal
+(node:5932) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[42/205] [edge] › e2e-m1\malformed-world.spec.ts:5:1 › M1 malformed decoded ledger preserves last valid panel and closes connection
+[43/205] [edge] › e2e-m1\map-capability.spec.ts:6:1 › REQ-PLAT-03 native backend capability renders pixels or preserves authority with localized notice
+[44/205] [edge] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority preferred
+[45/205] [edge] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority forced GL
+[46/205] [edge] › e2e-m1\map-pipeline.spec.ts:5:65 › REQ-PLAT-03 actual device pipeline rejection falls back to GL pixels
+[47/205] [edge] › e2e-m1\map-pipeline.spec.ts:5:65 › REQ-PLAT-03 actual device pipeline rejection with GL unavailable shows notice
+[48/205] [edge] › e2e-m1\map-pipeline.spec.ts:5:65 › REQ-PLAT-03 actual device pipeline rejection with GL shader shows notice
+[49/205] [edge] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 metadata CORS redirect sends no foreign request on first load
+[50/205] [edge] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 metadata CORS redirect sends no foreign request after valid selection
+[51/205] [edge] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 index CORS redirect sends no foreign request on first load
+[52/205] [edge] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 index CORS redirect sends no foreign request after valid selection
+[53/205] [edge] › e2e-m1\map-redirect.spec.ts:140:56 › WP08 P06 metadata same-origin redirect is also rejected before follow
+[54/205] [edge] › e2e-m1\map-redirect.spec.ts:140:56 › WP08 P06 index same-origin redirect is also rejected before follow
+[55/205] [edge] › e2e-m1\map-resize.spec.ts:7:1 › REQ-MAP-05 resize and reset preserve presentation pixels and camera authority
+[56/205] [edge] › e2e-m1\map.spec.ts:11:1 › REQ-MAP-04/05 PLAT-03 actual map pixels, modes, pick and viewport
+[57/205] [edge] › e2e-m1\map.spec.ts:40:1 › REQ-PLAT-03 preferred actual backend produces the same map RGB and source shader
+[58/205] [edge] › e2e-m1\map.spec.ts:48:1 › REQ-MAP-04 changed server RGB updates only affected lookup texel on actual backend
+[59/205] [edge] › e2e-m1\map.spec.ts:52:1 › REQ-MAP-04/05 RG8 high dense byte and LUT second row pick real ID65535
+[60/205] [edge] › e2e-m1\map.spec.ts:59:33 › REQ-MAP-05 independent three border pixel oracle, u16 sentinel and camera preferred
+[61/205] [edge] › e2e-m1\map.spec.ts:59:33 › REQ-MAP-05 independent three border pixel oracle, u16 sentinel and camera WebGL2
+[62/205] [edge] › e2e-m1\map.spec.ts:93:93 › REQ-PLAT-03 missingGPU falls back to actual WebGL2 pixels
+[63/205] [edge] › e2e-m1\map.spec.ts:93:93 › REQ-PLAT-03 nullAdapter falls back to actual WebGL2 pixels
+[64/205] [edge] › e2e-m1\map.spec.ts:93:93 › REQ-PLAT-03 adapterReject falls back to actual WebGL2 pixels
+[65/205] [edge] › e2e-m1\map.spec.ts:93:93 › REQ-PLAT-03 deviceReject falls back to actual WebGL2 pixels
+[66/205] [edge] › e2e-m1\map.spec.ts:93:93 › REQ-PLAT-03 insecure falls back to actual WebGL2 pixels
+[67/205] [edge] › e2e-m1\map.spec.ts:104:37 › REQ-PLAT-03 no backend shows localized notices
+[68/205] [edge] › e2e-m1\map.spec.ts:104:37 › REQ-PLAT-03 no backend shows localized notices after preferred rejection
+[69/205] [edge] › e2e-m1\map.spec.ts:114:1 › REQ-PLAT-03 actual WebGL2 texture limit is checked before texture creation
+[70/205] [edge] › e2e-m1\map.spec.ts:118:1 › REQ-MAP-04 missing bundled index fails visibly without external download
+[71/205] [edge] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary oldVersion rejects atomically
+[72/205] [edge] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary futureVersion rejects atomically
+[73/205] [edge] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary wrongPack rejects atomically
+[74/205] [edge] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary duplicateIds rejects atomically
+[75/205] [edge] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary badStyle rejects atomically
+[76/205] [edge] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary shortBytes rejects atomically
+[77/205] [edge] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary wrongHash rejects atomically
+[78/205] [edge] › e2e-m1\map.spec.ts:132:70 › REQ-MAP-05 dangling preserves last valid map and closes wire
+[79/205] [edge] › e2e-m1\map.spec.ts:132:70 › REQ-MAP-05 changedDimensions preserves last valid map and closes wire
+[80/205] [edge] › e2e-m1\map.spec.ts:132:70 › REQ-MAP-05 changedDense preserves last valid map and closes wire
+[81/205] [edge] › e2e-m1\national.spec.ts:6:1 › AC-M1-03 actual Rust M1 panels, separate owner/control, ledger, languages and time
+[82/205] [edge] › e2e-m1\national.spec.ts:31:1 › REQ-NAT-01 MAP-08 actual query metadata, dense mapping, colors and refusal
+(node:32340) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[83/205] [chromium] › e2e-m1\malformed-world.spec.ts:5:1 › M1 malformed decoded ledger preserves last valid panel and closes connection
+[84/205] [chromium] › e2e-m1\map-capability.spec.ts:6:1 › REQ-PLAT-03 native backend capability renders pixels or preserves authority with localized notice
+[85/205] [chromium] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority preferred
+[86/205] [chromium] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority forced GL
+[87/205] [chromium] › e2e-m1\map-pipeline.spec.ts:5:65 › REQ-PLAT-03 actual device pipeline rejection falls back to GL pixels
+[88/205] [chromium] › e2e-m1\map-pipeline.spec.ts:5:65 › REQ-PLAT-03 actual device pipeline rejection with GL unavailable shows notice
+[89/205] [chromium] › e2e-m1\map-pipeline.spec.ts:5:65 › REQ-PLAT-03 actual device pipeline rejection with GL shader shows notice
+[90/205] [chromium] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 metadata CORS redirect sends no foreign request on first load
+[91/205] [chromium] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 metadata CORS redirect sends no foreign request after valid selection
+[92/205] [chromium] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 index CORS redirect sends no foreign request on first load
+[93/205] [chromium] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 index CORS redirect sends no foreign request after valid selection
+[94/205] [chromium] › e2e-m1\map-redirect.spec.ts:140:56 › WP08 P06 metadata same-origin redirect is also rejected before follow
+[95/205] [chromium] › e2e-m1\map-redirect.spec.ts:140:56 › WP08 P06 index same-origin redirect is also rejected before follow
+[96/205] [chromium] › e2e-m1\map-resize.spec.ts:7:1 › REQ-MAP-05 resize and reset preserve presentation pixels and camera authority
+[97/205] [chromium] › e2e-m1\map.spec.ts:11:1 › REQ-MAP-04/05 PLAT-03 actual map pixels, modes, pick and viewport
+[98/205] [chromium] › e2e-m1\map.spec.ts:40:1 › REQ-PLAT-03 preferred actual backend produces the same map RGB and source shader
+[99/205] [chromium] › e2e-m1\map.spec.ts:48:1 › REQ-MAP-04 changed server RGB updates only affected lookup texel on actual backend
+[100/205] [chromium] › e2e-m1\map.spec.ts:52:1 › REQ-MAP-04/05 RG8 high dense byte and LUT second row pick real ID65535
+[101/205] [chromium] › e2e-m1\map.spec.ts:59:33 › REQ-MAP-05 independent three border pixel oracle, u16 sentinel and camera preferred
+[102/205] [chromium] › e2e-m1\map.spec.ts:59:33 › REQ-MAP-05 independent three border pixel oracle, u16 sentinel and camera WebGL2
+[103/205] [chromium] › e2e-m1\map.spec.ts:93:93 › REQ-PLAT-03 missingGPU falls back to actual WebGL2 pixels
+[104/205] [chromium] › e2e-m1\map.spec.ts:93:93 › REQ-PLAT-03 nullAdapter falls back to actual WebGL2 pixels
+[105/205] [chromium] › e2e-m1\map.spec.ts:93:93 › REQ-PLAT-03 adapterReject falls back to actual WebGL2 pixels
+[106/205] [chromium] › e2e-m1\map.spec.ts:93:93 › REQ-PLAT-03 deviceReject falls back to actual WebGL2 pixels
+[107/205] [chromium] › e2e-m1\map.spec.ts:93:93 › REQ-PLAT-03 insecure falls back to actual WebGL2 pixels
+[108/205] [chromium] › e2e-m1\map.spec.ts:104:37 › REQ-PLAT-03 no backend shows localized notices
+[109/205] [chromium] › e2e-m1\map.spec.ts:104:37 › REQ-PLAT-03 no backend shows localized notices after preferred rejection
+[110/205] [chromium] › e2e-m1\map.spec.ts:114:1 › REQ-PLAT-03 actual WebGL2 texture limit is checked before texture creation
+[111/205] [chromium] › e2e-m1\map.spec.ts:118:1 › REQ-MAP-04 missing bundled index fails visibly without external download
+[112/205] [chromium] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary oldVersion rejects atomically
+[113/205] [chromium] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary futureVersion rejects atomically
+[114/205] [chromium] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary wrongPack rejects atomically
+[115/205] [chromium] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary duplicateIds rejects atomically
+[116/205] [chromium] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary badStyle rejects atomically
+[117/205] [chromium] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary shortBytes rejects atomically
+[118/205] [chromium] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary wrongHash rejects atomically
+[119/205] [chromium] › e2e-m1\map.spec.ts:132:70 › REQ-MAP-05 dangling preserves last valid map and closes wire
+[120/205] [chromium] › e2e-m1\map.spec.ts:132:70 › REQ-MAP-05 changedDimensions preserves last valid map and closes wire
+[121/205] [chromium] › e2e-m1\map.spec.ts:132:70 › REQ-MAP-05 changedDense preserves last valid map and closes wire
+[122/205] [chromium] › e2e-m1\national.spec.ts:6:1 › AC-M1-03 actual Rust M1 panels, separate owner/control, ledger, languages and time
+[123/205] [chromium] › e2e-m1\national.spec.ts:31:1 › REQ-NAT-01 MAP-08 actual query metadata, dense mapping, colors and refusal
+(node:196) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[124/205] [firefox] › e2e-m1\malformed-world.spec.ts:5:1 › M1 malformed decoded ledger preserves last valid panel and closes connection
+[125/205] [firefox] › e2e-m1\map-capability.spec.ts:6:1 › REQ-PLAT-03 native backend capability renders pixels or preserves authority with localized notice
+[126/205] [firefox] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority preferred
+[127/205] [firefox] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority forced GL
+[128/205] [firefox] › e2e-m1\map-pipeline.spec.ts:5:65 › REQ-PLAT-03 actual device pipeline rejection falls back to GL pixels
+[129/205] [firefox] › e2e-m1\map-pipeline.spec.ts:5:65 › REQ-PLAT-03 actual device pipeline rejection with GL unavailable shows notice
+[130/205] [firefox] › e2e-m1\map-pipeline.spec.ts:5:65 › REQ-PLAT-03 actual device pipeline rejection with GL shader shows notice
+[131/205] [firefox] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 metadata CORS redirect sends no foreign request on first load
+[132/205] [firefox] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 metadata CORS redirect sends no foreign request after valid selection
+[133/205] [firefox] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 index CORS redirect sends no foreign request on first load
+[134/205] [firefox] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 index CORS redirect sends no foreign request after valid selection
+[135/205] [firefox] › e2e-m1\map-redirect.spec.ts:140:56 › WP08 P06 metadata same-origin redirect is also rejected before follow
+[136/205] [firefox] › e2e-m1\map-redirect.spec.ts:140:56 › WP08 P06 index same-origin redirect is also rejected before follow
+[137/205] [firefox] › e2e-m1\map-resize.spec.ts:7:1 › REQ-MAP-05 resize and reset preserve presentation pixels and camera authority
+[138/205] [firefox] › e2e-m1\map.spec.ts:11:1 › REQ-MAP-04/05 PLAT-03 actual map pixels, modes, pick and viewport
+[139/205] [firefox] › e2e-m1\map.spec.ts:40:1 › REQ-PLAT-03 preferred actual backend produces the same map RGB and source shader
+[140/205] [firefox] › e2e-m1\map.spec.ts:48:1 › REQ-MAP-04 changed server RGB updates only affected lookup texel on actual backend
+[141/205] [firefox] › e2e-m1\map.spec.ts:52:1 › REQ-MAP-04/05 RG8 high dense byte and LUT second row pick real ID65535
+[142/205] [firefox] › e2e-m1\map.spec.ts:59:33 › REQ-MAP-05 independent three border pixel oracle, u16 sentinel and camera preferred
+[143/205] [firefox] › e2e-m1\map.spec.ts:59:33 › REQ-MAP-05 independent three border pixel oracle, u16 sentinel and camera WebGL2
+[144/205] [firefox] › e2e-m1\map.spec.ts:93:93 › REQ-PLAT-03 missingGPU falls back to actual WebGL2 pixels
+[145/205] [firefox] › e2e-m1\map.spec.ts:93:93 › REQ-PLAT-03 nullAdapter falls back to actual WebGL2 pixels
+[146/205] [firefox] › e2e-m1\map.spec.ts:93:93 › REQ-PLAT-03 adapterReject falls back to actual WebGL2 pixels
+[147/205] [firefox] › e2e-m1\map.spec.ts:93:93 › REQ-PLAT-03 deviceReject falls back to actual WebGL2 pixels
+[148/205] [firefox] › e2e-m1\map.spec.ts:93:93 › REQ-PLAT-03 insecure falls back to actual WebGL2 pixels
+[149/205] [firefox] › e2e-m1\map.spec.ts:104:37 › REQ-PLAT-03 no backend shows localized notices
+[150/205] [firefox] › e2e-m1\map.spec.ts:104:37 › REQ-PLAT-03 no backend shows localized notices after preferred rejection
+[151/205] [firefox] › e2e-m1\map.spec.ts:114:1 › REQ-PLAT-03 actual WebGL2 texture limit is checked before texture creation
+[152/205] [firefox] › e2e-m1\map.spec.ts:118:1 › REQ-MAP-04 missing bundled index fails visibly without external download
+[153/205] [firefox] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary oldVersion rejects atomically
+[154/205] [firefox] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary futureVersion rejects atomically
+[155/205] [firefox] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary wrongPack rejects atomically
+[156/205] [firefox] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary duplicateIds rejects atomically
+[157/205] [firefox] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary badStyle rejects atomically
+[158/205] [firefox] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary shortBytes rejects atomically
+[159/205] [firefox] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary wrongHash rejects atomically
+[160/205] [firefox] › e2e-m1\map.spec.ts:132:70 › REQ-MAP-05 dangling preserves last valid map and closes wire
+[161/205] [firefox] › e2e-m1\map.spec.ts:132:70 › REQ-MAP-05 changedDimensions preserves last valid map and closes wire
+[162/205] [firefox] › e2e-m1\map.spec.ts:132:70 › REQ-MAP-05 changedDense preserves last valid map and closes wire
+[163/205] [firefox] › e2e-m1\national.spec.ts:6:1 › AC-M1-03 actual Rust M1 panels, separate owner/control, ledger, languages and time
+[164/205] [firefox] › e2e-m1\national.spec.ts:31:1 › REQ-NAT-01 MAP-08 actual query metadata, dense mapping, colors and refusal
+(node:11508) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[165/205] [webkit] › e2e-m1\malformed-world.spec.ts:5:1 › M1 malformed decoded ledger preserves last valid panel and closes connection
+[166/205] [webkit] › e2e-m1\map-capability.spec.ts:6:1 › REQ-PLAT-03 native backend capability renders pixels or preserves authority with localized notice
+[167/205] [webkit] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority preferred
+[168/205] [webkit] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority forced GL
+[169/205] [webkit] › e2e-m1\map-pipeline.spec.ts:5:65 › REQ-PLAT-03 actual device pipeline rejection falls back to GL pixels
+[170/205] [webkit] › e2e-m1\map-pipeline.spec.ts:5:65 › REQ-PLAT-03 actual device pipeline rejection with GL unavailable shows notice
+[171/205] [webkit] › e2e-m1\map-pipeline.spec.ts:5:65 › REQ-PLAT-03 actual device pipeline rejection with GL shader shows notice
+[172/205] [webkit] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 metadata CORS redirect sends no foreign request on first load
+[173/205] [webkit] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 metadata CORS redirect sends no foreign request after valid selection
+[174/205] [webkit] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 index CORS redirect sends no foreign request on first load
+[175/205] [webkit] › e2e-m1\map-redirect.spec.ts:15:3 › WP08 P06 index CORS redirect sends no foreign request after valid selection
+[176/205] [webkit] › e2e-m1\map-redirect.spec.ts:140:56 › WP08 P06 metadata same-origin redirect is also rejected before follow
+[177/205] [webkit] › e2e-m1\map-redirect.spec.ts:140:56 › WP08 P06 index same-origin redirect is also rejected before follow
+[178/205] [webkit] › e2e-m1\map-resize.spec.ts:7:1 › REQ-MAP-05 resize and reset preserve presentation pixels and camera authority
+[179/205] [webkit] › e2e-m1\map.spec.ts:11:1 › REQ-MAP-04/05 PLAT-03 actual map pixels, modes, pick and viewport
+[180/205] [webkit] › e2e-m1\map.spec.ts:40:1 › REQ-PLAT-03 preferred actual backend produces the same map RGB and source shader
+[181/205] [webkit] › e2e-m1\map.spec.ts:48:1 › REQ-MAP-04 changed server RGB updates only affected lookup texel on actual backend
+[182/205] [webkit] › e2e-m1\map.spec.ts:52:1 › REQ-MAP-04/05 RG8 high dense byte and LUT second row pick real ID65535
+[183/205] [webkit] › e2e-m1\map.spec.ts:59:33 › REQ-MAP-05 independent three border pixel oracle, u16 sentinel and camera preferred
+[184/205] [webkit] › e2e-m1\map.spec.ts:59:33 › REQ-MAP-05 independent three border pixel oracle, u16 sentinel and camera WebGL2
+[185/205] [webkit] › e2e-m1\map.spec.ts:93:93 › REQ-PLAT-03 missingGPU falls back to actual WebGL2 pixels
+[186/205] [webkit] › e2e-m1\map.spec.ts:93:93 › REQ-PLAT-03 nullAdapter falls back to actual WebGL2 pixels
+[187/205] [webkit] › e2e-m1\map.spec.ts:93:93 › REQ-PLAT-03 adapterReject falls back to actual WebGL2 pixels
+[188/205] [webkit] › e2e-m1\map.spec.ts:93:93 › REQ-PLAT-03 deviceReject falls back to actual WebGL2 pixels
+[189/205] [webkit] › e2e-m1\map.spec.ts:93:93 › REQ-PLAT-03 insecure falls back to actual WebGL2 pixels
+[190/205] [webkit] › e2e-m1\map.spec.ts:104:37 › REQ-PLAT-03 no backend shows localized notices
+[191/205] [webkit] › e2e-m1\map.spec.ts:104:37 › REQ-PLAT-03 no backend shows localized notices after preferred rejection
+[192/205] [webkit] › e2e-m1\map.spec.ts:114:1 › REQ-PLAT-03 actual WebGL2 texture limit is checked before texture creation
+[193/205] [webkit] › e2e-m1\map.spec.ts:118:1 › REQ-MAP-04 missing bundled index fails visibly without external download
+[194/205] [webkit] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary oldVersion rejects atomically
+[195/205] [webkit] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary futureVersion rejects atomically
+[196/205] [webkit] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary wrongPack rejects atomically
+[197/205] [webkit] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary duplicateIds rejects atomically
+[198/205] [webkit] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary badStyle rejects atomically
+[199/205] [webkit] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary shortBytes rejects atomically
+[200/205] [webkit] › e2e-m1\map.spec.ts:122:116 › REQ-MAP-04 schema boundary wrongHash rejects atomically
+[201/205] [webkit] › e2e-m1\map.spec.ts:132:70 › REQ-MAP-05 dangling preserves last valid map and closes wire
+[202/205] [webkit] › e2e-m1\map.spec.ts:132:70 › REQ-MAP-05 changedDimensions preserves last valid map and closes wire
+[203/205] [webkit] › e2e-m1\map.spec.ts:132:70 › REQ-MAP-05 changedDense preserves last valid map and closes wire
+[204/205] [webkit] › e2e-m1\national.spec.ts:6:1 › AC-M1-03 actual Rust M1 panels, separate owner/control, ledger, languages and time
+[205/205] [webkit] › e2e-m1\national.spec.ts:31:1 › REQ-NAT-01 MAP-08 actual query metadata, dense mapping, colors and refusal
+  205 passed (3.9m)

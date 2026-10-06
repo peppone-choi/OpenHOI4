@@ -1,0 +1,7 @@
+{
+  "source": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\current-probes\\lifecycle.cjs",
+  "sourceSHA256": "08c3f93f5c78db78662dda260be4dca6020b7e55a6e489856a3eb6db2342a633",
+  "executed": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\current-probes\\native-lifecycle.cjs",
+  "executedSHA256": "a1eef0f257e768a029e4aae186933046af482aff0f42103e1c37f826fdf853cc",
+  "scope": "Separate supplemental fixture, original untouched. Native no-clip screenshot during liveCDP removes observed locator DPR restoration; six DPR changes exact buffer floor, same camera and real canvas/device lifecycle; original viewport/reset/404/cleanup assertions retained."
+}

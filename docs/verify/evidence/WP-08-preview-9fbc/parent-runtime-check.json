@@ -1,0 +1,11 @@
+{
+  "observed_at": "2026-10-07T04:10:11.616672+09:00",
+  "source_head": "9fbc05a1e29062f93bb362450aaddc2068aa41e9",
+  "pid": 21824,
+  "url": "http://127.0.0.1:19461",
+  "served_js_sha256": "d3707b855fe8bbc8d39ce319bbd17685b3e228396791634e91be62b00d86a5de",
+  "served_js_bytes": 1170783,
+  "executable_sha256": "0f35105daf5c2e9492637cd7de9fc1d0ebc0866a64d22ec7aa2993f310231ea2",
+  "matches_preserved_identity": true,
+  "scope": "new exact9fbc runtime; actor direct IAB in progress; not final independent PASS or main CI"
+}

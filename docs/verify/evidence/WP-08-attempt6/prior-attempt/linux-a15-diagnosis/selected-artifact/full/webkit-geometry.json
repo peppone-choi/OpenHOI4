@@ -1,0 +1,6285 @@
+{
+  "started": 1791310498757,
+  "ended": 1791310513973,
+  "timeout": 30000,
+  "status": "passed",
+  "errors": [],
+  "samples": [
+    {
+      "ms": 1063,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 825
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0"
+      },
+      "tick": "0",
+      "pause": "Pause",
+      "loading": [
+        "Connected",
+        "Loading map"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 1171,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 825
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0"
+      },
+      "tick": "0",
+      "pause": "Pause",
+      "loading": [
+        "Connected",
+        "Loading map"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 1275,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "1",
+        "selected": "",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "1"
+      },
+      "tick": "0",
+      "pause": "Pause",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 1402,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "3",
+        "selected": "",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "3",
+        "frameMs": "131"
+      },
+      "tick": "1",
+      "pause": "Pause",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 1500,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "6",
+        "selected": "",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "3",
+        "frameMs": "82.66666666666667"
+      },
+      "tick": "1",
+      "pause": "Pause",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 1603,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "9",
+        "selected": "",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "3",
+        "frameMs": "64.44444444444444"
+      },
+      "tick": "1",
+      "pause": "Pause",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 1708,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "13",
+        "selected": "",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "3",
+        "frameMs": "53.38461538461539"
+      },
+      "tick": "1",
+      "pause": "Pause",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 1814,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "18",
+        "selected": "",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "3",
+        "frameMs": "43.22222222222222"
+      },
+      "tick": "1",
+      "pause": "Pause",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 1915,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "21",
+        "selected": "",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "5",
+        "frameMs": "42.76190476190476"
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 2043,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "25",
+        "selected": "",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "40.32"
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 2147,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "30",
+        "selected": "",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "38.13333333333333"
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 2268,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "34",
+        "selected": "",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "7",
+        "frameMs": "36.470588235294116"
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 2371,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "37",
+        "selected": "",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "7",
+        "frameMs": "36.21621621621622"
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 2478,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "41",
+        "selected": "",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "35.8780487804878"
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 2580,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "43",
+        "selected": "",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "36.2093023255814"
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 2690,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "47",
+        "selected": "",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "35.808510638297875"
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 2816,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "51",
+        "selected": "",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "35.07843137254902"
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 2919,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "56",
+        "selected": "",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "34.19642857142857"
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 3024,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "60",
+        "selected": "",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "33.46666666666667"
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 3131,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "63",
+        "selected": "10",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "33.65079365079365",
+        "hover": "10"
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "10"
+    },
+    {
+      "ms": 3235,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "66",
+        "selected": "10",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "33.74242424242424",
+        "hover": "10"
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "10"
+    },
+    {
+      "ms": 3343,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "72",
+        "selected": "10",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "32.513888888888886",
+        "hover": "10"
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "10"
+    },
+    {
+      "ms": 3447,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "74",
+        "selected": "10",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "32.932432432432435",
+        "hover": ""
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "10"
+    },
+    {
+      "ms": 3553,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "74",
+        "selected": "10",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "32.932432432432435",
+        "hover": ""
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "10"
+    },
+    {
+      "ms": 3655,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "74",
+        "selected": "10",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "4",
+        "frameMs": "32.932432432432435",
+        "hover": ""
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "10"
+    },
+    {
+      "ms": 3759,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "74",
+        "selected": "10",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "32.932432432432435",
+        "hover": ""
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "10"
+    },
+    {
+      "ms": 3865,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "74",
+        "selected": "10",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "32.932432432432435",
+        "hover": ""
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "10"
+    },
+    {
+      "ms": 3967,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "74",
+        "selected": "10",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "32.932432432432435",
+        "hover": ""
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "10"
+    },
+    {
+      "ms": 4071,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "74",
+        "selected": "10",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "32.932432432432435",
+        "hover": ""
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "10"
+    },
+    {
+      "ms": 4175,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "74",
+        "selected": "10",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "32.932432432432435",
+        "hover": ""
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "10"
+    },
+    {
+      "ms": 4279,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "74",
+        "selected": "10",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "32.932432432432435",
+        "hover": ""
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "10"
+    },
+    {
+      "ms": 4383,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "74",
+        "selected": "10",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "3",
+        "frameMs": "32.932432432432435",
+        "hover": ""
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "10"
+    },
+    {
+      "ms": 4487,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "74",
+        "selected": "10",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "3",
+        "frameMs": "32.932432432432435",
+        "hover": ""
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "10"
+    },
+    {
+      "ms": 4593,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "79",
+        "selected": "10",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "3",
+        "frameMs": "45.45569620253165",
+        "hover": ""
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "10"
+    },
+    {
+      "ms": 4695,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "80",
+        "selected": "30",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "45.575",
+        "hover": "30"
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 4810,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "82",
+        "selected": "30",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "46.170731707317074",
+        "hover": "30"
+      },
+      "tick": "1",
+      "pause": "재개",
+      "loading": [
+        "연결됨"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 4913,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "85",
+        "selected": "30",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "45.83529411764706",
+        "hover": "30"
+      },
+      "tick": "1",
+      "pause": "재개",
+      "loading": [
+        "연결됨"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 5025,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "90",
+        "selected": "10",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "44.522222222222226",
+        "hover": "10"
+      },
+      "tick": "1",
+      "pause": "재개",
+      "loading": [
+        "연결됨"
+      ],
+      "selection": "10"
+    },
+    {
+      "ms": 5130,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "93",
+        "selected": "10",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "44.27956989247312",
+        "hover": "10"
+      },
+      "tick": "1",
+      "pause": "재개",
+      "loading": [
+        "연결됨"
+      ],
+      "selection": "10"
+    },
+    {
+      "ms": 5231,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "98",
+        "selected": "10",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "43.08163265306123",
+        "hover": "10"
+      },
+      "tick": "1",
+      "pause": "재개",
+      "loading": [
+        "연결됨"
+      ],
+      "selection": "10"
+    },
+    {
+      "ms": 5346,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "103",
+        "selected": "30",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "3",
+        "frameMs": "42.12621359223301",
+        "hover": "30"
+      },
+      "tick": "1",
+      "pause": "재개",
+      "loading": [
+        "연결됨"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 5447,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "106",
+        "selected": "30",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "2",
+        "frameMs": "41.85849056603774",
+        "hover": "30"
+      },
+      "tick": "1",
+      "pause": "재개",
+      "loading": [
+        "연결됨"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 5551,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "109",
+        "selected": "30",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "2",
+        "frameMs": "41.74311926605505",
+        "hover": "30"
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 5660,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":4,\"y\":3,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "112",
+        "selected": "30",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "41.401785714285715",
+        "hover": "50"
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 5766,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "115",
+        "selected": "30",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "41.15652173913043",
+        "hover": ""
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 5868,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "119",
+        "selected": "30",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "40.890756302521005",
+        "hover": ""
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 5972,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "122",
+        "selected": "30",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "40.614754098360656",
+        "hover": ""
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 6075,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "127",
+        "selected": "30",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "39.8503937007874",
+        "hover": ""
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 6180,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "130",
+        "selected": "30",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "6",
+        "frameMs": "39.83076923076923",
+        "hover": ""
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 6283,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "133",
+        "selected": "30",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "6",
+        "frameMs": "39.609022556390975",
+        "hover": ""
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 6400,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "137",
+        "selected": "30",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "39.33576642335766",
+        "hover": ""
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 6503,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "140",
+        "selected": "30",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "39.15",
+        "hover": ""
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 6607,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "144",
+        "selected": "30",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "38.77777777777778",
+        "hover": ""
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 6713,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "148",
+        "selected": "30",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "38.554054054054056",
+        "hover": ""
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 6822,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "152",
+        "selected": "30",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "38.05263157894737",
+        "hover": ""
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 6923,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "155",
+        "selected": "30",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "38.18064516129032",
+        "hover": ""
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 7027,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "159",
+        "selected": "30",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "37.685534591194966",
+        "hover": ""
+      },
+      "tick": "1",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 7132,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "162",
+        "selected": "30",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "3",
+        "frameMs": "37.72839506172839",
+        "hover": ""
+      },
+      "tick": "4294",
+      "pause": "Pause",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 7238,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "164",
+        "selected": "30",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "37.78658536585366",
+        "hover": ""
+      },
+      "tick": "8643",
+      "pause": "Pause",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 7339,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "168",
+        "selected": "30",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "37.48809523809524",
+        "hover": ""
+      },
+      "tick": "14807",
+      "pause": "Pause",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 7445,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "170",
+        "selected": "30",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "37.7",
+        "hover": ""
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 7547,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "174",
+        "selected": "30",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "37.5",
+        "hover": ""
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 7651,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "176",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "20",
+        "updateMs": "18",
+        "frameMs": "37.61931818181818",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 7755,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 674,
+        "height": 410
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1100,
+        "height": 800,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 855
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "179",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "37.486033519553075",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 7859,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 674,
+        "height": 410
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1100,
+        "height": 800,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 855
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "179",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "37.486033519553075",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 7963,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 674,
+        "height": 410
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1100,
+        "height": 800,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 855
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "179",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "37.486033519553075",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 8067,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 674,
+        "height": 410
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1100,
+        "height": 800,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 855
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "179",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "37.486033519553075",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 8173,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 674,
+        "height": 410
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1100,
+        "height": 800,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 855
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "179",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "37.486033519553075",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 8275,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 674,
+        "height": 410
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1100,
+        "height": 800,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 855
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "179",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "37.486033519553075",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 8379,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 674,
+        "height": 410
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1100,
+        "height": 800,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 855
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "179",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "37.486033519553075",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 8483,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 674,
+        "height": 410
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1100,
+        "height": 800,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 855
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "179",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "37.486033519553075",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 8587,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 674,
+        "height": 410
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1100,
+        "height": 800,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 855
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "179",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "4",
+        "frameMs": "37.486033519553075",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 8691,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 674,
+        "height": 410
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1100,
+        "height": 800,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 855
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "179",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "7",
+        "frameMs": "37.486033519553075",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 8795,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 674,
+        "height": 410
+      },
+      "canvas": {
+        "id": 1,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1100,
+        "height": 800,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 855
+      },
+      "dataset": {
+        "testid": "province-map",
+        "backend": "webgl2",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "frames": "179",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "37.486033519553075",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 8967,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 674,
+        "height": 410
+      },
+      "canvas": {
+        "id": 2,
+        "width": 674,
+        "height": 410,
+        "cssWidth": 674,
+        "cssHeight": 410
+      },
+      "viewport": {
+        "width": 1100,
+        "height": 800,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 855
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "43.90555555555556",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 9072,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 674,
+        "height": 410
+      },
+      "canvas": {
+        "id": 2,
+        "width": 674,
+        "height": 410,
+        "cssWidth": 674,
+        "cssHeight": 410
+      },
+      "viewport": {
+        "width": 1100,
+        "height": 800,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 905
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "43.90555555555556",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected",
+        "Loading map"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 9175,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 674,
+        "height": 410
+      },
+      "canvas": {
+        "id": 2,
+        "width": 674,
+        "height": 410,
+        "cssWidth": 674,
+        "cssHeight": 410
+      },
+      "viewport": {
+        "width": 1100,
+        "height": 800,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 905
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "43.90555555555556",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected",
+        "Loading map"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 9282,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 674,
+        "height": 410
+      },
+      "canvas": {
+        "id": 2,
+        "width": 674,
+        "height": 410,
+        "cssWidth": 674,
+        "cssHeight": 410
+      },
+      "viewport": {
+        "width": 1100,
+        "height": 800,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 905
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "43.90555555555556",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected",
+        "Loading map"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 9383,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 674,
+        "height": 410
+      },
+      "canvas": {
+        "id": 2,
+        "width": 674,
+        "height": 410,
+        "cssWidth": 674,
+        "cssHeight": 410
+      },
+      "viewport": {
+        "width": 1100,
+        "height": 800,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 855
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":8.43351821355552,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "43.90555555555556",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2",
+        "frames": "1"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 9496,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 674,
+        "height": 410
+      },
+      "canvas": {
+        "id": 2,
+        "width": 674,
+        "height": 410,
+        "cssWidth": 674,
+        "cssHeight": 410
+      },
+      "viewport": {
+        "width": 1100,
+        "height": 800,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 855
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":8.43351821355552,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "282.5",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2",
+        "frames": "2"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 9601,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 674,
+        "height": 410
+      },
+      "canvas": {
+        "id": 2,
+        "width": 674,
+        "height": 410,
+        "cssWidth": 674,
+        "cssHeight": 410
+      },
+      "viewport": {
+        "width": 1100,
+        "height": 800,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 855
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":8.43351821355552,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "133.8",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2",
+        "frames": "5"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 9703,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 674,
+        "height": 410
+      },
+      "canvas": {
+        "id": 2,
+        "width": 674,
+        "height": 410,
+        "cssWidth": 674,
+        "cssHeight": 410
+      },
+      "viewport": {
+        "width": 1100,
+        "height": 800,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 855
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":8.43351821355552,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "106",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2",
+        "frames": "7"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 9807,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 674,
+        "height": 410
+      },
+      "canvas": {
+        "id": 2,
+        "width": 674,
+        "height": 410,
+        "cssWidth": 674,
+        "cssHeight": 410
+      },
+      "viewport": {
+        "width": 1100,
+        "height": 800,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 855
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":8.43351821355552,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "78.54545454545455",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2",
+        "frames": "11"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 9917,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 674,
+        "height": 410
+      },
+      "canvas": {
+        "id": 2,
+        "width": 674,
+        "height": 410,
+        "cssWidth": 674,
+        "cssHeight": 410
+      },
+      "viewport": {
+        "width": 1100,
+        "height": 800,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 855
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":8.43351821355552,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "73.84615384615384",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2",
+        "frames": "13"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 10017,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 674,
+        "height": 410
+      },
+      "canvas": {
+        "id": 2,
+        "width": 674,
+        "height": 410,
+        "cssWidth": 674,
+        "cssHeight": 410
+      },
+      "viewport": {
+        "width": 1100,
+        "height": 800,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 855
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":8.43351821355552,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "69.66666666666667",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2",
+        "frames": "15"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 10126,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 674,
+        "height": 410
+      },
+      "canvas": {
+        "id": 2,
+        "width": 674,
+        "height": 410,
+        "cssWidth": 674,
+        "cssHeight": 410
+      },
+      "viewport": {
+        "width": 1100,
+        "height": 800,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 855
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":8.43351821355552,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "66.38888888888889",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2",
+        "frames": "18"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 10242,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 674,
+        "height": 410
+      },
+      "canvas": {
+        "id": 2,
+        "width": 674,
+        "height": 410,
+        "cssWidth": 674,
+        "cssHeight": 410
+      },
+      "viewport": {
+        "width": 1100,
+        "height": 800,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 855
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":8.43351821355552,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "65.35",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2",
+        "frames": "20"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 10343,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 674,
+        "height": 410
+      },
+      "canvas": {
+        "id": 2,
+        "width": 674,
+        "height": 410,
+        "cssWidth": 674,
+        "cssHeight": 410
+      },
+      "viewport": {
+        "width": 1100,
+        "height": 800,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 855
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":8.43351821355552,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "63.22727272727273",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2",
+        "frames": "22"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 10447,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 2,
+        "width": 674,
+        "height": 410,
+        "cssWidth": 674,
+        "cssHeight": 410
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":8.43351821355552,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "62.56521739130435",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2",
+        "frames": "23"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 10651,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":8.43351821355552,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "63.291666666666664",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 10755,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 825
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":8.43351821355552,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "63.291666666666664",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected",
+        "Loading map"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 10871,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 825
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":8.43351821355552,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "63.291666666666664",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected",
+        "Loading map"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 10981,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "181",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2",
+        "frames": "2"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 11084,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "114.25",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2",
+        "frames": "4"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 11214,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "71.25",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2",
+        "frames": "8"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 11324,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "2",
+        "frameMs": "59.25",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2",
+        "frames": "12"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 11439,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "52",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2",
+        "frames": "16"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 11543,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "51.666666666666664",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2",
+        "frames": "18"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 11647,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "50.45",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2",
+        "frames": "20"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 11751,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "44.96",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2",
+        "frames": "25"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 11855,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "42.3448275862069",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2",
+        "frames": "29"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 11959,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "39.6764705882353",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2",
+        "frames": "34"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 12068,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "39.37837837837838",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2",
+        "frames": "37"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 12172,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "38.625",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2",
+        "frames": "40"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 12284,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "30",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "2",
+        "frameMs": "37.79545454545455",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2",
+        "frames": "44"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "30"
+    },
+    {
+      "ms": 12392,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "35.91836734693877",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2",
+        "frames": "49"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 12496,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "34.870370370370374",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "20",
+        "backend": "webgl2",
+        "frames": "54"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 12600,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "34.85964912280702",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "32",
+        "totalChangedBytes": "40",
+        "backend": "webgl2",
+        "frames": "57"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 12703,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "34.32786885245902",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "32",
+        "totalChangedBytes": "40",
+        "backend": "webgl2",
+        "frames": "61"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 12807,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "2",
+        "frameMs": "33.738461538461536",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "32",
+        "totalChangedBytes": "40",
+        "backend": "webgl2",
+        "frames": "65"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 12911,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "34.19402985074627",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "32",
+        "totalChangedBytes": "40",
+        "backend": "webgl2",
+        "frames": "67"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 13032,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "33.5",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "32",
+        "totalChangedBytes": "40",
+        "backend": "webgl2",
+        "frames": "72"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 13140,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "",
+        "mode": "map-mode-owner",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "33.06578947368421",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "32",
+        "totalChangedBytes": "40",
+        "backend": "webgl2",
+        "frames": "76"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 13258,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "20",
+        "updateMs": "18",
+        "frameMs": "32.24390243902439",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "60",
+        "backend": "webgl2",
+        "frames": "82"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 13359,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "5",
+        "frameMs": "31.91860465116279",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "60",
+        "backend": "webgl2",
+        "frames": "86"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 13485,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "5",
+        "frameMs": "31.384615384615383",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "60",
+        "backend": "webgl2",
+        "frames": "91"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 13587,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "31.20212765957447",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "60",
+        "backend": "webgl2",
+        "frames": "94"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 13713,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "31.333333333333332",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "60",
+        "backend": "webgl2",
+        "frames": "99"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 13816,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "",
+        "mode": "map-mode-terrain",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "30.97087378640777",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "18",
+        "totalChangedBytes": "60",
+        "backend": "webgl2",
+        "frames": "103"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 13919,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "",
+        "mode": "map-mode-state",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "30.564814814814813",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "27",
+        "totalChangedBytes": "80",
+        "backend": "webgl2",
+        "frames": "108"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 14023,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "",
+        "mode": "map-mode-state",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "30.473214285714285",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "27",
+        "totalChangedBytes": "80",
+        "backend": "webgl2",
+        "frames": "112"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 14129,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "",
+        "mode": "map-mode-state",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "30.17241379310345",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "27",
+        "totalChangedBytes": "80",
+        "backend": "webgl2",
+        "frames": "116"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 14285,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "",
+        "mode": "map-mode-state",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "30.355371900826448",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "27",
+        "totalChangedBytes": "80",
+        "backend": "webgl2",
+        "frames": "121"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 14387,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "",
+        "mode": "map-mode-state",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "30.35483870967742",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "27",
+        "totalChangedBytes": "80",
+        "backend": "webgl2",
+        "frames": "124"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 14491,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "",
+        "mode": "map-mode-state",
+        "updatedBytes": "0",
+        "updateMs": "4",
+        "frameMs": "29.861538461538462",
+        "hover": "",
+        "lastChangedBytes": "20",
+        "lastUpdateMs": "27",
+        "totalChangedBytes": "80",
+        "backend": "webgl2",
+        "frames": "130"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 14600,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "",
+        "mode": "map-mode-control",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "29.969924812030076",
+        "hover": "",
+        "lastChangedBytes": "16",
+        "lastUpdateMs": "22",
+        "totalChangedBytes": "96",
+        "backend": "webgl2",
+        "frames": "133"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 14703,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "",
+        "mode": "map-mode-control",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "29.985294117647058",
+        "hover": "",
+        "lastChangedBytes": "16",
+        "lastUpdateMs": "22",
+        "totalChangedBytes": "96",
+        "backend": "webgl2",
+        "frames": "136"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 14815,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "",
+        "mode": "map-mode-control",
+        "updatedBytes": "0",
+        "updateMs": "0",
+        "frameMs": "29.53191489361702",
+        "hover": "",
+        "lastChangedBytes": "16",
+        "lastUpdateMs": "22",
+        "totalChangedBytes": "96",
+        "backend": "webgl2",
+        "frames": "141"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 14935,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "",
+        "mode": "map-mode-control",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "29.636986301369863",
+        "hover": "",
+        "lastChangedBytes": "16",
+        "lastUpdateMs": "22",
+        "totalChangedBytes": "96",
+        "backend": "webgl2",
+        "frames": "146"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    },
+    {
+      "ms": 15044,
+      "box": {
+        "x": 37,
+        "y": 327,
+        "width": 854,
+        "height": 330
+      },
+      "canvas": {
+        "id": 3,
+        "width": 854,
+        "height": 330,
+        "cssWidth": 854,
+        "cssHeight": 330
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "scrollX": 0,
+        "scrollY": 0,
+        "bodyHeight": 775
+      },
+      "dataset": {
+        "testid": "province-map",
+        "textureLimit": "16384",
+        "adapter": "Apple GPU",
+        "device": "WebGL 2.0",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "shaderLanguage": "glsl",
+        "shaderLength": "16167",
+        "selected": "",
+        "mode": "map-mode-control",
+        "updatedBytes": "0",
+        "updateMs": "1",
+        "frameMs": "29.526666666666667",
+        "hover": "",
+        "lastChangedBytes": "16",
+        "lastUpdateMs": "22",
+        "totalChangedBytes": "96",
+        "backend": "webgl2",
+        "frames": "150"
+      },
+      "tick": "19272",
+      "pause": "Resume",
+      "loading": [
+        "Connected"
+      ],
+      "selection": "—"
+    }
+  ]
+}

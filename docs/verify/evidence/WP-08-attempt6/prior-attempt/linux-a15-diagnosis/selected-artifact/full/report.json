@@ -1,0 +1,3424 @@
+{
+  "config": {
+    "argv": [
+      "/opt/hostedtoolcache/node/24.4.0/x64/bin/node",
+      "/home/runner/work/OpenHOI4/OpenHOI4/client/node_modules/.bin/playwright",
+      "test",
+      "--config",
+      "playwright.resize-probe.config.ts",
+      "--project",
+      "chromium",
+      "--project",
+      "webkit",
+      "--workers",
+      "2"
+    ],
+    "configFile": "/home/runner/work/OpenHOI4/OpenHOI4/client/playwright.resize-probe.config.ts",
+    "rootDir": "/home/runner/work/OpenHOI4/OpenHOI4/client/e2e-m1",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "ci": {
+        "commitHref": "https://github.com/peppone-choi/OpenHOI4/commit/a15f64f7b241f7d64cce5b39ab9b95c0142e9b86",
+        "commitHash": "a15f64f7b241f7d64cce5b39ab9b95c0142e9b86",
+        "buildHref": "https://github.com/peppone-choi/OpenHOI4/actions/runs/37509083162"
+      },
+      "gitCommit": {
+        "shortHash": "a15f64f",
+        "hash": "a15f64f7b241f7d64cce5b39ab9b95c0142e9b86",
+        "subject": "test(map): diagnose Linux resize phases without changing oracle",
+        "body": "test(map): diagnose Linux resize phases without changing oracle\n",
+        "author": {
+          "name": "pepponechoi",
+          "email": "peppone.choi@gmail.com",
+          "time": 1791309467000
+        },
+        "committer": {
+          "name": "pepponechoi",
+          "email": "peppone.choi@gmail.com",
+          "time": 1791309467000
+        },
+        "branch": "codex/wp08-map-rendering"
+      },
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/peppone-choi/OpenHOI4/commit/a15f64f7b241f7d64cce5b39ab9b95c0142e9b86",
+            "commitHash": "a15f64f7b241f7d64cce5b39ab9b95c0142e9b86",
+            "buildHref": "https://github.com/peppone-choi/OpenHOI4/actions/runs/37509083162"
+          },
+          "gitCommit": {
+            "shortHash": "a15f64f",
+            "hash": "a15f64f7b241f7d64cce5b39ab9b95c0142e9b86",
+            "subject": "test(map): diagnose Linux resize phases without changing oracle",
+            "body": "test(map): diagnose Linux resize phases without changing oracle\n",
+            "author": {
+              "name": "pepponechoi",
+              "email": "peppone.choi@gmail.com",
+              "time": 1791309467000
+            },
+            "committer": {
+              "name": "pepponechoi",
+              "email": "peppone.choi@gmail.com",
+              "time": 1791309467000
+            },
+            "branch": "codex/wp08-map-rendering"
+          },
+          "actualWorkers": 2
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/home/runner/work/OpenHOI4/OpenHOI4/client/e2e-m1",
+        "testIgnore": [],
+        "testMatch": [
+          "national.spec.ts",
+          "malformed-world.spec.ts",
+          "map.spec.ts",
+          "map-redirect.spec.ts",
+          "map-capability.spec.ts",
+          "map-resize.spec.ts",
+          "map-pipeline.spec.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/peppone-choi/OpenHOI4/commit/a15f64f7b241f7d64cce5b39ab9b95c0142e9b86",
+            "commitHash": "a15f64f7b241f7d64cce5b39ab9b95c0142e9b86",
+            "buildHref": "https://github.com/peppone-choi/OpenHOI4/actions/runs/37509083162"
+          },
+          "gitCommit": {
+            "shortHash": "a15f64f",
+            "hash": "a15f64f7b241f7d64cce5b39ab9b95c0142e9b86",
+            "subject": "test(map): diagnose Linux resize phases without changing oracle",
+            "body": "test(map): diagnose Linux resize phases without changing oracle\n",
+            "author": {
+              "name": "pepponechoi",
+              "email": "peppone.choi@gmail.com",
+              "time": 1791309467000
+            },
+            "committer": {
+              "name": "pepponechoi",
+              "email": "peppone.choi@gmail.com",
+              "time": 1791309467000
+            },
+            "branch": "codex/wp08-map-rendering"
+          },
+          "actualWorkers": 2
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "/home/runner/work/OpenHOI4/OpenHOI4/client/e2e-m1",
+        "testIgnore": [],
+        "testMatch": [
+          "national.spec.ts",
+          "malformed-world.spec.ts",
+          "map.spec.ts",
+          "map-redirect.spec.ts",
+          "map-capability.spec.ts",
+          "map-resize.spec.ts",
+          "map-pipeline.spec.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/peppone-choi/OpenHOI4/commit/a15f64f7b241f7d64cce5b39ab9b95c0142e9b86",
+            "commitHash": "a15f64f7b241f7d64cce5b39ab9b95c0142e9b86",
+            "buildHref": "https://github.com/peppone-choi/OpenHOI4/actions/runs/37509083162"
+          },
+          "gitCommit": {
+            "shortHash": "a15f64f",
+            "hash": "a15f64f7b241f7d64cce5b39ab9b95c0142e9b86",
+            "subject": "test(map): diagnose Linux resize phases without changing oracle",
+            "body": "test(map): diagnose Linux resize phases without changing oracle\n",
+            "author": {
+              "name": "pepponechoi",
+              "email": "peppone.choi@gmail.com",
+              "time": 1791309467000
+            },
+            "committer": {
+              "name": "pepponechoi",
+              "email": "peppone.choi@gmail.com",
+              "time": 1791309467000
+            },
+            "branch": "codex/wp08-map-rendering"
+          },
+          "actualWorkers": 2
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "/home/runner/work/OpenHOI4/OpenHOI4/client/e2e-m1",
+        "testIgnore": [],
+        "testMatch": [
+          "national.spec.ts",
+          "malformed-world.spec.ts",
+          "map.spec.ts",
+          "map-redirect.spec.ts",
+          "map-capability.spec.ts",
+          "map-resize.spec.ts",
+          "map-pipeline.spec.ts"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "../target/wp08/resize-probe/full/report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 2,
+    "webServer": {
+      "command": "\"/home/runner/work/OpenHOI4/OpenHOI4/target/debug/oh_server\" --port 19439 --pack-root ../data/packs",
+      "url": "http://127.0.0.1:19439",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "malformed-world.spec.ts",
+      "file": "malformed-world.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "M1 malformed decoded ledger preserves last valid panel and closes connection",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5572,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:12:58.674Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/malformed-world-M1-malform-c4d5e-panel-and-closes-connection-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d29ad02e0cfc6dff29a7-39cc69b2b58dd127cac5",
+          "file": "malformed-world.spec.ts",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "M1 malformed decoded ledger preserves last valid panel and closes connection",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4202,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:14:17.110Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/malformed-world-M1-malform-c4d5e-panel-and-closes-connection-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d29ad02e0cfc6dff29a7-1fde79977d47adf3151c",
+          "file": "malformed-world.spec.ts",
+          "line": 5,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "map-capability.spec.ts",
+      "file": "map-capability.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "REQ-PLAT-03 native backend capability renders pixels or preserves authority with localized notice",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 7934,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:12:58.638Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-capability-REQ-PLAT-03-12602-ority-with-localized-notice-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "75fb0237d0611f7af642-ea1fcc3b6e61ee736012",
+          "file": "map-capability.spec.ts",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "REQ-PLAT-03 native backend capability renders pixels or preserves authority with localized notice",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3575,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:14:22.669Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-capability-REQ-PLAT-03-12602-ority-with-localized-notice-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "75fb0237d0611f7af642-a114b5cc0ef3704c69f4",
+          "file": "map-capability.spec.ts",
+          "line": 6,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "map-pipeline.spec.ts",
+      "file": "map-pipeline.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "REQ-PLAT-03 actual device pipeline rejection falls back to GL pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5696,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:13:05.583Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-pipeline-REQ-PLAT-03-a-08472-ion-falls-back-to-GL-pixels-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7dada5185f1187ebe1ae-d83c9c476ee9858488b5",
+          "file": "map-pipeline.spec.ts",
+          "line": 5,
+          "column": 65
+        },
+        {
+          "title": "REQ-PLAT-03 actual device pipeline rejection with GL unavailable shows notice",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1931,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:13:12.102Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-pipeline-REQ-PLAT-03-a-798ba-GL-unavailable-shows-notice-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7dada5185f1187ebe1ae-f658fb00af0789d5f2ab",
+          "file": "map-pipeline.spec.ts",
+          "line": 5,
+          "column": 65
+        },
+        {
+          "title": "REQ-PLAT-03 actual device pipeline rejection with GL shader shows notice",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1792,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:13:14.846Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-pipeline-REQ-PLAT-03-a-933c5-with-GL-shader-shows-notice-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7dada5185f1187ebe1ae-fa338cd94b48e5acc563",
+          "file": "map-pipeline.spec.ts",
+          "line": 5,
+          "column": 65
+        },
+        {
+          "title": "REQ-PLAT-03 actual device pipeline rejection falls back to GL pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3332,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:14:27.114Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-pipeline-REQ-PLAT-03-a-08472-ion-falls-back-to-GL-pixels-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7dada5185f1187ebe1ae-f00a55c93dbc2f9b3b52",
+          "file": "map-pipeline.spec.ts",
+          "line": 5,
+          "column": 65
+        },
+        {
+          "title": "REQ-PLAT-03 actual device pipeline rejection with GL unavailable shows notice",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2179,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:14:31.283Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-pipeline-REQ-PLAT-03-a-798ba-GL-unavailable-shows-notice-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7dada5185f1187ebe1ae-e21c7730514c9603f8d2",
+          "file": "map-pipeline.spec.ts",
+          "line": 5,
+          "column": 65
+        },
+        {
+          "title": "REQ-PLAT-03 actual device pipeline rejection with GL shader shows notice",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2350,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:14:34.194Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-pipeline-REQ-PLAT-03-a-933c5-with-GL-shader-shows-notice-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7dada5185f1187ebe1ae-31c31e255564704d193f",
+          "file": "map-pipeline.spec.ts",
+          "line": 5,
+          "column": 65
+        }
+      ]
+    },
+    {
+      "title": "map-redirect.spec.ts",
+      "file": "map-redirect.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "WP08 P06 metadata CORS redirect sends no foreign request on first load",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2227,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:13:08.086Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-redirect-WP08-P06-meta-4c122-reign-request-on-first-load-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "50edf8e080438619dcfe-1cec707222437c1344dc",
+          "file": "map-redirect.spec.ts",
+          "line": 15,
+          "column": 3
+        },
+        {
+          "title": "WP08 P06 metadata CORS redirect sends no foreign request after valid selection",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 5067,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:13:11.258Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-redirect-WP08-P06-meta-ec1da-quest-after-valid-selection-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "50edf8e080438619dcfe-6fb1e9605a6a8c9f7f93",
+          "file": "map-redirect.spec.ts",
+          "line": 15,
+          "column": 3
+        },
+        {
+          "title": "WP08 P06 index CORS redirect sends no foreign request on first load",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1768,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:13:17.166Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-redirect-WP08-P06-inde-8504b-reign-request-on-first-load-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "50edf8e080438619dcfe-f79531249796b93c0a7e",
+          "file": "map-redirect.spec.ts",
+          "line": 15,
+          "column": 3
+        },
+        {
+          "title": "WP08 P06 index CORS redirect sends no foreign request after valid selection",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 7714,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:13:19.813Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-redirect-WP08-P06-inde-ac0ff-quest-after-valid-selection-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "50edf8e080438619dcfe-fab2e07e08f1415b057f",
+          "file": "map-redirect.spec.ts",
+          "line": 15,
+          "column": 3
+        },
+        {
+          "title": "WP08 P06 metadata same-origin redirect is also rejected before follow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1935,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:13:28.622Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-redirect-WP08-P06-meta-eac93-also-rejected-before-follow-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "50edf8e080438619dcfe-a4ddca585b2af52bc4d4",
+          "file": "map-redirect.spec.ts",
+          "line": 140,
+          "column": 56
+        },
+        {
+          "title": "WP08 P06 index same-origin redirect is also rejected before follow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1751,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:13:31.271Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-redirect-WP08-P06-inde-0e399-also-rejected-before-follow-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "50edf8e080438619dcfe-6c5839be60ab5c30b4a9",
+          "file": "map-redirect.spec.ts",
+          "line": 140,
+          "column": 56
+        },
+        {
+          "title": "WP08 P06 metadata CORS redirect sends no foreign request on first load",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2452,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:14:37.332Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-redirect-WP08-P06-meta-4c122-reign-request-on-first-load-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "50edf8e080438619dcfe-36f98682cb09bd69d3e9",
+          "file": "map-redirect.spec.ts",
+          "line": 15,
+          "column": 3
+        },
+        {
+          "title": "WP08 P06 metadata CORS redirect sends no foreign request after valid selection",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4368,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:14:40.630Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-redirect-WP08-P06-meta-ec1da-quest-after-valid-selection-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "50edf8e080438619dcfe-4b8847cc7777f0c8248d",
+          "file": "map-redirect.spec.ts",
+          "line": 15,
+          "column": 3
+        },
+        {
+          "title": "WP08 P06 index CORS redirect sends no foreign request on first load",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2695,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:14:45.735Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-redirect-WP08-P06-inde-8504b-reign-request-on-first-load-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "50edf8e080438619dcfe-a37d9f99cc323bd6967a",
+          "file": "map-redirect.spec.ts",
+          "line": 15,
+          "column": 3
+        },
+        {
+          "title": "WP08 P06 index CORS redirect sends no foreign request after valid selection",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3360,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:14:48.890Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-redirect-WP08-P06-inde-ac0ff-quest-after-valid-selection-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "50edf8e080438619dcfe-eab5ff94bb6653738e34",
+          "file": "map-redirect.spec.ts",
+          "line": 15,
+          "column": 3
+        },
+        {
+          "title": "WP08 P06 metadata same-origin redirect is also rejected before follow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1920,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:14:53.014Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-redirect-WP08-P06-meta-eac93-also-rejected-before-follow-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "50edf8e080438619dcfe-143feb83062471c8fe54",
+          "file": "map-redirect.spec.ts",
+          "line": 140,
+          "column": 56
+        },
+        {
+          "title": "WP08 P06 index same-origin redirect is also rejected before follow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1815,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:14:55.775Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-redirect-WP08-P06-inde-0e399-also-rejected-before-follow-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "50edf8e080438619dcfe-ea886fa2085988fd3c83",
+          "file": "map-redirect.spec.ts",
+          "line": 140,
+          "column": 56
+        }
+      ]
+    },
+    {
+      "title": "map-resize.spec.ts",
+      "file": "map-resize.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "REQ-MAP-05 resize and reset preserve presentation pixels and camera authority",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 33035,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/OpenHOI4/OpenHOI4/client/e2e-m1/map-resize.spec.ts",
+                        "column": 30,
+                        "line": 20
+                      },
+                      "message": "Error: locator.screenshot: Element is not attached to the DOM\nCall log:\n\u001b[2m  - taking element screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - attempting scroll into view action\u001b[22m\n\u001b[2m    - waiting for element to be stable\u001b[22m\n\n\n  18 |   const gpu=await map.evaluate(async(host,{x,y})=>{const canvas=host.querySelector('canvas')!;if((host as HTMLElement).dataset.backend!=='webgl2')return null;const gl=canvas.getContext('webgl2')!;return await new Promise<{pixel:number[];error:number;lost:boolean}>(resolve=>requestAnimationFrame(()=>{const v=new Uint8Array(4);gl.readPixels(Math.floor(x*canvas.width/host.clientWidth),canvas.height-1-Math.floor(y*canvas.height/host.clientHeight),1,1,gl.RGBA,gl.UNSIGNED_BYTE,v);resolve({pixel:Array.from(v),error:gl.getError(),lost:gl.isContextLost()});}));},{x,y});\n  19 |   const key=await map.getAttribute('data-mode')==='map-mode-terrain'?'terrain_color':'owner_color';\n> 20 |   const actual=png(await map.screenshot({path:`${evidence}/${info.project.name}-${label}.png`})).pixel(x,y),expected=world!.provinces.find(p=>p.id===10)![key]!;\n     |                              ^\n  21 |   captures.push({label,camera:c,gpu,actual,expected});writeFileSync(`${evidence}/${info.project.name}-resize.json`,JSON.stringify({browser:browser.version(),captures,errors},null,2));\n  22 |   if(gpu){expect(gpu.error).toBe(0);expect(gpu.lost).toBe(false);for(let i=0;i<3;i++)expect(Math.abs(gpu.pixel[i]-expected[i])).toBeLessThanOrEqual(1);}\n  23 |   for(let i=0;i<3;i++)expect(Math.abs(actual[i]-expected[i]),`${label}: visible ${actual}, expected ${expected}`).toBeLessThanOrEqual(1);\n    at capture (/home/runner/work/OpenHOI4/OpenHOI4/client/e2e-m1/map-resize.spec.ts:20:30)\n    at /home/runner/work/OpenHOI4/OpenHOI4/client/e2e-m1/map-resize.spec.ts:31:162"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:13:17.320Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-resize-REQ-MAP-05-resi-440c3-pixels-and-camera-authority-chromium/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-resize-REQ-MAP-05-resi-440c3-pixels-and-camera-authority-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "de1f7520e46654feef07-ca62a497c698fe97be0d",
+          "file": "map-resize.spec.ts",
+          "line": 8,
+          "column": 1
+        },
+        {
+          "title": "REQ-MAP-05 resize and reset preserve presentation pixels and camera authority",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16533,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:14:58.397Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-resize-REQ-MAP-05-resi-440c3-pixels-and-camera-authority-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de1f7520e46654feef07-47c4346bb48cd5ba7a28",
+          "file": "map-resize.spec.ts",
+          "line": 8,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "map.spec.ts",
+      "file": "map.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "REQ-MAP-04/05 PLAT-03 actual map pixels, modes, pick and viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 18774,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:13:33.921Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-04-05-PLAT-03--1c38b-els-modes-pick-and-viewport-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-a4c5cc58d5f9ec283b08",
+          "file": "map.spec.ts",
+          "line": 11,
+          "column": 1
+        },
+        {
+          "title": "REQ-PLAT-03 preferred actual backend produces the same map RGB and source shader",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 16419,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:13:53.663Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-PLAT-03-preferred--2ff29-e-map-RGB-and-source-shader-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-2b3530952949b7b1e979",
+          "file": "map.spec.ts",
+          "line": 40,
+          "column": 1
+        },
+        {
+          "title": "REQ-MAP-04 changed server RGB updates only affected lookup texel on actual backend",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 5553,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:14:11.576Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-04-changed-ser-06fa5-kup-texel-on-actual-backend-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-294e8d4c3d852e8a5d65",
+          "file": "map.spec.ts",
+          "line": 48,
+          "column": 1
+        },
+        {
+          "title": "REQ-MAP-04/05 RG8 high dense byte and LUT second row pick real ID65535",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2210,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:14:17.688Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-04-05-RG8-high-71352-econd-row-pick-real-ID65535-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-4e21aabde39dfecb703f",
+          "file": "map.spec.ts",
+          "line": 52,
+          "column": 1
+        },
+        {
+          "title": "REQ-MAP-05 independent three border pixel oracle, u16 sentinel and camera preferred",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 27662,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:14:20.499Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-05-independent-d73a2-ntinel-and-camera-preferred-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-a67017233fa02153e298",
+          "file": "map.spec.ts",
+          "line": 59,
+          "column": 33
+        },
+        {
+          "title": "REQ-MAP-05 independent three border pixel oracle, u16 sentinel and camera WebGL2",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 30210,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:14:49.324Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-05-independent-f177e--sentinel-and-camera-WebGL2-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-9c1eb5d4257c1a45322b",
+          "file": "map.spec.ts",
+          "line": 59,
+          "column": 33
+        },
+        {
+          "title": "REQ-PLAT-03 missingGPU falls back to actual WebGL2 pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3663,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:15:21.202Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-PLAT-03-missingGPU-04ddd-ack-to-actual-WebGL2-pixels-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-44d12508444d6016d6d1",
+          "file": "map.spec.ts",
+          "line": 93,
+          "column": 93
+        },
+        {
+          "title": "REQ-PLAT-03 nullAdapter falls back to actual WebGL2 pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3229,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:15:25.646Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-PLAT-03-nullAdapte-fc40d-ack-to-actual-WebGL2-pixels-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-4f1ed378fbe548837383",
+          "file": "map.spec.ts",
+          "line": 93,
+          "column": 93
+        },
+        {
+          "title": "REQ-PLAT-03 adapterReject falls back to actual WebGL2 pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3190,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:15:29.636Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-PLAT-03-adapterRej-f94b0-ack-to-actual-WebGL2-pixels-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-539e7f5c3e00692133af",
+          "file": "map.spec.ts",
+          "line": 93,
+          "column": 93
+        },
+        {
+          "title": "REQ-PLAT-03 deviceReject falls back to actual WebGL2 pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3211,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:15:33.586Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-PLAT-03-deviceReje-3f628-ack-to-actual-WebGL2-pixels-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-165ea8ec320eba9adc71",
+          "file": "map.spec.ts",
+          "line": 93,
+          "column": 93
+        },
+        {
+          "title": "REQ-PLAT-03 insecure falls back to actual WebGL2 pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4065,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:15:37.637Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-PLAT-03-insecure-falls-back-to-actual-WebGL2-pixels-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-cad1b5f727b0593aaa25",
+          "file": "map.spec.ts",
+          "line": 93,
+          "column": 93
+        },
+        {
+          "title": "REQ-PLAT-03 no backend shows localized notices",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1372,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:15:42.261Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-PLAT-03-no-backend-shows-localized-notices-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-21044fb77f8e68428c2b",
+          "file": "map.spec.ts",
+          "line": 104,
+          "column": 37
+        },
+        {
+          "title": "REQ-PLAT-03 no backend shows localized notices after preferred rejection",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1800,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:15:44.419Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-PLAT-03-no-backend-8fa21-s-after-preferred-rejection-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-f451b1c89af99eb05fde",
+          "file": "map.spec.ts",
+          "line": 104,
+          "column": 37
+        },
+        {
+          "title": "REQ-PLAT-03 actual WebGL2 texture limit is checked before texture creation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1273,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:15:47.102Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-PLAT-03-actual-Web-05fbe-ked-before-texture-creation-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-12ae32726a0d3e240d93",
+          "file": "map.spec.ts",
+          "line": 114,
+          "column": 1
+        },
+        {
+          "title": "REQ-MAP-04 missing bundled index fails visibly without external download",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1353,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:15:48.957Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-04-missing-bun-91491-y-without-external-download-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-1455d85947354c6dcc32",
+          "file": "map.spec.ts",
+          "line": 118,
+          "column": 1
+        },
+        {
+          "title": "REQ-MAP-04 schema boundary oldVersion rejects atomically",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1477,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:15:50.803Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-04-schema-boundary-oldVersion-rejects-atomically-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-087250bf5d499b8a097c",
+          "file": "map.spec.ts",
+          "line": 122,
+          "column": 116
+        },
+        {
+          "title": "REQ-MAP-04 schema boundary futureVersion rejects atomically",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1476,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:15:52.770Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-04-schema-boun-257ee-eVersion-rejects-atomically-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-fe3f06e42abd98b1a3d4",
+          "file": "map.spec.ts",
+          "line": 122,
+          "column": 116
+        },
+        {
+          "title": "REQ-MAP-04 schema boundary wrongPack rejects atomically",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1221,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:15:54.876Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-04-schema-boundary-wrongPack-rejects-atomically-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-7a040370283af8c4a7a1",
+          "file": "map.spec.ts",
+          "line": 122,
+          "column": 116
+        },
+        {
+          "title": "REQ-MAP-04 schema boundary duplicateIds rejects atomically",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1152,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:15:56.817Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-04-schema-boun-3d533-icateIds-rejects-atomically-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-ef5dd9a63f4a384fa3c2",
+          "file": "map.spec.ts",
+          "line": 122,
+          "column": 116
+        },
+        {
+          "title": "REQ-MAP-04 schema boundary badStyle rejects atomically",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1284,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:15:58.679Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-04-schema-boundary-badStyle-rejects-atomically-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-8ed5a897c7db0863603c",
+          "file": "map.spec.ts",
+          "line": 122,
+          "column": 116
+        },
+        {
+          "title": "REQ-MAP-04 schema boundary shortBytes rejects atomically",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1062,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:16:00.453Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-04-schema-boundary-shortBytes-rejects-atomically-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-de2cf3fb71e163c7f6e3",
+          "file": "map.spec.ts",
+          "line": 122,
+          "column": 116
+        },
+        {
+          "title": "REQ-MAP-04 schema boundary wrongHash rejects atomically",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1087,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:16:01.981Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-04-schema-boundary-wrongHash-rejects-atomically-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-d67983c0059d5bc4a599",
+          "file": "map.spec.ts",
+          "line": 122,
+          "column": 116
+        },
+        {
+          "title": "REQ-MAP-05 dangling preserves last valid map and closes wire",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4349,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:16:03.599Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-05-dangling-pr-b61af-t-valid-map-and-closes-wire-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-dea2cfa7c775f40d6279",
+          "file": "map.spec.ts",
+          "line": 132,
+          "column": 70
+        },
+        {
+          "title": "REQ-MAP-05 changedDimensions preserves last valid map and closes wire",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4305,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:16:08.609Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-05-changedDime-1793f-t-valid-map-and-closes-wire-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-c2a5e342ea67b28909fc",
+          "file": "map.spec.ts",
+          "line": 132,
+          "column": 70
+        },
+        {
+          "title": "REQ-MAP-05 changedDense preserves last valid map and closes wire",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4391,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:16:13.533Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-05-changedDens-078e6-t-valid-map-and-closes-wire-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-fc9ad279bd75c3e3f295",
+          "file": "map.spec.ts",
+          "line": 132,
+          "column": 70
+        },
+        {
+          "title": "REQ-MAP-04/05 PLAT-03 actual map pixels, modes, pick and viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4821,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:15:15.812Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-04-05-PLAT-03--1c38b-els-modes-pick-and-viewport-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-4d030136de6ff4c7f346",
+          "file": "map.spec.ts",
+          "line": 11,
+          "column": 1
+        },
+        {
+          "title": "REQ-PLAT-03 preferred actual backend produces the same map RGB and source shader",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4353,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:15:21.094Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-PLAT-03-preferred--2ff29-e-map-RGB-and-source-shader-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-8a6318772d4dd3ed5624",
+          "file": "map.spec.ts",
+          "line": 40,
+          "column": 1
+        },
+        {
+          "title": "REQ-MAP-04 changed server RGB updates only affected lookup texel on actual backend",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3549,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:15:25.918Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-04-changed-ser-06fa5-kup-texel-on-actual-backend-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-4adec514dbbfcd9abda3",
+          "file": "map.spec.ts",
+          "line": 48,
+          "column": 1
+        },
+        {
+          "title": "REQ-MAP-04/05 RG8 high dense byte and LUT second row pick real ID65535",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3624,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:15:29.903Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-04-05-RG8-high-71352-econd-row-pick-real-ID65535-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-dfc4a60cbff104724f5e",
+          "file": "map.spec.ts",
+          "line": 52,
+          "column": 1
+        },
+        {
+          "title": "REQ-MAP-05 independent three border pixel oracle, u16 sentinel and camera preferred",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7244,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:15:34.083Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-05-independent-d73a2-ntinel-and-camera-preferred-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-f4d2962f6172cde1d04c",
+          "file": "map.spec.ts",
+          "line": 59,
+          "column": 33
+        },
+        {
+          "title": "REQ-MAP-05 independent three border pixel oracle, u16 sentinel and camera WebGL2",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5778,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:15:41.978Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-05-independent-f177e--sentinel-and-camera-WebGL2-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-86d8e774e3bcea39f3b4",
+          "file": "map.spec.ts",
+          "line": 59,
+          "column": 33
+        },
+        {
+          "title": "REQ-PLAT-03 missingGPU falls back to actual WebGL2 pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1830,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:15:48.228Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-PLAT-03-missingGPU-04ddd-ack-to-actual-WebGL2-pixels-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-cdf01118590af7bb6c43",
+          "file": "map.spec.ts",
+          "line": 93,
+          "column": 93
+        },
+        {
+          "title": "REQ-PLAT-03 nullAdapter falls back to actual WebGL2 pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1817,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:15:50.515Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-PLAT-03-nullAdapte-fc40d-ack-to-actual-WebGL2-pixels-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-bfc88718fce2da01bd82",
+          "file": "map.spec.ts",
+          "line": 93,
+          "column": 93
+        },
+        {
+          "title": "REQ-PLAT-03 adapterReject falls back to actual WebGL2 pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1722,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:15:52.793Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-PLAT-03-adapterRej-f94b0-ack-to-actual-WebGL2-pixels-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-31e30aeeca055b22575b",
+          "file": "map.spec.ts",
+          "line": 93,
+          "column": 93
+        },
+        {
+          "title": "REQ-PLAT-03 deviceReject falls back to actual WebGL2 pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1743,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:15:55.026Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-PLAT-03-deviceReje-3f628-ack-to-actual-WebGL2-pixels-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-eb0bbfcfe1e2d6204fcd",
+          "file": "map.spec.ts",
+          "line": 93,
+          "column": 93
+        },
+        {
+          "title": "REQ-PLAT-03 insecure falls back to actual WebGL2 pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1654,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:15:57.310Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-PLAT-03-insecure-falls-back-to-actual-WebGL2-pixels-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-730c3addddfc99ddb5ef",
+          "file": "map.spec.ts",
+          "line": 93,
+          "column": 93
+        },
+        {
+          "title": "REQ-PLAT-03 no backend shows localized notices",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1433,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:15:59.440Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-PLAT-03-no-backend-shows-localized-notices-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-c5681bfe5c88528c1673",
+          "file": "map.spec.ts",
+          "line": 104,
+          "column": 37
+        },
+        {
+          "title": "REQ-PLAT-03 no backend shows localized notices after preferred rejection",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1369,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:16:01.393Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-PLAT-03-no-backend-8fa21-s-after-preferred-rejection-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-6636f17ee092cba5a855",
+          "file": "map.spec.ts",
+          "line": 104,
+          "column": 37
+        },
+        {
+          "title": "REQ-PLAT-03 actual WebGL2 texture limit is checked before texture creation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1185,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:16:03.224Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-PLAT-03-actual-Web-05fbe-ked-before-texture-creation-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-e2aa4eb31ec2da02ea1b",
+          "file": "map.spec.ts",
+          "line": 114,
+          "column": 1
+        },
+        {
+          "title": "REQ-MAP-04 missing bundled index fails visibly without external download",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1933,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:16:05.202Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-04-missing-bun-91491-y-without-external-download-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-79ab9a5ead05d5bbfefd",
+          "file": "map.spec.ts",
+          "line": 118,
+          "column": 1
+        },
+        {
+          "title": "REQ-MAP-04 schema boundary oldVersion rejects atomically",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1323,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:16:07.937Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-04-schema-boundary-oldVersion-rejects-atomically-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-4905f8c14f78fc0b586a",
+          "file": "map.spec.ts",
+          "line": 122,
+          "column": 116
+        },
+        {
+          "title": "REQ-MAP-04 schema boundary futureVersion rejects atomically",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1874,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:16:09.917Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-04-schema-boun-257ee-eVersion-rejects-atomically-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-15b18de549435600c6e2",
+          "file": "map.spec.ts",
+          "line": 122,
+          "column": 116
+        },
+        {
+          "title": "REQ-MAP-04 schema boundary wrongPack rejects atomically",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1379,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:16:12.665Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-04-schema-boundary-wrongPack-rejects-atomically-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-d1b815d3ff5f57951ca3",
+          "file": "map.spec.ts",
+          "line": 122,
+          "column": 116
+        },
+        {
+          "title": "REQ-MAP-04 schema boundary duplicateIds rejects atomically",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1906,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:16:14.699Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-04-schema-boun-3d533-icateIds-rejects-atomically-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-9653b800be56174db172",
+          "file": "map.spec.ts",
+          "line": 122,
+          "column": 116
+        },
+        {
+          "title": "REQ-MAP-04 schema boundary badStyle rejects atomically",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1433,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:16:17.468Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-04-schema-boundary-badStyle-rejects-atomically-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-7ed5d88504bd61e0f09e",
+          "file": "map.spec.ts",
+          "line": 122,
+          "column": 116
+        },
+        {
+          "title": "REQ-MAP-04 schema boundary shortBytes rejects atomically",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1453,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:16:19.371Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-04-schema-boundary-shortBytes-rejects-atomically-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-261a0c3290b5f8aa427b",
+          "file": "map.spec.ts",
+          "line": 122,
+          "column": 116
+        },
+        {
+          "title": "REQ-MAP-04 schema boundary wrongHash rejects atomically",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1673,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:16:21.517Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-04-schema-boundary-wrongHash-rejects-atomically-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-31590d431020949c3ea4",
+          "file": "map.spec.ts",
+          "line": 122,
+          "column": 116
+        },
+        {
+          "title": "REQ-MAP-05 dangling preserves last valid map and closes wire",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3033,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:16:23.950Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-05-dangling-pr-b61af-t-valid-map-and-closes-wire-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-65fe35e6680cb40119d2",
+          "file": "map.spec.ts",
+          "line": 132,
+          "column": 70
+        },
+        {
+          "title": "REQ-MAP-05 changedDimensions preserves last valid map and closes wire",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2397,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:16:27.433Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-05-changedDime-1793f-t-valid-map-and-closes-wire-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-013286d22dfdcb05e445",
+          "file": "map.spec.ts",
+          "line": 132,
+          "column": 70
+        },
+        {
+          "title": "REQ-MAP-05 changedDense preserves last valid map and closes wire",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2383,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:16:30.171Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/map-REQ-MAP-05-changedDens-078e6-t-valid-map-and-closes-wire-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-5850bca0fe59228962a2",
+          "file": "map.spec.ts",
+          "line": 132,
+          "column": 70
+        }
+      ]
+    },
+    {
+      "title": "national.spec.ts",
+      "file": "national.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "AC-M1-03 actual Rust M1 panels, separate owner/control, ledger, languages and time",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17816,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:13:53.729Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/national-AC-M1-03-actual-R-63c86-l-ledger-languages-and-time-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e3875c40ce8d9797013e-7469b3b0a2682c40ab72",
+          "file": "national.spec.ts",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "REQ-NAT-01 MAP-08 actual query metadata, dense mapping, colors and refusal",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2235,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:14:12.939Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/national-REQ-NAT-01-MAP-08-1922a--mapping-colors-and-refusal-chromium/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e3875c40ce8d9797013e-8ef81fc07f546865f0a7",
+          "file": "national.spec.ts",
+          "line": 31,
+          "column": 1
+        },
+        {
+          "title": "AC-M1-03 actual Rust M1 panels, separate owner/control, ledger, languages and time",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4183,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:16:19.561Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/national-AC-M1-03-actual-R-63c86-l-ledger-languages-and-time-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e3875c40ce8d9797013e-7621ae8b42d33a09f1d7",
+          "file": "national.spec.ts",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "REQ-NAT-01 MAP-08 actual query metadata, dense mapping, colors and refusal",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "webkit",
+              "projectName": "webkit",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2068,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T18:16:24.523Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/runner/work/OpenHOI4/OpenHOI4/target/wp08/resize-probe/full/results/national-REQ-NAT-01-MAP-08-1922a--mapping-colors-and-refusal-webkit/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e3875c40ce8d9797013e-04ab31ce898362df74e8",
+          "file": "national.spec.ts",
+          "line": 31,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-06T18:12:57.304Z",
+    "duration": 215699.206,
+    "expected": 77,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

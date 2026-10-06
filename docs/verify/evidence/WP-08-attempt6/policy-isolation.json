@@ -1,0 +1,8 @@
+[
+  {
+    "path": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\temp\\tmpzfzoxfd8\\Cargo.toml",
+    "beforeSHA256": "fd302cac644ea65909fbbed26d91d319eb24ca40b7e455f16b7f5c167ba6a712",
+    "afterSHA256": "7666ca23b42dff99604e8929c59ddc99031811bdff3ce0a1426303032e32deee",
+    "reason": "standalone generated license fixture inside workspace needs empty workspace boundary; dependencies and all original assertions unchanged"
+  }
+]

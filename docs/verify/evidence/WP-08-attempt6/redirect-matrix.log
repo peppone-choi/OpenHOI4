@@ -1,0 +1,144 @@
+
+Running 120 tests using 1 worker
+
+(node:2540) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node.EXE --trace-warnings ...` to show where the warning was created)
+
+
+[1/120] [chrome] › redirect301.spec.ts:15:7 › WP08 P06 HTTP301 metadata CORS redirect sends no foreign request on first load
+[2/120] [chrome] › redirect301.spec.ts:15:7 › WP08 P06 HTTP301 metadata CORS redirect sends no foreign request after valid selection
+[3/120] [chrome] › redirect301.spec.ts:15:7 › WP08 P06 HTTP301 index CORS redirect sends no foreign request on first load
+[4/120] [chrome] › redirect301.spec.ts:15:7 › WP08 P06 HTTP301 index CORS redirect sends no foreign request after valid selection
+[5/120] [chrome] › redirect301.spec.ts:140:60 › WP08 P06 HTTP301 metadata same-origin redirect is also rejected before follow
+[6/120] [chrome] › redirect301.spec.ts:140:60 › WP08 P06 HTTP301 index same-origin redirect is also rejected before follow
+[7/120] [chrome] › redirect303.spec.ts:15:7 › WP08 P06 HTTP303 metadata CORS redirect sends no foreign request on first load
+[8/120] [chrome] › redirect303.spec.ts:15:7 › WP08 P06 HTTP303 metadata CORS redirect sends no foreign request after valid selection
+[9/120] [chrome] › redirect303.spec.ts:15:7 › WP08 P06 HTTP303 index CORS redirect sends no foreign request on first load
+[10/120] [chrome] › redirect303.spec.ts:15:7 › WP08 P06 HTTP303 index CORS redirect sends no foreign request after valid selection
+[11/120] [chrome] › redirect303.spec.ts:140:60 › WP08 P06 HTTP303 metadata same-origin redirect is also rejected before follow
+[12/120] [chrome] › redirect303.spec.ts:140:60 › WP08 P06 HTTP303 index same-origin redirect is also rejected before follow
+[13/120] [chrome] › redirect307.spec.ts:15:7 › WP08 P06 HTTP307 metadata CORS redirect sends no foreign request on first load
+[14/120] [chrome] › redirect307.spec.ts:15:7 › WP08 P06 HTTP307 metadata CORS redirect sends no foreign request after valid selection
+[15/120] [chrome] › redirect307.spec.ts:15:7 › WP08 P06 HTTP307 index CORS redirect sends no foreign request on first load
+[16/120] [chrome] › redirect307.spec.ts:15:7 › WP08 P06 HTTP307 index CORS redirect sends no foreign request after valid selection
+[17/120] [chrome] › redirect307.spec.ts:140:60 › WP08 P06 HTTP307 metadata same-origin redirect is also rejected before follow
+[18/120] [chrome] › redirect307.spec.ts:140:60 › WP08 P06 HTTP307 index same-origin redirect is also rejected before follow
+[19/120] [chrome] › redirect308.spec.ts:15:7 › WP08 P06 HTTP308 metadata CORS redirect sends no foreign request on first load
+[20/120] [chrome] › redirect308.spec.ts:15:7 › WP08 P06 HTTP308 metadata CORS redirect sends no foreign request after valid selection
+[21/120] [chrome] › redirect308.spec.ts:15:7 › WP08 P06 HTTP308 index CORS redirect sends no foreign request on first load
+[22/120] [chrome] › redirect308.spec.ts:15:7 › WP08 P06 HTTP308 index CORS redirect sends no foreign request after valid selection
+[23/120] [chrome] › redirect308.spec.ts:140:60 › WP08 P06 HTTP308 metadata same-origin redirect is also rejected before follow
+[24/120] [chrome] › redirect308.spec.ts:140:60 › WP08 P06 HTTP308 index same-origin redirect is also rejected before follow
+(node:14780) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node.EXE --trace-warnings ...` to show where the warning was created)
+
+
+[25/120] [edge] › redirect301.spec.ts:15:7 › WP08 P06 HTTP301 metadata CORS redirect sends no foreign request on first load
+[26/120] [edge] › redirect301.spec.ts:15:7 › WP08 P06 HTTP301 metadata CORS redirect sends no foreign request after valid selection
+[27/120] [edge] › redirect301.spec.ts:15:7 › WP08 P06 HTTP301 index CORS redirect sends no foreign request on first load
+[28/120] [edge] › redirect301.spec.ts:15:7 › WP08 P06 HTTP301 index CORS redirect sends no foreign request after valid selection
+[29/120] [edge] › redirect301.spec.ts:140:60 › WP08 P06 HTTP301 metadata same-origin redirect is also rejected before follow
+[30/120] [edge] › redirect301.spec.ts:140:60 › WP08 P06 HTTP301 index same-origin redirect is also rejected before follow
+[31/120] [edge] › redirect303.spec.ts:15:7 › WP08 P06 HTTP303 metadata CORS redirect sends no foreign request on first load
+[32/120] [edge] › redirect303.spec.ts:15:7 › WP08 P06 HTTP303 metadata CORS redirect sends no foreign request after valid selection
+[33/120] [edge] › redirect303.spec.ts:15:7 › WP08 P06 HTTP303 index CORS redirect sends no foreign request on first load
+[34/120] [edge] › redirect303.spec.ts:15:7 › WP08 P06 HTTP303 index CORS redirect sends no foreign request after valid selection
+[35/120] [edge] › redirect303.spec.ts:140:60 › WP08 P06 HTTP303 metadata same-origin redirect is also rejected before follow
+[36/120] [edge] › redirect303.spec.ts:140:60 › WP08 P06 HTTP303 index same-origin redirect is also rejected before follow
+[37/120] [edge] › redirect307.spec.ts:15:7 › WP08 P06 HTTP307 metadata CORS redirect sends no foreign request on first load
+[38/120] [edge] › redirect307.spec.ts:15:7 › WP08 P06 HTTP307 metadata CORS redirect sends no foreign request after valid selection
+[39/120] [edge] › redirect307.spec.ts:15:7 › WP08 P06 HTTP307 index CORS redirect sends no foreign request on first load
+[40/120] [edge] › redirect307.spec.ts:15:7 › WP08 P06 HTTP307 index CORS redirect sends no foreign request after valid selection
+[41/120] [edge] › redirect307.spec.ts:140:60 › WP08 P06 HTTP307 metadata same-origin redirect is also rejected before follow
+[42/120] [edge] › redirect307.spec.ts:140:60 › WP08 P06 HTTP307 index same-origin redirect is also rejected before follow
+[43/120] [edge] › redirect308.spec.ts:15:7 › WP08 P06 HTTP308 metadata CORS redirect sends no foreign request on first load
+[44/120] [edge] › redirect308.spec.ts:15:7 › WP08 P06 HTTP308 metadata CORS redirect sends no foreign request after valid selection
+[45/120] [edge] › redirect308.spec.ts:15:7 › WP08 P06 HTTP308 index CORS redirect sends no foreign request on first load
+[46/120] [edge] › redirect308.spec.ts:15:7 › WP08 P06 HTTP308 index CORS redirect sends no foreign request after valid selection
+[47/120] [edge] › redirect308.spec.ts:140:60 › WP08 P06 HTTP308 metadata same-origin redirect is also rejected before follow
+[48/120] [edge] › redirect308.spec.ts:140:60 › WP08 P06 HTTP308 index same-origin redirect is also rejected before follow
+(node:21120) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node.EXE --trace-warnings ...` to show where the warning was created)
+
+
+[49/120] [chromium] › redirect301.spec.ts:15:7 › WP08 P06 HTTP301 metadata CORS redirect sends no foreign request on first load
+[50/120] [chromium] › redirect301.spec.ts:15:7 › WP08 P06 HTTP301 metadata CORS redirect sends no foreign request after valid selection
+[51/120] [chromium] › redirect301.spec.ts:15:7 › WP08 P06 HTTP301 index CORS redirect sends no foreign request on first load
+[52/120] [chromium] › redirect301.spec.ts:15:7 › WP08 P06 HTTP301 index CORS redirect sends no foreign request after valid selection
+[53/120] [chromium] › redirect301.spec.ts:140:60 › WP08 P06 HTTP301 metadata same-origin redirect is also rejected before follow
+[54/120] [chromium] › redirect301.spec.ts:140:60 › WP08 P06 HTTP301 index same-origin redirect is also rejected before follow
+[55/120] [chromium] › redirect303.spec.ts:15:7 › WP08 P06 HTTP303 metadata CORS redirect sends no foreign request on first load
+[56/120] [chromium] › redirect303.spec.ts:15:7 › WP08 P06 HTTP303 metadata CORS redirect sends no foreign request after valid selection
+[57/120] [chromium] › redirect303.spec.ts:15:7 › WP08 P06 HTTP303 index CORS redirect sends no foreign request on first load
+[58/120] [chromium] › redirect303.spec.ts:15:7 › WP08 P06 HTTP303 index CORS redirect sends no foreign request after valid selection
+[59/120] [chromium] › redirect303.spec.ts:140:60 › WP08 P06 HTTP303 metadata same-origin redirect is also rejected before follow
+[60/120] [chromium] › redirect303.spec.ts:140:60 › WP08 P06 HTTP303 index same-origin redirect is also rejected before follow
+[61/120] [chromium] › redirect307.spec.ts:15:7 › WP08 P06 HTTP307 metadata CORS redirect sends no foreign request on first load
+[62/120] [chromium] › redirect307.spec.ts:15:7 › WP08 P06 HTTP307 metadata CORS redirect sends no foreign request after valid selection
+[63/120] [chromium] › redirect307.spec.ts:15:7 › WP08 P06 HTTP307 index CORS redirect sends no foreign request on first load
+[64/120] [chromium] › redirect307.spec.ts:15:7 › WP08 P06 HTTP307 index CORS redirect sends no foreign request after valid selection
+[65/120] [chromium] › redirect307.spec.ts:140:60 › WP08 P06 HTTP307 metadata same-origin redirect is also rejected before follow
+[66/120] [chromium] › redirect307.spec.ts:140:60 › WP08 P06 HTTP307 index same-origin redirect is also rejected before follow
+[67/120] [chromium] › redirect308.spec.ts:15:7 › WP08 P06 HTTP308 metadata CORS redirect sends no foreign request on first load
+[68/120] [chromium] › redirect308.spec.ts:15:7 › WP08 P06 HTTP308 metadata CORS redirect sends no foreign request after valid selection
+[69/120] [chromium] › redirect308.spec.ts:15:7 › WP08 P06 HTTP308 index CORS redirect sends no foreign request on first load
+[70/120] [chromium] › redirect308.spec.ts:15:7 › WP08 P06 HTTP308 index CORS redirect sends no foreign request after valid selection
+[71/120] [chromium] › redirect308.spec.ts:140:60 › WP08 P06 HTTP308 metadata same-origin redirect is also rejected before follow
+[72/120] [chromium] › redirect308.spec.ts:140:60 › WP08 P06 HTTP308 index same-origin redirect is also rejected before follow
+(node:7364) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node.EXE --trace-warnings ...` to show where the warning was created)
+
+
+[73/120] [firefox] › redirect301.spec.ts:15:7 › WP08 P06 HTTP301 metadata CORS redirect sends no foreign request on first load
+[74/120] [firefox] › redirect301.spec.ts:15:7 › WP08 P06 HTTP301 metadata CORS redirect sends no foreign request after valid selection
+[75/120] [firefox] › redirect301.spec.ts:15:7 › WP08 P06 HTTP301 index CORS redirect sends no foreign request on first load
+[76/120] [firefox] › redirect301.spec.ts:15:7 › WP08 P06 HTTP301 index CORS redirect sends no foreign request after valid selection
+[77/120] [firefox] › redirect301.spec.ts:140:60 › WP08 P06 HTTP301 metadata same-origin redirect is also rejected before follow
+[78/120] [firefox] › redirect301.spec.ts:140:60 › WP08 P06 HTTP301 index same-origin redirect is also rejected before follow
+[79/120] [firefox] › redirect303.spec.ts:15:7 › WP08 P06 HTTP303 metadata CORS redirect sends no foreign request on first load
+[80/120] [firefox] › redirect303.spec.ts:15:7 › WP08 P06 HTTP303 metadata CORS redirect sends no foreign request after valid selection
+[81/120] [firefox] › redirect303.spec.ts:15:7 › WP08 P06 HTTP303 index CORS redirect sends no foreign request on first load
+[82/120] [firefox] › redirect303.spec.ts:15:7 › WP08 P06 HTTP303 index CORS redirect sends no foreign request after valid selection
+[83/120] [firefox] › redirect303.spec.ts:140:60 › WP08 P06 HTTP303 metadata same-origin redirect is also rejected before follow
+[84/120] [firefox] › redirect303.spec.ts:140:60 › WP08 P06 HTTP303 index same-origin redirect is also rejected before follow
+[85/120] [firefox] › redirect307.spec.ts:15:7 › WP08 P06 HTTP307 metadata CORS redirect sends no foreign request on first load
+[86/120] [firefox] › redirect307.spec.ts:15:7 › WP08 P06 HTTP307 metadata CORS redirect sends no foreign request after valid selection
+[87/120] [firefox] › redirect307.spec.ts:15:7 › WP08 P06 HTTP307 index CORS redirect sends no foreign request on first load
+[88/120] [firefox] › redirect307.spec.ts:15:7 › WP08 P06 HTTP307 index CORS redirect sends no foreign request after valid selection
+[89/120] [firefox] › redirect307.spec.ts:140:60 › WP08 P06 HTTP307 metadata same-origin redirect is also rejected before follow
+[90/120] [firefox] › redirect307.spec.ts:140:60 › WP08 P06 HTTP307 index same-origin redirect is also rejected before follow
+[91/120] [firefox] › redirect308.spec.ts:15:7 › WP08 P06 HTTP308 metadata CORS redirect sends no foreign request on first load
+[92/120] [firefox] › redirect308.spec.ts:15:7 › WP08 P06 HTTP308 metadata CORS redirect sends no foreign request after valid selection
+[93/120] [firefox] › redirect308.spec.ts:15:7 › WP08 P06 HTTP308 index CORS redirect sends no foreign request on first load
+[94/120] [firefox] › redirect308.spec.ts:15:7 › WP08 P06 HTTP308 index CORS redirect sends no foreign request after valid selection
+[95/120] [firefox] › redirect308.spec.ts:140:60 › WP08 P06 HTTP308 metadata same-origin redirect is also rejected before follow
+[96/120] [firefox] › redirect308.spec.ts:140:60 › WP08 P06 HTTP308 index same-origin redirect is also rejected before follow
+(node:34240) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node.EXE --trace-warnings ...` to show where the warning was created)
+
+
+[97/120] [webkit] › redirect301.spec.ts:15:7 › WP08 P06 HTTP301 metadata CORS redirect sends no foreign request on first load
+[98/120] [webkit] › redirect301.spec.ts:15:7 › WP08 P06 HTTP301 metadata CORS redirect sends no foreign request after valid selection
+[99/120] [webkit] › redirect301.spec.ts:15:7 › WP08 P06 HTTP301 index CORS redirect sends no foreign request on first load
+[100/120] [webkit] › redirect301.spec.ts:15:7 › WP08 P06 HTTP301 index CORS redirect sends no foreign request after valid selection
+[101/120] [webkit] › redirect301.spec.ts:140:60 › WP08 P06 HTTP301 metadata same-origin redirect is also rejected before follow
+[102/120] [webkit] › redirect301.spec.ts:140:60 › WP08 P06 HTTP301 index same-origin redirect is also rejected before follow
+[103/120] [webkit] › redirect303.spec.ts:15:7 › WP08 P06 HTTP303 metadata CORS redirect sends no foreign request on first load
+[104/120] [webkit] › redirect303.spec.ts:15:7 › WP08 P06 HTTP303 metadata CORS redirect sends no foreign request after valid selection
+[105/120] [webkit] › redirect303.spec.ts:15:7 › WP08 P06 HTTP303 index CORS redirect sends no foreign request on first load
+[106/120] [webkit] › redirect303.spec.ts:15:7 › WP08 P06 HTTP303 index CORS redirect sends no foreign request after valid selection
+[107/120] [webkit] › redirect303.spec.ts:140:60 › WP08 P06 HTTP303 metadata same-origin redirect is also rejected before follow
+[108/120] [webkit] › redirect303.spec.ts:140:60 › WP08 P06 HTTP303 index same-origin redirect is also rejected before follow
+[109/120] [webkit] › redirect307.spec.ts:15:7 › WP08 P06 HTTP307 metadata CORS redirect sends no foreign request on first load
+[110/120] [webkit] › redirect307.spec.ts:15:7 › WP08 P06 HTTP307 metadata CORS redirect sends no foreign request after valid selection
+[111/120] [webkit] › redirect307.spec.ts:15:7 › WP08 P06 HTTP307 index CORS redirect sends no foreign request on first load
+[112/120] [webkit] › redirect307.spec.ts:15:7 › WP08 P06 HTTP307 index CORS redirect sends no foreign request after valid selection
+[113/120] [webkit] › redirect307.spec.ts:140:60 › WP08 P06 HTTP307 metadata same-origin redirect is also rejected before follow
+[114/120] [webkit] › redirect307.spec.ts:140:60 › WP08 P06 HTTP307 index same-origin redirect is also rejected before follow
+[115/120] [webkit] › redirect308.spec.ts:15:7 › WP08 P06 HTTP308 metadata CORS redirect sends no foreign request on first load
+[116/120] [webkit] › redirect308.spec.ts:15:7 › WP08 P06 HTTP308 metadata CORS redirect sends no foreign request after valid selection
+[117/120] [webkit] › redirect308.spec.ts:15:7 › WP08 P06 HTTP308 index CORS redirect sends no foreign request on first load
+[118/120] [webkit] › redirect308.spec.ts:15:7 › WP08 P06 HTTP308 index CORS redirect sends no foreign request after valid selection
+[119/120] [webkit] › redirect308.spec.ts:140:60 › WP08 P06 HTTP308 metadata same-origin redirect is also rejected before follow
+[120/120] [webkit] › redirect308.spec.ts:140:60 › WP08 P06 HTTP308 index same-origin redirect is also rejected before follow
+  120 passed (1.5m)

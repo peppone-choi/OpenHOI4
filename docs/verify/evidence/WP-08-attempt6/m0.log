@@ -1,0 +1,144 @@
+
+Running 60 tests using 8 workers
+
+(node:2916) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:31492) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:34724) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:18868) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:21408) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:3432) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:31140) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:34656) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/60] [chrome] › e2e\shell.spec.ts:3:1 › REQ-PLAT-01 built client loads without browser errors
+[2/60] [chrome] › e2e\localization.spec.ts:9:1 › REQ-LOC-01 REQ-LOC-02 actual Rust executable ko/en switch and local CJK font
+[3/60] [chrome] › e2e\malformed.spec.ts:7:1 › P-06 malformed MessagePack Snapshot preserves shell and closes connection
+[4/60] [edge] › e2e\shell.spec.ts:3:1 › REQ-PLAT-01 built client loads without browser errors
+[5/60] [edge] › e2e\network.spec.ts:6:1 › REQ-GEN-01 REQ-TIME-01 REQ-NET-01 authoritative pause, five speeds and date
+[6/60] [edge] › e2e\localization.spec.ts:9:1 › REQ-LOC-01 REQ-LOC-02 actual Rust executable ko/en switch and local CJK font
+[7/60] [edge] › e2e\malformed.spec.ts:7:1 › P-06 malformed MessagePack Snapshot preserves shell and closes connection
+[8/60] [chrome] › e2e\network.spec.ts:6:1 › REQ-GEN-01 REQ-TIME-01 REQ-NET-01 authoritative pause, five speeds and date
+[9/60] [chrome] › e2e\localization.spec.ts:58:1 › REQ-LOC-01 actual server Notice and CommandResult failure translate on language switch
+[10/60] [edge] › e2e\localization.spec.ts:58:1 › REQ-LOC-01 actual server Notice and CommandResult failure translate on language switch
+[11/60] [chrome] › e2e\localization.spec.ts:75:1 › REQ-LOC-01 actual server Notice renders through Fluent
+[12/60] [edge] › e2e\localization.spec.ts:75:1 › REQ-LOC-01 actual server Notice renders through Fluent
+[13/60] [edge] › e2e\network.spec.ts:31:1 › REQ-NET-02 executable serves built assets and ko/en localization
+[14/60] [edge] › e2e\network.spec.ts:44:1 › REQ-NET-01 version mismatch, acceptance, rejection and unsupported scope
+[15/60] [chrome] › e2e\localization.spec.ts:89:1 › AC-M1-03 ledger display fixture opens with keyboard and preserves supplied values
+(node:32180) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[16/60] [edge] › e2e\localization.spec.ts:89:1 › AC-M1-03 ledger display fixture opens with keyboard and preserves supplied values
+(node:34540) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:24928) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[17/60] [chrome] › e2e\network.spec.ts:31:1 › REQ-NET-02 executable serves built assets and ko/en localization
+[18/60] [chrome] › e2e\network.spec.ts:44:1 › REQ-NET-01 version mismatch, acceptance, rejection and unsupported scope
+(node:14252) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[19/60] [chromium] › e2e\shell.spec.ts:3:1 › REQ-PLAT-01 built client loads without browser errors
+[20/60] [chromium] › e2e\malformed.spec.ts:7:1 › P-06 malformed MessagePack Snapshot preserves shell and closes connection
+[21/60] [chromium] › e2e\localization.spec.ts:9:1 › REQ-LOC-01 REQ-LOC-02 actual Rust executable ko/en switch and local CJK font
+[22/60] [chromium] › e2e\network.spec.ts:6:1 › REQ-GEN-01 REQ-TIME-01 REQ-NET-01 authoritative pause, five speeds and date
+(node:16684) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[23/60] [chromium] › e2e\localization.spec.ts:58:1 › REQ-LOC-01 actual server Notice and CommandResult failure translate on language switch
+(node:30076) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:30424) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[24/60] [firefox] › e2e\localization.spec.ts:9:1 › REQ-LOC-01 REQ-LOC-02 actual Rust executable ko/en switch and local CJK font
+[25/60] [edge] › e2e\network.spec.ts:73:1 › REQ-NET-01 Create, supported query, Delta and explicit refusal
+[26/60] [firefox] › e2e\network.spec.ts:6:1 › REQ-GEN-01 REQ-TIME-01 REQ-NET-01 authoritative pause, five speeds and date
+[27/60] [chromium] › e2e\localization.spec.ts:75:1 › REQ-LOC-01 actual server Notice renders through Fluent
+[28/60] [firefox] › e2e\malformed.spec.ts:7:1 › P-06 malformed MessagePack Snapshot preserves shell and closes connection
+[29/60] [chromium] › e2e\localization.spec.ts:89:1 › AC-M1-03 ledger display fixture opens with keyboard and preserves supplied values
+[30/60] [chrome] › e2e\network.spec.ts:73:1 › REQ-NET-01 Create, supported query, Delta and explicit refusal
+(node:18756) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[31/60] [chromium] › e2e\network.spec.ts:31:1 › REQ-NET-02 executable serves built assets and ko/en localization
+[32/60] [chromium] › e2e\network.spec.ts:44:1 › REQ-NET-01 version mismatch, acceptance, rejection and unsupported scope
+[33/60] [edge] › e2e\network.spec.ts:101:1 › REQ-NET-02 ko localization
+[34/60] [firefox] › e2e\shell.spec.ts:3:1 › REQ-PLAT-01 built client loads without browser errors
+(node:32520) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[35/60] [chrome] › e2e\network.spec.ts:101:1 › REQ-NET-02 ko localization
+[36/60] [edge] › e2e\network.spec.ts:112:1 › REQ-GEN-05 REQ-NET-05 server disconnect freezes displayed time and input
+[37/60] [webkit] › e2e\localization.spec.ts:9:1 › REQ-LOC-01 REQ-LOC-02 actual Rust executable ko/en switch and local CJK font
+[38/60] [chrome] › e2e\network.spec.ts:112:1 › REQ-GEN-05 REQ-NET-05 server disconnect freezes displayed time and input
+[39/60] [chromium] › e2e\network.spec.ts:73:1 › REQ-NET-01 Create, supported query, Delta and explicit refusal
+[40/60] [firefox] › e2e\localization.spec.ts:58:1 › REQ-LOC-01 actual server Notice and CommandResult failure translate on language switch
+[41/60] [webkit] › e2e\localization.spec.ts:58:1 › REQ-LOC-01 actual server Notice and CommandResult failure translate on language switch
+[42/60] [chromium] › e2e\network.spec.ts:101:1 › REQ-NET-02 ko localization
+(node:23008) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[43/60] [firefox] › e2e\localization.spec.ts:75:1 › REQ-LOC-01 actual server Notice renders through Fluent
+[44/60] [chromium] › e2e\network.spec.ts:112:1 › REQ-GEN-05 REQ-NET-05 server disconnect freezes displayed time and input
+[45/60] [webkit] › e2e\localization.spec.ts:75:1 › REQ-LOC-01 actual server Notice renders through Fluent
+[46/60] [webkit] › e2e\malformed.spec.ts:7:1 › P-06 malformed MessagePack Snapshot preserves shell and closes connection
+(node:25356) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[47/60] [firefox] › e2e\network.spec.ts:31:1 › REQ-NET-02 executable serves built assets and ko/en localization
+[48/60] [firefox] › e2e\localization.spec.ts:89:1 › AC-M1-03 ledger display fixture opens with keyboard and preserves supplied values
+[49/60] [firefox] › e2e\network.spec.ts:44:1 › REQ-NET-01 version mismatch, acceptance, rejection and unsupported scope
+(node:38392) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[50/60] [webkit] › e2e\network.spec.ts:6:1 › REQ-GEN-01 REQ-TIME-01 REQ-NET-01 authoritative pause, five speeds and date
+[51/60] [webkit] › e2e\localization.spec.ts:89:1 › AC-M1-03 ledger display fixture opens with keyboard and preserves supplied values
+[52/60] [webkit] › e2e\shell.spec.ts:3:1 › REQ-PLAT-01 built client loads without browser errors
+[53/60] [firefox] › e2e\network.spec.ts:73:1 › REQ-NET-01 Create, supported query, Delta and explicit refusal
+[54/60] [firefox] › e2e\network.spec.ts:101:1 › REQ-NET-02 ko localization
+[55/60] [webkit] › e2e\network.spec.ts:31:1 › REQ-NET-02 executable serves built assets and ko/en localization
+[56/60] [webkit] › e2e\network.spec.ts:44:1 › REQ-NET-01 version mismatch, acceptance, rejection and unsupported scope
+[57/60] [firefox] › e2e\network.spec.ts:112:1 › REQ-GEN-05 REQ-NET-05 server disconnect freezes displayed time and input
+[58/60] [webkit] › e2e\network.spec.ts:73:1 › REQ-NET-01 Create, supported query, Delta and explicit refusal
+[59/60] [webkit] › e2e\network.spec.ts:101:1 › REQ-NET-02 ko localization
+[60/60] [webkit] › e2e\network.spec.ts:112:1 › REQ-GEN-05 REQ-NET-05 server disconnect freezes displayed time and input
+  60 passed (19.3s)

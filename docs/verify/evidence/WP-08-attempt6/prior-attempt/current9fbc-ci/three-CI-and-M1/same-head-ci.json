@@ -1,0 +1,47 @@
+{
+  "head": "9fbc05a1e29062f93bb362450aaddc2068aa41e9",
+  "runs": [
+    {
+      "id": 37513851532,
+      "head_sha": "9fbc05a1e29062f93bb362450aaddc2068aa41e9",
+      "conclusion": "success",
+      "url": "https://github.com/peppone-choi/OpenHOI4/actions/runs/37513851532"
+    },
+    {
+      "id": 37513851556,
+      "head_sha": "9fbc05a1e29062f93bb362450aaddc2068aa41e9",
+      "conclusion": "success",
+      "url": "https://github.com/peppone-choi/OpenHOI4/actions/runs/37513851556"
+    },
+    {
+      "id": 37513851414,
+      "head_sha": "9fbc05a1e29062f93bb362450aaddc2068aa41e9",
+      "conclusion": "success",
+      "url": "https://github.com/peppone-choi/OpenHOI4/actions/runs/37513851414"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 11437065536,
+      "name": "m1-sim-hash-windows-latest",
+      "digest": "sha256:ec36d6da825e7deb937a3f204eceb2ce24c488a0d497bb4791fe491e72d30559",
+      "verified_zip_sha256": "ec36d6da825e7deb937a3f204eceb2ce24c488a0d497bb4791fe491e72d30559",
+      "bytes": 638
+    },
+    {
+      "id": 11436935567,
+      "name": "m1-sim-hash-ubuntu-latest",
+      "digest": "sha256:1e704f8f52780cc299b3346ff44183d5424b7db6a99429ce63748a90cc2bece4",
+      "verified_zip_sha256": "1e704f8f52780cc299b3346ff44183d5424b7db6a99429ce63748a90cc2bece4",
+      "bytes": 635
+    },
+    {
+      "id": 11436596439,
+      "name": "m1-sim-hash-macos-latest",
+      "digest": "sha256:999c107d2818360824e63a545871aab3619e010a68d9b6aacd4cbbc8a9ddc0bf",
+      "verified_zip_sha256": "999c107d2818360824e63a545871aab3619e010a68d9b6aacd4cbbc8a9ddc0bf",
+      "bytes": 635
+    }
+  ],
+  "compare_exit": 0
+}

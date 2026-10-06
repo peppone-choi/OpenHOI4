@@ -1,0 +1,69 @@
+PASS integrity, evidence files 3315
+{
+  "head": "9fbc05a1e29062f93bb362450aaddc2068aa41e9",
+  "trackedCount": 5008,
+  "beforeAfter": {
+    "root": true,
+    "head": true,
+    "raw_index_sha256": true,
+    "semantic_index_sha256": true,
+    "tracked_list_sha256": true,
+    "tracked_count": true,
+    "files": true,
+    "status": true,
+    "staged_diff": true,
+    "unstaged_diff": true
+  },
+  "rawIndexSHA256": "df0cd9afa3f946467d4c3a9b0d8d32608a2051730e89446b91314ef47184ce1e",
+  "semanticIndexSHA256": "4b063be39d68325575141e20e63f1348bd260478c7877f74494111c1a359cda0",
+  "trackedListSHA256": "4dcefd694ebfe4b6ec84662e92050b219d13ca9478a5c5d2b6085d3edd77e41c",
+  "trackedFileSHAs": "before.json / after.json",
+  "ownPortsListen": [],
+  "originals": {
+    "prior-attempt\\verify3-originals": {
+      "manifestEntries": 6893,
+      "presentChecked": 10,
+      "missingFromProvidedSubset": 6883,
+      "mismatches": []
+    },
+    "prior-attempt": {
+      "manifestEntries": 1512,
+      "presentChecked": 4,
+      "missingFromProvidedSubset": 1508,
+      "mismatches": []
+    }
+  },
+  "cases": {
+    "m1-report.json": {
+      "startTime": "2026-10-06T18:54:59.897Z",
+      "duration": 233830.63400000002,
+      "expected": 205,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "m0-report.json": {
+      "startTime": "2026-10-06T18:59:02.850Z",
+      "duration": 19281.429,
+      "expected": 60,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "redirect-matrix\\report.json": {
+      "startTime": "2026-10-06T19:09:23.640Z",
+      "duration": 91420.659,
+      "expected": 120,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "native-lifecycle-results.json": 10,
+    "live-pipeline-results.json": 6,
+    "atomic-results.json": 30,
+    "initialization-results.json": 15,
+    "gpu-compile-results.json": 2,
+    "compile-dpr": 2
+  },
+  "endUTC": "2026-10-06T19:29:58.511712+00:00"
+}

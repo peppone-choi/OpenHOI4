@@ -1,0 +1,96 @@
+[
+  {
+    "label": "red62-npm-ci",
+    "argv": [
+      "npm.cmd",
+      "--prefix",
+      "client",
+      "ci"
+    ],
+    "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\red62-source",
+    "start": "2026-10-06T19:01:48.294880+00:00",
+    "env": null,
+    "launcher_pid": 35016,
+    "exit": 0,
+    "end": "2026-10-06T19:01:50.943727+00:00"
+  },
+  {
+    "label": "red62-client-build",
+    "argv": [
+      "npm.cmd",
+      "--prefix",
+      "client",
+      "run",
+      "build"
+    ],
+    "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\red62-source",
+    "start": "2026-10-06T19:01:50.944728+00:00",
+    "env": null,
+    "launcher_pid": 20812,
+    "exit": 0,
+    "end": "2026-10-06T19:01:53.061074+00:00"
+  },
+  {
+    "label": "red62-server-build",
+    "argv": [
+      "cargo",
+      "build",
+      "-p",
+      "oh_server",
+      "--locked"
+    ],
+    "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\red62-source",
+    "start": "2026-10-06T19:01:53.061074+00:00",
+    "env": null,
+    "launcher_pid": 31948,
+    "exit": 0,
+    "end": "2026-10-06T19:02:20.717110+00:00"
+  },
+  {
+    "label": "red953-npm-ci",
+    "argv": [
+      "npm.cmd",
+      "--prefix",
+      "client",
+      "ci"
+    ],
+    "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\red953-source",
+    "start": "2026-10-06T19:02:20.718109+00:00",
+    "env": null,
+    "launcher_pid": 15240,
+    "exit": 0,
+    "end": "2026-10-06T19:02:23.029854+00:00"
+  },
+  {
+    "label": "red953-client-build",
+    "argv": [
+      "npm.cmd",
+      "--prefix",
+      "client",
+      "run",
+      "build"
+    ],
+    "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\red953-source",
+    "start": "2026-10-06T19:02:23.029854+00:00",
+    "env": null,
+    "launcher_pid": 32088,
+    "exit": 0,
+    "end": "2026-10-06T19:02:24.998864+00:00"
+  },
+  {
+    "label": "red953-server-build",
+    "argv": [
+      "cargo",
+      "build",
+      "-p",
+      "oh_server",
+      "--locked"
+    ],
+    "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\red953-source",
+    "start": "2026-10-06T19:02:24.998864+00:00",
+    "env": null,
+    "launcher_pid": 29772,
+    "exit": 0,
+    "end": "2026-10-06T19:02:46.641757+00:00"
+  }
+]

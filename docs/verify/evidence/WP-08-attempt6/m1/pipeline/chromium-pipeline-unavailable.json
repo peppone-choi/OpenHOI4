@@ -1,0 +1,15 @@
+{
+  "browser": "153.0.8010.12",
+  "glFailure": "unavailable",
+  "probe": {
+    "devices": 0,
+    "destroyed": 0,
+    "triggers": 0,
+    "glShaderCalls": 0
+  },
+  "errors": [],
+  "consoleErrors": [],
+  "tick": "0",
+  "backend": null,
+  "scope": "no native adapter; actual GL availability/notice control"
+}

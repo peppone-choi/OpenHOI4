@@ -1,0 +1,172 @@
+{
+  "head": "9fbc05a1e29062f93bb362450aaddc2068aa41e9",
+  "trackedCount": 5008,
+  "beforeAfter": {
+    "root": true,
+    "head": true,
+    "raw_index_sha256": true,
+    "semantic_index_sha256": true,
+    "tracked_list_sha256": true,
+    "tracked_count": true,
+    "files": true,
+    "status": true,
+    "staged_diff": true,
+    "unstaged_diff": true
+  },
+  "rawIndexSHA256": "df0cd9afa3f946467d4c3a9b0d8d32608a2051730e89446b91314ef47184ce1e",
+  "semanticIndexSHA256": "4b063be39d68325575141e20e63f1348bd260478c7877f74494111c1a359cda0",
+  "trackedListSHA256": "4dcefd694ebfe4b6ec84662e92050b219d13ca9478a5c5d2b6085d3edd77e41c",
+  "trackedFileSHAs": "before.json / after.json",
+  "ownPortsListen": [],
+  "runtime": [
+    {
+      "label": "compile-dpr-runtime",
+      "pid": 200,
+      "port": 19453,
+      "exeSHA256": "d325083dd85d82be917567e4a3c3ebfa65471f5760756f104064f0c1e622549b",
+      "actual_cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\",
+      "start": "2026-10-06T19:11:02.424843+00:00",
+      "end": "2026-10-06T19:11:05.937537+00:00",
+      "exit": 1,
+      "portReleased": true
+    },
+    {
+      "label": "current-probe-runtime",
+      "pid": 36944,
+      "port": 19453,
+      "exeSHA256": "d325083dd85d82be917567e4a3c3ebfa65471f5760756f104064f0c1e622549b",
+      "actual_cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\",
+      "start": "2026-10-06T19:05:23.708724+00:00",
+      "end": "2026-10-06T19:07:12.831523+00:00",
+      "exit": 1,
+      "portReleased": true
+    },
+    {
+      "label": "gui-runtime",
+      "pid": 33152,
+      "port": 19453,
+      "exeSHA256": "d325083dd85d82be917567e4a3c3ebfa65471f5760756f104064f0c1e622549b",
+      "actual_cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\",
+      "start": "2026-10-06T19:11:22.302997+00:00",
+      "end": "2026-10-06T19:15:35.423764+00:00",
+      "exit": 1,
+      "portReleased": true
+    },
+    {
+      "label": "native-life-runtime",
+      "pid": 35372,
+      "port": 19453,
+      "exeSHA256": "d325083dd85d82be917567e4a3c3ebfa65471f5760756f104064f0c1e622549b",
+      "actual_cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\",
+      "start": "2026-10-06T19:07:38.316098+00:00",
+      "end": "2026-10-06T19:08:30.167188+00:00",
+      "exit": 1,
+      "portReleased": true
+    },
+    {
+      "label": "red62-probe-runtime",
+      "pid": 9520,
+      "port": 19455,
+      "exeSHA256": "2b845fb31fbbf8cd8fc38fc0cdae2f0f1d2d0d26b61f8452c72510c778f9517d",
+      "actual_cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\red62-source\\",
+      "start": "2026-10-06T19:03:27.403732+00:00",
+      "end": "2026-10-06T19:03:46.694313+00:00",
+      "exit": 1,
+      "portReleased": true
+    },
+    {
+      "label": "red953-probe-runtime",
+      "pid": 30204,
+      "port": 19456,
+      "exeSHA256": "56c34deefefffab15871dd0a3576cdbd4b5505ab2ec5fc2292efa0760df7868f",
+      "actual_cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\red953-source\\",
+      "start": "2026-10-06T19:03:46.694313+00:00",
+      "end": "2026-10-06T19:05:23.707724+00:00",
+      "exit": 1,
+      "portReleased": true
+    },
+    {
+      "label": "redirect-matrix-runtime",
+      "pid": 24724,
+      "port": 19454,
+      "exeSHA256": "d325083dd85d82be917567e4a3c3ebfa65471f5760756f104064f0c1e622549b",
+      "actual_cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\",
+      "start": "2026-10-06T19:09:23.128244+00:00",
+      "end": "2026-10-06T19:10:55.084062+00:00",
+      "exit": 1,
+      "portReleased": true
+    }
+  ],
+  "originals": {
+    "prior-attempt\\verify3-originals": {
+      "manifestEntries": 6893,
+      "presentChecked": 10,
+      "missingFromProvidedSubset": 6883,
+      "mismatches": []
+    },
+    "prior-attempt": {
+      "manifestEntries": 1512,
+      "presentChecked": 4,
+      "missingFromProvidedSubset": 1508,
+      "mismatches": []
+    }
+  },
+  "cases": {
+    "m1-report.json": {
+      "startTime": "2026-10-06T18:54:59.897Z",
+      "duration": 233830.63400000002,
+      "expected": 205,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "m0-report.json": {
+      "startTime": "2026-10-06T18:59:02.850Z",
+      "duration": 19281.429,
+      "expected": 60,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "redirect-matrix\\report.json": {
+      "startTime": "2026-10-06T19:09:23.640Z",
+      "duration": 91420.659,
+      "expected": 120,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "native-lifecycle-results.json": 10,
+    "live-pipeline-results.json": 6,
+    "atomic-results.json": 30,
+    "initialization-results.json": 15,
+    "gpu-compile-results.json": 2,
+    "compile-dpr": 2
+  },
+  "fixtureLimitations": [
+    {
+      "fixture": "first policy fixtures",
+      "exit": 1,
+      "scope": "31 passed/1 failure: Cargo standalone fixture placed below product workspace; missing diagnostic because metadata rejected parent membership. Same original32 assertions PASS after [workspace] in generated isolated fixture only; no product settings change."
+    },
+    {
+      "fixture": "current original lifecycle",
+      "exit": 1,
+      "scope": "original preserved; preferred chrome/edge + Firefox/WebKit six PASS; four GL cases fail after locator screenshot restores configuredDPR1. Native screenshot supplemental10 PASS. Original failed evidence not replaced."
+    },
+    {
+      "fixture": "original current250ms probe",
+      "exit": 0,
+      "scope": "no pixel assertions in original; raw0/clear during epoch transition retained; separate5s-ready same-canvas/camera/box oracle4 PASS."
+    },
+    {
+      "fixture": "native-life preflight attempt",
+      "scope": "19453 occupied by own still-running atomic suite, bind10048 detected before process/HTTP/browser; did not navigate. Retried after owner suite completed/released."
+    },
+    {
+      "fixture": "IAB version inspection",
+      "scope": "raw CDP Browser.getVersion unsupported and readonly page scope lacks navigator; tool inspection errors, no app JS error. Exact IAB version unavailable; native five product versions independently recorded."
+    }
+  ],
+  "endUTC": "2026-10-06T19:29:58.511712+00:00"
+}

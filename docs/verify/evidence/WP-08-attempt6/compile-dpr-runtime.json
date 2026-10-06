@@ -1,0 +1,96 @@
+{
+  "start": "2026-10-06T19:11:02.424843+00:00",
+  "pid": 200,
+  "root": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6",
+  "exe": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\debug\\oh_server.exe",
+  "exeSHA256": "d325083dd85d82be917567e4a3c3ebfa65471f5760756f104064f0c1e622549b",
+  "args": [
+    "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\debug\\oh_server.exe",
+    "--port",
+    "19453",
+    "--pack-root",
+    "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\data\\packs"
+  ],
+  "port": 19453,
+  "source": "exact9fbc",
+  "netstat_before_HTTP": [
+    "  TCP    127.0.0.1:19453        0.0.0.0:0              LISTENING       200"
+  ],
+  "actual_cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\",
+  "http200": true,
+  "assets": [
+    {
+      "path": "/assets/index-C11MJPRn.js",
+      "bytes": 1170783,
+      "sha256": "d3707b855fe8bbc8d39ce319bbd17685b3e228396791634e91be62b00d86a5de",
+      "own_dist_equal": true
+    },
+    {
+      "path": "/assets/index-B9cOsW2B.css",
+      "bytes": 4398,
+      "sha256": "0dd7e4ddfeed406768af619ad687ab1ec009b7847fac69e181a778b2be151e6e",
+      "own_dist_equal": true
+    }
+  ],
+  "metadata": {
+    "schema_version": 1,
+    "map_id": "testland",
+    "width": 8,
+    "height": 6,
+    "province_ids": [
+      10,
+      20,
+      30,
+      40,
+      50,
+      60
+    ],
+    "pack_hash": "b8d30ba577f303c3",
+    "index_hash": "09eff2825e821465",
+    "byte_length": "96",
+    "style": {
+      "background": [
+        20,
+        25,
+        34
+      ],
+      "nation_border": [
+        16,
+        24,
+        32
+      ],
+      "state_border": [
+        230,
+        212,
+        167
+      ],
+      "province_border": [
+        100,
+        116,
+        135
+      ],
+      "selected": [
+        255,
+        223,
+        114
+      ],
+      "hovered": [
+        255,
+        255,
+        255
+      ],
+      "nation_width_milli": 2400,
+      "state_width_milli": 1400,
+      "province_width_milli": 600,
+      "highlight_milli": 280,
+      "fit_milli": 920,
+      "zoom_min_milli": 250,
+      "zoom_max_milli": 8000,
+      "wheel_milli": 120,
+      "drag_threshold": 4
+    }
+  },
+  "end": "2026-10-06T19:11:05.937537+00:00",
+  "exit": 1,
+  "portReleased": true
+}

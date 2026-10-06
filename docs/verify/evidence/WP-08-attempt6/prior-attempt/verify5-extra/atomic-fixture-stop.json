@@ -1,0 +1,4 @@
+{
+  "reason": "case-sensitive independent fixture expected invalid while actual localized English is Invalid; stop only own node and let owner Runtime cleanup",
+  "processes": []
+}

@@ -1,0 +1,123 @@
+[
+  {
+    "label": "m0-hash1",
+    "argv": [
+      "cargo",
+      "run",
+      "-p",
+      "oh_cli",
+      "--locked",
+      "--",
+      "run",
+      "--scenario",
+      "testland",
+      "--days",
+      "365",
+      "--seed",
+      "1",
+      "--hash-out"
+    ],
+    "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6",
+    "start": "2026-10-06T19:03:06.546579+00:00",
+    "env": null,
+    "launcher_pid": 36512,
+    "exit": 0,
+    "end": "2026-10-06T19:03:21.074932+00:00"
+  },
+  {
+    "label": "m1-hash1",
+    "argv": [
+      "cargo",
+      "run",
+      "-p",
+      "oh_cli",
+      "--locked",
+      "--",
+      "run",
+      "--pack",
+      "data/packs/testland",
+      "--scenario",
+      "m1",
+      "--days",
+      "365",
+      "--seed",
+      "1",
+      "--hash-out"
+    ],
+    "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6",
+    "start": "2026-10-06T19:03:21.074932+00:00",
+    "env": null,
+    "launcher_pid": 24848,
+    "exit": 0,
+    "end": "2026-10-06T19:03:21.248931+00:00"
+  },
+  {
+    "label": "m0-hash2",
+    "argv": [
+      "cargo",
+      "run",
+      "-p",
+      "oh_cli",
+      "--locked",
+      "--",
+      "run",
+      "--scenario",
+      "testland",
+      "--days",
+      "365",
+      "--seed",
+      "1",
+      "--hash-out"
+    ],
+    "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6",
+    "start": "2026-10-06T19:03:21.249932+00:00",
+    "env": null,
+    "launcher_pid": 8052,
+    "exit": 0,
+    "end": "2026-10-06T19:03:21.381932+00:00"
+  },
+  {
+    "label": "m1-hash2",
+    "argv": [
+      "cargo",
+      "run",
+      "-p",
+      "oh_cli",
+      "--locked",
+      "--",
+      "run",
+      "--pack",
+      "data/packs/testland",
+      "--scenario",
+      "m1",
+      "--days",
+      "365",
+      "--seed",
+      "1",
+      "--hash-out"
+    ],
+    "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6",
+    "start": "2026-10-06T19:03:21.381932+00:00",
+    "env": null,
+    "launcher_pid": 34156,
+    "exit": 0,
+    "end": "2026-10-06T19:03:21.543931+00:00"
+  },
+  {
+    "label": "m1-capture",
+    "argv": [
+      "python",
+      "crates/oh_sim/tools/check_sim_determinism.py",
+      "capture",
+      "--m1",
+      "--out",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\m1-sim-determinism"
+    ],
+    "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6",
+    "start": "2026-10-06T19:03:21.544931+00:00",
+    "env": null,
+    "launcher_pid": 37964,
+    "exit": 0,
+    "end": "2026-10-06T19:03:21.907932+00:00"
+  }
+]

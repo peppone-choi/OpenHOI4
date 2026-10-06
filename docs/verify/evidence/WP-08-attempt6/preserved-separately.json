@@ -1,0 +1,9 @@
+[
+  {
+    "path": "prior-attempt/linux-a15-diagnosis/original-full-artifact.zip",
+    "source_path": ".orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\prior-attempt\\linux-a15-diagnosis\\original-full-artifact.zip",
+    "bytes": 458616866,
+    "sha256": "c0a6802b1d29404d762fe9b20734eca8a8466027d1bb69755e1c3a681d44b3ff",
+    "reason": "Previously preserved full Linux phase artifact; retained at original ignored path, selected raw proof and original API digest are archived separately. No deletion."
+  }
+]

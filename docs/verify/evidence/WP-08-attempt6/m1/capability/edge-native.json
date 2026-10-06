@@ -1,0 +1,25 @@
+{
+  "project": "edge",
+  "browser": "154.0.4258.53",
+  "capability": {
+    "secureContext": true,
+    "webgl2": true,
+    "creationErrors": [],
+    "pixel": [
+      37,
+      91,
+      173,
+      255
+    ],
+    "glError": 0,
+    "renderer": "WebKit WebGL",
+    "webgpu": true,
+    "adapterAvailable": true,
+    "adapterError": null
+  },
+  "backend": "webgpu",
+  "frames": "25",
+  "errors": [],
+  "tick": "0",
+  "canvas": 1
+}
