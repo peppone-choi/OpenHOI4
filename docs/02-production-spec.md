@@ -796,7 +796,7 @@ tools/orch.sh wait <WP>[:impl|:verify] ... [--timeout 초] # 대체 수단: 끝�
 
 **CI 비용 (D-13, D-14)**
 
-- 공개 저장소에서는 표준 GitHub 호스팅 러너가 무료다.
+- 공개 저장소에서는 표준 GitHub 호스팅 러너가 무료다. 사용자의 2026-10-06 추가 지시로 OpenHOI4 저장소를 공개했고 D-14를 갱신했으므로, 현재 실행은 macOS 포함 매 푸시 CI를 적용한다. 공식 재확인 출처: https://docs.github.com/en/billing/concepts/product-billing/github-actions
 - 비공개 저장소는 GitHub Free 월 2,000분, Pro 월 3,000분이 포함된다.
 - 분당 단가는 Linux 2코어 $0.006, Windows $0.010, macOS $0.062다(2026-10 GitHub 문서 기준).
 - 그래서 비공개 기간에는 macOS 작업을 야간 1회로 제한한다.
