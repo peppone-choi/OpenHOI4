@@ -1,0 +1,18 @@
+cwd: E:\openhoi
+command: npm.cmd --prefix client run build
+
+> openhoi-client@0.1.0 build
+> tsc --noEmit && vite build
+
+vite v8.3.3 building client environment for production...
+transforming...
+✓ 47 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.36 kB │ gzip:  0.25 kB
+dist/assets/index-CkSGOuq1.css    2.35 kB │ gzip:  1.03 kB
+dist/assets/index-BTALMjGw.js   260.43 kB │ gzip: 81.41 kB
+
+✓ built in 470ms
+
+exit: 0

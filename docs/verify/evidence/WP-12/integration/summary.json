@@ -1,0 +1,190 @@
+{
+  "head": "14fa0310aa13c8aecfd8cd9a249300f82b02ee7a",
+  "results": [
+    {
+      "name": "npm-ci",
+      "command": [
+        "npm.cmd",
+        "--prefix",
+        "client",
+        "ci"
+      ],
+      "exit": 0,
+      "log": "E:\\openhoi\\.orchestrator\\evidence\\M1-W1-WP12.integration\\npm-ci.log"
+    },
+    {
+      "name": "client-test",
+      "command": [
+        "npm.cmd",
+        "--prefix",
+        "client",
+        "test"
+      ],
+      "exit": 0,
+      "log": "E:\\openhoi\\.orchestrator\\evidence\\M1-W1-WP12.integration\\client-test.log"
+    },
+    {
+      "name": "client-build",
+      "command": [
+        "npm.cmd",
+        "--prefix",
+        "client",
+        "run",
+        "build"
+      ],
+      "exit": 0,
+      "log": "E:\\openhoi\\.orchestrator\\evidence\\M1-W1-WP12.integration\\client-build.log"
+    },
+    {
+      "name": "fmt",
+      "command": [
+        "C:/Users/user/.cargo/bin/cargo.exe",
+        "fmt",
+        "--check"
+      ],
+      "exit": 0,
+      "log": "E:\\openhoi\\.orchestrator\\evidence\\M1-W1-WP12.integration\\fmt.log"
+    },
+    {
+      "name": "clippy",
+      "command": [
+        "C:/Users/user/.cargo/bin/cargo.exe",
+        "clippy",
+        "--workspace",
+        "--locked",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "exit": 0,
+      "log": "E:\\openhoi\\.orchestrator\\evidence\\M1-W1-WP12.integration\\clippy.log"
+    },
+    {
+      "name": "rust-tests",
+      "command": [
+        "C:/Users/user/.cargo/bin/cargo.exe",
+        "test",
+        "--workspace",
+        "--locked"
+      ],
+      "exit": 0,
+      "log": "E:\\openhoi\\.orchestrator\\evidence\\M1-W1-WP12.integration\\rust-tests.log"
+    },
+    {
+      "name": "hash-1",
+      "command": [
+        "C:/Users/user/.cargo/bin/cargo.exe",
+        "run",
+        "-p",
+        "oh_cli",
+        "--locked",
+        "--",
+        "run",
+        "--scenario",
+        "testland",
+        "--days",
+        "365",
+        "--seed",
+        "1",
+        "--hash-out"
+      ],
+      "exit": 0,
+      "log": "E:\\openhoi\\.orchestrator\\evidence\\M1-W1-WP12.integration\\hash-1.log"
+    },
+    {
+      "name": "hash-2",
+      "command": [
+        "C:/Users/user/.cargo/bin/cargo.exe",
+        "run",
+        "-p",
+        "oh_cli",
+        "--locked",
+        "--",
+        "run",
+        "--scenario",
+        "testland",
+        "--days",
+        "365",
+        "--seed",
+        "1",
+        "--hash-out"
+      ],
+      "exit": 0,
+      "log": "E:\\openhoi\\.orchestrator\\evidence\\M1-W1-WP12.integration\\hash-2.log"
+    },
+    {
+      "name": "client-typecheck",
+      "command": [
+        "npm.cmd",
+        "--prefix",
+        "client",
+        "run",
+        "typecheck"
+      ],
+      "exit": 0,
+      "log": "E:\\openhoi\\.orchestrator\\evidence\\M1-W1-WP12.integration\\client-typecheck.log"
+    },
+    {
+      "name": "npm-licenses",
+      "command": [
+        "npm.cmd",
+        "--prefix",
+        "client",
+        "run",
+        "licenses"
+      ],
+      "exit": 0,
+      "log": "E:\\openhoi\\.orchestrator\\evidence\\M1-W1-WP12.integration\\npm-licenses.log"
+    },
+    {
+      "name": "assets",
+      "command": [
+        "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-X",
+        "utf8",
+        "tools/check_assets.py",
+        "--release"
+      ],
+      "exit": 0,
+      "log": "E:\\openhoi\\.orchestrator\\evidence\\M1-W1-WP12.integration\\assets.log"
+    },
+    {
+      "name": "policy-tests",
+      "command": [
+        "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools/tests",
+        "-p",
+        "test_wp01.py",
+        "-v"
+      ],
+      "exit": 0,
+      "log": "E:\\openhoi\\.orchestrator\\evidence\\M1-W1-WP12.integration\\policy-tests.log"
+    },
+    {
+      "name": "docs",
+      "command": [
+        "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "-X",
+        "utf8",
+        "tools/check_docs.py"
+      ],
+      "exit": 0,
+      "log": "E:\\openhoi\\.orchestrator\\evidence\\M1-W1-WP12.integration\\docs.log"
+    }
+  ],
+  "validate": "미실행: 전체 validate는 WP-24 후속이며 현재 명령 없음",
+  "hashes": [
+    [
+      "b039d35666b77fc2"
+    ],
+    [
+      "b039d35666b77fc2"
+    ]
+  ]
+}
