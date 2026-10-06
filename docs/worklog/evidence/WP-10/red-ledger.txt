@@ -1,0 +1,112 @@
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.26
+   Compiling serde_core v1.0.229
+   Compiling zerocopy v0.8.60
+   Compiling cfg-if v1.0.5
+   Compiling serde v1.0.229
+   Compiling thiserror v2.0.21
+   Compiling getrandom v0.3.4
+   Compiling zmij v1.0.23
+   Compiling ref-cast v1.0.27
+   Compiling fixed v1.31.0
+   Compiling serde_json v1.0.151
+   Compiling autocfg v1.5.1
+   Compiling typenum v1.20.1
+   Compiling az v1.3.0
+   Compiling memchr v2.8.3
+   Compiling bytemuck v1.25.2
+   Compiling itoa v1.0.18
+   Compiling winnow v1.0.4
+   Compiling rand_core v0.10.1
+   Compiling toml_writer v1.1.2+spec-1.1.0
+   Compiling num-traits v0.2.19
+   Compiling dyn-clone v1.0.20
+   Compiling semver v1.0.28
+   Compiling unarray v0.1.4
+   Compiling regex-syntax v0.8.11
+   Compiling bitflags v2.13.2
+   Compiling rand_core v0.9.5
+   Compiling rand v0.9.5
+   Compiling rand_xorshift v0.4.0
+   Compiling toml_parser v1.1.3+spec-1.1.0
+   Compiling syn v3.0.6
+   Compiling syn v2.0.119
+   Compiling serde_derive_internals v0.30.0
+   Compiling toml_datetime v1.1.1+spec-1.1.0
+   Compiling serde_spanned v1.1.1
+   Compiling toml v1.1.6+spec-1.1.0
+   Compiling serde_derive v1.0.229
+   Compiling thiserror-impl v2.0.21
+   Compiling ref-cast-impl v1.0.27
+   Compiling schemars_derive v1.2.2
+   Compiling zerocopy-derive v0.8.60
+   Compiling cobs v0.3.0
+   Compiling postcard v1.1.3
+   Compiling schemars v1.2.2
+   Compiling ppv-lite86 v0.2.21
+   Compiling half v2.7.1
+   Compiling rand_chacha v0.10.0
+   Compiling rand_chacha v0.9.0
+   Compiling proptest v1.11.0
+   Compiling oh_core v0.1.0 (E:\openhoi\.orchestrator\wt\WP-10\crates\oh_core)
+   Compiling oh_data v0.1.0 (E:\openhoi\.orchestrator\wt\WP-10\crates\oh_data)
+   Compiling oh_sim v0.1.0 (E:\openhoi\.orchestrator\wt\WP-10\crates\oh_sim)
+error[E0432]: unresolved import `oh_sim::ledger`
+ --> crates\oh_sim\tests\ledger.rs:3:23
+  |
+3 | use oh_sim::{formula, ledger::{LedgerError, LedgerOp, Modifier, ModifierOp, StatLedger}};
+  |                       ^^^^^^ could not find `ledger` in `oh_sim`
+
+error[E0425]: cannot find function `stat_value` in module `formula`
+  --> crates\oh_sim\tests\ledger.rs:45:28
+   |
+45 |     let applied = formula::stat_value(Fx::from_bits(12 * UNIT), STAT, &modifiers, 7).unwrap();
+   |                            ^^^^^^^^^^ not found in `formula`
+
+error[E0425]: cannot find function `stat_value` in module `formula`
+  --> crates\oh_sim\tests\ledger.rs:80:25
+   |
+80 |     assert_eq!(formula::stat_value(Fx::from_bits(3), STAT, &modifiers, 0).unwrap().to_bits(), 1);
+   |                         ^^^^^^^^^^ not found in `formula`
+
+error[E0425]: cannot find function `stat_value` in module `formula`
+  --> crates\oh_sim\tests\ledger.rs:81:25
+   |
+81 |     assert_eq!(formula::stat_value(Fx::from_bits(-3), STAT, &modifiers, 0).unwrap().to_bits(), -3);
+   |                         ^^^^^^^^^^ not found in `formula`
+
+error[E0425]: cannot find function `stat_value` in module `formula`
+  --> crates\oh_sim\tests\ledger.rs:83:25
+   |
+83 |     assert_eq!(formula::stat_value(Fx::from_bits(3), STAT, &negative, 0).unwrap().to_bits(), -3);
+   |                         ^^^^^^^^^^ not found in `formula`
+
+error[E0425]: cannot find function `stat_value` in module `formula`
+  --> crates\oh_sim\tests\ledger.rs:85:25
+   |
+85 |     assert_eq!(formula::stat_value(Fx::MAX, STAT, &zero, 0).unwrap(), Fx::ZERO);
+   |                         ^^^^^^^^^^ not found in `formula`
+
+error[E0425]: cannot find function `stat_value` in module `formula`
+   --> crates\oh_sim\tests\ledger.rs:107:35
+    |
+107 |         assert!(matches!(formula::stat_value(base, STAT, &modifiers, 0), Err(LedgerError::Overflow { .. })));
+    |                                   ^^^^^^^^^^ not found in `formula`
+
+error[E0425]: cannot find function `stat_value` in module `formula`
+   --> crates\oh_sim\tests\ledger.rs:156:32
+    |
+156 |         let applied = formula::stat_value(Fx::from_bits(base), STAT, &modifiers, tick).unwrap();
+    |                                ^^^^^^^^^^ not found in `formula`
+
+error[E0425]: cannot find function `stat_value` in module `formula`
+   --> crates\oh_sim\tests\ledger.rs:175:32
+    |
+175 |         let applied = formula::stat_value(Fx::from_bits(base), STAT, &modifiers, tick);
+    |                                ^^^^^^^^^^ not found in `formula`
+
+Some errors have detailed explanations: E0425, E0432.
+For more information about an error, try `rustc --explain E0425`.
+error: could not compile `oh_sim` (test "ledger") due to 9 previous errors
+EXIT=101

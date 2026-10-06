@@ -1,0 +1,7 @@
+Command: Get-Location; git rev-parse HEAD; git branch --show-current; git status --short
+Workdir: E:/openhoi/.orchestrator/wt/WP-10
+Path: E:\openhoi\.orchestrator\wt\WP-10
+HEAD: 1bfea48511c6b75efb0dd26ee6e980a90d77da04
+Branch: codex/wp10-ledger
+Status: empty (clean)
+Exit: 0

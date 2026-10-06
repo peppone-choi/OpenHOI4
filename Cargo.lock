@@ -511,6 +511,7 @@ version = "0.1.0"
 dependencies = [
  "oh_core",
  "oh_data",
+ "proptest",
  "serde",
 ]
 
