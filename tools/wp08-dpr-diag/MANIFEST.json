@@ -35,8 +35,8 @@
     },
     {
       "path": "prep_linux.py",
-      "bytes": 6198,
-      "sha256": "a1883d9e483dabc875d79bf352ec9b1ba1dbef82e1032e8b7ea56f5f348caa40"
+      "bytes": 6302,
+      "sha256": "e8b4a8957ab5e3ab02b721dd556a8f75666fff0a69434ec8552cce1a2f1bcafc"
     },
     {
       "path": "probe-template.ts",
@@ -74,5 +74,5 @@
       "sha256": "bbee87b4ffe48f21bc647d1ae5af020d7dca59ee848f26d4742cc9cc08d0b0fc"
     }
   ],
-  "scope": "UNEXECUTED proposal only; not authorized for commit/push/run. Exact c900 preserved. New four-port/global-finally preparation candidate requires CEO review."
+  "scope": "UNEXECUTED cwd-preserving proposal only against6d1. Set ignored full-probe/full-candidate webServer.cwd to exact source/client; original command/options/sourceB73/strictc900/ordered82 retained. No preparation check, commit/push/run authorization."
 }
