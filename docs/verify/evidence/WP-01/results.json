@@ -1,0 +1,175 @@
+[
+  {
+    "label": "fmt",
+    "command": [
+      "cargo",
+      "fmt",
+      "--check"
+    ],
+    "exit": 0
+  },
+  {
+    "label": "clippy",
+    "command": [
+      "cargo",
+      "clippy",
+      "--workspace",
+      "--",
+      "-D",
+      "warnings"
+    ],
+    "exit": 0
+  },
+  {
+    "label": "rust-tests",
+    "command": [
+      "cargo",
+      "test",
+      "--workspace"
+    ],
+    "exit": 0
+  },
+  {
+    "label": "build",
+    "command": [
+      "cargo",
+      "build",
+      "--workspace",
+      "--locked"
+    ],
+    "exit": 0
+  },
+  {
+    "label": "npm-ci",
+    "command": [
+      "node",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "--prefix",
+      "client",
+      "ci"
+    ],
+    "exit": 0
+  },
+  {
+    "label": "client-tests",
+    "command": [
+      "node",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "--prefix",
+      "client",
+      "test"
+    ],
+    "exit": 0
+  },
+  {
+    "label": "typecheck",
+    "command": [
+      "node",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "--prefix",
+      "client",
+      "run",
+      "typecheck"
+    ],
+    "exit": 0
+  },
+  {
+    "label": "client-build",
+    "command": [
+      "node",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "--prefix",
+      "client",
+      "run",
+      "build"
+    ],
+    "exit": 0
+  },
+  {
+    "label": "npm-licenses",
+    "command": [
+      "node",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "--prefix",
+      "client",
+      "run",
+      "licenses"
+    ],
+    "exit": 0
+  },
+  {
+    "label": "cargo-licenses",
+    "command": [
+      "cargo",
+      "deny",
+      "--locked",
+      "check",
+      "licenses",
+      "bans",
+      "advisories",
+      "sources"
+    ],
+    "exit": 0
+  },
+  {
+    "label": "fixtures",
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tools/tests",
+      "-p",
+      "test_wp01.py",
+      "-v"
+    ],
+    "exit": 0
+  },
+  {
+    "label": "architecture",
+    "command": [
+      "python",
+      "tools/check_architecture.py"
+    ],
+    "exit": 0
+  },
+  {
+    "label": "assets",
+    "command": [
+      "python",
+      "tools/check_assets.py",
+      "--release"
+    ],
+    "exit": 0
+  },
+  {
+    "label": "docs",
+    "command": [
+      "python",
+      "tools/check_docs.py"
+    ],
+    "exit": 0
+  },
+  {
+    "label": "browsers",
+    "command": [
+      "node",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "--prefix",
+      "client",
+      "run",
+      "test:e2e"
+    ],
+    "exit": 0
+  },
+  {
+    "label": "diff-check",
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit": 0
+  }
+]

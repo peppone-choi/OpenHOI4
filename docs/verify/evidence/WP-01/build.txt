@@ -1,0 +1,5 @@
+$ cargo build --workspace --locked
+exit=0
+   Compiling oh_cli v0.1.0 (E:\openhoi\.orchestrator\wt\WP-01-verify\crates\oh_cli)
+   Compiling oh_server v0.1.0 (E:\openhoi\.orchestrator\wt\WP-01-verify\crates\oh_server)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.22s

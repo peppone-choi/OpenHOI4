@@ -1,0 +1,6 @@
+$ node C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js --prefix client run typecheck
+exit=0
+
+> openhoi-client@0.1.0 typecheck
+> tsc --noEmit
+

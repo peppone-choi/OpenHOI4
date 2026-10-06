@@ -1,0 +1,24 @@
+$ node C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js --prefix client run test:e2e
+exit=0
+
+> openhoi-client@0.1.0 test:e2e
+> playwright test
+
+
+Running 3 tests using 3 workers
+
+  ok 1 [chromium] › e2e\shell.spec.ts:3:1 › REQ-PLAT-01 built client loads without browser errors (171ms)
+  ok 2 [webkit] › e2e\shell.spec.ts:3:1 › REQ-PLAT-01 built client loads without browser errors (310ms)
+  ok 3 [firefox] › e2e\shell.spec.ts:3:1 › REQ-PLAT-01 built client loads without browser errors (1.1s)
+
+  3 passed (4.3s)
+[WebServer] (node:42204) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:34340) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+(node:47796) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:47256) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:26040) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
