@@ -1,0 +1,3 @@
+$ gh run list --repo peppone-choi/OpenHOI4 --commit 1ad982b5a50f887c48e5c51c2af771d91903c3e0 --json databaseId,headSha,status,conclusion,url
+exit=0
+[{"conclusion":"success","databaseId":37436885058,"headSha":"1ad982b5a50f887c48e5c51c2af771d91903c3e0","status":"completed","url":"https://github.com/peppone-choi/OpenHOI4/actions/runs/37436885058"}]

@@ -1,0 +1,56 @@
+[
+  {
+    "name": "docs",
+    "command": [
+      "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "tools/check_docs.py"
+    ],
+    "exit": 0,
+    "seconds": 0.061999999976251274
+  },
+  {
+    "name": "assets",
+    "command": [
+      "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "tools/check_assets.py",
+      "--release"
+    ],
+    "exit": 0,
+    "seconds": 0.07900000002700835
+  },
+  {
+    "name": "architecture",
+    "command": [
+      "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "tools/check_architecture.py"
+    ],
+    "exit": 0,
+    "seconds": 0.6709999999729916
+  },
+  {
+    "name": "fixtures",
+    "command": [
+      "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tools/tests",
+      "-p",
+      "test_wp01.py",
+      "-v"
+    ],
+    "exit": 1,
+    "seconds": 1.4540000000270084
+  },
+  {
+    "name": "orch-syntax",
+    "command": [
+      "C:\\Program Files\\Git\\bin\\bash.exe",
+      "-n",
+      "tools/orch.sh"
+    ],
+    "exit": 0,
+    "seconds": 0.031000000017229468
+  }
+]

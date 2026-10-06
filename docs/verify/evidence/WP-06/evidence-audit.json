@@ -1,0 +1,83 @@
+[
+  {
+    "check": "app call trace completed",
+    "passed": true,
+    "detail": [
+      [
+        "\"C:\\\\Users\\\\user\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command \"Get-Content -LiteralPath 'E:\\\\openhoi\\\\AGENTS.md'\"",
+        0
+      ],
+      [
+        "\"C:\\\\Users\\\\user\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command 'git -C E:/openhoi/.orchestrator/wt/WP-00 branch --show-current'",
+        0
+      ],
+      [
+        "\"C:\\\\Users\\\\user\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -Command 'git -C E:/openhoi/.orchestrator/wt/WP-00 status --short'",
+        0
+      ]
+    ]
+  },
+  {
+    "check": "app branch output",
+    "passed": true,
+    "detail": {
+      "text": "orch/selftest\n",
+      "truncated": false
+    }
+  },
+  {
+    "check": "app clean output",
+    "passed": true,
+    "detail": {}
+  },
+  {
+    "check": "CLI selftest exit separate from child",
+    "passed": true,
+    "detail": "selftest 2 / WP00 child 1"
+  },
+  {
+    "check": "CLI original and repeat are model rejection",
+    "passed": true,
+    "detail": "original/repeated HTTP 400; turn.failed"
+  },
+  {
+    "check": "retained document evidence matches",
+    "passed": true,
+    "detail": "REQ 143 / errors 0 warnings 0"
+  },
+  {
+    "check": "WP06 product/client unchanged",
+    "passed": true,
+    "detail": "empty git diff names"
+  },
+  {
+    "check": "templates and orch content preserved",
+    "passed": true,
+    "detail": "orch mode only; templates identical"
+  },
+  {
+    "check": "no goldens changed",
+    "passed": true,
+    "detail": "empty diff"
+  },
+  {
+    "check": "no distributed content/assets",
+    "passed": true,
+    "detail": []
+  },
+  {
+    "check": "determinism banned source symbols absent",
+    "passed": true,
+    "detail": []
+  },
+  {
+    "check": "WP06 reverify decisions/rules unchanged",
+    "passed": true,
+    "detail": "01 identical to previous verification target"
+  },
+  {
+    "check": "HANDOFF conflict removed",
+    "passed": true,
+    "detail": "old initial status removed, first FAIL historical"
+  }
+]

@@ -1,0 +1,146 @@
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe -m unittest discover -s tools/tests -p test_wp01.py -v
+exit=1
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-06-verify\tools\check_assets.py --root E:\openhoi\.orchestrator\wt\WP-06-verify\target\evidence\WP-06-reverify\tmp\tmpwuwzep8m
+exit=0
+assets: 0 error(s)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-06-verify\tools\check_assets.py --root E:\openhoi\.orchestrator\wt\WP-06-verify\target\evidence\WP-06-reverify\tmp\tmpj98_1udp --release
+exit=1
+assets: 1 error(s)
+[ASSET] data/packs/demo/defines.toml: AI-generated asset blocked for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-06-verify\tools\check_assets.py --root E:\openhoi\.orchestrator\wt\WP-06-verify\target\evidence\WP-06-reverify\tmp\tmpiyk29sic
+exit=1
+assets: 1 error(s)
+[ASSET] data/packs/demo/defines.toml: ai_generated must be a boolean
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-06-verify\tools\check_assets.py --root E:\openhoi\.orchestrator\wt\WP-06-verify\target\evidence\WP-06-reverify\tmp\tmpbaguttep
+exit=1
+assets: 1 error(s)
+[ASSET] data/packs/demo/defines.toml: duplicate record
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-06-verify\tools\check_assets.py --root E:\openhoi\.orchestrator\wt\WP-06-verify\target\evidence\WP-06-reverify\tmp\tmpg7c2woty
+exit=1
+assets: 2 error(s)
+[ASSET] assets/missing.png: missing file
+[ASSET] data/packs/demo/defines.toml: unregistered asset/data file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-06-verify\tools\check_assets.py --root E:\openhoi\.orchestrator\wt\WP-06-verify\target\evidence\WP-06-reverify\tmp\tmpbn6e9v_9
+exit=1
+assets: 1 error(s)
+[ASSET] data/packs/demo/defines.toml: missing author
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-06-verify\tools\check_assets.py --root E:\openhoi\.orchestrator\wt\WP-06-verify\target\evidence\WP-06-reverify\tmp\tmp2qz96lec
+exit=0
+assets: 0 error(s)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-06-verify\tools\check_assets.py --root E:\openhoi\.orchestrator\wt\WP-06-verify\target\evidence\WP-06-reverify\tmp\tmpud3hnmva
+exit=1
+assets: 2 error(s)
+[ASSET] ../outside.png: path must be a normalized relative POSIX path
+[ASSET] data/packs/demo/defines.toml: unregistered asset/data file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-06-verify\tools\check_assets.py --root E:\openhoi\.orchestrator\wt\WP-06-verify\target\evidence\WP-06-reverify\tmp\tmp5mw52hec
+exit=1
+assets: 1 error(s)
+[ASSET] data/packs/demo/defines.toml: unapproved license 'CC-BY-NC-4.0'
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-06-verify\tools\check_assets.py --root E:\openhoi\.orchestrator\wt\WP-06-verify\target\evidence\WP-06-reverify\tmp\tmpl1g86fnk
+exit=1
+assets: 1 error(s)
+[ASSET] data/packs/demo/defines.toml: unregistered asset/data file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-06-verify\tools\check_assets.py --root E:\openhoi\.orchestrator\wt\WP-06-verify\target\evidence\WP-06-reverify\tmp\tmpa0_3vad0
+exit=1
+assets: 1 error(s)
+[ASSET] client/src/assets/logo.svg: unregistered asset/data file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-06-verify\tools\check_assets.py --root E:\openhoi\.orchestrator\wt\WP-06-verify\target\evidence\WP-06-reverify\tmp\tmpz2vpzuq4
+exit=1
+assets: 1 error(s)
+[ASSET] client/src/locales/ko.ftl: unregistered asset/data file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-06-verify\tools\check_assets.py --root E:\openhoi\.orchestrator\wt\WP-06-verify\target\evidence\WP-06-reverify\tmp\tmpdkdxeks8
+exit=1
+assets: 1 error(s)
+[ASSET] client/public/unlisted.svg: unregistered asset/data file
+
+$ C:\Users\user\.cargo\bin\cargo.EXE deny --manifest-path E:\openhoi\.orchestrator\wt\WP-06-verify\target\evidence\WP-06-reverify\tmp\tmp151_qs4v\Cargo.toml --config E:\openhoi\.orchestrator\wt\WP-06-verify\deny.toml check licenses bans
+exit=1
+2026-10-06 08:34:23 [ERROR] failed to fetch crates: error: current package believes it's in a workspace when it's not:
+current:   E:\openhoi\.orchestrator\wt\WP-06-verify\target\evidence\WP-06-reverify\tmp\tmp151_qs4v\Cargo.toml
+workspace: E:\openhoi\.orchestrator\wt\WP-06-verify\Cargo.toml
+
+this may be fixable by adding `target\evidence\WP-06-reverify\tmp\tmp151_qs4v` to the `workspace.members` array of the manifest located at: E:\openhoi\.orchestrator\wt\WP-06-verify\Cargo.toml
+Alternatively, to keep it out of the workspace, add the package to the `workspace.exclude` array, or add an empty `[workspace]` table to the package's manifest.
+
+2026-10-06 08:34:23 [ERROR] `cargo metadata` exited with an error: error: current package believes it's in a workspace when it's not:
+current:   E:\openhoi\.orchestrator\wt\WP-06-verify\target\evidence\WP-06-reverify\tmp\tmp151_qs4v\Cargo.toml
+workspace: E:\openhoi\.orchestrator\wt\WP-06-verify\Cargo.toml
+
+this may be fixable by adding `target\evidence\WP-06-reverify\tmp\tmp151_qs4v` to the `workspace.members` array of the manifest located at: E:\openhoi\.orchestrator\wt\WP-06-verify\Cargo.toml
+Alternatively, to keep it out of the workspace, add the package to the `workspace.exclude` array, or add an empty `[workspace]` table to the package's manifest.
+
+
+$ node E:\openhoi\.orchestrator\wt\WP-06-verify\tools\check_npm_licenses.cjs --root E:\openhoi\.orchestrator\wt\WP-06-verify\target\evidence\WP-06-reverify\tmp\tmpevkseaaf
+exit=1
+npm licenses: 1 dependencies; 1 error(s)
+[LICENSE] node_modules/fixture-dep@1.0.0: unapproved license "MIT AND GPL-3.0-only"
+
+$ node E:\openhoi\.orchestrator\wt\WP-06-verify\tools\check_npm_licenses.cjs --root E:\openhoi\.orchestrator\wt\WP-06-verify\target\evidence\WP-06-reverify\tmp\tmp__lx_ni8
+exit=1
+npm licenses: 1 dependencies; 1 error(s)
+[LICENSE] node_modules/fixture-dep@1.0.0: unapproved license "Apache-2.0 WITH LLVM-exception"
+
+$ node E:\openhoi\.orchestrator\wt\WP-06-verify\tools\check_npm_licenses.cjs --root E:\openhoi\.orchestrator\wt\WP-06-verify\target\evidence\WP-06-reverify\tmp\tmprtq5_ibz
+exit=1
+npm licenses: 1 dependencies; 1 error(s)
+[LICENSE] node_modules/fixture-dep@1.0.0: unapproved license "GPL-3.0-only"
+
+$ node E:\openhoi\.orchestrator\wt\WP-06-verify\tools\check_npm_licenses.cjs --root E:\openhoi\.orchestrator\wt\WP-06-verify\target\evidence\WP-06-reverify\tmp\tmp6vpmc5ck
+exit=0
+npm licenses: 1 dependencies; 0 error(s)
+
+$ node E:\openhoi\.orchestrator\wt\WP-06-verify\tools\check_npm_licenses.cjs --root E:\openhoi\.orchestrator\wt\WP-06-verify\target\evidence\WP-06-reverify\tmp\tmplm5qfi0d
+exit=0
+npm licenses: 1 dependencies; 0 error(s)
+
+$ node E:\openhoi\.orchestrator\wt\WP-06-verify\tools\check_npm_licenses.cjs --root E:\openhoi\.orchestrator\wt\WP-06-verify\target\evidence\WP-06-reverify\tmp\tmpjukwz06l
+exit=1
+npm licenses: 1 dependencies; 1 error(s)
+[LICENSE] node_modules/fixture-dep@1.0.0: unapproved license undefined
+
+test_req_leg_02_ai_asset_dev_passes (test_wp01.AssetTests.test_req_leg_02_ai_asset_dev_passes) ... ok
+test_req_leg_02_ai_asset_release_fails (test_wp01.AssetTests.test_req_leg_02_ai_asset_release_fails) ... ok
+test_req_leg_02_boolean_string_fails (test_wp01.AssetTests.test_req_leg_02_boolean_string_fails) ... ok
+test_req_leg_02_duplicate_fails (test_wp01.AssetTests.test_req_leg_02_duplicate_fails) ... ok
+test_req_leg_02_missing_file_fails (test_wp01.AssetTests.test_req_leg_02_missing_file_fails) ... ok
+test_req_leg_02_missing_metadata_fails (test_wp01.AssetTests.test_req_leg_02_missing_metadata_fails) ... ok
+test_req_leg_02_registered_data_passes (test_wp01.AssetTests.test_req_leg_02_registered_data_passes) ... ok
+test_req_leg_02_traversal_fails (test_wp01.AssetTests.test_req_leg_02_traversal_fails) ... ok
+test_req_leg_02_unapproved_asset_license_fails (test_wp01.AssetTests.test_req_leg_02_unapproved_asset_license_fails) ... ok
+test_req_leg_02_unregistered_data_fails (test_wp01.AssetTests.test_req_leg_02_unregistered_data_fails) ... ok
+test_req_leg_02_unregistered_imported_asset_fails (test_wp01.AssetTests.test_req_leg_02_unregistered_imported_asset_fails) ... ok
+test_req_leg_02_unregistered_localization_fails (test_wp01.AssetTests.test_req_leg_02_unregistered_localization_fails) ... ok
+test_req_leg_02_unregistered_public_file_fails (test_wp01.AssetTests.test_req_leg_02_unregistered_public_file_fails) ... ok
+test_req_leg_03_cargo_gpl_and_bincode_fail (test_wp01.CargoLicenseTests.test_req_leg_03_cargo_gpl_and_bincode_fail) ... FAIL
+test_req_leg_03_and_requires_both_licenses (test_wp01.NpmLicenseTests.test_req_leg_03_and_requires_both_licenses) ... ok
+test_req_leg_03_exception_not_silently_ignored (test_wp01.NpmLicenseTests.test_req_leg_03_exception_not_silently_ignored) ... ok
+test_req_leg_03_gpl_dependency_fails (test_wp01.NpmLicenseTests.test_req_leg_03_gpl_dependency_fails) ... ok
+test_req_leg_03_or_accepts_permitted_choice (test_wp01.NpmLicenseTests.test_req_leg_03_or_accepts_permitted_choice) ... ok
+test_req_leg_03_permitted_license_passes (test_wp01.NpmLicenseTests.test_req_leg_03_permitted_license_passes) ... ok
+test_req_leg_03_unknown_license_fails (test_wp01.NpmLicenseTests.test_req_leg_03_unknown_license_fails) ... ok
+test_req_plat_01_buildable_workspace_and_ci (test_wp01.PlatformTests.test_req_plat_01_buildable_workspace_and_ci) ... ok
+
+======================================================================
+FAIL: test_req_leg_03_cargo_gpl_and_bincode_fail (test_wp01.CargoLicenseTests.test_req_leg_03_cargo_gpl_and_bincode_fail)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-06-verify\tools\tests\test_wp01.py", line 181, in test_req_leg_03_cargo_gpl_and_bincode_fail
+    self.assertIn(diagnostic, result.stdout + result.stderr)
+AssertionError: 'GPL-3.0-only' not found in "2026-10-06 08:34:23 [ERROR] failed to fetch crates: error: current package believes it's in a workspace when it's not:\ncurrent:   E:\\openhoi\\.orchestrator\\wt\\WP-06-verify\\target\\evidence\\WP-06-reverify\\tmp\\tmp151_qs4v\\Cargo.toml\nworkspace: E:\\openhoi\\.orchestrator\\wt\\WP-06-verify\\Cargo.toml\n\nthis may be fixable by adding `target\\evidence\\WP-06-reverify\\tmp\\tmp151_qs4v` to the `workspace.members` array of the manifest located at: E:\\openhoi\\.orchestrator\\wt\\WP-06-verify\\Cargo.toml\nAlternatively, to keep it out of the workspace, add the package to the `workspace.exclude` array, or add an empty `[workspace]` table to the package's manifest.\n\n2026-10-06 08:34:23 [ERROR] `cargo metadata` exited with an error: error: current package believes it's in a workspace when it's not:\ncurrent:   E:\\openhoi\\.orchestrator\\wt\\WP-06-verify\\target\\evidence\\WP-06-reverify\\tmp\\tmp151_qs4v\\Cargo.toml\nworkspace: E:\\openhoi\\.orchestrator\\wt\\WP-06-verify\\Cargo.toml\n\nthis may be fixable by adding `target\\evidence\\WP-06-reverify\\tmp\\tmp151_qs4v` to the `workspace.members` array of the manifest located at: E:\\openhoi\\.orchestrator\\wt\\WP-06-verify\\Cargo.toml\nAlternatively, to keep it out of the workspace, add the package to the `workspace.exclude` array, or add an empty `[workspace]` table to the package's manifest.\n\n"
+
+----------------------------------------------------------------------
+Ran 21 tests in 1.313s
+
+FAILED (failures=1)
