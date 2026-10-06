@@ -90,11 +90,11 @@
   {
     "threadId": "01a11186-8f53-75c2-b9fb-873b27d8af82",
     "hostId": "local",
-    "status": "active",
-    "cursor": "a62a6b0a-9800-4c41-882e-b7bcb95ecd27:118",
-    "turnStatus": "inProgress",
+    "status": "idle",
+    "cursor": "a62a6b0a-9800-4c41-882e-b7bcb95ecd27:120",
+    "turnStatus": "completed",
     "turnId": "01a112d1-309c-7d83-a051-524f23dbe378",
-    "latestMessage": "실패한 main CI의 DPR 두 사례를 원본 JSON·PNG·로그부터 대조하겠습니다. 실제 표시·상태·해제 결함인지, 검사 단계의 누적 비용이 30초를 넘긴 것인지 구분하고, 단계별 시간은 ignored 진단 경로에 기록하겠습니다."
+    "latestMessage": "읽기 진단 최종보고 후 종료; Linux 원인 미확정"
   },
   {
     "threadId": "01a111b8-52f5-7853-b33e-a347d1efe57b",

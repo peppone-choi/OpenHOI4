@@ -1,0 +1,55 @@
+{
+  "observed_utc": "2026-10-06T20:11:08.529543+00:00",
+  "head": "9fbc05a1e29062f93bb362450aaddc2068aa41e9",
+  "branch": "codex/wp08-map-rendering",
+  "tracked_status": "",
+  "tracked_diff_stat": "",
+  "scope": "Read-only CI evidence inspection and ignored offline PNG decode profiling only. No tracked/product/fixture changes or new commit; no new server, browser action, fault emulation or test loop. Work stopped at CEO C02/P08 handoff; next RUN must explicitly resume implementation.",
+  "prior_failure": {
+    "head": "941765e592301642841f5609894a6c8455d8a73f",
+    "product": "9fbc05a1e29062f93bb362450aaddc2068aa41e9",
+    "run": 37522389014,
+    "job": 112470811853,
+    "artifact": 11440549215,
+    "digest": "2a3cd2e7231b769c3dda8ae4bf79b3133000d25301429a7533ea0b9912b98a0a",
+    "members": 169,
+    "selected_sha256": {
+      "target/wp08/dpr/chromium-false-dpr1.5-1.png": "fda82b53502323e48e4e865e532f0c1368a78c99f61162bca1d3fb57fa4cb7fd",
+      "target/wp08/dpr/chromium-false-dpr1-2.png": "f83a3f50ffd1f2b98ae420a8937ac495238af86d1562f8850b9d6300ab231e0d",
+      "target/wp08/dpr/chromium-false-dpr1.5-4.png": "fda82b53502323e48e4e865e532f0c1368a78c99f61162bca1d3fb57fa4cb7fd",
+      "target/wp08/dpr/chromium-false-dpr2-0.png": "905da36a67d366b0aed2167d9e78a01e093c5e5aa6c816dac0f5e2733f555370",
+      "target/wp08/dpr/chromium-false-dpr2-3.png": "905da36a67d366b0aed2167d9e78a01e093c5e5aa6c816dac0f5e2733f555370",
+      "target/wp08/dpr/chromium-false.json": "5dc56e5c4e0b4246f4815cd8d3b5f49278ead340d8f9f9682bb4edb49ffd2740",
+      "target/wp08/dpr/chromium-true-dpr1-2.png": "f83a3f50ffd1f2b98ae420a8937ac495238af86d1562f8850b9d6300ab231e0d",
+      "target/wp08/dpr/chromium-true-dpr1-5.png": "f83a3f50ffd1f2b98ae420a8937ac495238af86d1562f8850b9d6300ab231e0d",
+      "target/wp08/dpr/chromium-true-dpr1.5-1.png": "0702114c2d4b60b377560eaa0aafb03c15f8e088355fd6b411f067ab873d8718",
+      "target/wp08/dpr/chromium-true-dpr1.5-4.png": "0702114c2d4b60b377560eaa0aafb03c15f8e088355fd6b411f067ab873d8718",
+      "target/wp08/dpr/chromium-true-dpr2-0.png": "7a869b7ba1603778afb42a417f620bd333ccf97c6821948197648ab17c6208ad",
+      "target/wp08/dpr/chromium-true.json": "595a8e778f3acedd4a0dca312f49eb734585442169171e7aa441ac3fc3f24e27",
+      "target/wp08/dpr/webkit-false-dpr2-0.png": "ef992fcbebf011bb90c210aa2139a4c5b195a019d2c5ca0263dcba8ab3075a15",
+      "target/wp08/dpr/chromium-true-dpr2-3.png": "7a869b7ba1603778afb42a417f620bd333ccf97c6821948197648ab17c6208ad",
+      "target/wp08/dpr/webkit-false.json": "3a3c0b2117f3ced67775c12637bd89ec11e8e463f484427be676d26951bb5e2f",
+      "target/wp08/dpr/webkit-true-dpr2-0.png": "ef992fcbebf011bb90c210aa2139a4c5b195a019d2c5ca0263dcba8ab3075a15",
+      "target/wp08/dpr/webkit-true.json": "79559b73b688ab964cab9b53cfd833b02426bfdc76efb7fe043d3059c9d95159",
+      "client/test-results/map-dpr-REQ-PLAT-03-DPR-su-1d887-lay-and-authority-preferred-chromium/error-context.md": "f7450c3a9b05c91cc002f74790a662dbe6281c837d63d73f58723287233c8bf1",
+      "client/test-results/map-dpr-REQ-PLAT-03-DPR-su-d0353-lay-and-authority-forced-GL-chromium/error-context.md": "10231f8674fefc39376416b832662ace7066aeaf56779b9fbecf001fd0f66d5c"
+    }
+  },
+  "png_check": {
+    "files": 13,
+    "target_rgb_all_match": true,
+    "local_node": "24.4.0",
+    "decode_ms_min": 16.050700000000006,
+    "decode_ms_max": 79.43709999999999,
+    "one_local_decode_pass_ms": 539.6211,
+    "scope": "Actual original PNGs decoded in full; target RGB sampled using original asserted saved camera. Local Windows timings do not establish Linux stage cost."
+  },
+  "findings": [
+    "Preferred four completed DPR stages match buffer/RGB/GL/camera/authority; fifth1.5PNG exists and targetRGB matches. Timeout occurs at redundant final buffer evidence read, final surface/resources null after page ended.",
+    "ForcedGL six completed DPR stages match checks; finally canvas absent and media/listeners/observers/RAFs all0; whole30s timeout occurred at cleanup poll. No pixel or scalar mismatch assertion is reported.",
+    "Precise per-phase times are absent from this CI artifact. CPU/driver causes and Linux readback/PNG/roundtrip share remain unconfirmed."
+  ],
+  "next_minimum_action": "When next RUN explicitly resumes: instrument a separate ignored copy of the original fixture for per-phase and per-API time/roundtrip counts with unchanged30s/expect5s/retry0/skip0/6DPRchanges/allpixel-buffer-camera-authority-cleanup checks. Compare same-product successful CI raw logs before choosing a minimal same-epoch batched-read candidate; no candidate is implemented here.",
+  "new_ports_or_pids": [],
+  "retained_previews": "19418/19425/19431/19451/19461 untouched; verify ports19453-58 untouched; no URL/process input or termination."
+}
