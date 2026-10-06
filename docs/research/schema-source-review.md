@@ -12,6 +12,8 @@
 
 위 공식 경로를 대상으로 분류 검색도 시도했으나 결과가 없었다. 접근하지 못한 내용을 읽었다고 기록하지 않는다. 복제된 원작 데이터/코드 저장소·수치표를 대체 조사 자료로 사용하지 않았다. 권한·네트워크 설정을 바꾸지 않으며 실제 접근 가능한 공개 경로가 확인되면 일시·범위·분류 참고 내용을 별도로 기록한다. 이 제한 때문에 현재 01/02에 있는 자체 규칙과 기술 설계를 중단하지 않는다.
 
+2026-10-07 추가 정상 공개 경로 점검: [Country](https://hoi4.paradoxwikis.com/Country)와 [States](https://hoi4.paradoxwikis.com/States)도 웹 도구에서 접근 불가였다. 이 별칭 경로의 실제 페이지 존재나 본문을 확인한 것으로 취급하지 않는다. 인증·차단 우회 없이 현재 자체 문서와 열람한 기술 자료로 WP-08 계약 및 WP-11 착수 경계를 검토했다.
+
 기술 문서는 정상 열람했다. [JSON Schema annotations](https://json-schema.org/understanding-json-schema/reference/annotations)는 default가 검증 중 누락값을 채우는 기능이 아니며 readOnly도 annotation임을 설명한다. 적용값과 변경 권한은 실제 로더/명령 경계에서 검사한다.
 
 [JSON Schema object](https://json-schema.org/understanding-json-schema/reference/object)와 [null](https://json-schema.org/understanding-json-schema/reference/null)은 필수 속성, 추가 속성, 누락과 null을 구분한다. 필드별 required/null/default 정책을 명시하고 Rust·생성 TS·runtime 동작과 대조한다. 객체 타입 선언만으로 모든 키·관계가 검증된다고 주장하지 않는다.
