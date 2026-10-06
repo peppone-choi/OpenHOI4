@@ -1,0 +1,115 @@
+- main:
+  - heading "OpenHOI4" [level=1]
+  - paragraph: 로컬 시나리오
+  - text: 언어
+  - combobox "언어":
+    - option "English"
+    - option "한국어" [selected]
+  - status: 연결됨
+  - region "시간 제어":
+    - term: 날짜
+    - definition: 2038-07-16
+    - term: 시각
+    - definition: "18"
+    - term: 틱
+    - definition: "337842"
+    - term: 속도
+    - definition: "2"
+    - button "재개"
+    - button "속도 1": "1"
+    - button "속도 2" [active] [pressed]: "2"
+    - button "속도 3": "3"
+    - button "속도 4": "4"
+    - button "속도 5": "5"
+  - region "프로빈스 지도":
+    - navigation "지도 모드":
+      - button "소유" [pressed]
+      - button "통제"
+      - button "지형"
+      - button "주"
+      - button "시점 초기화"
+    - generic "프로빈스 지도"
+    - text: "프로빈스:"
+    - strong: "0"
+    - generic: 프로빈스 0 · 평야
+    - button "선택 해제"
+  - complementary:
+    - region "국가":
+      - heading "국가" [level=2]
+      - navigation:
+        - button "북부 시험국"
+        - button "남부 시험국" [pressed]
+      - heading "남부 시험국" [level=3]
+      - term: 태그
+      - definition: STH
+      - term: 수도 프로빈스
+      - definition: "65535"
+      - term: 정부
+      - definition: 시험 평의회
+      - heading "이념 지지율 (비율)" [level=4]
+      - term: 시민
+      - definition: "0.75"
+      - term: 지역
+      - definition: "0.25"
+    - region "주":
+      - heading "주" [level=2]
+      - navigation:
+        - button "북부 시험주" [pressed]
+        - button "남부 시험주"
+      - heading "북부 시험주" [level=3]
+      - term: 소유국
+      - definition: 북부 시험국
+      - term: 인구
+      - definition: "3456"
+      - term: 철강
+      - definition: "71"
+      - term: 공업 시설
+      - definition: "9"
+      - generic "인프라 수치 원장 보기":
+        - text: 인프라
+        - strong: "3.0000000002"
+      - heading "수치 원장" [level=2]
+      - paragraph: "틱: 337842"
+      - term: 기본값
+      - definition: "2.0000000002"
+      - term: 최종값
+      - definition: "3.0000000002"
+      - table:
+        - rowgroup:
+          - row "기여 항목 연산 값 누적값":
+            - columnheader "기여 항목"
+            - columnheader "연산"
+            - columnheader "값"
+            - columnheader "누적값"
+        - rowgroup:
+          - 'row "인프라 출처: 기본값 기본값 2.0000000002 2.0000000002"':
+            - 'cell "인프라 출처: 기본값"':
+              - text: 인프라
+              - generic: "출처: 기본값"
+            - cell "기본값"
+            - cell "2.0000000002"
+            - cell "2.0000000002"
+          - 'row "서버 메시지를 표시할 수 없습니다 출처: 서버 메시지를 표시할 수 없습니다 곱산 1.5 3.0000000002"':
+            - 'cell "서버 메시지를 표시할 수 없습니다 출처: 서버 메시지를 표시할 수 없습니다"':
+              - text: 서버 메시지를 표시할 수 없습니다
+              - generic: "출처: 서버 메시지를 표시할 수 없습니다"
+            - cell "곱산"
+            - cell "1.5"
+            - cell "3.0000000002"
+      - table:
+        - rowgroup:
+          - row "프로빈스 소유국 통제국":
+            - columnheader "프로빈스"
+            - columnheader "소유국"
+            - columnheader "통제국"
+        - rowgroup:
+          - row "0 북부 시험국 북부 시험국":
+            - cell "0"
+            - cell "북부 시험국"
+            - cell "북부 시험국"
+          - row "13 북부 시험국 남부 시험국":
+            - cell "13"
+            - cell "북부 시험국"
+            - cell "남부 시험국"
+  - link "Noto Sans KR · SIL Open Font License 1.1":
+    - /url: /fonts/OFL.txt

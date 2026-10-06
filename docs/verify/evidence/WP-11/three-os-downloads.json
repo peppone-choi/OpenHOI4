@@ -1,0 +1,1145 @@
+[
+  {
+    "id": 11446129369,
+    "name": "save-ubuntu-latest",
+    "head": "750c2732b00c164ddc252fa26c4984ababd64f35",
+    "api_digest": "sha256:bb2fd57df15f131213d9cec7e5b6c25bbd20d1392cf734f901b51c57c5fbf400",
+    "zip_sha256": "bb2fd57df15f131213d9cec7e5b6c25bbd20d1392cf734f901b51c57c5fbf400",
+    "members": [
+      {
+        "path": "build-cli.command.json",
+        "sha256": "36225dc706b523e517b5371bf8e0bf50cb1100f73193dfd81e71cc367798f445"
+      },
+      {
+        "path": "build-cli.stderr",
+        "sha256": "02db5a66fa0c60ca8618bd08aac556eac4f3ec863e8630a0d353dba6a0f6e126"
+      },
+      {
+        "path": "build-cli.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "build-helper.command.json",
+        "sha256": "f84fc158877a292f92f54878a42d97bc39448b446997ba1dc62982cbfff5e4c4"
+      },
+      {
+        "path": "build-helper.stderr",
+        "sha256": "02db5a66fa0c60ca8618bd08aac556eac4f3ec863e8630a0d353dba6a0f6e126"
+      },
+      {
+        "path": "build-helper.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "capture-1.command.json",
+        "sha256": "6b479914f53f1c24fe813bc756557ebecd47410dabc5a1267085adb2521dc4f8"
+      },
+      {
+        "path": "capture-1.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "capture-1.stdout",
+        "sha256": "32803a88d00b2c0b8f85ed2b9cf31b7b7d3cb4c6d0671a442a40590ec033a4df"
+      },
+      {
+        "path": "capture-2.command.json",
+        "sha256": "134ea912137edc02690fbebe0f749ccfe327d8dbb3d258e360000422a145341f"
+      },
+      {
+        "path": "capture-2.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "capture-2.stdout",
+        "sha256": "f922a2c3f59992066739f7b7f54af17ac91fdcf1cb708ddcb6a7f4fdf8886fdd"
+      },
+      {
+        "path": "cli-resume-1.command.json",
+        "sha256": "d1a1147be9a139faebb321854afbe4f3eaef37c772ddb4082307b0cc7371d48b"
+      },
+      {
+        "path": "cli-resume-1.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "cli-resume-1.stdout",
+        "sha256": "6ab015fc2e3eeda1e2fa02d5994e27698d041545ad8897321928e1af088d41b8"
+      },
+      {
+        "path": "cli-resume-2.command.json",
+        "sha256": "35a2c4b24ad75f05b9999f191c21490738ce3d03e0c8bace060a785323ea10c4"
+      },
+      {
+        "path": "cli-resume-2.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "cli-resume-2.stdout",
+        "sha256": "6ab015fc2e3eeda1e2fa02d5994e27698d041545ad8897321928e1af088d41b8"
+      },
+      {
+        "path": "restart-1.command.json",
+        "sha256": "74820ffad9ec7139eb80d787de938ee327bb64b87f23cb3a143dfa8e7343d6b9"
+      },
+      {
+        "path": "restart-1.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "restart-1.stdout",
+        "sha256": "46df9baf29527f0ed684703af1139c3ec7b2ac3ebc19e49d3549e627e0f87d27"
+      },
+      {
+        "path": "restart-2.command.json",
+        "sha256": "9bc6c13818a5c1a5e45ac45ca0f273af81658244747b8f13f4b02d05ea85a21b"
+      },
+      {
+        "path": "restart-2.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "restart-2.stdout",
+        "sha256": "36ab686197cb33093cf1e3c1cffbf50aaae886cf9bd47469a42661c310b80a7c"
+      },
+      {
+        "path": "result.json",
+        "sha256": "377f04ce495defb0f59e0132f7dd6da8e39eef724bce921b5eaa3d98d9aab3ba"
+      },
+      {
+        "path": "run-1/pack/common/buildings.toml",
+        "sha256": "23826071aeb8a2bc7a1f032ec2adcc23424e5f60ac579ca9ee18be5bd52816b8"
+      },
+      {
+        "path": "run-1/capture.json",
+        "sha256": "0fac9aa5b4ebd69a441a128c7d9aa97b59c7cf0ebcdfa1e45f8231342360bd5e"
+      },
+      {
+        "path": "run-1/pack/common/resources.toml",
+        "sha256": "514eee6a8dbc6835c6833c38dadbe5da7dae3d70d185aaecea73ba8dd62b61fc"
+      },
+      {
+        "path": "run-1/pack/common/terrain.toml",
+        "sha256": "db903c3403dded0c36b38ae28ab2b6f61a1c66efdc7c16a4c5240dceb475d289"
+      },
+      {
+        "path": "run-1/pack/defines.toml",
+        "sha256": "76d46941adae2f693574dc5551b4afcb9f1999cf5e513fd863de1d2d923587df"
+      },
+      {
+        "path": "run-1/pack/localisation/en/map.ftl",
+        "sha256": "ae6442ef5fd0912ae5d7cdbf0541edd417c83dfeb505d6f749b2b6687ddb9b4b"
+      },
+      {
+        "path": "run-1/pack/localisation/en/national.ftl",
+        "sha256": "e109c2e8097418bef7c251904497fae23b21f0a85abe6ed8a8dc208445c84407"
+      },
+      {
+        "path": "run-1/pack/localisation/ko/map.ftl",
+        "sha256": "b7ac3fb02aa96a16f8338bf81068aa378d7791e8be7306ddb2f0f42092bf700f"
+      },
+      {
+        "path": "run-1/pack/localisation/ko/national.ftl",
+        "sha256": "7824bf87a61e5041644e3d62b09ebc4debc6f0769878e36bf1b662198986e312"
+      },
+      {
+        "path": "run-1/pack/manifest.toml",
+        "sha256": "92656dc53031c8bf5d1e8af8b5a15e4448b3eb2eee498f56010811b78528dbcc"
+      },
+      {
+        "path": "run-1/pack/maps/testland/adjacency_overrides.csv",
+        "sha256": "251e1353688f511baf45b1b513a8a79ad3329ae21dfb1e6e29e9ba362572a525"
+      },
+      {
+        "path": "run-1/pack/maps/testland/provinces.csv",
+        "sha256": "f04d94464fe95d7c25069529a34f782e060ba9cf5185618384a3ac5dd2846c89"
+      },
+      {
+        "path": "run-1/pack/maps/testland/provinces.png",
+        "sha256": "05305d56dc90dfbfbd73fc1a5f3a480ec6e82551f60a93be7d8bc53ad3d73dab"
+      },
+      {
+        "path": "run-1/pack/maps/testland/regions.toml",
+        "sha256": "1b9eadcb639cef1b6e7b88451e1e7134a88d8b5cb108e4066ee70cc137f79485"
+      },
+      {
+        "path": "run-1/pack/maps/testland/states.toml",
+        "sha256": "d63380dfe0240f8fe50feabe8e253278a03020d24ad46e65cd69f5a3e0512f2b"
+      },
+      {
+        "path": "run-1/pack/maps/testland/visuals.toml",
+        "sha256": "df2b1566fabd3c1a263d543b425a52842584a6ca5bf33827290a1d4fa2f303b1"
+      },
+      {
+        "path": "run-1/pack/scenarios/m1/defines.toml",
+        "sha256": "91ac0d4669188dd911622bdbdba5efb43c5d242f195d6f1478f07afc91f45411"
+      },
+      {
+        "path": "run-1/pack/scenarios/m1/nations/NTH.toml",
+        "sha256": "04f0a06c29a74b41e7effe94a3e131da359f213ef35da849e70c59fbd3f8c29a"
+      },
+      {
+        "path": "run-1/pack/scenarios/m1/scenario.toml",
+        "sha256": "ce56ff2d9259ed60be06163fe57d6dba452d9e5075b56525f920c3dc23354481"
+      },
+      {
+        "path": "run-1/paused.ohsave",
+        "sha256": "dd0bacad5f4f4a439f22a2e000377765c5f0723a8087a23d2850101266afb712"
+      },
+      {
+        "path": "run-1/pack/scenarios/m1/nations/STH.toml",
+        "sha256": "522a1ab15df094a0c15012e2c8c3b362dba7fb766ff0d2b6eea48b0f1bde0b2b"
+      },
+      {
+        "path": "run-1/saved.ohsave",
+        "sha256": "57b13c62ef1a6f88ade1851d0b3ae398157f95ca5bc246068eac3b2a964322fa"
+      },
+      {
+        "path": "run-2/capture.json",
+        "sha256": "19394e9c26897cdfa4fc3e9691dd140cbac995835c63f8416b89adfcd6b40d80"
+      },
+      {
+        "path": "run-2/pack/common/buildings.toml",
+        "sha256": "23826071aeb8a2bc7a1f032ec2adcc23424e5f60ac579ca9ee18be5bd52816b8"
+      },
+      {
+        "path": "run-2/pack/common/resources.toml",
+        "sha256": "514eee6a8dbc6835c6833c38dadbe5da7dae3d70d185aaecea73ba8dd62b61fc"
+      },
+      {
+        "path": "run-2/pack/common/terrain.toml",
+        "sha256": "db903c3403dded0c36b38ae28ab2b6f61a1c66efdc7c16a4c5240dceb475d289"
+      },
+      {
+        "path": "run-2/pack/defines.toml",
+        "sha256": "76d46941adae2f693574dc5551b4afcb9f1999cf5e513fd863de1d2d923587df"
+      },
+      {
+        "path": "run-2/pack/localisation/en/map.ftl",
+        "sha256": "ae6442ef5fd0912ae5d7cdbf0541edd417c83dfeb505d6f749b2b6687ddb9b4b"
+      },
+      {
+        "path": "run-2/pack/localisation/en/national.ftl",
+        "sha256": "e109c2e8097418bef7c251904497fae23b21f0a85abe6ed8a8dc208445c84407"
+      },
+      {
+        "path": "run-2/pack/localisation/ko/map.ftl",
+        "sha256": "b7ac3fb02aa96a16f8338bf81068aa378d7791e8be7306ddb2f0f42092bf700f"
+      },
+      {
+        "path": "run-2/pack/localisation/ko/national.ftl",
+        "sha256": "7824bf87a61e5041644e3d62b09ebc4debc6f0769878e36bf1b662198986e312"
+      },
+      {
+        "path": "run-2/pack/manifest.toml",
+        "sha256": "92656dc53031c8bf5d1e8af8b5a15e4448b3eb2eee498f56010811b78528dbcc"
+      },
+      {
+        "path": "run-2/pack/maps/testland/adjacency_overrides.csv",
+        "sha256": "251e1353688f511baf45b1b513a8a79ad3329ae21dfb1e6e29e9ba362572a525"
+      },
+      {
+        "path": "run-2/pack/maps/testland/provinces.csv",
+        "sha256": "f04d94464fe95d7c25069529a34f782e060ba9cf5185618384a3ac5dd2846c89"
+      },
+      {
+        "path": "run-2/pack/maps/testland/provinces.png",
+        "sha256": "05305d56dc90dfbfbd73fc1a5f3a480ec6e82551f60a93be7d8bc53ad3d73dab"
+      },
+      {
+        "path": "run-2/pack/maps/testland/regions.toml",
+        "sha256": "1b9eadcb639cef1b6e7b88451e1e7134a88d8b5cb108e4066ee70cc137f79485"
+      },
+      {
+        "path": "run-2/pack/maps/testland/states.toml",
+        "sha256": "d63380dfe0240f8fe50feabe8e253278a03020d24ad46e65cd69f5a3e0512f2b"
+      },
+      {
+        "path": "run-2/pack/maps/testland/visuals.toml",
+        "sha256": "df2b1566fabd3c1a263d543b425a52842584a6ca5bf33827290a1d4fa2f303b1"
+      },
+      {
+        "path": "run-2/pack/scenarios/m1/defines.toml",
+        "sha256": "91ac0d4669188dd911622bdbdba5efb43c5d242f195d6f1478f07afc91f45411"
+      },
+      {
+        "path": "run-2/pack/scenarios/m1/nations/NTH.toml",
+        "sha256": "04f0a06c29a74b41e7effe94a3e131da359f213ef35da849e70c59fbd3f8c29a"
+      },
+      {
+        "path": "run-2/pack/scenarios/m1/nations/STH.toml",
+        "sha256": "522a1ab15df094a0c15012e2c8c3b362dba7fb766ff0d2b6eea48b0f1bde0b2b"
+      },
+      {
+        "path": "run-2/pack/scenarios/m1/scenario.toml",
+        "sha256": "ce56ff2d9259ed60be06163fe57d6dba452d9e5075b56525f920c3dc23354481"
+      },
+      {
+        "path": "run-2/paused.ohsave",
+        "sha256": "dd0bacad5f4f4a439f22a2e000377765c5f0723a8087a23d2850101266afb712"
+      },
+      {
+        "path": "run-2/saved.ohsave",
+        "sha256": "57b13c62ef1a6f88ade1851d0b3ae398157f95ca5bc246068eac3b2a964322fa"
+      },
+      {
+        "path": "server/packs/testland/common/buildings.toml",
+        "sha256": "23826071aeb8a2bc7a1f032ec2adcc23424e5f60ac579ca9ee18be5bd52816b8"
+      },
+      {
+        "path": "server/packs/testland/common/resources.toml",
+        "sha256": "514eee6a8dbc6835c6833c38dadbe5da7dae3d70d185aaecea73ba8dd62b61fc"
+      },
+      {
+        "path": "server/packs/testland/common/terrain.toml",
+        "sha256": "db903c3403dded0c36b38ae28ab2b6f61a1c66efdc7c16a4c5240dceb475d289"
+      },
+      {
+        "path": "server/packs/testland/defines.toml",
+        "sha256": "76d46941adae2f693574dc5551b4afcb9f1999cf5e513fd863de1d2d923587df"
+      },
+      {
+        "path": "server/packs/testland/localisation/en/national.ftl",
+        "sha256": "e109c2e8097418bef7c251904497fae23b21f0a85abe6ed8a8dc208445c84407"
+      },
+      {
+        "path": "server/packs/testland/localisation/en/map.ftl",
+        "sha256": "ae6442ef5fd0912ae5d7cdbf0541edd417c83dfeb505d6f749b2b6687ddb9b4b"
+      },
+      {
+        "path": "server/packs/testland/localisation/ko/map.ftl",
+        "sha256": "b7ac3fb02aa96a16f8338bf81068aa378d7791e8be7306ddb2f0f42092bf700f"
+      },
+      {
+        "path": "server/packs/testland/localisation/ko/national.ftl",
+        "sha256": "7824bf87a61e5041644e3d62b09ebc4debc6f0769878e36bf1b662198986e312"
+      },
+      {
+        "path": "server/packs/testland/manifest.toml",
+        "sha256": "92656dc53031c8bf5d1e8af8b5a15e4448b3eb2eee498f56010811b78528dbcc"
+      },
+      {
+        "path": "server/packs/testland/maps/testland/adjacency_overrides.csv",
+        "sha256": "251e1353688f511baf45b1b513a8a79ad3329ae21dfb1e6e29e9ba362572a525"
+      },
+      {
+        "path": "server/packs/testland/maps/testland/provinces.csv",
+        "sha256": "f04d94464fe95d7c25069529a34f782e060ba9cf5185618384a3ac5dd2846c89"
+      },
+      {
+        "path": "server/packs/testland/maps/testland/provinces.png",
+        "sha256": "05305d56dc90dfbfbd73fc1a5f3a480ec6e82551f60a93be7d8bc53ad3d73dab"
+      },
+      {
+        "path": "server/packs/testland/maps/testland/regions.toml",
+        "sha256": "1b9eadcb639cef1b6e7b88451e1e7134a88d8b5cb108e4066ee70cc137f79485"
+      },
+      {
+        "path": "server/packs/testland/maps/testland/states.toml",
+        "sha256": "d63380dfe0240f8fe50feabe8e253278a03020d24ad46e65cd69f5a3e0512f2b"
+      },
+      {
+        "path": "server/packs/testland/maps/testland/visuals.toml",
+        "sha256": "df2b1566fabd3c1a263d543b425a52842584a6ca5bf33827290a1d4fa2f303b1"
+      },
+      {
+        "path": "server/packs/testland/scenarios/m1/defines.toml",
+        "sha256": "91ac0d4669188dd911622bdbdba5efb43c5d242f195d6f1478f07afc91f45411"
+      },
+      {
+        "path": "server/packs/testland/scenarios/m1/nations/NTH.toml",
+        "sha256": "04f0a06c29a74b41e7effe94a3e131da359f213ef35da849e70c59fbd3f8c29a"
+      },
+      {
+        "path": "server/packs/testland/scenarios/m1/nations/STH.toml",
+        "sha256": "522a1ab15df094a0c15012e2c8c3b362dba7fb766ff0d2b6eea48b0f1bde0b2b"
+      },
+      {
+        "path": "server/packs/testland/scenarios/m1/scenario.toml",
+        "sha256": "ce56ff2d9259ed60be06163fe57d6dba452d9e5075b56525f920c3dc23354481"
+      },
+      {
+        "path": "server/query.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "server/result.json",
+        "sha256": "cbab2bce29af72861b1adfcfbe72894b5df8e3ecb739bc014529d314c6e445ba"
+      },
+      {
+        "path": "server/query.stdout",
+        "sha256": "3891e21b981849a5567710d37765ca0da082d4b7997c517f2729b81a5a1ee278"
+      },
+      {
+        "path": "server/server.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "server/server.stdout",
+        "sha256": "c7372c415396a764ba3cd81e8d4648b56eb86783b3ff35a13a808c10fec64fa4"
+      }
+    ]
+  },
+  {
+    "id": 11446029424,
+    "name": "save-macos-latest",
+    "head": "750c2732b00c164ddc252fa26c4984ababd64f35",
+    "api_digest": "sha256:9b0f333240ff30a9da856acbd134781373737455ac131263a5ec3625f97b0ad4",
+    "zip_sha256": "9b0f333240ff30a9da856acbd134781373737455ac131263a5ec3625f97b0ad4",
+    "members": [
+      {
+        "path": "build-cli.command.json",
+        "sha256": "36225dc706b523e517b5371bf8e0bf50cb1100f73193dfd81e71cc367798f445"
+      },
+      {
+        "path": "build-cli.stderr",
+        "sha256": "02db5a66fa0c60ca8618bd08aac556eac4f3ec863e8630a0d353dba6a0f6e126"
+      },
+      {
+        "path": "build-cli.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "build-helper.command.json",
+        "sha256": "f84fc158877a292f92f54878a42d97bc39448b446997ba1dc62982cbfff5e4c4"
+      },
+      {
+        "path": "build-helper.stderr",
+        "sha256": "02db5a66fa0c60ca8618bd08aac556eac4f3ec863e8630a0d353dba6a0f6e126"
+      },
+      {
+        "path": "capture-1.command.json",
+        "sha256": "b6f8eaa3c2aa417ecabd802e55a2a26eb6231cbef9273609277dbc4c3a18b663"
+      },
+      {
+        "path": "capture-1.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "build-helper.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "capture-1.stdout",
+        "sha256": "394bcd54b0115c9081961387207d8619cf8a2549ea354d10f54270ccd1861a63"
+      },
+      {
+        "path": "capture-2.command.json",
+        "sha256": "b8aa68e4c5e292be2aeb365d3e9044669859b75165d4277360705c8b8f691fe4"
+      },
+      {
+        "path": "capture-2.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "capture-2.stdout",
+        "sha256": "7d5ea9b65fbdb3bba3fc25efd31194dc131f1af4209d2a6664fd040d9a9c748a"
+      },
+      {
+        "path": "cli-resume-1.command.json",
+        "sha256": "c6be5f551ba088741e54d2ad8682808e326a320efc30d7dc96ed3f3a7df0e36d"
+      },
+      {
+        "path": "cli-resume-1.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "cli-resume-2.command.json",
+        "sha256": "5251cebe0e863dc010746dfc48e0da0da537393b5ede0c63923277072af0d6c6"
+      },
+      {
+        "path": "cli-resume-1.stdout",
+        "sha256": "6ab015fc2e3eeda1e2fa02d5994e27698d041545ad8897321928e1af088d41b8"
+      },
+      {
+        "path": "cli-resume-2.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "cli-resume-2.stdout",
+        "sha256": "6ab015fc2e3eeda1e2fa02d5994e27698d041545ad8897321928e1af088d41b8"
+      },
+      {
+        "path": "restart-1.command.json",
+        "sha256": "973c1f10f6c29a3de585de865235f456853454fe374bc1a41fad1fb62a8d0840"
+      },
+      {
+        "path": "restart-1.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "restart-1.stdout",
+        "sha256": "70a19fcb8f0561af8fa143e8b038fdcd335afb57bfa06a9aa010661162af702c"
+      },
+      {
+        "path": "restart-2.command.json",
+        "sha256": "30af20e4b912a323b9f90519b5ef53569cf1924aa70f51357259c3e207c2dfa2"
+      },
+      {
+        "path": "restart-2.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "run-1/capture.json",
+        "sha256": "135f0d5f8190007e7ac23a93e8a3f6871f6d9e3a144ab856f321ba20a9b2cba0"
+      },
+      {
+        "path": "restart-2.stdout",
+        "sha256": "cde9c5f02ffdf46061d0342ab22cdcd81b48dd4350aaca89db0b3348c94411c1"
+      },
+      {
+        "path": "result.json",
+        "sha256": "f060799fd2415b8576062f100614a814b53d05adb08e7ccf4e26b4aec2f2c346"
+      },
+      {
+        "path": "run-1/pack/common/buildings.toml",
+        "sha256": "23826071aeb8a2bc7a1f032ec2adcc23424e5f60ac579ca9ee18be5bd52816b8"
+      },
+      {
+        "path": "run-1/pack/common/resources.toml",
+        "sha256": "514eee6a8dbc6835c6833c38dadbe5da7dae3d70d185aaecea73ba8dd62b61fc"
+      },
+      {
+        "path": "run-1/pack/common/terrain.toml",
+        "sha256": "db903c3403dded0c36b38ae28ab2b6f61a1c66efdc7c16a4c5240dceb475d289"
+      },
+      {
+        "path": "run-1/pack/defines.toml",
+        "sha256": "76d46941adae2f693574dc5551b4afcb9f1999cf5e513fd863de1d2d923587df"
+      },
+      {
+        "path": "run-1/pack/localisation/en/map.ftl",
+        "sha256": "ae6442ef5fd0912ae5d7cdbf0541edd417c83dfeb505d6f749b2b6687ddb9b4b"
+      },
+      {
+        "path": "run-1/pack/localisation/en/national.ftl",
+        "sha256": "e109c2e8097418bef7c251904497fae23b21f0a85abe6ed8a8dc208445c84407"
+      },
+      {
+        "path": "run-1/pack/localisation/ko/national.ftl",
+        "sha256": "7824bf87a61e5041644e3d62b09ebc4debc6f0769878e36bf1b662198986e312"
+      },
+      {
+        "path": "run-1/pack/localisation/ko/map.ftl",
+        "sha256": "b7ac3fb02aa96a16f8338bf81068aa378d7791e8be7306ddb2f0f42092bf700f"
+      },
+      {
+        "path": "run-1/pack/manifest.toml",
+        "sha256": "92656dc53031c8bf5d1e8af8b5a15e4448b3eb2eee498f56010811b78528dbcc"
+      },
+      {
+        "path": "run-1/pack/maps/testland/adjacency_overrides.csv",
+        "sha256": "251e1353688f511baf45b1b513a8a79ad3329ae21dfb1e6e29e9ba362572a525"
+      },
+      {
+        "path": "run-1/pack/maps/testland/provinces.csv",
+        "sha256": "f04d94464fe95d7c25069529a34f782e060ba9cf5185618384a3ac5dd2846c89"
+      },
+      {
+        "path": "run-1/pack/maps/testland/provinces.png",
+        "sha256": "05305d56dc90dfbfbd73fc1a5f3a480ec6e82551f60a93be7d8bc53ad3d73dab"
+      },
+      {
+        "path": "run-1/pack/maps/testland/regions.toml",
+        "sha256": "1b9eadcb639cef1b6e7b88451e1e7134a88d8b5cb108e4066ee70cc137f79485"
+      },
+      {
+        "path": "run-1/pack/scenarios/m1/defines.toml",
+        "sha256": "91ac0d4669188dd911622bdbdba5efb43c5d242f195d6f1478f07afc91f45411"
+      },
+      {
+        "path": "run-1/pack/maps/testland/states.toml",
+        "sha256": "d63380dfe0240f8fe50feabe8e253278a03020d24ad46e65cd69f5a3e0512f2b"
+      },
+      {
+        "path": "run-1/pack/maps/testland/visuals.toml",
+        "sha256": "df2b1566fabd3c1a263d543b425a52842584a6ca5bf33827290a1d4fa2f303b1"
+      },
+      {
+        "path": "run-1/pack/scenarios/m1/nations/NTH.toml",
+        "sha256": "04f0a06c29a74b41e7effe94a3e131da359f213ef35da849e70c59fbd3f8c29a"
+      },
+      {
+        "path": "run-1/pack/scenarios/m1/nations/STH.toml",
+        "sha256": "522a1ab15df094a0c15012e2c8c3b362dba7fb766ff0d2b6eea48b0f1bde0b2b"
+      },
+      {
+        "path": "run-1/paused.ohsave",
+        "sha256": "dd0bacad5f4f4a439f22a2e000377765c5f0723a8087a23d2850101266afb712"
+      },
+      {
+        "path": "run-1/pack/scenarios/m1/scenario.toml",
+        "sha256": "ce56ff2d9259ed60be06163fe57d6dba452d9e5075b56525f920c3dc23354481"
+      },
+      {
+        "path": "run-1/saved.ohsave",
+        "sha256": "57b13c62ef1a6f88ade1851d0b3ae398157f95ca5bc246068eac3b2a964322fa"
+      },
+      {
+        "path": "run-2/capture.json",
+        "sha256": "ed2f3866a2ac0d9b54046b49ead1f827fb53f61798ee9df1c86a62599cbf88ad"
+      },
+      {
+        "path": "run-2/pack/common/buildings.toml",
+        "sha256": "23826071aeb8a2bc7a1f032ec2adcc23424e5f60ac579ca9ee18be5bd52816b8"
+      },
+      {
+        "path": "run-2/pack/common/resources.toml",
+        "sha256": "514eee6a8dbc6835c6833c38dadbe5da7dae3d70d185aaecea73ba8dd62b61fc"
+      },
+      {
+        "path": "run-2/pack/common/terrain.toml",
+        "sha256": "db903c3403dded0c36b38ae28ab2b6f61a1c66efdc7c16a4c5240dceb475d289"
+      },
+      {
+        "path": "run-2/pack/defines.toml",
+        "sha256": "76d46941adae2f693574dc5551b4afcb9f1999cf5e513fd863de1d2d923587df"
+      },
+      {
+        "path": "run-2/pack/localisation/en/national.ftl",
+        "sha256": "e109c2e8097418bef7c251904497fae23b21f0a85abe6ed8a8dc208445c84407"
+      },
+      {
+        "path": "run-2/pack/localisation/en/map.ftl",
+        "sha256": "ae6442ef5fd0912ae5d7cdbf0541edd417c83dfeb505d6f749b2b6687ddb9b4b"
+      },
+      {
+        "path": "run-2/pack/localisation/ko/map.ftl",
+        "sha256": "b7ac3fb02aa96a16f8338bf81068aa378d7791e8be7306ddb2f0f42092bf700f"
+      },
+      {
+        "path": "run-2/pack/maps/testland/adjacency_overrides.csv",
+        "sha256": "251e1353688f511baf45b1b513a8a79ad3329ae21dfb1e6e29e9ba362572a525"
+      },
+      {
+        "path": "run-2/pack/localisation/ko/national.ftl",
+        "sha256": "7824bf87a61e5041644e3d62b09ebc4debc6f0769878e36bf1b662198986e312"
+      },
+      {
+        "path": "run-2/pack/manifest.toml",
+        "sha256": "92656dc53031c8bf5d1e8af8b5a15e4448b3eb2eee498f56010811b78528dbcc"
+      },
+      {
+        "path": "run-2/pack/maps/testland/provinces.csv",
+        "sha256": "f04d94464fe95d7c25069529a34f782e060ba9cf5185618384a3ac5dd2846c89"
+      },
+      {
+        "path": "run-2/pack/maps/testland/states.toml",
+        "sha256": "d63380dfe0240f8fe50feabe8e253278a03020d24ad46e65cd69f5a3e0512f2b"
+      },
+      {
+        "path": "run-2/pack/maps/testland/provinces.png",
+        "sha256": "05305d56dc90dfbfbd73fc1a5f3a480ec6e82551f60a93be7d8bc53ad3d73dab"
+      },
+      {
+        "path": "run-2/pack/maps/testland/regions.toml",
+        "sha256": "1b9eadcb639cef1b6e7b88451e1e7134a88d8b5cb108e4066ee70cc137f79485"
+      },
+      {
+        "path": "run-2/pack/maps/testland/visuals.toml",
+        "sha256": "df2b1566fabd3c1a263d543b425a52842584a6ca5bf33827290a1d4fa2f303b1"
+      },
+      {
+        "path": "run-2/pack/scenarios/m1/defines.toml",
+        "sha256": "91ac0d4669188dd911622bdbdba5efb43c5d242f195d6f1478f07afc91f45411"
+      },
+      {
+        "path": "run-2/pack/scenarios/m1/nations/STH.toml",
+        "sha256": "522a1ab15df094a0c15012e2c8c3b362dba7fb766ff0d2b6eea48b0f1bde0b2b"
+      },
+      {
+        "path": "run-2/pack/scenarios/m1/nations/NTH.toml",
+        "sha256": "04f0a06c29a74b41e7effe94a3e131da359f213ef35da849e70c59fbd3f8c29a"
+      },
+      {
+        "path": "run-2/pack/scenarios/m1/scenario.toml",
+        "sha256": "ce56ff2d9259ed60be06163fe57d6dba452d9e5075b56525f920c3dc23354481"
+      },
+      {
+        "path": "run-2/saved.ohsave",
+        "sha256": "57b13c62ef1a6f88ade1851d0b3ae398157f95ca5bc246068eac3b2a964322fa"
+      },
+      {
+        "path": "run-2/paused.ohsave",
+        "sha256": "dd0bacad5f4f4a439f22a2e000377765c5f0723a8087a23d2850101266afb712"
+      },
+      {
+        "path": "server/packs/testland/common/buildings.toml",
+        "sha256": "23826071aeb8a2bc7a1f032ec2adcc23424e5f60ac579ca9ee18be5bd52816b8"
+      },
+      {
+        "path": "server/packs/testland/common/resources.toml",
+        "sha256": "514eee6a8dbc6835c6833c38dadbe5da7dae3d70d185aaecea73ba8dd62b61fc"
+      },
+      {
+        "path": "server/packs/testland/common/terrain.toml",
+        "sha256": "db903c3403dded0c36b38ae28ab2b6f61a1c66efdc7c16a4c5240dceb475d289"
+      },
+      {
+        "path": "server/packs/testland/defines.toml",
+        "sha256": "76d46941adae2f693574dc5551b4afcb9f1999cf5e513fd863de1d2d923587df"
+      },
+      {
+        "path": "server/packs/testland/localisation/en/map.ftl",
+        "sha256": "ae6442ef5fd0912ae5d7cdbf0541edd417c83dfeb505d6f749b2b6687ddb9b4b"
+      },
+      {
+        "path": "server/packs/testland/localisation/en/national.ftl",
+        "sha256": "e109c2e8097418bef7c251904497fae23b21f0a85abe6ed8a8dc208445c84407"
+      },
+      {
+        "path": "server/packs/testland/localisation/ko/map.ftl",
+        "sha256": "b7ac3fb02aa96a16f8338bf81068aa378d7791e8be7306ddb2f0f42092bf700f"
+      },
+      {
+        "path": "server/packs/testland/localisation/ko/national.ftl",
+        "sha256": "7824bf87a61e5041644e3d62b09ebc4debc6f0769878e36bf1b662198986e312"
+      },
+      {
+        "path": "server/packs/testland/manifest.toml",
+        "sha256": "92656dc53031c8bf5d1e8af8b5a15e4448b3eb2eee498f56010811b78528dbcc"
+      },
+      {
+        "path": "server/packs/testland/maps/testland/provinces.csv",
+        "sha256": "f04d94464fe95d7c25069529a34f782e060ba9cf5185618384a3ac5dd2846c89"
+      },
+      {
+        "path": "server/packs/testland/maps/testland/adjacency_overrides.csv",
+        "sha256": "251e1353688f511baf45b1b513a8a79ad3329ae21dfb1e6e29e9ba362572a525"
+      },
+      {
+        "path": "server/packs/testland/maps/testland/provinces.png",
+        "sha256": "05305d56dc90dfbfbd73fc1a5f3a480ec6e82551f60a93be7d8bc53ad3d73dab"
+      },
+      {
+        "path": "server/packs/testland/maps/testland/regions.toml",
+        "sha256": "1b9eadcb639cef1b6e7b88451e1e7134a88d8b5cb108e4066ee70cc137f79485"
+      },
+      {
+        "path": "server/packs/testland/maps/testland/visuals.toml",
+        "sha256": "df2b1566fabd3c1a263d543b425a52842584a6ca5bf33827290a1d4fa2f303b1"
+      },
+      {
+        "path": "server/packs/testland/maps/testland/states.toml",
+        "sha256": "d63380dfe0240f8fe50feabe8e253278a03020d24ad46e65cd69f5a3e0512f2b"
+      },
+      {
+        "path": "server/packs/testland/scenarios/m1/defines.toml",
+        "sha256": "91ac0d4669188dd911622bdbdba5efb43c5d242f195d6f1478f07afc91f45411"
+      },
+      {
+        "path": "server/packs/testland/scenarios/m1/nations/NTH.toml",
+        "sha256": "04f0a06c29a74b41e7effe94a3e131da359f213ef35da849e70c59fbd3f8c29a"
+      },
+      {
+        "path": "server/packs/testland/scenarios/m1/nations/STH.toml",
+        "sha256": "522a1ab15df094a0c15012e2c8c3b362dba7fb766ff0d2b6eea48b0f1bde0b2b"
+      },
+      {
+        "path": "server/packs/testland/scenarios/m1/scenario.toml",
+        "sha256": "ce56ff2d9259ed60be06163fe57d6dba452d9e5075b56525f920c3dc23354481"
+      },
+      {
+        "path": "server/query.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "server/query.stdout",
+        "sha256": "b0fa4cd1a0fbfee8d5c9ce87c78c2317a066525d70a21a1be45596e1c0e6d311"
+      },
+      {
+        "path": "server/result.json",
+        "sha256": "75d57d833e2f110780f4940ee9153dec31408902ec35a87a947018de7b3a259f"
+      },
+      {
+        "path": "server/server.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "server/server.stdout",
+        "sha256": "acf7e18f5dfc78760c9d8bb36e29d70ba1e15d4a244fcc05fe96ea6f3da2d55f"
+      }
+    ]
+  },
+  {
+    "id": 11446024698,
+    "name": "save-windows-latest",
+    "head": "750c2732b00c164ddc252fa26c4984ababd64f35",
+    "api_digest": "sha256:d0296f79a1891e462a88390b3f8fd45ed8201d0359708c5445bee4d9c37c010c",
+    "zip_sha256": "d0296f79a1891e462a88390b3f8fd45ed8201d0359708c5445bee4d9c37c010c",
+    "members": [
+      {
+        "path": "build-cli.command.json",
+        "sha256": "36225dc706b523e517b5371bf8e0bf50cb1100f73193dfd81e71cc367798f445"
+      },
+      {
+        "path": "build-cli.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "build-cli.stderr",
+        "sha256": "3a094cca6611a3bd9593d2db21dbb4930947cf2dc732e8991dbe1a08ee0399ec"
+      },
+      {
+        "path": "build-helper.command.json",
+        "sha256": "f84fc158877a292f92f54878a42d97bc39448b446997ba1dc62982cbfff5e4c4"
+      },
+      {
+        "path": "build-helper.stderr",
+        "sha256": "3a094cca6611a3bd9593d2db21dbb4930947cf2dc732e8991dbe1a08ee0399ec"
+      },
+      {
+        "path": "build-helper.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "capture-1.command.json",
+        "sha256": "9ca56617ec790f547d9bc1732e71ac4743cf0ac4276b4099273aab8dc2a50002"
+      },
+      {
+        "path": "capture-1.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "capture-1.stdout",
+        "sha256": "e9ab4b2e36bef2cbd7877e7df9d5900b76f8991704dec1f832414de4686a741b"
+      },
+      {
+        "path": "capture-2.command.json",
+        "sha256": "6aeddc50ed25bd4d23937c0e1dd768d2ad9d0dc1eae3917163276268e95a639e"
+      },
+      {
+        "path": "capture-2.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "capture-2.stdout",
+        "sha256": "c7d332b910873d5384afb0cd4b3bf2e3cabdc9d675d72aa0d1d057f483433433"
+      },
+      {
+        "path": "cli-resume-1.command.json",
+        "sha256": "557c6d133134e5d85868c73ca01e4f5e6f6bbd3b3d5e6fd58bd94a9b3578f7d9"
+      },
+      {
+        "path": "cli-resume-1.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "cli-resume-1.stdout",
+        "sha256": "54ef91e8a224222f2be567a3a0cd3570c462b9953d561faa8d110c0e91e7ff3b"
+      },
+      {
+        "path": "cli-resume-2.command.json",
+        "sha256": "4ca036bef3390933f9af4f4cd5f6ef457afefcfc4ee5dce4cbb82353e4546378"
+      },
+      {
+        "path": "cli-resume-2.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "cli-resume-2.stdout",
+        "sha256": "54ef91e8a224222f2be567a3a0cd3570c462b9953d561faa8d110c0e91e7ff3b"
+      },
+      {
+        "path": "restart-1.command.json",
+        "sha256": "fe2ca8cab1959a03d00d4ae6399b74fc002b5c5603f29e8ece7b91138cc7a396"
+      },
+      {
+        "path": "restart-1.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "restart-1.stdout",
+        "sha256": "ba91ae8a7a240d58985a4416bbfb6b2ba819e799edc483a9c3e5bc8eb52a99be"
+      },
+      {
+        "path": "restart-2.command.json",
+        "sha256": "976ac2d11814a0efc719af602cd60fd68c81cd6b7ef83f1f5360cf08409baeae"
+      },
+      {
+        "path": "restart-2.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "restart-2.stdout",
+        "sha256": "43131f7077dbfc63cbbe6adec56011a6a5fcdd4da5f97682e20ad8c0415a5b62"
+      },
+      {
+        "path": "result.json",
+        "sha256": "6b00d40ae6deb91d9dd7376f021512a143730e7424397b0a8e8ca7cda4544735"
+      },
+      {
+        "path": "run-1/capture.json",
+        "sha256": "9a822b6be083b20d1ca1b7e9b5038370104204b395dc1dde6c092465b31b27e2"
+      },
+      {
+        "path": "run-1/pack/common/buildings.toml",
+        "sha256": "23826071aeb8a2bc7a1f032ec2adcc23424e5f60ac579ca9ee18be5bd52816b8"
+      },
+      {
+        "path": "run-1/pack/common/resources.toml",
+        "sha256": "514eee6a8dbc6835c6833c38dadbe5da7dae3d70d185aaecea73ba8dd62b61fc"
+      },
+      {
+        "path": "run-1/pack/common/terrain.toml",
+        "sha256": "db903c3403dded0c36b38ae28ab2b6f61a1c66efdc7c16a4c5240dceb475d289"
+      },
+      {
+        "path": "run-1/pack/defines.toml",
+        "sha256": "76d46941adae2f693574dc5551b4afcb9f1999cf5e513fd863de1d2d923587df"
+      },
+      {
+        "path": "run-1/pack/localisation/en/map.ftl",
+        "sha256": "ae6442ef5fd0912ae5d7cdbf0541edd417c83dfeb505d6f749b2b6687ddb9b4b"
+      },
+      {
+        "path": "run-1/pack/localisation/en/national.ftl",
+        "sha256": "e109c2e8097418bef7c251904497fae23b21f0a85abe6ed8a8dc208445c84407"
+      },
+      {
+        "path": "run-1/pack/localisation/ko/map.ftl",
+        "sha256": "b7ac3fb02aa96a16f8338bf81068aa378d7791e8be7306ddb2f0f42092bf700f"
+      },
+      {
+        "path": "run-1/pack/localisation/ko/national.ftl",
+        "sha256": "7824bf87a61e5041644e3d62b09ebc4debc6f0769878e36bf1b662198986e312"
+      },
+      {
+        "path": "run-1/pack/manifest.toml",
+        "sha256": "92656dc53031c8bf5d1e8af8b5a15e4448b3eb2eee498f56010811b78528dbcc"
+      },
+      {
+        "path": "run-1/pack/maps/testland/adjacency_overrides.csv",
+        "sha256": "251e1353688f511baf45b1b513a8a79ad3329ae21dfb1e6e29e9ba362572a525"
+      },
+      {
+        "path": "run-1/pack/maps/testland/provinces.csv",
+        "sha256": "f04d94464fe95d7c25069529a34f782e060ba9cf5185618384a3ac5dd2846c89"
+      },
+      {
+        "path": "run-1/pack/maps/testland/provinces.png",
+        "sha256": "05305d56dc90dfbfbd73fc1a5f3a480ec6e82551f60a93be7d8bc53ad3d73dab"
+      },
+      {
+        "path": "run-1/pack/maps/testland/regions.toml",
+        "sha256": "1b9eadcb639cef1b6e7b88451e1e7134a88d8b5cb108e4066ee70cc137f79485"
+      },
+      {
+        "path": "run-1/pack/maps/testland/states.toml",
+        "sha256": "d63380dfe0240f8fe50feabe8e253278a03020d24ad46e65cd69f5a3e0512f2b"
+      },
+      {
+        "path": "run-1/pack/maps/testland/visuals.toml",
+        "sha256": "df2b1566fabd3c1a263d543b425a52842584a6ca5bf33827290a1d4fa2f303b1"
+      },
+      {
+        "path": "run-1/pack/scenarios/m1/defines.toml",
+        "sha256": "91ac0d4669188dd911622bdbdba5efb43c5d242f195d6f1478f07afc91f45411"
+      },
+      {
+        "path": "run-1/pack/scenarios/m1/nations/NTH.toml",
+        "sha256": "04f0a06c29a74b41e7effe94a3e131da359f213ef35da849e70c59fbd3f8c29a"
+      },
+      {
+        "path": "run-1/pack/scenarios/m1/nations/STH.toml",
+        "sha256": "522a1ab15df094a0c15012e2c8c3b362dba7fb766ff0d2b6eea48b0f1bde0b2b"
+      },
+      {
+        "path": "run-1/pack/scenarios/m1/scenario.toml",
+        "sha256": "ce56ff2d9259ed60be06163fe57d6dba452d9e5075b56525f920c3dc23354481"
+      },
+      {
+        "path": "run-1/paused.ohsave",
+        "sha256": "dd0bacad5f4f4a439f22a2e000377765c5f0723a8087a23d2850101266afb712"
+      },
+      {
+        "path": "run-1/saved.ohsave",
+        "sha256": "57b13c62ef1a6f88ade1851d0b3ae398157f95ca5bc246068eac3b2a964322fa"
+      },
+      {
+        "path": "run-2/capture.json",
+        "sha256": "64bf3fdf660071feeebb7b894c30677560dbd94e8e4f37923f9383340076a963"
+      },
+      {
+        "path": "run-2/pack/common/buildings.toml",
+        "sha256": "23826071aeb8a2bc7a1f032ec2adcc23424e5f60ac579ca9ee18be5bd52816b8"
+      },
+      {
+        "path": "run-2/pack/common/resources.toml",
+        "sha256": "514eee6a8dbc6835c6833c38dadbe5da7dae3d70d185aaecea73ba8dd62b61fc"
+      },
+      {
+        "path": "run-2/pack/common/terrain.toml",
+        "sha256": "db903c3403dded0c36b38ae28ab2b6f61a1c66efdc7c16a4c5240dceb475d289"
+      },
+      {
+        "path": "run-2/pack/defines.toml",
+        "sha256": "76d46941adae2f693574dc5551b4afcb9f1999cf5e513fd863de1d2d923587df"
+      },
+      {
+        "path": "run-2/pack/localisation/en/map.ftl",
+        "sha256": "ae6442ef5fd0912ae5d7cdbf0541edd417c83dfeb505d6f749b2b6687ddb9b4b"
+      },
+      {
+        "path": "run-2/pack/localisation/en/national.ftl",
+        "sha256": "e109c2e8097418bef7c251904497fae23b21f0a85abe6ed8a8dc208445c84407"
+      },
+      {
+        "path": "run-2/pack/localisation/ko/map.ftl",
+        "sha256": "b7ac3fb02aa96a16f8338bf81068aa378d7791e8be7306ddb2f0f42092bf700f"
+      },
+      {
+        "path": "run-2/pack/localisation/ko/national.ftl",
+        "sha256": "7824bf87a61e5041644e3d62b09ebc4debc6f0769878e36bf1b662198986e312"
+      },
+      {
+        "path": "run-2/pack/manifest.toml",
+        "sha256": "92656dc53031c8bf5d1e8af8b5a15e4448b3eb2eee498f56010811b78528dbcc"
+      },
+      {
+        "path": "run-2/pack/maps/testland/adjacency_overrides.csv",
+        "sha256": "251e1353688f511baf45b1b513a8a79ad3329ae21dfb1e6e29e9ba362572a525"
+      },
+      {
+        "path": "run-2/pack/maps/testland/provinces.csv",
+        "sha256": "f04d94464fe95d7c25069529a34f782e060ba9cf5185618384a3ac5dd2846c89"
+      },
+      {
+        "path": "run-2/pack/maps/testland/provinces.png",
+        "sha256": "05305d56dc90dfbfbd73fc1a5f3a480ec6e82551f60a93be7d8bc53ad3d73dab"
+      },
+      {
+        "path": "run-2/pack/maps/testland/regions.toml",
+        "sha256": "1b9eadcb639cef1b6e7b88451e1e7134a88d8b5cb108e4066ee70cc137f79485"
+      },
+      {
+        "path": "run-2/pack/maps/testland/states.toml",
+        "sha256": "d63380dfe0240f8fe50feabe8e253278a03020d24ad46e65cd69f5a3e0512f2b"
+      },
+      {
+        "path": "run-2/pack/maps/testland/visuals.toml",
+        "sha256": "df2b1566fabd3c1a263d543b425a52842584a6ca5bf33827290a1d4fa2f303b1"
+      },
+      {
+        "path": "run-2/pack/scenarios/m1/defines.toml",
+        "sha256": "91ac0d4669188dd911622bdbdba5efb43c5d242f195d6f1478f07afc91f45411"
+      },
+      {
+        "path": "run-2/pack/scenarios/m1/nations/NTH.toml",
+        "sha256": "04f0a06c29a74b41e7effe94a3e131da359f213ef35da849e70c59fbd3f8c29a"
+      },
+      {
+        "path": "run-2/pack/scenarios/m1/nations/STH.toml",
+        "sha256": "522a1ab15df094a0c15012e2c8c3b362dba7fb766ff0d2b6eea48b0f1bde0b2b"
+      },
+      {
+        "path": "run-2/pack/scenarios/m1/scenario.toml",
+        "sha256": "ce56ff2d9259ed60be06163fe57d6dba452d9e5075b56525f920c3dc23354481"
+      },
+      {
+        "path": "run-2/paused.ohsave",
+        "sha256": "dd0bacad5f4f4a439f22a2e000377765c5f0723a8087a23d2850101266afb712"
+      },
+      {
+        "path": "run-2/saved.ohsave",
+        "sha256": "57b13c62ef1a6f88ade1851d0b3ae398157f95ca5bc246068eac3b2a964322fa"
+      },
+      {
+        "path": "server/packs/testland/common/buildings.toml",
+        "sha256": "23826071aeb8a2bc7a1f032ec2adcc23424e5f60ac579ca9ee18be5bd52816b8"
+      },
+      {
+        "path": "server/packs/testland/common/resources.toml",
+        "sha256": "514eee6a8dbc6835c6833c38dadbe5da7dae3d70d185aaecea73ba8dd62b61fc"
+      },
+      {
+        "path": "server/packs/testland/common/terrain.toml",
+        "sha256": "db903c3403dded0c36b38ae28ab2b6f61a1c66efdc7c16a4c5240dceb475d289"
+      },
+      {
+        "path": "server/packs/testland/defines.toml",
+        "sha256": "76d46941adae2f693574dc5551b4afcb9f1999cf5e513fd863de1d2d923587df"
+      },
+      {
+        "path": "server/packs/testland/localisation/en/map.ftl",
+        "sha256": "ae6442ef5fd0912ae5d7cdbf0541edd417c83dfeb505d6f749b2b6687ddb9b4b"
+      },
+      {
+        "path": "server/packs/testland/localisation/en/national.ftl",
+        "sha256": "e109c2e8097418bef7c251904497fae23b21f0a85abe6ed8a8dc208445c84407"
+      },
+      {
+        "path": "server/packs/testland/localisation/ko/map.ftl",
+        "sha256": "b7ac3fb02aa96a16f8338bf81068aa378d7791e8be7306ddb2f0f42092bf700f"
+      },
+      {
+        "path": "server/packs/testland/localisation/ko/national.ftl",
+        "sha256": "7824bf87a61e5041644e3d62b09ebc4debc6f0769878e36bf1b662198986e312"
+      },
+      {
+        "path": "server/packs/testland/manifest.toml",
+        "sha256": "92656dc53031c8bf5d1e8af8b5a15e4448b3eb2eee498f56010811b78528dbcc"
+      },
+      {
+        "path": "server/packs/testland/maps/testland/adjacency_overrides.csv",
+        "sha256": "251e1353688f511baf45b1b513a8a79ad3329ae21dfb1e6e29e9ba362572a525"
+      },
+      {
+        "path": "server/packs/testland/maps/testland/provinces.csv",
+        "sha256": "f04d94464fe95d7c25069529a34f782e060ba9cf5185618384a3ac5dd2846c89"
+      },
+      {
+        "path": "server/packs/testland/maps/testland/provinces.png",
+        "sha256": "05305d56dc90dfbfbd73fc1a5f3a480ec6e82551f60a93be7d8bc53ad3d73dab"
+      },
+      {
+        "path": "server/packs/testland/maps/testland/regions.toml",
+        "sha256": "1b9eadcb639cef1b6e7b88451e1e7134a88d8b5cb108e4066ee70cc137f79485"
+      },
+      {
+        "path": "server/packs/testland/maps/testland/states.toml",
+        "sha256": "d63380dfe0240f8fe50feabe8e253278a03020d24ad46e65cd69f5a3e0512f2b"
+      },
+      {
+        "path": "server/packs/testland/maps/testland/visuals.toml",
+        "sha256": "df2b1566fabd3c1a263d543b425a52842584a6ca5bf33827290a1d4fa2f303b1"
+      },
+      {
+        "path": "server/packs/testland/scenarios/m1/defines.toml",
+        "sha256": "91ac0d4669188dd911622bdbdba5efb43c5d242f195d6f1478f07afc91f45411"
+      },
+      {
+        "path": "server/packs/testland/scenarios/m1/nations/NTH.toml",
+        "sha256": "04f0a06c29a74b41e7effe94a3e131da359f213ef35da849e70c59fbd3f8c29a"
+      },
+      {
+        "path": "server/packs/testland/scenarios/m1/nations/STH.toml",
+        "sha256": "522a1ab15df094a0c15012e2c8c3b362dba7fb766ff0d2b6eea48b0f1bde0b2b"
+      },
+      {
+        "path": "server/packs/testland/scenarios/m1/scenario.toml",
+        "sha256": "ce56ff2d9259ed60be06163fe57d6dba452d9e5075b56525f920c3dc23354481"
+      },
+      {
+        "path": "server/query.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "server/query.stdout",
+        "sha256": "377a4bb80efc8b2a3ab77b418c7eec625fefd6f13ddf8cb62ffdb61533ee9854"
+      },
+      {
+        "path": "server/result.json",
+        "sha256": "6b0eece028cef4cbad27edf34648d6108fde6914a69e4dc328d9f73ee4300b45"
+      },
+      {
+        "path": "server/server.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "server/server.stdout",
+        "sha256": "2ada6e50ba358ffca82c7864ad49eb2c252a3e7bf664c7e4cb06a6f81fd18bf3"
+      }
+    ]
+  }
+]

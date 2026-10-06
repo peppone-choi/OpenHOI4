@@ -1,0 +1,122 @@
+- main:
+  - heading "OpenHOI4" [level=1]
+  - paragraph: Local scenario
+  - text: Language
+  - combobox "Language":
+    - option "English" [selected]
+    - option "한국어"
+  - status: Connected
+  - region "Time controls":
+    - term: Date
+    - definition: 2000-01-02
+    - term: Hour
+    - definition: "4"
+    - term: Tick
+    - definition: "28"
+    - term: Speed
+    - definition: "5"
+    - button "Resume"
+    - button "Speed 1": "1"
+    - button "Speed 2": "2"
+    - button "Speed 3": "3"
+    - button "Speed 4": "4"
+    - button "Speed 5" [pressed]: "5"
+  - region "Province map":
+    - navigation "Map modes":
+      - button "Ownership" [pressed]
+      - button "Control"
+      - button "Terrain"
+      - button "States"
+      - button "Reset view"
+    - generic "Province map"
+    - text: "Province:"
+    - strong: —
+    - generic: Click to select · Drag to pan · Scroll to zoom
+    - button "Clear selection" [disabled]
+  - complementary:
+    - region "Country":
+      - heading "Country" [level=2]
+      - navigation:
+        - button "Northern Test Nation" [pressed]
+        - button "Southern Test Nation"
+      - heading "Northern Test Nation" [level=3]
+      - term: Tag
+      - definition: NTH
+      - term: Capital province
+      - definition: "0"
+      - term: Government
+      - definition: The server sent an unavailable message
+      - heading "Ideology support (ratio)" [level=4]
+      - term: The server sent an unavailable message
+      - definition: "0.9999999998"
+      - term: The server sent an unavailable message
+      - definition: "0.0000000002"
+    - region "State":
+      - heading "State" [level=2]
+      - navigation:
+        - button "Northern Test State" [pressed]
+        - button "Southern Test State"
+      - heading "Northern Test State" [level=3]
+      - term: Owner
+      - definition: Northern Test Nation
+      - term: Population
+      - definition: "3456"
+      - term: Steel
+      - definition: "71"
+      - term: Industry
+      - definition: "9"
+      - generic "Show ledger for Infrastructure" [active]:
+        - text: Infrastructure
+        - strong: "4.5000000002"
+      - heading "Value ledger" [level=2]
+      - paragraph: "Tick: 28"
+      - term: Base value
+      - definition: "2.0000000002"
+      - term: Final value
+      - definition: "4.5000000002"
+      - table:
+        - rowgroup:
+          - row "Contribution Operation Value Accumulated value":
+            - columnheader "Contribution"
+            - columnheader "Operation"
+            - columnheader "Value"
+            - columnheader "Accumulated value"
+        - rowgroup:
+          - 'row "Infrastructure Source: Base value Base value 2.0000000002 2.0000000002"':
+            - 'cell "Infrastructure Source: Base value"':
+              - text: Infrastructure
+              - generic: "Source: Base value"
+            - cell "Base value"
+            - cell "2.0000000002"
+            - cell "2.0000000002"
+          - 'row "The server sent an unavailable message Source: The server sent an unavailable message Add 1 3.0000000002"':
+            - 'cell "The server sent an unavailable message Source: The server sent an unavailable message"':
+              - text: The server sent an unavailable message
+              - generic: "Source: The server sent an unavailable message"
+            - cell "Add"
+            - cell "1"
+            - cell "3.0000000002"
+          - 'row "The server sent an unavailable message Source: The server sent an unavailable message Multiply 1.5 4.5000000002"':
+            - 'cell "The server sent an unavailable message Source: The server sent an unavailable message"':
+              - text: The server sent an unavailable message
+              - generic: "Source: The server sent an unavailable message"
+            - cell "Multiply"
+            - cell "1.5"
+            - cell "4.5000000002"
+      - table:
+        - rowgroup:
+          - row "Province Owner Controller":
+            - columnheader "Province"
+            - columnheader "Owner"
+            - columnheader "Controller"
+        - rowgroup:
+          - row "0 Northern Test Nation Northern Test Nation":
+            - cell "0"
+            - cell "Northern Test Nation"
+            - cell "Northern Test Nation"
+          - row "13 Northern Test Nation Southern Test Nation":
+            - cell "13"
+            - cell "Northern Test Nation"
+            - cell "Southern Test Nation"
+  - link "Noto Sans KR · SIL Open Font License 1.1":
+    - /url: /fonts/OFL.txt

@@ -1,0 +1,197 @@
+{
+  "kst": "2026-10-07T07:30:35.427352+09:00",
+  "head": "750c2732b00c164ddc252fa26c4984ababd64f35",
+  "raw_index_sha256": "fd07f841ff982be00d337993cd0d02f36f43eba9b4f8138c3772c17d7ef31c5a",
+  "snapshots": 93,
+  "all_exact_equal": true,
+  "tracked_files": 9175,
+  "command_exits": [
+    {
+      "label": "npm-ci",
+      "exit": 0
+    },
+    {
+      "label": "fmt",
+      "exit": 0
+    },
+    {
+      "label": "npm-test",
+      "exit": 0
+    },
+    {
+      "label": "client-build",
+      "exit": 0
+    },
+    {
+      "label": "clippy",
+      "exit": 0
+    },
+    {
+      "label": "workspace-test",
+      "exit": 0
+    },
+    {
+      "label": "build",
+      "exit": 0
+    },
+    {
+      "label": "typecheck",
+      "exit": 0
+    },
+    {
+      "label": "docs",
+      "exit": 0
+    },
+    {
+      "label": "assets",
+      "exit": 0
+    },
+    {
+      "label": "architecture",
+      "exit": 0
+    },
+    {
+      "label": "npm-licenses",
+      "exit": 0
+    },
+    {
+      "label": "cargo-deny",
+      "exit": 0
+    },
+    {
+      "label": "original-api",
+      "exit": 0
+    },
+    {
+      "label": "os-compare",
+      "exit": 0
+    },
+    {
+      "label": "save-evidence",
+      "exit": 0
+    },
+    {
+      "label": "m0-hash1",
+      "exit": 0
+    },
+    {
+      "label": "e2e-m0",
+      "exit": 0
+    },
+    {
+      "label": "m0-hash2",
+      "exit": 0
+    },
+    {
+      "label": "file-tests",
+      "exit": 0
+    },
+    {
+      "label": "m1-hash1",
+      "exit": 0
+    },
+    {
+      "label": "m1-hash2",
+      "exit": 0
+    },
+    {
+      "label": "harness-build",
+      "exit": 0
+    },
+    {
+      "label": "probe-rebuild",
+      "exit": 0
+    },
+    {
+      "label": "proto-generated",
+      "exit": 0
+    },
+    {
+      "label": "own-capture",
+      "exit": 0
+    },
+    {
+      "label": "own-resume",
+      "exit": 0
+    },
+    {
+      "label": "own-cli",
+      "exit": 0
+    },
+    {
+      "label": "transaction-independent",
+      "exit": 101
+    },
+    {
+      "label": "independent-checks",
+      "exit": 101
+    },
+    {
+      "label": "independent-reference",
+      "exit": 0
+    },
+    {
+      "label": "native-capture",
+      "exit": 0
+    },
+    {
+      "label": "transaction-independent-fixed",
+      "exit": 0
+    },
+    {
+      "label": "native-server",
+      "exit": 0
+    },
+    {
+      "label": "checker-rebuild",
+      "exit": 0
+    },
+    {
+      "label": "independent-checks-frame-contract",
+      "exit": 0
+    },
+    {
+      "label": "e2e-m1",
+      "exit": 1
+    },
+    {
+      "label": "own-wire",
+      "exit": 0
+    },
+    {
+      "label": "force-files",
+      "exit": 0
+    },
+    {
+      "label": "extra-build",
+      "exit": 101
+    },
+    {
+      "label": "extra-build-fixed",
+      "exit": 0
+    },
+    {
+      "label": "extras-fixed",
+      "exit": 0
+    },
+    {
+      "label": "identity-audit",
+      "exit": 1
+    },
+    {
+      "label": "identity-audit-fixed",
+      "exit": 0
+    },
+    {
+      "label": "runtime-assets",
+      "exit": 0
+    }
+  ],
+  "e2e": {
+    "m0": "60 pass",
+    "m1": "204 pass; 1 Edge adapterReject initial-state failure; no rerun",
+    "retry": 0,
+    "skip": 0,
+    "full_browser_projects": 5
+  }
+}

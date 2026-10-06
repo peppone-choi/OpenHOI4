@@ -1,0 +1,38 @@
+    Updating crates.io index
+     Locking 78 packages to highest Rust 1.99 compatible versions
+      Adding zstd v0.13.3 (available: v0.14.0)
+      Adding zstd-safe v7.2.2 (available: v7.3.0)
+      Adding zstd-sys v2.0.16+zstd.1.5.7 (available: v2.1.0+zstd.1.5.7)
+   Compiling thiserror v2.0.21
+   Compiling syn v2.0.119
+   Compiling cobs v0.3.0
+   Compiling postcard v1.1.3
+   Compiling zerocopy-derive v0.8.60
+   Compiling zerocopy v0.8.60
+   Compiling half v2.7.1
+   Compiling ppv-lite86 v0.2.21
+   Compiling fixed v1.31.0
+   Compiling rand_chacha v0.10.0
+   Compiling oh_core v0.1.0 (E:\openhoi\.orchestrator\wt\WP-11-verify3\crates\oh_core)
+   Compiling oh_data v0.1.0 (E:\openhoi\.orchestrator\wt\WP-11-verify3\crates\oh_data)
+   Compiling oh_sim v0.1.0 (E:\openhoi\.orchestrator\wt\WP-11-verify3\crates\oh_sim)
+   Compiling oh_save_transaction_probe v0.1.0 (E:\openhoi\.orchestrator\wt\WP-11-verify3\target\wp11-independent\transaction-mirror)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 22.38s
+     Running unittests src\lib.rs (target/wp11-independent/harness-build\debug\deps\oh_save_transaction_probe-13ad8b4359a0b8c7.exe)
+
+running 1 test
+stage=0 existing=false calls=[0] complete_old_new_bytes=true cleanup=true
+stage=0 existing=true calls=[0] complete_old_new_bytes=true cleanup=true
+stage=1 existing=false calls=[0, 1] complete_old_new_bytes=true cleanup=true
+stage=1 existing=true calls=[0, 1] complete_old_new_bytes=true cleanup=true
+stage=2 existing=false calls=[0, 1, 2] complete_old_new_bytes=true cleanup=true
+stage=2 existing=true calls=[0, 1, 2] complete_old_new_bytes=true cleanup=true
+stage=3 existing=false calls=[0, 1, 2, 3] complete_old_new_bytes=true cleanup=true
+stage=3 existing=true calls=[0, 1, 2, 3] complete_old_new_bytes=true cleanup=true
+stage=4 existing=false calls=[0, 1, 2, 3, 4] complete_old_new_bytes=true cleanup=true
+stage=4 existing=true calls=[0, 1, 2, 3, 4] complete_old_new_bytes=true cleanup=true
+stage=5 existing=false calls=[0, 1, 2, 3, 4] complete_old_new_bytes=true cleanup=true
+stage=5 existing=true calls=[0, 1, 2, 3, 4] complete_old_new_bytes=true cleanup=true
+test file::fresh_independent_transaction::shared_production_branches_old_new_cleanup_and_commit_warning ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 8 filtered out; finished in 0.12s

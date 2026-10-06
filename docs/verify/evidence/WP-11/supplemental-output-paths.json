@@ -1,0 +1,52 @@
+[
+  {
+    "path": "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify3\\target",
+    "exit": 0,
+    "tracked_overlap": false
+  },
+  {
+    "path": "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify3\\target\\wp03",
+    "exit": 0,
+    "tracked_overlap": false
+  },
+  {
+    "path": "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify3\\target\\wp04-test-fixtures",
+    "exit": 0,
+    "tracked_overlap": false
+  },
+  {
+    "path": "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify3\\target\\wp11-native-red",
+    "exit": 0,
+    "tracked_overlap": false
+  },
+  {
+    "path": "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify3\\target\\wp09\\fixtures",
+    "exit": 0,
+    "tracked_overlap": false
+  },
+  {
+    "path": "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify3\\target\\wp11-independent\\transactions",
+    "exit": 0,
+    "tracked_overlap": false
+  },
+  {
+    "path": "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify3\\target\\wp11-independent\\transaction-mirror",
+    "exit": 0,
+    "tracked_overlap": false
+  },
+  {
+    "path": "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify3\\target\\wp11-independent\\harness-build",
+    "exit": 0,
+    "tracked_overlap": false
+  },
+  {
+    "path": "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify3\\target\\wp11-independent\\ui",
+    "exit": 0,
+    "tracked_overlap": false
+  },
+  {
+    "path": "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify3\\target\\wp11-independent\\force-files",
+    "exit": 0,
+    "tracked_overlap": false
+  }
+]

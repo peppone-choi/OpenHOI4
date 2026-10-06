@@ -1,0 +1,12 @@
+   Compiling wp11_fresh_probe v0.1.0 (E:\openhoi\.orchestrator\wt\WP-11-verify3\target\wp11-independent\harness)
+error[E0502]: cannot borrow `w.states` as immutable because it is also borrowed as mutable
+ --> src\bin\extras.rs:5:220
+  |
+5 | ...nces[1].id=w.provinces[0].id,2=>{w.states[0].buildings.push(w.states[0].buildings[0].clone());},_=>{w.nations[0].support[0].0.clea...
+  |                                     --------              ---- ^^^^^^^^ immutable borrow occurs here
+  |                                     |                     |
+  |                                     |                     mutable borrow later used by call
+  |                                     mutable borrow occurs here
+
+For more information about this error, try `rustc --explain E0502`.
+error: could not compile `wp11_fresh_probe` (bin "extras") due to 1 previous error

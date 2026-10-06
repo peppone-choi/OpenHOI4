@@ -1,0 +1,4 @@
+error: failed to parse manifest at `E:\openhoi\.orchestrator\wt\WP-11-verify3\target\wp11-independent\transaction-mirror\Cargo.toml`
+
+Caused by:
+  rust-version 0.1.0 is incompatible with the version (1.85.0) required by the specified edition (2024)

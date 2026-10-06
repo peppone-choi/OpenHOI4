@@ -1,0 +1,32 @@
+[
+  {
+    "path": "WP11.verify3.before.json",
+    "bytes": 3421828,
+    "SHA256": "bd6b68d57233a464ad08ae86d6cb8c67c6052eda5340d5726de81a33008b6fc8"
+  },
+  {
+    "path": "WP11.verify3.before.index",
+    "bytes": 1267113,
+    "SHA256": "fd07f841ff982be00d337993cd0d02f36f43eba9b4f8138c3772c17d7ef31c5a"
+  },
+  {
+    "path": "WP11.verify3.after.json",
+    "bytes": 3421828,
+    "SHA256": "bd6b68d57233a464ad08ae86d6cb8c67c6052eda5340d5726de81a33008b6fc8"
+  },
+  {
+    "path": "WP11.verify3.after.index",
+    "bytes": 1267113,
+    "SHA256": "fd07f841ff982be00d337993cd0d02f36f43eba9b4f8138c3772c17d7ef31c5a"
+  },
+  {
+    "path": "WP11.verify3.postcheck.json",
+    "bytes": 731,
+    "SHA256": "569f4f77559997a7c08bfe51b93f17ac382efd5e16d35d1922b832ec1b8d824c"
+  },
+  {
+    "path": "WP11.verify3.original-report.md",
+    "bytes": 24713,
+    "SHA256": "aed82b8b6f80f0c28b3e73a37e5304e881330565e0ad00dbed20a38226499f43"
+  }
+]
