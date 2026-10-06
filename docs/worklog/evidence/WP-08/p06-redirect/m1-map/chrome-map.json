@@ -1,0 +1,43 @@
+{
+  "browser": "154.0.8037.98",
+  "requests": [
+    "http://127.0.0.1:19421/?forceWebGL=1",
+    "http://127.0.0.1:19421/assets/index-DvCqic0J.js",
+    "http://127.0.0.1:19421/assets/index-B9cOsW2B.css",
+    "ws://127.0.0.1:19421/ws",
+    "http://127.0.0.1:19421/fonts/NotoSansKR.ttf",
+    "http://127.0.0.1:19421/pack/localisation/en/map.ftl",
+    "http://127.0.0.1:19421/pack/localisation/en/national.ftl",
+    "http://127.0.0.1:19421/pack/localisation/ko/map.ftl",
+    "http://127.0.0.1:19421/pack/localisation/ko/national.ftl",
+    "http://127.0.0.1:19421/maps/testland/metadata",
+    "http://127.0.0.1:19421/maps/testland/index.bin?pack=b8d30ba577f303c3"
+  ],
+  "errors": [],
+  "diagnostics": {
+    "testid": "province-map",
+    "backend": "webgl2",
+    "textureLimit": "16384",
+    "adapter": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1660 Ti (0x00002182) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "device": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+    "shaderLanguage": "glsl",
+    "shaderLength": "16167",
+    "frames": "77",
+    "selected": "10",
+    "mode": "map-mode-state",
+    "updatedBytes": "0",
+    "updateMs": "0.09999999962747097",
+    "frameMs": "21.671428571418897",
+    "lastChangedBytes": "20",
+    "lastUpdateMs": "0.5",
+    "totalChangedBytes": "40",
+    "hover": "10"
+  },
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "scenario": "m1",
+  "seed": "1"
+}

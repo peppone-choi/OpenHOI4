@@ -1,0 +1,28 @@
+{
+  "diagnostics": {
+    "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+    "backend": "webgpu",
+    "camera": "{\"width\":16.581027667984188,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+    "device": "WebGPU device",
+    "frameMs": "16.67238962859145",
+    "frames": "2854",
+    "hover": "",
+    "lastChangedBytes": "20",
+    "lastUpdateMs": "0.8000000007450581",
+    "mode": "map-mode-terrain",
+    "selected": "10",
+    "shaderLanguage": "wgsl",
+    "shaderLength": "10386",
+    "testid": "province-map",
+    "textureLimit": "8192",
+    "totalChangedBytes": "20",
+    "updateMs": "0.09999999962747097",
+    "updatedBytes": "0"
+  },
+  "language": "ko",
+  "viewport": {
+    "height": 720,
+    "width": 1265
+  },
+  "visibleText": "OpenHOI4\n\n로컬 시나리오\n\n언어 \nEnglish\n한국어\n\n연결됨\n\n날짜\n2000-01-01\n시각\n7\n틱\n7\n속도\n1\n재개\n1\n2\n3\n4\n5\n소유\n통제\n지형\n주\n시점 초기화\n프로빈스: 10\n프로빈스 10 · 평야\n선택 해제\n국가\n북부 시험국\n남부 시험국\n북부 시험국\n태그\nNTH\n수도 프로빈스\n10\n정부\n시험 공화정\n이념 지지율 (비율)\n시민\n0.75\n지역\n0.25\n주\n북부 시험주\n남부 시험주\n북부 시험주\n소유국\n북부 시험국\n인구\n1000\n철강\n2\n공업 시설\n1\n인프라 1\n수치 원장\n\n틱: 7\n\n기본값\n1\n최종값\n1\n기여 항목\t연산\t값\t누적값\n인프라\n출처: 기본값\n\t기본값\t1\t1\n프로빈스\t소유국\t통제국\n10\t북부 시험국\t북부 시험국\n20\t북부 시험국\t남부 시험국\nNoto Sans KR · SIL Open Font License 1.1"
+}

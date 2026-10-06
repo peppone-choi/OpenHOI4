@@ -1,0 +1,19 @@
+
+> openhoi-client@0.1.0 pretest
+> cargo run -p oh_proto --example wire_fixtures
+
+   Compiling oh_proto v0.1.0 (E:\openhoi\.orchestrator\wt\WP-08\crates\oh_proto)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.63s
+     Running `E:\openhoi\.orchestrator\wt\WP-08\target\debug\examples\wire_fixtures.exe`
+
+> openhoi-client@0.1.0 test
+> vitest run --run src/map/model.test.ts
+
+
+ RUN  v5.0.3 E:/openhoi/.orchestrator/wt/WP-08/client
+
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  23:07:55
+   Duration  161ms (import 44%, transform 39%, tests 9%, worker 7%)

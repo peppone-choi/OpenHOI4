@@ -1,0 +1,38 @@
+
+> openhoi-client@0.1.0 pretest
+> cargo run -p oh_proto --example wire_fixtures
+
+   Compiling oh_proto v0.1.0 (E:\openhoi\.orchestrator\wt\WP-08\crates\oh_proto)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.66s
+     Running `E:\openhoi\.orchestrator\wt\WP-08\target\debug\examples\wire_fixtures.exe`
+
+> openhoi-client@0.1.0 test
+> vitest run --run src/map/model.test.ts
+
+
+ RUN  v5.0.3 E:/openhoi/.orchestrator/wt/WP-08/client
+
+ ❯ src/map/model.test.ts (4 tests | 1 failed) 18ms
+   × MAP display schema rejects dangling/duplicate refs before lookup publication 12ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/map/model.test.ts > MAP display schema rejects dangling/duplicate refs before lookup publication
+AssertionError: expected [Function] to not throw an error but 'TypeError: (0 , __vite_ssr_import_2__…' was thrown
+
+- Expected:
+undefined
+
++ Received:
+"TypeError: (0 , __vite_ssr_import_2__.validateWorldDisplay) is not a function"
+
+ ❯ src/map/model.test.ts:17:48
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 3 passed (4)
+   Start at  23:22:29
+   Duration  195ms (import 37%, transform 33%, tests 24%, worker 6%)

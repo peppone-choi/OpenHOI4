@@ -1,0 +1,15 @@
+
+Running 8 tests using 1 worker
+
+(node:21120) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e-m1\map.spec.ts:99:116 › REQ-MAP-04 schema boundary oldVersion rejects atomically (323ms)
+  ok 2 [chromium] › e2e-m1\map.spec.ts:99:116 › REQ-MAP-04 schema boundary futureVersion rejects atomically (276ms)
+  ok 3 [chromium] › e2e-m1\map.spec.ts:99:116 › REQ-MAP-04 schema boundary wrongPack rejects atomically (257ms)
+  ok 4 [chromium] › e2e-m1\map.spec.ts:99:116 › REQ-MAP-04 schema boundary duplicateIds rejects atomically (247ms)
+  ok 5 [chromium] › e2e-m1\map.spec.ts:99:116 › REQ-MAP-04 schema boundary badStyle rejects atomically (220ms)
+  ok 6 [chromium] › e2e-m1\map.spec.ts:99:116 › REQ-MAP-04 schema boundary shortBytes rejects atomically (313ms)
+  ok 7 [chromium] › e2e-m1\map.spec.ts:99:116 › REQ-MAP-04 schema boundary wrongHash rejects atomically (273ms)
+  ok 8 [chromium] › e2e-m1\map.spec.ts:109:1 › REQ-MAP-05 dangling display reference preserves last valid map and closes wire (1.8s)
+
+  8 passed (5.3s)

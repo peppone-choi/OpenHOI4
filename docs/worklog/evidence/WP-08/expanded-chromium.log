@@ -1,0 +1,18 @@
+
+Running 11 tests using 1 worker
+
+(node:36232) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [chromium] › e2e-m1\map.spec.ts:10:1 › REQ-MAP-04/05 PLAT-03 actual map pixels, modes, pick and viewport (1.5s)
+  ok  2 [chromium] › e2e-m1\map.spec.ts:39:1 › REQ-PLAT-03 preferred actual backend produces the same map RGB and source shader (1.4s)
+  ok  3 [chromium] › e2e-m1\map.spec.ts:47:33 › REQ-MAP-05 independent three border pixel oracle, u16 sentinel and camera preferred (1.5s)
+  ok  4 [chromium] › e2e-m1\map.spec.ts:47:33 › REQ-MAP-05 independent three border pixel oracle, u16 sentinel and camera WebGL2 (1.4s)
+  ok  5 [chromium] › e2e-m1\map.spec.ts:76:93 › REQ-PLAT-03 missingGPU falls back to actual WebGL2 pixels (440ms)
+  ok  6 [chromium] › e2e-m1\map.spec.ts:76:93 › REQ-PLAT-03 nullAdapter falls back to actual WebGL2 pixels (453ms)
+  ok  7 [chromium] › e2e-m1\map.spec.ts:76:93 › REQ-PLAT-03 adapterReject falls back to actual WebGL2 pixels (460ms)
+  ok  8 [chromium] › e2e-m1\map.spec.ts:76:93 › REQ-PLAT-03 deviceReject falls back to actual WebGL2 pixels (436ms)
+  ok  9 [chromium] › e2e-m1\map.spec.ts:76:93 › REQ-PLAT-03 insecure falls back to actual WebGL2 pixels (466ms)
+  ok 10 [chromium] › e2e-m1\map.spec.ts:87:1 › REQ-PLAT-03 no backend and texture limit show localized notices (262ms)
+  ok 11 [chromium] › e2e-m1\map.spec.ts:91:1 › REQ-MAP-04 missing bundled index fails visibly without external download (279ms)
+
+  11 passed (10.0s)

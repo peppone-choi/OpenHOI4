@@ -87,6 +87,7 @@ jobs:
           path: |
             target/wp05/
             target/wp09/
+            target/wp08/
             client/test-results/
           if-no-files-found: error
           archive: true

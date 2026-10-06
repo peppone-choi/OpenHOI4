@@ -1,0 +1,35 @@
+
+Running 1 test using 1 worker
+
+(node:20016) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [chromium] › e2e-m1\map.spec.ts:2:1 › REQ-MAP-04/05 PLAT-03 actual map pixels, modes, pick and viewport (5.1s)
+
+
+  1) [chromium] › e2e-m1\map.spec.ts:2:1 › REQ-MAP-04/05 PLAT-03 actual map pixels, modes, pick and viewport
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator: getByTestId('province-map')
+    Expected: "webgl2"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms
+      - waiting for getByTestId('province-map')
+
+
+      3 |  await page.goto('/?forceWebGL=1');
+      4 |  const map=page.getByTestId('province-map');
+    > 5 |  await expect(map).toHaveAttribute('data-backend','webgl2');
+        |                    ^
+      6 |  await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);
+      7 |  await expect(page.getByRole('button',{name:'Terrain',exact:true})).toBeInViewport();
+      8 |  await expect(page.getByTestId('pause')).toBeInViewport();
+        at E:\openhoi\.orchestrator\wt\WP-08\client\e2e-m1\map.spec.ts:5:20
+
+    Error Context: test-results\map-REQ-MAP-04-05-PLAT-03--1c38b-els-modes-pick-and-viewport-chromium\error-context.md
+
+  1 failed
+    [chromium] › e2e-m1\map.spec.ts:2:1 › REQ-MAP-04/05 PLAT-03 actual map pixels, modes, pick and viewport

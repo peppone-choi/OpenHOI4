@@ -1,4 +1,5 @@
 //! Local authoritative host. All I/O and clocks stay here, never in oh_sim.
+mod map;
 mod session;
 use axum::{
     Router,
@@ -152,7 +153,7 @@ impl Host {
             version: loaded.pack.manifest.version.clone(),
             hash: format!("{hash:016x}"),
         };
-        Ok(Self {
+        let host = Self {
             loaded: Arc::new(loaded),
             world,
             root: path,
@@ -165,7 +166,9 @@ impl Host {
             handshake_ms,
             default_seed,
             shutdown,
-        })
+        };
+        map::validate(&host)?;
+        Ok(host)
     }
     fn simulation(&self, seed: u64) -> Result<Simulation, String> {
         let mut sim = Simulation::new(
@@ -221,6 +224,8 @@ pub fn router(host: Host) -> Router {
     Router::new()
         .route("/ws", get(upgrade))
         .route("/pack/localisation/{language}/{file}", get(pack_locale))
+        .route("/maps/{map_id}/metadata", get(map::metadata))
+        .route("/maps/{map_id}/index.bin", get(map::index))
         .fallback(get(static_file))
         .with_state(host)
 }

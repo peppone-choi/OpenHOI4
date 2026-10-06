@@ -1,0 +1,5 @@
+OpenHOI ���� �˻�
+  D 16 �� REQ 150 �� OPEN 12 �� AC 37 �� WP 50 �� DR 10 �� P 12
+  ���Ͻ��溰 REQ: M0 14, M1 14, M2 48, M3 46, M4 13, M5 9, M6 6
+  ��� ���� ǥ�� 11�� �� orch.sh ���� ���� ['impl', 'selftest', 'start', 'status', 'verify', 'wait'] �� ���ø� 6��
+���: ���� 0 �� ��� 0

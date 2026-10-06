@@ -250,3 +250,12 @@ license = "CC-BY-SA-4.0"
 modified = false
 ai_generated = false
 notes = "Original minimal M1 national-state fixture or display metadata; no historical/game source, no WP-23 content, no terrain/economic game effects."
+
+[[asset]]
+path = "client/e2e-m1/baselines/display-fixture.png"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "New test-only screenshot baseline of directly authored independent 12x6 display fixture; actual Chromium WebGL2 rendering verified against border/RGB oracle and visually inspected. No existing golden changed; no external game geography or generative image tool."

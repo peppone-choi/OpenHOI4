@@ -1,0 +1,60 @@
+{
+  "resource": "metadata",
+  "reload": false,
+  "controlEvidence": {
+    "status": 200,
+    "url": "http://127.0.0.1:14411/payload",
+    "redirected": true,
+    "cors": "cors",
+    "packHash": "b8d30ba577f303c3",
+    "controlRedirects": [
+      {
+        "status": 302,
+        "location": "http://127.0.0.1:14411/payload"
+      }
+    ],
+    "redirectProbe": {
+      "status": 302,
+      "location": "http://127.0.0.1:14411/payload"
+    },
+    "bodyLength": 545,
+    "bodySha256": "917391a9ae3b857bb95e6e79541b1d5f5935a8e4414881e7ffdfa63956bda97f"
+  },
+  "sourceOrigin": "http://127.0.0.1:14412",
+  "foreignURL": "http://127.0.0.1:14411/payload",
+  "foreignHits": [],
+  "requests": [
+    "http://127.0.0.1:14412/?forceWebGL=1",
+    "http://127.0.0.1:14412/assets/index-DvCqic0J.js",
+    "http://127.0.0.1:14412/assets/index-B9cOsW2B.css",
+    "http://127.0.0.1:14412/fonts/NotoSansKR.ttf",
+    "http://127.0.0.1:14412/pack/localisation/en/map.ftl",
+    "http://127.0.0.1:14412/pack/localisation/en/national.ftl",
+    "http://127.0.0.1:14412/pack/localisation/ko/map.ftl",
+    "http://127.0.0.1:14412/pack/localisation/ko/national.ftl",
+    "http://127.0.0.1:14412/maps/testland/metadata"
+  ],
+  "actualSourceRedirects": [
+    {
+      "url": "/maps/testland/metadata",
+      "status": 302,
+      "location": "http://127.0.0.1:14411/payload"
+    }
+  ],
+  "failures": [
+    {
+      "url": "http://127.0.0.1:14412/maps/testland/metadata",
+      "error": "Not allowed to follow a redirection while loading http://127.0.0.1:14412/maps/testland/metadata"
+    }
+  ],
+  "responseEvents": [],
+  "errors": [
+    "/127.0.0.1:14412/maps/testland/metadata due to access control checks."
+  ],
+  "cameraBefore": null,
+  "rendererOutcome": "initial load creates no renderer; identity reload disposes previous renderer, keeps authority UI/selection only",
+  "alerts": [
+    "지도 데이터를 불러올 수 없습니다. 동봉된 시나리오 파일을 확인하세요."
+  ],
+  "canvasCount": 0
+}
