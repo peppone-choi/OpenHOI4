@@ -26,6 +26,12 @@
 | 외부 타일/API | 세계지도 즉시 표시 | 고정 로컬 팩 경계와 사용자 지시 위반 |
 
 ## 결과와 영향
-시뮬레이션·저장 포맷·골든은 바꾸지 않는다. 표시 defines는 pack identity에는 포함되며 private simulation hash에 영향을 주지 않는다. 실제 adapter/device/frame 측정·브라우저 행렬·픽셀 허용오차 최종 기록은 작업 로그에 추가한다. 독립 PASS/main CI는 별도다.
+시뮬레이션·저장 포맷·골든은 바꾸지 않는다. 표시 defines는 pack identity에는 포함되며 private simulation hash에 영향을 주지 않는다. HTTP schema_version=1, precision을 보존하는 decimal byte_length, 필수 runtime shape·ID 참조 검사를 최종 계약에 적용한다. 초기 미버전 preview는 명시 거부하며 첫445b935 캡처는 역사 증거로 보존한다. 사용자 schema 추가 지시를 적용한 필드 표/참조·원자성/후속 미구현은 docs/plans/WP-08-schema.md다.
+
+새 screenshot baseline은 client/e2e-m1/baselines/display-fixture.png로 고정했다. 독립 12×6 source fixture에서 x2 province-only / x4 state-only / x6 nation 경계의 직접 RGB·굵기 기대값과 실제 PNG pixels를 먼저 대조하고 눈으로 검토했다. 기존 골든을 바꾸지 않았다. 1280×720, DPR1, locale en-US, unselected/unhovered, camera reset, synthetic seed1/m1, no AA/mip, raw RGB로 캡처한다. 채널오차≤1, 전체 canvas mismatch≤0.5%이며 별도 직접 RGB·국경·굵기 단언은 그대로 유지한다. CI 기존 M1 testMatch에 map.spec.ts를 추가하고 target/wp08 증거를 기존 artifact에 추가했다. 검사 완화/OS·GPU 설정 변경 없음.
+
+실제 본 세션의 Windows 브라우저 결과: Chrome154/Edge154는 WebGPU/WGSL, adapter.vendor=nvidia/architecture=turing(max8192), Chromium153는 WebGL2/GLSL SwiftShader(max8192), Firefox155 WebGL2(max16384), WebKit26.6 WebGL2(max16384). Firefox의 renderer 문구는 개인정보 보호로 `or similar`가 포함되므로 물리 GPU 정확한 모델로 확정하지 않는다. WebKit의 renderer 문자열도 실제 기기 사양과 동일하다고 단정하지 않는다. tiny 8×6 렌더 frame interval·shader source length·backend report는 개별 JSON에 기록했으며 실세계 지도 성능 목표/CI 실행/다른 OS hardware를 검증했다고 쓰지 않는다. 실제 WebGPU에서도 네 모드 RGB·독립 경계·selection/hover·부분색4byte 갱신이 실제 screenshot oracle을 통과했다. 어댑터/기기 실패·insecure는 테스트 주입 후 실제 WebGL2 픽셀로 검사했고 no-backend/texture limit은 명확한 ko/en 오류다.
+
+독립 PASS/main CI는 별도다.
 
 공식 출처(2026-10-06 확인): https://threejs.org/docs/pages/WebGPURenderer.html , https://threejs.org/docs/pages/DataTexture.html , https://threejs.org/docs/pages/Renderer.html , https://registry.npmjs.org/three/0.186.1 , https://registry.npmjs.org/@types%2fthree/0.186.0 . 로컬 설치 소스 `three/src/renderers/webgpu/WebGPURenderer.js`와 두 texture utils도 확인했다. axum 0.8.9의 json/query feature를 사용하여 추가된 serde_urlencoded 0.7.1(MIT OR Apache-2.0), serde_path_to_error 0.1.20(MIT OR Apache-2.0), form_urlencoded 1.2.2(MIT OR Apache-2.0), ryu 1.0.23(Apache-2.0 OR BSL-1.0)은 허용 목록 내이며 Cargo.lock에 고정한다. https://docs.rs/serde_urlencoded/0.7.1/serde_urlencoded/ , https://docs.rs/crate/serde_path_to_error/0.1.20 . npm license 검사 103 dependencies / 0 errors.

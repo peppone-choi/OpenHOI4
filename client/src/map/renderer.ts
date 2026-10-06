@@ -3,7 +3,7 @@ import { Fn, float, vec2, vec3, vec4, textureLoad, uniform, uv, mix } from 'thre
 import type Node from 'three/src/nodes/core/Node.js';
 import type { PixelFormat } from 'three';
 import type { MapMetadata, WorldView } from '../proto/protocol';
-import { LOOKUP_SIZE, palettes, pick, updateColors } from './model';
+import { LOOKUP_SIZE, palettes, pick, updateColors,validateWorldDisplay } from './model';
 
 function dataTexture(bytes:Uint8Array,width:number,height:number,format:PixelFormat=RGBAFormat){
  const t=new DataTexture(bytes,width,height,format,UnsignedByteType);
@@ -18,7 +18,7 @@ export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8
  const limit=backend.device?.limits.maxTextureDimension2D??backend.gl?.getParameter(backend.gl.MAX_TEXTURE_SIZE)??0;
  if(Math.max(width,height,LOOKUP_SIZE)>limit){renderer.dispose();throw new Error('map-texture-limit');}
  host.replaceChildren(renderer.domElement);host.dataset.backend=backend.isWebGPUBackend?'webgpu':'webgl2';host.dataset.textureLimit=String(limit);
- if(backend.device){host.dataset.adapter=JSON.stringify(backend.device.adapterInfo);host.dataset.device=backend.device.label||'WebGPU device';}
+ if(backend.device){const info=backend.device.adapterInfo;host.dataset.adapter=JSON.stringify({vendor:info.vendor,architecture:info.architecture,device:info.device,description:info.description});host.dataset.device=backend.device.label||'WebGPU device';}
  if(backend.gl){const ext=backend.gl.getExtension('WEBGL_debug_renderer_info');host.dataset.adapter=String(backend.gl.getParameter(ext?.UNMASKED_RENDERER_WEBGL??backend.gl.RENDERER));host.dataset.device=String(backend.gl.getParameter(backend.gl.VERSION));}
  renderer.onDeviceLost=()=>{if(!disposed)onFailure();};
  renderer.outputColorSpace=LinearSRGBColorSpace;renderer.toneMapping=NoToneMapping;
@@ -68,14 +68,17 @@ export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8
  const move=(e:PointerEvent)=>{if(drag){const dx=e.clientX-drag.x,dy=e.clientY-drag.y;drag.moved||=Math.hypot(dx,dy)>style.drag_threshold;if(drag.moved){camera.position.x=drag.cx-dx*viewWidth/host.clientWidth/zoom;camera.position.y=drag.cy+dy*viewHeight/host.clientHeight/zoom;publishCamera();}}hover(e);};
  const up=(e:PointerEvent)=>{if(!drag)return;if(!drag.moved){const p=coordinates(e);const id=pick(index,world.province_ids,width,height,p.x,p.y);onPick(id);}drag=null;host.releasePointerCapture(e.pointerId);};
  const leave=()=>{hovered.value=-1;host.dataset.hover='';onHover(null);};
+ const cancel=()=>{drag=null;leave();};
  const wheel=(e:WheelEvent)=>{e.preventDefault();const before=coordinates(e);zoom=Math.min(style.zoom_max_milli/1000,Math.max(style.zoom_min_milli/1000,zoom*Math.exp(-e.deltaY*style.wheel_milli/100000)));camera.zoom=zoom;camera.updateProjectionMatrix();const after=coordinates(e);camera.position.x+=before.x-after.x;camera.position.y-=before.y-after.y;publishCamera();};
- host.addEventListener('pointerdown',down);host.addEventListener('pointermove',move);host.addEventListener('pointerup',up);host.addEventListener('pointercancel',leave);host.addEventListener('pointerleave',leave);host.addEventListener('wheel',wheel,{passive:false});
  try{await renderer.compileAsync(scene,camera);renderer.render(scene,camera);}catch(e){observer.disconnect();renderer.dispose();geometry.dispose();material.dispose();for(const t of [indexTexture,colors,nations,states])t.dispose();host.replaceChildren();throw e;}
+ host.addEventListener('pointerdown',down);host.addEventListener('pointermove',move);host.addEventListener('pointerup',up);host.addEventListener('pointercancel',cancel);host.addEventListener('pointerleave',leave);host.addEventListener('wheel',wheel,{passive:false});
+ const shader=await renderer.debug.getShaderAsync(scene,camera,scene.children[0]);host.dataset.shaderLanguage=shader.fragmentShader?.includes('@fragment')?'wgsl':'glsl';host.dataset.shaderLength=String(shader.fragmentShader?.length??0);
  host.dataset.frames='1';
  let raf=0;
  const animate=()=>{if(disposed)return;try{renderer.render(scene,camera);host.dataset.frames=String(++frame);host.dataset.frameMs=String((performance.now()-started)/frame);raf=requestAnimationFrame(animate);}catch{onFailure();}};raf=requestAnimationFrame(animate);
  return {
   update(next:WorldView,nextMode:string,id:number|null){
+   validateWorldDisplay(next);
    world=next;mode=nextMode;selected.value=id===null?-1:world.province_ids.indexOf(id);host.dataset.selected=String(id??'');host.dataset.mode=mode;
    const began=performance.now();const ranges=updateColors(arrays.colors,world,mode);
    // Upload only changed texels through Three's public cross-backend copy API.
@@ -85,8 +88,9 @@ export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8
     world.province_ids.forEach((_,i)=>{const start=i*4;if(next.subarray(start,start+4).some((v,j)=>data[start+j]!==v)){data.set(next.subarray(start,start+4),start);const patch=dataTexture(data.slice(start,start+4),1,1);renderer.copyTextureToTexture(patch,texture,null,new Vector2(i%256,Math.floor(i/256)));patch.dispose();}});
    }
    host.dataset.updatedBytes=String(ranges.reduce((n,r)=>n+r.count,0));host.dataset.updateMs=String(performance.now()-began);
+   if(ranges.length){host.dataset.lastChangedBytes=host.dataset.updatedBytes;host.dataset.lastUpdateMs=host.dataset.updateMs;host.dataset.totalChangedBytes=String(Number(host.dataset.totalChangedBytes??0)+Number(host.dataset.updatedBytes));}
   },
   reset(){zoom=1;camera.position.x=camera.position.y=0;resize();},
-  dispose(){disposed=true;cancelAnimationFrame(raf);observer.disconnect();host.removeEventListener('pointerdown',down);host.removeEventListener('pointermove',move);host.removeEventListener('pointerup',up);host.removeEventListener('pointercancel',leave);host.removeEventListener('pointerleave',leave);host.removeEventListener('wheel',wheel);renderer.dispose();geometry.dispose();material.dispose();for(const t of [indexTexture,colors,nations,states])t.dispose();host.replaceChildren();},
+  dispose(){disposed=true;cancelAnimationFrame(raf);observer.disconnect();host.removeEventListener('pointerdown',down);host.removeEventListener('pointermove',move);host.removeEventListener('pointerup',up);host.removeEventListener('pointercancel',cancel);host.removeEventListener('pointerleave',leave);host.removeEventListener('wheel',wheel);renderer.dispose();geometry.dispose();material.dispose();for(const t of [indexTexture,colors,nations,states])t.dispose();host.replaceChildren();},
  };
 }

@@ -1,0 +1,2 @@
+[WebServer] startup error: cannot bind 127.0.0.1:4173: 액세스 권한에 의해 숨겨진 소켓에 액세스를 시도했습니다. (os error 10013); choose another --port
+Error: Process from config.webServer was not able to start. Exit code: 1

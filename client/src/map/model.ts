@@ -1,6 +1,25 @@
 import type { WorldView } from '../proto/protocol';
 // These sizes/bit masks are the RG8/u16 wire format, not gameplay constants.
 export const LOOKUP_SIZE=256;
+/** Validate display references only; this never derives ownership/game rules. */
+export function validateWorldDisplay(world:WorldView){
+ const fail=()=>{throw new Error('map-data-error');};
+ if(world.width<=0||world.height<=0||!Number.isSafeInteger(world.width*world.height)||!/^[a-z0-9_]+$/.test(world.map_id))fail();
+ const ids=world.province_ids;
+ if(ids.length===0||ids.length>65536||ids.some((id,i)=>i>0&&id<=ids[i-1]))fail();
+ const provinces=new Map(world.provinces.map(p=>[p.id,p])),nations=new Map(world.nations.map(n=>[n.id,n])),states=new Map(world.states.map(s=>[s.id,s]));
+ if(provinces.size!==ids.length||provinces.size!==world.provinces.length||nations.size!==world.nations.length||states.size!==world.states.length)fail();
+ for(const id of ids){const p=provinces.get(id);if(!p)fail();else{
+  for(const [ref,color] of [[p.owner,p.owner_color],[p.controller,p.controller_color]] as const)if((ref===null)!==(color===null)||(ref!==null&&!nations.has(ref)))fail();
+  if((p.state===null)!==(p.state_color===null)||(p.state!==null&&!states.has(p.state)))fail();
+ }}
+ for(const nation of nations.values())if(!provinces.has(nation.capital))fail();
+ for(const s of states.values()){
+  if(!nations.has(s.owner)||new Set(s.provinces).size!==s.provinces.length)fail();
+  const members=world.provinces.filter(p=>p.state===s.id).map(p=>p.id);
+  if(members.length!==s.provinces.length||members.some(id=>!s.provinces.includes(id)))fail();
+ }return provinces;
+}
 export function decodeIndex(buffer:ArrayBuffer,width:number,height:number,ids:number[]):Uint16Array {
  if(!Number.isSafeInteger(width*height)||width<=0||height<=0||buffer.byteLength!==width*height*2||new Set(ids).size!==ids.length||ids.length>65536)throw new Error('map-data-error');
  const view=new DataView(buffer);const result=new Uint16Array(width*height);

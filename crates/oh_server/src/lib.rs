@@ -153,7 +153,7 @@ impl Host {
             version: loaded.pack.manifest.version.clone(),
             hash: format!("{hash:016x}"),
         };
-        Ok(Self {
+        let host = Self {
             loaded: Arc::new(loaded),
             world,
             root: path,
@@ -166,7 +166,9 @@ impl Host {
             handshake_ms,
             default_seed,
             shutdown,
-        })
+        };
+        map::validate(&host)?;
+        Ok(host)
     }
     fn simulation(&self, seed: u64) -> Result<Simulation, String> {
         let mut sim = Simulation::new(

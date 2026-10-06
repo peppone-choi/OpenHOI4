@@ -1,0 +1,2 @@
+startup error: target/wp08/missing-map\testland\maps\testland\provinces.png:1:1 — 지정된 파일을 찾을 수 없습니다. (os error 2)
+Expected startup rejection exit1; no server/network fallback

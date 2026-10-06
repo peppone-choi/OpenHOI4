@@ -6,7 +6,7 @@ Running 1 test using 1 worker
   x  1 [chromium] › e2e-m1\map.spec.ts:2:1 › REQ-MAP-04/05 PLAT-03 actual map pixels, modes, pick and viewport (5.1s)
 
 
-  1) [chromium] › e2e-m1\map.spec.ts:2:1 › REQ-MAP-04/05 PLAT-03 actual map pixels, modes, pick and viewport 
+  1) [chromium] › e2e-m1\map.spec.ts:2:1 › REQ-MAP-04/05 PLAT-03 actual map pixels, modes, pick and viewport
 
     Error: expect(locator).toHaveAttribute(expected) failed
 
@@ -32,4 +32,4 @@ Running 1 test using 1 worker
     Error Context: test-results\map-REQ-MAP-04-05-PLAT-03--1c38b-els-modes-pick-and-viewport-chromium\error-context.md
 
   1 failed
-    [chromium] › e2e-m1\map.spec.ts:2:1 › REQ-MAP-04/05 PLAT-03 actual map pixels, modes, pick and viewport 
+    [chromium] › e2e-m1\map.spec.ts:2:1 › REQ-MAP-04/05 PLAT-03 actual map pixels, modes, pick and viewport

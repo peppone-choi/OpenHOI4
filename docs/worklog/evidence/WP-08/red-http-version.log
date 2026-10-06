@@ -1,0 +1,62 @@
+
+Running 2 tests using 1 worker
+
+(node:27028) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [chromium] › e2e-m1\map.spec.ts:99:116 › REQ-MAP-04 schema boundary oldVersion rejects atomically (5.2s)
+(node:6104) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  2 [chromium] › e2e-m1\map.spec.ts:99:116 › REQ-MAP-04 schema boundary futureVersion rejects atomically (5.2s)
+
+
+  1) [chromium] › e2e-m1\map.spec.ts:99:116 › REQ-MAP-04 schema boundary oldVersion rejects atomically
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: getByRole('alert')
+    Expected substring: "Map data could not be loaded"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toContainText" getByRole('alert') with timeout 5000ms
+      - waiting for getByRole('alert')
+
+
+      105 |  await page.route('**/maps/testland/metadata',r=>r.fulfill({json:meta}));
+      106 |  if(invalid==='shortBytes')await page.route('**/maps/testland/index.bin?*',r=>r.fulfill({body:bytes.subarray(0,bytes.length-1),headers:{'x-pack-hash':meta.pack_hash}}));
+    > 107 |  await page.goto('/');await expect(page.getByRole('alert')).toContainText('Map data could not be loaded');await expect(page.getByTestId('province-map').locator('canvas')).toHaveCount(0);await expect(page.getByTestId('country-panel')).toContainText('Northern Test Nation');
+          |                                                             ^
+      108 | });
+      109 |
+        at E:\openhoi\.orchestrator\wt\WP-08\client\e2e-m1\map.spec.ts:107:61
+
+    Error Context: test-results\map-REQ-MAP-04-schema-boundary-oldVersion-rejects-atomically-chromium\error-context.md
+
+  2) [chromium] › e2e-m1\map.spec.ts:99:116 › REQ-MAP-04 schema boundary futureVersion rejects atomically
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: getByRole('alert')
+    Expected substring: "Map data could not be loaded"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toContainText" getByRole('alert') with timeout 5000ms
+      - waiting for getByRole('alert')
+
+
+      105 |  await page.route('**/maps/testland/metadata',r=>r.fulfill({json:meta}));
+      106 |  if(invalid==='shortBytes')await page.route('**/maps/testland/index.bin?*',r=>r.fulfill({body:bytes.subarray(0,bytes.length-1),headers:{'x-pack-hash':meta.pack_hash}}));
+    > 107 |  await page.goto('/');await expect(page.getByRole('alert')).toContainText('Map data could not be loaded');await expect(page.getByTestId('province-map').locator('canvas')).toHaveCount(0);await expect(page.getByTestId('country-panel')).toContainText('Northern Test Nation');
+          |                                                             ^
+      108 | });
+      109 |
+        at E:\openhoi\.orchestrator\wt\WP-08\client\e2e-m1\map.spec.ts:107:61
+
+    Error Context: test-results\map-REQ-MAP-04-schema-boun-257ee-eVersion-rejects-atomically-chromium\error-context.md
+
+  2 failed
+    [chromium] › e2e-m1\map.spec.ts:99:116 › REQ-MAP-04 schema boundary oldVersion rejects atomically
+    [chromium] › e2e-m1\map.spec.ts:99:116 › REQ-MAP-04 schema boundary futureVersion rejects atomically

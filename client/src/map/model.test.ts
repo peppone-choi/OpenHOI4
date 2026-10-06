@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 import { readFileSync } from 'node:fs';
-import { decodeIndex, pick, palettes, updateColors } from './model';
+import { decodeIndex, pick, palettes, updateColors,validateWorldDisplay } from './model';
 import type { WorldView } from '../proto/protocol';
 const world = (): WorldView => JSON.parse(readFileSync('../target/wp09/national-wire-fixtures.json','utf8'))[0].expected.world;
 test('REQ-MAP-04 server RGB colors use dense mapping, neutral sea and each mode',()=>{
@@ -12,6 +12,11 @@ test('REQ-MAP-04 server RGB colors use dense mapping, neutral sea and each mode'
  expect(Array.from(palettes(w,'map-mode-state').colors.slice(4,8))).toEqual([140,95,170,255]);
  const changed=updateColors(p.colors,w,'map-mode-control');expect(changed).toEqual([{start:4,count:4}]);
  expect(updateColors(p.colors,w,'map-mode-control')).toEqual([]);
+});
+test('MAP display schema rejects dangling/duplicate refs before lookup publication',()=>{
+ expect(()=>validateWorldDisplay(world())).not.toThrow();
+ const bad=[(w:WorldView)=>w.width=0,(w:WorldView)=>w.province_ids.push(w.province_ids[0]),(w:WorldView)=>w.provinces.pop(),(w:WorldView)=>w.provinces[0].owner=65535,(w:WorldView)=>w.provinces[0].state=65535,(w:WorldView)=>w.states[0].provinces=[],(w:WorldView)=>w.provinces[0].owner_color=null];
+ for(const change of bad){const w=world();change(w);expect(()=>validateWorldDisplay(w)).toThrow('map-data-error');}
 });
 test('REQ-MAP-05 little endian RG8 pick: top-left, sparse/high/zero real IDs and outside',()=>{
  const data=decodeIndex(new Uint8Array([0,0,1,0,2,0,3,0]).buffer,2,2,[0,32768,65535,4]);

@@ -16,11 +16,26 @@ fn setting(host: &Host, key: &str) -> Result<u32, String> {
     .map_err(|e| e.to_string())
 }
 fn rgb(host: &Host, key: &str) -> Result<[u8; 3], String> {
-    let n = setting(host, key)?;
+    let n = match host.loaded.pack.defines.get(&format!("map_display.{key}")) {
+        Some(oh_data::DefineValue::Number(oh_data::Number::Integer(n))) if *n >= 0 => {
+            u32::try_from(*n).map_err(|e| e.to_string())?
+        }
+        _ => {
+            return Err(format!(
+                "map_display.{key} must be a nonnegative RGB24 integer"
+            ));
+        }
+    };
     if n > 0xffffff {
         return Err(format!("map_display.{key} exceeds RGB24"));
     }
     Ok([(n >> 16) as u8, (n >> 8) as u8, n as u8])
+}
+pub fn validate(host: &Host) -> Result<(), String> {
+    if let Some(world) = host.world.as_ref() {
+        document(host, world.defs().map_id())?;
+    }
+    Ok(())
 }
 fn document(host: &Host, id: &str) -> Result<MapMetadata, String> {
     let w = host.world.as_ref().ok_or("map-unavailable")?;
@@ -57,13 +72,14 @@ fn document(host: &Host, id: &str) -> Result<MapMetadata, String> {
         (h ^ u64::from(*b)).wrapping_mul(0x100000001b3)
     });
     Ok(MapMetadata {
+        schema_version: oh_proto::MAP_DISPLAY_VERSION,
         map_id: id.into(),
         width: map.width,
         height: map.height,
         province_ids: map.provinces.iter().map(|p| p.id).collect(),
         pack_hash: host.pack.hash.clone(),
         index_hash: format!("{hash:016x}"),
-        byte_length: bytes.len() as u64,
+        byte_length: bytes.len().to_string(),
         style,
     })
 }
@@ -119,9 +135,41 @@ mod tests {
         )
         .unwrap();
         let meta = document(&host, "testland").unwrap();
-        assert_eq!((meta.width, meta.height, meta.byte_length), (8, 6, 96));
+        assert_eq!(
+            (meta.width, meta.height, meta.byte_length.as_str()),
+            (8, 6, "96")
+        );
         assert_eq!(meta.province_ids, [10, 20, 30, 40, 50, 60]);
         assert_eq!(meta.pack_hash, host.pack.hash);
         assert!(document(&host, "../testland").is_err());
+    }
+    #[test]
+    fn display_settings_accept_black_and_reject_missing_or_invalid_before_http() {
+        let (_, shutdown) = tokio::sync::watch::channel(false);
+        let mut host = Host::load(
+            &std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../data/packs"),
+            shutdown,
+        )
+        .unwrap();
+        std::sync::Arc::make_mut(&mut host.loaded)
+            .pack
+            .defines
+            .0
+            .get_mut("map_display")
+            .unwrap()
+            .insert(
+                "nation_border".into(),
+                oh_data::DefineValue::Number(oh_data::Number::Integer(0)),
+            );
+        assert_eq!(rgb(&host, "nation_border").unwrap(), [0, 0, 0]);
+        assert!(validate(&host).is_ok());
+        std::sync::Arc::make_mut(&mut host.loaded)
+            .pack
+            .defines
+            .0
+            .get_mut("map_display")
+            .unwrap()
+            .remove("fit_milli");
+        assert!(validate(&host).is_err());
     }
 }

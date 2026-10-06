@@ -1,31 +1,35 @@
 import { useEffect,useRef,useState } from 'react';
-import type { MapMetadata,WorldView } from '../proto/protocol';
+import type { WorldView } from '../proto/protocol';
 import { useLocalization } from '../i18n';
-import { decodeIndex,fnv } from './model';
+import { decodeIndex,fnv,validateWorldDisplay } from './model';
 import { createMap } from './renderer';
+import { isMapMetadata } from '../network';
 type MapInstance=Awaited<ReturnType<typeof createMap>>;
 export function MapView({world,packHash,selected,onSelect}:{world:WorldView;packHash:string;selected:number|null;onSelect:(id:number|null)=>void}){
  const {t}=useLocalization();const host=useRef<HTMLDivElement>(null),instance=useRef<MapInstance|null>(null);
- const current=useRef({world,selected,onSelect});current.current={world,selected,onSelect};
  const [mode,setMode]=useState('map-mode-owner'),[hover,setHover]=useState<number|null>(null),[error,setError]=useState<string|null>(null),[ready,setReady]=useState(false);
+ const current=useRef({world,selected,onSelect,mode});current.current={world,selected,onSelect,mode};
  useEffect(()=>{
   let stopped=false;const controller=new AbortController();setReady(false);setError(null);
   async function load(){
    try{
+    validateWorldDisplay(world);
     const response=await fetch(`/maps/${encodeURIComponent(world.map_id)}/metadata`,{signal:controller.signal});if(!response.ok)throw new Error('map-data-error');
-    const meta=await response.json() as MapMetadata;
-    if(meta.pack_hash!==packHash||meta.map_id!==world.map_id||meta.width!==world.width||meta.height!==world.height||JSON.stringify(meta.province_ids)!==JSON.stringify(world.province_ids))throw new Error('map-data-error');
+    const candidate:unknown=await response.json();
+    if(!isMapMetadata(candidate)||candidate.pack_hash!==packHash||candidate.map_id!==world.map_id||candidate.width!==world.width||candidate.height!==world.height||JSON.stringify(candidate.province_ids)!==JSON.stringify(world.province_ids))throw new Error('map-data-error');
+    const meta=candidate;
     const raw=await fetch(`/maps/${encodeURIComponent(world.map_id)}/index.bin?pack=${encodeURIComponent(packHash)}`,{signal:controller.signal});if(!raw.ok)throw new Error('map-data-error');
     const buffer=await raw.arrayBuffer();const bytes=new Uint8Array(buffer);if(buffer.byteLength!==Number(meta.byte_length)||fnv(bytes)!==meta.index_hash||raw.headers.get('x-pack-hash')!==packHash)throw new Error('map-data-error');
     const index=decodeIndex(buffer,world.width,world.height,world.province_ids);
     if(stopped)return;
-    const force=new URLSearchParams(location.search).get('forceWebGL')==='1';
+    const force=new URLSearchParams(location.search).get('forceWebGL')==='1'||!window.isSecureContext||!navigator.gpu;
     async function start(forceWebGL:boolean){
      const result=await createMap(host.current!,meta,bytes,index,current.current.world,setHover,id=>current.current.onSelect(id),()=>{
+      setReady(false);
       instance.current?.dispose();instance.current=null;
       if(!forceWebGL&&!stopped)start(true).catch(()=>setError('map-backend-unavailable'));else if(!stopped)setError('map-backend-unavailable');
      },forceWebGL);
-     if(stopped){result.dispose();return;}instance.current=result;result.update(current.current.world,'map-mode-owner',current.current.selected);setReady(true);
+     if(stopped){result.dispose();return;}instance.current=result;result.update(current.current.world,current.current.mode,current.current.selected);setReady(true);
     }
     try{await start(force);}catch{if(force)throw new Error('map-backend-unavailable');await start(true).catch(()=>{throw new Error('map-backend-unavailable');});}
    }catch(e){if(!stopped)setError(e instanceof Error&&e.message==='map-backend-unavailable'?'map-backend-unavailable':'map-data-error');}

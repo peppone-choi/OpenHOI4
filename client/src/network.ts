@@ -1,5 +1,6 @@
 import { decode, encode } from '@msgpack/msgpack';
 import { PROTOCOL_VERSION, type ClientMessage, type PackInfo, type ServerMessage, type TimeState, type WorldView, type NationView, type SupportView, type StateView, type ScalarView, type ProvinceView, type LedgerView, type LedgerRow } from './proto/protocol';
+import { MAP_DISPLAY_VERSION,type MapMetadata,type MapStyle } from './proto/protocol';
 
 type Guard<T> = (value: unknown) => value is T;
 type Shape<T> = { [K in keyof T]-?: Guard<T[K]> };
@@ -20,6 +21,12 @@ function shape<T>(fields: Shape<T>): Guard<T> {
 }
 const timeState = shape<TimeState>({ date: string, hour: u8, tick: string, paused: boolean, speed: u8 });
 const packInfo = shape<PackInfo>({ id: string, version: string, hash: string });
+const positiveU32:Guard<number>=(v):v is number=>u32(v)&&v>0;
+const decimal:Guard<string>=(v):v is string=>string(v)&&/^(0|[1-9]\d*)$/.test(v);
+const hash:Guard<string>=(v):v is string=>string(v)&&/^[0-9a-f]{16}$/.test(v);
+const mapStyle=shape<MapStyle>({background:color,nation_border:color,state_border:color,province_border:color,selected:color,hovered:color,nation_width_milli:positiveU32,state_width_milli:positiveU32,province_width_milli:positiveU32,highlight_milli:positiveU32,fit_milli:positiveU32,zoom_min_milli:positiveU32,zoom_max_milli:positiveU32,wheel_milli:positiveU32,drag_threshold:positiveU32});
+const mapMetadata=shape<MapMetadata>({schema_version:u16,map_id:string,width:positiveU32,height:positiveU32,province_ids:array(u16),pack_hash:hash,index_hash:hash,byte_length:decimal,style:mapStyle});
+export function isMapMetadata(v:unknown):v is MapMetadata{return mapMetadata(v)&&v.schema_version===MAP_DISPLAY_VERSION&&v.style.fit_milli<=1000&&v.style.highlight_milli<=1000&&v.style.zoom_min_milli<=v.style.zoom_max_milli;}
 
 const ledgerRow = shape<LedgerRow>({ id: string, label_key: string, operation_key: string, value: string, accumulated: string, source_key: nullable(string) });
 const ledger = shape<LedgerView>({ base: string, final_value: string, tick: string, entries: array(ledgerRow) });
