@@ -1,0 +1,5 @@
+1) git 저장소: E:/openhoi
+2) codex CLI: /c/Users/user/AppData/Local/Programs/OpenAI/Codex/bin/codex
+3) setsid: 없음 (nohup만 사용)
+4) 하위 Codex 세션 호출(네트워크·인증 확인) …
+orch: 하위 codex exec 실패 — 오케스트레이터 세션의 샌드박스가 네트워크를 막았거나 인증이 없음. logs/selftest.err 확인

@@ -1,0 +1,26 @@
+{"ecosystem": "cargo", "package": "tokio", "expected": "1.53.2", "expected_license": "MIT", "url": "https://crates.io/api/v1/crates/tokio", "actual": "1.53.2", "actual_license": "MIT", "version_matches": true}
+{"ecosystem": "cargo", "package": "axum", "expected": "0.8.9", "expected_license": "MIT", "url": "https://crates.io/api/v1/crates/axum", "actual": "0.8.9", "actual_license": "MIT", "version_matches": true}
+{"ecosystem": "cargo", "package": "rmp-serde", "expected": "1.3.1", "expected_license": "MIT", "url": "https://crates.io/api/v1/crates/rmp-serde", "actual": "1.3.1", "actual_license": "MIT", "version_matches": true}
+{"ecosystem": "cargo", "package": "ts-rs", "expected": "12.0.1", "expected_license": "MIT", "url": "https://crates.io/api/v1/crates/ts-rs", "actual": "12.0.1", "actual_license": "MIT", "version_matches": true}
+{"ecosystem": "cargo", "package": "fixed", "expected": "1.31.0", "expected_license": "MIT/Apache-2.0", "url": "https://crates.io/api/v1/crates/fixed", "actual": "1.31.0", "actual_license": "MIT/Apache-2.0", "version_matches": true}
+{"ecosystem": "cargo", "package": "rand_chacha", "expected": "0.10.0", "expected_license": "MIT OR Apache-2.0", "url": "https://crates.io/api/v1/crates/rand_chacha", "actual": "0.10.0", "actual_license": "MIT OR Apache-2.0", "version_matches": true}
+{"ecosystem": "cargo", "package": "serde", "expected": "1.0.229", "expected_license": "MIT OR Apache-2.0", "url": "https://crates.io/api/v1/crates/serde", "actual": "1.0.229", "actual_license": "MIT OR Apache-2.0", "version_matches": true}
+{"ecosystem": "cargo", "package": "postcard", "expected": "1.1.3", "expected_license": "MIT OR Apache-2.0", "url": "https://crates.io/api/v1/crates/postcard", "actual": "1.1.3", "actual_license": "MIT OR Apache-2.0", "version_matches": true}
+{"ecosystem": "cargo", "package": "toml", "expected": "1.1.6+spec-1.1.0", "expected_license": "MIT OR Apache-2.0", "url": "https://crates.io/api/v1/crates/toml", "actual": "1.1.6+spec-1.1.0", "actual_license": "MIT OR Apache-2.0", "version_matches": true}
+{"ecosystem": "cargo", "package": "schemars", "expected": "1.2.2", "expected_license": "MIT", "url": "https://crates.io/api/v1/crates/schemars", "actual": "1.2.2", "actual_license": "MIT", "version_matches": true}
+{"ecosystem": "cargo", "package": "zstd", "expected": "0.14.0", "expected_license": "BSD-3-Clause", "url": "https://crates.io/api/v1/crates/zstd", "actual": "0.14.0", "actual_license": "BSD-3-Clause", "version_matches": true}
+{"ecosystem": "cargo", "package": "proptest", "expected": "1.11.0", "expected_license": "MIT OR Apache-2.0", "url": "https://crates.io/api/v1/crates/proptest", "actual": "1.11.0", "actual_license": "MIT OR Apache-2.0", "version_matches": true}
+{"ecosystem": "cargo", "package": "cargo-deny", "expected": "0.20.2", "expected_license": "MIT OR Apache-2.0", "url": "https://crates.io/api/v1/crates/cargo-deny", "actual": "0.20.2", "actual_license": "MIT OR Apache-2.0", "version_matches": true}
+{"ecosystem": "npm", "package": "typescript", "expected": "7.0.2", "expected_license": "Apache-2.0", "url": "https://registry.npmjs.org/typescript/latest", "actual": "7.0.2", "actual_license": "Apache-2.0", "version_matches": true}
+{"ecosystem": "npm", "package": "vite", "expected": "8.3.3", "expected_license": "MIT", "url": "https://registry.npmjs.org/vite/latest", "actual": "8.3.3", "actual_license": "MIT", "version_matches": true}
+{"ecosystem": "npm", "package": "react", "expected": "19.3.0", "expected_license": "MIT", "url": "https://registry.npmjs.org/react/latest", "actual": "19.3.0", "actual_license": "MIT", "version_matches": true}
+{"ecosystem": "npm", "package": "three", "expected": "0.186.1", "expected_license": "MIT", "url": "https://registry.npmjs.org/three/latest", "actual": "0.186.1", "actual_license": "MIT", "version_matches": true}
+{"ecosystem": "npm", "package": "@msgpack/msgpack", "expected": "3.1.3", "expected_license": "ISC", "url": "https://registry.npmjs.org/%40msgpack%2Fmsgpack/latest", "actual": "3.1.3", "actual_license": "ISC", "version_matches": true}
+{"ecosystem": "npm", "package": "@fluent/bundle", "expected": "0.19.1", "expected_license": "Apache-2.0", "url": "https://registry.npmjs.org/%40fluent%2Fbundle/latest", "actual": "0.19.1", "actual_license": "Apache-2.0", "version_matches": true}
+{"ecosystem": "npm", "package": "vitest", "expected": "5.0.3", "expected_license": "MIT", "url": "https://registry.npmjs.org/vitest/latest", "actual": "5.0.3", "actual_license": "MIT", "version_matches": true}
+{"ecosystem": "npm", "package": "@playwright/test", "expected": "1.63.0", "expected_license": "Apache-2.0", "url": "https://registry.npmjs.org/%40playwright%2Ftest/latest", "actual": "1.63.0", "actual_license": "Apache-2.0", "version_matches": true}
+docs-positive-fixture: expected=0 actual=0
+docs-negative-orch-command: expected=1 actual=1
+docs-negative-missing-template: expected=1 actual=1
+docs-restored-fixture: expected=0 actual=0
+tracked checker unchanged: True

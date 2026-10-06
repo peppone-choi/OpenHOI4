@@ -1,0 +1,9 @@
+OpenHOI 문서 검사
+  D 16 · REQ 141 · OPEN 12 · AC 37 · WP 50 · DR 10 · P 12
+  마일스톤별 REQ: M0 13, M1 13, M2 48, M3 44, M4 11, M5 7, M6 5
+  사용 금지 표현 11개 · orch.sh 하위 명령 ['impl', 'selftest', 'start', 'status', 'verify', 'wait'] · 템플릿 5개
+오류 [C02] docs/02-production-spec.md:698: 정의되지 않은 DR 식별자 DR-00
+오류 [C02] docs/02-production-spec.md:698: 정의되지 않은 DR 식별자 DR-00
+오류 [C02] docs/02-production-spec.md:752: 정의되지 않은 DR 식별자 DR-00
+오류 [C02] AGENTS.md:17: 정의되지 않은 DR 식별자 DR-00
+결과: 오류 4 · 경고 0

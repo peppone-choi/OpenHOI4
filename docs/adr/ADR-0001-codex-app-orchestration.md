@@ -10,7 +10,7 @@
 
 02 §12.4의 실제 CLI 환경 시험을 실행했다. 실행 도구는 Windows의 Git Bash(`C:/Program Files/Git/bin/bash.exe`)와 Codex CLI 0.144.1이었다. 하위 모델은 기존 설정의 gpt-6.1-sol이며, 인증은 기존 ChatGPT 로그인이다.
 
-`tools/orch.sh selftest`는 종료 코드 2, 하위 Codex 호출은 종료 코드 1이었다. 서버 응답은 HTTP 400 `The 'gpt-6.1-sol' model is not supported when using Codex with a ChatGPT account.`였다. CLI의 일반 오류 안내와 달리 관측한 원인은 모델·인증 조합의 거절이며 네트워크 차단으로 단정하지 않는다. 로컬 MCP 포트 오류도 부수적으로 남았다.
+`tools/orch.sh selftest`의 최초 외부 PowerShell 호출은 도구에서 종료 코드 1로 관측됐다. 문서 검증 중 같은 설정의 Git Bash 호출을 재실행해 LASTEXITCODE를 직접 저장했으며 selftest 종료 코드 2를 확인했다. 하위 Codex 호출은 종료 코드 1이었다. 반복 증거는 docs/worklog/evidence/WP-06/selftest-repeat.* 에 보존했다. 서버 응답은 HTTP 400 `The 'gpt-6.1-sol' model is not supported when using Codex with a ChatGPT account.`였다. CLI의 일반 오류 안내와 달리 관측한 원인은 모델·인증 조합의 거절이며 네트워크 차단으로 단정하지 않는다. 로컬 MCP 포트 오류도 부수적으로 남았다.
 
 `tools/orch.sh start impl WP-00 orch/selftest .orchestrator/prompts/WP-00.md`를 실행했다. 후속 별도 status 명령에서 running을 확인했고 최종 status는 done 1이었다. 분리 프로세스 생존은 확인했지만 정상 하위 실행과 done 0은 확인하지 못했다. 근거는 `.orchestrator/logs/selftest.err`, `WP-00.impl.{runner.log,err,jsonl}`, `.orchestrator/out/WP-00.impl.{state,exit}`다.
 
