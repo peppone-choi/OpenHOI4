@@ -1,0 +1,6 @@
+
+> openhoi-client@0.1.0 licenses
+> node ../tools/check_npm_licenses.cjs
+
+npm licenses: 95 dependencies; 0 error(s)
+exit=0
