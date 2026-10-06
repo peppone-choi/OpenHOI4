@@ -1,0 +1,122 @@
+command: C:/Users/user/.cargo/bin\cargo.EXE test -p oh_core --test core
+cwd: E:\openhoi\.orchestrator\wt\WP-02
+exit: 101
+
+    Updating crates.io index
+     Locking 41 packages to highest Rust 1.99 compatible versions
+      Adding autocfg v1.5.1
+      Adding az v1.3.0
+      Adding bitflags v2.13.2
+      Adding bytemuck v1.25.2
+      Adding cfg-if v1.0.5
+      Adding cobs v0.3.0
+      Adding crunchy v0.2.4
+      Adding embedded-io v0.4.0
+      Adding embedded-io v0.6.1
+      Adding fixed v1.31.0
+      Adding getrandom v0.3.4
+      Adding half v2.7.1
+      Adding libc v0.2.190
+      Adding num-traits v0.2.19
+      Adding postcard v1.1.3
+      Adding ppv-lite86 v0.2.21
+      Adding proc-macro2 v1.0.107
+      Adding proptest v1.11.0
+      Adding quote v1.0.47
+      Adding r-efi v5.3.0
+      Adding rand v0.9.5
+      Adding rand_chacha v0.9.0
+      Adding rand_chacha v0.10.0
+      Adding rand_core v0.9.5
+      Adding rand_core v0.10.1
+      Adding rand_xorshift v0.4.0
+      Adding regex-syntax v0.8.11
+      Adding serde v1.0.229
+      Adding serde_core v1.0.229
+      Adding serde_derive v1.0.229
+      Adding syn v2.0.119
+      Adding syn v3.0.6
+      Adding thiserror v2.0.21
+      Adding thiserror-impl v2.0.21
+      Adding typenum v1.20.1
+      Adding unarray v0.1.4
+      Adding unicode-ident v1.0.26
+      Adding wasip2 v1.0.4+wasi-0.2.12
+      Adding wit-bindgen v0.57.1
+      Adding zerocopy v0.8.60
+      Adding zerocopy-derive v0.8.60
+ Downloading crates ...
+  Downloaded rand_xorshift v0.4.0
+  Downloaded postcard v1.1.3
+  Downloaded rand_chacha v0.9.0
+  Downloaded cobs v0.3.0
+  Downloaded embedded-io v0.4.0
+  Downloaded embedded-io v0.6.1
+  Downloaded ppv-lite86 v0.2.21
+  Downloaded unarray v0.1.4
+  Downloaded autocfg v1.5.1
+  Downloaded rand_core v0.9.5
+  Downloaded thiserror v2.0.21
+  Downloaded thiserror-impl v2.0.21
+  Downloaded rand_core v0.10.1
+  Downloaded rand_chacha v0.10.0
+  Downloaded num-traits v0.2.19
+  Downloaded bitflags v2.13.2
+  Downloaded rand v0.9.5
+  Downloaded proptest v1.11.0
+  Downloaded regex-syntax v0.8.11
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.26
+   Compiling quote v1.0.47
+   Compiling cfg-if v1.0.5
+   Compiling zerocopy v0.8.60
+   Compiling getrandom v0.3.4
+   Compiling serde_core v1.0.229
+   Compiling thiserror v2.0.21
+   Compiling serde v1.0.229
+   Compiling autocfg v1.5.1
+   Compiling fixed v1.31.0
+   Compiling bytemuck v1.25.2
+   Compiling az v1.3.0
+   Compiling rand_core v0.10.1
+   Compiling typenum v1.20.1
+   Compiling bitflags v2.13.2
+   Compiling unarray v0.1.4
+   Compiling regex-syntax v0.8.11
+   Compiling num-traits v0.2.19
+   Compiling rand_core v0.9.5
+   Compiling rand_xorshift v0.4.0
+   Compiling rand v0.9.5
+   Compiling syn v2.0.119
+   Compiling syn v3.0.6
+   Compiling thiserror-impl v2.0.21
+   Compiling serde_derive v1.0.229
+   Compiling zerocopy-derive v0.8.60
+   Compiling cobs v0.3.0
+   Compiling postcard v1.1.3
+   Compiling ppv-lite86 v0.2.21
+   Compiling half v2.7.1
+   Compiling rand_chacha v0.9.0
+   Compiling rand_chacha v0.10.0
+   Compiling proptest v1.11.0
+   Compiling oh_core v0.1.0 (E:\openhoi\.orchestrator\wt\WP-02\crates\oh_core)
+error[E0432]: unresolved imports `oh_core::DivisionId`, `oh_core::EntityId`, `oh_core::Fnv1a64`, `oh_core::Fx`, `oh_core::GameDay`, `oh_core::NationId`, `oh_core::ProvinceId`, `oh_core::Qty`, `oh_core::RngKey`, `oh_core::StateId`, `oh_core::SystemId`, `oh_core::canonical_bytes`, `oh_core::from_canonical_bytes`, `oh_core::fnv1a64`, `oh_core::simulation_rng`, `oh_core::state_hash`
+ --> crates\oh_core\tests\core.rs:4:5
+  |
+4 |     DivisionId, EntityId, Fnv1a64, Fx, GameDay, NationId, ProvinceId, Qty, RngKey, StateId,
+  |     ^^^^^^^^^^  ^^^^^^^^  ^^^^^^^  ^^  ^^^^^^^  ^^^^^^^^  ^^^^^^^^^^  ^^^  ^^^^^^  ^^^^^^^ no `StateId` in the root
+  |     |           |         |        |   |        |         |           |    |
+  |     |           |         |        |   |        |         |           |    no `RngKey` in the root
+  |     |           |         |        |   |        |         |           no `Qty` in the root
+  |     |           |         |        |   |        |         no `ProvinceId` in the root
+  |     |           |         |        |   |        no `NationId` in the root
+  |     |           |         |        |   no `GameDay` in the root
+  |     |           |         |        no `Fx` in the root
+  |     |           |         no `Fnv1a64` in the root
+  |     |           no `EntityId` in the root
+  |     no `DivisionId` in the root
+5 |     SystemId, canonical_bytes, from_canonical_bytes, fnv1a64, simulation_rng, state_hash,
+  |     ^^^^^^^^  ^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^  ^^^^^^^  ^^^^^^^^^^^^^^  ^^^^^^^^^^
+
+For more information about this error, try `rustc --explain E0432`.
+error: could not compile `oh_core` (test "core") due to 1 previous error

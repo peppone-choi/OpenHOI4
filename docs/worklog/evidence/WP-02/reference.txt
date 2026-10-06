@@ -1,0 +1,5 @@
+command: python .orchestrator/evidence/WP-02/reference.py
+cwd: E:\openhoi\.orchestrator\wt\WP-02
+exit: 0
+
+Independent Python FNV-1a, input=0101020508020506, output=45711636651ea5db

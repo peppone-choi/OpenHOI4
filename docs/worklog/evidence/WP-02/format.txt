@@ -1,0 +1,3 @@
+command: C:/Users/user/.cargo/bin\cargo.EXE fmt
+cwd: E:\openhoi\.orchestrator\wt\WP-02
+exit: 0

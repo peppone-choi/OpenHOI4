@@ -1,0 +1,3 @@
+command: .orchestrator/evidence/WP-02/actionlint.exe -shellcheck= -pyflakes= .github/workflows/core-determinism.yml
+cwd: E:\openhoi\.orchestrator\wt\WP-02
+exit: 0
