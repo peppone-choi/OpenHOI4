@@ -1,0 +1,31 @@
+[workspace]
+resolver = "3"
+members = [
+    "crates/oh_core",
+    "crates/oh_data",
+    "crates/oh_sim",
+    "crates/oh_ai",
+    "crates/oh_save",
+    "crates/oh_proto",
+    "crates/oh_server",
+    "crates/oh_cli",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.99"
+publish = false
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.dependencies]
+oh_core = { path = "crates/oh_core", version = "0.1.0" }
+oh_data = { path = "crates/oh_data", version = "0.1.0" }
+oh_sim = { path = "crates/oh_sim", version = "0.1.0" }
+oh_ai = { path = "crates/oh_ai", version = "0.1.0" }
+oh_save = { path = "crates/oh_save", version = "0.1.0" }
+oh_proto = { path = "crates/oh_proto", version = "0.1.0" }
+oh_server = { path = "crates/oh_server", version = "0.1.0" }
+oh_cli = { path = "crates/oh_cli", version = "0.1.0" }

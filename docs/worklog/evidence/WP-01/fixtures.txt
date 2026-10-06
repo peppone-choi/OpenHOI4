@@ -1,0 +1,200 @@
+test_req_leg_02_ai_asset_dev_passes (test_wp01.AssetTests.test_req_leg_02_ai_asset_dev_passes) ... ok
+test_req_leg_02_ai_asset_release_fails (test_wp01.AssetTests.test_req_leg_02_ai_asset_release_fails) ... ok
+test_req_leg_02_boolean_string_fails (test_wp01.AssetTests.test_req_leg_02_boolean_string_fails) ... ok
+test_req_leg_02_duplicate_fails (test_wp01.AssetTests.test_req_leg_02_duplicate_fails) ... ok
+test_req_leg_02_missing_file_fails (test_wp01.AssetTests.test_req_leg_02_missing_file_fails) ... ok
+test_req_leg_02_missing_metadata_fails (test_wp01.AssetTests.test_req_leg_02_missing_metadata_fails) ... ok
+test_req_leg_02_registered_data_passes (test_wp01.AssetTests.test_req_leg_02_registered_data_passes) ... ok
+test_req_leg_02_traversal_fails (test_wp01.AssetTests.test_req_leg_02_traversal_fails) ... ok
+test_req_leg_02_unapproved_asset_license_fails (test_wp01.AssetTests.test_req_leg_02_unapproved_asset_license_fails) ... ok
+test_req_leg_02_unregistered_data_fails (test_wp01.AssetTests.test_req_leg_02_unregistered_data_fails) ... ok
+test_req_leg_02_unregistered_imported_asset_fails (test_wp01.AssetTests.test_req_leg_02_unregistered_imported_asset_fails) ... ok
+test_req_leg_02_unregistered_localization_fails (test_wp01.AssetTests.test_req_leg_02_unregistered_localization_fails) ... ok
+test_req_leg_02_unregistered_public_file_fails (test_wp01.AssetTests.test_req_leg_02_unregistered_public_file_fails) ... ok
+test_req_leg_03_cargo_gpl_and_bincode_fail (test_wp01.CargoLicenseTests.test_req_leg_03_cargo_gpl_and_bincode_fail) ... ok
+test_req_leg_03_and_requires_both_licenses (test_wp01.NpmLicenseTests.test_req_leg_03_and_requires_both_licenses) ... ok
+test_req_leg_03_exception_not_silently_ignored (test_wp01.NpmLicenseTests.test_req_leg_03_exception_not_silently_ignored) ... ok
+test_req_leg_03_gpl_dependency_fails (test_wp01.NpmLicenseTests.test_req_leg_03_gpl_dependency_fails) ... ok
+test_req_leg_03_or_accepts_permitted_choice (test_wp01.NpmLicenseTests.test_req_leg_03_or_accepts_permitted_choice) ... ok
+test_req_leg_03_permitted_license_passes (test_wp01.NpmLicenseTests.test_req_leg_03_permitted_license_passes) ... ok
+test_req_leg_03_unknown_license_fails (test_wp01.NpmLicenseTests.test_req_leg_03_unknown_license_fails) ... ok
+test_req_plat_01_buildable_workspace_and_ci (test_wp01.PlatformTests.test_req_plat_01_buildable_workspace_and_ci) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 1.342s
+
+OK
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp2n4lpdbc
+exit=0
+assets: 0 error(s)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp32ix4lfh --release
+exit=1
+assets: 1 error(s)
+[ASSET] data/packs/demo/defines.toml: AI-generated asset blocked for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpv5dpnb11
+exit=1
+assets: 1 error(s)
+[ASSET] data/packs/demo/defines.toml: ai_generated must be a boolean
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpx71f30ki
+exit=1
+assets: 1 error(s)
+[ASSET] data/packs/demo/defines.toml: duplicate record
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpttv6njy3
+exit=1
+assets: 2 error(s)
+[ASSET] assets/missing.png: missing file
+[ASSET] data/packs/demo/defines.toml: unregistered asset/data file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmph_d18zi5
+exit=1
+assets: 1 error(s)
+[ASSET] data/packs/demo/defines.toml: missing author
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp_c5se6tu
+exit=0
+assets: 0 error(s)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpmddcn9vv
+exit=1
+assets: 2 error(s)
+[ASSET] ../outside.png: path must be a normalized relative POSIX path
+[ASSET] data/packs/demo/defines.toml: unregistered asset/data file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpbu8eg7sa
+exit=1
+assets: 1 error(s)
+[ASSET] data/packs/demo/defines.toml: unapproved license 'CC-BY-NC-4.0'
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp5k7ube4d
+exit=1
+assets: 1 error(s)
+[ASSET] data/packs/demo/defines.toml: unregistered asset/data file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpewmkgd1x
+exit=1
+assets: 1 error(s)
+[ASSET] client/src/assets/logo.svg: unregistered asset/data file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmph2b658z3
+exit=1
+assets: 1 error(s)
+[ASSET] client/src/locales/ko.ftl: unregistered asset/data file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmphmbcn0o1
+exit=1
+assets: 1 error(s)
+[ASSET] client/public/unlisted.svg: unregistered asset/data file
+
+$ C:/Users/user/.cargo/bin\cargo.EXE deny --manifest-path C:\Users\user\AppData\Local\Temp\tmpatlbx04w\Cargo.toml --config E:\openhoi\.orchestrator\wt\WP-01\deny.toml check licenses bans
+exit=6
+bans FAILED, licenses FAILED
+error[banned]: crate 'bincode = 0.1.0' is explicitly banned
+   ┌─ E:\openhoi\.orchestrator\wt\WP-01\deny.toml:14:19
+   │
+14 │ deny = [{ name = "bincode" }]
+   │                   ━━━━━━━ banned here
+   │
+   ├ bincode v0.1.0
+     └── fixture-root v0.1.0
+
+error[rejected]: failed to satisfy license requirements
+  ┌─ C:\Users\user\AppData\Local\Temp\tmpatlbx04w\gpl-dep\Cargo.toml:5:10
+  │
+5 │ license="GPL-3.0-only"
+  │          ━━━━━━━━━━━━
+  │          │
+  │          rejected: license is not explicitly allowed
+  │
+  ├ GPL-3.0-only - GNU General Public License v3.0 only:
+  ├   - OSI approved
+  ├   - FSF Free/Libre
+  ├   - Copyleft
+  ├ gpl-dep v0.1.0
+    └── fixture-root v0.1.0
+
+warning[license-not-encountered]: license was not encountered
+  ┌─ E:\openhoi\.orchestrator\wt\WP-01\deny.toml:3:18
+  │
+3 │ allow = ["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Zlib", "MPL-2.0", "Unicode-3.0", "BSL-1.0", "CC0-1.0"]
+  │                  ━━━━━━━━━━ unmatched license allowance
+
+warning[license-not-encountered]: license was not encountered
+  ┌─ E:\openhoi\.orchestrator\wt\WP-01\deny.toml:3:32
+  │
+3 │ allow = ["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Zlib", "MPL-2.0", "Unicode-3.0", "BSL-1.0", "CC0-1.0"]
+  │                                ━━━━━━━━━━━━ unmatched license allowance
+
+warning[license-not-encountered]: license was not encountered
+  ┌─ E:\openhoi\.orchestrator\wt\WP-01\deny.toml:3:48
+  │
+3 │ allow = ["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Zlib", "MPL-2.0", "Unicode-3.0", "BSL-1.0", "CC0-1.0"]
+  │                                                ━━━━━━━━━━━━ unmatched license allowance
+
+warning[license-not-encountered]: license was not encountered
+  ┌─ E:\openhoi\.orchestrator\wt\WP-01\deny.toml:3:105
+  │
+3 │ allow = ["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Zlib", "MPL-2.0", "Unicode-3.0", "BSL-1.0", "CC0-1.0"]
+  │                                                                                                         ━━━━━━━ unmatched license allowance
+
+warning[license-not-encountered]: license was not encountered
+  ┌─ E:\openhoi\.orchestrator\wt\WP-01\deny.toml:3:116
+  │
+3 │ allow = ["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Zlib", "MPL-2.0", "Unicode-3.0", "BSL-1.0", "CC0-1.0"]
+  │                                                                                                                    ━━━━━━━ unmatched license allowance
+
+warning[license-not-encountered]: license was not encountered
+  ┌─ E:\openhoi\.orchestrator\wt\WP-01\deny.toml:3:64
+  │
+3 │ allow = ["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Zlib", "MPL-2.0", "Unicode-3.0", "BSL-1.0", "CC0-1.0"]
+  │                                                                ━━━ unmatched license allowance
+
+warning[license-not-encountered]: license was not encountered
+  ┌─ E:\openhoi\.orchestrator\wt\WP-01\deny.toml:3:79
+  │
+3 │ allow = ["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Zlib", "MPL-2.0", "Unicode-3.0", "BSL-1.0", "CC0-1.0"]
+  │                                                                               ━━━━━━━ unmatched license allowance
+
+warning[license-not-encountered]: license was not encountered
+  ┌─ E:\openhoi\.orchestrator\wt\WP-01\deny.toml:3:90
+  │
+3 │ allow = ["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Zlib", "MPL-2.0", "Unicode-3.0", "BSL-1.0", "CC0-1.0"]
+  │                                                                                          ━━━━━━━━━━━ unmatched license allowance
+
+warning[license-not-encountered]: license was not encountered
+  ┌─ E:\openhoi\.orchestrator\wt\WP-01\deny.toml:3:71
+  │
+3 │ allow = ["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Zlib", "MPL-2.0", "Unicode-3.0", "BSL-1.0", "CC0-1.0"]
+  │                                                                       ━━━━ unmatched license allowance
+
+
+$ node E:\openhoi\.orchestrator\wt\WP-01\tools\check_npm_licenses.cjs --root C:\Users\user\AppData\Local\Temp\tmp0sf2eq79
+exit=1
+npm licenses: 1 dependencies; 1 error(s)
+[LICENSE] node_modules/fixture-dep@1.0.0: unapproved license "MIT AND GPL-3.0-only"
+
+$ node E:\openhoi\.orchestrator\wt\WP-01\tools\check_npm_licenses.cjs --root C:\Users\user\AppData\Local\Temp\tmpkfb63ki3
+exit=1
+npm licenses: 1 dependencies; 1 error(s)
+[LICENSE] node_modules/fixture-dep@1.0.0: unapproved license "Apache-2.0 WITH LLVM-exception"
+
+$ node E:\openhoi\.orchestrator\wt\WP-01\tools\check_npm_licenses.cjs --root C:\Users\user\AppData\Local\Temp\tmpcnr85mau
+exit=1
+npm licenses: 1 dependencies; 1 error(s)
+[LICENSE] node_modules/fixture-dep@1.0.0: unapproved license "GPL-3.0-only"
+
+$ node E:\openhoi\.orchestrator\wt\WP-01\tools\check_npm_licenses.cjs --root C:\Users\user\AppData\Local\Temp\tmp9o4bskhz
+exit=0
+npm licenses: 1 dependencies; 0 error(s)
+
+$ node E:\openhoi\.orchestrator\wt\WP-01\tools\check_npm_licenses.cjs --root C:\Users\user\AppData\Local\Temp\tmp1xaj20jj
+exit=0
+npm licenses: 1 dependencies; 0 error(s)
+
+$ node E:\openhoi\.orchestrator\wt\WP-01\tools\check_npm_licenses.cjs --root C:\Users\user\AppData\Local\Temp\tmp2xoz36m4
+exit=1
+npm licenses: 1 dependencies; 1 error(s)
+[LICENSE] node_modules/fixture-dep@1.0.0: unapproved license undefined

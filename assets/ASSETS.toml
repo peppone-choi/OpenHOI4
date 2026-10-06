@@ -1,0 +1,4 @@
+# Every resource in assets/, data/packs/, client/public/, and client/src/
+# requires a record here. No distributable assets exist in WP-01.
+# License choice for the project remains pending (D-10).
+asset = []

@@ -1,0 +1,12 @@
+/.orchestrator/
+/target/
+**/node_modules/
+/client/dist/
+/client/test-results/
+/client/playwright-report/
+__pycache__/
+*.py[cod]
+.DS_Store
+Thumbs.db
+.env
+.env.local
