@@ -4,7 +4,7 @@
 |---|---|
 | 작성 시각 | 2026-10-06, M1-r1 W1 통합 후 W2 실행 중 |
 | 현재 마일스톤 | M0 PASS 보존. M1 진행 중 |
-| 기본 브랜치 CI | main `4ed5e57c2bdfedf0dbf31445ffb009e8816af334`의 [CI](https://github.com/peppone-choi/OpenHOI4/actions/runs/37467723175), [Core](https://github.com/peppone-choi/OpenHOI4/actions/runs/37467723182), [Simulation](https://github.com/peppone-choi/OpenHOI4/actions/runs/37467723439) 모두 success(15jobs). 이후 문서 HEAD CI는 별도 확인한다 |
+| 기본 브랜치 CI | main b1da8f46fa7d2e849121424d5d2cf1ac36bfacd3의 [CI](https://github.com/peppone-choi/OpenHOI4/actions/runs/37474935905), [Core](https://github.com/peppone-choi/OpenHOI4/actions/runs/37474935898), [Simulation](https://github.com/peppone-choi/OpenHOI4/actions/runs/37474935881) 모두 success. 실제 M1 3OS 아티팩트 SHA와 hash60448355cecffa9d 일치도 직접 확인. 이후 문서 HEAD CI는 별도 확인 |
 
 ## 실제 상태와 이전 인수인계의 차이 (재개 시 기록)
 
@@ -24,14 +24,14 @@ M0 게이트 `d6ae2c8`의 AC7 PASS와 당시 동일 HEAD CI15jobs·7artifactZIP 
 | WP07 | 통합됨 | codex/wp07-map-data, WP-07 | 데이터검증 범위 PASS, 실제 표시 WP08/09 |
 | WP10 | 통합됨 | codex/wp10-ledger, WP-10 | 계산 기반 PASS, 실제 적용·조회 WP09 |
 | WP12 | 수정 독립 PASS·통합됨 | codex/wp12-localization, WP-12 | 실제 원장 WP09 후속 |
-| WP09 | 구현 중 | codex/wp09-national-state, WP-09, base4ed5e57 | 실제 상태·원장·M1CLI/hash/3OS CI 후 새독립 검증 |
-| WP08 | 착수 전 | codex/wp08-map-rendering, WP-08 예정 | WP09통합 후 지도·최초 화면 즉시 전달 |
+| WP09 | 통합됨 | codex/wp09-national-state, WP-09; 구현206fb45/mainb1da8f4 | 실제 국가/주·원장·M1 hash/CLI/3OS PASS, 지도선택 WP08 후속 |
+| WP08 | 구현 중 | codex/wp08-map-rendering, WP-08, baseb1da8f4 | GPU 지도·선택·패널 연결·첫화면 즉시 전달 |
 | WP11 | 다음 RUN 예정 | 아직 없음 | 실제 M1 mutable state·예약명령 save-resume |
 | M1 게이트 | 미판정 | 없음 | WP11까지 전체통합·독립 새검증 |
 
 ## 세션 상태와 실행 경로
 
-사용자가 승인한 앱 별도 local 채팅·WP별명시 Git worktree 경로를 썼다. 모델·인증·샌드박스·승인·네트워크 설정은 변경하지 않았다. 모든 구현 명령은 WP worktree, 검증은 정확한 구현커밋 detached별도 worktree다. 부모도 검증 전후 HEAD/index/추적목록/각SHA/diff/status를 비교했다. 현재 채팅ID/실제상태/경로/커밋은 `.orchestrator/app-threads.json` 및 종료 시 보존복사본을 참조한다. 원본 첫 WP12 FAIL 검증 worktree는 보존했다. 현재 실행 중인 채팅은 WP09 구현 `01a11152-7858-7510-8ed2-13f198fc32d9` host local이며 W1 구현·검증은 모두 종료했다. [보존 registry](docs/plans/evidence/M1-r1/app-threads.json)는 이 시점 사본이다. 미병합자료를 삭제하지 않았다.
+사용자가 승인한 앱 별도 local 채팅·WP별명시 Git worktree 경로를 썼다. 모델·인증·샌드박스·승인·네트워크 설정은 변경하지 않았다. 모든 구현 명령은 WP worktree, 검증은 정확한 구현커밋 detached별도 worktree다. 부모도 검증 전후 HEAD/index/추적목록/각SHA/diff/status를 비교했다. 현재 채팅ID/실제상태/경로/커밋은 `.orchestrator/app-threads.json` 및 종료 시 보존복사본을 참조한다. 원본 첫 WP12 FAIL 검증 worktree는 보존했다. 현재 실행 중인 채팅은 WP08 구현 `01a11186-8f53-75c2-b9fb-873b27d8af82` host local이며 W1과 WP09 구현·검증은 모두 종료했다. [보존 registry](docs/plans/evidence/M1-r1/app-threads.json)는 이 시점 사본이다. 미병합자료를 삭제하지 않았다.
 
 ## 마지막 로컬 검증
 
@@ -72,6 +72,8 @@ OPEN01~12는 일괄 기본안승인 철회 후 모두 개별 사용자답변으�
 
 ## 다음 세션이 처음 할 일 (3개 이내)
 
-1. 현재 registry와 WP09 실제 HEAD/상태/증거를 읽고 새 독립검증으로 이어간다. WP09 통합 후 WP08 지도·최초화면 즉시 전달과 별도 실제 UI플레이를 진행한다.
+1. 현재 registry와 WP08 실제 HEAD/상태/증거를 확인한다. 첫지도 즉시 전달, 별도 실제 UI플레이와 새독립 검증을 진행한다. WP09 실제M1 3OS 증거는 이미 확인했으며 저장재개와 혼동하지 않는다.
 2. 두 묶음이 통합되면 이 RUN을 끝내고 HANDOFF 커밋·푸시 후 정확한 최종 HEAD CI를 확인한다. 저장 WP11은 다음 RUN에서 실제 M1 state와 새독립 DT/3OS 증거로 진행한다.
 3. 전체필수14REQ/AC7를새독립게이트로판정하고 기록. M1이PASS될때까지M1완료라고쓰지않음.
+
+WP09 후속 검증: M1 실제server15/M0server60·독립브라우저110·TOML변조29·Fx최하위bit/expiry/queue/config/다중주실패원자성 PASS. 부모1515 tracked SHA/index/list/diffstatus 무변경. M1 365일seed1 두회 b595dc2a1e5b4f8c, 1000tick60448355cecffa9d. [전문](docs/verify/WP-09.md), [세OS 원본ZIP metadata](docs/verify/evidence/WP-09/main-ci/same-head-ci.json).

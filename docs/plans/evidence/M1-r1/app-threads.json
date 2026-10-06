@@ -163,6 +163,37 @@
       "worktree": "E:/openhoi/.orchestrator/wt/WP-09",
       "branch": "codex/wp09-national-state",
       "baseCommit": "4ed5e57c2bdfedf0dbf31445ffb009e8816af334",
+      "status": "integrated-main-CI-success",
+      "appExit": "해당 없음(앱 실행)",
+      "verificationCommit": "206fb457f7478501009a763f8a1bea43c0d3937a",
+      "cursor": "51c4cb7f-98d4-4128-ab89-b1ea671de664:20",
+      "mergeCommit": "198d0b29bd1e81c7fd856b703737619bfef997f9",
+      "integrationEvidenceHead": "b1da8f46fa7d2e849121424d5d2cf1ac36bfacd3"
+    },
+    {
+      "run": "M1-r1",
+      "WP": "WP-09",
+      "role": "verify",
+      "threadId": "01a1116d-e50b-7fa0-aaea-0d42f3214b5b",
+      "hostId": "local",
+      "worktree": "E:/openhoi/.orchestrator/wt/WP-09-verify",
+      "branch": "detached",
+      "verificationCommit": "206fb457f7478501009a763f8a1bea43c0d3937a",
+      "status": "PASS-invariance-confirmed",
+      "beforeSnapshot": "E:/openhoi/.orchestrator/evidence/WP-09.verify.before.json",
+      "appExit": "해당 없음(앱 실행)",
+      "finalReport": "docs/verify/WP-09.md",
+      "cursor": "dc507471-aaab-4271-96d8-6aae72a20571:16"
+    },
+    {
+      "run": "M1-r1",
+      "WP": "WP-08",
+      "role": "impl",
+      "threadId": "01a11186-8f53-75c2-b9fb-873b27d8af82",
+      "hostId": "local",
+      "worktree": "E:/openhoi/.orchestrator/wt/WP-08",
+      "branch": "codex/wp08-map-rendering",
+      "baseCommit": "b1da8f46fa7d2e849121424d5d2cf1ac36bfacd3",
       "status": "active",
       "appExit": "해당 없음(앱 실행)"
     }
@@ -170,5 +201,5 @@
   "groupsIntegratedThisRun": [
     "M1-W1"
   ],
-  "phase": "M1-W2-WP09-implementation"
+  "phase": "M1-W2-WP08-implementation"
 }
