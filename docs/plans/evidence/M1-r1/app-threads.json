@@ -194,10 +194,10 @@
       "worktree": "E:/openhoi/.orchestrator/wt/WP-08",
       "branch": "codex/wp08-map-rendering",
       "baseCommit": "b1da8f46fa7d2e849121424d5d2cf1ac36bfacd3",
-      "status": "active-P06-DPR-and-Linux-timing-diagnosis",
+      "status": "committed-clean-awaiting-full-PASS-and-normal-CI",
       "appExit": "해당 없음(앱 실행)",
-      "verificationCommit": "9531121ee5677e43436be69364fdef4bfce2fe86",
-      "cursor": "a62a6b0a-9800-4c41-882e-b7bcb95ecd27:91",
+      "verificationCommit": "9fbc05a1e29062f93bb362450aaddc2068aa41e9",
+      "cursor": "a62a6b0a-9800-4c41-882e-b7bcb95ecd27:99",
       "preview": {
         "url": "http://127.0.0.1:19451/",
         "pid": 26488,
@@ -306,10 +306,25 @@
       "scope": "fresh full actual GPU/UI/HTTP/lifecycle/schema P05; resize and native GPU pipeline failure red-green; exclusive19443/19444",
       "cursor": "d0459c4a-a703-4632-b15a-759f207a80ad:13",
       "finalReport": "docs/verify/WP-08.attempt5.md"
+    },
+    {
+      "run": "M1-r1",
+      "WP": "WP-08",
+      "role": "verify",
+      "attempt": 6,
+      "threadId": "01a1128f-0f4f-7661-b480-97741eb87b50",
+      "hostId": "local",
+      "worktree": "E:/openhoi/.orchestrator/wt/WP-08-verify6",
+      "branch": "detached",
+      "verificationCommit": "9fbc05a1e29062f93bb362450aaddc2068aa41e9",
+      "status": "active",
+      "beforeSnapshot": "E:/openhoi/.orchestrator/evidence/WP-08.verify6.before.json",
+      "appExit": "해당 없음(앱 실행)",
+      "scope": "fresh full 205 default single-worker/GPU/UI/HTTP/lifecycle; live DPR fractional/native capture; latest planning copied §5.11 read-only; current19453/54 old19455-58"
     }
   ],
   "groupsIntegratedThisRun": [
     "M1-W1"
   ],
-  "phase": "M1-W2-953-Linux-resize-timeout-diagnosis-and-full-verification"
+  "phase": "M1-W2-9fbc-full-verification-and-normal-CI"
 }
