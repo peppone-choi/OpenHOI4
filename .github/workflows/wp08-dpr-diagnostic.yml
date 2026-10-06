@@ -1,0 +1,56 @@
+name: WP08 temporary DPR diagnostic
+on:
+  push:
+    branches: ['codex/wp08-dpr-diagnostic-m1r2']
+    paths:
+      - '.github/workflows/wp08-dpr-diagnostic.yml'
+      - 'tools/wp08-dpr-diag/**'
+permissions:
+  contents: read
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    env:
+      GIT_OPTIONAL_LOCKS: '0'
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          path: harness
+      - name: Verify committed diagnostic manifest before product checkout
+        run: python harness/tools/wp08-dpr-diag/verify_manifest.py --workflow harness/.github/workflows/wp08-dpr-diagnostic.yml
+      - uses: actions/checkout@v7.0.1
+        with:
+          ref: b73f0ce344138d5fb3909eca5d43c786aac49b15
+          fetch-depth: 0
+          path: source
+      - uses: actions/setup-node@v7.0.0
+        with:
+          node-version: '24.4.0'
+          cache: npm
+          cache-dependency-path: source/client/package-lock.json
+      - run: rustup toolchain install 1.99.0 --profile minimal
+      - name: Build exact product with unchanged lock files
+        working-directory: source
+        run: |
+          npm --prefix client ci
+          npm --prefix client run build
+          cargo build -p oh_server --locked
+          cargo run -p oh_proto --locked --example wire_fixtures
+      - name: Install same original Chromium Firefox WebKit packages
+        working-directory: source/client
+        run: npx playwright install --with-deps chromium firefox webkit
+      - name: Prepare ignored copies; original M0 36 warmup then full M1 82 per arm
+        working-directory: source
+        run: |
+          mkdir -p target/wp08-dpr-ci2
+          cp -R ../harness/tools/wp08-dpr-diag/. target/wp08-dpr-ci2/
+          python target/wp08-dpr-ci2/prep_linux.py
+          python target/wp08-dpr-ci2/run_linux.py
+      - name: Upload raw diagnostics even on actual failures
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: wp08-temporary-dpr-diagnostic
+          path: source/target/wp08-dpr-ci2/
+          if-no-files-found: error
+          archive: true

@@ -1,0 +1,73 @@
+{
+  "source_head": "b73f0ce344138d5fb3909eca5d43c786aac49b15",
+  "strict_candidate_sha256": "c9002e018ad536cc48308973a5d3400d69a8925c9732e936bdef30144ae429ac",
+  "historical_original_head": "9fbc05a1e29062f93bb362450aaddc2068aa41e9",
+  "workflow": {
+    "path": ".github/workflows/wp08-dpr-diagnostic.yml",
+    "bytes": 2129,
+    "sha256": "c8ac91bd96ff765f88b068ae4234b3495a5bc8b91aab0d55a69864d5ee4b6739"
+  },
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    {
+      "path": "candidate-template.ts",
+      "bytes": 13717,
+      "sha256": "c9002e018ad536cc48308973a5d3400d69a8925c9732e936bdef30144ae429ac"
+    },
+    {
+      "path": "candidate.patch",
+      "bytes": 8214,
+      "sha256": "2af9650604437ba0b22168bfba70ae194f7b68c8723ece9f6730d33ef6346a2e"
+    },
+    {
+      "path": "checks.py",
+      "bytes": 3424,
+      "sha256": "3614eaf3c411f2fdbc681a555a7f4aa752f5b61bc9a96ffdbf456c7fa3d37fce"
+    },
+    {
+      "path": "expected-fixture.patch",
+      "bytes": 8495,
+      "sha256": "a9b017caf56e290331fe3a9aa65936c6b7a88bf3bc656234b16a07fac8c4b348"
+    },
+    {
+      "path": "prep_linux.py",
+      "bytes": 5642,
+      "sha256": "73aad5630bf7a9922112bff8f118ecc62ac70abdb9101f2d0cc981f8a69d245d"
+    },
+    {
+      "path": "probe-template.ts",
+      "bytes": 10827,
+      "sha256": "03d5680b91fa1b0140a35a47f89cb33e215ea192af306f9d87e6c936bd48ae34"
+    },
+    {
+      "path": "profile-template.ts",
+      "bytes": 2618,
+      "sha256": "81ed2d973bc114619f330ec31d3c336e0f9e5b9f623b098bcd62b6fde434919a"
+    },
+    {
+      "path": "README.txt",
+      "bytes": 4096,
+      "sha256": "71f2f24e0ab85f4456187ca61286bbfce5ac58b1f35f2de4d319a44fcda9adfa"
+    },
+    {
+      "path": "run_linux.py",
+      "bytes": 6543,
+      "sha256": "d4209170a94e14460dcdccd3b4699137ac52a98756e851802d01407ec9470348"
+    },
+    {
+      "path": "summarize_profiles.py",
+      "bytes": 1261,
+      "sha256": "940c4c0be682ee282083391c567c55403d3b6823378c0c91a774d3a7fc775163"
+    },
+    {
+      "path": "verify_manifest.py",
+      "bytes": 1026,
+      "sha256": "bbee87b4ffe48f21bc647d1ae5af020d7dca59ee848f26d4742cc9cc08d0b0fc"
+    }
+  ],
+  "scope": "Dedicated diagnostic branch only. Exact toolkit bytes preserved by tools-only -text attributes. Parent reviews exact local commit before one push. No Linux execution/independent PASS/integration approval."
+}
