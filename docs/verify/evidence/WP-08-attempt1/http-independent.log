@@ -1,0 +1,14 @@
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ '09eff2825e821465'
+- '9eff2825e821465'
+
+    at E:\openhoi\.orchestrator\wt\WP-08-verify\target\wp08-verify\http-independent.cjs:4:509
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: '09eff2825e821465',
+  expected: '9eff2825e821465',
+  operator: 'strictEqual'
+}

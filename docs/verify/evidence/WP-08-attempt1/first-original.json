@@ -1,0 +1,27 @@
+[
+  {
+    "path": "docs/worklog/evidence/WP-08/first-map/chromium-first-map.png",
+    "identical": true,
+    "sha256": "58475a85bf103bdc66d17a264680ab96ac50c6b5f3f462473cf8b24853a7d89c"
+  },
+  {
+    "path": "docs/worklog/evidence/WP-08/first-map/chromium-map.json",
+    "identical": true,
+    "sha256": "e6a8b833b55eed5ccd9d87245a5b92d71a8bd9bc6f6d8b3a9cb25eb1bcaf3018"
+  },
+  {
+    "path": "docs/worklog/evidence/WP-08/first-map/chromium-Ownership.png",
+    "identical": true,
+    "sha256": "4f4f5eee99c0a285e0708530b6b448435c5d24cb8641744333dedb387549dad6"
+  },
+  {
+    "path": "docs/worklog/evidence/WP-08/first-map/chromium-States.png",
+    "identical": true,
+    "sha256": "f2724e9d0246f0a81cd9b7cf49e2c6bb09f4d4cdc5ecdf5343dfd4e7142dc103"
+  },
+  {
+    "path": "docs/worklog/evidence/WP-08/first-map/chromium-Terrain.png",
+    "identical": true,
+    "sha256": "b8f2509d747f88bbb2a51a69dfd1c6e3c7e0cb5011f802a6e42fc5d4f5e5a8e3"
+  }
+]

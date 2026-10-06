@@ -1,0 +1,48 @@
+{
+  "commit": "f58c0c61322287f48318bce47ca51deb7daebcc9",
+  "scenario": "m1",
+  "seed": 1,
+  "verificationDate": "2026-10-07 Asia/Seoul",
+  "actions": [
+    "pause",
+    "actual canvas click province10 English",
+    "actual canvas click province30 English",
+    "Infrastructure ledger0 tick12",
+    "language Korean",
+    "province30 Plains=평야",
+    "actual canvas click province10 Korean",
+    "terrain mode",
+    "north ledger1 tick12"
+  ],
+  "expectedActual": "All observed values matched; no unavailable caption; no raw-state injection; WP11 save unavailable",
+  "date": "2000-01-01",
+  "diagnostics": {
+    "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+    "backend": "webgpu",
+    "camera": "{\"width\":16.581027667984188,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+    "device": "WebGPU device",
+    "frameMs": "16.67555616588829",
+    "frames": "3641",
+    "hover": "",
+    "lastChangedBytes": "20",
+    "lastUpdateMs": "0.900000000372529",
+    "mode": "map-mode-terrain",
+    "selected": "10",
+    "shaderLanguage": "wgsl",
+    "shaderLength": "10386",
+    "testid": "province-map",
+    "textureLimit": "8192",
+    "totalChangedBytes": "20",
+    "updateMs": "0",
+    "updatedBytes": "0"
+  },
+  "hover": "프로빈스 10 · 평야",
+  "selected": "10",
+  "tick": "12",
+  "url": "http://127.0.0.1:19412/",
+  "viewport": {
+    "dpr": 1,
+    "height": 720,
+    "width": 1280
+  }
+}

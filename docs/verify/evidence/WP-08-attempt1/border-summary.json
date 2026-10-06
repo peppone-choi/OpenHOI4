@@ -1,0 +1,147 @@
+[
+  {
+    "browser": "chrome",
+    "oracle": "independent 12x6 displayFixture.ts plus reviewed new screenshot baseline; no shipped golden changed",
+    "boundaryRGB": [
+      [
+        100,
+        116,
+        135
+      ],
+      [
+        230,
+        212,
+        167
+      ],
+      [
+        16,
+        24,
+        32
+      ]
+    ],
+    "widths": [
+      1,
+      3,
+      4
+    ],
+    "canvasPixels": 281820,
+    "mismatchRatio": 0.0035732027535306226,
+    "pass": true
+  },
+  {
+    "browser": "edge",
+    "oracle": "independent 12x6 displayFixture.ts plus reviewed new screenshot baseline; no shipped golden changed",
+    "boundaryRGB": [
+      [
+        100,
+        116,
+        135
+      ],
+      [
+        230,
+        212,
+        167
+      ],
+      [
+        16,
+        24,
+        32
+      ]
+    ],
+    "widths": [
+      1,
+      3,
+      4
+    ],
+    "canvasPixels": 281820,
+    "mismatchRatio": 0.0035732027535306226,
+    "pass": true
+  },
+  {
+    "browser": "chromium",
+    "oracle": "independent 12x6 displayFixture.ts plus reviewed new screenshot baseline; no shipped golden changed",
+    "boundaryRGB": [
+      [
+        100,
+        116,
+        135
+      ],
+      [
+        230,
+        212,
+        167
+      ],
+      [
+        16,
+        24,
+        32
+      ]
+    ],
+    "widths": [
+      1,
+      3,
+      4
+    ],
+    "canvasPixels": 281820,
+    "mismatchRatio": 0.0,
+    "pass": true
+  },
+  {
+    "browser": "firefox",
+    "oracle": "independent 12x6 displayFixture.ts plus reviewed new screenshot baseline; no shipped golden changed",
+    "boundaryRGB": [
+      [
+        100,
+        116,
+        135
+      ],
+      [
+        230,
+        212,
+        167
+      ],
+      [
+        16,
+        24,
+        32
+      ]
+    ],
+    "widths": [
+      1,
+      3,
+      4
+    ],
+    "canvasPixels": 281820,
+    "mismatchRatio": 0.0035732027535306226,
+    "pass": true
+  },
+  {
+    "browser": "webkit",
+    "oracle": "independent 12x6 displayFixture.ts plus reviewed new screenshot baseline; no shipped golden changed",
+    "boundaryRGB": [
+      [
+        100,
+        116,
+        135
+      ],
+      [
+        230,
+        212,
+        167
+      ],
+      [
+        16,
+        24,
+        32
+      ]
+    ],
+    "widths": [
+      1,
+      3,
+      4
+    ],
+    "canvasPixels": 281820,
+    "mismatchRatio": 0.0035732027535306226,
+    "pass": true
+  }
+]

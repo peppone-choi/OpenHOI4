@@ -1,0 +1,18 @@
+{
+  "same": {
+    "head": true,
+    "index": true,
+    "tracked": true,
+    "hashes": true,
+    "status": true,
+    "diff": true,
+    "cached": true
+  },
+  "tracked_count": 1905,
+  "head": "f58c0c61322287f48318bce47ca51deb7daebcc9",
+  "index_entries_sha256": "8ed71a2a318beb5fde3c1fe793a48e4a938664fa2c0e038a9829a5067826dbe9",
+  "tracked_sha_record_sha256": "d0616a328fc48fff6826ea19778d8dc35b84f196c3143bf97685ab9a616c4158",
+  "status": null,
+  "diff": null,
+  "cached": null
+}
