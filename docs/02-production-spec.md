@@ -62,7 +62,7 @@
 ### 2.2 선택 근거
 
 - **클라이언트는 웹이다(D-07 확정).**
-  - 브라우저에서 Three.js(WebGL2)로 지도를 그리고, React로 패널을 만든다.
+  - 브라우저에서 Three.js(WebGPU 우선, WebGL2 대체)로 지도를 그리고, React로 패널을 만든다.
   - 클라이언트는 게임 규칙을 계산하지 않는다. 명령을 보내고, 받은 상태를 그리기만 한다(REQ-NET-05). 규칙 구현이 서버 한 곳에만 있게 된다.
 - **서버는 Rust 권위 서버다.**
   - 시뮬레이션·AI·저장은 서버에서만 돈다.
@@ -603,7 +603,7 @@ oh ai-bench --scenario testland --runs 50 --days 1500 --seed-base 1000 --out rep
 - 숫자를 보여주는 모든 위젯은 수치 원장 툴팁을 지원하는 공용 컴포넌트를 쓴다.
 - 테마는 CSS 변수 하나의 체계로 관리한다. UI 배율 설정(REQ-UI-06)과 CJK 웹 폰트 자체 호스팅(REQ-LOC-02)을 지원한다.
 
-브라우저의 WebGL2 컨텍스트가 사용 가능한 GPU 가속을 활용하도록 렌더러를 구성한다. 브라우저·OS의 보안 및 가속 설정을 자동으로 바꾸지 않는다. 지원되지 않는 환경에는 현지화 안내를 표시한다(REQ-PLAT-03). CI 소프트웨어 렌더링 검증과 실제 GPU 성능 측정은 구분한다.
+Three.js WebGPURenderer의 WebGPU 우선·WebGL2 대체 백엔드를 사용해 가용 GPU 가속을 활용한다. 어댑터 미제공, 보안 컨텍스트 제한, 초기화 실패도 대체 경로에서 처리하고 백엔드별 동등한 지도 기능을 검증한다. 셰이더·인스턴싱·버퍼 갱신·압축 텍스처·LOD 등은 실제 지도 렌더링과 성능 측정에 필요한 범위에서 활용하고 결정론 시뮬레이션 계산을 브라우저 GPU로 옮기지 않는다. 브라우저·OS의 보안 및 가속 설정을 자동으로 바꾸지 않는다. 지원되지 않는 환경에는 현지화 안내를 표시한다(REQ-PLAT-03). CI 소프트웨어 렌더링 검증과 실제 GPU 성능 측정은 구분한다.
 
 ### 11.4 화면 검증
 
@@ -642,7 +642,7 @@ D-15에 따른 역할이다. 모두 Codex다.
 | WP-07 | 지도 데이터: 비트맵 파서, 인접 생성, 주, VP, Testland 지도 | M1 | WP-03 | M1-W1 | 구현 | REQ-MAP-01, REQ-MAP-02, REQ-MAP-03, REQ-MAP-09 | 인접 골든 테스트, 검증기 통과 |
 | WP-10 | 보정치·수치 원장 | M1 | WP-04 | M1-W1 | 구현 | REQ-UI-04 | 원장 일치 속성 테스트 |
 | WP-12 | 현지화(`@fluent/bundle`), CJK 웹 폰트 자체 호스팅, UI 셸·테마 | M1 | WP-05 | M1-W1 | 구현 | REQ-LOC-01, REQ-LOC-02 | 언어 전환 스크린샷 |
-| WP-08 | 지도 렌더링(Three.js/WebGL2): 인덱스 텍스처, 색 조회, 국경 셰이더, 선택·호버, 카메라, 화면 검증 방식 확정 | M1 | WP-05, WP-07 | M1-W2 | 구현 | REQ-MAP-04, REQ-MAP-05, REQ-PLAT-03 | Playwright 스크린샷 3종 이상, ADR |
+| WP-08 | 지도 렌더링(Three.js/WebGPU·WebGL2): 인덱스 텍스처, 색 조회, 국경 셰이더, 선택·호버, 카메라, 화면 검증 방식 확정 | M1 | WP-05, WP-07 | M1-W2 | 구현 | REQ-MAP-04, REQ-MAP-05, REQ-PLAT-03 | Playwright 스크린샷 3종 이상, ADR |
 | WP-09 | 국가·주 상태, 소유·통제, 지도 모드 데이터 | M1 | WP-04, WP-07 | M1-W2 | 구현 | REQ-NAT-01, REQ-MAP-08 | 단위 테스트 |
 | WP-11 | 저장·불러오기 v1 | M1 | WP-02, WP-09 | M1-W3 | 구현 | REQ-SAV-01, REQ-SAV-02 | DT 테스트 |
 | WP-13 | 트리거·효과 문법 엔진, 레지스트리, 시나리오 종료 조건 | M2 | WP-03, WP-10 | M2-W1 | 구현 | REQ-AGD-05, REQ-TIME-04 | 단위 테스트, 로드 오류 픽스처 |
@@ -1090,3 +1090,8 @@ notes = ""
 | REQ-CNT-04 | M3 | 필수 | WP-38 | SS, RV |
 | REQ-CNT-05 | M3 | 필수 | WP-33 | RV |
 <!-- TRACE:END -->
+
+
+### 웹 렌더링 기술 추가 확인 (2026-10-06 사용자 지시)
+
+WebGPURenderer는 WebGPU 백엔드를 우선 선택하고 WebGL2 백엔드로 대체할 수 있다. 공식 문서: https://threejs.org/docs/pages/WebGPURenderer.html . WebGL은 브라우저에서 OpenGL ES 기반 그래픽을 제공하며 OpenGL을 별도 웹 API로 직접 호출하는 구조는 쓰지 않는다. 출처: https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API . WebGPU 가용 여부·보안 컨텍스트와 초기화 조건은 https://developer.mozilla.org/en-US/docs/Web/API/WebGPU_API 를 확인한다. 구현·검증은 WP-08/M1에 배정하고 M0 셸 검증과 구분한다.
