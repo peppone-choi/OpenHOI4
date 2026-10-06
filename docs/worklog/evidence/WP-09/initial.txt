@@ -1,0 +1,7 @@
+Recorded from the first tool call before edits; command exit 0.
+workdir: E:/openhoi/.orchestrator/wt/WP-09
+command: Get-Location; git rev-parse HEAD; git branch --show-current; git status --short
+location: E:/openhoi/.orchestrator/wt/WP-09
+HEAD: 4ed5e57c2bdfedf0dbf31445ffb009e8816af334
+branch: codex/wp09-national-state
+status --short: empty (clean)

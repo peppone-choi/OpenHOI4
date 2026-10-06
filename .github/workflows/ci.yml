@@ -65,10 +65,20 @@ jobs:
       - run: npm --prefix client run build
       - run: cargo build -p oh_server --locked
       - name: Browser compatibility and Rust-server WebSocket E2E
+        env:
+          OH_E2E_EVIDENCE: ../target/wp09/ci/m0-e2e
+          OH_MALFORMED_EVIDENCE: ../target/wp09/ci/m0-malformed
         working-directory: client
         run: |
           npx playwright install --with-deps chromium firefox webkit
           npm run test:e2e
+      - name: Actual M1 panels, ownership/control, ledger and malformed wire E2E
+        working-directory: client
+        env:
+          OH_TEST_PORT: '19412'
+          OH_E2E_EVIDENCE: ../target/wp09/ci/m1-e2e
+          OH_MALFORMED_EVIDENCE: ../target/wp09/ci/m1-malformed
+        run: npm run test:e2e -- --config playwright.m1.config.ts
       - name: Upload protocol and browser evidence
         if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
@@ -76,6 +86,7 @@ jobs:
           name: wp05-protocol-browser-evidence
           path: |
             target/wp05/
+            target/wp09/
             client/test-results/
           if-no-files-found: error
           archive: true

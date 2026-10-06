@@ -24,7 +24,7 @@ async fn run(args: Vec<String>) -> Result<(), String> {
     let host = oh_server::Host::load(&options.pack_root, stopped)?;
     let url = format!("http://127.0.0.1:{}/", options.port);
     println!(
-        "OpenHOI M0: {url}\nPack: {} ({}) from {}\nOpen this address in a browser. Ctrl+C to shut down. --help for usage.",
+        "OpenHOI4: {url}\nPack: {} ({}) from {}\nOpen this address in a browser. Ctrl+C to shut down. --help for usage.",
         host.pack.id,
         host.pack.hash,
         options.pack_root.display()

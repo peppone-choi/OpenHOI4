@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VisualPalette",
+  "type": "object",
+  "properties": {
+    "neutral": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "format": "uint8",
+        "maximum": 255,
+        "minimum": 0
+      },
+      "maxItems": 3,
+      "minItems": 3
+    },
+    "state": {
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^\\d+$": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "uint8",
+            "maximum": 255,
+            "minimum": 0
+          },
+          "maxItems": 3,
+          "minItems": 3
+        }
+      }
+    },
+    "terrain": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0
+        },
+        "maxItems": 3,
+        "minItems": 3
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "neutral",
+    "terrain",
+    "state"
+  ]
+}

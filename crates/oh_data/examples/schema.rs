@@ -7,6 +7,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         ("defines", oh_data::defines_schema()),
         ("states", oh_data::map::states_schema()),
         ("regions", oh_data::map::regions_schema()),
+        ("nation", oh_data::national::nation_schema()),
+        ("scenario", oh_data::national::scenario_schema()),
+        ("visuals", oh_data::national::visuals_schema()),
         ("province", oh_data::map::province_schema()),
     ] {
         std::fs::write(

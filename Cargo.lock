@@ -533,6 +533,8 @@ dependencies = [
 name = "oh_proto"
 version = "0.1.0"
 dependencies = [
+ "oh_core",
+ "oh_data",
  "oh_sim",
  "rmp-serde",
  "serde",

@@ -84,4 +84,34 @@ class SimEvidenceTests(unittest.TestCase):
             with self.assertRaises(subprocess.CalledProcessError): gate.capture(Path(tmp))
             self.assertFalse(marker.exists())
 
+class M1EvidenceTests(unittest.TestCase):
+    def test_capture_invokes_actual_m1_pack_and_scenario_twice(self):
+        with tempfile.TemporaryDirectory() as tmp, patch.object(gate.subprocess,"run") as run:
+            run.return_value=subprocess.CompletedProcess([],0,HASH)
+            gate.capture(Path(tmp),True)
+            self.assertEqual(run.call_count,2)
+            for call in run.call_args_list:
+                self.assertIn("--pack",call.args[0]); self.assertIn("data/packs/testland",call.args[0]);self.assertIn("m1",call.args[0]);self.assertNotIn("--scenario testland", " ".join(call.args[0]))
+    def test_compare_requires_m1_command_identity_on_three_os(self):
+        import json
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            command=["cargo","run","--locked","--quiet","-p","oh_cli","--","run","--pack","data/packs/testland","--scenario","m1","--ticks","1000","--seed","1","--hash-out"]
+            for runner in gate.RUNNERS:
+                folder=root/f"m1-sim-hash-{runner}";folder.mkdir()
+                for name in ("sim-hash.txt","run-1.txt","run-2.txt"):(folder/name).write_text(HASH)
+                (folder/"command.json").write_text(json.dumps(command))
+            self.assertEqual(gate.compare(root,True),HASH.strip())
+            (root/"m1-sim-hash-windows-latest/command.json").write_text(json.dumps(list(gate.COMMAND)))
+            with self.assertRaisesRegex(ValueError,"command identity mismatch"):gate.compare(root,True)
+    def test_m1_does_not_accept_m0_artifacts(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);SimEvidenceTests().tree(root)
+            with self.assertRaises(ValueError):gate.compare(root,True)
+    def test_m1_failed_capture_cannot_leave_a_success_marker(self):
+        with tempfile.TemporaryDirectory() as tmp,patch.object(gate.subprocess,"run",side_effect=subprocess.CalledProcessError(1,[])):
+            root=Path(tmp);(root/"sim-hash.txt").write_text(HASH)
+            with self.assertRaises(subprocess.CalledProcessError):gate.capture(root,True)
+            self.assertFalse((root/"sim-hash.txt").exists())
+
 if __name__ == "__main__": unittest.main()

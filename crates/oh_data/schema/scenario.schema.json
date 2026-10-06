@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Scenario",
+  "type": "object",
+  "properties": {
+    "control_overrides": {
+      "type": "object",
+      "additionalProperties": false,
+      "default": {},
+      "patternProperties": {
+        "^\\d+$": {
+          "type": "string"
+        }
+      }
+    },
+    "map": {
+      "type": "string"
+    },
+    "nations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "ownership": {
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^\\d+$": {
+          "type": "string"
+        }
+      }
+    },
+    "start_date": {
+      "type": "string"
+    },
+    "state_modifiers": {
+      "type": "object",
+      "additionalProperties": false,
+      "default": {},
+      "patternProperties": {
+        "^\\d+$": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ModifierInput"
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "start_date",
+    "map",
+    "nations",
+    "ownership"
+  ],
+  "$defs": {
+    "ModifierInput": {
+      "type": "object",
+      "properties": {
+        "expires": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 0
+        },
+        "operation": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "target_stat": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "target_stat",
+        "operation",
+        "value"
+      ]
+    }
+  }
+}

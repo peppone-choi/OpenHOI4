@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: CC-BY-SA-4.0
 # Original OpenHOI4 UI translations; M0 JSON provenance remains preserved.
 title = OpenHOI4
-subtitle = Empty scenario
+subtitle = Local scenario
 connecting = Connecting
 connected = Connected
 disconnected = Disconnected
@@ -18,8 +18,8 @@ invalid-message = Invalid protocol message
 invalid-speed = Speed must be from 1 to 5
 invalid-sequence = Invalid or repeated command sequence
 not-joined = Join a session first
-unsupported-session = This session is not supported in M0
-unsupported-create = Only the empty single-player scenario is available in M0
+unsupported-session = This local session is unavailable
+unsupported-create = Only the loaded single-player scenario is available
 already-joined = A session is already active
 unsupported-query = This query belongs to a later milestone
 simulation-error = Simulation stopped after an error
@@ -49,3 +49,23 @@ font-license = Noto Sans KR · SIL Open Font License 1.1
 ledger-value = Value
 ledger-accumulated = Accumulated value
 ledger-base-source = Base value
+
+country-panel = Country
+state-panel = State
+nation-tag = Tag
+capital-province = Capital province
+nation-government = Government
+ideology-support = Ideology support (ratio)
+owner = Owner
+controller = Controller
+population = Population
+infrastructure = Infrastructure
+resource-steel = Steel
+building-industry = Industry
+province-label = Province
+unknown-entity = The requested entity does not exist
+pack-localization-error = Scenario localization could not be loaded
+map-mode-owner = Ownership
+map-mode-control = Control
+map-mode-terrain = Terrain
+map-mode-state = States

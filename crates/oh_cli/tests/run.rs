@@ -242,3 +242,61 @@ fn m0_load_boundary_and_help_identify_unique_self_contained_pack() {
         assert!(help.contains(expected), "{help}");
     }
 }
+
+#[test]
+fn m1_explicit_pack_uses_national_state_and_preserves_m0_default() {
+    let options = [
+        "run",
+        "--pack",
+        "data/packs/testland",
+        "--scenario",
+        "m1",
+        "--ticks",
+        "1000",
+        "--seed",
+        "1",
+        "--hash-out",
+    ];
+    let first = hash(&run(&options));
+    assert_eq!(first, hash(&run(&options)));
+    let m0 = hash(&run(&[
+        "run",
+        "--scenario",
+        "testland",
+        "--ticks",
+        "1000",
+        "--seed",
+        "1",
+        "--hash-out",
+    ]));
+    assert_ne!(first, m0);
+    for args in [
+        vec!["run", "--pack"],
+        vec![
+            "run",
+            "--pack",
+            "missing",
+            "--scenario",
+            "m1",
+            "--ticks",
+            "1",
+            "--seed",
+            "1",
+        ],
+        vec![
+            "run",
+            "--pack",
+            "data/packs/testland",
+            "--pack",
+            "data/packs/testland",
+            "--scenario",
+            "m1",
+            "--ticks",
+            "1",
+            "--seed",
+            "1",
+        ],
+    ] {
+        assert!(!run(&args).status.success());
+    }
+}

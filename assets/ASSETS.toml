@@ -187,3 +187,66 @@ license = "OFL-1.1"
 modified = false
 ai_generated = false
 notes = "Unmodified upstream copyright and SIL Open Font License 1.1; shipped with embedded font."
+
+[[asset]]
+path = "data/packs/testland/localisation/en/national.ftl"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original minimal M1 national-state fixture or display metadata; no historical/game source, no WP-23 content, no terrain/economic game effects."
+
+[[asset]]
+path = "data/packs/testland/localisation/ko/national.ftl"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original minimal M1 national-state fixture or display metadata; no historical/game source, no WP-23 content, no terrain/economic game effects."
+
+[[asset]]
+path = "data/packs/testland/maps/testland/visuals.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original minimal M1 national-state fixture or display metadata; no historical/game source, no WP-23 content, no terrain/economic game effects."
+
+[[asset]]
+path = "data/packs/testland/scenarios/m1/scenario.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original minimal M1 national-state fixture or display metadata; no historical/game source, no WP-23 content, no terrain/economic game effects."
+
+[[asset]]
+path = "data/packs/testland/scenarios/m1/defines.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original minimal M1 national-state fixture or display metadata; no historical/game source, no WP-23 content, no terrain/economic game effects."
+
+[[asset]]
+path = "data/packs/testland/scenarios/m1/nations/NTH.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original minimal M1 national-state fixture or display metadata; no historical/game source, no WP-23 content, no terrain/economic game effects."
+
+[[asset]]
+path = "data/packs/testland/scenarios/m1/nations/STH.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original minimal M1 national-state fixture or display metadata; no historical/game source, no WP-23 content, no terrain/economic game effects."

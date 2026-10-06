@@ -4,7 +4,7 @@ use std::{collections::BTreeMap, path::Path};
 
 /// Shared M0 host startup path; relative to the repository working directory.
 pub use oh_data::m0::M0_PACK_ROOT;
-pub const USAGE: &str = "usage: oh_cli run --scenario <id> (--ticks <n> | --days <n>) --seed <u64> [--hash-out]\nM0 supports run only; validate, ai-bench and repro belong to later work packages.\nM0 --scenario testland resolves data/packs/examples/m0/testland (manifest ID m0_testland).\nInputs: manifest.toml, defines.toml, scenarios/testland/scenario.toml under that pack.\nThis self-contained empty example is distinct from data/packs/testland (WP-03 skeleton / later WP-23 content).";
+pub const USAGE: &str = "usage: oh_cli run --scenario <id> (--ticks <n> | --days <n>) --seed <u64> [--hash-out]\nM1: run --pack data/packs/testland --scenario m1 --days 365 --seed 1 --hash-out\nM0 supports run only; validate, ai-bench and repro belong to later work packages.\nM0 --scenario testland resolves data/packs/examples/m0/testland (manifest ID m0_testland).\nInputs: manifest.toml, defines.toml, scenarios/testland/scenario.toml under that pack.\nThis self-contained empty example is distinct from data/packs/testland (WP-03 skeleton / later WP-23 content).";
 
 #[derive(Debug, Eq, PartialEq)]
 pub struct RunOptions {
@@ -151,6 +151,65 @@ pub fn run(pack_root: &Path, options: &RunOptions) -> Result<Simulation, String>
         .map_err(|err| err.to_string())?;
     for _ in 0..options.ticks {
         sim.step().map_err(|err| err.to_string())?;
+    }
+    Ok(sim)
+}
+
+/// Explicit M1 pack path; M0 RunOptions/run remain byte-for-byte compatible.
+pub fn parse_invocation(
+    args: &[String],
+) -> Result<(RunOptions, Option<std::path::PathBuf>), String> {
+    let mut filtered = Vec::new();
+    let mut pack = None;
+    let mut i = 0;
+    while i < args.len() {
+        if args[i] == "--pack" {
+            if pack.is_some() {
+                return Err("duplicate --pack".into());
+            }
+            i += 1;
+            let value = args
+                .get(i)
+                .filter(|s| !s.starts_with("--"))
+                .ok_or("missing --pack")?;
+            pack = Some(value.into());
+        } else {
+            filtered.push(args[i].clone());
+        }
+        i += 1;
+    }
+    Ok((RunOptions::parse(&filtered)?, pack))
+}
+pub fn load_national(
+    root: &Path,
+    id: &str,
+) -> Result<(LoadedScenario, oh_sim::world::World), String> {
+    let loaded = oh_data::national::load_scenario(root, id).map_err(|e| e.to_string())?;
+    let world = oh_sim::world::World::from_loaded(&loaded)?;
+    let time = TimeConfig::from_defines(&loaded.pack.defines).map_err(|e| e.to_string())?;
+    let start_date = parse_date(&loaded.scenario.start_date)?;
+    Ok((
+        LoadedScenario {
+            pack: loaded.pack,
+            scenario_id: id.into(),
+            start_date,
+            time,
+        },
+        world,
+    ))
+}
+pub fn run_national(root: &Path, options: &RunOptions) -> Result<Simulation, String> {
+    let (loaded, world) = load_national(root, &options.scenario)?;
+    let mut sim = Simulation::with_world(
+        loaded.scenario_id,
+        loaded.start_date,
+        options.seed,
+        loaded.time,
+        world,
+    )
+    .map_err(|e| e.to_string())?;
+    for _ in 0..options.ticks {
+        sim.step().map_err(|e| e.to_string())?;
     }
     Ok(sim)
 }
