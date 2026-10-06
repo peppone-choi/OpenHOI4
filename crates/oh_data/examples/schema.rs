@@ -5,6 +5,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     for (name, schema) in [
         ("manifest", oh_data::manifest_schema()),
         ("defines", oh_data::defines_schema()),
+        ("states", oh_data::map::states_schema()),
+        ("regions", oh_data::map::regions_schema()),
+        ("province", oh_data::map::province_schema()),
     ] {
         std::fs::write(
             output.join(format!("{name}.schema.json")),

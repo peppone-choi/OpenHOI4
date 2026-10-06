@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "properties": {
+    "km_per_pixel": {
+      "description": "Positive I32F32 scale parsed from its exact TOML lexeme; edge distances must fit I32F32.",
+      "type": "number",
+      "exclusiveMinimum": 0
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "km_per_pixel"
+  ]
+}

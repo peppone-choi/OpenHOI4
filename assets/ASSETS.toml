@@ -61,3 +61,93 @@ license = "original"
 modified = false
 ai_generated = false
 notes = "Original M0 connection and time-control localization. No third-party text; D-10 undecided."
+
+[[asset]]
+path = "data/packs/testland/common/terrain.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Directly authored synthetic M1 map fixture, no historical or third-party game material. D-10 confirmed 2026-10-06; no WP-23 content."
+
+[[asset]]
+path = "data/packs/testland/common/resources.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Directly authored synthetic M1 map fixture, no historical or third-party game material. D-10 confirmed 2026-10-06; no WP-23 content."
+
+[[asset]]
+path = "data/packs/testland/common/buildings.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Directly authored synthetic M1 map fixture, no historical or third-party game material. D-10 confirmed 2026-10-06; no WP-23 content."
+
+[[asset]]
+path = "data/packs/testland/maps/testland/provinces.png"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Directly authored synthetic M1 map fixture, no historical or third-party game material. D-10 confirmed 2026-10-06; no WP-23 content."
+
+[[asset]]
+path = "data/packs/testland/maps/testland/provinces.csv"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Directly authored synthetic M1 map fixture, no historical or third-party game material. D-10 confirmed 2026-10-06; no WP-23 content."
+
+[[asset]]
+path = "data/packs/testland/maps/testland/adjacency_overrides.csv"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Directly authored synthetic M1 map fixture, no historical or third-party game material. D-10 confirmed 2026-10-06; no WP-23 content."
+
+[[asset]]
+path = "data/packs/testland/maps/testland/states.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Directly authored synthetic M1 map fixture, no historical or third-party game material. D-10 confirmed 2026-10-06; no WP-23 content."
+
+[[asset]]
+path = "data/packs/testland/maps/testland/regions.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Directly authored synthetic M1 map fixture, no historical or third-party game material. D-10 confirmed 2026-10-06; no WP-23 content."
+
+[[asset]]
+path = "data/packs/testland/localisation/ko/map.ftl"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Directly authored synthetic M1 map fixture, no historical or third-party game material. D-10 confirmed 2026-10-06; no WP-23 content."
+
+[[asset]]
+path = "data/packs/testland/localisation/en/map.ftl"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Directly authored synthetic M1 map fixture, no historical or third-party game material. D-10 confirmed 2026-10-06; no WP-23 content."

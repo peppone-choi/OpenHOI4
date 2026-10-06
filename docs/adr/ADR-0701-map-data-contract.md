@@ -1,0 +1,38 @@
+# ADR-0701 M1 지도 파일·인덱스·결정론 거리 계약
+
+| 항목 | 값 |
+|---|---|
+| 상태 | 채택 |
+| 날짜 | 2026-10-06 |
+| 관련 WP·REQ | WP-07, REQ-MAP-01, REQ-MAP-02, REQ-MAP-03, REQ-MAP-09 |
+
+## 맥락
+
+02 §5.4는 RGB PNG, CSV 열, 4방향 인접, 분리 덩어리 경고, 축척·거리 캐시를 지정하지만 주/VP TOML 형태, 섬 예외 열, 중심·거리 반올림, override의 추가/수정 의미와 u16 밀집 인덱스 계약은 정하지 않았다. M0 `load_pack`·빈 시나리오의 기존 해시를 보존하면서 WP-08/09가 소비할 읽기 경계가 필요하다. 이 결정은 저장 포맷, 소유·통제·항복·보급 규칙을 정하지 않는다.
+
+## 결정
+
+- `oh_data::map::load_map(pack_root, map_id)`로 명시적으로 로드한다. M0 `load_pack`에는 연결하지 않는다. `map_id`는 기존 팩 ID와 같은 소문자/숫자/밑줄이다.
+- CSV는 02의 정확한 헤더를 쓰는 UTF-8 unquoted 형식이다. CRLF·빈 줄은 허용하고 인용·공백 열·열 수 오류는 거부한다. 숫자 ID는 `u16`, RGB 채널은 `u8`, bool은 `true/false`다. 종류는 `land/sea/lake`다. 선택적인 마지막 `island` bool 열은 분리 경고만 억제하며, 없는 색·1픽셀·미등장 프로빈스 오류는 억제하지 않는다. ID/RGB는 각각 유일하다. `coastal`은 데이터 플래그이고 새 해안 판정 게임 규칙을 만들지 않는다.
+- `common/terrain.toml`, `resources.toml`, `buildings.toml`의 `[[terrain]]`, `[[resource]]`, `[[building]]`에서 유일한 유효 `id`를 읽어 참조를 검사한다. 다른 엔트리 필드는 후속 시스템이 소유한다. 이 로더가 경제 계수·지형 보정·슬롯을 해석하거나 기본값을 만들지 않는다.
+- `states.toml`은 `[[state]]`의 `id`, `name_key`, `provinces`, `population`, `resources`, `buildings`, `infrastructure`와 선택적인 `[[victory_point]]`의 `province`, `points`, `name_key`를 담는다. 개수는 `i64`, 인구/자원/건물/인프라는 음수를 거부하고 VP는 양수다. 자원·건물 ID 참조, 빈 이름 키, 중복 ID/VP, 미지 프로빈스를 거부한다. 육지는 정확히 한 주에 속하고 바다·호수는 주에 넣지 않는다. VP는 01의 ‘일부 프로빈스’에 정의하며 추가 육지 전용 금지를 만들지 않는다. 상한·항복 가중치·경제 효과는 정하지 않는다.
+- 파일 스키마는 `schemars`에서 생성한 구조 스키마이며 의미 검사는 Rust 로더가 한다. TOML 구문/스키마 오류는 기존 `DataError`의 파일·Unicode 줄/열을 유지한다. PNG 오류는 파일 `1:1`과 픽셀 좌표/ID를 메시지에 담는다. 오류가 없는 분리 덩어리는 프로빈스 ID 순 경고로 돌려준다. `--deny-warnings` 정책은 WP-24가 적용한다.
+- 프로빈스와 주·VP, 간선은 ID 순으로 정렬한다. 픽셀 인덱스는 정렬된 프로빈스 배열의 **0부터 시작하는** 밀집 `u16` 인덱스다. 0은 유효하며 센티널을 예약하지 않는다. 좌상단 원점·행 우선, HTTP용 `index_le_bytes()`는 픽셀마다 정확히 2바이트 리틀엔디언을 만든다. CSV 순서가 바뀌어도 인덱스·캐시는 같다. 엔진의 `oh_core` typed ID에는 `.into()`로 변환한다.
+- 자동 인접은 오른쪽·아래 이웃을 검사해 모든 4방향 경계를 정확히 한 번 모으고 `(min_id,max_id)` BTreeMap으로 중복을 제거한다. 지도 가장자리 순환·대각선 인접을 추가하지 않는다. `river_small/river_large/impassable` override는 기존 비트맵 간선을 수정하고 `strait`은 비인접 간선을 추가할 수 있다. 중복/자기 간선/미지 참조는 오류다. `Impassable`도 데이터 간선으로 보존하며 이동 가능성은 후속 시뮬레이션이 판단한다.
+- 균일 투영의 `regions.toml`은 단일 양수 `km_per_pixel` 수치다. 원문에서 I32F32로 직접 파싱하며 float 중간값을 쓰지 않는다. 중심은 모든 소속 픽셀 중심 `(x+0.5,y+0.5)`의 산술평균을 Q32.32로 내림한다. 차이 제곱을 `u128` Q64.64 정수로 합산한 뒤 정수 `isqrt`로 Q32.32 거리의 바닥값을 구하고 `fixed::checked_mul`로 축척을 적용한다. 산술 오버플로는 로드 오류다. 최종 간선(해협·통행불가 포함)의 거리를 로드 중 한 번 계산해 저장한다. 별도 위치 파일·비균일 지역 투영·전 세계 순환은 후속 WP다.
+- `png = "=0.18.1"`만 새 직접 의존성으로 추가한다. Rust PNG 디코더는 RGB8 원본만 받고 grayscale/palette/RGBA/16-bit/APNG는 거부한다. PNG IEND까지 검사한다. 테스트 지도는 지리 원천이 없는 직접 작성한 직사각형 배열이며 기존 골든·원작 자료를 쓰지 않는다. 직접 제작 지도/주/VP/최소 레지스트리/ko·en FTL은 D-10의 CC-BY-SA-4.0으로 개별 등록한다. M0 provenance 항목은 보존한다.
+
+## 검토한 대안
+
+| 대안 | 장점 | 버린 이유 |
+|---|---|---|
+| 범용 image·csv 크레이트 | 다양한 이미지/CSV 입력 | 규격이 RGB PNG와 단순 고정 열로 좁다. PNG 외 포맷/인용 문자 해석이 필요하지 않다 |
+| 실수 중심·sqrt | 구현이 짧음 | DR-01·DR-09 및 OS 간 비트 재현성에 맞지 않음 |
+| 모든 프로빈스 쌍 거리 캐시 | 임의 조회 상수 시간 | 이동용 간선에는 O(E) 캐시로 충분하며 O(P²) 메모리 불필요 |
+| 원본 ID 자체를 GPU 인덱스로 사용 | 변환 불필요 | 드문 ID와 정렬된 속성 배열이 어긋남. 02 §11.1의 조회 테이블은 밀집 인덱스가 적합 |
+
+## 결과와 영향
+
+WP-08은 MapData의 width/height/index/정렬 provinces/VP 및 `index_le_bytes()`를 사용하고 WP-09는 states/`state_for_province()`를 typed state 초기화에 사용한다. Rust 서버/프로토콜·TS·화면 연결은 해당 WP가 수행한다. VP 표시(REQ-MAP-09 SS)는 이 데이터 WP의 증거로 주장하지 않는다. 지도 로드를 명시적으로 유지하므로 M0 시나리오·골든 경로와 해시를 바꾸지 않는다. Testland는 6프로빈스/2주/2VP의 M1 검사 입력이며 WP-23의 6개국·100~200 프로빈스 게임 콘텐츠를 앞당기지 않는다.
+
+2026-10-06 공식 upstream [Cargo.toml](https://github.com/image-rs/image-png/blob/master/Cargo.toml), [CHANGES](https://github.com/image-rs/image-png/blob/master/CHANGES.md), [배포 0.18.1](https://docs.rs/crate/png/0.18.1)에서 최신 안정 배포 0.18.1과 `MIT OR Apache-2.0`을 확인했다. 간접 배포 버전은 Cargo.lock에 고정했고 공식 crates.io 메타데이터의 버전/라이선스/저장소를 `docs/worklog/evidence/WP-07/png-dependencies.txt`에 기록했다. [flate2 1.1.10](https://docs.rs/crate/flate2/1.1.10/source/README.md), [fdeflate 0.3.7](https://docs.rs/crate/fdeflate/0.3.7), [miniz_oxide 0.9.1](https://docs.rs/crate/miniz_oxide/0.9.1/source/Cargo.toml), [crc32fast 1.5.2](https://docs.rs/crate/crc32fast/1.5.2) 공식 배포 문서도 검색해 확인했다. cargo-deny는 허용 목록 변경 없이 licenses/bans/advisories/sources exit 0이며 miniz_oxide 중복 버전 등 기존 경고 정책은 보존한다. 신규 간접 라이선스의 OR는 허용된 MIT/Apache/Zlib 분기를 쓴다.
