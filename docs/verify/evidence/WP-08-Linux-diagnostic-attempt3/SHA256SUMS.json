@@ -1,0 +1,32 @@
+[
+  {
+    "path": "original-wrapper.zip",
+    "bytes": 8334103,
+    "sha256": "0eacf8334d26f3a6d5b386bd05ddd52646b36926586b555910312a99e8877b7a"
+  },
+  {
+    "path": "parent-state-review.json",
+    "bytes": 6379,
+    "sha256": "5fc38f145fe0ab7f2a5c1d7bda2cb3f359a20b2153fcd62f9202f4c68a1734b0"
+  },
+  {
+    "path": "README.md",
+    "bytes": 2158,
+    "sha256": "7ec9c93f40fdaa84a3c3352d9f8dd5975b838b1cab2dcbadfc87f06b7bf3bcea"
+  },
+  {
+    "path": "REPORT.txt",
+    "bytes": 9342,
+    "sha256": "f50ead32b6367b5e2e496d6ecb1e80a151b388092d6c5802a541436f24345946"
+  },
+  {
+    "path": "worker-analysis-original.zip",
+    "bytes": 1089784,
+    "sha256": "01473b708eb6f5bc876963fe69e7aae0ba966b670f6c73c8180dc2e9f60bca38"
+  },
+  {
+    "path": "worker-seal-parent-review.json",
+    "bytes": 244,
+    "sha256": "49f4cbe0fcdb8a9ac239b5b6417611a1517b36e79f2af3037b97d339a0d11510"
+  }
+]

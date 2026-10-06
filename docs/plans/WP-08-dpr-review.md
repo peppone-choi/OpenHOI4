@@ -47,3 +47,14 @@ CEO가정확6파일수정안을추가1회대상으로채택했고부모는6d1fdc
 이번에는whole source-after·partial/error·남은미실행기록이생성됐다. 원source9139/rawindex/HEAD/semantic/목록/각SHA/diff/status의8지문을직접대조한다. 첫warmup은actualPID/exe/servedJS byte동일과종료후PID없음/LISTEN없음이관측됐고,M1은기동이실패해해당identity를증명하지못했다. TIME_WAIT를첫barebind원인으로확대하지않는다.
 
 [공식 cwd 계약](https://playwright.dev/docs/test-webserver)과source의pinnedSDK를확인하고원client cwd를두generatedconfig의 webServer.cwd로명시하는2파일ignored최소안을검토중이다. 원command·옵션·브라우저·oracle/6DPR/82집합·timeout/retry/skip은유지한다. 같은actualconfig loader/native준비/팩·exe·servedJS와정리·outputguard를먼저검사해야하며추가Linuxpush/run은아직미승인이다. 다른성공CI를이실패나후보효과로대신하지않는다.
+
+
+## cwd 보정 세 번째 한 회 Linux 진단 (M1-r2)
+
+CEO가 승인한 최소2파일만 정확f19에 커밋했고 부모가15 committed blob/manifest/diff를 직접 검토한 뒤 단1push했다. 임시 [37542615440](https://github.com/peppone-choi/OpenHOI4/actions/runs/37542615440)는 sourceb73/strictc900의 control 원M036→fullM182 / candidate 원M036→fullM182 고정4구간 모두exit0다. [원본·읽기 전문·부모감사](../verify/evidence/WP-08-Linux-diagnostic-attempt3/README.md)에 API digest와같은artifactZIP·407members와 source10전체dictionary·worker460봉인파일 SHA 대조를 보존했다. 이전두준비FAIL는 유지한다.
+
+단1회 순차pair에서 Chromium preferred17.623→11.044초/forced15.451→10.756초, foregroundSDK279→204/205·Frame.expect53→53이다. WebKit은1.925→2.282초/1.718→1.813초로 느려졌고 모든브라우저 개선은 아니다. 양arm PNG28전체표본/rawGL/후보epoch/권위camera/정리0을대조했으나 이번backend는모두WebGL2다. SDK합계는 overlap 가능, rawindex·exe/distpayload와OS cwd 미업로드/미관측·일부live DOM/oldcontext반환값미serialize라는관측한계는전문에있다.
+
+진단branch정상CI3개도별도SUCCESS며 strict제품채택/새P05/main최신CI로대신쓰지않는다. 게이트source main6b6 일반37543260232는 원DPR preferred·forcedGL 두30초FAIL/M180of82/후속Firefox미실행으로다시실패했다. [최신실패원본](../verify/evidence/WP-08-main6b6-CI-FAIL/README.md). 기존Edge 초기Snapshot대기204/1도원인미확정이다.
+
+다음 RUN은 strict 동등성·원53단언/6DPR/PNG/rawGL/epoch/authority/lifetime/finally/contextclose·30초/5초/retry0/skip0 보존의 구체P06 제품안과 초기Snapshot동선의 읽기 관측계획을 각각검토한다. 필요제품수정은기존구현앱→새exact커밋→새독립P05/전체불변성→P07/동일mainCI로진행한다. 이번승인된임시push/run은소진됐고추가retry/고립후속은없다. C02 새게이트판정뒤이번RUN을끊으며동일RUN에서새수정루프를열지않는다.

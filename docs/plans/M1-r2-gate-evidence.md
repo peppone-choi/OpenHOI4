@@ -12,8 +12,8 @@
 | REQ-MAP-04 | WP-08 | 실제 GPU 정치/지형/주 모드·권위 서버 조회 |
 | REQ-MAP-05 | WP-08 | 국가/주/프로빈스 국경·선택/호버·카메라 |
 | REQ-NAT-01 | WP-09 | 국가·주 mutable 상태/조회·원장 rawbits·패널, 전체 후속 모델과 구분 |
-| REQ-SAV-01 | WP-11 신규 독립 전문 예정 | OHSV 헤더·버전/팩/hash·완전한 본문·전체 유효 import·파일 교체 원자성 |
-| REQ-SAV-02 | WP-11 신규 독립 전문 예정 | 실제 M1 연속 실행 대 native 새 process 저장/로드/재개·예약큐/config/expiry·세OS |
+| REQ-SAV-01 | WP-11 새 독립 SAV 전문 PASS | OHSV 헤더·버전/팩/hash·완전한 본문·전체 유효 import·파일 교체 원자성 |
+| REQ-SAV-02 | WP-11 새 독립 SAV 전문 PASS | 실제 M1 연속 실행 대 native 새 process 저장/로드/재개·예약큐/config/expiry·세OS |
 | REQ-PLAT-03 | WP-08 | 기존 full browser 범위·실제 양backend·resize/DPR/native cleanup·최신 CI timeout 해결 증거 |
 | REQ-NET-02 | WP-05/08 | 실제 단일 서버 실행 파일의 정적HTTP/WS 지도·브라우저 접속 |
 | REQ-LOC-01 | WP-12 | ko/en 전환·문자열 키·Fluent runtime |
@@ -32,3 +32,10 @@ AC-M1-01 지도데이터/인접, 02 서버/지도/국경/선택, 03 패널/원�
 tick23 Pause(true) 적용 뒤 tick23·date/hour가 유지되고 향후 tick24 명령은 남는다. 현재tick Unpause(false)를 처리한 다음 tick24·만료 경계의 원장/큐/hash가 연속 실행과 같아야 한다. 원장 평가는 정지 상태에서도 saved tick에서 수행된다. 실제 동일 저장 직후 hash, 이어 실행 hash, 국가/주/프로빈스/base/Fx/ledger/config/큐 구조를 각각 대조한다.
 
 포맷0/미래버전·길이/truncation·trailing·zstd손상/팽창·헤더/본문 불일치·pack/defs mismatch·비연속 ID/ID0/물null·중복/미존재 참조를 검사한다. `--force`는 팩 identity 정책의 명시 허용만 적용하고 손상/잘못된 참조를 우회하지 않는다. 원자적 저장 실패 전후 기존 파일SHA와 live 상태/큐/hash를 확인한다. 동일 fixture bytes/SHA·정확 HEAD·각 OS 명령·저장 직후/재개 hash를 남긴다. M3 브라우저 업다운로드·자동저장과 현재없는 RNGcursor를 구현 증거로 쓰지 않는다.
+
+
+## 실제 P-12 배정 (M1-r2)
+
+WP-11은 SAV 독립 PASS·부모 전체 불변성·P07·같은 main c2e8 네 정상CI SUCCESS로 W3 통합됐다. 새 독립 앱 `01a1136b-98e4-7f23-8db6-4ad91758e31e`는 게이트 초안을 담은 docs-only exact `6b6abd79cbda5e4cf30b3d059c2c2f981d63ac9c` / `.orchestrator/wt/M1-r2-gate`에서 판정한다. 부모 before JSON과 raw index 원문·9659추적 SHA를 보존했으며 최종 after를 대조한다. 이 절은 배정 기록이며 독립 판정을 대신하지 않는다.
+
+같은 c2e8 일반37542282435/Save37542282595/Core37542282478/Sim37542282466 성공과 새6b6의 동일HEAD 네CI는 구분한다. 기존 SAV검증 밖 Edge204/1의 초기 Snapshot 대기와 f166 preferred DPR30초 FAIL는 미해결 증거다. 임시 f19 Linux37542615440은 control/candidate 원36→82 각1회 성공했으나 제품 채택/새P05/전체M1 PASS는 아니다. 정확 원본은 [별도 진단](../verify/evidence/WP-08-Linux-diagnostic-attempt3/README.md), f166 원문은 [실패 보존](../verify/evidence/WP-08-mainf166-CI-FAIL/README.md)에 둔다.

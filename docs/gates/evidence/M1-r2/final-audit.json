@@ -1,0 +1,418 @@
+{
+  "kst": "2026-10-07T08:02:57.491121+09:00",
+  "head": "6b6abd79cbda5e4cf30b3d059c2c2f981d63ac9c",
+  "tracked_files": 9659,
+  "raw_index_sha256": "38cec4cb98b09067a6e47a85246f6894dea953209ef27c739818e757743ed8c7",
+  "all_parent_baseline_fields_equal": true,
+  "raw_index_bytes_equal": true,
+  "status": "",
+  "commands": [
+    {
+      "label": "npm-ci",
+      "cwd": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate",
+      "argv": [
+        "npm.cmd",
+        "--prefix",
+        "client",
+        "ci"
+      ],
+      "exit": 0,
+      "seconds": 2.380298614501953,
+      "log": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate\\target\\m1-gate\\npm-ci.log"
+    },
+    {
+      "label": "npm-test",
+      "cwd": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate",
+      "argv": [
+        "npm.cmd",
+        "--prefix",
+        "client",
+        "test"
+      ],
+      "exit": 0,
+      "seconds": 21.098793506622314,
+      "log": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate\\target\\m1-gate\\npm-test.log"
+    },
+    {
+      "label": "client-build",
+      "cwd": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate",
+      "argv": [
+        "npm.cmd",
+        "--prefix",
+        "client",
+        "run",
+        "build"
+      ],
+      "exit": 0,
+      "seconds": 1.9820797443389893,
+      "log": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate\\target\\m1-gate\\client-build.log"
+    },
+    {
+      "label": "fmt",
+      "cwd": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate",
+      "argv": [
+        "cargo",
+        "fmt",
+        "--check"
+      ],
+      "exit": 0,
+      "seconds": 0.2587742805480957,
+      "log": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate\\target\\m1-gate\\fmt.log"
+    },
+    {
+      "label": "clippy",
+      "cwd": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate",
+      "argv": [
+        "cargo",
+        "clippy",
+        "--workspace",
+        "--all-targets",
+        "--locked",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "exit": 0,
+      "seconds": 14.236459016799927,
+      "log": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate\\target\\m1-gate\\clippy.log"
+    },
+    {
+      "label": "workspace-test",
+      "cwd": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate",
+      "argv": [
+        "cargo",
+        "test",
+        "--workspace",
+        "--locked"
+      ],
+      "exit": 0,
+      "seconds": 27.355411052703857,
+      "log": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate\\target\\m1-gate\\workspace-test.log"
+    },
+    {
+      "label": "workspace-build",
+      "cwd": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate",
+      "argv": [
+        "cargo",
+        "build",
+        "--workspace",
+        "--locked"
+      ],
+      "exit": 0,
+      "seconds": 0.2520012855529785,
+      "log": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate\\target\\m1-gate\\workspace-build.log"
+    },
+    {
+      "label": "e2e-m0",
+      "cwd": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate\\client",
+      "argv": [
+        "node",
+        "node_modules/@playwright/test/cli.js",
+        "test",
+        "--config",
+        "playwright.config.ts"
+      ],
+      "exit": 0,
+      "seconds": 26.99475622177124
+    },
+    {
+      "label": "protocol-harness",
+      "cwd": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate",
+      "argv": [
+        "cargo",
+        "run",
+        "--manifest-path",
+        "target/m1-gate/proto-harness/Cargo.toml",
+        "--target-dir",
+        "target/m1-gate/proto-target"
+      ],
+      "exit": 0,
+      "seconds": 25.113182544708252,
+      "log": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate\\target\\m1-gate\\protocol-harness.log"
+    },
+    {
+      "label": "native-capture",
+      "cwd": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate",
+      "argv": [
+        "python",
+        "crates/oh_save/tools/check_save_determinism.py",
+        "capture",
+        "--out",
+        "E:/openhoi/.orchestrator/wt/M1-r2-gate/target/m1-gate/native"
+      ],
+      "exit": 0,
+      "seconds": 17.480734825134277,
+      "log": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate\\target\\m1-gate\\native-capture.log"
+    },
+    {
+      "label": "native-server",
+      "cwd": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate",
+      "argv": [
+        "python",
+        "crates/oh_server/tests/save_native.py",
+        "--capture",
+        "E:/openhoi/.orchestrator/wt/M1-r2-gate/target/m1-gate/native",
+        "--out",
+        "E:/openhoi/.orchestrator/wt/M1-r2-gate/target/m1-gate/server"
+      ],
+      "exit": 0,
+      "seconds": 1.087099552154541,
+      "log": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate\\target\\m1-gate\\native-server.log"
+    },
+    {
+      "label": "save-os-compare",
+      "cwd": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate",
+      "argv": [
+        "python",
+        "crates/oh_save/tools/check_save_determinism.py",
+        "compare",
+        "--root",
+        "E:/openhoi/.orchestrator/wt/M1-r2-gate/target/m1-gate/api/37543260295"
+      ],
+      "exit": 0,
+      "seconds": 0.3600006103515625,
+      "log": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate\\target\\m1-gate\\save-os-compare.log"
+    },
+    {
+      "label": "core-os-compare",
+      "cwd": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate",
+      "argv": [
+        "python",
+        "crates/oh_core/tools/check_determinism.py",
+        "compare",
+        "--root",
+        "E:/openhoi/.orchestrator/wt/M1-r2-gate/target/m1-gate/api/37543260267"
+      ],
+      "exit": 0,
+      "seconds": 0.059000492095947266,
+      "log": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate\\target\\m1-gate\\core-os-compare.log"
+    },
+    {
+      "label": "m0-hash1",
+      "cwd": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate",
+      "argv": [
+        "cargo",
+        "run",
+        "-p",
+        "oh_cli",
+        "--locked",
+        "--",
+        "run",
+        "--scenario",
+        "testland",
+        "--days",
+        "365",
+        "--seed",
+        "1",
+        "--hash-out"
+      ],
+      "exit": 0,
+      "seconds": 0.1935122013092041,
+      "log": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate\\target\\m1-gate\\m0-hash1.log"
+    },
+    {
+      "label": "m0-hash2",
+      "cwd": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate",
+      "argv": [
+        "cargo",
+        "run",
+        "-p",
+        "oh_cli",
+        "--locked",
+        "--",
+        "run",
+        "--scenario",
+        "testland",
+        "--days",
+        "365",
+        "--seed",
+        "1",
+        "--hash-out"
+      ],
+      "exit": 0,
+      "seconds": 0.21200156211853027,
+      "log": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate\\target\\m1-gate\\m0-hash2.log"
+    },
+    {
+      "label": "m1-hash1",
+      "cwd": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate",
+      "argv": [
+        "cargo",
+        "run",
+        "-p",
+        "oh_cli",
+        "--locked",
+        "--",
+        "run",
+        "--scenario",
+        "m1",
+        "--pack",
+        "data/packs/testland",
+        "--ticks",
+        "1000",
+        "--seed",
+        "1",
+        "--hash-out"
+      ],
+      "exit": 0,
+      "seconds": 0.19500303268432617,
+      "log": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate\\target\\m1-gate\\m1-hash1.log"
+    },
+    {
+      "label": "m1-hash2",
+      "cwd": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate",
+      "argv": [
+        "cargo",
+        "run",
+        "-p",
+        "oh_cli",
+        "--locked",
+        "--",
+        "run",
+        "--scenario",
+        "m1",
+        "--pack",
+        "data/packs/testland",
+        "--ticks",
+        "1000",
+        "--seed",
+        "1",
+        "--hash-out"
+      ],
+      "exit": 0,
+      "seconds": 0.1830005645751953,
+      "log": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate\\target\\m1-gate\\m1-hash2.log"
+    },
+    {
+      "label": "docs",
+      "cwd": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate",
+      "argv": [
+        "python",
+        "tools/check_docs.py"
+      ],
+      "exit": 0,
+      "seconds": 0.07200288772583008,
+      "log": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate\\target\\m1-gate\\docs.log"
+    },
+    {
+      "label": "assets",
+      "cwd": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate",
+      "argv": [
+        "python",
+        "tools/check_assets.py",
+        "--release"
+      ],
+      "exit": 0,
+      "seconds": 0.0800018310546875,
+      "log": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate\\target\\m1-gate\\assets.log"
+    },
+    {
+      "label": "architecture",
+      "cwd": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate",
+      "argv": [
+        "python",
+        "tools/check_architecture.py"
+      ],
+      "exit": 0,
+      "seconds": 0.7915787696838379,
+      "log": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate\\target\\m1-gate\\architecture.log"
+    },
+    {
+      "label": "save-evidence-tests",
+      "cwd": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate",
+      "argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "crates/oh_save/tests",
+        "-p",
+        "test_save_evidence.py",
+        "-v"
+      ],
+      "exit": 0,
+      "seconds": 2.551511764526367,
+      "log": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate\\target\\m1-gate\\save-evidence-tests.log"
+    },
+    {
+      "label": "npm-licenses",
+      "cwd": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate",
+      "argv": [
+        "npm.cmd",
+        "--prefix",
+        "client",
+        "run",
+        "licenses"
+      ],
+      "exit": 0,
+      "seconds": 0.3390011787414551,
+      "log": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate\\target\\m1-gate\\npm-licenses.log"
+    },
+    {
+      "label": "e2e-m1",
+      "cwd": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate\\client",
+      "argv": [
+        "node",
+        "node_modules/@playwright/test/cli.js",
+        "test",
+        "--config",
+        "playwright.m1.config.ts"
+      ],
+      "exit": 0,
+      "seconds": 251.4625108242035
+    },
+    {
+      "label": "png-audit",
+      "cwd": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate",
+      "argv": [
+        "python",
+        "target/m1-gate/png_audit.py"
+      ],
+      "exit": 0,
+      "seconds": 5.219334363937378,
+      "log": "E:\\openhoi\\.orchestrator\\wt\\M1-r2-gate\\target\\m1-gate\\png-audit.log"
+    }
+  ],
+  "ci": [
+    {
+      "id": 37543260232,
+      "head_sha": "6b6abd79cbda5e4cf30b3d059c2c2f981d63ac9c",
+      "status": "completed",
+      "conclusion": "failure",
+      "html_url": "https://github.com/peppone-choi/OpenHOI4/actions/runs/37543260232"
+    },
+    {
+      "id": 37543260267,
+      "head_sha": "6b6abd79cbda5e4cf30b3d059c2c2f981d63ac9c",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/peppone-choi/OpenHOI4/actions/runs/37543260267"
+    },
+    {
+      "id": 37543260295,
+      "head_sha": "6b6abd79cbda5e4cf30b3d059c2c2f981d63ac9c",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/peppone-choi/OpenHOI4/actions/runs/37543260295"
+    },
+    {
+      "id": 37543260312,
+      "head_sha": "6b6abd79cbda5e4cf30b3d059c2c2f981d63ac9c",
+      "status": "in_progress",
+      "conclusion": null,
+      "html_url": "https://github.com/peppone-choi/OpenHOI4/actions/runs/37543260312"
+    }
+  ],
+  "browser_results": {
+    "Windows_M0": 60,
+    "Windows_M1": 205,
+    "retry": 0,
+    "skip": 0
+  },
+  "own_e2e_ports_clear": true,
+  "audit_helper_limitations": [
+    "CP949 output/read errors after product command exit0 and during read-only audits; no product retries",
+    "first summary failed with KeyError because fingerprint file omitted two dictionary keys; separate fresh Git/raw/list/all SHA comparison passed, no baseline replacement"
+  ]
+}

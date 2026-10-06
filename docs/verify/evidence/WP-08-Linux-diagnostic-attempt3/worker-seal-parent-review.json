@@ -1,0 +1,6 @@
+{
+  "sealed_files": 460,
+  "mismatches": [],
+  "scope": "parent read all final 460 worker files; evidence integrity only, not product independent P05",
+  "source": "WP-08-diagnostic-M1-r2/target/wp08-diag-cwd-run/FINAL-SHA256SUMS.json"
+}

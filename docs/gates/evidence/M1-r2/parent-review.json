@@ -1,0 +1,11 @@
+{
+  "verified_manifest_files": 1621,
+  "raw_unique_members": 696,
+  "input_bytes": 157058344,
+  "manifest_mismatches": [],
+  "archive_sha_mismatches": 0,
+  "raw_parent_before_after_bytes_equal": true,
+  "real_postcheck_python_exit": 0,
+  "head": "6b6abd79cbda5e4cf30b3d059c2c2f981d63ac9c",
+  "scope": "verbatim independent report and meaningful original outputs, excluded build/cache; content-addressed ZIP map retains all source paths"
+}

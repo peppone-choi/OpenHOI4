@@ -1,0 +1,37 @@
+[
+  {
+    "path": "final-audit.json",
+    "bytes": 11923,
+    "sha256": "e459cc6bff5799a2392c53153615662b755d9357174a3e26c886436fe2fc32bb"
+  },
+  {
+    "path": "independent-original.md",
+    "bytes": 18891,
+    "sha256": "c633ce15049bab26d8c50c48777bc814bfca4b498b2fa286ab8ca8145ac8a78b"
+  },
+  {
+    "path": "parent-original.zip",
+    "bytes": 1812954,
+    "sha256": "10eecbd914eeb5d30452487e7ec38494e9b9bd604a08952f0823e4334466b586"
+  },
+  {
+    "path": "parent-review.json",
+    "bytes": 450,
+    "sha256": "b32e5f018782d6fa9ce2bf191c5a883e43a8f20b9e916c6e7ba3c98fa323e849"
+  },
+  {
+    "path": "README.md",
+    "bytes": 965,
+    "sha256": "04bc39cdbbfc87ee650d003683f3ce029292d2839f2f11e05805782665cfde85"
+  },
+  {
+    "path": "source-index.json",
+    "bytes": 494108,
+    "sha256": "677dde3a68ee1c4a6a8c695362078c1015d85e74faad3c03ea24ab47528c3b0e"
+  },
+  {
+    "path": "verifier-original.zip",
+    "bytes": 22329708,
+    "sha256": "9194db86d6147ed4ae1ec14a3c23704a57ee301fce6571488a357c60bd865e8a"
+  }
+]
