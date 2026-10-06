@@ -1,0 +1,148 @@
+{
+  "02": {
+    "exit": 0,
+    "diff": ""
+  },
+  "03": {
+    "exit": 0,
+    "diff": ""
+  },
+  "04": {
+    "exit": 0,
+    "diff": ""
+  },
+  "source_scan": {
+    "crates\\oh_core\\src\\canonical.rs": [
+      [
+        6,
+        "//! `HashMap`/`HashSet`, floats, pointer-sized state integers, or custom serializers"
+      ]
+    ]
+  },
+  "selftest-original.err.txt": {
+    "HTTP400": true,
+    "model_rejection": true,
+    "turn_failed": false
+  },
+  "selftest-repeat.err.txt": {
+    "HTTP400": true,
+    "model_rejection": true,
+    "turn_failed": false
+  },
+  "WP-00.impl.jsonl": {
+    "HTTP400": true,
+    "model_rejection": true,
+    "turn_failed": true
+  },
+  "selftest_exit": "2",
+  "WP00_exit": "1",
+  "app_trace_file_sha256": "ae47c96523eb1fe1da7ade494511d72f0837a8e3ceb40cab5bbd0b3d7460d9ba",
+  "app_trace_type": "dict",
+  "failure_evidence_index": [
+    {
+      "file": "docs\\worklog\\evidence\\WP-01\\imported-asset-red.txt",
+      "size": 1099,
+      "sha256": "617fcf4d6622084d8d746eebc0342b57dc5c332019322ea43aedd622f64fc3d5"
+    },
+    {
+      "file": "docs\\worklog\\evidence\\WP-01\\red.txt",
+      "size": 28260,
+      "sha256": "05289fbe638fd31b105b1b600ef3871d4be798a8465c6889478045fb542d4b32"
+    },
+    {
+      "file": "docs\\worklog\\evidence\\WP-02\\actionlint-source-initial.txt",
+      "size": 547,
+      "sha256": "4431f13b76f115c963b82c3034f58bc1179d17141e1022addb618d7bfc8b6690"
+    },
+    {
+      "file": "docs\\worklog\\evidence\\WP-02\\diff-check-staged-initial.txt",
+      "size": 820,
+      "sha256": "b339565538556bde0f357df2cf42b66adbba391a0c5cfc46df3ca0e5583c4c2b"
+    },
+    {
+      "file": "docs\\worklog\\evidence\\WP-02\\red.txt",
+      "size": 4841,
+      "sha256": "b741d6c5013bd5966964e39cd1cf6a9cee723a8bc19978666b33c08083a75d1b"
+    },
+    {
+      "file": "docs\\worklog\\evidence\\WP-02\\workflow-red.txt",
+      "size": 1603,
+      "sha256": "f64c0ec74dbc55c8eefeef862506d184fd79c4cc791e818ea5e8b450d1242917"
+    },
+    {
+      "file": "docs\\worklog\\evidence\\WP-03\\first-implementation.log",
+      "size": 2251,
+      "sha256": "7f51e4cc47eb0647d0cdb5545743a39865c38826d80819211a59799467fdff18"
+    },
+    {
+      "file": "docs\\worklog\\evidence\\WP-03\\red.log",
+      "size": 8134,
+      "sha256": "deb1e651bf030c7189b53450cc52533eec0a3a2714a7743f4adf517af5aedf38"
+    },
+    {
+      "file": "docs\\worklog\\evidence\\WP-03\\second-implementation.log",
+      "size": 1906,
+      "sha256": "20c96f22e40fc22d01ae4a9e76eb9a521a5d9db36bde8a5649501d9a23398f9d"
+    },
+    {
+      "file": "docs\\worklog\\evidence\\WP-04\\diff-staged-initial.txt",
+      "size": 216,
+      "sha256": "4585d5282d3d3713c8b540fa64564217514c6df2bfe0dc54ce38e2cf7a3d0694"
+    },
+    {
+      "file": "docs\\worklog\\evidence\\WP-04\\green-initial.txt",
+      "size": 2192,
+      "sha256": "c24324415a31c55425541cd3067668ce53f7308dd6f7d23fa72753899cecc2d6"
+    },
+    {
+      "file": "docs\\worklog\\evidence\\WP-04\\red-cli.txt",
+      "size": 3270,
+      "sha256": "2f45d891c030c39fa1aea59981dc8573bdcbeeb995206094fd0d3fd5cc579ce6"
+    },
+    {
+      "file": "docs\\worklog\\evidence\\WP-04\\red-evidence-gate.txt",
+      "size": 1385,
+      "sha256": "3ad86ef4ac95a3432c2ae07acb1473d13f80afce3eb444270696a2a47da16d9a"
+    },
+    {
+      "file": "docs\\worklog\\evidence\\WP-04\\red-sim.txt",
+      "size": 1206,
+      "sha256": "a7a15b2813ce11c71153912b1a9121b3437f8d9632da1538ec36d3502b55ca63"
+    },
+    {
+      "file": "docs\\worklog\\evidence\\WP-05\\initial-build.log",
+      "size": 502,
+      "sha256": "975edac941cf70829ea6eb3354fc57c6ded6a8bf4d67d7c2f91c51639e94e89e"
+    },
+    {
+      "file": "docs\\worklog\\evidence\\WP-05\\initial-client.log",
+      "size": 912,
+      "sha256": "9d56be2733247837275044a7e931c37cabebca7e110e5988a0939d0094ac64e5"
+    },
+    {
+      "file": "docs\\worklog\\evidence\\WP-05\\initial-e2e.log",
+      "size": 5262,
+      "sha256": "ce520d1926a3f81dd00d0c49e061c87eed49d846edfcc6aa5f5031f3dc7c3c3b"
+    },
+    {
+      "file": "docs\\worklog\\evidence\\WP-05\\initial-rust.log",
+      "size": 4171,
+      "sha256": "d28db5787b76255c0f08c60ae6191f8f145069f105e6f3ed0171c3e8471cd48d"
+    },
+    {
+      "file": "docs\\worklog\\evidence\\WP-05\\initial-startup.log",
+      "size": 1039,
+      "sha256": "f1152edacd116d8779c7a318f52db80489c4ce385fe70e244e239ee21d6c3f5b"
+    },
+    {
+      "file": "docs\\worklog\\evidence\\WP-05\\initial-vite.log",
+      "size": 348,
+      "sha256": "05a846d1d31c9c943fba71cbb78e4c53dcb84e63669512f23106d17c5805d2be"
+    },
+    {
+      "file": "docs\\worklog\\evidence\\WP-05\\restored-build.log",
+      "size": 467,
+      "sha256": "595fa2aad8e0a68657c9c344bde5f094f8528b18d6d70bf68007adc5b6530a4a"
+    }
+  ]
+}

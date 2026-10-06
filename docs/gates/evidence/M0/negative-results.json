@@ -1,0 +1,66 @@
+[
+  {
+    "name": "stale-negative",
+    "command": [
+      "cargo",
+      "test",
+      "--locked",
+      "--manifest-path",
+      "E:\\openhoi\\.orchestrator\\wt\\M0-gate-verify\\target\\evidence\\M0-gate-verify\\negative-workspace\\Cargo.toml",
+      "-p",
+      "oh_proto",
+      "--test",
+      "contract",
+      "req_net_04_generated_types_are_current"
+    ],
+    "exit": 101,
+    "expected": 101
+  },
+  {
+    "name": "stale-restored",
+    "command": [
+      "cargo",
+      "test",
+      "--locked",
+      "--manifest-path",
+      "E:\\openhoi\\.orchestrator\\wt\\M0-gate-verify\\target\\evidence\\M0-gate-verify\\negative-workspace\\Cargo.toml",
+      "-p",
+      "oh_proto",
+      "--test",
+      "contract",
+      "req_net_04_generated_types_are_current"
+    ],
+    "exit": 0,
+    "expected": 0
+  },
+  {
+    "name": "generate-copy",
+    "command": [
+      "cargo",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "E:\\openhoi\\.orchestrator\\wt\\M0-gate-verify\\target\\evidence\\M0-gate-verify\\negative-workspace\\Cargo.toml",
+      "-p",
+      "oh_proto",
+      "--example",
+      "generate"
+    ],
+    "exit": 0,
+    "expected": 0
+  },
+  {
+    "name": "missing-client-negative",
+    "command": [
+      "cargo",
+      "check",
+      "--locked",
+      "--manifest-path",
+      "E:\\openhoi\\.orchestrator\\wt\\M0-gate-verify\\target\\evidence\\M0-gate-verify\\negative-workspace\\Cargo.toml",
+      "-p",
+      "oh_server"
+    ],
+    "exit": 101,
+    "expected": 101
+  }
+]

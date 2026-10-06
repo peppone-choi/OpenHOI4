@@ -1,0 +1,18 @@
+test_capture_rejects_command_failure (test_sim_determinism.SimEvidenceTests.test_capture_rejects_command_failure) ... ok
+test_capture_rejects_repeated_hash_mismatch (test_sim_determinism.SimEvidenceTests.test_capture_rejects_repeated_hash_mismatch) ... ok
+test_capture_runs_real_1000_tick_cli_twice (test_sim_determinism.SimEvidenceTests.test_capture_runs_real_1000_tick_cli_twice) ... ok
+test_compare_accepts_three_equal_os (test_sim_determinism.SimEvidenceTests.test_compare_accepts_three_equal_os) ... ok
+test_compare_rejects_cross_os_mismatch_even_when_each_repeat_matches (test_sim_determinism.SimEvidenceTests.test_compare_rejects_cross_os_mismatch_even_when_each_repeat_matches) ... ok
+test_compare_rejects_invalid_or_mismatched_hash (test_sim_determinism.SimEvidenceTests.test_compare_rejects_invalid_or_mismatched_hash) ... ok
+test_compare_rejects_missing_extra_os_and_missing_repeat (test_sim_determinism.SimEvidenceTests.test_compare_rejects_missing_extra_os_and_missing_repeat) ... ok
+test_compare_rejects_repeat_disagreement (test_sim_determinism.SimEvidenceTests.test_compare_rejects_repeat_disagreement) ... ok
+test_failed_recapture_clears_old_success_marker (test_sim_determinism.SimEvidenceTests.test_failed_recapture_clears_old_success_marker) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.112s
+
+OK
+actual simulation: 1000 ticks, seed 1, two runs: 0123456789abcdef
+ubuntu-latest: 0123456789abcdef
+windows-latest: 0123456789abcdef
+macos-latest: 0123456789abcdef

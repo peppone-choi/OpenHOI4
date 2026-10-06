@@ -1,0 +1,11 @@
+OpenHOI M0: http://127.0.0.1:4119/
+Pack: m0_testland (f611416c817dc014) from E:\openhoi\.orchestrator\wt\M0-gate-verify\data\packs\examples\m0
+Open this address in a browser. Ctrl+C to shut down. --help for usage.
+Default browser launcher exited successfully.
+Shutting down OpenHOI.
+OpenHOI stopped normally.
+
+
+REQ-NET-02 isolated executable assets: PASS
+REQ-NET-06 actual CTRL_C_EVENT/SIGINT, active WS closure, exit 0, released port: PASS
+REQ-NET-06 actual default-browser launcher exit success: PASS (visual navigation not asserted)

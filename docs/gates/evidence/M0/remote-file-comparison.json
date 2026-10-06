@@ -1,0 +1,177 @@
+[
+  {
+    "path": "docs\\verify\\evidence\\WP-05\\main-core\\core-hash-macos-latest\\core-hash.txt",
+    "git_blob_exact": true,
+    "newline_normalized_equal": true,
+    "checkout_exact": true,
+    "remote_sha256": "50686a77586c97c86d8854031135b65d85afc29d401bb7b3f57ff06063a1e7c3"
+  },
+  {
+    "path": "docs\\verify\\evidence\\WP-05\\main-core\\core-hash-ubuntu-latest\\core-hash.txt",
+    "git_blob_exact": true,
+    "newline_normalized_equal": true,
+    "checkout_exact": true,
+    "remote_sha256": "50686a77586c97c86d8854031135b65d85afc29d401bb7b3f57ff06063a1e7c3"
+  },
+  {
+    "path": "docs\\verify\\evidence\\WP-05\\main-core\\core-hash-windows-latest\\core-hash.txt",
+    "git_blob_exact": false,
+    "newline_normalized_equal": true,
+    "checkout_exact": false,
+    "remote_sha256": "9b31eb380f01fe0a2716b6aef1c8d5e6114fc80cda467d4cfabe9ddbd6d716b3"
+  },
+  {
+    "path": "docs\\verify\\evidence\\WP-05\\main-sim\\sim-hash-macos-latest\\run-1.txt",
+    "git_blob_exact": true,
+    "newline_normalized_equal": true,
+    "checkout_exact": true,
+    "remote_sha256": "bcda9729d1145757db747ddf9eb42c98f5b5cf159aa94df0ef010770a30e7ad4"
+  },
+  {
+    "path": "docs\\verify\\evidence\\WP-05\\main-sim\\sim-hash-macos-latest\\run-2.txt",
+    "git_blob_exact": true,
+    "newline_normalized_equal": true,
+    "checkout_exact": true,
+    "remote_sha256": "bcda9729d1145757db747ddf9eb42c98f5b5cf159aa94df0ef010770a30e7ad4"
+  },
+  {
+    "path": "docs\\verify\\evidence\\WP-05\\main-sim\\sim-hash-macos-latest\\sim-hash.txt",
+    "git_blob_exact": true,
+    "newline_normalized_equal": true,
+    "checkout_exact": true,
+    "remote_sha256": "bcda9729d1145757db747ddf9eb42c98f5b5cf159aa94df0ef010770a30e7ad4"
+  },
+  {
+    "path": "docs\\verify\\evidence\\WP-05\\main-sim\\sim-hash-ubuntu-latest\\run-1.txt",
+    "git_blob_exact": true,
+    "newline_normalized_equal": true,
+    "checkout_exact": true,
+    "remote_sha256": "bcda9729d1145757db747ddf9eb42c98f5b5cf159aa94df0ef010770a30e7ad4"
+  },
+  {
+    "path": "docs\\verify\\evidence\\WP-05\\main-sim\\sim-hash-ubuntu-latest\\run-2.txt",
+    "git_blob_exact": true,
+    "newline_normalized_equal": true,
+    "checkout_exact": true,
+    "remote_sha256": "bcda9729d1145757db747ddf9eb42c98f5b5cf159aa94df0ef010770a30e7ad4"
+  },
+  {
+    "path": "docs\\verify\\evidence\\WP-05\\main-sim\\sim-hash-ubuntu-latest\\sim-hash.txt",
+    "git_blob_exact": true,
+    "newline_normalized_equal": true,
+    "checkout_exact": true,
+    "remote_sha256": "bcda9729d1145757db747ddf9eb42c98f5b5cf159aa94df0ef010770a30e7ad4"
+  },
+  {
+    "path": "docs\\verify\\evidence\\WP-05\\main-sim\\sim-hash-windows-latest\\run-1.txt",
+    "git_blob_exact": false,
+    "newline_normalized_equal": true,
+    "checkout_exact": false,
+    "remote_sha256": "1224b02f5c9aab6e42920372735536b0a4795226c58d1bcf3cbdf08cedfee7c7"
+  },
+  {
+    "path": "docs\\verify\\evidence\\WP-05\\main-sim\\sim-hash-windows-latest\\run-2.txt",
+    "git_blob_exact": false,
+    "newline_normalized_equal": true,
+    "checkout_exact": false,
+    "remote_sha256": "1224b02f5c9aab6e42920372735536b0a4795226c58d1bcf3cbdf08cedfee7c7"
+  },
+  {
+    "path": "docs\\verify\\evidence\\WP-05\\main-sim\\sim-hash-windows-latest\\sim-hash.txt",
+    "git_blob_exact": false,
+    "newline_normalized_equal": true,
+    "checkout_exact": false,
+    "remote_sha256": "1224b02f5c9aab6e42920372735536b0a4795226c58d1bcf3cbdf08cedfee7c7"
+  },
+  {
+    "path": "docs\\verify\\evidence\\WP-05\\main-client\\target\\wp05\\chromium-browser.json",
+    "git_blob_exact": true,
+    "newline_normalized_equal": true,
+    "checkout_exact": true,
+    "remote_sha256": "6e9c56414bd9551eee315883b664188e88dd3683f0da3928797fae343f11c962"
+  },
+  {
+    "path": "docs\\verify\\evidence\\WP-05\\main-client\\target\\wp05\\chromium-ko.png",
+    "git_blob_exact": true,
+    "newline_normalized_equal": true,
+    "checkout_exact": true,
+    "remote_sha256": "159b6669f605c7a3c42cef01d7029c44323f565332d360c36f74087fdd895e56"
+  },
+  {
+    "path": "docs\\verify\\evidence\\WP-05\\main-client\\target\\wp05\\chromium-paused.png",
+    "git_blob_exact": true,
+    "newline_normalized_equal": true,
+    "checkout_exact": true,
+    "remote_sha256": "fa6c1fc748d5c2ee651d589e74cc863635b3db2653e61902587c1038ac733aef"
+  },
+  {
+    "path": "docs\\verify\\evidence\\WP-05\\main-client\\target\\wp05\\chromium-running.png",
+    "git_blob_exact": true,
+    "newline_normalized_equal": true,
+    "checkout_exact": true,
+    "remote_sha256": "0edc3ec6945a784ad10aa6f520801a68258933e7eb3b6ac11ac1d87893bb062e"
+  },
+  {
+    "path": "docs\\verify\\evidence\\WP-05\\main-client\\target\\wp05\\firefox-browser.json",
+    "git_blob_exact": true,
+    "newline_normalized_equal": true,
+    "checkout_exact": true,
+    "remote_sha256": "51e29fab9237af55eacb127598aaa6d1fd1e08b6967983230db1cb95ded35f3b"
+  },
+  {
+    "path": "docs\\verify\\evidence\\WP-05\\main-client\\target\\wp05\\firefox-ko.png",
+    "git_blob_exact": true,
+    "newline_normalized_equal": true,
+    "checkout_exact": true,
+    "remote_sha256": "610baf3a7ad1aa1f8c65b95f1a6e6e96aec5d48230399fb9fc2fe8e6075cf703"
+  },
+  {
+    "path": "docs\\verify\\evidence\\WP-05\\main-client\\target\\wp05\\firefox-paused.png",
+    "git_blob_exact": true,
+    "newline_normalized_equal": true,
+    "checkout_exact": true,
+    "remote_sha256": "4f10c4f465587ff814a5cfb5b7d12fdfdd8638e854e63bfd989e046fa252ed65"
+  },
+  {
+    "path": "docs\\verify\\evidence\\WP-05\\main-client\\target\\wp05\\firefox-running.png",
+    "git_blob_exact": true,
+    "newline_normalized_equal": true,
+    "checkout_exact": true,
+    "remote_sha256": "bc428cbf51cd6f07096ca01d638051430a5c4dbadbfec2dee38628657af492ea"
+  },
+  {
+    "path": "docs\\verify\\evidence\\WP-05\\main-client\\target\\wp05\\webkit-browser.json",
+    "git_blob_exact": true,
+    "newline_normalized_equal": true,
+    "checkout_exact": true,
+    "remote_sha256": "3b02c725bb1ab79995db4c397b3f8bcaba1fe5f04057cd0cc100b174781fcea2"
+  },
+  {
+    "path": "docs\\verify\\evidence\\WP-05\\main-client\\target\\wp05\\webkit-ko.png",
+    "git_blob_exact": true,
+    "newline_normalized_equal": true,
+    "checkout_exact": true,
+    "remote_sha256": "929fa51495812f02b1203f31ac21187836a1c4232f0b7eaee88398f2fc37b10a"
+  },
+  {
+    "path": "docs\\verify\\evidence\\WP-05\\main-client\\target\\wp05\\webkit-paused.png",
+    "git_blob_exact": true,
+    "newline_normalized_equal": true,
+    "checkout_exact": true,
+    "remote_sha256": "0ceb94bd87ff3eede9b57b34c446bec047fdad0400a210767fd199a48f8d45d0"
+  },
+  {
+    "path": "docs\\verify\\evidence\\WP-05\\main-client\\target\\wp05\\webkit-running.png",
+    "git_blob_exact": true,
+    "newline_normalized_equal": true,
+    "checkout_exact": true,
+    "remote_sha256": "43e0efa59e89cbd29e89c875a5f5c7c5c13ea93915c116c8efd341740d50a4a5"
+  },
+  {
+    "path": "docs\\verify\\evidence\\WP-05\\main-client\\target\\wp05\\wire-fixtures.json",
+    "git_blob_exact": true,
+    "newline_normalized_equal": true,
+    "checkout_exact": true,
+    "remote_sha256": "134770412e56a39324d1609d24c2aef9cab6a7bdce03c478595299493efb3307"
+  }
+]

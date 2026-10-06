@@ -1,0 +1,133 @@
+{
+  "m0_required_rows": [
+    "| REQ-GEN-01 | M0 | 필수 | WP-04, WP-05 | CI |",
+    "| REQ-GEN-02 | M0 | 필수 | WP-03 | RV, DV |",
+    "| REQ-GEN-04 | M0 | 필수 | WP-02 | DT |",
+    "| REQ-GEN-05 | M0 | 필수 | WP-04, WP-05 | UT, RV |",
+    "| REQ-GEN-06 | M0 | 필수 | WP-04 | IT |",
+    "| REQ-LEG-01 | M0 | 필수 | WP-06 | RV |",
+    "| REQ-LEG-02 | M0 | 필수 | WP-01 | CI |",
+    "| REQ-LEG-03 | M0 | 필수 | WP-01 | CI |",
+    "| REQ-PLAT-01 | M0 | 필수 | WP-01 | CI |",
+    "| REQ-PLAT-02 | M0 | 필수 | WP-02 | DT, CI |",
+    "| REQ-NET-01 | M0 | 필수 | WP-05 | IT |",
+    "| REQ-NET-04 | M0 | 필수 | WP-05 | CI |",
+    "| REQ-NET-05 | M0 | 필수 | WP-05 | RV |",
+    "| REQ-NET-06 | M0 | 필수 | WP-05 | IT, PT |"
+  ],
+  "ancestors": {
+    "01": "5f5da6273d7177f655ebaaaf4ef763b741920c7d",
+    "02": "eb15633543a67eb658a4d5d4b67e33fe7ce07ea6",
+    "03": "70de3192b574bc7fd5ff1e97d4169bde9507ed71",
+    "04": "88d730a",
+    "05": "64789f5517556ed28fe19120f02bc7645887f09a",
+    "06": "1ad982b5a50f887c48e5c51c2af771d91903c3e0"
+  },
+  "report_integrities": {
+    "01": [
+      {
+        "path": "docs\\verify\\evidence\\WP-01\\integrity.json",
+        "content": {
+          "head_unchanged": true,
+          "files_unchanged": true,
+          "status_unchanged": true,
+          "diff_unchanged": true,
+          "staged_unchanged": true,
+          "changed_hashes": [],
+          "files_checked": 79,
+          "time_kst": "2026-10-06 17:16:43"
+        }
+      }
+    ],
+    "02": [
+      {
+        "path": "docs\\verify\\evidence\\WP-02\\integrity.json",
+        "content": {
+          "identical": true,
+          "head": "eb15633543a67eb658a4d5d4b67e33fe7ce07ea6",
+          "tracked_count": 152,
+          "changed_keys": []
+        }
+      }
+    ],
+    "03": [
+      {
+        "path": "docs\\verify\\evidence\\WP-03\\integrity.json",
+        "content": {
+          "head_unchanged": true,
+          "tracked_list_unchanged": true,
+          "tracked_sha256_unchanged": true,
+          "changed_files": [],
+          "status_before": [],
+          "status_after": [],
+          "diff_empty": true,
+          "staged_diff_empty": true,
+          "tracked_file_count": 187,
+          "branch": null,
+          "verified_commit": "70de3192b574bc7fd5ff1e97d4169bde9507ed71",
+          "wp03_branch_tip": "70de3192b574bc7fd5ff1e97d4169bde9507ed71",
+          "date_kst": "2026-10-06 17:49:39 +09:00"
+        }
+      }
+    ],
+    "04": [],
+    "05": [
+      {
+        "path": "docs\\verify\\evidence\\WP-05\\integrity-final.json",
+        "content": {
+          "head": {
+            "exit": 0,
+            "output": "64789f5517556ed28fe19120f02bc7645887f09a\n",
+            "stderr": ""
+          },
+          "status": {
+            "exit": 0,
+            "output": "",
+            "stderr": ""
+          },
+          "diff": {
+            "exit": 0,
+            "output": "",
+            "stderr": ""
+          },
+          "staged-diff": {
+            "exit": 0,
+            "output": "",
+            "stderr": ""
+          },
+          "trackedCount": 550,
+          "trackedListAndHashesEqual": true,
+          "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-05-verify",
+          "checkedAtKST": "2026-10-06T18:59:31.666197+09:00"
+        }
+      }
+    ],
+    "06": [
+      {
+        "path": "docs\\verify\\evidence\\WP-06\\integrity.json",
+        "content": {
+          "head": true,
+          "tracked": true,
+          "hashes": true,
+          "status": true,
+          "diff": true,
+          "cached_diff": true,
+          "tracked_count": 168,
+          "after_time": "2026-10-06T17:36:53.592349+09:00",
+          "clean": true
+        }
+      }
+    ]
+  },
+  "product_diff": 0,
+  "original_content_comparison": {
+    "tools/orch.sh": true,
+    "tools/check_docs.py": true,
+    "AGENTS.md": false,
+    "docs/templates/ADR_TEMPLATE.md": true,
+    "docs/templates/DECISION_REQUEST_TEMPLATE.md": true,
+    "docs/templates/HANDOFF_TEMPLATE.md": true,
+    "docs/templates/VERIFY_REPORT_TEMPLATE.md": true,
+    "docs/templates/WORKLOG_TEMPLATE.md": true
+  }
+}
