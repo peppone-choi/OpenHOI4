@@ -578,17 +578,17 @@ oh ai-bench --scenario testland --runs 50 --days 1500 --seed-base 1000 --out rep
 
 ## 11. 렌더링·UI 설계 (웹 클라이언트)
 
-### 11.1 프로빈스 지도 (Three.js, WebGL2)
+### 11.1 프로빈스 지도 (Three.js, WebGPU·WebGL2)
 
 1. **인덱스 데이터**: 서버가 로드할 때 `provinces.png`를 프로빈스 인덱스(u16, 리틀엔디언) 배열로 바꿔 HTTP로 제공한다(`/maps/<map_id>/index.bin`, 크기 정보 포함). 클라이언트는 이를 RG8 `DataTexture`로 만든다. 필터는 `NearestFilter`, 밉맵은 쓰지 않는다.
 2. **색 조회 텍스처**: 256×256 RGBA8이다. 인덱스 i는 (i mod 256, i div 256)에 있다. 지도 모드를 바꾸거나 델타가 오면 바뀐 프로빈스만 갱신한다. 부분 갱신 방법은 WP-08에서 측정하고 ADR로 남긴다.
-3. **셰이더**(`ShaderMaterial`, GLSL ES 3.0)
+3. **셰이더**: 가용 WebGPU와 WebGL2 대체 백엔드에 공통 TSL·노드 머티리얼을 적용한다. WebGPU는 WGSL, WebGL2는 GLSL로 생성해 같은 인덱스·색 조회·국경 동작을 검증한다. 기존 ShaderMaterial 방식의 알고리즘을 그대로 사용할 때에는 별도 백엔드 구현과 동일성 검증을 ADR로 남긴다.
    - `texelFetch`로 인덱스를 읽어 색을 조회한다.
    - 이웃 텍셀과 인덱스를 비교해 국경을 그린다.
    - 소유국·주 조회 텍스처를 비교해 국가 국경과 주 국경의 두께·색을 다르게 한다. 확대 수준에 따라 선 굵기를 조절한다.
 4. **선택·호버**: 유니폼으로 강조할 인덱스를 넘긴다. 마우스 위치의 프로빈스는 클라이언트가 인덱스 배열에서 바로 찾는다.
 5. **카메라**: `OrthographicCamera`로 확대·이동한다. M5 전 세계 지도의 좌우 순환은 UV 순환으로 처리한다.
-6. **텍스처 크기**: 브라우저의 `MAX_TEXTURE_SIZE`를 확인한다. 전 세계 지도(M5)가 넘으면 타일로 나눈다.
+6. **텍스처 크기**: WebGPU 어댑터의 텍스처 크기 제한 또는 WebGL2의 `MAX_TEXTURE_SIZE`를 선택한 백엔드에 맞춰 확인한다. 전 세계 지도(M5)가 넘으면 타일로 나눈다.
 7. **향후**: 거리장 기반 그라데이션 국경. Paradox·Intel의 Imperator: Rome 기술 글에 나온 방식이고, M5에서 선택 적용한다.
 
 ### 11.2 부대·전선 표시
@@ -1095,3 +1095,5 @@ notes = ""
 ### 웹 렌더링 기술 추가 확인 (2026-10-06 사용자 지시)
 
 WebGPURenderer는 WebGPU 백엔드를 우선 선택하고 WebGL2 백엔드로 대체할 수 있다. 공식 문서: https://threejs.org/docs/pages/WebGPURenderer.html . WebGL은 브라우저에서 OpenGL ES 기반 그래픽을 제공하며 OpenGL을 별도 웹 API로 직접 호출하는 구조는 쓰지 않는다. 출처: https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API . WebGPU 가용 여부·보안 컨텍스트와 초기화 조건은 https://developer.mozilla.org/en-US/docs/Web/API/WebGPU_API 를 확인한다. 구현·검증은 WP-08/M1에 배정하고 M0 셸 검증과 구분한다.
+
+셰이더 백엔드의 공식 근거: https://threejs.org/docs/pages/WGSLNodeBuilder.html , https://threejs.org/docs/pages/GLSLNodeBuilder.html . WebGPU와 WebGL2에서 동일한 지도 알고리즘을 검증하며, 원시 GLSL을 WebGPU에 그대로 전달하는 방식으로 처리하지 않는다.
