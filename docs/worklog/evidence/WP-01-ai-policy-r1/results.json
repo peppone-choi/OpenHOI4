@@ -1,0 +1,145 @@
+{
+  "fixtures": {
+    "command": [
+      "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tools/tests",
+      "-p",
+      "test_wp01.py",
+      "-v"
+    ],
+    "workdir": "E:\\openhoi\\.orchestrator\\wt\\WP-01-ai-policy",
+    "exit": 0,
+    "log": "fixtures.txt"
+  },
+  "npm-ci": {
+    "command": [
+      "C:\\Program Files\\nodejs\\node.EXE",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "--prefix",
+      "client",
+      "ci"
+    ],
+    "workdir": "E:\\openhoi\\.orchestrator\\wt\\WP-01-ai-policy",
+    "exit": 0,
+    "log": "npm-ci.txt"
+  },
+  "client-build": {
+    "command": [
+      "C:\\Program Files\\nodejs\\node.EXE",
+      "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+      "--prefix",
+      "client",
+      "run",
+      "build"
+    ],
+    "workdir": "E:\\openhoi\\.orchestrator\\wt\\WP-01-ai-policy",
+    "exit": 0,
+    "log": "client-build.txt"
+  },
+  "fmt": {
+    "command": [
+      "C:\\Users\\user\\.cargo\\bin\\cargo.EXE",
+      "fmt",
+      "--check"
+    ],
+    "workdir": "E:\\openhoi\\.orchestrator\\wt\\WP-01-ai-policy",
+    "exit": 0,
+    "log": "fmt.txt"
+  },
+  "clippy": {
+    "command": [
+      "C:\\Users\\user\\.cargo\\bin\\cargo.EXE",
+      "clippy",
+      "--workspace",
+      "--",
+      "-D",
+      "warnings"
+    ],
+    "workdir": "E:\\openhoi\\.orchestrator\\wt\\WP-01-ai-policy",
+    "exit": 0,
+    "log": "clippy.txt"
+  },
+  "rust-tests": {
+    "command": [
+      "C:\\Users\\user\\.cargo\\bin\\cargo.EXE",
+      "test",
+      "--workspace"
+    ],
+    "workdir": "E:\\openhoi\\.orchestrator\\wt\\WP-01-ai-policy",
+    "exit": 0,
+    "log": "rust-tests.txt"
+  },
+  "hash-1": {
+    "command": [
+      "C:\\Users\\user\\.cargo\\bin\\cargo.EXE",
+      "run",
+      "-p",
+      "oh_cli",
+      "--",
+      "run",
+      "--scenario",
+      "testland",
+      "--days",
+      "365",
+      "--seed",
+      "1",
+      "--hash-out"
+    ],
+    "workdir": "E:\\openhoi\\.orchestrator\\wt\\WP-01-ai-policy",
+    "exit": 0,
+    "log": "hash-1.txt"
+  },
+  "hash-2": {
+    "command": [
+      "C:\\Users\\user\\.cargo\\bin\\cargo.EXE",
+      "run",
+      "-p",
+      "oh_cli",
+      "--",
+      "run",
+      "--scenario",
+      "testland",
+      "--days",
+      "365",
+      "--seed",
+      "1",
+      "--hash-out"
+    ],
+    "workdir": "E:\\openhoi\\.orchestrator\\wt\\WP-01-ai-policy",
+    "exit": 0,
+    "log": "hash-2.txt"
+  },
+  "assets": {
+    "command": [
+      "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "tools/check_assets.py",
+      "--release"
+    ],
+    "workdir": "E:\\openhoi\\.orchestrator\\wt\\WP-01-ai-policy",
+    "exit": 0,
+    "log": "assets.txt"
+  },
+  "docs": {
+    "command": [
+      "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "tools/check_docs.py"
+    ],
+    "workdir": "E:\\openhoi\\.orchestrator\\wt\\WP-01-ai-policy",
+    "exit": 0,
+    "log": "docs.txt"
+  },
+  "diff": {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "workdir": "E:\\openhoi\\.orchestrator\\wt\\WP-01-ai-policy",
+    "exit": 0,
+    "log": "diff.txt"
+  }
+}

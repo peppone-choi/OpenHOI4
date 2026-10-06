@@ -1,0 +1,8 @@
+First tool call observation (2026-10-06, Asia/Seoul):
+workdir: E:/openhoi/.orchestrator/wt/WP-01-ai-policy
+commands: Get-Location; git status --short; git branch --show-current; git rev-parse HEAD
+Get-Location: E:\openhoi\.orchestrator\wt\WP-01-ai-policy
+git status --short: empty
+branch: codex/wp01-reviewed-ai-assets
+HEAD: f150badf9cf19dfa55fd327d60562a3de5023390
+This is the recorded initial tool observation, not a later rerun of clean status.
