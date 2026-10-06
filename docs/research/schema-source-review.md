@@ -16,6 +16,8 @@
 
 기술 문서는 정상 열람했다. [JSON Schema annotations](https://json-schema.org/understanding-json-schema/reference/annotations)는 default가 검증 중 누락값을 채우는 기능이 아니며 readOnly도 annotation임을 설명한다. 적용값과 변경 권한은 실제 로더/명령 경계에서 검사한다.
 
+M1-r2(2026-10-07) 재확인: 위 다섯 공식 경로는 Countries/State/Production/Logistics 401, Politics 접근 불가였다. 일반 공개 `index.php?title=Countries&action=raw`와 `index.php?title=State&printable=yes`도 웹 도구에서 접근 불가였다. 본문 미확인·미사용이며 인증이나 네트워크 설정을 변경하지 않았다. 실제 조사 기록 경로는 `docs/research/schema-source-review.md`다. 인계에 적힌 `docs/plans/schema-source-review.md`는 존재하지 않아 이 파일로 정정해 WP-11에 전달했다.
+
 [JSON Schema object](https://json-schema.org/understanding-json-schema/reference/object)와 [null](https://json-schema.org/understanding-json-schema/reference/null)은 필수 속성, 추가 속성, 누락과 null을 구분한다. 필드별 required/null/default 정책을 명시하고 Rust·생성 TS·runtime 동작과 대조한다. 객체 타입 선언만으로 모든 키·관계가 검증된다고 주장하지 않는다.
 
 [Schemars 1.2.2 공식 문서](https://docs.rs/schemars/1.2.2/schemars/)는 Rust 타입에서 JSON schema를 생성하는 기술 근거다. 생성 구조와 serde 표현을 확인하되 게임상의 참조·권위·갱신·해시/저장 연결은 자체 설계와 독립 검사로 대조한다. 새로운 외부 의존성을 도입한 조사는 아니다.

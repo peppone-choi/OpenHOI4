@@ -1,0 +1,12 @@
+{
+  "head": "bbf8762922cf74c3b54f6274c1bff83b0977da62",
+  "run": 37525085041,
+  "client_job": 112479929446,
+  "conclusion": "failure",
+  "artifact": 11442486461,
+  "API_digest": "sha256:b22b503ad29133c2fd1bc2fe4eb2866f34b218143d466f113fc748e33d8b2b43",
+  "ZIP_sha256": "b22b503ad29133c2fd1bc2fe4eb2866f34b218143d466f113fc748e33d8b2b43",
+  "ZIP_bytes": 2778456,
+  "members": 168,
+  "scope": "actual client CI at exact main HEAD only; not independent verification or milestone gate"
+}
