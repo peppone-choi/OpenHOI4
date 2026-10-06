@@ -36,9 +36,9 @@
 | `rand_chacha` | 0.10.0 | MIT/Apache-2.0 | 시뮬레이션 RNG(`ChaCha8Rng`) |
 | `serde` | 1.0.229 | MIT/Apache-2.0 | |
 | `postcard` | 1.1.3 | MIT/Apache-2.0 | 저장 파일·정규 직렬화 |
-| `toml` | 1.1.6 | MIT/Apache-2.0 | 데이터 파일 |
+| `toml` | 1.1.6+spec-1.1.0 | MIT/Apache-2.0 | 데이터 파일 |
 | `schemars` | 1.2.2 | MIT | 데이터 스키마 생성 |
-| `zstd` | 0.14.0 | (cargo-deny로 판정) | 저장 파일 압축 |
+| `zstd` | 0.14.0 | BSD-3-Clause | 저장 파일 압축 |
 | `proptest` | 1.11.0 | MIT/Apache-2.0 | 속성 기반 테스트 |
 | `cargo-deny` | 0.20.2 | MIT/Apache-2.0 | 라이선스·취약점 검사(도구) |
 
@@ -54,6 +54,8 @@
 | `@fluent/bundle` | 0.19.1 | Apache-2.0 | 현지화 |
 | Vitest | 5.0.3 | MIT | 단위 테스트 |
 | `@playwright/test` | 1.63.0 | Apache-2.0 | 브라우저 E2E·스크린샷 |
+
+2026-10-06 M0 착수 재확인: 서버 크레이트 13개와 클라이언트 패키지 8개를 공식 레지스트리 API에서 조회했다. 버전 번호는 기존 표와 같으며, `toml`의 빌드 메타데이터와 `zstd` 라이선스를 정확히 보완했다. 개별 조회 URL·결과는 [버전 재확인 기록](research/M0-versions.md)에 있다. Rust 1.99.0은 공식 릴리스 공지로 확인했다.
 
 **사용 금지:** `bincode`. RUSTSEC-2025-0141에서 유지보수 중단으로 공지됐고, 3.0.0은 빌드되지 않는 은퇴 릴리스다. `cargo-deny`의 `bans`에 등록한다.
 
