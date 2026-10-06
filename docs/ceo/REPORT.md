@@ -1,41 +1,74 @@
 # CEO 진행 보고
 
-2026-10-06 KST. 0단계 점검을 수행했으며 1단계 사용자 답변 대기 중이다. 목표 기본값은 M6이고, 다음 마일스톤은 M1이다. 제품 코드를 변경하지 않았으며 M1 오케스트레이터 RUN은 아직 시작하지 않았다.
+2026-10-07 05:15 KST. CEO가 M1-r1의 실제 앱 종료와 RUN_RESULT를 확인한 뒤 작성했다. 목표 M6 자동 진행은 계속한다.
 
-## 확인한 마일스톤과 증거
+목표는 M6이며 완료된 마일스톤은 M0다. M1-r1은 두 작업 묶음을 통합하고 `진행중` 결과로 종료했다. 지도 데이터·원장·현지화·국가/주 조회를 통합했고, 지도 렌더링은 새 독립 PASS를 받고 main에 병합했으며 source main CI가 통과했지만 후속941 일반 CI에서 DPR 두 사례가 시간제한으로 실패했다. 저장·재개 WP-11과 M1 게이트는 다음 RUN이다. 제품 구현과 독립 검증은 오케스트레이터가 만든 별도 앱 채팅·Git worktree에서 수행한다.
 
-- M0: AC 7개 전체 PASS. [독립 게이트와 증거](../gates/M0.md).
-- 점검 시 main과 origin/main은 1123c81f9500c6528b6bcbc4d8acebe173116735로 일치했다. 이 HEAD의 [일반 CI](https://github.com/peppone-choi/OpenHOI4/actions/runs/37450442148), [코어 CI](https://github.com/peppone-choi/OpenHOI4/actions/runs/37450441903), [시뮬레이션 CI](https://github.com/peppone-choi/OpenHOI4/actions/runs/37450442629)는 모두 completed/success다. 설치 커밋의 CI는 별도로 확인한다.
-- 실행 중 CEO RUN 없음. tools/orch.sh status에는 과거 WP-00.impl done 1만 있다.
-- CEO STATE를 템플릿으로 생성했다. 로컬 기록은 .orchestrator/ceo/에 보존한다.
+## 마일스톤과 실제 증거
 
-## 설치와 검사
-
-사용자가 추가한 docs/04-ceo-automation.md, docs/templates/CEO_STATE_TEMPLATE.md, tools/ceo_run.sh를 설치 기록에 포함했다. AGENTS.md 역할 표에 docs/04 §1의 CEO 행을 추가했다. AGENTS.md 줄바꿈은 기존 .gitattributes의 LF 규약에 맞췄다. tools/ceo_run.sh의 Git 실행 비트를 설정했다.
-
-python3 tools/check_docs.py는 오류 0·경고 0으로 통과했다. Git Bash 구문 검사 bash -n tools/ceo_run.sh도 exit 0이다.
-
-## selftest 실패와 대기 이유
-
-tools/ceo_run.sh selftest는 exit 2이며, 내부 오케스트레이터 codex exec는 exit 1이다. 실제 HTTP 400 응답은 “The 'gpt-6.1-sol' model is not supported when using Codex with a ChatGPT account.”다. 중첩 호출 PASS 증거는 없다. 로컬 MCP 접속 오류도 함께 기록됐으나 네트워크/샌드박스 차단이 주원인이라고 단정하지 않는다.
-
-원본 오류는 .orchestrator/ceo/selftest.err에 있다. 모델·인증·샌드박스·네트워크 설정을 바꾸지 않았다. [공식 비대화형 실행 안내](https://learn.chatgpt.com/docs/non-interactive-mode)를 확인했으나 이 계정에서 사용 가능한 모델을 문서만으로 확정하지 않는다. 사용자가 앱 채팅 생성과 작업 채팅 사이 메시지 교환 경로를 지정했다. docs/04 §0과 02 §12.4에 반영했으며, 초기 자동 진행 범위 답변을 기다리는 동안 오케스트레이터 앱 채팅에서 읽기 전용 준비를 수행한다.
-
-## 적용한 기본안과 채택한 추천안
-
-아직 없음. OPEN-01~12의 기본안 적용은 초기 답변을 받은 뒤 마일스톤별로 기록한다. 미응답 REQUEST 파일은 없으며 docs/decisions/ 디렉터리도 없다.
-
-## 보류 후보와 사용자 결정 대기
-
-| 항목 | 기본 처리·추천 | 영향 |
+| 마일스톤 | 상태 | 증거 |
 |---|---|---|
-| 자동 진행 범위 | M6까지 | 사용자 답변 후 시작 |
-| D-10 | 지금 미결정 유지. 정할 경우 기획서 기본안은 코드 GPL-3.0-or-later, 데이터·에셋 CC BY-SA 4.0 | M3 공개 게이트 |
-| D-12 | 공개 명칭 결정은 보류 | M3 공개 게이트 |
-| OPEN-01~12 | 01 §9 기본안을 해당 마일스톤에 잠정 적용 | M3~M6 |
-| OH_ORCH_SANDBOX | workspace-write 유지 권장. 현재 오류가 샌드박스 변경으로 해결된다는 증거 없음 | selftest |
-| 실행 경로 | 사용자 답변: CEO·오케스트레이터 모두 앱 채팅 생성과 메시지 교환 사용 | CLI 설정 변경 없이 진행 |
+| M0 | AC 7개 모두 PASS | [M0 게이트](../gates/M0.md) |
+| M1 | 진행 중, 게이트 미판정 | [계획](../plans/M1.md), [증거 연결표](../plans/M1-evidence.md) |
 
-D-10·D-12 미결정에 따른 실제 보류 판정은 아직 없다. M3에서 다른 AC가 모두 PASS일 때만 docs/04 §2 보류 규칙을 적용한다. 공개 배포·태그는 별도 사용자 권한이다.
+M1 첫 묶음 WP-07/10/12는 독립 PASS와 통합 main CI를 확인했다. WP-09 국가·주·원장 조회도 [독립 PASS](../verify/WP-09.md)·1,515개 추적 파일 불변성과 실제 M1 해시·3 OS CI를 확인했다. 실제 M1 365일 해시는 `b595dc2a1e5b4f8c`, 1,000틱 해시는 `60448355cecffa9d`다. M0 시간 해시를 M1 상태·저장 증거로 사용하지 않는다.
 
-초기 답변 후 STATE에서 이어간다. 세션이 끊기면 같은 CEO 프롬프트를 다시 붙여 넣으면 실제 상태를 대조해 이어서 진행한다.
+WP-08은 [953 독립 FAIL](../verify/WP-08.attempt5.md) 뒤 새 커밋 `9fbc05a1e29062f93bb362450aaddc2068aa41e9`를 제출했다. 기존 resize 표시·GPU pipeline 실패 처리에 추가해 DPR만 바뀔 때의 자동 갱신을 수정했다. Linux 전체/단독 실행 trace를 대조해 M1 GPU 검사 worker를 1로 정했다. 기존 테스트·픽셀 기대값·30초 제한·브라우저 범위는 유지했고 임시 진단 파일은 최종 트리에서 제거했다.
+
+정확한 9fbc의 [일반 CI](https://github.com/peppone-choi/OpenHOI4/actions/runs/37513851532), [Core](https://github.com/peppone-choi/OpenHOI4/actions/runs/37513851556), [Simulation](https://github.com/peppone-choi/OpenHOI4/actions/runs/37513851414)은 모두 성공했다. Linux 원문에서 M0 36건, M1 82+1+41=124건을 직접 확인했고 원본 artifact의 SHA와 API digest도 대조했다. 이는 branch 결과다. 새 전체 독립 verify6은 [최종 PASS](../verify/WP-08.attempt6.md)를 냈고 main에 병합했다. source main79b의 동일 HEAD 세 CI·실제124/M036와세OS원본digest/hash를직접확인했다. 두작업묶음을계수했고 최종 상태 수정941765e의 일반 CI는 DPR 두 사례의30초 timeout으로 실패했다. 앞선 동일제품 CI 성공과 독립 PASS를 보존하되 최신 main 전체 CI 성공으로 기록하지 않는다. 읽기 진단 및 다음 재개 RUN의 수정·독립 검증/CI가 필요하다. 마지막 인수인계 HEAD `a1324968d44354a6af5454e9b0f2b2fb50ef835b`는 푸시됐고 clean·원격 일치·문서 검사 오류0/경고0을 직접 확인했다. 해당 HEAD의 일반/Core/Simulation CI는 현재 진행 중이다. 최근 완료941의 일반 FAIL을 성공으로 치환하지 않는다.
+
+검증6은 detached 9fbc의 5,008개 추적 파일에서 실제 GPU/GL·DPR·원본 결함 재빌드·수명·HTTP·권위 상태·직접 UI를 검사한다. CEO는 현재 관측 시점의 부모/검증자 before·after·현재 HEAD, semantic index, 파일 목록·각 SHA, diff/status, 이번 raw index가 모두 같은 것을 직접 확인했다. 실제 앱 최종 PASS 전문과 부모 보존본이 일치하며, 완료 후 불변성을 다시 대조했다. 원본2040항목 ZIP도 각sourceSHA/bytes 일치를 직접 확인했다. 최신941 CI 원본169항목 ZIP의 API digest/SHA 및 부모 원문6파일 wrapper ZIP도 일치했다. [실패와 진단 증거](../verify/evidence/WP-08-main941-CI-FAIL/README.md)를 다음 재개의 출발점으로 삼는다.
+
+과거 WP-12 빈 화면, WP-08 외부 redirect·resize 표시·GPU pipeline·DPR FAIL 및 Linux CI 실패 원문을 보존했다. 원본 ZIP과 경로를 치환한 리뷰 사본을 구분한다. 복구 가능한 증거 이동은 파일별 SHA로 확인했고 실패 worktree·미병합 자료는 삭제하지 않았다.
+
+## 화면과 플레이
+
+최신 [시험 지도 미리보기](http://127.0.0.1:19461/)는 제품 9fbc, PID 21824다. CEO가 실제 제공 JS·동봉 dist·실행파일·소스 HEAD를 대조했다. Testland 합성 지도이며 실세계 지도나 완결 게임으로 기록하지 않는다. 과거 19418/19425/19431/19451의 서로 다른 소스 화면은 역사 증거다.
+
+[직접 UI 탐색](../play/M1-r1.md)과 후속 preview/독립 검증의 직접 조작은 선택·4모드·원장·언어·팬/줌·Reset·resize·시간 입력의 관측 범위다. 저장 UI는 WP-11 이후 검사한다. M2 전쟁/항복, M3 시나리오, M4/5 시스템 회귀, M6 실제 8인·4시간 플레이 조건은 해당 단계에서 별도 증거를 남긴다.
+
+## 사용자 확정과 추천안
+
+D-10은 코드 GPL-3.0-or-later, 직접 제작 데이터·에셋 CC BY-SA 4.0이다. 외부 자료는 원래 허용 라이선스·고지를 유지한다. D-12 공개 명칭은 OpenHOI4다. 실제 사용자 답변으로 확정했으며 공개 배포나 법적 검증 완료를 의미하지 않는다.
+
+OPEN 일괄 기본안 승인은 철회했고 아래 개별 답변을 적용했다.
+
+| OPEN | 실제 사용자 방향 |
+|---|---|
+| OPEN-01 | 차체·모듈 조합 장비 설계 포함 |
+| OPEN-02 | 간소화 평화 회의 포함 |
+| OPEN-03 | 보급 차량 소모 포함, 철도 궤간 변환 제외 |
+| OPEN-04 | 전략 폭격·세부 공군 임무 포함 |
+| OPEN-05 | 함대 전투 포함, 함선 설계는 이후 개발 |
+| OPEN-06 | 격리된 모드 스크립트 언어 도입 |
+| OPEN-07 | 기상·계절 모두 포함 |
+| OPEN-08 | 점령지 저항·준수·첩보 모두 포함 |
+| OPEN-09 | 검토한 AI 이미지 배포물 포함 허용 |
+| OPEN-10 | M6 자가 호스팅·세션 코드·계정 없음; 공개 호스팅·계정은 이후 개발 |
+| OPEN-11 | 특수 무기 포함 |
+| OPEN-12 | 업적 포함, 아이언맨 제외 |
+
+일괄 기본안 자동 적용은 없다. OPEN-10의 현재 기본안과 아이언맨 제외는 사용자 답변대로 적용했다. 함선 설계·공개 호스팅·계정은 후속 로드맵에 보존한다. [승인 확장 목록](../plans/approved-extensions.md)을 최종 M6에서 실제 WP·독립 PASS·CI와 대조하여 누락하지 않는다.
+
+| 요청 | 채택한 추천안 | 남은 검토 |
+|---|---|---|
+| REQUEST-0002 | A: 포함 시스템의 최소 구체 후보 설계 준비 | 차량·장비·공군·함대·특수 무기 입력/효과/경계/저장 |
+| REQUEST-0003 | A: 간소화 평화 회의 후보 준비 | 참가·요구·점수·일괄 확정·거부 경계 |
+| REQUEST-0004 | A: 기상·점령·첩보 최소 행동 후보 준비 | 계산 순서·만료·난수·실패 원자성 |
+| REQUEST-0005 | A: 소수 데이터 업적·기록 후보 준비 | 조건·개인/국가 표시·mod/multi·저장 |
+
+A의 준비 방식만 잠정 채택했다. 미완성 공식이나 수치를 승인했다고 기록하지 않는다. 구체 후보를 기존 승인 범위·가역성·독립 기대값·저장 호환과 대조한 뒤 CEO 권한 안이면 잠정 채택하고 01에 먼저 기록한다. D/OPEN 확정 상태·범위 변경·복구 어려운 삭제·설정·비용·공개·법적 판단은 사용자 전용이다.
+
+현재 게이트의 사용자 결정 보류는 없다. D-10·D-12 초기 보류는 사용자 후속 답으로 해제됐다. 상세 후보 검토는 M1 진행을 막지 않는다. 사용자 전용 결정만 남고 다른 일이 없어질 때 대기 목록과 추천안을 한 번에 보고한다.
+
+## 품질·스키마·지리 지시
+
+새 시스템은 [스키마 기획](../plans/schema-planning.md)에 필드 의미·단위·타입/범위·null/default·참조·수명·권위·REQ/WP, 정의/초기/가변/파생 계층, 실패 원자성, hash/save/wire/UI·버전·독립 경계 예제를 먼저 남긴다. 현재 M1 국가·주 기초 모델을 최종 모델로 기록하지 않는다. 위키는 범주 누락 검토에 참고하며 문장·원작 수치·스크립트는 사용하지 않는다. [위키 접근 제한](../research/schema-source-review.md)도 보존했다.
+
+지리·고도는 취득 단계에 URL/date/version/license/SHA를 갖춘 고정 파일로 보존하고, 게임은 동봉한 생성 자료를 쓴다. 산맥·능선·고개·큰 강과 하천 연결을 프로빈스 생성·검수에 반영한다. 원작 공개 화면은 분할 원칙·밀도만 참고하며 경계 복사·트레이싱·원작 지도 파일은 사용하지 않는다. NE/OHM 라이선스 예외와 ETOPO 고도 후보를 검토했지만 실제 원천 취득·세계 지도 생성은 후속 WP-32/45의 증거가 필요하다. 새 이동·전투 수치를 이 지시만으로 만들지 않는다.
+
+## 다음 진행과 종료 상태
+
+현재 자동 진행은 중지하지 않았다. M1-r1의 실제 `RUN_RESULT state: 진행중`과 앱 idle/completed를 확인했다. C02 두 묶음 경계에서 최신 CI 실패와 읽기 진단 worker를 정확히 인계한 뒤 CEO가 직접 §4 확인과 보고 커밋·푸시를 수행한다. 다음 재개 RUN은 최신 CI 불일치를 우선 해결하고 WP-11 실제 상태·예약 명령 저장/재개와 M1 게이트를 진행한다. 하위19개 채팅의 마지막 턴도 모두 종료됐다. 기존 WP08 읽기 진단의 실제 최종 결과·9fbc clean·원본13PNG 및 리소스 관측을 다음 오케스트레이터가 같은 채팅에서 이어받는다. Linux 단계비용/timeout 원인은 미확정이다. 고유 통합 WP는6→11로 늘었고 게이트는 M0 1개로 유지됐으므로 연속 무진전0, 사용량 재시도0이다.
+
+재시작은 최초 CEO 프롬프트를 다시 붙여 넣으면 된다. STATE/DIRECTIVES·실제 앱/CLI 기록을 대조해 기존 세션을 인계하고 중복 실행을 만들지 않는다. 앱 정상 종료를 CLI exit=0으로 기록하지 않으며 CLI HTTP400 실패는 보존한다.
