@@ -1,0 +1,48 @@
+warning: unused import: `Document`
+  --> crates\oh_data\src\lib.rs:11:11
+   |
+11 | use raw::{Document, Raw, Source};
+   |           ^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `oh_data` (lib) generated 1 warning (run `cargo fix --lib -p oh_data` to apply 1 suggestion)
+   Compiling oh_data v0.1.0 (E:\openhoi\.orchestrator\wt\WP-03\crates\oh_data)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.55s
+     Running tests\loader.rs (target\debug\deps\loader-1568b066adad1950.exe)
+
+running 8 tests
+test ac_m0_03_missing_file_has_path_and_io_diagnostic ... ok
+test ac_m0_03_schema_snapshots_match_generated_types ... ok
+test ac_m0_03_toml_syntax_errors_have_source_locations ... FAILED
+test req_gen_02_manifest_and_data_defined_numbers ... ok
+test req_gen_02_repeat_load_and_order_are_stable ... ok
+test req_gen_02_no_gameplay_defaults_in_skeleton ... ok
+test ac_m0_03_defines_schema_errors_have_source_locations ... FAILED
+test ac_m0_03_manifest_schema_errors_have_source_locations ... ok
+
+failures:
+
+---- ac_m0_03_toml_syntax_errors_have_source_locations stdout ----
+
+thread 'ac_m0_03_toml_syntax_errors_have_source_locations' (20764) panicked at crates\oh_data\tests\loader.rs:11:5:
+assertion `left == right` failed: E:\openhoi\.orchestrator\wt\WP-03\crates\oh_data\tests/fixtures\syntax_manifest\manifest.toml:5:12 — unclosed array, expected `]`
+  left: (5, 12)
+ right: (6, 1)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- ac_m0_03_defines_schema_errors_have_source_locations stdout ----
+
+thread 'ac_m0_03_defines_schema_errors_have_source_locations' (35464) panicked at crates\oh_data\tests\loader.rs:10:5:
+assertion `left == right` failed: E:\openhoi\.orchestrator\wt\WP-03\crates\oh_data\tests/fixtures\bad_defines_date\defines.toml:2:8 — invalid type: string "$__toml_private_datetime", expected a spanned value
+  left: Syntax
+ right: Schema
+
+
+failures:
+    ac_m0_03_defines_schema_errors_have_source_locations
+    ac_m0_03_toml_syntax_errors_have_source_locations
+
+test result: FAILED. 6 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+
+error: test failed, to rerun pass `-p oh_data --test loader`

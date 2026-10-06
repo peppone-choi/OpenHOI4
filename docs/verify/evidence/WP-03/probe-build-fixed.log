@@ -1,0 +1,5 @@
+     Locking 39 packages to highest Rust 1.99.0 compatible versions
+   Compiling oh_core v0.1.0 (E:\openhoi\.orchestrator\wt\WP-03-verify\crates\oh_core)
+   Compiling oh_data v0.1.0 (E:\openhoi\.orchestrator\wt\WP-03-verify\crates\oh_data)
+   Compiling wp03_verify_probe v0.0.0 (E:\openhoi\.orchestrator\wt\WP-03-verify\target\evidence\WP-03-verify\harness)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.44s

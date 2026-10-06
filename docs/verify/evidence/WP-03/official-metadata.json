@@ -1,0 +1,44 @@
+[
+  {
+    "crate": "serde",
+    "version": "1.0.229",
+    "license": "MIT OR Apache-2.0",
+    "url": "https://crates.io/api/v1/crates/serde/1.0.229",
+    "result": "verified"
+  },
+  {
+    "crate": "toml",
+    "version": "1.1.6+spec-1.1.0",
+    "license": "MIT OR Apache-2.0",
+    "url": "https://crates.io/api/v1/crates/toml/1.1.6%2Bspec-1.1.0",
+    "result": "verified"
+  },
+  {
+    "crate": "schemars",
+    "version": "1.2.2",
+    "license": "MIT",
+    "url": "https://crates.io/api/v1/crates/schemars/1.2.2",
+    "result": "verified"
+  },
+  {
+    "crate": "fixed",
+    "version": "1.31.0",
+    "license": "MIT/Apache-2.0",
+    "url": "https://crates.io/api/v1/crates/fixed/1.31.0",
+    "result": "verified"
+  },
+  {
+    "crate": "semver",
+    "version": "1.0.28",
+    "license": "MIT OR Apache-2.0",
+    "url": "https://crates.io/api/v1/crates/semver/1.0.28",
+    "result": "verified"
+  },
+  {
+    "crate": "serde_json",
+    "version": "1.0.151",
+    "license": "MIT OR Apache-2.0",
+    "url": "https://crates.io/api/v1/crates/serde_json/1.0.151",
+    "result": "verified"
+  }
+]

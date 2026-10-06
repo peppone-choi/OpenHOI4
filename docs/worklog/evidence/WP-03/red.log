@@ -1,0 +1,185 @@
+    Updating crates.io index
+     Locking 37 packages to highest Rust 1.99 compatible versions
+      Adding az v1.3.0
+      Adding bytemuck v1.25.2
+      Adding cfg-if v1.0.5
+      Adding crunchy v0.2.4
+      Adding dyn-clone v1.0.20
+      Adding equivalent v1.0.2
+      Adding fixed v1.31.0
+      Adding half v2.7.1
+      Adding hashbrown v0.17.1
+      Adding indexmap v2.14.2
+      Adding itoa v1.0.18
+      Adding memchr v2.8.3
+      Adding proc-macro2 v1.0.107
+      Adding quote v1.0.47
+      Adding ref-cast v1.0.27
+      Adding ref-cast-impl v1.0.27
+      Adding schemars v1.2.2
+      Adding schemars_derive v1.2.2
+      Adding semver v1.0.28
+      Adding serde v1.0.229
+      Adding serde_core v1.0.229
+      Adding serde_derive v1.0.229
+      Adding serde_derive_internals v0.30.0
+      Adding serde_json v1.0.151
+      Adding serde_spanned v1.1.1
+      Adding syn v2.0.119
+      Adding syn v3.0.6
+      Adding toml v1.1.6+spec-1.1.0
+      Adding toml_datetime v1.1.1+spec-1.1.0
+      Adding toml_parser v1.1.3+spec-1.1.0
+      Adding toml_writer v1.1.2+spec-1.1.0
+      Adding typenum v1.20.1
+      Adding unicode-ident v1.0.26
+      Adding winnow v1.0.4
+      Adding zerocopy v0.8.60
+      Adding zerocopy-derive v0.8.60
+      Adding zmij v1.0.23
+ Downloading crates ...
+  Downloaded az v1.3.0
+  Downloaded dyn-clone v1.0.20
+  Downloaded cfg-if v1.0.5
+  Downloaded serde v1.0.229
+  Downloaded half v2.7.1
+  Downloaded ref-cast v1.0.27
+  Downloaded serde_spanned v1.1.1
+  Downloaded ref-cast-impl v1.0.27
+  Downloaded schemars_derive v1.2.2
+  Downloaded quote v1.0.47
+  Downloaded serde_derive_internals v0.30.0
+  Downloaded toml_writer v1.1.2+spec-1.1.0
+  Downloaded toml_datetime v1.1.1+spec-1.1.0
+  Downloaded unicode-ident v1.0.26
+  Downloaded zmij v1.0.23
+  Downloaded toml_parser v1.1.3+spec-1.1.0
+  Downloaded memchr v2.8.3
+  Downloaded bytemuck v1.25.2
+  Downloaded serde_derive v1.0.229
+  Downloaded serde_core v1.0.229
+  Downloaded toml v1.1.6+spec-1.1.0
+  Downloaded proc-macro2 v1.0.107
+  Downloaded schemars v1.2.2
+  Downloaded indexmap v2.14.2
+  Downloaded typenum v1.20.1
+  Downloaded zerocopy-derive v0.8.60
+  Downloaded serde_json v1.0.151
+  Downloaded winnow v1.0.4
+  Downloaded fixed v1.31.0
+  Downloaded syn v2.0.119
+  Downloaded syn v3.0.6
+  Downloaded zerocopy v0.8.60
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.26
+   Compiling serde_core v1.0.229
+   Compiling zerocopy v0.8.60
+   Compiling zmij v1.0.23
+   Compiling serde v1.0.229
+   Compiling serde_json v1.0.151
+   Compiling ref-cast v1.0.27
+   Compiling itoa v1.0.18
+   Compiling memchr v2.8.3
+   Compiling winnow v1.0.4
+   Compiling fixed v1.31.0
+   Compiling cfg-if v1.0.5
+   Compiling bytemuck v1.25.2
+   Compiling typenum v1.20.1
+   Compiling dyn-clone v1.0.20
+   Compiling az v1.3.0
+   Compiling toml_writer v1.1.2+spec-1.1.0
+   Compiling oh_core v0.1.0 (E:\openhoi\.orchestrator\wt\WP-03\crates\oh_core)
+   Compiling semver v1.0.28
+   Compiling toml_parser v1.1.3+spec-1.1.0
+   Compiling syn v3.0.6
+   Compiling syn v2.0.119
+   Compiling serde_derive_internals v0.30.0
+   Compiling serde_spanned v1.1.1
+   Compiling toml_datetime v1.1.1+spec-1.1.0
+   Compiling toml v1.1.6+spec-1.1.0
+   Compiling ref-cast-impl v1.0.27
+   Compiling serde_derive v1.0.229
+   Compiling schemars_derive v1.2.2
+   Compiling zerocopy-derive v0.8.60
+   Compiling schemars v1.2.2
+   Compiling half v2.7.1
+   Compiling oh_data v0.1.0 (E:\openhoi\.orchestrator\wt\WP-03\crates\oh_data)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 14.59s
+     Running tests\loader.rs (target\debug\deps\loader-1568b066adad1950.exe)
+
+running 8 tests
+test ac_m0_03_manifest_schema_errors_have_source_locations ... FAILED
+test req_gen_02_no_gameplay_defaults_in_skeleton ... FAILED
+test ac_m0_03_missing_file_has_path_and_io_diagnostic ... FAILED
+test ac_m0_03_defines_schema_errors_have_source_locations ... FAILED
+test ac_m0_03_toml_syntax_errors_have_source_locations ... FAILED
+test req_gen_02_manifest_and_data_defined_numbers ... FAILED
+test ac_m0_03_schema_snapshots_match_generated_types ... FAILED
+test req_gen_02_repeat_load_and_order_are_stable ... FAILED
+
+failures:
+
+---- ac_m0_03_manifest_schema_errors_have_source_locations stdout ----
+
+thread 'ac_m0_03_manifest_schema_errors_have_source_locations' (18288) panicked at crates\oh_data\tests\loader.rs:11:5:
+assertion `left == right` failed: E:\openhoi\.orchestrator\wt\WP-03\crates\oh_data\tests/fixtures\bad_manifest_type\manifest.toml:1:1 — WP-03 loader not implemented
+  left: (1, 1)
+ right: (3, 11)
+
+---- req_gen_02_no_gameplay_defaults_in_skeleton stdout ----
+
+thread 'req_gen_02_no_gameplay_defaults_in_skeleton' (49744) panicked at crates\oh_data\tests\loader.rs:44:44:
+called `Result::unwrap()` on an `Err` value: DataError { path: "E:\\openhoi\\.orchestrator\\wt\\WP-03\\crates\\oh_data\\tests/fixtures\\empty\\manifest.toml", line: 1, column: 1, kind: Schema, message: "WP-03 loader not implemented" }
+
+---- ac_m0_03_missing_file_has_path_and_io_diagnostic stdout ----
+
+thread 'ac_m0_03_missing_file_has_path_and_io_diagnostic' (43776) panicked at crates\oh_data\tests\loader.rs:10:5:
+assertion `left == right` failed: E:\openhoi\.orchestrator\wt\WP-03\crates\oh_data\tests/fixtures\not_present\manifest.toml:1:1 — WP-03 loader not implemented
+  left: Schema
+ right: Io
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- ac_m0_03_defines_schema_errors_have_source_locations stdout ----
+
+thread 'ac_m0_03_defines_schema_errors_have_source_locations' (48924) panicked at crates\oh_data\tests\loader.rs:9:5:
+assertion `left == right` failed: E:\openhoi\.orchestrator\wt\WP-03\crates\oh_data\tests/fixtures\bad_defines_bool\manifest.toml:1:1 — WP-03 loader not implemented
+  left: "E:\\openhoi\\.orchestrator\\wt\\WP-03\\crates\\oh_data\\tests/fixtures\\bad_defines_bool\\manifest.toml"
+ right: "E:\\openhoi\\.orchestrator\\wt\\WP-03\\crates\\oh_data\\tests/fixtures\\bad_defines_bool\\defines.toml"
+
+---- ac_m0_03_toml_syntax_errors_have_source_locations stdout ----
+
+thread 'ac_m0_03_toml_syntax_errors_have_source_locations' (27312) panicked at crates\oh_data\tests\loader.rs:10:5:
+assertion `left == right` failed: E:\openhoi\.orchestrator\wt\WP-03\crates\oh_data\tests/fixtures\syntax_manifest\manifest.toml:1:1 — WP-03 loader not implemented
+  left: Schema
+ right: Syntax
+
+---- req_gen_02_manifest_and_data_defined_numbers stdout ----
+
+thread 'req_gen_02_manifest_and_data_defined_numbers' (11656) panicked at crates\oh_data\tests\loader.rs:17:44:
+called `Result::unwrap()` on an `Err` value: DataError { path: "E:\\openhoi\\.orchestrator\\wt\\WP-03\\crates\\oh_data\\tests/fixtures\\valid\\manifest.toml", line: 1, column: 1, kind: Schema, message: "WP-03 loader not implemented" }
+
+---- ac_m0_03_schema_snapshots_match_generated_types stdout ----
+
+thread 'ac_m0_03_schema_snapshots_match_generated_types' (38976) panicked at crates\oh_data\tests\loader.rs:92:95:
+called `Result::unwrap()` on an `Err` value: Os { code: 3, kind: NotFound, message: "지정된 경로를 찾을 수 없습니다." }
+
+---- req_gen_02_repeat_load_and_order_are_stable stdout ----
+
+thread 'req_gen_02_repeat_load_and_order_are_stable' (36924) panicked at crates\oh_data\tests\loader.rs:55:45:
+called `Result::unwrap()` on an `Err` value: DataError { path: "E:\\openhoi\\.orchestrator\\wt\\WP-03\\crates\\oh_data\\tests/fixtures\\valid\\manifest.toml", line: 1, column: 1, kind: Schema, message: "WP-03 loader not implemented" }
+
+
+failures:
+    ac_m0_03_defines_schema_errors_have_source_locations
+    ac_m0_03_manifest_schema_errors_have_source_locations
+    ac_m0_03_missing_file_has_path_and_io_diagnostic
+    ac_m0_03_schema_snapshots_match_generated_types
+    ac_m0_03_toml_syntax_errors_have_source_locations
+    req_gen_02_manifest_and_data_defined_numbers
+    req_gen_02_no_gameplay_defaults_in_skeleton
+    req_gen_02_repeat_load_and_order_are_stable
+
+test result: FAILED. 0 passed; 8 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p oh_data --test loader`

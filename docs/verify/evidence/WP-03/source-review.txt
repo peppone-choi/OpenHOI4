@@ -1,0 +1,27 @@
+crates/oh_data/src\raw.rs:12:        // All offsets originate from the TOML parser and lie at UTF-8 boundaries.
+crates/oh_data/src\raw.rs:14:        let line = prefix.bytes().filter(|b| *b == b'\n').count() + 1;
+crates/oh_data/src\raw.rs:21:            + 1;
+crates/oh_data/src\raw.rs:35:                    err.span().map_or(0, |span| span.start),
+crates/oh_data/src\lib.rs:1://! Data pack loading boundary (REQ-GEN-02 / AC-M0-03).
+crates/oh_data/src\lib.rs:18:/// DR-01 coefficient representation. Parsed directly from the source lexeme.
+crates/oh_data/src\lib.rs:19:pub type Fixed = fixed::types::I32F32;
+crates/oh_data/src\lib.rs:23:    Integer(i64),
+crates/oh_data/src\lib.rs:31:        schemars::json_schema!({"type": "number", "description": "TOML integers are i64; decimals are checked I32F32 parsed from their lexemes. Nonfinite or overflowing values are rejected."})
+crates/oh_data/src\lib.rs:51:        self.0.get(system)?.get(item)
+crates/oh_data/src\lib.rs:58:    #[schemars(regex(pattern = "^[a-z0-9_]+$"))]
+crates/oh_data/src\lib.rs:60:    #[schemars(length(min = 1))]
+crates/oh_data/src\lib.rs:67:    #[schemars(regex(pattern = "^[a-z0-9_]+$"))]
+crates/oh_data/src\lib.rs:69:    #[schemars(length(min = 1))]
+crates/oh_data/src\lib.rs:73:    #[schemars(length(min = 1))]
+crates/oh_data/src\lib.rs:78:    #[schemars(inner(regex(pattern = "^[a-z0-9_]+$")))]
+crates/oh_data/src\lib.rs:81:    #[schemars(inner(regex(pattern = "^[a-z0-9_]+$")))]
+crates/oh_data/src\lib.rs:97:/// One-based line and Unicode scalar column. Missing files use 1:1; missing
+crates/oh_data/src\lib.rs:98:/// fields point at their enclosing table (1:1 for the document root).
+crates/oh_data/src\lib.rs:122:/// Dependency ranges are checked for syntax only; resolution belongs to WP-24.
+crates/oh_data/src\lib.rs:143:        line: 1,
+crates/oh_data/src\lib.rs:144:        column: 1,
+crates/oh_data/src\lib.rs:164:        Err(source.error(offset, ErrorKind::Schema, "pack id must match [a-z0-9_]+"))
+crates/oh_data/src\lib.rs:183:            err.span().map_or(0, |span| span.start),
+crates/oh_data/src\lib.rs:260:        Raw::Integer(number) => i64::from_str_radix(number.as_str(), number.radix())
+crates/oh_data/src\lib.rs:266:                    format!("invalid i64 define: {err}"),
+crates/oh_data/src\lib.rs:270:            // DeFloat retains the decimal lexeme without converting it to f64.
