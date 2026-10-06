@@ -133,16 +133,10 @@
   "validate": "미실행: 전체 validate는 WP-24 후속이며 현재 명령 없음",
   "hashes": [
     [
-      "    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.42s",
-      "     Running `target\\debug\\oh_cli.exe run --scenario testland --days 365 --seed 1 --hash-out`",
-      "",
-      "exit: 0"
+      "b039d35666b77fc2"
     ],
     [
-      "    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.08s",
-      "     Running `target\\debug\\oh_cli.exe run --scenario testland --days 365 --seed 1 --hash-out`",
-      "",
-      "exit: 0"
+      "b039d35666b77fc2"
     ]
   ]
 }
