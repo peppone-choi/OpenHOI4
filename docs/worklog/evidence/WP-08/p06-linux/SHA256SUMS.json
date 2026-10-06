@@ -408,9 +408,9 @@
   "redirect-final/webkit-metadata-local.json": "49aa975a76ad104d8fb0207d587cf3f4b895f27b03bec0cb6f646dbd2bc4dffa",
   "redirect-final/webkit-metadata-true.json": "223f36f0916cc22fda7a90fe34c24d76fa115c0ba08f566b13a8f47dc22ec1ab",
   "redirect-final/webkit-metadata-true.png": "cf1eabf1faf9552b790cb1e7b1ce0d21a61fb0afd9e74f70dda18a2f60ea3a9f",
-  "rust-tests.log": "813a2e4b0f6283e25df0e4bfdd3f04d27e6611f062605a2a54a3af28a4b7212b",
+  "rust-tests.log": "e3ca70e06acac1d09b6efc9950ea34f4276fc20ea9f7b455fc18f4be45036655",
   "server-build.log": "fd0d59ee761c00593b7d0e6ae5854223b17aa75f779abfb7a50284ed10b73f8b",
-  "typecheck.log": "69ea45d2ee8002ad67e3bde8cdfc3fa3b33ac228a5acb230922a5c7a0d368675",
-  "unit-tests.log": "1517fc0149f9a82e5ea939819a682792cdfa3ec5a1deec37f1c30e2737791cf4",
+  "typecheck.log": "9a597f3c996e5a54039b8d46a14c9a57e40cd4961dbd84e623c44f056c278865",
+  "unit-tests.log": "cba33a4e516c63b175e6a9720e8c6215535a657312a2819ecb8621a9dddb48b4",
   "windows-capability.log": "987ab04fe583021d8c80b8d6991572fa0e1af7b2ad07fe90f3fc462cce6f8b19"
 }
