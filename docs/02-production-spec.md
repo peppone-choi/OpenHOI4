@@ -92,7 +92,7 @@
 | 서버 CPU | 6코어 12스레드, 2020년대 초반 중급 데스크톱(로컬 실행 기준) |
 | 메모리 | 16GB |
 | 서버 OS | Linux x64, Windows 11 x64, macOS(Apple Silicon) |
-| 브라우저 | 최신 Chrome·Edge·Firefox·Safari 데스크톱. WebGL2 필수 |
+| 브라우저 | 최신 Chrome·Edge·Firefox·Safari 및 Chromium 계열 데스크톱. WebGL2 필수 |
 | GPU | 중급 외장 또는 최신 내장 GPU |
 | 해상도 | 1920×1080 |
 
@@ -603,6 +603,8 @@ oh ai-bench --scenario testland --runs 50 --days 1500 --seed-base 1000 --out rep
 - 숫자를 보여주는 모든 위젯은 수치 원장 툴팁을 지원하는 공용 컴포넌트를 쓴다.
 - 테마는 CSS 변수 하나의 체계로 관리한다. UI 배율 설정(REQ-UI-06)과 CJK 웹 폰트 자체 호스팅(REQ-LOC-02)을 지원한다.
 
+브라우저의 WebGL2 컨텍스트가 사용 가능한 GPU 가속을 활용하도록 렌더러를 구성한다. 브라우저·OS의 보안 및 가속 설정을 자동으로 바꾸지 않는다. 지원되지 않는 환경에는 현지화 안내를 표시한다(REQ-PLAT-03). CI 소프트웨어 렌더링 검증과 실제 GPU 성능 측정은 구분한다.
+
 ### 11.4 화면 검증
 
 - Playwright로 고정 시나리오·고정 카메라 스크린샷을 찍고, 기준 이미지와 허용 오차 안에서 비교한다.
@@ -636,11 +638,11 @@ D-15에 따른 역할이다. 모두 Codex다.
 | WP-03 | 데이터 팩 로더 골격: 매니페스트, defines, 스키마, 파일·줄 오류 보고 | M0 | WP-01 | M0-W2 | 구현 | REQ-GEN-02 | 오류 픽스처 테스트 |
 | WP-06 | 에이전트 규약 적용(AGENTS.md·`tools/orch.sh`·템플릿), `orch.sh selftest` 결과 기록, 클린룸 점검표, 차별화 기록 갱신 규칙, 버전 재확인 기록 | M0 | WP-01 | M0-W2 | 오케스트레이터 | REQ-LEG-01, REQ-LEG-05 | `check_docs.py` 통과 로그 |
 | WP-04 | 시뮬레이션 루프·스케줄러(§6.2)·명령 큐·헤드리스 CLI `run` | M0 | WP-02 | M0-W3 | 구현 | REQ-GEN-01, REQ-GEN-05, REQ-GEN-06, REQ-TIME-01, REQ-TIME-02 | 1,000틱 해시 2회 일치, 순서 테스트 |
-| WP-05 | `oh_proto`(프로토콜 타입·TS 생성)와 `oh_server`(axum WebSocket·정적 파일 제공), 웹 클라이언트 셸(날짜·일시정지·속도) | M0 | WP-04 | M0-W4 | 구현 | REQ-GEN-01, REQ-GEN-05, REQ-TIME-01, REQ-NET-01, REQ-NET-02, REQ-NET-04, REQ-NET-05 | Playwright 스크린샷, 프로토콜 왕복 테스트, TS 생성 검사 |
+| WP-05 | `oh_proto`(프로토콜 타입·TS 생성)와 `oh_server`(axum WebSocket·정적 파일 제공), 웹 클라이언트 셸(날짜·일시정지·속도) | M0 | WP-04 | M0-W4 | 구현 | REQ-GEN-01, REQ-GEN-05, REQ-TIME-01, REQ-NET-01, REQ-NET-02, REQ-NET-04, REQ-NET-05, REQ-NET-06 | Playwright 스크린샷, 프로토콜 왕복 테스트, TS 생성 검사 |
 | WP-07 | 지도 데이터: 비트맵 파서, 인접 생성, 주, VP, Testland 지도 | M1 | WP-03 | M1-W1 | 구현 | REQ-MAP-01, REQ-MAP-02, REQ-MAP-03, REQ-MAP-09 | 인접 골든 테스트, 검증기 통과 |
 | WP-10 | 보정치·수치 원장 | M1 | WP-04 | M1-W1 | 구현 | REQ-UI-04 | 원장 일치 속성 테스트 |
 | WP-12 | 현지화(`@fluent/bundle`), CJK 웹 폰트 자체 호스팅, UI 셸·테마 | M1 | WP-05 | M1-W1 | 구현 | REQ-LOC-01, REQ-LOC-02 | 언어 전환 스크린샷 |
-| WP-08 | 지도 렌더링(Three.js/WebGL2): 인덱스 텍스처, 색 조회, 국경 셰이더, 선택·호버, 카메라, 화면 검증 방식 확정 | M1 | WP-05, WP-07 | M1-W2 | 구현 | REQ-MAP-04, REQ-MAP-05 | Playwright 스크린샷 3종 이상, ADR |
+| WP-08 | 지도 렌더링(Three.js/WebGL2): 인덱스 텍스처, 색 조회, 국경 셰이더, 선택·호버, 카메라, 화면 검증 방식 확정 | M1 | WP-05, WP-07 | M1-W2 | 구현 | REQ-MAP-04, REQ-MAP-05, REQ-PLAT-03 | Playwright 스크린샷 3종 이상, ADR |
 | WP-09 | 국가·주 상태, 소유·통제, 지도 모드 데이터 | M1 | WP-04, WP-07 | M1-W2 | 구현 | REQ-NAT-01, REQ-MAP-08 | 단위 테스트 |
 | WP-11 | 저장·불러오기 v1 | M1 | WP-02, WP-09 | M1-W3 | 구현 | REQ-SAV-01, REQ-SAV-02 | DT 테스트 |
 | WP-13 | 트리거·효과 문법 엔진, 레지스트리, 시나리오 종료 조건 | M2 | WP-03, WP-10 | M2-W1 | 구현 | REQ-AGD-05, REQ-TIME-04 | 단위 테스트, 로드 오류 픽스처 |
@@ -1072,11 +1074,13 @@ notes = ""
 | REQ-PERF-03 | M2 | 필수 | WP-25 | BM, CI |
 | REQ-PLAT-01 | M0 | 필수 | WP-01 | CI |
 | REQ-PLAT-02 | M0 | 필수 | WP-02 | DT, CI |
+| REQ-PLAT-03 | M1 | 필수 | WP-08 | IT, SS |
 | REQ-NET-01 | M0 | 필수 | WP-05 | IT |
 | REQ-NET-02 | M1 | 필수 | WP-05 | IT, PT |
 | REQ-NET-03 | M2 | 필수 | WP-22 | IT |
 | REQ-NET-04 | M0 | 필수 | WP-05 | CI |
 | REQ-NET-05 | M0 | 필수 | WP-05 | RV |
+| REQ-NET-06 | M0 | 필수 | WP-05 | IT, PT |
 | REQ-LOC-01 | M1 | 필수 | WP-12 | CI, SS |
 | REQ-LOC-02 | M1 | 필수 | WP-12 | RV, SS |
 | REQ-LOC-03 | M2 | 필수 | WP-24 | CI |
