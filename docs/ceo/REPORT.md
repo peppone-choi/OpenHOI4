@@ -1,31 +1,33 @@
 # CEO 진행 보고
 
-2026-10-07 05:15 KST. CEO가 M1-r1의 실제 앱 종료와 RUN_RESULT를 확인한 뒤 작성했다. 목표 M6 자동 진행은 계속한다.
+2026-10-07T08:15:12+09:00. 목표는 M6이며 완료된 마일스톤은 M0다. M1은 새 독립 게이트에서 **AC 6 PASS / 1 FAIL / 사용자 보류 0**이다. 차단은 AC-M1-07·REQ-PLAT-03의 Linux DPR 시험 시간 초과다. 사용자 결정 때문에 멈춘 상태가 아니다.
 
-목표는 M6이며 완료된 마일스톤은 M0다. M1-r1은 두 작업 묶음을 통합하고 `진행중` 결과로 종료했다. 지도 데이터·원장·현지화·국가/주 조회를 통합했고, 지도 렌더링은 새 독립 PASS를 받고 main에 병합했으며 source main CI가 통과했지만 후속941 일반 CI에서 DPR 두 사례가 시간제한으로 실패했다. 저장·재개 WP-11과 M1 게이트는 다음 RUN이다. 제품 구현과 독립 검증은 오케스트레이터가 만든 별도 앱 채팅·Git worktree에서 수행한다.
+M1-r2는 저장·재개 WP-11을 독립 검증하고 통합했다. 실제 저장 후 새 프로세스의 재개 상태·예약 명령·원장·만료와 연속 실행이 일치했고, 저장 통합 main c2e8의 일반·Save·Core·Simulation CI가 모두 성공했다. 그 뒤 문서 커밋 6b6의 일반 CI에서 DPR 두 시험이 다시 실패했다. 저장 통합 성공과 최신 CI 실패를 구분한다.
 
-## 마일스톤과 실제 증거
-
-| 마일스톤 | 상태 | 증거 |
+| 마일스톤 | 현재 상태 | 증거 |
 |---|---|---|
-| M0 | AC 7개 모두 PASS | [M0 게이트](../gates/M0.md) |
-| M1 | 진행 중, 게이트 미판정 | [계획](../plans/M1.md), [증거 연결표](../plans/M1-evidence.md) |
+| M0 | AC 7 PASS, 완료 | [M0 게이트](../gates/M0.md) |
+| M1 | AC 6 PASS / 1 FAIL, 재개 필요 | [새 독립 게이트](../gates/M1.md), [검증 준비·대응표](../plans/M1-r2-gate-evidence.md) |
 
-M1 첫 묶음 WP-07/10/12는 독립 PASS와 통합 main CI를 확인했다. WP-09 국가·주·원장 조회도 [독립 PASS](../verify/WP-09.md)·1,515개 추적 파일 불변성과 실제 M1 해시·3 OS CI를 확인했다. 실제 M1 365일 해시는 `b595dc2a1e5b4f8c`, 1,000틱 해시는 `60448355cecffa9d`다. M0 시간 해시를 M1 상태·저장 증거로 사용하지 않는다.
+현재 통합 WP는 12개이며 이번 RUN의 신규 묶음은 W3(WP-11) 1개다. 이전 RUN의 WP 11·게이트 판정 1에서 진전이 있었으므로 연속 무진전은 0이다. 사용량 한도 재시도는 0이다. M1-r2의 실제 앱 턴은 2026-10-07 08:10:21 KST에 idle/completed46으로 종료했다. 구현·검증 채팅도 모두 종료 상태이며 앱 exit는 해당 없음이다.
 
-WP-08은 [953 독립 FAIL](../verify/WP-08.attempt5.md) 뒤 새 커밋 `9fbc05a1e29062f93bb362450aaddc2068aa41e9`를 제출했다. 기존 resize 표시·GPU pipeline 실패 처리에 추가해 DPR만 바뀔 때의 자동 갱신을 수정했다. Linux 전체/단독 실행 trace를 대조해 M1 GPU 검사 worker를 1로 정했다. 기존 테스트·픽셀 기대값·30초 제한·브라우저 범위는 유지했고 임시 진단 파일은 최종 트리에서 제거했다.
+## 저장 기능과 독립 검증
 
-정확한 9fbc의 [일반 CI](https://github.com/peppone-choi/OpenHOI4/actions/runs/37513851532), [Core](https://github.com/peppone-choi/OpenHOI4/actions/runs/37513851556), [Simulation](https://github.com/peppone-choi/OpenHOI4/actions/runs/37513851414)은 모두 성공했다. Linux 원문에서 M0 36건, M1 82+1+41=124건을 직접 확인했고 원본 artifact의 SHA와 API digest도 대조했다. 이는 branch 결과다. 새 전체 독립 verify6은 [최종 PASS](../verify/WP-08.attempt6.md)를 냈고 main에 병합했다. source main79b의 동일 HEAD 세 CI·실제124/M036와세OS원본digest/hash를직접확인했다. 두작업묶음을계수했고 최종 상태 수정941765e의 일반 CI는 DPR 두 사례의30초 timeout으로 실패했다. 앞선 동일제품 CI 성공과 독립 PASS를 보존하되 최신 main 전체 CI 성공으로 기록하지 않는다. 읽기 진단 및 다음 재개 RUN의 수정·독립 검증/CI가 필요하다. 마지막 인수인계 HEAD `a1324968d44354a6af5454e9b0f2b2fb50ef835b`는 푸시됐고 clean·원격 일치·문서 검사 오류0/경고0을 직접 확인했다. 해당 HEAD의 일반/Core/Simulation CI는 현재 진행 중이다. 최근 완료941의 일반 FAIL을 성공으로 치환하지 않는다.
+[WP-11 새 독립 전문](../verify/WP-11.md)은 REQ-SAV-01/02·AC-M1-04 범위 PASS다. 제품 source750의 247개 비문서 Git blob이 통합 main c2e8와 동일한 것을 CEO가 직접 확인했다. 새 검증의 9,175개 추적 파일·HEAD·semantic index·목록·diff/status와 raw index 원문이 전후·현재 모두 같았다. 첫 검증의 raw index 변경과 두 번째 검증의 추적 증거 재작성은 각각 [첫 FAIL](../verify/WP-11.attempt1.md), [두 번째 FAIL](../verify/WP-11.attempt2.md)에 보존한다.
 
-검증6은 detached 9fbc의 5,008개 추적 파일에서 실제 GPU/GL·DPR·원본 결함 재빌드·수명·HTTP·권위 상태·직접 UI를 검사한다. CEO는 현재 관측 시점의 부모/검증자 before·after·현재 HEAD, semantic index, 파일 목록·각 SHA, diff/status, 이번 raw index가 모두 같은 것을 직접 확인했다. 실제 앱 최종 PASS 전문과 부모 보존본이 일치하며, 완료 후 불변성을 다시 대조했다. 원본2040항목 ZIP도 각sourceSHA/bytes 일치를 직접 확인했다. 최신941 CI 원본169항목 ZIP의 API digest/SHA 및 부모 원문6파일 wrapper ZIP도 일치했다. [실패와 진단 증거](../verify/evidence/WP-08-main941-CI-FAIL/README.md)를 다음 재개의 출발점으로 삼는다.
+세 번째 검증은 별도 28틱 저장 후 새 프로세스 33틱 재개를 연속 61틱과 구조·해시·정수 원장으로 대조했다. 게이트는 같은 제품의 48틱 저장·새 프로세스 48틱 재개와 같은 HEAD의 세 OS 저장 원본을 직접 확인했다. 공통 저장 fixture SHA는 57b13c62ef1a6f88ade1851d0b3ae398157f95ca5bc246068eac3b2a964322fa, 저장 hash는 4eb703aad086c7aa, 재개·연속 hash는 d19d028857bb7485다. 실제 M1 1,000틱 해시 60448355cecffa9d와 M0 시간 해시를 저장 검사로 대체하지 않았다.
 
-과거 WP-12 빈 화면, WP-08 외부 redirect·resize 표시·GPU pipeline·DPR FAIL 및 Linux CI 실패 원문을 보존했다. 원본 ZIP과 경로를 치환한 리뷰 사본을 구분한다. 복구 가능한 증거 이동은 파일별 SHA로 확인했고 실패 worktree·미병합 자료는 삭제하지 않았다.
+직접 저장 세계 UI 탐색, 자동 브라우저 시험, native/wire 검사와 독립 정수 기준 계산은 구분했다. 현재는 서버 시작 때 파일을 로드할 수 있으며, 저장 버튼·브라우저 업다운로드·자동저장은 M3 후속 범위다. 실제 OS 전원 손실·모든 파일시스템 durability·존재하지 않는 지속 RNG cursor는 검증했다고 주장하지 않는다.
 
-## 화면과 플레이
+## 플랫폼 실패와 진단
 
-최신 [시험 지도 미리보기](http://127.0.0.1:19461/)는 제품 9fbc, PID 21824다. CEO가 실제 제공 JS·동봉 dist·실행파일·소스 HEAD를 대조했다. Testland 합성 지도이며 실세계 지도나 완결 게임으로 기록하지 않는다. 과거 19418/19425/19431/19451의 서로 다른 소스 화면은 역사 증거다.
+게이트의 Windows 원래 전체 시험은 M0 60·M1 205건 모두 통과했지만, exact6b6의 일반 CI는 M0 36·M1 80/82였고 Chromium preferred/forced GL DPR 두 사례가 원래 30초 제한으로 실패했다. 후속 Linux Firefox 단계는 실행되지 않았다. 이전 저장 검증의 Edge 초기 상태 실패 204/205도 원인 미확정으로 유지한다. 이후 한 번의 성공으로 해결됐다고 쓰지 않는다.
 
-[직접 UI 탐색](../play/M1-r1.md)과 후속 preview/독립 검증의 직접 조작은 선택·4모드·원장·언어·팬/줌·Reset·resize·시간 입력의 관측 범위다. 저장 UI는 WP-11 이후 검사한다. M2 전쟁/항복, M3 시나리오, M4/5 시스템 회귀, M6 실제 8인·4시간 플레이 조건은 해당 단계에서 별도 증거를 남긴다.
+새 독립 게이트의 9,659개 추적 파일과 index 원문 전후·현재 불변성, 실제 최종 전문이 부모 저장본에 변경 없이 포함됐음을 CEO가 직접 확인했다. 게이트 FAIL을 임시 진단 결과로 대신하지 않는다.
+
+별도 fixed B73/control·strictc900 비교는 정확 f19 진단에서 원래 M0 36→M1 82를 양쪽 모두 1회 완주했다. 원본 8,380,918bytes·407항목 ZIP SHA/API digest와 10개 source snapshot 전체 값의 동일성, 최종 봉인 460개 증거의 실제 길이·SHA를 CEO가 확인했다. Chromium 두 사례에서 관측 비용이 줄었지만 WebKit 두 사례 시간은 증가했다. PNG 28개의 지정 표본·rawGL·epoch·정리와 원래 단언은 보존했으며 전체 영상·모든 브라우저·WebGPU·CPU/driver 내부 원인을 증명한 결과는 아니다.
+
+후보는 아직 제품에 적용하지 않았다. 첫 진단의 원장 fixture 누락·포트 오류, 두 번째 진단의 이동된 config/server cwd 오류와 미실행 범위도 보존했다. 기술 준비 수정안은 정확 파일 검토 후 각각 단 1회 실행만 잠정 채택했고 추가 반복 권한은 소진됐다. 다음 실행은 최소 제품/시험 변경의 구체 diff·원래 단언 보존과 새 독립 검증을 검토한다.
 
 ## 사용자 확정과 추천안
 
@@ -69,6 +71,10 @@ A의 준비 방식만 잠정 채택했다. 미완성 공식이나 수치를 승�
 
 ## 다음 진행과 종료 상태
 
-현재 자동 진행은 중지하지 않았다. M1-r1의 실제 `RUN_RESULT state: 진행중`과 앱 idle/completed를 확인했다. C02 두 묶음 경계에서 최신 CI 실패와 읽기 진단 worker를 정확히 인계한 뒤 CEO가 직접 §4 확인과 보고 커밋·푸시를 수행한다. 다음 재개 RUN은 최신 CI 불일치를 우선 해결하고 WP-11 실제 상태·예약 명령 저장/재개와 M1 게이트를 진행한다. 하위19개 채팅의 마지막 턴도 모두 종료됐다. 기존 WP08 읽기 진단의 실제 최종 결과·9fbc clean·원본13PNG 및 리소스 관측을 다음 오케스트레이터가 같은 채팅에서 이어받는다. Linux 단계비용/timeout 원인은 미확정이다. 고유 통합 WP는6→11로 늘었고 게이트는 M0 1개로 유지됐으므로 연속 무진전0, 사용량 재시도0이다.
+M1-r2의 실제 RUN_RESULT는 진행중이다. 오케스트레이터가 없는 동안 이 보고를 갱신하고 문서 검사 후 커밋·푸시한다. 이어서 미사용 번호 M1-r3를 재개 방식으로 생성한다. 현재 main bdb63fa의 일반 CI는 진행 중이고 Save·Core·Simulation은 성공으로 직접 관측했다. 보고 커밋 뒤의 새 HEAD CI도 다음 RUN에서 대조한다.
 
-재시작은 최초 CEO 프롬프트를 다시 붙여 넣으면 된다. STATE/DIRECTIVES·실제 앱/CLI 기록을 대조해 기존 세션을 인계하고 중복 실행을 만들지 않는다. 앱 정상 종료를 CLI exit=0으로 기록하지 않으며 CLI HTTP400 실패는 보존한다.
+다음 M1 재개 실행은 최신 CI 실패를 우선 해결한다. 지도 DPR 관측을 묶는 후보는 실제 제품 diff·같은 canvas/epoch·6회 DPR·PNG/rawGL·카메라/권위·수명/정리·기존 시간 제한과 원래 브라우저 범위의 보존을 검토한 뒤 담당 구현 세션에 P-06으로 배정한다. Edge 초기 Snapshot 수신·검증·적용의 미확정 실패는 별도로 조사한다. 수정한 exact source의 새 독립 P-05, 통합 후 같은 main HEAD의 정상 CI, 새 독립 M1 게이트가 필요하다.
+
+자동 진행은 M6까지 계속하며 현재 중지 조건은 없다. 기술 FAIL을 사용자 결정 보류로 바꾸거나 M2로 넘어가지 않는다. CEO는 제품 코드를 쓰거나 구현·검증 채팅을 직접 만들지 않는다. 앱 정상 종료를 CLI exit=0으로 기록하지 않으며 초기 CLI HTTP400 실패와 설정을 보존한다.
+
+이 프롬프트를 다시 붙여 넣으면 STATE/DIRECTIVES와 실제 앱·Git·CI를 대조해 이어서 진행한다.
