@@ -1,0 +1,202 @@
+
+> openhoi-client@0.1.0 test:e2e
+> playwright test --config playwright.m1.config.ts --project=chrome --project=edge --project=chromium --workers 1 map-dpr.spec.ts
+
+
+Running 6 tests using 1 worker
+
+(node:34004) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [chrome] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority preferred (6.0s)
+(node:7912) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  2 [chrome] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority forced GL (5.8s)
+(node:16880) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  3 [edge] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority preferred (6.0s)
+(node:30248) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  4 [edge] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority forced GL (5.9s)
+(node:29560) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  5 [chromium] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority preferred (5.8s)
+(node:7704) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  6 [chromium] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority forced GL (5.8s)
+
+
+  1) [chrome] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority preferred
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 2
+    + Received  + 2
+
+      Object {
+    -   "x": 2,
+    -   "y": 2,
+    +   "x": 1,
+    +   "y": 1,
+      }
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      39 |   await expect.poll(()=>page.evaluate(()=>devicePixelRatio)).toBe(dpr);
+      40 |   // No Reset or CSS geometry change may be used to trigger this update.
+    > 41 |   await expect.poll(()=>map.locator('canvas').evaluate((c:HTMLCanvasElement)=>({x:c.width/c.clientWidth,y:c.height/c.clientHeight})) ).toEqual({x:dpr,y:dpr});
+         |                                                                                                                                        ^
+      42 |   await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);expect(await map.boundingBox()).toEqual(box);expect(await cam()).toEqual(saved);await expect(map).toHaveAttribute('data-mode','map-mode-terrain');
+      43 |   const image=png(await map.screenshot({path:`${evidence}/${info.project.name}-${force}-dpr${dpr}-${steps.length}.png`})),b=(await map.boundingBox())!,c=await cam(),x=(1-c.x)/c.width*b.width+b.width/2,y=(1-c.y)/c.height*b.height+b.height/2;
+      44 |   const actual=image.pixel(x*image.width/b.width,y*image.height/b.height),expected=world!.provinces.find(p=>p.id===10)!.terrain_color!;for(let i=0;i<3;i++)expect(Math.abs(actual[i]-expected[i])).toBeLessThanOrEqual(1);
+        at E:\openhoi\.orchestrator\wt\WP-08\client\e2e-m1\map-dpr.spec.ts:41:136
+
+    Error Context: test-results\map-dpr-REQ-PLAT-03-DPR-su-1d887-lay-and-authority-preferred-chrome\error-context.md
+
+  2) [chrome] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority forced GL
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 2
+    + Received  + 2
+
+      Object {
+    -   "x": 2,
+    -   "y": 2,
+    +   "x": 1,
+    +   "y": 1,
+      }
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      39 |   await expect.poll(()=>page.evaluate(()=>devicePixelRatio)).toBe(dpr);
+      40 |   // No Reset or CSS geometry change may be used to trigger this update.
+    > 41 |   await expect.poll(()=>map.locator('canvas').evaluate((c:HTMLCanvasElement)=>({x:c.width/c.clientWidth,y:c.height/c.clientHeight})) ).toEqual({x:dpr,y:dpr});
+         |                                                                                                                                        ^
+      42 |   await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);expect(await map.boundingBox()).toEqual(box);expect(await cam()).toEqual(saved);await expect(map).toHaveAttribute('data-mode','map-mode-terrain');
+      43 |   const image=png(await map.screenshot({path:`${evidence}/${info.project.name}-${force}-dpr${dpr}-${steps.length}.png`})),b=(await map.boundingBox())!,c=await cam(),x=(1-c.x)/c.width*b.width+b.width/2,y=(1-c.y)/c.height*b.height+b.height/2;
+      44 |   const actual=image.pixel(x*image.width/b.width,y*image.height/b.height),expected=world!.provinces.find(p=>p.id===10)!.terrain_color!;for(let i=0;i<3;i++)expect(Math.abs(actual[i]-expected[i])).toBeLessThanOrEqual(1);
+        at E:\openhoi\.orchestrator\wt\WP-08\client\e2e-m1\map-dpr.spec.ts:41:136
+
+    Error Context: test-results\map-dpr-REQ-PLAT-03-DPR-su-d0353-lay-and-authority-forced-GL-chrome\error-context.md
+
+  3) [edge] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority preferred
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 2
+    + Received  + 2
+
+      Object {
+    -   "x": 2,
+    -   "y": 2,
+    +   "x": 1,
+    +   "y": 1,
+      }
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      39 |   await expect.poll(()=>page.evaluate(()=>devicePixelRatio)).toBe(dpr);
+      40 |   // No Reset or CSS geometry change may be used to trigger this update.
+    > 41 |   await expect.poll(()=>map.locator('canvas').evaluate((c:HTMLCanvasElement)=>({x:c.width/c.clientWidth,y:c.height/c.clientHeight})) ).toEqual({x:dpr,y:dpr});
+         |                                                                                                                                        ^
+      42 |   await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);expect(await map.boundingBox()).toEqual(box);expect(await cam()).toEqual(saved);await expect(map).toHaveAttribute('data-mode','map-mode-terrain');
+      43 |   const image=png(await map.screenshot({path:`${evidence}/${info.project.name}-${force}-dpr${dpr}-${steps.length}.png`})),b=(await map.boundingBox())!,c=await cam(),x=(1-c.x)/c.width*b.width+b.width/2,y=(1-c.y)/c.height*b.height+b.height/2;
+      44 |   const actual=image.pixel(x*image.width/b.width,y*image.height/b.height),expected=world!.provinces.find(p=>p.id===10)!.terrain_color!;for(let i=0;i<3;i++)expect(Math.abs(actual[i]-expected[i])).toBeLessThanOrEqual(1);
+        at E:\openhoi\.orchestrator\wt\WP-08\client\e2e-m1\map-dpr.spec.ts:41:136
+
+    Error Context: test-results\map-dpr-REQ-PLAT-03-DPR-su-1d887-lay-and-authority-preferred-edge\error-context.md
+
+  4) [edge] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority forced GL
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 2
+    + Received  + 2
+
+      Object {
+    -   "x": 2,
+    -   "y": 2,
+    +   "x": 1,
+    +   "y": 1,
+      }
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      39 |   await expect.poll(()=>page.evaluate(()=>devicePixelRatio)).toBe(dpr);
+      40 |   // No Reset or CSS geometry change may be used to trigger this update.
+    > 41 |   await expect.poll(()=>map.locator('canvas').evaluate((c:HTMLCanvasElement)=>({x:c.width/c.clientWidth,y:c.height/c.clientHeight})) ).toEqual({x:dpr,y:dpr});
+         |                                                                                                                                        ^
+      42 |   await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);expect(await map.boundingBox()).toEqual(box);expect(await cam()).toEqual(saved);await expect(map).toHaveAttribute('data-mode','map-mode-terrain');
+      43 |   const image=png(await map.screenshot({path:`${evidence}/${info.project.name}-${force}-dpr${dpr}-${steps.length}.png`})),b=(await map.boundingBox())!,c=await cam(),x=(1-c.x)/c.width*b.width+b.width/2,y=(1-c.y)/c.height*b.height+b.height/2;
+      44 |   const actual=image.pixel(x*image.width/b.width,y*image.height/b.height),expected=world!.provinces.find(p=>p.id===10)!.terrain_color!;for(let i=0;i<3;i++)expect(Math.abs(actual[i]-expected[i])).toBeLessThanOrEqual(1);
+        at E:\openhoi\.orchestrator\wt\WP-08\client\e2e-m1\map-dpr.spec.ts:41:136
+
+    Error Context: test-results\map-dpr-REQ-PLAT-03-DPR-su-d0353-lay-and-authority-forced-GL-edge\error-context.md
+
+  5) [chromium] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority preferred
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 2
+    + Received  + 2
+
+      Object {
+    -   "x": 2,
+    -   "y": 2,
+    +   "x": 1,
+    +   "y": 1,
+      }
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      39 |   await expect.poll(()=>page.evaluate(()=>devicePixelRatio)).toBe(dpr);
+      40 |   // No Reset or CSS geometry change may be used to trigger this update.
+    > 41 |   await expect.poll(()=>map.locator('canvas').evaluate((c:HTMLCanvasElement)=>({x:c.width/c.clientWidth,y:c.height/c.clientHeight})) ).toEqual({x:dpr,y:dpr});
+         |                                                                                                                                        ^
+      42 |   await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);expect(await map.boundingBox()).toEqual(box);expect(await cam()).toEqual(saved);await expect(map).toHaveAttribute('data-mode','map-mode-terrain');
+      43 |   const image=png(await map.screenshot({path:`${evidence}/${info.project.name}-${force}-dpr${dpr}-${steps.length}.png`})),b=(await map.boundingBox())!,c=await cam(),x=(1-c.x)/c.width*b.width+b.width/2,y=(1-c.y)/c.height*b.height+b.height/2;
+      44 |   const actual=image.pixel(x*image.width/b.width,y*image.height/b.height),expected=world!.provinces.find(p=>p.id===10)!.terrain_color!;for(let i=0;i<3;i++)expect(Math.abs(actual[i]-expected[i])).toBeLessThanOrEqual(1);
+        at E:\openhoi\.orchestrator\wt\WP-08\client\e2e-m1\map-dpr.spec.ts:41:136
+
+    Error Context: test-results\map-dpr-REQ-PLAT-03-DPR-su-1d887-lay-and-authority-preferred-chromium\error-context.md
+
+  6) [chromium] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority forced GL
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 2
+    + Received  + 2
+
+      Object {
+    -   "x": 2,
+    -   "y": 2,
+    +   "x": 1,
+    +   "y": 1,
+      }
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      39 |   await expect.poll(()=>page.evaluate(()=>devicePixelRatio)).toBe(dpr);
+      40 |   // No Reset or CSS geometry change may be used to trigger this update.
+    > 41 |   await expect.poll(()=>map.locator('canvas').evaluate((c:HTMLCanvasElement)=>({x:c.width/c.clientWidth,y:c.height/c.clientHeight})) ).toEqual({x:dpr,y:dpr});
+         |                                                                                                                                        ^
+      42 |   await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);expect(await map.boundingBox()).toEqual(box);expect(await cam()).toEqual(saved);await expect(map).toHaveAttribute('data-mode','map-mode-terrain');
+      43 |   const image=png(await map.screenshot({path:`${evidence}/${info.project.name}-${force}-dpr${dpr}-${steps.length}.png`})),b=(await map.boundingBox())!,c=await cam(),x=(1-c.x)/c.width*b.width+b.width/2,y=(1-c.y)/c.height*b.height+b.height/2;
+      44 |   const actual=image.pixel(x*image.width/b.width,y*image.height/b.height),expected=world!.provinces.find(p=>p.id===10)!.terrain_color!;for(let i=0;i<3;i++)expect(Math.abs(actual[i]-expected[i])).toBeLessThanOrEqual(1);
+        at E:\openhoi\.orchestrator\wt\WP-08\client\e2e-m1\map-dpr.spec.ts:41:136
+
+    Error Context: test-results\map-dpr-REQ-PLAT-03-DPR-su-d0353-lay-and-authority-forced-GL-chromium\error-context.md
+
+  6 failed
+    [chrome] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority preferred
+    [chrome] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority forced GL
+    [edge] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority preferred
+    [edge] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority forced GL
+    [chromium] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority preferred
+    [chromium] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority forced GL

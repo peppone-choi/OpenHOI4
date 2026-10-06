@@ -1,0 +1,29 @@
+
+> openhoi-client@0.1.0 test:e2e
+> playwright test --config playwright.m1.config.ts --workers 1 map-dpr.spec.ts
+
+
+Running 10 tests using 1 worker
+
+(node:32340) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [chrome] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority preferred (2.3s)
+  ok  2 [chrome] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority forced GL (2.2s)
+(node:31300) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  3 [edge] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority preferred (2.9s)
+  ok  4 [edge] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority forced GL (2.2s)
+(node:8176) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  5 [chromium] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority preferred (4.7s)
+  ok  6 [chromium] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority forced GL (4.6s)
+(node:28124) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  7 [firefox] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority preferred (2.9s)
+  ok  8 [firefox] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority forced GL (1.4s)
+(node:34364) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  9 [webkit] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority preferred (2.8s)
+  ok 10 [webkit] › e2e-m1\map-dpr.spec.ts:7:33 › REQ-PLAT-03 DPR surface preserves display and authority forced GL (2.6s)
+
+  10 passed (33.6s)

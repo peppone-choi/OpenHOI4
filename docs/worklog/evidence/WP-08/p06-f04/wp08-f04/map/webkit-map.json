@@ -1,0 +1,43 @@
+{
+  "browser": "26.6",
+  "requests": [
+    "http://127.0.0.1:19440/?forceWebGL=1",
+    "http://127.0.0.1:19440/assets/index-C11MJPRn.js",
+    "http://127.0.0.1:19440/assets/index-B9cOsW2B.css",
+    "http://127.0.0.1:19440/fonts/NotoSansKR.ttf",
+    "ws://127.0.0.1:19440/ws",
+    "http://127.0.0.1:19440/pack/localisation/en/map.ftl",
+    "http://127.0.0.1:19440/pack/localisation/en/national.ftl",
+    "http://127.0.0.1:19440/pack/localisation/ko/map.ftl",
+    "http://127.0.0.1:19440/pack/localisation/ko/national.ftl",
+    "http://127.0.0.1:19440/maps/testland/metadata",
+    "http://127.0.0.1:19440/maps/testland/index.bin?pack=b8d30ba577f303c3"
+  ],
+  "errors": [],
+  "diagnostics": {
+    "testid": "province-map",
+    "backend": "webgl2",
+    "textureLimit": "16384",
+    "adapter": "Apple GPU",
+    "device": "WebGL 2.0",
+    "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+    "shaderLanguage": "glsl",
+    "shaderLength": "16167",
+    "frames": "174",
+    "selected": "10",
+    "mode": "map-mode-state",
+    "updatedBytes": "0",
+    "updateMs": "1",
+    "frameMs": "14.385057471264368",
+    "lastChangedBytes": "20",
+    "lastUpdateMs": "1",
+    "totalChangedBytes": "40",
+    "hover": "10"
+  },
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "scenario": "m1",
+  "seed": "1"
+}

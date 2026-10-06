@@ -75,6 +75,7 @@ export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8
  let viewWidth=width,viewHeight=height,zoom=presentation?.camera?.zoom??1,frame=0,started=performance.now(),mode=presentation?.mode??'map-mode-owner',world=initial,presented=false,lastWidth=0,lastHeight=0,lastRatio=0,recreateRaf=0;
  const publishCamera=()=>{units.value=viewWidth/host.clientWidth/zoom;if(presented)host.dataset.camera=JSON.stringify({width:viewWidth/zoom,height:viewHeight/zoom,x:camera.position.x+width/2,y:height/2-camera.position.y,zoom});};
  const resize=()=>{
+  if(disposed||recreateRaf)return;
   const w=host.clientWidth,h=host.clientHeight;if(!w||!h)return;
   const ratio=window.devicePixelRatio,changed=w!==lastWidth||h!==lastHeight||ratio!==lastRatio;
   // Fresh WebGL presentation surfaces avoid the Win-WebKit resized canvas
@@ -98,13 +99,15 @@ export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8
   await renderer.compileAsync(scene,camera);assertPipelines();
   const shader=await renderer.debug.getShaderAsync(scene,camera,scene.children[0]);
   if(presentation?.signal?.aborted)throw new Error('map-aborted');assertPipelines();
-  renderer.render(scene,camera);presented=true;publishCamera();
+  resize();renderer.render(scene,camera);presented=true;publishCamera();
   host.dataset.shaderLanguage=shader.fragmentShader?.includes('@fragment')?'wgsl':'glsl';host.dataset.shaderLength=String(shader.fragmentShader?.length??0);
  }catch(e){disposed=true;observer.disconnect();await renderer.dispose();geometry.dispose();material.dispose();for(const t of [indexTexture,colors,nations,states])t.dispose();clearCanvas();throw e;}
  host.addEventListener('pointerdown',down);host.addEventListener('pointermove',move);host.addEventListener('pointerup',up);host.addEventListener('pointercancel',cancel);host.addEventListener('pointerleave',leave);host.addEventListener('wheel',wheel,{passive:false});
  host.dataset.frames='1';
  let raf=0;
- const animate=()=>{if(disposed)return;try{assertPipelines();renderer.render(scene,camera);host.dataset.frames=String(++frame);host.dataset.frameMs=String((performance.now()-started)/frame);raf=requestAnimationFrame(animate);}catch{onFailure();}};raf=requestAnimationFrame(animate);
+ // CSS ResizeObserver does not signal a DPR-only change. The existing render
+ // loop also checks DPR; it needs no extra timer or browser-specific event.
+ const animate=()=>{if(disposed)return;try{if(window.devicePixelRatio!==lastRatio)resize();if(recreateRaf)return;assertPipelines();renderer.render(scene,camera);host.dataset.frames=String(++frame);host.dataset.frameMs=String((performance.now()-started)/frame);raf=requestAnimationFrame(animate);}catch{onFailure();}};raf=requestAnimationFrame(animate);
  return {
   update(next:WorldView,nextMode:string,id:number|null){
    validateWorldDisplay(next);

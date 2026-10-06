@@ -1,5 +1,4 @@
-import {expect} from '@playwright/test';
-import {test} from './resize-probe-fixture';
+import {expect,test} from '@playwright/test';
 import {decode,encode} from '@msgpack/msgpack';
 import {mkdirSync,writeFileSync} from 'node:fs';
 import type {ServerMessage,WorldView} from '../src/proto/protocol';

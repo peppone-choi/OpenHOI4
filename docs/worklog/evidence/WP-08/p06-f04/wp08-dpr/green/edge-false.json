@@ -1,0 +1,12 @@
+{
+  "browser": "154.0.4258.53",
+  "scope": "live CDP DPR1↔2, fixed CSS box",
+  "steps": [],
+  "errors": [],
+  "resources": {
+    "media": 1,
+    "listeners": 6,
+    "observers": 1,
+    "rafs": 2
+  }
+}
