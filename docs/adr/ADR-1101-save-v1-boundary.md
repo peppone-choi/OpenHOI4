@@ -36,6 +36,12 @@
 
 ## 결과와 영향
 
+### P-06 T15 transaction 오류 주입 (2026-10-07)
+
+private `TransactionIo`/`FilesystemIo`가 write_all·flush·file sync_all·NamedTempFile.persist·commit 이후 directory durability warning을 담당한다. `write_transaction` 하나가 기존 경로 검사·같은 디렉터리 임시 파일 생성·작업 순서·오류 매핑·명시 cleanup·commit 경계를 소유한다. public API/저장 bytes/정상 OS 호출·순서는 유지한다. persist 오류는 원래 NamedTempFile을 가진 PersistError로 돌아와 같은 cleanup에 연결한다. commit 이후 directory-sync 오류는 Ok의 warning이고 old-file 보존 실패로 표시하지 않는다.
+
+테스트 FaultIo는 실패하지 않는 단계에는 실제 FilesystemIo를 호출하고 선택 단계에만 오류를 반환한다. flush/sync 검사는 adapter 연결 전 직접 OS 호출 때문에 Err 기대가 실패하는 red 원문을 남긴 뒤 shared path 연결로 검사한다. 이것은 테스트 더블의 반환 오류 검사이며 실제 OS flush/sync 고장이나 전원 손실 실험이 아니다. 전체 bytes/SHA256·디렉터리 목록·export DTO/snapshot/nonempty queue/hash 불변성을 단계별 검사하고 최초 저장/덮어쓰기/decode/commit 후 경고를 검사한다. SHA256 helper는 test-only이며 표준 벡터로 대조하고 제품 hash/설정·의존성을 추가하지 않는다. 독립 검증의 이전 exact227 FAIL은 유지하고 새 HEAD를 재검증한다.
+
 새 header fields definitions_hash/effective_defines_hash는 불변 identity 검증을 보강하는 format v1 기술 선택이다. engine 정확 일치와 v1만 읽는 첫 포맷 정책은 보수적이며 이전/미래 버전은 명확히 거부한다. 구포맷을 실제 도입하면 §7.2 마이그레이션/명시 거부 fixture를 추가한다. 기존 M0 골든·Simulation Serialize·DR-07 FNV 경계는 변경하지 않는다.
 
 `oh_save`는 filesystem/time/compression을 다뤄도 `oh_sim`에는 I/O/clock/OS entropy를 추가하지 않는다. tempfile 이름의 host 난수는 Simulation RNG가 아니며 canonical에 넣지 않는다. 압축은 single-thread/no dictionary/fixed level·window, checksum enabled로 고정하고 번들 native zstd를 사용한다. 서로 다른 C build가 동일 bytes를 낼 것이라는 추정은 actual 3OS fixture 검사로 확인해야 한다. SHA256 증거는 Python 표준 hashlib로 생성하고 제품 hash 알고리즘을 바꾸지 않는다.
