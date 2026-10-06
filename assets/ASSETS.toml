@@ -43,3 +43,21 @@ license = "original"
 modified = false
 ai_generated = false
 notes = "Synthetic empty M0 epoch; no third-party or historical material. D-10 undecided."
+
+[[asset]]
+path = "client/public/locales/ko.json"
+author = "OpenHOI contributors"
+source = "original"
+license = "original"
+modified = false
+ai_generated = false
+notes = "Original M0 connection and time-control localization. No third-party text; D-10 undecided."
+
+[[asset]]
+path = "client/public/locales/en.json"
+author = "OpenHOI contributors"
+source = "original"
+license = "original"
+modified = false
+ai_generated = false
+notes = "Original M0 connection and time-control localization. No third-party text; D-10 undecided."

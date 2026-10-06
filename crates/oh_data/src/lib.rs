@@ -3,6 +3,7 @@
 //! Only manifest metadata and numeric defines are loaded here. Content registries,
 //! pack merging, reference integrity and CLI validation belong to later WPs.
 //! Numeric defines have no defaults. I/O stays outside the simulation layer.
+pub mod m0;
 mod raw;
 
 use raw::Source;
