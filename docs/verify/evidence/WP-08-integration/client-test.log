@@ -1,0 +1,24 @@
+cwd: E:\openhoi
+command: npm.cmd --prefix client test
+
+> openhoi-client@0.1.0 pretest
+> cargo run -p oh_proto --example wire_fixtures
+
+
+> openhoi-client@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 E:/openhoi/client
+
+
+ Test Files  7 passed (7)
+      Tests  130 passed (130)
+   Start at  00:52:21
+   Duration  897ms (import 49%, tests 21%, transform 21%, worker 8%)
+
+   Compiling oh_proto v0.1.0 (E:\openhoi\crates\oh_proto)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.30s
+     Running `E:\openhoi\target\debug\examples\wire_fixtures.exe`
+
+exit: 0

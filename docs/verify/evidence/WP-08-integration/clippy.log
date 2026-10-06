@@ -1,0 +1,19 @@
+cwd: E:\openhoi
+command: C:/Users/user/.cargo/bin/cargo.exe clippy --workspace --all-targets --locked -- -D warnings
+   Compiling serde_json v1.0.151
+    Checking form_urlencoded v1.2.2
+    Checking ryu v1.0.23
+    Checking serde_path_to_error v0.1.20
+   Compiling oh_server v0.1.0 (E:\openhoi\crates\oh_server)
+    Checking serde_urlencoded v0.7.1
+    Checking schemars v1.2.2
+    Checking axum v0.8.9
+    Checking oh_data v0.1.0 (E:\openhoi\crates\oh_data)
+    Checking oh_sim v0.1.0 (E:\openhoi\crates\oh_sim)
+    Checking oh_ai v0.1.0 (E:\openhoi\crates\oh_ai)
+    Checking oh_save v0.1.0 (E:\openhoi\crates\oh_save)
+    Checking oh_proto v0.1.0 (E:\openhoi\crates\oh_proto)
+    Checking oh_cli v0.1.0 (E:\openhoi\crates\oh_cli)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 3.63s
+
+exit: 0

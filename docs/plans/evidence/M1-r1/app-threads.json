@@ -194,12 +194,70 @@
       "worktree": "E:/openhoi/.orchestrator/wt/WP-08",
       "branch": "codex/wp08-map-rendering",
       "baseCommit": "b1da8f46fa7d2e849121424d5d2cf1ac36bfacd3",
-      "status": "active",
-      "appExit": "해당 없음(앱 실행)"
+      "status": "integrated-awaiting-main-CI",
+      "appExit": "해당 없음(앱 실행)",
+      "verificationCommit": "87c1a99a30de25732376d628958c68d37ce64cda",
+      "cursor": "a62a6b0a-9800-4c41-882e-b7bcb95ecd27:37",
+      "preview": {
+        "url": "http://127.0.0.1:19425/",
+        "pid": 32876,
+        "sourceCommit": "87c1a99a30de25732376d628958c68d37ce64cda",
+        "evidence": "docs/verify/evidence/WP-08-preview-p06/",
+        "legacyPreview": "19418 f58 retained; automatic termination review blocked"
+      },
+      "mergeCommit": "9dcf19947006dd62fcfde48d7f9204a71d4b8e38"
+    },
+    {
+      "run": "M1-r1",
+      "WP": "WP-08",
+      "role": "verify",
+      "threadId": "01a111b8-52f5-7853-b33e-a347d1efe57b",
+      "hostId": "local",
+      "worktree": "E:/openhoi/.orchestrator/wt/WP-08-verify",
+      "branch": "detached",
+      "verificationCommit": "f58c0c61322287f48318bce47ca51deb7daebcc9",
+      "status": "FAIL-invariance-confirmed",
+      "beforeSnapshot": "E:/openhoi/.orchestrator/evidence/WP-08.verify.before.json",
+      "appExit": "해당 없음(앱 실행)",
+      "cursor": "a5cbb3ab-ede3-469d-8c50-829b57354bf8:21",
+      "finalReport": "docs/verify/WP-08.attempt1.md"
+    },
+    {
+      "run": "M1-r1",
+      "WP": "M1",
+      "role": "verify",
+      "threadId": "01a111b8-5d52-7432-badf-6e09e77ea53d",
+      "hostId": "local",
+      "worktree": "E:/openhoi/.orchestrator/wt/M1-play",
+      "branch": "detached",
+      "verificationCommit": "f58c0c61322287f48318bce47ca51deb7daebcc9",
+      "status": "UI-scope-PASS-invariance-confirmed",
+      "beforeSnapshot": "E:/openhoi/.orchestrator/evidence/M1.play.before.json",
+      "appExit": "해당 없음(앱 실행)",
+      "task": "ui-play",
+      "cursor": "e7f0584a-c5c4-458b-aef9-7164e00fb2ca:14",
+      "finalReport": "docs/play/M1-r1.md"
+    },
+    {
+      "run": "M1-r1",
+      "WP": "WP-08",
+      "role": "verify",
+      "attempt": 2,
+      "threadId": "01a111db-1a89-78a1-b2b8-c8c20c812bfc",
+      "hostId": "local",
+      "worktree": "E:/openhoi/.orchestrator/wt/WP-08-verify2",
+      "branch": "detached",
+      "verificationCommit": "87c1a99a30de25732376d628958c68d37ce64cda",
+      "status": "PASS-invariance-confirmed",
+      "beforeSnapshot": "E:/openhoi/.orchestrator/evidence/WP-08.verify2.before.json",
+      "appExit": "해당 없음(앱 실행)",
+      "cursor": "2f323306-5aee-4793-8a19-b18d033003a0:26",
+      "promptDelivery": "첫 준비파일 오류 출력 즉시 전문 정정; 초기 main 문서/Git 읽기만, 추적 변경·세션/프로세스조작 없음. 실제 검증은 지정2458tracked detached worktree",
+      "finalReport": "docs/verify/WP-08.md"
     }
   ],
   "groupsIntegratedThisRun": [
     "M1-W1"
   ],
-  "phase": "M1-W2-WP08-implementation"
+  "phase": "M1-W2-main-integration-CI"
 }

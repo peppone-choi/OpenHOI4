@@ -1,0 +1,149 @@
+[
+  {
+    "path": "assets.log",
+    "source_sha256": "0b1762199942ba1d2e916cbdf98893060ba9cb3a86ade9cad231d738c8a8bd98",
+    "bytes": 163,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "8b0186ea394bf716f89f4dc23848d89132e850570ae8d38f40c483f74c53f981"
+  },
+  {
+    "path": "client-build.log",
+    "source_sha256": "dc8562a588ddb7913dd4eae66dcbedd820902705a3e8e4a11d9e65611af4164f",
+    "bytes": 868,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "bbb8ef6c7e00ffb66372605acc5108c6a4eabbc09bf1e75491b37da0175fd29d"
+  },
+  {
+    "path": "client-test.log",
+    "source_sha256": "6aad636cafafc20bb7f2b843d9a092a275e7ece11880b76ddc8443c5b20d0f69",
+    "bytes": 589,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "d67e84c31d34248b9f65c96b64acd60e65829a8322e2de9a0955563bfbfb0b92"
+  },
+  {
+    "path": "client-typecheck.log",
+    "source_sha256": "88035adc000168672440e307801fbc913768b3393dc3f95dee6c1c98d04f0b4f",
+    "bytes": 130,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "b12d4fb6e75852f652004336167c17ebaf58196d212b41c8077f527b6b0fea77"
+  },
+  {
+    "path": "clippy.log",
+    "source_sha256": "841a6b7e4ecdaf0e3a65ac78985fd066a80f9bee208e1874fa156242cbab8958",
+    "bytes": 833,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "1858c7ebe40a550cd9ce9170881d225768b4684df0c5b2aaa31b7494728de39b"
+  },
+  {
+    "path": "docs.log",
+    "source_sha256": "f203557e75105b5dd36588d2ea04d15f2cdf57f4dcdfdb58188d100fa6da5b42",
+    "bytes": 450,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "f12f73118f81783da4dfb91192998b6cf30512d4646a34469d249dcb39bc4951"
+  },
+  {
+    "path": "fmt.log",
+    "source_sha256": "2b7e119d0b5178998531dfe04d203461e27f2c136d5246cdc1484fe3d4750b53",
+    "bytes": 85,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "7d942d21f5c83edbb140adaa7918827098b1b01a61716d12d3a106fbdddfcdc6"
+  },
+  {
+    "path": "hash-1.log",
+    "source_sha256": "d5275eaf341049e1a40fcacc7f8d4eae320836f77962a5a8aa61506422b8aae2",
+    "bytes": 395,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "0972bd616baef3f7c849708e0ce5adb87a64a8e8712899d16a2a158b5ccfe065"
+  },
+  {
+    "path": "hash-2.log",
+    "source_sha256": "feaf80e8671c2c1264ecb3e98389d6e2de9b275a218dee5286c934f8c7cf7bbd",
+    "bytes": 340,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "5a9a0eb7cc60609df37e63e08dbe71b0abf23aa7308c7ba2ebc7ce5323120145"
+  },
+  {
+    "path": "m1-capture.log",
+    "source_sha256": "9b68a7abbf3f2c80f8baf5cd98bef596d31a12efafdc01f164a3cbf82e74cd51",
+    "bytes": 310,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "6ed179bbfa724b5b162210756da95aec6aa630a63a84a9128f1ae759de7cbfc4"
+  },
+  {
+    "path": "m1-hash-1.log",
+    "source_sha256": "4c43e57958fd5b49d47709117211c8cd65658ae07878bd4c42d5d977b7030f0f",
+    "bytes": 382,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "f6e2768549673f3534fded501496d8550182caa52ac4601ccec28b339e2ae767"
+  },
+  {
+    "path": "m1-hash-2.log",
+    "source_sha256": "29a9e8c5e1004281232b50dcb76f83f613c8290daaa7194cb1a388ca6f319c6e",
+    "bytes": 382,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "3a8c8f39c55b7a059a5effe2618a1200e5d004ef9a59828d46e0639f02c2a0e8"
+  },
+  {
+    "path": "npm-ci.log",
+    "source_sha256": "4bdeceb5acf6ed478e8638bf60f8c15bed15f75fc0193b9f3afb0f84d8746052",
+    "bytes": 215,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "59cd8022e89822cdcf0f99e1563902c745385a53826a6abdc8c061bdb6bc2bdd"
+  },
+  {
+    "path": "npm-licenses.log",
+    "source_sha256": "bebf04c5366abe41aa013351e31017ec0a6c9dd6393207af938da95d72f65e2d",
+    "bytes": 196,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "1d5d57e65c1640364c9f75d12c8fc00c8ba235d406679d473d92e0f1ef54bdec"
+  },
+  {
+    "path": "policy-tests.log",
+    "source_sha256": "fca14918222855515768235388dd0bf1540bfb48b8536327724d9c215026a33c",
+    "bytes": 42310,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "b5c012de9e0b867324afc3d0981a2ffd718bd7651926c1c9e30207e0bf13330b"
+  },
+  {
+    "path": "rust-tests.log",
+    "source_sha256": "bebe157c13dbcffc1ea45ca1371a687fb85175334f8c8db8f089cfb68e7df644",
+    "bytes": 11121,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "264b3265a67c0930366d9cd301ec92d0932dc77aea45dd92b12023ebf3122e5c"
+  },
+  {
+    "path": "summary.json",
+    "source_sha256": "efc084b45a0542330ae4f2c570bf8c1d45d3f5c37cb102d31bfaef83d2785017",
+    "bytes": 6227,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "f45debcdd12193935627ef5404f5c9495fc6bd5d3e436a1ab344a0ed6ffd6602"
+  },
+  {
+    "path": "m1-capture/command.json",
+    "source_sha256": "8f269e22d2a80a43288517925a2099f944062cd521fa3a968ae900d4203f9ae1",
+    "bytes": 169,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "b0be350b91738fb143a8a86454e7c844f064f81299d46c2f597792145fbe0b82"
+  },
+  {
+    "path": "m1-capture/run-1.txt",
+    "source_sha256": "b7c9e56bb4c0b9558b66175520564c542c130be3c4d581edc78a7ecc0bf00e5c",
+    "bytes": 18,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "ac708652c36bfc55988bffe58b3a0c3cc61be9c3a2c8b55f19c754258a897046"
+  },
+  {
+    "path": "m1-capture/run-2.txt",
+    "source_sha256": "b7c9e56bb4c0b9558b66175520564c542c130be3c4d581edc78a7ecc0bf00e5c",
+    "bytes": 18,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "ac708652c36bfc55988bffe58b3a0c3cc61be9c3a2c8b55f19c754258a897046"
+  },
+  {
+    "path": "m1-capture/sim-hash.txt",
+    "source_sha256": "b7c9e56bb4c0b9558b66175520564c542c130be3c4d581edc78a7ecc0bf00e5c",
+    "bytes": 18,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "ac708652c36bfc55988bffe58b3a0c3cc61be9c3a2c8b55f19c754258a897046"
+  }
+]

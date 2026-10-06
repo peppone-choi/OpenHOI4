@@ -1,16 +1,16 @@
 # M1 증거 연결표
 
-2026-10-06, M1-r1 W1 통합 시점. 게이트 판정이 아니라 다음 독립 게이트가 실제 증거를 찾기 위한 연결표다. W1 검증은 각 구현 커밋의 불변성을 확인했으며, 통합 main `4ed5e57c2bdfedf0dbf31445ffb009e8816af334`의 CI 세 종류가 success였다. 이후 M1 제품이 바뀌면 그 정확한 HEAD의 통합·회귀·독립 게이트 증거를 확인한다.
+2026-10-07, M1-r1 WP-08 수정 독립 PASS·main 통합 후. 게이트 판정이 아니라 다음 독립 게이트가 실제 증거를 찾기 위한 연결표다. W1 main4ed5e57·WP09 mainb1da8f4의 CI 세 종류 success와 실제 M1 세 OS 해시를 확인했다. WP08의 정확한87c1a99는 새 독립 PASS·부모2458파일 불변 확인 후 main9dcf199에 통합했고 P07 로컬16검사를 통과했다. 통합 후 정확한main HEAD CI는 별도 확인한다.
 
 | AC | 현재 증거 | 아직 필요한 연결 |
 |---|---|---|
 | AC-M1-01 | WP-07 717b78f 독립 PASS, 94개 지도 입력·인접/주/ID/거리 검사. main 통합됨 | 후속 팩 변경이 있으면 최종 게이트에서 다시 대조 |
-| AC-M1-02 | M0 단일 서버·시간 셸만 기존 PASS | WP-08 실제 지도, 정치/지형/주 3종 캡처·3단계 국경·선택/호버·백엔드·자체 HTTP |
-| AC-M1-03 | WP-10 44cc3ea 계산 기반 PASS, WP-12 8831613 표시 기본형 PASS, WP-09 206fb45 실제 국가/주·query·원장 독립 PASS·main 통합 검사 통과 | b1da8f4 같은 HEAD CI success 확인, WP-08 지도 선택과 패널 연결 |
+| AC-M1-02 | WP08 87c1a99 새 독립 PASS: 실제 WebGPU/WebGL2 픽셀·세 국경·선택/호버·팬줌·단일 서버/HTTP·165브라우저 회귀. 첫f58 metadata/index redirect FAIL과 새차단 증거 보존 | 최종main 동일HEAD CI·새게이트에서 최신팩/화면 대조 |
+| AC-M1-03 | WP10 계산·WP12 표시·WP09 실제 Query·WP08 지도 선택과 국가/주/원장1/0 연결 독립 PASS, main 통합 로컬 검사 통과 | 저장 후 조회까지의 연결은 WP11 이후 새게이트에서 대조 |
 | AC-M1-04 | 없음. 저장 없이 M0 시간 hash 2회는 이 AC 증거가 아님 | WP-11 실제 M1 상태 저장→재개와 연속 실행 hash 일치, 신규 국가/주·원장입력·큐 포함 |
-| AC-M1-05 | WP-12 ko/en·Fluent·자체 호스팅 CJK 독립 PASS. 수정 후 실제 서버 5브라우저 총75검사 | 국가/주 팩 키와 지도·패널 추가 후 언어 회귀 |
-| AC-M1-06 | M0 WP-04 처리 순서 PASS, WP-12 실제 서버 시간 조작 회귀 PASS | WP-09/08 새 UI에서 정지/속도5단계와 새 상태 처리 순서 대조 |
-| AC-M1-07 | W1 WP-07/10/12 통합됨. WP-09 독립 PASS·통합 검사·b1da8f4 main CI success·실제 M1 세 OS 비교 통과 | M1 필수14 REQ 전체·WP-08/11 독립 PASS·같은 HEAD CI·새 독립 P-12 |
+| AC-M1-05 | WP12 ko/en·Fluent·자체 CJK PASS, WP09/08 실제 국가/주/지형 키·오류 안내와 언어 전환 회귀 PASS | 저장 UI/후속문자열 추가 때 최신게이트 회귀 |
+| AC-M1-06 | WP04 고정 처리순서, WP12/09/08 실제 시간5단계·정지 회귀 PASS. 직접 UI 플레이와 자동검사 별도 | WP11 재개 이후 동일 순서·조회 결과 대조 |
+| AC-M1-07 | WP07/10/12/09/08 독립 PASS·통합됨. WP08 P07 로컬 통과 | WP11 독립 PASS·통합, 최종필수14 REQ/같은HEAD CI·새P12 |
 
 | M1 필수 REQ | 증거 소유·현재 범위 |
 |---|---|
@@ -28,4 +28,4 @@
 
 M1-r1은 두 묶음 통합이 먼저 끝나면 WP-11과 게이트를 다음 RUN에 남긴다. 이 표에서 미완료가 사라졌다는 이유만으로 게이트 PASS를 선언하지 않는다. 새 독립 검증 채팅의 P-12 전문·같은 HEAD CI가 필요하다.
 
-WP-09 실제 M1 CI 추가 증거: b1da8f4의 3OS ZIP digest를 직접 검증하고 compare --m1 exit0, 세 OS hash60448355cecffa9d 일치를 확인했다. `docs/verify/evidence/WP-09/main-ci/`를 참조한다. 저장 재개 DT와 GPU 지도 증거는 아직 별도 후속이다.
+WP09 실제 M1 CI 추가 증거: b1da8f4의 3OS ZIP digest를 직접 검증하고 compare --m1 exit0, 세 OS hash60448355cecffa9d 일치를 확인했다. `docs/verify/evidence/WP-09/main-ci/`를 참조한다. WP08 GPU/HTTP 증거는 [새 독립 전문](../verify/WP-08.md), [최초 FAIL](../verify/WP-08.attempt1.md), [통합 로그](../verify/evidence/WP-08-integration/summary.json)에 있다. 저장 재개 DT는 WP11 후속이며 실제 M1 시간 hash로 대신하지 않는다.

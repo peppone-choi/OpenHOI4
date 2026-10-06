@@ -1,0 +1,5 @@
+cwd: E:\openhoi
+command: C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe -X utf8 tools/check_assets.py --release
+assets: 0 error(s)
+
+exit: 0
