@@ -1,0 +1,33 @@
+
+Running 1 test using 1 worker
+
+(node:6240) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [firefox] › e2e-m1\map.spec.ts:104:1 › REQ-PLAT-03 no backend shows localized notices (1.1s)
+
+
+  1) [firefox] › e2e-m1\map.spec.ts:104:1 › REQ-PLAT-03 no backend shows localized notices ─────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 3
+
+    - Array []
+    + Array [
+    +   "can't access property \"getSupportedExtensions\", this.gl is null",
+    + ]
+
+      106 |  await page.addInitScript(()=>{Object.defineProperty(navigator,'gpu',{value:undefined});const original=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(this:HTMLCanvasElement,type:string,...args:unknown[]){if(type==='webgl2')return null;return Reflect.apply(original,this,[type,...args]);} as typeof original;});
+      107 |  await page.goto('/');await expect(page.getByRole('alert')).toContainText('could not initialize WebGPU or WebGL2');await expect(page.getByTestId('province-map').locator('canvas')).toHaveCount(0);await page.getByRole('combobox').selectOption('ko');await expect(page.getByRole('alert')).toContainText('초기화할 수 없습니다');
+    > 108 |  expect(errors).toEqual([]);
+          |                 ^
+      109 | });
+      110 | test('REQ-PLAT-03 actual WebGL2 texture limit is checked before texture creation',async({page})=>{
+      111 |  await page.addInitScript(()=>{Object.defineProperty(navigator,'gpu',{value:undefined});const original=WebGL2RenderingContext.prototype.getParameter;WebGL2RenderingContext.prototype.getParameter=function(parameter:number){return parameter===this.MAX_TEXTURE_SIZE?128:original.call(this,parameter);};});
+        at E:\openhoi\.orchestrator\wt\WP-08\client\e2e-m1\map.spec.ts:108:17
+
+    Error Context: test-results\map-REQ-PLAT-03-no-backend-shows-localized-notices-firefox\error-context.md
+
+  1 failed
+    [firefox] › e2e-m1\map.spec.ts:104:1 › REQ-PLAT-03 no backend shows localized notices ──────────

@@ -101,9 +101,15 @@ for(const failure of ['missingGPU','nullAdapter','adapterReject','deviceReject',
  await page.goto('/');const map=page.getByTestId('province-map');await expect(map).toHaveAttribute('data-backend','webgl2');await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);await page.mouse.move(0,0);
  const p=await mapPoint(map,1,1);closeRGB(png(await map.screenshot({path:`${evidence}/${info.project.name}-${failure}.png`})).pixel(p.x,p.y),[40,100,180]);
 });
-test('REQ-PLAT-03 no backend shows localized notices',async({page})=>{
- await page.addInitScript(()=>{Object.defineProperty(navigator,'gpu',{value:undefined});const original=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(this:HTMLCanvasElement,type:string,...args:unknown[]){if(type==='webgl2')return null;return Reflect.apply(original,this,[type,...args]);} as typeof original;});
+for(const preferred of [false,true])test(`REQ-PLAT-03 no backend shows localized notices${preferred?' after preferred rejection':''}`,async({page},info)=>{
+ const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.addInitScript(prefer=>{Object.defineProperty(navigator,'gpu',{value:prefer?{requestAdapter:async()=>null}:undefined});const original=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(this:HTMLCanvasElement,type:string,...args:unknown[]){if(type==='webgl2')return null;return Reflect.apply(original,this,[type,...args]);} as typeof original;},preferred);
  await page.goto('/');await expect(page.getByRole('alert')).toContainText('could not initialize WebGPU or WebGL2');await expect(page.getByTestId('province-map').locator('canvas')).toHaveCount(0);await page.getByRole('combobox').selectOption('ko');await expect(page.getByRole('alert')).toContainText('초기화할 수 없습니다');
+ await page.getByTestId('pause').click();await expect(page.getByTestId('pause')).toHaveText('재개');
+ const tick=await page.getByTestId('tick').textContent();await expect(page.getByTestId('country-panel')).toContainText('북부 시험국');await expect(page.getByTestId('state-panel').locator('.ledger-value strong')).toHaveText('1');
+ await page.getByRole('combobox').selectOption('en');await expect(page.getByRole('alert')).toContainText('could not initialize WebGPU or WebGL2');await expect(page.getByTestId('tick')).toHaveText(tick!);await expect(page.getByTestId('country-panel')).toContainText('Northern Test Nation');
+ expect(errors).toEqual([]);
+ writeFileSync(`${evidence}/${info.project.name}-no-backend-${preferred?'preferred':'direct'}.json`,JSON.stringify({preferred,errors,tick,canvas:0,authorityPreserved:true},null,2));
 });
 test('REQ-PLAT-03 actual WebGL2 texture limit is checked before texture creation',async({page})=>{
  await page.addInitScript(()=>{Object.defineProperty(navigator,'gpu',{value:undefined});const original=WebGL2RenderingContext.prototype.getParameter;WebGL2RenderingContext.prototype.getParameter=function(parameter:number){return parameter===this.MAX_TEXTURE_SIZE?128:original.call(this,parameter);};});

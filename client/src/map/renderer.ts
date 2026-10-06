@@ -13,7 +13,14 @@ export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8
  const {width,height,style}=meta;
  const renderer=new WebGPURenderer({forceWebGL,antialias:false,alpha:false});
  let disposed=false;
- try{await renderer.init();}catch(e){renderer.dispose();throw e;}
+ try{await renderer.init();}catch(e){
+  // Three r186 dispose() starts setAnimationLoop(null), which reuses the
+  // rejected init promise. Release any partial GPU allocation without
+  // re-entering that failed initialization; the unattached canvas can be GC'd.
+  const partial=renderer.backend as typeof renderer.backend & {device?:GPUDevice;gl?:WebGL2RenderingContext};
+  partial.device?.destroy();partial.gl?.getExtension('WEBGL_lose_context')?.loseContext();
+  throw e;
+ }
  const backend=renderer.backend as typeof renderer.backend & {isWebGPUBackend?:boolean;device?:GPUDevice;gl?:WebGL2RenderingContext};
  const limit=backend.device?.limits.maxTextureDimension2D??backend.gl?.getParameter(backend.gl.MAX_TEXTURE_SIZE)??0;
  if(Math.max(width,height,LOOKUP_SIZE)>limit){renderer.dispose();throw new Error('map-texture-limit');}
