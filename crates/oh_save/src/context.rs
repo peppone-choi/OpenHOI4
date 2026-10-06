@@ -136,9 +136,10 @@ pub fn pack_hash(root: &Path) -> Result<u64> {
                 let relative = path
                     .strip_prefix(root)
                     .map_err(|e| e.to_string())?
-                    .to_str()
-                    .ok_or("PackPath: non-UTF8")?
-                    .replace('\\', "/");
+                    .components()
+                    .map(|component| component.as_os_str().to_str().ok_or("PackPath: non-UTF8"))
+                    .collect::<std::result::Result<Vec<_>, _>>()?
+                    .join("/");
                 files.push((
                     relative,
                     fs::read(&path).map_err(|e| format!("{}: {e}", path.display()))?,

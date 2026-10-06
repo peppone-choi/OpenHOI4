@@ -196,6 +196,20 @@ fn req_sav_01_whole_path_sort_and_save_location() {
         assert!(pack_hash(dir.path()).is_err());
     }
 }
+#[cfg(unix)]
+#[test]
+fn req_sav_01_literal_backslash_is_not_a_directory_separator() {
+    let dir = tempfile::tempdir().unwrap();
+    fs::create_dir_all(dir.path().join("a")).unwrap();
+    fs::write(dir.path().join("a/x"), b"nested").unwrap();
+    fs::write(dir.path().join("a\\x"), b"literal").unwrap();
+    let expected = oh_core::state_hash(&vec![
+        ("a/x", b"nested".to_vec()),
+        ("a\\x", b"literal".to_vec()),
+    ])
+    .unwrap();
+    assert_eq!(pack_hash(dir.path()).unwrap(), expected);
+}
 #[test]
 fn req_sav_02_paused_failure_keeps_input_file_and_live_queue() {
     let c = SaveContext::national(
