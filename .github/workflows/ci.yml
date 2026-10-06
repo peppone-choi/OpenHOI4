@@ -1,0 +1,88 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  schedule:
+    # 03:17 Asia/Seoul; macOS runs nightly during the private period (D-14).
+    - cron: '17 18 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  server:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ${{ fromJSON((github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/') || github.event.repository.private == false) && '["ubuntu-latest","windows-latest","macos-latest"]' || '["ubuntu-latest","windows-latest"]') }}
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - name: Install pinned Rust toolchain
+        run: rustup toolchain install 1.99.0 --profile minimal --component rustfmt --component clippy
+      - run: cargo fmt --check
+      - run: cargo clippy --workspace --locked -- -D warnings
+      - run: cargo build --workspace --locked
+      - run: cargo test --workspace --locked
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.11'
+      - name: Enforce simulation dependency boundaries
+        run: python tools/check_architecture.py
+
+  client:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.0.0
+        with:
+          node-version: '24.4.0'
+          cache: npm
+          cache-dependency-path: client/package-lock.json
+      - run: npm --prefix client ci
+      - run: npm --prefix client run typecheck
+      - run: npm --prefix client test
+      - run: npm --prefix client run build
+      - name: Browser compatibility smoke tests
+        working-directory: client
+        run: |
+          npx playwright install --with-deps chromium firefox webkit
+          npm run test:e2e
+
+  licenses:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - run: rustup toolchain install 1.99.0 --profile minimal --component rustfmt --component clippy
+      - run: cargo install cargo-deny --version 0.20.2 --locked
+      - run: cargo deny check licenses bans advisories sources
+      - uses: actions/setup-node@v7.0.0
+        with:
+          node-version: '24.4.0'
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.11'
+      - run: npm --prefix client ci
+      - run: npm --prefix client run licenses
+      - name: Requirement and violation fixtures
+        run: python -m unittest discover -s tools/tests -p test_wp01.py -v
+
+  assets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.11'
+      - run: python tools/check_assets.py --release
+
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.11'
+      - run: python tools/check_docs.py

@@ -1,0 +1,18 @@
+# Dependency policy: docs/02-production-spec.md section 14.3.
+[licenses]
+allow = ["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Zlib", "MPL-2.0", "Unicode-3.0", "BSL-1.0", "CC0-1.0"]
+include-dev = true
+confidence-threshold = 0.95
+
+# D-10 is unresolved. Only unpublished first-party crates are exempt.
+[licenses.private]
+ignore = true
+
+[bans]
+multiple-versions = "warn"
+wildcards = "deny"
+deny = [{ name = "bincode" }]
+
+[sources]
+unknown-registry = "deny"
+unknown-git = "deny"

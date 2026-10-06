@@ -1,0 +1,7 @@
+$ node C:/Program Files/nodejs/node_modules/npm/bin/npm-cli.js --prefix client run licenses
+exit=0
+
+> openhoi-client@0.1.0 licenses
+> node ../tools/check_npm_licenses.cjs
+
+npm licenses: 91 dependencies; 0 error(s)
