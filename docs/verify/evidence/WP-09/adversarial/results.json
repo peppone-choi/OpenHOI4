@@ -1,0 +1,1919 @@
+{
+  "rows": [
+    {
+      "product": "chrome",
+      "name": "bad-id-shape",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chrome",
+      "name": "bad-state-shape",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chrome",
+      "name": "bad-province-shape",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chrome",
+      "name": "bad-scalar-shape",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chrome",
+      "name": "bad-support-shape",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chrome",
+      "name": "bad-ledger-row",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chrome",
+      "name": "bad-palette",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chrome",
+      "name": "bad-world-metadata",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chrome",
+      "name": "unknown-state-owner",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwner—Population1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chrome",
+      "name": "unknown-province-owner",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 5,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20—Southern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chrome",
+      "name": "unknown-controller",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test Nation—",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chrome",
+      "name": "unknown-state",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chrome",
+      "name": "unknown-capital",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 5,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province65535GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 4Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 7
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chrome",
+      "name": "empty-nations",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "Country",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwner—Population1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10——20——",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chrome",
+      "name": "empty-states",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 5,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "State",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chrome",
+      "name": "empty-provinces",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chrome",
+      "name": "empty-ledger",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1No contributionsProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chrome",
+      "name": "empty-support",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chrome",
+      "name": "null-world",
+      "kind": "preserve",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chrome",
+      "name": "refused-world",
+      "kind": "preserve",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chrome",
+      "name": "precision-wire",
+      "kind": "precision",
+      "errors": [],
+      "worlds": 5,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 2.0000000005Value ledgerTick: 0Base value1Final value2.0000000005ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11The server sent an unavailable messageSource: The server sent an unavailable messageAdd0.00000000021.0000000002The server sent an unavailable messageSource: The server sent an unavailable messageMultiply22.0000000005ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 7
+      },
+      "externalRequests": [],
+      "preciseLedger": {
+        "base": "1",
+        "final_value": "2.0000000005",
+        "tick": "0",
+        "entries": [
+          {
+            "id": "0",
+            "label_key": "infrastructure",
+            "operation_key": "ledger-base",
+            "value": "1",
+            "accumulated": "1",
+            "source_key": null
+          },
+          {
+            "id": "1",
+            "label_key": "z-add",
+            "operation_key": "ledger-add",
+            "value": "0.0000000002",
+            "accumulated": "1.0000000002",
+            "source_key": "z-add"
+          },
+          {
+            "id": "2",
+            "label_key": "a-mul",
+            "operation_key": "ledger-multiply",
+            "value": "2",
+            "accumulated": "2.0000000005",
+            "source_key": "a-mul"
+          }
+        ]
+      }
+    },
+    {
+      "product": "edge",
+      "name": "bad-id-shape",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "edge",
+      "name": "bad-state-shape",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "edge",
+      "name": "bad-province-shape",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "edge",
+      "name": "bad-scalar-shape",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "edge",
+      "name": "bad-support-shape",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "edge",
+      "name": "bad-ledger-row",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "edge",
+      "name": "bad-palette",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "edge",
+      "name": "bad-world-metadata",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "edge",
+      "name": "unknown-state-owner",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 5,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwner—Population1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "edge",
+      "name": "unknown-province-owner",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20—Southern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "edge",
+      "name": "unknown-controller",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test Nation—",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "edge",
+      "name": "unknown-state",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 5,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 4Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 7
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "edge",
+      "name": "unknown-capital",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province65535GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "edge",
+      "name": "empty-nations",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "Country",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwner—Population1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10——20——",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "edge",
+      "name": "empty-states",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 5,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "State",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "edge",
+      "name": "empty-provinces",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "edge",
+      "name": "empty-ledger",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1No contributionsProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "edge",
+      "name": "empty-support",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "edge",
+      "name": "null-world",
+      "kind": "preserve",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "edge",
+      "name": "refused-world",
+      "kind": "preserve",
+      "errors": [],
+      "worlds": 5,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "edge",
+      "name": "precision-wire",
+      "kind": "precision",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 2.0000000005Value ledgerTick: 0Base value1Final value2.0000000005ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11The server sent an unavailable messageSource: The server sent an unavailable messageAdd0.00000000021.0000000002The server sent an unavailable messageSource: The server sent an unavailable messageMultiply22.0000000005ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": [],
+      "preciseLedger": {
+        "base": "1",
+        "final_value": "2.0000000005",
+        "tick": "0",
+        "entries": [
+          {
+            "id": "0",
+            "label_key": "infrastructure",
+            "operation_key": "ledger-base",
+            "value": "1",
+            "accumulated": "1",
+            "source_key": null
+          },
+          {
+            "id": "1",
+            "label_key": "z-add",
+            "operation_key": "ledger-add",
+            "value": "0.0000000002",
+            "accumulated": "1.0000000002",
+            "source_key": "z-add"
+          },
+          {
+            "id": "2",
+            "label_key": "a-mul",
+            "operation_key": "ledger-multiply",
+            "value": "2",
+            "accumulated": "2.0000000005",
+            "source_key": "a-mul"
+          }
+        ]
+      }
+    },
+    {
+      "product": "chromium",
+      "name": "bad-id-shape",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chromium",
+      "name": "bad-state-shape",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chromium",
+      "name": "bad-province-shape",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chromium",
+      "name": "bad-scalar-shape",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chromium",
+      "name": "bad-support-shape",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chromium",
+      "name": "bad-ledger-row",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chromium",
+      "name": "bad-palette",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chromium",
+      "name": "bad-world-metadata",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chromium",
+      "name": "unknown-state-owner",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwner—Population1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chromium",
+      "name": "unknown-province-owner",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20—Southern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chromium",
+      "name": "unknown-controller",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test Nation—",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chromium",
+      "name": "unknown-state",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 5,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chromium",
+      "name": "unknown-capital",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province65535GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chromium",
+      "name": "empty-nations",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 5,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "Country",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwner—Population1000Steel2Industry1Infrastructure 1Value ledgerTick: 4Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10——20——",
+      "ws": {
+        "close": 0,
+        "send": 7
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chromium",
+      "name": "empty-states",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "State",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chromium",
+      "name": "empty-provinces",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chromium",
+      "name": "empty-ledger",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 5,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1No contributionsProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chromium",
+      "name": "empty-support",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 5,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 4Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 7
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chromium",
+      "name": "null-world",
+      "kind": "preserve",
+      "errors": [],
+      "worlds": 5,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chromium",
+      "name": "refused-world",
+      "kind": "preserve",
+      "errors": [],
+      "worlds": 5,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "chromium",
+      "name": "precision-wire",
+      "kind": "precision",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 2.0000000005Value ledgerTick: 0Base value1Final value2.0000000005ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11The server sent an unavailable messageSource: The server sent an unavailable messageAdd0.00000000021.0000000002The server sent an unavailable messageSource: The server sent an unavailable messageMultiply22.0000000005ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": [],
+      "preciseLedger": {
+        "base": "1",
+        "final_value": "2.0000000005",
+        "tick": "0",
+        "entries": [
+          {
+            "id": "0",
+            "label_key": "infrastructure",
+            "operation_key": "ledger-base",
+            "value": "1",
+            "accumulated": "1",
+            "source_key": null
+          },
+          {
+            "id": "1",
+            "label_key": "z-add",
+            "operation_key": "ledger-add",
+            "value": "0.0000000002",
+            "accumulated": "1.0000000002",
+            "source_key": "z-add"
+          },
+          {
+            "id": "2",
+            "label_key": "a-mul",
+            "operation_key": "ledger-multiply",
+            "value": "2",
+            "accumulated": "2.0000000005",
+            "source_key": "a-mul"
+          }
+        ]
+      }
+    },
+    {
+      "product": "firefox",
+      "name": "bad-id-shape",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "firefox",
+      "name": "bad-state-shape",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "firefox",
+      "name": "bad-province-shape",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "firefox",
+      "name": "bad-scalar-shape",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "firefox",
+      "name": "bad-support-shape",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "firefox",
+      "name": "bad-ledger-row",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "firefox",
+      "name": "bad-palette",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "firefox",
+      "name": "bad-world-metadata",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "firefox",
+      "name": "unknown-state-owner",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 5,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwner—Population1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "firefox",
+      "name": "unknown-province-owner",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20—Southern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "firefox",
+      "name": "unknown-controller",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 5,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test Nation—",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "firefox",
+      "name": "unknown-state",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 5,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "firefox",
+      "name": "unknown-capital",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 5,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province65535GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "firefox",
+      "name": "empty-nations",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 5,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "Country",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwner—Population1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10——20——",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "firefox",
+      "name": "empty-states",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 5,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "State",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "firefox",
+      "name": "empty-provinces",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 5,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "firefox",
+      "name": "empty-ledger",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 5,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1No contributionsProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "firefox",
+      "name": "empty-support",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "firefox",
+      "name": "null-world",
+      "kind": "preserve",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "firefox",
+      "name": "refused-world",
+      "kind": "preserve",
+      "errors": [],
+      "worlds": 5,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "firefox",
+      "name": "precision-wire",
+      "kind": "precision",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 2.0000000005Value ledgerTick: 0Base value1Final value2.0000000005ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11The server sent an unavailable messageSource: The server sent an unavailable messageAdd0.00000000021.0000000002The server sent an unavailable messageSource: The server sent an unavailable messageMultiply22.0000000005ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": [],
+      "preciseLedger": {
+        "base": "1",
+        "final_value": "2.0000000005",
+        "tick": "0",
+        "entries": [
+          {
+            "id": "0",
+            "label_key": "infrastructure",
+            "operation_key": "ledger-base",
+            "value": "1",
+            "accumulated": "1",
+            "source_key": null
+          },
+          {
+            "id": "1",
+            "label_key": "z-add",
+            "operation_key": "ledger-add",
+            "value": "0.0000000002",
+            "accumulated": "1.0000000002",
+            "source_key": "z-add"
+          },
+          {
+            "id": "2",
+            "label_key": "a-mul",
+            "operation_key": "ledger-multiply",
+            "value": "2",
+            "accumulated": "2.0000000005",
+            "source_key": "a-mul"
+          }
+        ]
+      }
+    },
+    {
+      "product": "webkit",
+      "name": "bad-id-shape",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "webkit",
+      "name": "bad-state-shape",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "webkit",
+      "name": "bad-province-shape",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "webkit",
+      "name": "bad-scalar-shape",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "webkit",
+      "name": "bad-support-shape",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "webkit",
+      "name": "bad-ledger-row",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "webkit",
+      "name": "bad-palette",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "webkit",
+      "name": "bad-world-metadata",
+      "kind": "reject",
+      "errors": [],
+      "worlds": 3,
+      "connection": "Disconnected",
+      "alert": [
+        "Invalid server message; connection closed"
+      ],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 1,
+        "send": 5
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "webkit",
+      "name": "unknown-state-owner",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwner—Population1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "webkit",
+      "name": "unknown-province-owner",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20—Southern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "webkit",
+      "name": "unknown-controller",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test Nation—",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "webkit",
+      "name": "unknown-state",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "webkit",
+      "name": "unknown-capital",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province65535GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "webkit",
+      "name": "empty-nations",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "Country",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwner—Population1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10——20——",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "webkit",
+      "name": "empty-states",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "State",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "webkit",
+      "name": "empty-provinces",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "webkit",
+      "name": "empty-ledger",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1No contributionsProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "webkit",
+      "name": "empty-support",
+      "kind": "safe",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "webkit",
+      "name": "null-world",
+      "kind": "preserve",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "webkit",
+      "name": "refused-world",
+      "kind": "preserve",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 1Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": []
+    },
+    {
+      "product": "webkit",
+      "name": "precision-wire",
+      "kind": "precision",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 2.0000000005Value ledgerTick: 0Base value1Final value2.0000000005ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11The server sent an unavailable messageSource: The server sent an unavailable messageAdd0.00000000021.0000000002The server sent an unavailable messageSource: The server sent an unavailable messageMultiply22.0000000005ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": [],
+      "preciseLedger": {
+        "base": "1",
+        "final_value": "2.0000000005",
+        "tick": "0",
+        "entries": [
+          {
+            "id": "0",
+            "label_key": "infrastructure",
+            "operation_key": "ledger-base",
+            "value": "1",
+            "accumulated": "1",
+            "source_key": null
+          },
+          {
+            "id": "1",
+            "label_key": "z-add",
+            "operation_key": "ledger-add",
+            "value": "0.0000000002",
+            "accumulated": "1.0000000002",
+            "source_key": "z-add"
+          },
+          {
+            "id": "2",
+            "label_key": "a-mul",
+            "operation_key": "ledger-multiply",
+            "value": "2",
+            "accumulated": "2.0000000005",
+            "source_key": "a-mul"
+          }
+        ]
+      }
+    }
+  ]
+}

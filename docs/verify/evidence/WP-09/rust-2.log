@@ -1,0 +1,74 @@
+   Compiling memchr v2.8.3
+   Compiling serde_core v1.0.229
+   Compiling windows-link v0.2.1
+   Compiling bytes v1.12.1
+   Compiling futures-core v0.3.34
+   Compiling pin-project-lite v0.2.17
+   Compiling futures-task v0.3.34
+   Compiling unarray v0.1.4
+   Compiling thiserror-impl v2.0.21
+   Compiling serde_derive v1.0.229
+   Compiling ref-cast-impl v1.0.27
+   Compiling serde_derive_internals v0.30.0
+   Compiling getrandom v0.3.4
+   Compiling ppv-lite86 v0.2.21
+   Compiling generic-array v0.14.7
+   Compiling tokio-macros v2.7.2
+   Compiling windows-sys v0.61.2
+   Compiling rand_core v0.9.5
+   Compiling httparse v1.10.1
+   Compiling tower-service v0.3.3
+   Compiling cpufeatures v0.2.17
+   Compiling rand_xorshift v0.4.0
+   Compiling rand_chacha v0.10.0
+   Compiling rand_chacha v0.9.0
+   Compiling slab v0.4.12
+   Compiling http v1.5.0
+   Compiling futures-sink v0.3.34
+   Compiling rand v0.9.5
+   Compiling block-buffer v0.10.4
+   Compiling crypto-common v0.1.7
+   Compiling regex-syntax v0.8.11
+   Compiling digest v0.10.7
+   Compiling futures-util v0.3.34
+   Compiling futures-channel v0.3.34
+   Compiling ref-cast v1.0.27
+   Compiling httpdate v1.0.3
+   Compiling data-encoding v2.11.1
+   Compiling sha1 v0.10.7
+   Compiling winapi-util v0.1.11
+   Compiling tower-layer v0.3.3
+   Compiling atomic-waker v1.1.2
+   Compiling schemars_derive v1.2.2
+   Compiling termcolor v1.4.1
+   Compiling smallvec v1.16.2
+   Compiling log v0.4.34
+   Compiling sync_wrapper v1.0.2
+   Compiling mime v0.3.17
+   Compiling http-body v1.1.0
+   Compiling oh_server v0.1.0 (E:\openhoi\.orchestrator\wt\WP-09-verify\crates\oh_server)
+   Compiling http-body-util v0.1.5
+   Compiling base64 v0.22.1
+   Compiling matchit v0.8.4
+   Compiling percent-encoding v2.3.2
+   Compiling ts-rs-macros v12.0.1
+   Compiling axum-core v0.5.6
+   Compiling thiserror v2.0.21
+   Compiling serde_json v1.0.151
+   Compiling serde_spanned v1.1.1
+   Compiling toml_datetime v1.1.1+spec-1.1.0
+   Compiling cobs v0.3.0
+   Compiling tungstenite v0.29.0
+error: failed to run custom build command for `oh_server v0.1.0 (E:\openhoi\.orchestrator\wt\WP-09-verify\crates\oh_server)`
+
+Caused by:
+  process didn't exit successfully: `E:\openhoi\.orchestrator\wt\WP-09-verify\target\debug\build\oh_server-21657e13268cafc3\build-script-build` (exit code: 101)
+  --- stdout
+  cargo:rerun-if-changed=E:\openhoi\.orchestrator\wt\WP-09-verify\crates\oh_server\../../client/dist
+
+  --- stderr
+
+  thread 'main' (9392) panicked at crates\oh_server\build.rs:42:5:
+  built client missing: run npm --prefix client ci && npm --prefix client run build BEFORE cargo build/test -p oh_server
+  note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+warning: build failed, waiting for other jobs to finish...

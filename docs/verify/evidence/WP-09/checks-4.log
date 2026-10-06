@@ -1,0 +1,19 @@
+test_req_gen_04_capture_repeated_run_mismatch_fails (test_determinism_workflow.CoreDeterminismTests.test_req_gen_04_capture_repeated_run_mismatch_fails) ... ok
+test_req_gen_04_capture_requires_two_matching_runs (test_determinism_workflow.CoreDeterminismTests.test_req_gen_04_capture_requires_two_matching_runs) ... ok
+test_req_gen_04_failed_probe_does_not_produce_artifact (test_determinism_workflow.CoreDeterminismTests.test_req_gen_04_failed_probe_does_not_produce_artifact) ... ok
+test_req_gen_04_malformed_probe_does_not_produce_artifact (test_determinism_workflow.CoreDeterminismTests.test_req_gen_04_malformed_probe_does_not_produce_artifact) ... ok
+test_req_plat_02_extra_artifact_fails (test_determinism_workflow.CoreDeterminismTests.test_req_plat_02_extra_artifact_fails) ... ok
+test_req_plat_02_malformed_hash_fails (test_determinism_workflow.CoreDeterminismTests.test_req_plat_02_malformed_hash_fails) ... ok
+test_req_plat_02_missing_hash_file_fails (test_determinism_workflow.CoreDeterminismTests.test_req_plat_02_missing_hash_file_fails) ... ok
+test_req_plat_02_missing_os_fails (test_determinism_workflow.CoreDeterminismTests.test_req_plat_02_missing_os_fails) ... ok
+test_req_plat_02_three_different_artifacts_fail (test_determinism_workflow.CoreDeterminismTests.test_req_plat_02_three_different_artifacts_fail) ... ok
+test_req_plat_02_three_matching_artifacts_pass (test_determinism_workflow.CoreDeterminismTests.test_req_plat_02_three_matching_artifacts_pass) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.036s
+
+OK
+core probe two runs: 0dd81b8754bcc3f9
+ubuntu-latest: 0dd81b8754bcc3f9
+windows-latest: 0dd81b8754bcc3f9
+macos-latest: 0dd81b8754bcc3f9

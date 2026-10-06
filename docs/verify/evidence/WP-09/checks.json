@@ -1,0 +1,73 @@
+[
+  {
+    "command": [
+      "python",
+      "tools/check_docs.py"
+    ],
+    "exit": 0,
+    "seconds": 0.2,
+    "log": "E:\\openhoi\\.orchestrator\\wt\\WP-09-verify\\target\\wp09-verify\\checks-0.log"
+  },
+  {
+    "command": [
+      "python",
+      "tools/check_assets.py"
+    ],
+    "exit": 0,
+    "seconds": 0.2,
+    "log": "E:\\openhoi\\.orchestrator\\wt\\WP-09-verify\\target\\wp09-verify\\checks-1.log"
+  },
+  {
+    "command": [
+      "python",
+      "tools/check_architecture.py"
+    ],
+    "exit": 0,
+    "seconds": 0.94,
+    "log": "E:\\openhoi\\.orchestrator\\wt\\WP-09-verify\\target\\wp09-verify\\checks-2.log"
+  },
+  {
+    "command": [
+      "npm.cmd",
+      "--prefix",
+      "client",
+      "run",
+      "licenses"
+    ],
+    "exit": 0,
+    "seconds": 0.3,
+    "log": "E:\\openhoi\\.orchestrator\\wt\\WP-09-verify\\target\\wp09-verify\\checks-3.log"
+  },
+  {
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "crates/oh_core/tests",
+      "-p",
+      "test_determinism_workflow.py",
+      "-v"
+    ],
+    "exit": 0,
+    "seconds": 0.17,
+    "log": "E:\\openhoi\\.orchestrator\\wt\\WP-09-verify\\target\\wp09-verify\\checks-4.log"
+  },
+  {
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "crates/oh_sim/tests",
+      "-p",
+      "test_sim_determinism.py",
+      "-v"
+    ],
+    "exit": 0,
+    "seconds": 0.26,
+    "log": "E:\\openhoi\\.orchestrator\\wt\\WP-09-verify\\target\\wp09-verify\\checks-5.log"
+  }
+]

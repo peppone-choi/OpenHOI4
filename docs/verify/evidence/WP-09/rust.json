@@ -1,0 +1,36 @@
+[
+  {
+    "command": [
+      "cargo",
+      "fmt",
+      "--check"
+    ],
+    "exit": 0,
+    "seconds": 0.22,
+    "log": "E:\\openhoi\\.orchestrator\\wt\\WP-09-verify\\target\\wp09-verify\\rust-0.log"
+  },
+  {
+    "command": [
+      "cargo",
+      "clippy",
+      "--workspace",
+      "--all-targets",
+      "--",
+      "-D",
+      "warnings"
+    ],
+    "exit": 101,
+    "seconds": 12.96,
+    "log": "E:\\openhoi\\.orchestrator\\wt\\WP-09-verify\\target\\wp09-verify\\rust-1.log"
+  },
+  {
+    "command": [
+      "cargo",
+      "test",
+      "--workspace"
+    ],
+    "exit": 101,
+    "seconds": 4.78,
+    "log": "E:\\openhoi\\.orchestrator\\wt\\WP-09-verify\\target\\wp09-verify\\rust-2.log"
+  }
+]

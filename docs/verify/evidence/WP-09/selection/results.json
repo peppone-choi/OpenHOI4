@@ -1,0 +1,134 @@
+{
+  "rows": [
+    {
+      "product": "chrome",
+      "name": "sparse-selection",
+      "kind": "selection",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": [],
+      "sparseIds": {
+        "nations": [
+          40001,
+          60002
+        ],
+        "states": [
+          30001,
+          50002
+        ]
+      }
+    },
+    {
+      "product": "edge",
+      "name": "sparse-selection",
+      "kind": "selection",
+      "errors": [],
+      "worlds": 5,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 4Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 7
+      },
+      "externalRequests": [],
+      "sparseIds": {
+        "nations": [
+          40001,
+          60002
+        ],
+        "states": [
+          30001,
+          50002
+        ]
+      }
+    },
+    {
+      "product": "chromium",
+      "name": "sparse-selection",
+      "kind": "selection",
+      "errors": [],
+      "worlds": 5,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": [],
+      "sparseIds": {
+        "nations": [
+          40001,
+          60002
+        ],
+        "states": [
+          30001,
+          50002
+        ]
+      }
+    },
+    {
+      "product": "firefox",
+      "name": "sparse-selection",
+      "kind": "selection",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": [],
+      "sparseIds": {
+        "nations": [
+          40001,
+          60002
+        ],
+        "states": [
+          30001,
+          50002
+        ]
+      }
+    },
+    {
+      "product": "webkit",
+      "name": "sparse-selection",
+      "kind": "selection",
+      "errors": [],
+      "worlds": 6,
+      "connection": "Connected",
+      "alert": [],
+      "nation": "CountryNorthern Test NationSouthern Test NationNorthern Test NationTagNTHCapital province10GovernmentTest RepublicIdeology support (ratio)Civic0.75Local0.25",
+      "state": "StateNorthern Test StateSouthern Test StateNorthern Test StateOwnerNorthern Test NationPopulation1000Steel2Industry1Infrastructure 1Value ledgerTick: 5Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11ProvinceOwnerController10Northern Test NationNorthern Test Nation20Northern Test NationSouthern Test Nation",
+      "ws": {
+        "close": 0,
+        "send": 8
+      },
+      "externalRequests": [],
+      "sparseIds": {
+        "nations": [
+          40001,
+          60002
+        ],
+        "states": [
+          30001,
+          50002
+        ]
+      }
+    }
+  ]
+}

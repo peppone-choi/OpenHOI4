@@ -1,0 +1,13 @@
+[
+  {
+    "command": [
+      "cargo",
+      "build",
+      "-p",
+      "oh_server"
+    ],
+    "exit": 0,
+    "seconds": 12.1,
+    "log": "E:\\openhoi\\.orchestrator\\wt\\WP-09-verify\\target\\wp09-verify\\clientfinish-0.log"
+  }
+]

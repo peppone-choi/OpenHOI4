@@ -1,0 +1,111 @@
+[
+  {
+    "command": [
+      "cargo",
+      "run",
+      "-p",
+      "oh_cli",
+      "--",
+      "run",
+      "--scenario",
+      "testland",
+      "--days",
+      "365",
+      "--seed",
+      "1",
+      "--hash-out"
+    ],
+    "exit": 0,
+    "seconds": 12.1,
+    "log": "E:\\openhoi\\.orchestrator\\wt\\WP-09-verify\\target\\wp09-verify\\hashes-0.log"
+  },
+  {
+    "command": [
+      "cargo",
+      "run",
+      "-p",
+      "oh_cli",
+      "--",
+      "run",
+      "--scenario",
+      "testland",
+      "--days",
+      "365",
+      "--seed",
+      "1",
+      "--hash-out"
+    ],
+    "exit": 0,
+    "seconds": 0.13,
+    "log": "E:\\openhoi\\.orchestrator\\wt\\WP-09-verify\\target\\wp09-verify\\hashes-1.log"
+  },
+  {
+    "command": [
+      "cargo",
+      "run",
+      "-p",
+      "oh_cli",
+      "--",
+      "run",
+      "--pack",
+      "data/packs/testland",
+      "--scenario",
+      "m1",
+      "--days",
+      "365",
+      "--seed",
+      "1",
+      "--hash-out"
+    ],
+    "exit": 0,
+    "seconds": 0.16,
+    "log": "E:\\openhoi\\.orchestrator\\wt\\WP-09-verify\\target\\wp09-verify\\hashes-2.log"
+  },
+  {
+    "command": [
+      "cargo",
+      "run",
+      "-p",
+      "oh_cli",
+      "--",
+      "run",
+      "--pack",
+      "data/packs/testland",
+      "--scenario",
+      "m1",
+      "--days",
+      "365",
+      "--seed",
+      "1",
+      "--hash-out"
+    ],
+    "exit": 0,
+    "seconds": 0.18,
+    "log": "E:\\openhoi\\.orchestrator\\wt\\WP-09-verify\\target\\wp09-verify\\hashes-3.log"
+  },
+  {
+    "command": [
+      "python",
+      "crates/oh_sim/tools/check_sim_determinism.py",
+      "capture",
+      "--out",
+      "target/wp09-verify/capture-m0"
+    ],
+    "exit": 0,
+    "seconds": 0.33,
+    "log": "E:\\openhoi\\.orchestrator\\wt\\WP-09-verify\\target\\wp09-verify\\hashes-4.log"
+  },
+  {
+    "command": [
+      "python",
+      "crates/oh_sim/tools/check_sim_determinism.py",
+      "capture",
+      "--m1",
+      "--out",
+      "target/wp09-verify/capture-m1"
+    ],
+    "exit": 0,
+    "seconds": 0.34,
+    "log": "E:\\openhoi\\.orchestrator\\wt\\WP-09-verify\\target\\wp09-verify\\hashes-5.log"
+  }
+]

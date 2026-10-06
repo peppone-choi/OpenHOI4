@@ -1,0 +1,10 @@
+[package]
+name = "wp09-independent-probe"
+version = "0.0.0"
+edition = "2024"
+[workspace]
+[dependencies]
+oh_core = { path = "../../../crates/oh_core" }
+oh_data = { path = "../../../crates/oh_data" }
+oh_sim = { path = "../../../crates/oh_sim" }
+oh_proto = { path = "../../../crates/oh_proto" }
