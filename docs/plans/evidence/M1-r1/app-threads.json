@@ -217,7 +217,7 @@
       "worktree": "E:/openhoi/.orchestrator/wt/WP-08",
       "branch": "codex/wp08-map-rendering",
       "baseCommit": "b1da8f46fa7d2e849121424d5d2cf1ac36bfacd3",
-      "status": "independent-PASS-awaiting-main-integration",
+      "status": "integrated-main-CI-success",
       "appExit": "해당 없음(앱 실행)",
       "verificationCommit": "9fbc05a1e29062f93bb362450aaddc2068aa41e9",
       "cursor": "a62a6b0a-9800-4c41-882e-b7bcb95ecd27:116",
@@ -231,7 +231,9 @@
       "mergeCommit": "9dcf19947006dd62fcfde48d7f9204a71d4b8e38",
       "diagnosticCommit": "a15f64f7b241f7d64cce5b39ab9b95c0142e9b86",
       "appStatus": "idle",
-      "turnStatus": "completed"
+      "turnStatus": "completed",
+      "integrationCommit": "ebc1c5b56c883250c60b75540649a693bddca86f",
+      "integrationEvidenceHead": "79b0aa3267e8bf6fbb7ce1a26909fe80615375bd"
     },
     {
       "run": "M1-r1",
@@ -365,7 +367,9 @@
     }
   ],
   "groupsIntegratedThisRun": [
-    "M1-W1"
+    "M1-W1",
+    "M1-W2"
   ],
-  "phase": "M1-W2-final-P07-main-integration"
+  "phase": "M1-r1-two-groups-integrated-final-HANDOFF-CI-pending",
+  "sourceCIHead": "79b0aa3267e8bf6fbb7ce1a26909fe80615375bd"
 }
