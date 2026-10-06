@@ -1,0 +1,20 @@
+
+Running 5 tests using 3 workers
+
+(node:32480) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:10496) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:35568) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 3 [chromium] › e2e-m1\map-capability.spec.ts:6:1 › REQ-PLAT-03 native backend capability renders pixels or preserves authority with localized notice (1.0s)
+(node:30604) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [edge] › e2e-m1\map-capability.spec.ts:6:1 › REQ-PLAT-03 native backend capability renders pixels or preserves authority with localized notice (1.4s)
+  ok 2 [chrome] › e2e-m1\map-capability.spec.ts:6:1 › REQ-PLAT-03 native backend capability renders pixels or preserves authority with localized notice (1.5s)
+(node:6252) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 5 [webkit] › e2e-m1\map-capability.spec.ts:6:1 › REQ-PLAT-03 native backend capability renders pixels or preserves authority with localized notice (1.5s)
+  ok 4 [firefox] › e2e-m1\map-capability.spec.ts:6:1 › REQ-PLAT-03 native backend capability renders pixels or preserves authority with localized notice (2.9s)
+
+  5 passed (6.3s)

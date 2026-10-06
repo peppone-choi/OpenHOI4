@@ -1,0 +1,23 @@
+{
+  "browser": "26.6",
+  "diagnostics": {
+    "testid": "province-map",
+    "backend": "webgl2",
+    "textureLimit": "16384",
+    "adapter": "Apple GPU",
+    "device": "WebGL 2.0",
+    "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+    "shaderLanguage": "glsl",
+    "shaderLength": "16167",
+    "frames": "278",
+    "selected": "",
+    "mode": "map-mode-owner",
+    "updatedBytes": "16",
+    "updateMs": "1",
+    "frameMs": "9.003597122302159",
+    "lastChangedBytes": "16",
+    "lastUpdateMs": "1",
+    "totalChangedBytes": "60"
+  },
+  "performanceScope": "tiny synthetic map; renderer frame interval, not global hardware benchmark"
+}

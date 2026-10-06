@@ -24,6 +24,8 @@ no-backend 회귀는 직접 GL 실패와 선호 GPU adapter=null 이후 GL 실�
 | 브라우저 GPU preference 강제 | 일부 context를 열 수 있음 | 02 §11.3 및 사용자 설정 변경 금지와 충돌 |
 
 ## 결과와 영향
-시뮬레이션·프로토콜·defines·저장 포맷·지도 골든은 바뀌지 않는다. Linux 원시 context 가용성은 별도 단발 capability probe에서 같은 브라우저 빌드의 headless와 Xvfb headed 환경을 비교한다. 가용 GL의 clear/readPixels와 가용성 없는 오류 자료를 각각 기록하며 게임 oracle 통과로 간주하지 않는다. 최종 일반 CI의 픽셀 검사는 유지한다.
+시뮬레이션·프로토콜·defines·저장 포맷·지도 골든은 바뀌지 않는다. 단발 [Linux 진단 run 37493784925](https://github.com/peppone-choi/OpenHOI4/actions/runs/37493784925)은 제품 수정 전 2134b13에서 같은 Firefox155 빌드를 비교했다. headless GL1/2가 없고 GPU API도 없었으며 GL2 creationerror는 `AllowWebgl2:false restricts context creation on this system.`이었다. Xvfb headed는 GL1/2, renderer `llvmpipe, or similar`, maxTextureSize16384, 실제 RGBA[37,91,173,255], GL error0, pageerror0이었다. 이 결과는 해당 runner/build의 가용성 대조이며 Firefox/Linux 전부의 일반 법칙이나 게임 oracle 통과를 뜻하지 않는다.
+
+일반 CI는 M0 전 엔진의 기존 headless 검사와 Chromium/WebKit M1 headless 검사 전체를 유지한다. Firefox M1 전체는 Xvfb headed로 같은 코드·픽셀 oracle·malformed/pageerror 단언을 실행한다. 별도 native headless Firefox 검사는 API 주입 없이 실제 context와 adapter를 읽고, 가용하면 실제 앱 프레임/RGB를, 없으면 ko/en 안내·canvas0·JS오류0·권위 국가/원장/paused tick 보존을 검사한다. 이 새 검사는 M1 전체에도 추가한다. 어떤 브라우저도 skip하지 않고 preferences·GPU flags·보안 설정을 강제하지 않는다. 임시 진단 workflow/script는 최종 제품 tree에서 제거하고 커밋 이력과 raw 증거를 보존한다.
 
 버전·동작 출처: 고정 lockfile 및 `client/node_modules/three/src/renderers/common/Renderer.js`의 init/dispose/setAnimationLoop, `webgl-fallback/WebGLBackend.js`의 init, `WebGLExtensions.js` 생성자. Xvfb는 [Playwright 공식 CI 문서](https://playwright.dev/docs/ci)의 임시 Linux headed 실행 방법으로 확인했다(2026-10-07). 과거 Firefox 버그 보고만으로 현재 CI의 driver/context 원인을 확정하지 않는다.

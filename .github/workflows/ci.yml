@@ -78,7 +78,23 @@ jobs:
           OH_TEST_PORT: '19412'
           OH_E2E_EVIDENCE: ../target/wp09/ci/m1-e2e
           OH_MALFORMED_EVIDENCE: ../target/wp09/ci/m1-malformed
-        run: npm run test:e2e -- --config playwright.m1.config.ts
+        run: npm run test:e2e -- --config playwright.m1.config.ts --project chromium --project webkit
+      - name: Native headless Firefox backend availability and authority
+        working-directory: client
+        env:
+          OH_TEST_PORT: '19413'
+          OH_MAP_CAPABILITY_EVIDENCE: ../target/wp08/ci/firefox-native-headless
+        run: npm run test:e2e -- --config playwright.m1.config.ts --project firefox map-capability.spec.ts
+      - name: Full Firefox M1 pixels and authority under temporary Xvfb display
+        working-directory: client
+        env:
+          OH_TEST_PORT: '19414'
+          OH_MAP_EVIDENCE: ../target/wp08/ci/firefox-xvfb-map
+          OH_MAP_REDIRECT_EVIDENCE: ../target/wp08/ci/firefox-xvfb-redirect
+          OH_MAP_CAPABILITY_EVIDENCE: ../target/wp08/ci/firefox-xvfb-capability
+          OH_E2E_EVIDENCE: ../target/wp09/ci/firefox-xvfb-m1-e2e
+          OH_MALFORMED_EVIDENCE: ../target/wp09/ci/firefox-xvfb-m1-malformed
+        run: xvfb-run -a npm run test:e2e -- --config playwright.m1.config.ts --project firefox --headed
       - name: Upload protocol and browser evidence
         if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
