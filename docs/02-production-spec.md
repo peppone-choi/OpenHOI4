@@ -673,15 +673,15 @@ D-15에 따른 역할이다. 모두 Codex다.
 | WP-33 | 유럽 1939 콘텐츠: 국가·주·인구·자원·부대 배치·의제·이벤트, 출처 기록 | M3 | WP-26, WP-27, WP-32 | M3-W2 | 콘텐츠 | REQ-CNT-02, REQ-CNT-05, REQ-AGD-02 | `oh validate`, SOURCES.md |
 | WP-34 | AI v2: 연구·의제·외교·난이도·역사 경로 | M3 | WP-26, WP-27, WP-28, WP-30 | M3-W2 | 구현 | REQ-AI-03, REQ-AI-04, REQ-AI-08, REQ-AGD-06 | 100회 벤치 리포트 |
 | WP-36 | UI v2: 연구·의제·정치·알림·전투 상세·LOD·단축키·자동 일시정지 | M3 | WP-22, WP-26, WP-27 | M3-W2 | 구현 | REQ-UI-03, REQ-UI-05, REQ-UI-06, REQ-MAP-06, REQ-CMB-06, REQ-TIME-03 | 스크린샷, 스크립트 플레이 |
-| WP-39 | M3 성능 목표 달성, 비제휴 고지 반영, 릴리스 0.1 패키징(공개 게이트 판정은 P-12) | M3 | WP-29, WP-31, WP-33, WP-34, WP-35, WP-36, WP-37, WP-38 | M3-W3 | 구현 | REQ-PERF-01, REQ-LEG-04, REQ-LEG-07 | 벤치 결과, 게이트 체크리스트 |
+| WP-39 | M3 성능 목표 달성, 비제휴 고지 반영, 검토된 AI 이미지 배포 조건 확인(OPEN-09), 릴리스 0.1 패키징(공개 게이트 판정은 P-12) | M3 | WP-29, WP-31, WP-33, WP-34, WP-35, WP-36, WP-37, WP-38 | M3-W3 | 구현 | REQ-PERF-01, REQ-LEG-02, REQ-LEG-04, REQ-LEG-07 | 벤치 결과, 게이트 체크리스트 |
 | WP-40 | 공군: 공역·공중 우세·근접 지원 | M4 | WP-39 | M4-W1 | 구현 | REQ-AIR-01, REQ-AIR-02 | 단위·통합 테스트 |
 | WP-41 | 해군 확장: 해역 통제·호송 차단·상륙 | M4 | WP-39 | M4-W1 | 구현 | REQ-NAV-02, REQ-NAV-03 | 단위·통합 테스트 |
-| WP-42 | 국가 간 무역, 점령지 산출·저항(OPEN-08 확정 후) | M4 | WP-39 | M4-W1 | 구현 | REQ-ECO-08, REQ-ECO-09 | 통합 테스트 |
+| WP-42 | 국가 간 무역, 점령지 산출·저항·준수 및 첩보(OPEN-08 포함 확정, REQUEST-0004 세부 결정 후) | M4 | WP-39 | M4-W1 | 구현 | REQ-ECO-08, REQ-ECO-09, REQ-NAT-08 | 통합 테스트 |
 | WP-43 | 집단군, 경험·숙련, 내각·고문 | M4 | WP-39 | M4-W1 | 구현 | REQ-MIL-10, REQ-CMB-07, REQ-NAT-07 | 단위 테스트 |
-| WP-44 | 보급 수단 상세, 평화 회의(OPEN-02·OPEN-03 확정 후) | M4 | WP-39 | M4-W1 | 구현 | REQ-SUP-05, REQ-DIP-08 | 통합 테스트 |
+| WP-44 | 보급 차량 소모(OPEN-03/REQUEST-0002), 간소화 평화 회의(OPEN-02/REQUEST-0003), 기상·계절(OPEN-07/REQUEST-0004). 범위 확정, 세부 결정 후 구현 | M4 | WP-39 | M4-W1 | 구현 | REQ-SUP-05, REQ-DIP-08, REQ-GEN-07 | 통합 테스트 |
 | WP-45 | 전 세계 지도와 1936 콘텐츠 | M5 | WP-40, WP-41 | M5-W1 | 콘텐츠 | REQ-CNT-03 | `oh validate`, 플레이 테스트 |
 | WP-47 | 접근성 팔레트, 튜토리얼·도움말 | M5 | WP-39 | M5-W1 | 구현 | REQ-UI-07, REQ-UI-08 | 스크린샷, 플레이 테스트 |
-| WP-48 | 공군·해군·모드 스크립트 확장(OPEN-04·05·06 확정 후) | M5 | WP-40, WP-41 | M5-W1 | 구현 | REQ-AIR-03, REQ-NAV-04, REQ-MOD-08 | 단위 테스트 |
+| WP-48 | 차체·모듈 장비 설계, 전략 폭격·세부 공군 임무, 함대 전투、특수 무기(OPEN-01·04·05·11 포함/범위 확정, REQUEST-0002 세부 결정 후), 결정론 샌드박스 모드 스크립트(OPEN-06 도입 확정). 함선 설계는 이후 로드맵 | M5 | WP-40, WP-41 | M5-W1 | 구현 | REQ-MIL-11, REQ-MIL-12, REQ-AIR-03, REQ-NAV-04, REQ-MOD-08 | 단위·통합 테스트 |
 | WP-46 | 전 세계 성능 최적화 | M5 | WP-45 | M5-W2 | 구현 | REQ-PERF-02 | 벤치 결과 |
 | WP-49 | 멀티플레이: 서버 권위형 게임 세션, 로비·세션 코드, 명령 권한 검증, 이탈 시 AI 인계·재접속, 속도·일시정지 권한 | M6 | WP-46 | M6-W1 | 구현 | REQ-MP-01, REQ-MP-02, REQ-MP-03, REQ-MP-04, REQ-MP-05 | 통합 테스트, 세션 로그 |
 | WP-50 | 1.0 안정화: 회귀 정리, 문서·모드 SDK 정비, 릴리스 | M6 | WP-49 | M6-W2 | 구현 | — | 게이트 체크리스트 |
@@ -842,11 +842,13 @@ author = "OpenHOI contributors"
 source = "original"
 license = "CC-BY-SA-4.0"     # D-10: 직접 제작 데이터·에셋의 확정 라이선스
 modified = false
-ai_generated = false         # OPEN-09: true인 에셋은 릴리스 빌드에서 거부
+ai_generated = false         # OPEN-09: true이면 출처·도구·이용 조건·배포 검토 기록 필수
 notes = ""
 ```
 
 ### 14.5 릴리스 절차 (M3 이후)
+
+OPEN-09 사용자 결정은 검토된 AI 이미지에 한해서 배포물 포함을 허용한다. 생성 도구·출처·이용 조건·검토자·검토일·검토 증거를 매니페스트에 기록해야 하며, 미검토·누락은 릴리스 검사 실패다. 현재 일괄 거부 검사에서 이 조건으로 바꾸는 것은 WP-01 후속 구현·독립 검증으로 수행하고 실제 개별 배포 검토는 WP-39 공개 게이트에서 다시 확인한다. 공개 배포·태그 승인은 별도다.
 
 1. 공개 게이트(AC-M3-06) 체크리스트를 통과한다.
 2. 버전 태그를 붙인다.
@@ -956,8 +958,9 @@ notes = ""
 | REQ-GEN-04 | M0 | 필수 | WP-02 | DT |
 | REQ-GEN-05 | M0 | 필수 | WP-04, WP-05 | UT, RV |
 | REQ-GEN-06 | M0 | 필수 | WP-04 | IT |
+| REQ-GEN-07 | M4 | 필수 | WP-44 | UT, IT |
 | REQ-LEG-01 | M0 | 필수 | WP-06 | RV |
-| REQ-LEG-02 | M0 | 필수 | WP-01 | CI |
+| REQ-LEG-02 | M0 | 필수 | WP-01, WP-39 | CI |
 | REQ-LEG-03 | M0 | 필수 | WP-01 | CI |
 | REQ-LEG-04 | M3 | 필수 | WP-39 | RV |
 | REQ-LEG-05 | M2 | 필수 | WP-06 | RV |
@@ -983,6 +986,7 @@ notes = ""
 | REQ-NAT-05 | M2 | 필수 | WP-16 | UT, DV |
 | REQ-NAT-06 | M3 | 권장 | WP-27 | IT |
 | REQ-NAT-07 | M4 | 후순위 | WP-43 | UT |
+| REQ-NAT-08 | M4 | 필수 | WP-42 | UT, IT |
 | REQ-ECO-01 | M2 | 필수 | WP-14 | UT |
 | REQ-ECO-02 | M2 | 필수 | WP-14 | UT, PT |
 | REQ-ECO-03 | M2 | 필수 | WP-15 | UT, GT |
@@ -1019,6 +1023,8 @@ notes = ""
 | REQ-MIL-08 | M3 | 권장 | WP-30 | IT |
 | REQ-MIL-09 | M2 | 필수 | WP-16 | UT |
 | REQ-MIL-10 | M4 | 후순위 | WP-43 | UT |
+| REQ-MIL-11 | M5 | 필수 | WP-48 | UT, IT |
+| REQ-MIL-12 | M5 | 필수 | WP-48 | UT, IT |
 | REQ-CMB-01 | M2 | 필수 | WP-18 | UT |
 | REQ-CMB-02 | M2 | 필수 | WP-18 | UT |
 | REQ-CMB-03 | M2 | 필수 | WP-18 | UT, GT, DT |
