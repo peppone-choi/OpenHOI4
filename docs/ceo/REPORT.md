@@ -19,7 +19,7 @@ python3 tools/check_docs.py는 오류 0·경고 0으로 통과했다. Git Bash �
 
 tools/ceo_run.sh selftest는 exit 2이며, 내부 오케스트레이터 codex exec는 exit 1이다. 실제 HTTP 400 응답은 “The 'gpt-6.1-sol' model is not supported when using Codex with a ChatGPT account.”다. 중첩 호출 PASS 증거는 없다. 로컬 MCP 접속 오류도 함께 기록됐으나 네트워크/샌드박스 차단이 주원인이라고 단정하지 않는다.
 
-원본 오류는 .orchestrator/ceo/selftest.err에 있다. 모델·인증·샌드박스·네트워크 설정을 바꾸지 않았다. [공식 비대화형 실행 안내](https://learn.chatgpt.com/docs/non-interactive-mode)를 확인했으나 이 계정에서 사용 가능한 모델을 문서만으로 확정하지 않는다. selftest 실패 해결 경로와 초기 자동 진행 범위에 대한 사용자 답변을 기다린다.
+원본 오류는 .orchestrator/ceo/selftest.err에 있다. 모델·인증·샌드박스·네트워크 설정을 바꾸지 않았다. [공식 비대화형 실행 안내](https://learn.chatgpt.com/docs/non-interactive-mode)를 확인했으나 이 계정에서 사용 가능한 모델을 문서만으로 확정하지 않는다. 사용자가 앱 채팅 생성과 작업 채팅 사이 메시지 교환 경로를 지정했다. docs/04 §0과 02 §12.4에 반영했으며, 초기 자동 진행 범위 답변을 기다리는 동안 오케스트레이터 앱 채팅에서 읽기 전용 준비를 수행한다.
 
 ## 적용한 기본안과 채택한 추천안
 
@@ -34,7 +34,7 @@ tools/ceo_run.sh selftest는 exit 2이며, 내부 오케스트레이터 codex ex
 | D-12 | 공개 명칭 결정은 보류 | M3 공개 게이트 |
 | OPEN-01~12 | 01 §9 기본안을 해당 마일스톤에 잠정 적용 | M3~M6 |
 | OH_ORCH_SANDBOX | workspace-write 유지 권장. 현재 오류가 샌드박스 변경으로 해결된다는 증거 없음 | selftest |
-| CLI 모델/계정 오류 | 지원되는 CLI 모델로 실행별 전환을 허용할지 또는 사용자가 CLI 설정을 정비할지 결정 필요 | 오케스트레이터 자동 시작 불가 |
+| 실행 경로 | 사용자 답변: CEO·오케스트레이터 모두 앱 채팅 생성과 메시지 교환 사용 | CLI 설정 변경 없이 진행 |
 
 D-10·D-12 미결정에 따른 실제 보류 판정은 아직 없다. M3에서 다른 AC가 모두 PASS일 때만 docs/04 §2 보류 규칙을 적용한다. 공개 배포·태그는 별도 사용자 권한이다.
 
