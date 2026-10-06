@@ -1,0 +1,38 @@
+{
+  "workflow_head": "8a386647ef7194a3edaf3a2ccc06c1de083eebfc",
+  "run": 37531273066,
+  "conclusion": "failure",
+  "artifact": 11445156019,
+  "API_digest": "sha256:acd52b982e8265a635e4bfefdf8e6690a88d891f0a2fc9ce39d30cd9c13da2f1",
+  "ZIP_sha256": "acd52b982e8265a635e4bfefdf8e6690a88d891f0a2fc9ce39d30cd9c13da2f1",
+  "ZIP_bytes": 1602175,
+  "members": 73,
+  "scope": "raw CI artifact and observed result only, not product independent verification",
+  "sources": [
+    {
+      "path": "run.json",
+      "bytes": 14437,
+      "sha256": "3561827a82851f7a839563f7ed6e914d47dbb975a3099fc6b5b5e9be2d4b67d4"
+    },
+    {
+      "path": "jobs.json",
+      "bytes": 4962,
+      "sha256": "bac24cefef08eecab848804dd036ea530660dbf0fe23665f079a73acd4afa76a"
+    },
+    {
+      "path": "artifact.json",
+      "bytes": 809,
+      "sha256": "987eed414bf81364eb5051b4925709a031387cc46ffccb6a23d2c2c6372e443a"
+    },
+    {
+      "path": "run.log",
+      "bytes": 308919,
+      "sha256": "87ab14fbac8ad64247c525d90c092612da0fc90b46ca33ef635892776ee1b528"
+    },
+    {
+      "path": "original-artifact.zip",
+      "bytes": 1602175,
+      "sha256": "acd52b982e8265a635e4bfefdf8e6690a88d891f0a2fc9ce39d30cd9c13da2f1"
+    }
+  ]
+}

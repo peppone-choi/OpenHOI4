@@ -1,0 +1,20 @@
+{
+  "id": 11445156019,
+  "node_id": "MDg6QXJ0aWZhY3QxMTQ0NTE1NjAxOQ==",
+  "name": "wp08-temporary-dpr-diagnostic",
+  "size_in_bytes": 1602175,
+  "url": "https://api.github.com/repos/peppone-choi/OpenHOI4/actions/artifacts/11445156019",
+  "archive_download_url": "https://api.github.com/repos/peppone-choi/OpenHOI4/actions/artifacts/11445156019/zip",
+  "expired": false,
+  "digest": "sha256:acd52b982e8265a635e4bfefdf8e6690a88d891f0a2fc9ce39d30cd9c13da2f1",
+  "created_at": "2026-10-06T21:09:55Z",
+  "updated_at": "2026-10-06T21:09:55Z",
+  "expires_at": "2027-01-04T21:04:52Z",
+  "workflow_run": {
+    "id": 37531273066,
+    "repository_id": 1406923098,
+    "head_repository_id": 1406923098,
+    "head_branch": "codex/wp08-dpr-diagnostic-m1r2",
+    "head_sha": "8a386647ef7194a3edaf3a2ccc06c1de083eebfc"
+  }
+}
