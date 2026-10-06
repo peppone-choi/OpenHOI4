@@ -1,0 +1,4 @@
+cwd: E:\openhoi\.orchestrator\wt\WP-02-verify
+command: git log --oneline -- crates/oh_core/tests/fixtures
+exit: 0
+eb15633 feat(core): add deterministic types rng and canonical state hashing

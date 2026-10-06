@@ -1,0 +1,4 @@
+cwd: E:\openhoi\.orchestrator\wt\WP-02-verify
+command: C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe crates/oh_core/tools/check_determinism.py compare --root E:\openhoi\.orchestrator\wt\WP-02-verify\target\evidence\WP-02-verify\cli-fixtures\missing-os
+exit: 1
+core determinism: exactly three OS artifacts required: expected=['core-hash-macos-latest', 'core-hash-ubuntu-latest', 'core-hash-windows-latest'], actual=['core-hash-ubuntu-latest', 'core-hash-windows-latest']

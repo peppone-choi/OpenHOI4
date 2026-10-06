@@ -1,0 +1,4 @@
+cwd: E:\openhoi\.orchestrator\wt\WP-02-verify
+command: cargo run --locked --quiet --release -p oh_core --example determinism
+exit: 0
+0dd81b8754bcc3f9

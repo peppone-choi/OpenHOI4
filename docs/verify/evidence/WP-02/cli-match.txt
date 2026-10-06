@@ -1,0 +1,6 @@
+cwd: E:\openhoi\.orchestrator\wt\WP-02-verify
+command: C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe crates/oh_core/tools/check_determinism.py compare --root E:\openhoi\.orchestrator\wt\WP-02-verify\target\evidence\WP-02-verify\cli-fixtures\match
+exit: 0
+ubuntu-latest: 0dd81b8754bcc3f9
+windows-latest: 0dd81b8754bcc3f9
+macos-latest: 0dd81b8754bcc3f9

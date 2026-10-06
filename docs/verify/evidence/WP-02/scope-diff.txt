@@ -1,0 +1,3 @@
+cwd: E:\openhoi\.orchestrator\wt\WP-02-verify
+command: git diff HEAD~1 HEAD -- client docs/01-game-design.md docs/02-production-spec.md tests/golden
+exit: 0

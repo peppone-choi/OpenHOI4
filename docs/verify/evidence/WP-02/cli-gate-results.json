@@ -1,0 +1,110 @@
+[
+  {
+    "label": "cli-match",
+    "command": [
+      "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "crates/oh_core/tools/check_determinism.py",
+      "compare",
+      "--root",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-02-verify\\target\\evidence\\WP-02-verify\\cli-fixtures\\match"
+    ],
+    "exit": 0,
+    "expected_exit": 0
+  },
+  {
+    "label": "cli-mismatch",
+    "command": [
+      "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "crates/oh_core/tools/check_determinism.py",
+      "compare",
+      "--root",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-02-verify\\target\\evidence\\WP-02-verify\\cli-fixtures\\mismatch"
+    ],
+    "exit": 1,
+    "expected_exit": 1
+  },
+  {
+    "label": "cli-missing-os",
+    "command": [
+      "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "crates/oh_core/tools/check_determinism.py",
+      "compare",
+      "--root",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-02-verify\\target\\evidence\\WP-02-verify\\cli-fixtures\\missing-os"
+    ],
+    "exit": 1,
+    "expected_exit": 1
+  },
+  {
+    "label": "cli-missing-file",
+    "command": [
+      "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "crates/oh_core/tools/check_determinism.py",
+      "compare",
+      "--root",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-02-verify\\target\\evidence\\WP-02-verify\\cli-fixtures\\missing-file"
+    ],
+    "exit": 1,
+    "expected_exit": 1
+  },
+  {
+    "label": "cli-extra",
+    "command": [
+      "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "crates/oh_core/tools/check_determinism.py",
+      "compare",
+      "--root",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-02-verify\\target\\evidence\\WP-02-verify\\cli-fixtures\\extra"
+    ],
+    "exit": 1,
+    "expected_exit": 1
+  },
+  {
+    "label": "cli-malformed",
+    "command": [
+      "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "crates/oh_core/tools/check_determinism.py",
+      "compare",
+      "--root",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-02-verify\\target\\evidence\\WP-02-verify\\cli-fixtures\\malformed"
+    ],
+    "exit": 1,
+    "expected_exit": 1
+  },
+  {
+    "label": "cli-uppercase",
+    "command": [
+      "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "crates/oh_core/tools/check_determinism.py",
+      "compare",
+      "--root",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-02-verify\\target\\evidence\\WP-02-verify\\cli-fixtures\\uppercase"
+    ],
+    "exit": 1,
+    "expected_exit": 1
+  },
+  {
+    "label": "cli-short",
+    "command": [
+      "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "crates/oh_core/tools/check_determinism.py",
+      "compare",
+      "--root",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-02-verify\\target\\evidence\\WP-02-verify\\cli-fixtures\\short"
+    ],
+    "exit": 1,
+    "expected_exit": 1
+  },
+  {
+    "label": "cli-multiline",
+    "command": [
+      "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "crates/oh_core/tools/check_determinism.py",
+      "compare",
+      "--root",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-02-verify\\target\\evidence\\WP-02-verify\\cli-fixtures\\multiline"
+    ],
+    "exit": 1,
+    "expected_exit": 1
+  }
+]

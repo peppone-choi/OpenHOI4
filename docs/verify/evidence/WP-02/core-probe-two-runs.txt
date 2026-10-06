@@ -1,0 +1,4 @@
+cwd: E:\openhoi\.orchestrator\wt\WP-02-verify
+command: C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe crates/oh_core/tools/check_determinism.py capture --out E:\openhoi\.orchestrator\wt\WP-02-verify\target\evidence\WP-02-verify\probe
+exit: 0
+core probe two runs: 0dd81b8754bcc3f9

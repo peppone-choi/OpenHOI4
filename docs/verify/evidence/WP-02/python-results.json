@@ -1,0 +1,59 @@
+[
+  {
+    "label": "workflow-tests",
+    "command": [
+      "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "crates/oh_core/tests",
+      "-p",
+      "test_determinism_workflow.py",
+      "-v"
+    ],
+    "exit": 0
+  },
+  {
+    "label": "independent-reference",
+    "command": [
+      "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "crates/oh_core/tests/independent_reference.py"
+    ],
+    "exit": 0
+  },
+  {
+    "label": "architecture",
+    "command": [
+      "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "tools/check_architecture.py"
+    ],
+    "exit": 0
+  },
+  {
+    "label": "docs",
+    "command": [
+      "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "tools/check_docs.py"
+    ],
+    "exit": 0
+  },
+  {
+    "label": "diff-check",
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit": 0
+  },
+  {
+    "label": "versions",
+    "command": [
+      "rustc",
+      "--version",
+      "--verbose"
+    ],
+    "exit": 0
+  }
+]

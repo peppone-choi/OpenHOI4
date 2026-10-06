@@ -1,0 +1,4 @@
+cwd: E:\openhoi\.orchestrator\wt\WP-02-verify
+command: C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe crates/oh_core/tools/check_determinism.py compare --root E:\openhoi\.orchestrator\wt\WP-02-verify\target\evidence\WP-02-verify\cli-fixtures\missing-file
+exit: 1
+core determinism: [Errno 2] No such file or directory: 'E:\\openhoi\\.orchestrator\\wt\\WP-02-verify\\target\\evidence\\WP-02-verify\\cli-fixtures\\missing-file\\core-hash-macos-latest\\core-hash.txt'

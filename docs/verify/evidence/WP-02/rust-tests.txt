@@ -1,0 +1,168 @@
+cwd: E:\openhoi\.orchestrator\wt\WP-02-verify
+command: cargo test --workspace --locked
+exit: 0
+   Compiling cfg-if v1.0.5
+   Compiling rand_core v0.10.1
+   Compiling bytemuck v1.25.2
+   Compiling az v1.3.0
+   Compiling typenum v1.20.1
+   Compiling unarray v0.1.4
+   Compiling regex-syntax v0.8.11
+   Compiling serde_core v1.0.229
+   Compiling bitflags v2.13.2
+   Compiling num-traits v0.2.19
+   Compiling zerocopy v0.8.60
+   Compiling thiserror v2.0.21
+   Compiling getrandom v0.3.4
+   Compiling cobs v0.3.0
+   Compiling rand_core v0.9.5
+   Compiling rand_xorshift v0.4.0
+   Compiling rand v0.9.5
+   Compiling serde v1.0.229
+   Compiling postcard v1.1.3
+   Compiling ppv-lite86 v0.2.21
+   Compiling half v2.7.1
+   Compiling fixed v1.31.0
+   Compiling rand_chacha v0.10.0
+   Compiling rand_chacha v0.9.0
+   Compiling proptest v1.11.0
+   Compiling oh_core v0.1.0 (E:\openhoi\.orchestrator\wt\WP-02-verify\crates\oh_core)
+   Compiling oh_data v0.1.0 (E:\openhoi\.orchestrator\wt\WP-02-verify\crates\oh_data)
+   Compiling oh_sim v0.1.0 (E:\openhoi\.orchestrator\wt\WP-02-verify\crates\oh_sim)
+   Compiling oh_ai v0.1.0 (E:\openhoi\.orchestrator\wt\WP-02-verify\crates\oh_ai)
+   Compiling oh_save v0.1.0 (E:\openhoi\.orchestrator\wt\WP-02-verify\crates\oh_save)
+   Compiling oh_proto v0.1.0 (E:\openhoi\.orchestrator\wt\WP-02-verify\crates\oh_proto)
+   Compiling oh_cli v0.1.0 (E:\openhoi\.orchestrator\wt\WP-02-verify\crates\oh_cli)
+   Compiling oh_server v0.1.0 (E:\openhoi\.orchestrator\wt\WP-02-verify\crates\oh_server)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 9.73s
+     Running unittests src\lib.rs (target\debug\deps\oh_ai-5ff6625111af9428.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\lib.rs (target\debug\deps\oh_cli-b7d74678dae8b537.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\main.rs (target\debug\deps\oh_cli-3afade0f7004824b.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\lib.rs (target\debug\deps\oh_core-00d62ef75812a21f.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests\core.rs (target\debug\deps\core-22e61e6afc8c6dd4.exe)
+
+running 16 tests
+test req_gen_04_fnv1a_reference_vectors_and_incremental_hash ... ok
+test req_gen_04_serialization_errors_are_propagated ... ok
+test req_gen_04_fixed_exact_arithmetic_and_rounding ... ok
+test req_gen_04_fixed_and_id_wire_encoding ... ok
+test req_plat_02_portable_postcard_hash_vector ... ok
+test req_gen_04_rng_order_and_unrelated_draws_do_not_affect_entity_streams ... ok
+test req_gen_04_canonical_map_order_and_strict_decode ... ok
+test req_plat_02_chacha8_zero_seed_reference_vector ... ok
+test req_gen_04_rng_tuple_fields_and_entity_domains_are_distinct ... ok
+test req_plat_02_full_diagnostic_matches_independent_reference ... ok
+test req_gen_04_typed_ids_round_trip ... ok
+test req_gen_04_fixed_checked_arithmetic_matches_integer_reference ... ok
+test req_gen_04_fixed_serialization_preserves_all_bits ... ok
+test req_gen_04_rng_reconstruction ... ok
+test req_gen_04_map_permutations_are_canonical ... ok
+test req_gen_04_fnv_chunking_is_independent ... ok
+
+test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+
+     Running unittests src\lib.rs (target\debug\deps\oh_data-c631f5bbeb86e602.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\lib.rs (target\debug\deps\oh_proto-fef47865b3bf8652.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\lib.rs (target\debug\deps\oh_save-04081d976d06f5ff.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\lib.rs (target\debug\deps\oh_server-6050db68560224b9.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\main.rs (target\debug\deps\oh_server-2879c809013c0e4b.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\lib.rs (target\debug\deps\oh_sim-aa6f68179e59411e.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests oh_ai
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests oh_cli
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests oh_core
+
+running 1 test
+test crates\oh_core\src\ids.rs - ids (line 7) - compile fail ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+
+   Doc-tests oh_data
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests oh_proto
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests oh_save
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests oh_server
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests oh_sim
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

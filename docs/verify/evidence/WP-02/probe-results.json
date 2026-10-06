@@ -1,0 +1,28 @@
+[
+  {
+    "label": "core-probe-two-runs",
+    "command": [
+      "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "crates/oh_core/tools/check_determinism.py",
+      "capture",
+      "--out",
+      "E:\\openhoi\\.orchestrator\\wt\\WP-02-verify\\target\\evidence\\WP-02-verify\\probe"
+    ],
+    "exit": 0
+  },
+  {
+    "label": "release-probe",
+    "command": [
+      "cargo",
+      "run",
+      "--locked",
+      "--quiet",
+      "--release",
+      "-p",
+      "oh_core",
+      "--example",
+      "determinism"
+    ],
+    "exit": 0
+  }
+]
