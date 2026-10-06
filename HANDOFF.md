@@ -2,7 +2,7 @@
 
 | 항목 | 값 |
 |---|---|
-| 작성 시각 | 2026-10-07, M1-r1 WP-08 Windows 새PASS 통합 후 Linux CI 실패 P06 중 |
+| 작성 시각 | 2026-10-07, M1-r1 WP-08 Linux62 CI 성공 뒤 독립 F02/F03 P06 중 |
 | 현재 마일스톤 | M0 PASS 보존. M1 진행 중 |
 | 기본 브랜치 CI | main79140fbfc9966fc5104df735f068615633181d5b의 [일반CI](https://github.com/peppone-choi/OpenHOI4/actions/runs/37491594894) client FAIL·다른6jobs success, [Core](https://github.com/peppone-choi/OpenHOI4/actions/runs/37491595077)와 [Simulation](https://github.com/peppone-choi/OpenHOI4/actions/runs/37491594793) success. 전체CI 녹색 아님. 이전 b1da8f4 세CI/실제M1 세OS SHA/hash60448355cecffa9d 일치 증거는 보존 |
 
@@ -25,7 +25,7 @@ M0 게이트 `d6ae2c8`의 AC7 PASS와 당시 동일 HEAD CI15jobs·7artifactZIP 
 | WP10 | 통합됨 | codex/wp10-ledger, WP-10 | 계산 기반 PASS, 실제 적용·조회 WP09 |
 | WP12 | 수정 독립 PASS·통합됨 | codex/wp12-localization, WP-12 | 실제 원장 WP09 후속 |
 | WP09 | 통합됨 | codex/wp09-national-state, WP-09; 구현206fb45/mainb1da8f4 | 실제 국가/주·원장·M1 hash/CLI/3OS PASS, 지도선택 WP08 후속 |
-| WP08 | Windows87c1a99 새독립PASS·main통합 후 LinuxCI FAIL, P06 중 | codex/wp08-map-rendering, WP-08; verify2 detached87c1a99 PASS 보존 | 초기화/정리오류와Linux가용성 진단→최소수정·새독립검증·통합CI |
+| WP08 | Windows87 PASS·main통합, 이후 Linux main FAIL; branch62 CI 성공이지만 독립 F02/F03 미해결 | codex/wp08-map-rendering, WP-08; verify3 detached2c FAIL 원본 보존, verify4 detached62 대조 | 화면 resize/GPU pipeline 실패 P06→새 exact 전체 독립 검증→main CI; W2 미계수 |
 | WP11 | 다음 RUN 예정 | 아직 없음 | 실제 M1 mutable state·예약명령 save-resume |
 | M1 게이트 | 미판정 | 없음 | WP11까지 전체통합·독립 새검증 |
 
@@ -89,4 +89,14 @@ WP09 후속 검증: M1 실제server15/M0server60·독립브라우저110·TOML변
 
 WP11 착수 전 [저장 경계 점검](docs/plans/WP-11-resume-review.md)을 읽는다. 현재 Simulation은 seed/date/tick을 보존하며 지속 RNG cursor가 없다. 존재하지 않는 cursor를 저장했다고 주장하지 않는다. State/TimeConfig/ordered queue/WorldInputs/base/만료된 modifier/Defs identity를 field별 계약에 포함하고 새 유효 import·원자적 교체·독립 재개 fixture를 먼저 설계한다. [스키마 기획](docs/plans/schema-planning.md)과 위키 본문 [접근 제한 기록](docs/research/schema-source-review.md)을 따른다.
 
-현재 LinuxCI 실패 증거와 범위: [조사](docs/research/WP-08-linux-renderer-ci.md), [원본CI SHA](docs/verify/evidence/WP-08-CI-attempt1/ci-failure.json). Firefox18FAIL/81PASS·gl=null 정리 추가예외를 보존했다. W2는 main CI 실패 때문에 완료 계수하지 않았다. 임시단발 브랜치한정 capability probe는 구현자가 작성하고 부모가 검토/푸시, 실제headless/headed·원시픽셀·context를 대조한 뒤 최종main에는 제거한다. 테스트/prefs/security/OS 설정을 우회하지 않는다. 신규 게임규칙·전역하네스가 아니다.
+현재 LinuxCI 실패 증거와 범위: [조사](docs/research/WP-08-linux-renderer-ci.md), [원본CI SHA](docs/verify/evidence/WP-08-CI-attempt1/ci-failure.json). Firefox18FAIL/81PASS·gl=null 정리 추가예외를 보존했다. 임시단발 브랜치한정 capability probe는 최종2c/62 tree에서 제거됐다. 테스트/prefs/security/OS 설정을 우회하지 않았다. 신규 게임규칙·전역하네스가 아니다.
+
+후속 exact2c CI37495546810은 argv 파싱 오류로 Firefox native/headed가 실행되지 않아 FAIL. --project=firefox 한 줄만 바꾼62a89ae의 CI37497228851/Core37497228704/Sim37497228737은 모두 성공했다. 실제 Linux M0 36/M1 70+1+35=106, 원본 ZIP af85ffa4cd2c8e18c94ba008713f8bb4af28b3c46278246708be68332bcd5d9e/API digest 일치, actualM1 세OS ZIP·hash60448355cecffa9d 일치. branch 성공이며 main791 실패를 대체하지 않는다.
+
+[독립3차 FAIL 전문](docs/verify/WP-08.attempt3.md): 2c에서 Windows175/M060/unit130 등은 통과했지만 WebKit resize 후 화면·PNG가 배경색이 되고, 실제 WebGPU pipeline rejection을 Three가 resolve해 빈 화면을 성공으로 보고한다. 부모3128파일불변 확인. 동일제품62의 CI 수정 대조는 verify4, 새제품수정은 기존 구현자가 수행 중. W1만 묶음 완료/W2 미계수/WP11 미시작이다.
+
+현재 대표 preview는 [19431](http://127.0.0.1:19431/)의 제품2c/PID8836/packb8d30ba577f303c3다. 부모 exeSHA8c80989d67c9f352024c37bd86f05cbdad4bde7622769b0862119cab47d027e7·servedJS SHA8e4fef1d102dbb4035a82396e106dc003d16a7905fa3f878411fa88c17831bac을 재확인했다. [실제 IAB 관측·원시 캡처](docs/verify/evidence/WP-08-preview-2c/)는 pending P06 제품과 구분하며 독립 PASS나 최종 제품 증거가 아니다. 19418/19425는 역사 preview로 유지된다.
+
+포트 독립성 감사: 구현자가19437 서버 시작의 bind10048 실패를 확인하기 전에 기존 verify4 서버에 UI 입력했다. 구현자의 own-source 주장은 철회되고 원문 충돌은 보존됐다. verify4 최초 singlecase는 충돌 전, 후속 resize epoch는 영향 가능 범위를 별도 기록한다. verify3의19428와 구현자의 새19440 재현은 분리돼 있다. 최종 새 독립 검증은 독점 새포트와 실제 PID/servedJS/input epoch를 확인해야 하며 추적 불변성만으로 runtime 독립을 주장하지 않는다.
+
+부모가 생성한 중복 증거 사본의 삭제는 자동 승인 검토가 blocked by policy로 거절했다. 삭제 우회 없이 사본을 유지했다. 필요한562파일은 별도 attempt3-final에 보존했고 중복 attempt3 사본은 미추적 상태로 남아 있다. 원본 failed 검증 worktree/미병합 자료는 삭제하지 않았다.

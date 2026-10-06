@@ -1,0 +1,25 @@
+{
+  "project": "chromium",
+  "browser": "153.0.8010.12",
+  "capability": {
+    "secureContext": true,
+    "webgl2": true,
+    "creationErrors": [],
+    "pixel": [
+      37,
+      91,
+      173,
+      255
+    ],
+    "glError": 0,
+    "renderer": "WebKit WebGL",
+    "webgpu": true,
+    "adapterAvailable": false,
+    "adapterError": null
+  },
+  "backend": "webgl2",
+  "frames": "45",
+  "errors": [],
+  "tick": "1",
+  "canvas": 1
+}

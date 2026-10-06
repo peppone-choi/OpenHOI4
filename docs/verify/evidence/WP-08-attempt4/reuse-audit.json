@@ -1,0 +1,32 @@
+{
+  "sourceHead": "2c2aacc88bd22b0f3ba4393b22bef4b119616e69",
+  "parentSnapshotsEqual": true,
+  "trackedCount": 3128,
+  "rawManifestExact": [
+    "checks-results.json",
+    "chrome-compile-rejected.json",
+    "gpu-compile-failure.cjs",
+    "gpu-compile-failure.cjs.log",
+    "gpu-compile-results.json",
+    "immutability.json",
+    "independent-facts.json",
+    "initialization-red.cjs",
+    "initialization-red.cjs.log",
+    "initialization-results.json",
+    "initialization.cjs",
+    "m0-e2e.log",
+    "m1-e2e.log",
+    "msedge-compile-rejected.json",
+    "provenance-lineendings.json",
+    "red/87-init-runner-results.json",
+    "red/87-initialization-results.json"
+  ],
+  "notChildManifest": [
+    "SHA256SUMS.json",
+    "WP-08.attempt3.md",
+    "WP-08.verify3.after.json",
+    "WP-08.verify3.before.json",
+    "WP-08.verify3.last.md"
+  ],
+  "mismatches": []
+}

@@ -1,0 +1,4895 @@
+{
+  "name": "firefox",
+  "browser": "155.0",
+  "head": "2c2aacc88bd22b0f3ba4393b22bef4b119616e69",
+  "scenario": "m1",
+  "seed": 1,
+  "states": [
+    {
+      "language": "en",
+      "province": 10,
+      "ui": {
+        "selected": "10",
+        "country": "Northern Test Nation",
+        "state": "Northern Test State",
+        "ledger": "1",
+        "date": "2000-01-01",
+        "hour": "3",
+        "tick": "3",
+        "worldTick": "3",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "backend": "webgl2"
+      },
+      "tooltip": "Value ledgerTick: 3Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11"
+    },
+    {
+      "language": "en",
+      "province": 30,
+      "ui": {
+        "selected": "30",
+        "country": "Southern Test Nation",
+        "state": "Southern Test State",
+        "ledger": "0",
+        "date": "2000-01-01",
+        "hour": "3",
+        "tick": "3",
+        "worldTick": "3",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "backend": "webgl2"
+      },
+      "tooltip": "Value ledgerTick: 3Base value0Final value0ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value00"
+    },
+    {
+      "language": "ko",
+      "province": 10,
+      "ui": {
+        "selected": "10",
+        "country": "북부 시험국",
+        "state": "북부 시험주",
+        "ledger": "1",
+        "date": "2000-01-01",
+        "hour": "3",
+        "tick": "3",
+        "worldTick": "3",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "backend": "webgl2"
+      },
+      "tooltip": "수치 원장틱: 3기본값1최종값1기여 항목연산값누적값인프라출처: 기본값기본값11"
+    },
+    {
+      "language": "ko",
+      "province": 30,
+      "ui": {
+        "selected": "30",
+        "country": "남부 시험국",
+        "state": "남부 시험주",
+        "ledger": "0",
+        "date": "2000-01-01",
+        "hour": "3",
+        "tick": "3",
+        "worldTick": "3",
+        "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+        "backend": "webgl2"
+      },
+      "tooltip": "수치 원장틱: 3기본값0최종값0기여 항목연산값누적값인프라출처: 기본값기본값00"
+    }
+  ],
+  "before": {
+    "selected": "30",
+    "country": "Southern Test Nation",
+    "state": "Southern Test State",
+    "ledger": "0",
+    "date": "2000-01-01",
+    "hour": "3",
+    "tick": "3",
+    "worldTick": "3",
+    "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+    "backend": "webgl2"
+  },
+  "afterTime": {
+    "selected": "30",
+    "country": "Southern Test Nation",
+    "state": "Southern Test State",
+    "ledger": "0",
+    "date": "2001-03-19",
+    "hour": "6",
+    "tick": "10638",
+    "worldTick": "10638",
+    "camera": "{\"width\":13.276288406143014,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+    "backend": "webgl2"
+  },
+  "resized": {
+    "selected": "30",
+    "country": "Southern Test Nation",
+    "state": "Southern Test State",
+    "ledger": "0",
+    "date": "2001-03-19",
+    "hour": "6",
+    "tick": "10638",
+    "worldTick": "10638",
+    "camera": "{\"width\":8.43351821355552,\"height\":5.130181702607957,\"x\":3.689079896811639,\"y\":2.8445399484058194,\"zoom\":1.2712491503214047}",
+    "backend": "webgl2"
+  },
+  "oracle": [
+    {
+      "mode": "Ownership",
+      "id": 10,
+      "expected": [
+        40,
+        100,
+        180
+      ],
+      "actual": [
+        40,
+        100,
+        180
+      ]
+    },
+    {
+      "mode": "Ownership",
+      "id": 20,
+      "expected": [
+        40,
+        100,
+        180
+      ],
+      "actual": [
+        40,
+        100,
+        180
+      ]
+    },
+    {
+      "mode": "Ownership",
+      "id": 30,
+      "expected": [
+        180,
+        70,
+        40
+      ],
+      "actual": [
+        180,
+        70,
+        40
+      ]
+    },
+    {
+      "mode": "Ownership",
+      "id": 40,
+      "expected": [
+        180,
+        70,
+        40
+      ],
+      "actual": [
+        180,
+        70,
+        40
+      ]
+    },
+    {
+      "mode": "Ownership",
+      "id": 30,
+      "expected": [
+        180,
+        70,
+        40
+      ],
+      "actual": [
+        180,
+        70,
+        40
+      ]
+    },
+    {
+      "mode": "Ownership",
+      "id": 50,
+      "expected": [
+        65,
+        105,
+        145
+      ],
+      "actual": [
+        65,
+        105,
+        145
+      ]
+    },
+    {
+      "mode": "Terrain",
+      "id": 10,
+      "expected": [
+        130,
+        165,
+        95
+      ],
+      "actual": [
+        130,
+        165,
+        95
+      ]
+    },
+    {
+      "mode": "Terrain",
+      "id": 20,
+      "expected": [
+        155,
+        135,
+        95
+      ],
+      "actual": [
+        155,
+        135,
+        95
+      ]
+    },
+    {
+      "mode": "Terrain",
+      "id": 30,
+      "expected": [
+        130,
+        165,
+        95
+      ],
+      "actual": [
+        130,
+        165,
+        95
+      ]
+    },
+    {
+      "mode": "Terrain",
+      "id": 40,
+      "expected": [
+        155,
+        135,
+        95
+      ],
+      "actual": [
+        155,
+        135,
+        95
+      ]
+    },
+    {
+      "mode": "Terrain",
+      "id": 30,
+      "expected": [
+        130,
+        165,
+        95
+      ],
+      "actual": [
+        130,
+        165,
+        95
+      ]
+    },
+    {
+      "mode": "Terrain",
+      "id": 50,
+      "expected": [
+        65,
+        105,
+        145
+      ],
+      "actual": [
+        65,
+        105,
+        145
+      ]
+    },
+    {
+      "mode": "States",
+      "id": 10,
+      "expected": [
+        140,
+        95,
+        170
+      ],
+      "actual": [
+        140,
+        95,
+        170
+      ]
+    },
+    {
+      "mode": "States",
+      "id": 20,
+      "expected": [
+        140,
+        95,
+        170
+      ],
+      "actual": [
+        140,
+        95,
+        170
+      ]
+    },
+    {
+      "mode": "States",
+      "id": 30,
+      "expected": [
+        185,
+        155,
+        70
+      ],
+      "actual": [
+        185,
+        155,
+        70
+      ]
+    },
+    {
+      "mode": "States",
+      "id": 40,
+      "expected": [
+        185,
+        155,
+        70
+      ],
+      "actual": [
+        185,
+        155,
+        70
+      ]
+    },
+    {
+      "mode": "States",
+      "id": 30,
+      "expected": [
+        185,
+        155,
+        70
+      ],
+      "actual": [
+        185,
+        155,
+        70
+      ]
+    },
+    {
+      "mode": "States",
+      "id": 50,
+      "expected": [
+        65,
+        105,
+        145
+      ],
+      "actual": [
+        65,
+        105,
+        145
+      ]
+    },
+    {
+      "mode": "Control",
+      "id": 10,
+      "expected": [
+        40,
+        100,
+        180
+      ],
+      "actual": [
+        40,
+        100,
+        180
+      ]
+    },
+    {
+      "mode": "Control",
+      "id": 20,
+      "expected": [
+        180,
+        70,
+        40
+      ],
+      "actual": [
+        180,
+        70,
+        40
+      ]
+    },
+    {
+      "mode": "Control",
+      "id": 30,
+      "expected": [
+        180,
+        70,
+        40
+      ],
+      "actual": [
+        180,
+        70,
+        40
+      ]
+    },
+    {
+      "mode": "Control",
+      "id": 40,
+      "expected": [
+        180,
+        70,
+        40
+      ],
+      "actual": [
+        180,
+        70,
+        40
+      ]
+    },
+    {
+      "mode": "Control",
+      "id": 30,
+      "expected": [
+        180,
+        70,
+        40
+      ],
+      "actual": [
+        180,
+        70,
+        40
+      ]
+    },
+    {
+      "mode": "Control",
+      "id": 50,
+      "expected": [
+        65,
+        105,
+        145
+      ],
+      "actual": [
+        65,
+        105,
+        145
+      ]
+    }
+  ],
+  "requests": [
+    "http://127.0.0.1:19428/",
+    "http://127.0.0.1:19428/assets/index-DtlFQFqO.js",
+    "http://127.0.0.1:19428/assets/index-B9cOsW2B.css",
+    "http://127.0.0.1:19428/fonts/NotoSansKR.ttf",
+    "http://127.0.0.1:19428/pack/localisation/en/map.ftl",
+    "http://127.0.0.1:19428/pack/localisation/en/national.ftl",
+    "http://127.0.0.1:19428/pack/localisation/ko/map.ftl",
+    "http://127.0.0.1:19428/pack/localisation/ko/national.ftl",
+    "http://127.0.0.1:19428/maps/testland/metadata",
+    "http://127.0.0.1:19428/maps/testland/index.bin?pack=b8d30ba577f303c3"
+  ],
+  "errors": [],
+  "sent": [
+    {
+      "type": "Hello",
+      "protocol_version": "m0-v1"
+    },
+    {
+      "type": "Join",
+      "session": "local",
+      "nation": null
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Command",
+      "sequence": "1",
+      "command": {
+        "type": "Pause",
+        "paused": true
+      }
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "nation:1",
+      "kind": "nation:1"
+    },
+    {
+      "type": "Query",
+      "request": "state:1",
+      "kind": "state:1"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "nation:2",
+      "kind": "nation:2"
+    },
+    {
+      "type": "Query",
+      "request": "state:2",
+      "kind": "state:2"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "nation:1",
+      "kind": "nation:1"
+    },
+    {
+      "type": "Query",
+      "request": "state:1",
+      "kind": "state:1"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "nation:2",
+      "kind": "nation:2"
+    },
+    {
+      "type": "Query",
+      "request": "state:2",
+      "kind": "state:2"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Command",
+      "sequence": "2",
+      "command": {
+        "type": "SetSpeed",
+        "speed": 1
+      }
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Command",
+      "sequence": "3",
+      "command": {
+        "type": "SetSpeed",
+        "speed": 2
+      }
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Command",
+      "sequence": "4",
+      "command": {
+        "type": "SetSpeed",
+        "speed": 3
+      }
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Command",
+      "sequence": "5",
+      "command": {
+        "type": "SetSpeed",
+        "speed": 4
+      }
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Command",
+      "sequence": "6",
+      "command": {
+        "type": "SetSpeed",
+        "speed": 5
+      }
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Command",
+      "sequence": "7",
+      "command": {
+        "type": "Pause",
+        "paused": false
+      }
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Command",
+      "sequence": "8",
+      "command": {
+        "type": "Pause",
+        "paused": true
+      }
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    },
+    {
+      "type": "Query",
+      "request": "world",
+      "kind": "world"
+    }
+  ],
+  "diagnostics": {
+    "testid": "province-map",
+    "backend": "webgl2",
+    "textureLimit": "16384",
+    "adapter": "ANGLE (NVIDIA, NVIDIA GeForce GTX 980 Direct3D11 vs_5_0 ps_5_0), or similar",
+    "device": "WebGL 2.0",
+    "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+    "shaderLanguage": "glsl",
+    "shaderLength": "16167",
+    "frames": "5638",
+    "selected": "",
+    "mode": "map-mode-control",
+    "updatedBytes": "0",
+    "updateMs": "0",
+    "frameMs": "16.679318907413975",
+    "hover": "",
+    "lastChangedBytes": "16",
+    "lastUpdateMs": "1",
+    "totalChangedBytes": "56"
+  },
+  "scope": "actual GUI actions, no game state or GPU capability mutation; screenshots and server wire palette oracle"
+}

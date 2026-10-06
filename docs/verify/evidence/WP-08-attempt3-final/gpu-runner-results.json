@@ -1,0 +1,6 @@
+[
+  {
+    "script": "gpu-failure.cjs",
+    "exit": 1
+  }
+]

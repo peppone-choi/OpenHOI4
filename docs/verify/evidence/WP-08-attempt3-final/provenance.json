@@ -1,0 +1,513 @@
+{
+  "docs/worklog/evidence/WP-08/SHA256SUMS.json": {
+    "entries": 208,
+    "bad": [
+      {
+        "path": "docs/worklog/evidence/WP-08/all-m1-final.log",
+        "expected": "09e74ed3885af132f755e804b14371732389d35c385f12bd4f2f047192b50bc4",
+        "actual": "6635761d7d53ad25a33d3b034479b03bdae0538bfbeed719219b7d28d35c35e6"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/architecture.log",
+        "expected": "64acf13918b576e7713bae285029f74944fcbee3eb3e3dd99da9336f2c84d919",
+        "actual": "0cbe63a7574744dabeb18118798070f7e9049cbe45847c110e3257fb559bc8fb"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/assets.log",
+        "expected": "624a8c9d06ee1ec392b87747ca646a329412ce494d9e8117a03472dd0dd13001",
+        "actual": "99ea92240fa2e7d5a4b27f8a6b208a2b7a8750587386c62eb036ea533cc84097"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/baseline-build.log",
+        "expected": "fea1f358056cf2d74fc2dc6053f3c6140f1feafb4ea8dfd38b39f98f2c40935f",
+        "actual": "b5bf5c0b8a11dce54d917f816f28613f022d8e58d19bad3bfe520154562677c1"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/baseline-ci.log",
+        "expected": "0fc73c1cb31e44e6f7b19c2323e1f3b868d0af1ef3cf7247933e835d2cc757e5",
+        "actual": "068510a1cdf885d0f1b4d587423f8769c618d5283927e869049a5d48dec9d68a"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/baseline-server.log",
+        "expected": "f11642b0c1bc9207765713e824fc8cfef6cee59dd07af721678261e49518d237",
+        "actual": "7b1318645ea18baceb3c8310d8dde6960dedbdd1ede680baea89f2fc8fce637c"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/baseline-test.log",
+        "expected": "2649d19728ed80d1a84cea3dbe85252b74a46d32db51abdb60a5138b93bfc022",
+        "actual": "344a0479823afd46ffb393f4ff403b1edad3222bfba42b9df8301cd07e52b75c"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/build-map.log",
+        "expected": "92a8ba2f7df602efa55de91613a6dedbc6216edcbae8cb54131e9e7eb0618317",
+        "actual": "1835d719debbf12ff069ea68c3b2aef1031d68a2843e570ce783a605ae5730bd"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/build-regression.log",
+        "expected": "960457001544dea48dd80d99b56c9839e84f9c5d83a1055757ef985f88551ed7",
+        "actual": "148427bfc21a988d4a9c4dc9d34eec6cb87128149d82e19168d1d48ed90c655d"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/build-server.log",
+        "expected": "48c9a578de36ccc85946330717d46d01bed886d77fae733df0d1f54771355649",
+        "actual": "526f2532fb51771ec48a71732fae136abd1bf634f9254662209fbfd8437c25d2"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/capture-m1.log",
+        "expected": "275424c325c39fe946682e81d809358534602c4e8c56eef022385cca3c339b57",
+        "actual": "87e10d8cc4749d2972e0576a12e1acac24d5422e19a62817d84ee2060d960448"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/cargo-deny.log",
+        "expected": "182d55355156c0c91987792cc9d5fcadfbc1274eef1f42ab88d2872518c71733",
+        "actual": "11bbd3b0ddd57b9b1abc9c42119334ec13904c41142d8f4d74ebd4858b03d5d9"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/clippy.log",
+        "expected": "afc7e77ef69889f317376a1e1e9c661d7692108f64bdfa12e841a6ea564f6097",
+        "actual": "c1fc9d99f1255d689c96fd017de296f87774a201ac1c75ba8861e5473fe26c12"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/docs.log",
+        "expected": "df7c13469f6c237fc95ec44d0df9af5326f11b1ec100ec9684739afebbcf6a5d",
+        "actual": "391492e162decb988ec209e0861d6b3ca92ed759a73a17bf8f05491f92466b59"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/expanded-build.log",
+        "expected": "88cdd99018bf3879545a9ed36898077c5407ce9b2502bc75d5b9724c1dbb8ba3",
+        "actual": "b530a7d204ef2e7e6893c807d338f0295f15b2787e5a8148e8dd62de2a1ab9da"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/expanded-chromium.log",
+        "expected": "f92eee457fe65f36eaefe62896bf42f73188d5199b95044c78825bffcca0cb2f",
+        "actual": "99ac56b2120baf8894220ed8d5f80104288037d64a616c5cef4500084faddb29"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/expanded-server.log",
+        "expected": "e6108cab06d86aac3eeb37776c52a0f743dc2765fc3f4d8a12e641f27bb28d43",
+        "actual": "f44083d0312ab1a29f7ef569f0cdd2acbc486cda94041d15341fde0c1438afe6"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/final-build.log",
+        "expected": "1d2c317fd5b920cbb746b312c2e5072b5231857cf4f9c757417681e4425488df",
+        "actual": "762358c033ea044730483941063689a3eac2a0b0162f90c38d889f30987caa57"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/final-server.log",
+        "expected": "8917f1c264917059feb8067b42c8304f6dfb41058146b4cb58cd134cb1b2af26",
+        "actual": "aaf2d4ca26d2f706e6378d0eb1a9a62d2a2c204bbab7b6a31ef1d7040d40eb7e"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/first-build.log",
+        "expected": "5c18d068f956e0868deffa0f1b8f01efc9b44a58d0a72f5063a25fc3c5642bdf",
+        "actual": "2a5cd917c11ac3ecdee5846211f607358f545e5abef39195b1b877a066852edf"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/first-map.log",
+        "expected": "0747d44f64d4a4eaba9334003c5ff3b8d7c49fb1271da076689ea310a8625f59",
+        "actual": "d9856823564bac80df21467409e20bec8436f09c79d31294cfc8c95d618c4d8b"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/first-pixels.log",
+        "expected": "a170581ce69577b316a5204b657876c94bc36b6ed7eabee80e44b34b0579d2f5",
+        "actual": "a598261959648c44208e8536c3f5d2df2e01dd494135395bfc4d3e14a775f024"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/first-server.log",
+        "expected": "0cabcc7fee855727410c06764c33b43a8328e72ae922cf79e92a07c918cd3734",
+        "actual": "f8618826bed3d59562455cb81db0a72a9b4ece611253482c2b16e36fb14de3f3"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/five-browser-initial.log",
+        "expected": "fe2bca1eb86d3e6a5f4ecac9bea3ce6b1645b516af7e28bdee5d61215799d3bc",
+        "actual": "d1967be3164eeddf3b4654c7c77968d9c82b03ef2cdf11852310491ec130333f"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/fmt.log",
+        "expected": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+        "actual": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/green-model.log",
+        "expected": "94ecf4a7a4f54c31728eac69e115cde0b6077ca087b04d911e5b7ac7318d141b",
+        "actual": "3a5f0838b06e29e5d110a78f1d30b8d62bd3134f99d0104ea01a5139e440662a"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/high-dense.log",
+        "expected": "3d66be71d9b7f7e19ba6a707e0488d4a64a188a0c8d31222ec003e00f55fc2ad",
+        "actual": "8af696574588b32a38b857fde38871403ea3783d749b666c5677eb3886fcb011"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/lifecycle.log",
+        "expected": "62a06e553979fdd191649346badd387e54d25aabc43112ef2a9f9e50288aa8ff",
+        "actual": "1affdac39fa489255ac7a581ffafbdedeaaa74bf7175183ec5afdf0c3cd97259"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/m0-365-1.log",
+        "expected": "987927128f0684944ae4e270b45aa370bf0b481d3b122af5b0f92b6e4ab93230",
+        "actual": "f8c11f6e83ac86dff65fddc5ad223f6c760bad6ed11e881c0317caa4c2fd2a3e"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/m0-365-2.log",
+        "expected": "cb13d7867d05cf47661dc27c72263f6192a2a35739d2ab833d8c1cc0046469cc",
+        "actual": "928dcb7f2a8eb35c6dc3c6f0543fa90a87801fed176655005cdac23cb97d275e"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/m0-port4173-refusal.log",
+        "expected": "3f373e81bcd5a765f8cda35b5a3aed1cd336af4f7b4a1e5bf73bfaac559ddb0a",
+        "actual": "dda8eb16ee8df6de38de4b9e8d937df15af2073d01914091c3dac995122fee7b"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/m0-regression.log",
+        "expected": "43a8b65fc317ccc61b7d367f17897e12428295dd7990ba965725c8d3a97e86dc",
+        "actual": "5b425f5e72c5972bea51edd50938926e90cbd87bdbbcc2a139df725e48c3ebd9"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/m1-365-1.log",
+        "expected": "c6e88e73e488150a1bdcd113ef1dfa7552aaa0e6a3addf77c7a234376ac5407d",
+        "actual": "1058ed49bbe7a6b4f805572f30e2b64de6c98a0b69b0b940d275218e621ff64e"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/m1-365-2.log",
+        "expected": "bd2512be8e57b6f0c924a9a52fedd5cd86676daeaec1b81f39102336eb6ae171",
+        "actual": "faa10207e15f249c4f5d72b4968ec4627d9d14ce688fa2085ae8da6a516dd825"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/m1-regression.log",
+        "expected": "3a165f6f1c86fafea03cacb8a2c34137268d8c91ec2adf6cf784b244885dcde4",
+        "actual": "99df1b8696bd063f30fcf51ef071e08733835d16ba0979b26a69f4ae8091b448"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/m1-sim-determinism/run-1.txt",
+        "expected": "b7c9e56bb4c0b9558b66175520564c542c130be3c4d581edc78a7ecc0bf00e5c",
+        "actual": "ac708652c36bfc55988bffe58b3a0c3cc61be9c3a2c8b55f19c754258a897046"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/m1-sim-determinism/run-2.txt",
+        "expected": "b7c9e56bb4c0b9558b66175520564c542c130be3c4d581edc78a7ecc0bf00e5c",
+        "actual": "ac708652c36bfc55988bffe58b3a0c3cc61be9c3a2c8b55f19c754258a897046"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/m1-sim-determinism/sim-hash.txt",
+        "expected": "b7c9e56bb4c0b9558b66175520564c542c130be3c4d581edc78a7ecc0bf00e5c",
+        "actual": "ac708652c36bfc55988bffe58b3a0c3cc61be9c3a2c8b55f19c754258a897046"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/map-five-browser.log",
+        "expected": "67be6690c4ecb9ce17623d6342981ac06e0284ed7b4937d76b66ff6710fab079",
+        "actual": "45e41e194925acdecc1eabd30bb91c4bef8af76b5a4f75af00ca4bbc30040548"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/missing-map-startup.log",
+        "expected": "ceda07852ee911d3a57bb4df83bf96bffe90b2f45093511aa29d6423e58b77b4",
+        "actual": "817532b80c20feb6975d5c16deac475039c598eb031291679e143098396d2d9f"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/npm-licenses.log",
+        "expected": "683345fc7b61c080ba42e4201eac74affcf939add674656ca04268348dd2e749",
+        "actual": "665902c3326699c6b761c530cc311ff58a3cf8fbc2a99fd95a5a8eaf56cd079a"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/partial-mode-five.log",
+        "expected": "b5de3af8ebc39706e63cf456150e307c65a0c323850611c0a014962b7adfb482",
+        "actual": "fc0219c5f0c90b606eac893535339d3a1320d2fd3fb97c17d2c8c0c0e46c8c22"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/preview-binary.log",
+        "expected": "c2bd0f833ad313be4354d36ef7b345bff4fbccc0c5b7f447fbd17962d33e24c2",
+        "actual": "fed572b6e4da7d28ac34d9e268e8a7991e4e584bfa45a7108a22fef981b2ca08"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/proto-current-diff.log",
+        "expected": "351afbbc6d2441dbe3e771e753d4d85a11197474155fb77fd95f96ad5cddff09",
+        "actual": "fd1db45b7175806a4bf78bdcaa37687dc774f232fb3c4019ffbac8ffdedbeb27"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/proto-generate.log",
+        "expected": "d23847aa373e20c88c3c1fbd236775eae7c29f203a3a7dbac107ac81e5df91d7",
+        "actual": "fade922f67e3d0749a25494d5ae1d96a7681ad596736dd13d64eca2410500e0b"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/proto-regenerate.log",
+        "expected": "7c5422c2d057cdf9aec8eb371e9290bac60e0bce4e79ccc84ec6a623d64a5a30",
+        "actual": "07900c6226edd013f5b1451724c7577c68f13a137df506232601ac9e84ce75fe"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/red-browser.log",
+        "expected": "4c79e058ddd0d7ce67189da4083d4b0223e0935b46b94627f297cf6fbb4a1051",
+        "actual": "0b0b0f584014daf8420e5510218fa645dca5a53c9dc5258351e24eb09b084933"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/red-display-schema.log",
+        "expected": "eb88ed0eb1b21eb1ea9e3b7663c182bcc552b9a79daf64c520238386b9f6d5a6",
+        "actual": "27fff8a432f4bbc46083e34eb26df210fa45d68ac6770556d3ff3c3f0c0ef009"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/red-http-version.log",
+        "expected": "e620c35fa33a4493c653bfa5f528ebbe34c3c417ed27eb2a4dd7858888ceb707",
+        "actual": "5b36a2a6e294522051431cb35b11ca212c8e8d331fa37a7afe928bd324f66ce0"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/red-model.log",
+        "expected": "4353f2a674538d7b3040f45f820cc3bb162d5b361278964478d3a8ff3a4f3afe",
+        "actual": "c585f5fe6106cae8cc57ff5b2edf725057f31f4fda9448d157e3598267c7781b"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/rust-tests.log",
+        "expected": "73b9878d51a4fcad1cc3dcfad1bf7b19c97c7e2df3316872110daee50006cdf5",
+        "actual": "0e2101d225875e446463ea86b8df052a046b7bc3ebe77e632af40e22b5019076"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/schema-green.log",
+        "expected": "eff76ac8e7a73128833403d57eed3a730524d58bf4b37dc3e71cc15866f8452c",
+        "actual": "97411f111fe06d09c0b42e276d2c87396acb11ca640ad87b8b111ff69b39789b"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/server-regression.log",
+        "expected": "b4eab0191c0d4874ac43fa90f4c7abd88555edbe57590064a00804a8235fba6a",
+        "actual": "adc70730149d003f81b9139bfd09d4509bb124e0ccd402493fe9f6acb1a52a47"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/typecheck.log",
+        "expected": "c8cde50b801a617271b852e9636dcbb3cbbd917d8a327e1e79fda561e11f381b",
+        "actual": "9a597f3c996e5a54039b8d46a14c9a57e40cd4961dbd84e623c44f056c278865"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/unit-tests.log",
+        "expected": "934ba3586da2849cda96233d12a6dc78662749241f2d97a878e64eef0a9c2085",
+        "actual": "6e8e58bcf4667d22535fa646abc9cdf1d9545afa97de358dde6095de59c9f714"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/version-build.log",
+        "expected": "f5c41e7f20f00e0530663f9da5a2f104b58930eb2f669a98707fb2874d6ec393",
+        "actual": "6294775c1874f7d4a15d76e4585a15e0751dc3558e11c6cef7c1b3ce4d8e18e8"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/version-server.log",
+        "expected": "5257ab06df525d92f9eaabcb927ea7e0e25e6643ebfc68349388d41afe7e16ec",
+        "actual": "dfb332fab72a605e8aedecaea94254741282549bf91e77547b3de8622954803f"
+      }
+    ]
+  },
+  "docs/worklog/evidence/WP-08/p06-linux/SHA256SUMS.json": {
+    "entries": 414,
+    "bad": []
+  },
+  "docs/worklog/evidence/WP-08/p06-linux-final/SHA256SUMS.json": {
+    "entries": 252,
+    "bad": []
+  },
+  "docs/worklog/evidence/WP-08/p06-redirect/SHA256SUMS.json": {
+    "entries": 550,
+    "bad": [
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/after-server.err.log",
+        "expected": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+        "actual": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/after-server.out.log",
+        "expected": "a81c5a4ba5f51f853c374dce864d5af2320e0a29d9035a1ae60e9a15da737c7d",
+        "actual": "330872ee9025be2cc62dd44466dddf6c083252d0777e89fd22190f36cb061cb3"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/before-server.err.log",
+        "expected": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+        "actual": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/before-server.out.log",
+        "expected": "5870beb67eca5a9302d1b7fb482b9db39cd5d743bdd3bfac7314bcd541d1b87d",
+        "actual": "09f193fd98dd0326ab0dd947fa7450e9a5a050d2320a3b8cc7fe4aed36c087db"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/build.log",
+        "expected": "e0885f2ce8eb5e7c608f4662f326b3549c7690239b55958df970428d95cae7eb",
+        "actual": "9500b577b23d4eda62c23700848ec28c4c3ffc50b140e1cf0ad4318020369cc3"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/cleanup-regression.log",
+        "expected": "ce7d72294c11b834a3ae05595dcdc3630ac0e6d9ba04b4ed8d8c500f6f8fc135",
+        "actual": "d3cc4c6cd797cb5c9e9f6e6da646f20c6393cb295d8a61450c6638b4fd32e430"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/clippy.log",
+        "expected": "cf31702ac371143925ac6ac749802c20a5aad556dae3f62e3a5e0b1c051ef253",
+        "actual": "4a82729494551947513e74cb97d69569f90f2b03e5bba05d6d89a19a9401970f"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/docs.log",
+        "expected": "df7c13469f6c237fc95ec44d0df9af5326f11b1ec100ec9684739afebbcf6a5d",
+        "actual": "391492e162decb988ec209e0861d6b3ca92ed759a73a17bf8f05491f92466b59"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/final-redirect.log",
+        "expected": "64184709b844a7fc905e7dc6b23824a72f2b8398939e4eb9ce39e30f8e5213d4",
+        "actual": "053501b2228f43492dbc6bfe61e601be5be388f87782ab30308d8d05a5f9b585"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/fmt.log",
+        "expected": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+        "actual": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/green-browser.log",
+        "expected": "ebc9649a7138b0ced5995f1debb6557790afbd9c7799d125da0a35a7650e833e",
+        "actual": "bb58b706310584b1caa5905773f481c8a4f46965634948f391399f121f21040a"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/green-chromium.log",
+        "expected": "2ea6917a8b2fe1efd71ab58e757a8f0424aa809923ec55ca1286ecfcdfb10a0c",
+        "actual": "f4e2b91efaa3b7debf73e384f92ee8783f910ce385c417a36afa8e45543f9cf8"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/green-independent-index-repro.cjs",
+        "expected": "437454045292892942cc1c38e10e2e64abbc649562b026fb9e68ebaca5a018c2",
+        "actual": "5cf9c658b765b5fb3e5ef937389a2018456f82f7e1132172333b9b2d96e211af"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/green-independent-index-repro.log",
+        "expected": "ea5cbdd55df48fcbf12a403430027c96f36aad3fecdf680b30a7be8e74fdde75",
+        "actual": "bd5ee35ccf171ad3826fd3f1785f0f168d9d5b723762eedf52fe8d0228546ba4"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/green-independent-metadata-repro.cjs",
+        "expected": "95c8a587f6977027313fae515b920a4f6fe571b19ce6f299585e8a84831ab1b1",
+        "actual": "b888d410c50989cc1641836c58168d05fdde3729a25c99ca3fc1806dd0cc176c"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/green-independent-metadata-repro.log",
+        "expected": "3c09a5726efce65ecda4637d6de97489be828dd766a6ac1302eda4cd145e6ad5",
+        "actual": "92bf9ca1e219c05a39201a95a58379f8f373d5e31828ac7a70da03ef10f4850d"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/green-independent-repro.cjs",
+        "expected": "a2f06673a1f1aa3e904617fe47f2831318ba94d8f4a6431f1d86aeb106b4e710",
+        "actual": "e5204fd30a651b348e15208ba3f162a86feafe37738a2cab405b737af928a6f5"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/independent-index-repro-original.cjs",
+        "expected": "66c4145a48c21b57fb835e40a3a7273097836ca1a19c2c1a0f0a2002daf46393",
+        "actual": "2cde0db50aad9b7daec194950732c069c8d8c871681e3f406e08fddc94a72fc6"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/independent-repro-original.cjs",
+        "expected": "72c2e83ec8f7f1df1c1c54dea30552dec05bbc946d9e6fa846774acfecd3c08d",
+        "actual": "e00f6a6b2f47362c43e32b886f3b52c02c7dfb8b66c63053699bedd55d2e1040"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/m0-hash-1.log",
+        "expected": "0272aad57404bc53fc2179edf7bdcbc2f8b9e4b49fa723e0b4c19bf5ccfb2160",
+        "actual": "83a3c5ae429896f815a8bbeece654eeedd527207c52d49c4564bc01e53fa5eac"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/m0-hash-2.log",
+        "expected": "6ce1b69d0187a56d839e0f8fbaf508f8b7c24c61b6d23f151a182a65f79f804c",
+        "actual": "b999e4dd44b2f50809f73d323784a4e35165f4dbab31f770e2094d98bfb93521"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/m0-regression.log",
+        "expected": "ea8887f84cf1f6b5627d08fd151e7218d3c23f26d3fdfe8024e2947064454587",
+        "actual": "14dc680b2388cd95b32a8ffca1a0c2646b78af788c4fc49dd0ddc604b9175ee2"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/m1-hash-1.log",
+        "expected": "44ae43a34e27fee2aa732b6bf0522d6bbbc1e32d07a5d1d1e7e3f1ee9ac2eb76",
+        "actual": "9842ac2357d67dad945ef2aacc6557879e2f170e8ae80a0b514b4afc176cb748"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/m1-hash-2.log",
+        "expected": "a5e1686e010f78dbbd05355c0af98c554cb4731d7dcf4efa7a8fab4ad99235cf",
+        "actual": "98f086640a422ca67cb32be6d4aa769edf6da794705382bd4f790d2821b3da26"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/m1-regression.log",
+        "expected": "6b5195092caa4bb529d93819d96970c8610b1d6cf22521997a4b8fa320d78b2b",
+        "actual": "c97400343f517e38c003fcffb93bec20aa6b40230a1b581d9d45089cedd1a1cd"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/native-http.log",
+        "expected": "113023a70f4a9ca60f14303c3b2627ad00914dec30e0fb6d0447b0d787b0560d",
+        "actual": "79261f11ab8b4afd5270873f7607921f5f862435f1c9b8e4aee6f1c7f7c2d5c9"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/proto-generate.log",
+        "expected": "03f501fa78198c916b6dc038f15916fd4d2ba1989a9f24850087e5569dd81757",
+        "actual": "0c3baa54f019666e66d62b600bfab50fc8784b67ad6a7925f65bf7fd1dc04945"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/red-browser.log",
+        "expected": "b63f3401556e28e366da768c79e9cc323d349bf3df559e8cb316abf168991f5c",
+        "actual": "8e147c1d1c874468cad06dd68f04feb7e57f7ccc69412a9ced62d929baf2cd95"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/red-independent-index-repro.cjs",
+        "expected": "1ce25f6a7a0fc489a7493ba93ea433d30f9a8c8c24c0ff26cee3c86b4820fa06",
+        "actual": "dea2e2b185a8b23c815e6fe9e066fc7c3bf69863f2ec0374daeafcf6461f587d"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/red-independent-index-repro.log",
+        "expected": "d3c08e031729e8a9f7aa85af21acc31ca2507be3c23da2597f63d71a31273204",
+        "actual": "ef64413c9f9d91164fe5034ff1b11e6801a482fb8e8a2fe5e9dd5d694291dd40"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/red-independent-metadata-repro.cjs",
+        "expected": "33a2802e25dedb1af10f0a303ce8baf96ac576f430c8231979ab6a8d4ae72d61",
+        "actual": "79f1f13cd7eb61ecf83cd11789503982b74a0d636afb0c9605131f46da69b6e7"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/red-independent-repro.cjs",
+        "expected": "ef476769cf11aa0468b658a3cf5d769dbf1f182502e0d011b061c095bbe834dd",
+        "actual": "c80f96165edf958e0891427d43917afcfba1dd75a070456b2a4121828649914b"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/red-independent-repro.log",
+        "expected": "573b40d823a537f3c15f9276d605147df2eeffa07e71269581fe7531aa46b75f",
+        "actual": "3e69d1cb0e8cff630ef710722ec291cf53c22c35928c161c0e43efeed2b88be9"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/red-local.log",
+        "expected": "8816c1cf6634a37992385bd6440b0d0232441a0a1aa5c42c558c8903a19cb952",
+        "actual": "c1dab03070cecb2e26dff55e08784f9a2b8d8e8428d644d1e05f73b9c3a5f82c"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/red-native-http.log",
+        "expected": "53548ea2f508a84fe2a84becede21d26eb1fde382ed5fc784d8c7ff51cee93ee",
+        "actual": "45ef65c6039884a0b69c511df5ce6f32b21bac73814aa5db2126143267280786"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/redirect-pass.log",
+        "expected": "367bdb50b0f9fda0aff017c2891d359a0161d7a0f302b000da02f11a20723663",
+        "actual": "64a4201b986bc46fbbb2dd7e03ff0c66e65931302e29d631bcb61731130cdc35"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/rust-tests.log",
+        "expected": "ea30eab89fe251f565646e467b3355b78b417144b2b13c06dbc04ea281849651",
+        "actual": "20d756c8e756ab54e9da69921b602b6e5f3c072f970e44daf1dff1d5c83875a5"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/server-build.log",
+        "expected": "3bae036a470930572034c7f34f00d6c656875d1019a297a6ca000ff85110860c",
+        "actual": "cef07fa996a0259fda12c21b09d418456b3040d18b5d605daa03b3a0dbeb5990"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/typecheck.log",
+        "expected": "c8cde50b801a617271b852e9636dcbb3cbbd917d8a327e1e79fda561e11f381b",
+        "actual": "9a597f3c996e5a54039b8d46a14c9a57e40cd4961dbd84e623c44f056c278865"
+      },
+      {
+        "path": "docs/worklog/evidence/WP-08/p06-redirect/unit-tests.log",
+        "expected": "053ba1f44cd106024ab09ca1d805821cf1a80f4c67beeeefd0a9df98c4697c1b",
+        "actual": "5089298eefc024468df74ff4e536fbc7d2faa6c52b5097a65c5c54989db97237"
+      }
+    ]
+  },
+  "linux-probe": {
+    "bytes": 9400,
+    "sha256": "3816dc0db972596914542727dbe7c78daa388a05cc4c006cee18d5e072487a77"
+  },
+  "linux-ci-failure": {
+    "bytes": 2229604,
+    "sha256": "304081a8ea7c55a0329509c4e2f202dd527b6ed7d717cfaa42403dfab81bb09b"
+  }
+}

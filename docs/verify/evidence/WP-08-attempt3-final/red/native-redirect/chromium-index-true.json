@@ -1,0 +1,78 @@
+{
+  "resource": "index",
+  "reload": true,
+  "controlEvidence": {
+    "status": 200,
+    "url": "http://127.0.0.1:4542/payload",
+    "redirected": true,
+    "cors": "cors",
+    "packHash": "b8d30ba577f303c3",
+    "controlRedirects": [
+      {
+        "status": 302,
+        "location": "http://127.0.0.1:4542/payload"
+      }
+    ],
+    "redirectProbe": {
+      "status": 302,
+      "location": "http://127.0.0.1:4542/payload"
+    },
+    "bodyLength": 96,
+    "bodySha256": "2673c2d45c8b460abbdd7cb6c2f18777029210b25370ec8e07fb3ee7fcaa418c"
+  },
+  "sourceOrigin": "http://127.0.0.1:4543",
+  "foreignURL": "http://127.0.0.1:4542/payload",
+  "foreignHits": [
+    {
+      "method": "GET",
+      "url": "/payload",
+      "origin": "http://127.0.0.1:4543"
+    }
+  ],
+  "requests": [
+    "http://127.0.0.1:4543/?forceWebGL=1",
+    "http://127.0.0.1:4543/assets/index-COkwvm1N.js",
+    "http://127.0.0.1:4543/assets/index-B9cOsW2B.css",
+    "http://127.0.0.1:4543/fonts/NotoSansKR.ttf",
+    "http://127.0.0.1:4543/pack/localisation/en/map.ftl",
+    "http://127.0.0.1:4543/pack/localisation/en/national.ftl",
+    "http://127.0.0.1:4543/pack/localisation/ko/map.ftl",
+    "http://127.0.0.1:4543/pack/localisation/ko/national.ftl",
+    "http://127.0.0.1:4543/maps/testland/metadata",
+    "http://127.0.0.1:4543/maps/testland/index.bin?pack=b8d30ba577f303c3",
+    "http://127.0.0.1:4543/maps/testland/metadata",
+    "http://127.0.0.1:4543/maps/testland/index.bin?pack=0000000000000000",
+    "http://127.0.0.1:4542/payload"
+  ],
+  "rejectedRequestStartIndex": 10,
+  "actualSourceRedirects": [
+    {
+      "url": "/maps/testland/index.bin?pack=0000000000000000",
+      "status": 302,
+      "location": "http://127.0.0.1:4542/payload"
+    }
+  ],
+  "failures": [],
+  "responseEvents": [
+    {
+      "url": "http://127.0.0.1:4543/maps/testland/index.bin?pack=0000000000000000",
+      "status": 302,
+      "location": "http://127.0.0.1:4542/payload"
+    }
+  ],
+  "errors": [],
+  "before": {
+    "date": "2000-01-01",
+    "hour": "0",
+    "tick": "0",
+    "selected": "30",
+    "worldTick": "0",
+    "state": "Southern Test State",
+    "country": "Southern Test Nation",
+    "ledger": "0"
+  },
+  "cameraBefore": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+  "rendererOutcome": "initial load creates no renderer; identity reload disposes previous renderer, keeps authority UI/selection only",
+  "alerts": [],
+  "canvasCount": 1
+}

@@ -1,0 +1,161 @@
+chrome nullGL AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
++ [
++   "Cannot read properties of null (reading 'getSupportedExtensions')"
++ ]
+- []
+
+    at E:\openhoi\.orchestrator\wt\WP-08-verify3\target\wp08-verify3\initialization-red.cjs:18:540 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [Array],
+  expected: [],
+  operator: 'deepStrictEqual'
+}
+chrome nullAdapterGL AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
++ [
++   "Cannot read properties of null (reading 'getSupportedExtensions')",
++   "Cannot read properties of null (reading 'getSupportedExtensions')"
++ ]
+- []
+
+    at E:\openhoi\.orchestrator\wt\WP-08-verify3\target\wp08-verify3\initialization-red.cjs:18:540 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [Array],
+  expected: [],
+  operator: 'deepStrictEqual'
+}
+chrome shaderFailure PASS {"kind":"shaderFailure","contexts":1,"shaderCalls":1,"losses":1,"rafCalls":1,"cancelCalls":1,"activeRaf":[],"pointerAdds":0,"pointerRemoves":0,"observerAdds":1,"observerDisconnects":1}
+edge nullGL AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
++ [
++   "Cannot read properties of null (reading 'getSupportedExtensions')"
++ ]
+- []
+
+    at E:\openhoi\.orchestrator\wt\WP-08-verify3\target\wp08-verify3\initialization-red.cjs:18:540 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [Array],
+  expected: [],
+  operator: 'deepStrictEqual'
+}
+edge nullAdapterGL AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
++ [
++   "Cannot read properties of null (reading 'getSupportedExtensions')",
++   "Cannot read properties of null (reading 'getSupportedExtensions')"
++ ]
+- []
+
+    at E:\openhoi\.orchestrator\wt\WP-08-verify3\target\wp08-verify3\initialization-red.cjs:18:540 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [Array],
+  expected: [],
+  operator: 'deepStrictEqual'
+}
+edge shaderFailure PASS {"kind":"shaderFailure","contexts":1,"shaderCalls":1,"losses":1,"rafCalls":1,"cancelCalls":1,"activeRaf":[],"pointerAdds":0,"pointerRemoves":0,"observerAdds":1,"observerDisconnects":1}
+chromium nullGL AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
++ [
++   "Cannot read properties of null (reading 'getSupportedExtensions')"
++ ]
+- []
+
+    at E:\openhoi\.orchestrator\wt\WP-08-verify3\target\wp08-verify3\initialization-red.cjs:18:540
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at process.processImmediate (node:internal/timers:473:9) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [Array],
+  expected: [],
+  operator: 'deepStrictEqual'
+}
+chromium nullAdapterGL AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
++ [
++   "Cannot read properties of null (reading 'getSupportedExtensions')",
++   "Cannot read properties of null (reading 'getSupportedExtensions')"
++ ]
+- []
+
+    at E:\openhoi\.orchestrator\wt\WP-08-verify3\target\wp08-verify3\initialization-red.cjs:18:540 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [Array],
+  expected: [],
+  operator: 'deepStrictEqual'
+}
+chromium shaderFailure PASS {"kind":"shaderFailure","contexts":1,"shaderCalls":1,"losses":1,"rafCalls":1,"cancelCalls":1,"activeRaf":[],"pointerAdds":0,"pointerRemoves":0,"observerAdds":1,"observerDisconnects":1}
+firefox nullGL AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
++ [
++   `can't access property "getSupportedExtensions", this.gl is null`
++ ]
+- []
+
+    at E:\openhoi\.orchestrator\wt\WP-08-verify3\target\wp08-verify3\initialization-red.cjs:18:540 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [Array],
+  expected: [],
+  operator: 'deepStrictEqual'
+}
+firefox nullAdapterGL AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
++ [
++   `can't access property "getSupportedExtensions", this.gl is null`,
++   `can't access property "getSupportedExtensions", this.gl is null`
++ ]
+- []
+
+    at E:\openhoi\.orchestrator\wt\WP-08-verify3\target\wp08-verify3\initialization-red.cjs:18:540 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [Array],
+  expected: [],
+  operator: 'deepStrictEqual'
+}
+firefox shaderFailure PASS {"kind":"shaderFailure","contexts":1,"shaderCalls":1,"losses":1,"rafCalls":3,"cancelCalls":1,"activeRaf":[],"pointerAdds":0,"pointerRemoves":0,"observerAdds":1,"observerDisconnects":1}
+webkit nullGL AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
++ [
++   "TypeError: null is not an object (evaluating 'this.gl.getSupportedExtensions')"
++ ]
+- []
+
+    at E:\openhoi\.orchestrator\wt\WP-08-verify3\target\wp08-verify3\initialization-red.cjs:18:540 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [Array],
+  expected: [],
+  operator: 'deepStrictEqual'
+}
+webkit nullAdapterGL AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
++ [
++   "TypeError: null is not an object (evaluating 'this.gl.getSupportedExtensions')"
++ ]
+- []
+
+    at E:\openhoi\.orchestrator\wt\WP-08-verify3\target\wp08-verify3\initialization-red.cjs:18:540 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [Array],
+  expected: [],
+  operator: 'deepStrictEqual'
+}
+webkit shaderFailure PASS {"kind":"shaderFailure","contexts":1,"shaderCalls":1,"losses":1,"rafCalls":19,"cancelCalls":1,"activeRaf":[],"pointerAdds":0,"pointerRemoves":0,"observerAdds":1,"observerDisconnects":1}

@@ -1,0 +1,25 @@
+{
+  "source_commit": "2c2aacc88bd22b0f3ba4393b22bef4b119616e69",
+  "url": "http://127.0.0.1:19431",
+  "http_status": 200,
+  "pid": 8836,
+  "executable": "E:\\openhoi\\.orchestrator\\wt\\WP-08\\target\\wp08-preview-final\\preview-2c2aacc\\oh_server.exe",
+  "executable_sha256": "8c80989d67c9f352024c37bd86f05cbdad4bde7622769b0862119cab47d027e7",
+  "working_directory": "E:\\openhoi\\.orchestrator\\wt\\WP-08",
+  "arguments": [
+    "--port",
+    "19431",
+    "--pack-root",
+    "E:\\openhoi\\.orchestrator\\wt\\WP-08\\data\\packs"
+  ],
+  "window_style": "Hidden",
+  "served_js": "/assets/index-DtlFQFqO.js",
+  "served_js_sha256": "8e4fef1d102dbb4035a82396e106dc003d16a7905fa3f878411fa88c17831bac",
+  "served_js_bytes": 1169494,
+  "served_js_equals_dist": true,
+  "executable_equals_current_debug": true,
+  "pack_hash": "b8d30ba577f303c3",
+  "map_id": "testland",
+  "scope": "actual direct local runtime; no state injection; does not replace CI or independent verification",
+  "prior_previews": "19418=f58, 19425=87 preserved unchanged"
+}

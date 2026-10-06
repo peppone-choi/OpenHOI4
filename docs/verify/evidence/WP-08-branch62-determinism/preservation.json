@@ -1,0 +1,118 @@
+[
+  {
+    "path": "m1-compare.log",
+    "source_sha256": "c1a82eb416232ab3fdddddeae3c3b5926827fc127fa18e6a6bf94f2887f1e12a",
+    "bytes": 105,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "c1a82eb416232ab3fdddddeae3c3b5926827fc127fa18e6a6bf94f2887f1e12a"
+  },
+  {
+    "path": "m1-sim-hash-macos-latest.zip",
+    "source_sha256": "a9cc3741443422e3c412ee035a5d69598d2dfeb2665245c223dd033958064326",
+    "bytes": 635,
+    "raw_archive": "original-evidence-bytes.zip"
+  },
+  {
+    "path": "m1-sim-hash-ubuntu-latest.zip",
+    "source_sha256": "398f3ef4da8b457857632a6fd124e03ddf94e31ab956e92ac08f20655003b330",
+    "bytes": 635,
+    "raw_archive": "original-evidence-bytes.zip"
+  },
+  {
+    "path": "m1-sim-hash-windows-latest.zip",
+    "source_sha256": "dd1e4aec39d83ee5a09606093799984a77e14d186f702ae891ee50a509304ec2",
+    "bytes": 638,
+    "raw_archive": "original-evidence-bytes.zip"
+  },
+  {
+    "path": "same-head-ci.json",
+    "source_sha256": "d7bb9b70af4a7949200a38461bcaaaa0b463fa31fe3120fd46fbe7e62469c353",
+    "bytes": 1615,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "d7bb9b70af4a7949200a38461bcaaaa0b463fa31fe3120fd46fbe7e62469c353"
+  },
+  {
+    "path": "m1/m1-sim-hash-macos-latest/command.json",
+    "source_sha256": "8f269e22d2a80a43288517925a2099f944062cd521fa3a968ae900d4203f9ae1",
+    "bytes": 169,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "b0be350b91738fb143a8a86454e7c844f064f81299d46c2f597792145fbe0b82"
+  },
+  {
+    "path": "m1/m1-sim-hash-macos-latest/run-1.txt",
+    "source_sha256": "ac708652c36bfc55988bffe58b3a0c3cc61be9c3a2c8b55f19c754258a897046",
+    "bytes": 17,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "ac708652c36bfc55988bffe58b3a0c3cc61be9c3a2c8b55f19c754258a897046"
+  },
+  {
+    "path": "m1/m1-sim-hash-macos-latest/run-2.txt",
+    "source_sha256": "ac708652c36bfc55988bffe58b3a0c3cc61be9c3a2c8b55f19c754258a897046",
+    "bytes": 17,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "ac708652c36bfc55988bffe58b3a0c3cc61be9c3a2c8b55f19c754258a897046"
+  },
+  {
+    "path": "m1/m1-sim-hash-macos-latest/sim-hash.txt",
+    "source_sha256": "ac708652c36bfc55988bffe58b3a0c3cc61be9c3a2c8b55f19c754258a897046",
+    "bytes": 17,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "ac708652c36bfc55988bffe58b3a0c3cc61be9c3a2c8b55f19c754258a897046"
+  },
+  {
+    "path": "m1/m1-sim-hash-ubuntu-latest/command.json",
+    "source_sha256": "8f269e22d2a80a43288517925a2099f944062cd521fa3a968ae900d4203f9ae1",
+    "bytes": 169,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "b0be350b91738fb143a8a86454e7c844f064f81299d46c2f597792145fbe0b82"
+  },
+  {
+    "path": "m1/m1-sim-hash-ubuntu-latest/run-1.txt",
+    "source_sha256": "ac708652c36bfc55988bffe58b3a0c3cc61be9c3a2c8b55f19c754258a897046",
+    "bytes": 17,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "ac708652c36bfc55988bffe58b3a0c3cc61be9c3a2c8b55f19c754258a897046"
+  },
+  {
+    "path": "m1/m1-sim-hash-ubuntu-latest/run-2.txt",
+    "source_sha256": "ac708652c36bfc55988bffe58b3a0c3cc61be9c3a2c8b55f19c754258a897046",
+    "bytes": 17,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "ac708652c36bfc55988bffe58b3a0c3cc61be9c3a2c8b55f19c754258a897046"
+  },
+  {
+    "path": "m1/m1-sim-hash-ubuntu-latest/sim-hash.txt",
+    "source_sha256": "ac708652c36bfc55988bffe58b3a0c3cc61be9c3a2c8b55f19c754258a897046",
+    "bytes": 17,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "ac708652c36bfc55988bffe58b3a0c3cc61be9c3a2c8b55f19c754258a897046"
+  },
+  {
+    "path": "m1/m1-sim-hash-windows-latest/command.json",
+    "source_sha256": "8f269e22d2a80a43288517925a2099f944062cd521fa3a968ae900d4203f9ae1",
+    "bytes": 169,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "b0be350b91738fb143a8a86454e7c844f064f81299d46c2f597792145fbe0b82"
+  },
+  {
+    "path": "m1/m1-sim-hash-windows-latest/run-1.txt",
+    "source_sha256": "b7c9e56bb4c0b9558b66175520564c542c130be3c4d581edc78a7ecc0bf00e5c",
+    "bytes": 18,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "ac708652c36bfc55988bffe58b3a0c3cc61be9c3a2c8b55f19c754258a897046"
+  },
+  {
+    "path": "m1/m1-sim-hash-windows-latest/run-2.txt",
+    "source_sha256": "b7c9e56bb4c0b9558b66175520564c542c130be3c4d581edc78a7ecc0bf00e5c",
+    "bytes": 18,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "ac708652c36bfc55988bffe58b3a0c3cc61be9c3a2c8b55f19c754258a897046"
+  },
+  {
+    "path": "m1/m1-sim-hash-windows-latest/sim-hash.txt",
+    "source_sha256": "b7c9e56bb4c0b9558b66175520564c542c130be3c4d581edc78a7ecc0bf00e5c",
+    "bytes": 18,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "ac708652c36bfc55988bffe58b3a0c3cc61be9c3a2c8b55f19c754258a897046"
+  }
+]

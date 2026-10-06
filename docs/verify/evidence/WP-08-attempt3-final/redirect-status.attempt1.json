@@ -1,0 +1,779 @@
+{
+  "http": {
+    "meta": {
+      "schema_version": 1,
+      "map_id": "testland",
+      "width": 8,
+      "height": 6,
+      "province_ids": [
+        10,
+        20,
+        30,
+        40,
+        50,
+        60
+      ],
+      "pack_hash": "b8d30ba577f303c3",
+      "index_hash": "09eff2825e821465",
+      "byte_length": "96",
+      "style": {
+        "background": [
+          20,
+          25,
+          34
+        ],
+        "nation_border": [
+          16,
+          24,
+          32
+        ],
+        "state_border": [
+          230,
+          212,
+          167
+        ],
+        "province_border": [
+          100,
+          116,
+          135
+        ],
+        "selected": [
+          255,
+          223,
+          114
+        ],
+        "hovered": [
+          255,
+          255,
+          255
+        ],
+        "nation_width_milli": 2400,
+        "state_width_milli": 1400,
+        "province_width_milli": 600,
+        "highlight_milli": 280,
+        "fit_milli": 920,
+        "zoom_min_milli": 250,
+        "zoom_max_milli": 8000,
+        "wheel_milli": 120,
+        "drag_threshold": 4
+      }
+    },
+    "byteLength": 96,
+    "metadataCache": "no-cache",
+    "indexCache": "private, max-age=31536000, immutable"
+  },
+  "results": [
+    {
+      "name": "chrome",
+      "resource": "metadata",
+      "status": 301,
+      "sameOrigin": false,
+      "hits": 0,
+      "source": [
+        {
+          "url": "/maps/testland/metadata",
+          "status": 301,
+          "location": "http://127.0.0.1:4765/payload"
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:4766/?forceWebGL=1",
+        "http://127.0.0.1:4766/assets/index-DtlFQFqO.js",
+        "http://127.0.0.1:4766/assets/index-B9cOsW2B.css",
+        "http://127.0.0.1:4766/fonts/NotoSansKR.ttf",
+        "http://127.0.0.1:4766/pack/localisation/en/map.ftl",
+        "http://127.0.0.1:4766/pack/localisation/en/national.ftl",
+        "http://127.0.0.1:4766/pack/localisation/ko/map.ftl",
+        "http://127.0.0.1:4766/pack/localisation/ko/national.ftl",
+        "http://127.0.0.1:4766/maps/testland/metadata"
+      ],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "name": "chrome",
+      "resource": "metadata",
+      "status": 301,
+      "sameOrigin": true,
+      "hits": 0,
+      "source": [
+        {
+          "url": "/maps/testland/metadata",
+          "status": 301,
+          "location": "/maps/testland/metadata?alias=1"
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:4790/?forceWebGL=1",
+        "http://127.0.0.1:4790/assets/index-DtlFQFqO.js",
+        "http://127.0.0.1:4790/assets/index-B9cOsW2B.css",
+        "http://127.0.0.1:4790/fonts/NotoSansKR.ttf",
+        "http://127.0.0.1:4790/pack/localisation/en/map.ftl",
+        "http://127.0.0.1:4790/pack/localisation/en/national.ftl",
+        "http://127.0.0.1:4790/pack/localisation/ko/map.ftl",
+        "http://127.0.0.1:4790/pack/localisation/ko/national.ftl",
+        "http://127.0.0.1:4790/maps/testland/metadata"
+      ],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "name": "chrome",
+      "resource": "metadata",
+      "status": 303,
+      "sameOrigin": false,
+      "hits": 0,
+      "source": [
+        {
+          "url": "/maps/testland/metadata",
+          "status": 303,
+          "location": "http://127.0.0.1:4800/payload"
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:4801/?forceWebGL=1",
+        "http://127.0.0.1:4801/assets/index-DtlFQFqO.js",
+        "http://127.0.0.1:4801/assets/index-B9cOsW2B.css",
+        "http://127.0.0.1:4801/fonts/NotoSansKR.ttf",
+        "http://127.0.0.1:4801/pack/localisation/en/map.ftl",
+        "http://127.0.0.1:4801/pack/localisation/en/national.ftl",
+        "http://127.0.0.1:4801/pack/localisation/ko/map.ftl",
+        "http://127.0.0.1:4801/pack/localisation/ko/national.ftl",
+        "http://127.0.0.1:4801/maps/testland/metadata"
+      ],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "name": "chrome",
+      "resource": "metadata",
+      "status": 303,
+      "sameOrigin": true,
+      "hits": 0,
+      "source": [
+        {
+          "url": "/maps/testland/metadata",
+          "status": 303,
+          "location": "/maps/testland/metadata?alias=1"
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:4813/?forceWebGL=1",
+        "http://127.0.0.1:4813/assets/index-DtlFQFqO.js",
+        "http://127.0.0.1:4813/assets/index-B9cOsW2B.css",
+        "http://127.0.0.1:4813/fonts/NotoSansKR.ttf",
+        "http://127.0.0.1:4813/pack/localisation/en/map.ftl",
+        "http://127.0.0.1:4813/pack/localisation/en/national.ftl",
+        "http://127.0.0.1:4813/pack/localisation/ko/map.ftl",
+        "http://127.0.0.1:4813/pack/localisation/ko/national.ftl",
+        "http://127.0.0.1:4813/maps/testland/metadata"
+      ],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "name": "chrome",
+      "resource": "metadata",
+      "status": 307,
+      "sameOrigin": false,
+      "hits": 0,
+      "source": [
+        {
+          "url": "/maps/testland/metadata",
+          "status": 307,
+          "location": "http://127.0.0.1:4822/payload"
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:4823/?forceWebGL=1",
+        "http://127.0.0.1:4823/assets/index-DtlFQFqO.js",
+        "http://127.0.0.1:4823/assets/index-B9cOsW2B.css",
+        "http://127.0.0.1:4823/fonts/NotoSansKR.ttf",
+        "http://127.0.0.1:4823/pack/localisation/en/map.ftl",
+        "http://127.0.0.1:4823/pack/localisation/en/national.ftl",
+        "http://127.0.0.1:4823/pack/localisation/ko/map.ftl",
+        "http://127.0.0.1:4823/pack/localisation/ko/national.ftl",
+        "http://127.0.0.1:4823/maps/testland/metadata"
+      ],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "name": "chrome",
+      "resource": "metadata",
+      "status": 307,
+      "sameOrigin": true,
+      "hits": 0,
+      "source": [
+        {
+          "url": "/maps/testland/metadata",
+          "status": 307,
+          "location": "/maps/testland/metadata?alias=1"
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:4833/?forceWebGL=1",
+        "http://127.0.0.1:4833/assets/index-DtlFQFqO.js",
+        "http://127.0.0.1:4833/assets/index-B9cOsW2B.css",
+        "http://127.0.0.1:4833/fonts/NotoSansKR.ttf",
+        "http://127.0.0.1:4833/pack/localisation/en/map.ftl",
+        "http://127.0.0.1:4833/pack/localisation/en/national.ftl",
+        "http://127.0.0.1:4833/pack/localisation/ko/map.ftl",
+        "http://127.0.0.1:4833/pack/localisation/ko/national.ftl",
+        "http://127.0.0.1:4833/maps/testland/metadata"
+      ],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "name": "chrome",
+      "resource": "metadata",
+      "status": 308,
+      "sameOrigin": false,
+      "hits": 0,
+      "source": [
+        {
+          "url": "/maps/testland/metadata",
+          "status": 308,
+          "location": "http://127.0.0.1:4842/payload"
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:4843/?forceWebGL=1",
+        "http://127.0.0.1:4843/assets/index-DtlFQFqO.js",
+        "http://127.0.0.1:4843/assets/index-B9cOsW2B.css",
+        "http://127.0.0.1:4843/fonts/NotoSansKR.ttf",
+        "http://127.0.0.1:4843/pack/localisation/en/map.ftl",
+        "http://127.0.0.1:4843/pack/localisation/en/national.ftl",
+        "http://127.0.0.1:4843/pack/localisation/ko/map.ftl",
+        "http://127.0.0.1:4843/pack/localisation/ko/national.ftl",
+        "http://127.0.0.1:4843/maps/testland/metadata"
+      ],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "name": "chrome",
+      "resource": "metadata",
+      "status": 308,
+      "sameOrigin": true,
+      "hits": 0,
+      "source": [
+        {
+          "url": "/maps/testland/metadata",
+          "status": 308,
+          "location": "/maps/testland/metadata?alias=1"
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:4853/?forceWebGL=1",
+        "http://127.0.0.1:4853/assets/index-DtlFQFqO.js",
+        "http://127.0.0.1:4853/assets/index-B9cOsW2B.css",
+        "http://127.0.0.1:4853/fonts/NotoSansKR.ttf",
+        "http://127.0.0.1:4853/pack/localisation/en/map.ftl",
+        "http://127.0.0.1:4853/pack/localisation/en/national.ftl",
+        "http://127.0.0.1:4853/pack/localisation/ko/map.ftl",
+        "http://127.0.0.1:4853/pack/localisation/ko/national.ftl",
+        "http://127.0.0.1:4853/maps/testland/metadata"
+      ],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "name": "chrome",
+      "resource": "index",
+      "status": 301,
+      "sameOrigin": false,
+      "hits": 0,
+      "source": [
+        {
+          "url": "/maps/testland/index.bin?pack=b8d30ba577f303c3",
+          "status": 301,
+          "location": "http://127.0.0.1:4862/payload"
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:4863/?forceWebGL=1",
+        "http://127.0.0.1:4863/assets/index-DtlFQFqO.js",
+        "http://127.0.0.1:4863/assets/index-B9cOsW2B.css",
+        "http://127.0.0.1:4863/fonts/NotoSansKR.ttf",
+        "http://127.0.0.1:4863/pack/localisation/en/map.ftl",
+        "http://127.0.0.1:4863/pack/localisation/en/national.ftl",
+        "http://127.0.0.1:4863/pack/localisation/ko/map.ftl",
+        "http://127.0.0.1:4863/pack/localisation/ko/national.ftl",
+        "http://127.0.0.1:4863/maps/testland/metadata",
+        "http://127.0.0.1:4863/maps/testland/index.bin?pack=b8d30ba577f303c3"
+      ],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "name": "chrome",
+      "resource": "index",
+      "status": 301,
+      "sameOrigin": true,
+      "hits": 0,
+      "source": [
+        {
+          "url": "/maps/testland/index.bin?pack=b8d30ba577f303c3",
+          "status": 301,
+          "location": "/maps/testland/index.bin?pack=b8d30ba577f303c3&alias=1"
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:4874/?forceWebGL=1",
+        "http://127.0.0.1:4874/assets/index-DtlFQFqO.js",
+        "http://127.0.0.1:4874/assets/index-B9cOsW2B.css",
+        "http://127.0.0.1:4874/fonts/NotoSansKR.ttf",
+        "http://127.0.0.1:4874/pack/localisation/en/map.ftl",
+        "http://127.0.0.1:4874/pack/localisation/en/national.ftl",
+        "http://127.0.0.1:4874/pack/localisation/ko/map.ftl",
+        "http://127.0.0.1:4874/pack/localisation/ko/national.ftl",
+        "http://127.0.0.1:4874/maps/testland/metadata",
+        "http://127.0.0.1:4874/maps/testland/index.bin?pack=b8d30ba577f303c3"
+      ],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "name": "chrome",
+      "resource": "index",
+      "status": 303,
+      "sameOrigin": false,
+      "hits": 0,
+      "source": [
+        {
+          "url": "/maps/testland/index.bin?pack=b8d30ba577f303c3",
+          "status": 303,
+          "location": "http://127.0.0.1:4884/payload"
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:4885/?forceWebGL=1",
+        "http://127.0.0.1:4885/assets/index-DtlFQFqO.js",
+        "http://127.0.0.1:4885/assets/index-B9cOsW2B.css",
+        "http://127.0.0.1:4885/fonts/NotoSansKR.ttf",
+        "http://127.0.0.1:4885/pack/localisation/en/map.ftl",
+        "http://127.0.0.1:4885/pack/localisation/en/national.ftl",
+        "http://127.0.0.1:4885/pack/localisation/ko/map.ftl",
+        "http://127.0.0.1:4885/pack/localisation/ko/national.ftl",
+        "http://127.0.0.1:4885/maps/testland/metadata",
+        "http://127.0.0.1:4885/maps/testland/index.bin?pack=b8d30ba577f303c3"
+      ],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "name": "chrome",
+      "resource": "index",
+      "status": 303,
+      "sameOrigin": true,
+      "hits": 0,
+      "source": [
+        {
+          "url": "/maps/testland/index.bin?pack=b8d30ba577f303c3",
+          "status": 303,
+          "location": "/maps/testland/index.bin?pack=b8d30ba577f303c3&alias=1"
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:4896/?forceWebGL=1",
+        "http://127.0.0.1:4896/assets/index-DtlFQFqO.js",
+        "http://127.0.0.1:4896/assets/index-B9cOsW2B.css",
+        "http://127.0.0.1:4896/fonts/NotoSansKR.ttf",
+        "http://127.0.0.1:4896/pack/localisation/en/map.ftl",
+        "http://127.0.0.1:4896/pack/localisation/en/national.ftl",
+        "http://127.0.0.1:4896/pack/localisation/ko/map.ftl",
+        "http://127.0.0.1:4896/pack/localisation/ko/national.ftl",
+        "http://127.0.0.1:4896/maps/testland/metadata",
+        "http://127.0.0.1:4896/maps/testland/index.bin?pack=b8d30ba577f303c3"
+      ],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "name": "chrome",
+      "resource": "index",
+      "status": 307,
+      "sameOrigin": false,
+      "hits": 0,
+      "source": [
+        {
+          "url": "/maps/testland/index.bin?pack=b8d30ba577f303c3",
+          "status": 307,
+          "location": "http://127.0.0.1:4905/payload"
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:4906/?forceWebGL=1",
+        "http://127.0.0.1:4906/assets/index-DtlFQFqO.js",
+        "http://127.0.0.1:4906/assets/index-B9cOsW2B.css",
+        "http://127.0.0.1:4906/fonts/NotoSansKR.ttf",
+        "http://127.0.0.1:4906/pack/localisation/en/map.ftl",
+        "http://127.0.0.1:4906/pack/localisation/en/national.ftl",
+        "http://127.0.0.1:4906/pack/localisation/ko/map.ftl",
+        "http://127.0.0.1:4906/pack/localisation/ko/national.ftl",
+        "http://127.0.0.1:4906/maps/testland/metadata",
+        "http://127.0.0.1:4906/maps/testland/index.bin?pack=b8d30ba577f303c3"
+      ],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "name": "chrome",
+      "resource": "index",
+      "status": 307,
+      "sameOrigin": true,
+      "hits": 0,
+      "source": [
+        {
+          "url": "/maps/testland/index.bin?pack=b8d30ba577f303c3",
+          "status": 307,
+          "location": "/maps/testland/index.bin?pack=b8d30ba577f303c3&alias=1"
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:4916/?forceWebGL=1",
+        "http://127.0.0.1:4916/assets/index-DtlFQFqO.js",
+        "http://127.0.0.1:4916/assets/index-B9cOsW2B.css",
+        "http://127.0.0.1:4916/fonts/NotoSansKR.ttf",
+        "http://127.0.0.1:4916/pack/localisation/en/map.ftl",
+        "http://127.0.0.1:4916/pack/localisation/en/national.ftl",
+        "http://127.0.0.1:4916/pack/localisation/ko/map.ftl",
+        "http://127.0.0.1:4916/pack/localisation/ko/national.ftl",
+        "http://127.0.0.1:4916/maps/testland/metadata",
+        "http://127.0.0.1:4916/maps/testland/index.bin?pack=b8d30ba577f303c3"
+      ],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "name": "chrome",
+      "resource": "index",
+      "status": 308,
+      "sameOrigin": false,
+      "hits": 0,
+      "source": [
+        {
+          "url": "/maps/testland/index.bin?pack=b8d30ba577f303c3",
+          "status": 308,
+          "location": "http://127.0.0.1:4925/payload"
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:4926/?forceWebGL=1",
+        "http://127.0.0.1:4926/assets/index-DtlFQFqO.js",
+        "http://127.0.0.1:4926/assets/index-B9cOsW2B.css",
+        "http://127.0.0.1:4926/fonts/NotoSansKR.ttf",
+        "http://127.0.0.1:4926/pack/localisation/en/map.ftl",
+        "http://127.0.0.1:4926/pack/localisation/en/national.ftl",
+        "http://127.0.0.1:4926/pack/localisation/ko/map.ftl",
+        "http://127.0.0.1:4926/pack/localisation/ko/national.ftl",
+        "http://127.0.0.1:4926/maps/testland/metadata",
+        "http://127.0.0.1:4926/maps/testland/index.bin?pack=b8d30ba577f303c3"
+      ],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "name": "chrome",
+      "resource": "index",
+      "status": 308,
+      "sameOrigin": true,
+      "hits": 0,
+      "source": [
+        {
+          "url": "/maps/testland/index.bin?pack=b8d30ba577f303c3",
+          "status": 308,
+          "location": "/maps/testland/index.bin?pack=b8d30ba577f303c3&alias=1"
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:4941/?forceWebGL=1",
+        "http://127.0.0.1:4941/assets/index-DtlFQFqO.js",
+        "http://127.0.0.1:4941/assets/index-B9cOsW2B.css",
+        "http://127.0.0.1:4941/fonts/NotoSansKR.ttf",
+        "http://127.0.0.1:4941/pack/localisation/en/map.ftl",
+        "http://127.0.0.1:4941/pack/localisation/en/national.ftl",
+        "http://127.0.0.1:4941/pack/localisation/ko/map.ftl",
+        "http://127.0.0.1:4941/pack/localisation/ko/national.ftl",
+        "http://127.0.0.1:4941/maps/testland/metadata",
+        "http://127.0.0.1:4941/maps/testland/index.bin?pack=b8d30ba577f303c3"
+      ],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "name": "edge",
+      "resource": "metadata",
+      "status": 301,
+      "sameOrigin": false,
+      "hits": 0,
+      "source": [
+        {
+          "url": "/maps/testland/metadata",
+          "status": 301,
+          "location": "http://127.0.0.1:4951/payload"
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:4952/?forceWebGL=1",
+        "http://127.0.0.1:4952/assets/index-DtlFQFqO.js",
+        "http://127.0.0.1:4952/assets/index-B9cOsW2B.css",
+        "http://127.0.0.1:4952/fonts/NotoSansKR.ttf",
+        "http://127.0.0.1:4952/pack/localisation/en/map.ftl",
+        "http://127.0.0.1:4952/pack/localisation/en/national.ftl",
+        "http://127.0.0.1:4952/pack/localisation/ko/map.ftl",
+        "http://127.0.0.1:4952/pack/localisation/ko/national.ftl",
+        "http://127.0.0.1:4952/maps/testland/metadata"
+      ],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "name": "edge",
+      "resource": "metadata",
+      "status": 301,
+      "sameOrigin": true,
+      "hits": 0,
+      "source": [
+        {
+          "url": "/maps/testland/metadata",
+          "status": 301,
+          "location": "/maps/testland/metadata?alias=1"
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:4968/?forceWebGL=1",
+        "http://127.0.0.1:4968/assets/index-DtlFQFqO.js",
+        "http://127.0.0.1:4968/assets/index-B9cOsW2B.css",
+        "http://127.0.0.1:4968/fonts/NotoSansKR.ttf",
+        "http://127.0.0.1:4968/pack/localisation/en/map.ftl",
+        "http://127.0.0.1:4968/pack/localisation/en/national.ftl",
+        "http://127.0.0.1:4968/pack/localisation/ko/map.ftl",
+        "http://127.0.0.1:4968/pack/localisation/ko/national.ftl",
+        "http://127.0.0.1:4968/maps/testland/metadata"
+      ],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "name": "edge",
+      "resource": "metadata",
+      "status": 303,
+      "sameOrigin": false,
+      "hits": 0,
+      "source": [
+        {
+          "url": "/maps/testland/metadata",
+          "status": 303,
+          "location": "http://127.0.0.1:4978/payload"
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:4979/?forceWebGL=1",
+        "http://127.0.0.1:4979/assets/index-DtlFQFqO.js",
+        "http://127.0.0.1:4979/assets/index-B9cOsW2B.css",
+        "http://127.0.0.1:4979/fonts/NotoSansKR.ttf",
+        "http://127.0.0.1:4979/pack/localisation/en/map.ftl",
+        "http://127.0.0.1:4979/pack/localisation/en/national.ftl",
+        "http://127.0.0.1:4979/pack/localisation/ko/map.ftl",
+        "http://127.0.0.1:4979/pack/localisation/ko/national.ftl",
+        "http://127.0.0.1:4979/maps/testland/metadata"
+      ],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "name": "edge",
+      "resource": "metadata",
+      "status": 303,
+      "sameOrigin": true,
+      "hits": 0,
+      "source": [
+        {
+          "url": "/maps/testland/metadata",
+          "status": 303,
+          "location": "/maps/testland/metadata?alias=1"
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:4989/?forceWebGL=1",
+        "http://127.0.0.1:4989/assets/index-DtlFQFqO.js",
+        "http://127.0.0.1:4989/assets/index-B9cOsW2B.css",
+        "http://127.0.0.1:4989/fonts/NotoSansKR.ttf",
+        "http://127.0.0.1:4989/pack/localisation/en/map.ftl",
+        "http://127.0.0.1:4989/pack/localisation/en/national.ftl",
+        "http://127.0.0.1:4989/pack/localisation/ko/map.ftl",
+        "http://127.0.0.1:4989/pack/localisation/ko/national.ftl",
+        "http://127.0.0.1:4989/maps/testland/metadata"
+      ],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "name": "edge",
+      "resource": "metadata",
+      "status": 307,
+      "sameOrigin": false,
+      "hits": 0,
+      "source": [
+        {
+          "url": "/maps/testland/metadata",
+          "status": 307,
+          "location": "http://127.0.0.1:4998/payload"
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:4999/?forceWebGL=1",
+        "http://127.0.0.1:4999/assets/index-DtlFQFqO.js",
+        "http://127.0.0.1:4999/assets/index-B9cOsW2B.css",
+        "http://127.0.0.1:4999/fonts/NotoSansKR.ttf",
+        "http://127.0.0.1:4999/pack/localisation/en/map.ftl",
+        "http://127.0.0.1:4999/pack/localisation/en/national.ftl",
+        "http://127.0.0.1:4999/pack/localisation/ko/map.ftl",
+        "http://127.0.0.1:4999/pack/localisation/ko/national.ftl",
+        "http://127.0.0.1:4999/maps/testland/metadata"
+      ],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "name": "edge",
+      "resource": "metadata",
+      "status": 307,
+      "sameOrigin": true,
+      "hits": 0,
+      "source": [
+        {
+          "url": "/maps/testland/metadata",
+          "status": 307,
+          "location": "/maps/testland/metadata?alias=1"
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:5009/?forceWebGL=1",
+        "http://127.0.0.1:5009/assets/index-DtlFQFqO.js",
+        "http://127.0.0.1:5009/assets/index-B9cOsW2B.css",
+        "http://127.0.0.1:5009/fonts/NotoSansKR.ttf",
+        "http://127.0.0.1:5009/pack/localisation/en/map.ftl",
+        "http://127.0.0.1:5009/pack/localisation/en/national.ftl",
+        "http://127.0.0.1:5009/pack/localisation/ko/map.ftl",
+        "http://127.0.0.1:5009/pack/localisation/ko/national.ftl",
+        "http://127.0.0.1:5009/maps/testland/metadata"
+      ],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "name": "edge",
+      "resource": "metadata",
+      "status": 308,
+      "sameOrigin": false,
+      "hits": 0,
+      "source": [
+        {
+          "url": "/maps/testland/metadata",
+          "status": 308,
+          "location": "http://127.0.0.1:5018/payload"
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:5019/?forceWebGL=1",
+        "http://127.0.0.1:5019/assets/index-DtlFQFqO.js",
+        "http://127.0.0.1:5019/assets/index-B9cOsW2B.css",
+        "http://127.0.0.1:5019/fonts/NotoSansKR.ttf",
+        "http://127.0.0.1:5019/pack/localisation/en/map.ftl",
+        "http://127.0.0.1:5019/pack/localisation/en/national.ftl",
+        "http://127.0.0.1:5019/pack/localisation/ko/map.ftl",
+        "http://127.0.0.1:5019/pack/localisation/ko/national.ftl",
+        "http://127.0.0.1:5019/maps/testland/metadata"
+      ],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "name": "edge",
+      "resource": "metadata",
+      "status": 308,
+      "sameOrigin": true,
+      "hits": 0,
+      "source": [
+        {
+          "url": "/maps/testland/metadata",
+          "status": 308,
+          "location": "/maps/testland/metadata?alias=1"
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:5029/?forceWebGL=1",
+        "http://127.0.0.1:5029/assets/index-DtlFQFqO.js",
+        "http://127.0.0.1:5029/assets/index-B9cOsW2B.css",
+        "http://127.0.0.1:5029/fonts/NotoSansKR.ttf",
+        "http://127.0.0.1:5029/pack/localisation/en/map.ftl",
+        "http://127.0.0.1:5029/pack/localisation/en/national.ftl",
+        "http://127.0.0.1:5029/pack/localisation/ko/map.ftl",
+        "http://127.0.0.1:5029/pack/localisation/ko/national.ftl",
+        "http://127.0.0.1:5029/maps/testland/metadata"
+      ],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "name": "edge",
+      "resource": "index",
+      "status": 301,
+      "sameOrigin": false,
+      "hits": 0,
+      "source": [
+        {
+          "url": "/maps/testland/index.bin?pack=b8d30ba577f303c3",
+          "status": 301,
+          "location": "http://127.0.0.1:5038/payload"
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:5039/?forceWebGL=1",
+        "http://127.0.0.1:5039/assets/index-DtlFQFqO.js",
+        "http://127.0.0.1:5039/assets/index-B9cOsW2B.css",
+        "http://127.0.0.1:5039/fonts/NotoSansKR.ttf",
+        "http://127.0.0.1:5039/pack/localisation/en/map.ftl",
+        "http://127.0.0.1:5039/pack/localisation/en/national.ftl",
+        "http://127.0.0.1:5039/pack/localisation/ko/map.ftl",
+        "http://127.0.0.1:5039/pack/localisation/ko/national.ftl",
+        "http://127.0.0.1:5039/maps/testland/metadata",
+        "http://127.0.0.1:5039/maps/testland/index.bin?pack=b8d30ba577f303c3"
+      ],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "name": "edge",
+      "resource": "index",
+      "status": 301,
+      "sameOrigin": true,
+      "hits": 0,
+      "source": [
+        {
+          "url": "/maps/testland/index.bin?pack=b8d30ba577f303c3",
+          "status": 301,
+          "location": "/maps/testland/index.bin?pack=b8d30ba577f303c3&alias=1"
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:5050/?forceWebGL=1",
+        "http://127.0.0.1:5050/assets/index-DtlFQFqO.js",
+        "http://127.0.0.1:5050/assets/index-B9cOsW2B.css",
+        "http://127.0.0.1:5050/fonts/NotoSansKR.ttf",
+        "http://127.0.0.1:5050/pack/localisation/en/map.ftl",
+        "http://127.0.0.1:5050/pack/localisation/en/national.ftl",
+        "http://127.0.0.1:5050/pack/localisation/ko/map.ftl",
+        "http://127.0.0.1:5050/pack/localisation/ko/national.ftl",
+        "http://127.0.0.1:5050/maps/testland/metadata",
+        "http://127.0.0.1:5050/maps/testland/index.bin?pack=b8d30ba577f303c3"
+      ],
+      "errors": [],
+      "pass": true
+    }
+  ]
+}

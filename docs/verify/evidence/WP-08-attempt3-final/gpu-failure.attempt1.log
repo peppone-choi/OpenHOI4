@@ -1,0 +1,434 @@
+ExpectError: expect(locator).toHaveAttribute(expected) failed
+
+Locator:  getByTestId('province-map')
+Expected: "webgl2"
+Received: "webgpu"
+Timeout:  5000ms
+
+Call log:
+  - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms
+  - waiting for getByTestId('province-map')
+    3 × locator resolved to <div class="province-map" aria-label="Province map" data-testid="province-map"></div>
+      - unexpected value "null"
+    - locator resolved to <div class="province-map" data-backend="webgpu" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-device="WebGPU device" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782,"x":4,"y":3,"zoom":1}">…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-frames="4" data-selected="" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="34.65000000037253" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782,"…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-frames="35" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="18.711428571439214" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-frames="65" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.767692307698038" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-frames="96" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.41562500000388" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-selected="" data-frames="126" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.23650793651385" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-selected="" data-frames="157" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.123566878983265" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.52173913043478…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-selected="" data-frames="187" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.050267379681138" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.52173913043478…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-selected="" data-frames="218" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.993577981658213" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.52173913043478…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-selected="" data-frames="249" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.953815261044177" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-selected="" data-frames="280" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.92142857142857" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>
+    - unexpected value "webgpu"
+
+    at captureRawStack (E:\openhoi\.orchestrator\wt\WP-08-verify3\client\node_modules\playwright-core\lib\coreBundle.js:8588:17)
+    at callMatcherAsStep (E:\openhoi\.orchestrator\wt\WP-08-verify3\client\node_modules\playwright\lib\matchers\expect.js:13310:57)
+    at Object.toHaveAttribute (E:\openhoi\.orchestrator\wt\WP-08-verify3\client\node_modules\playwright\lib\matchers\expect.js:13302:23)
+    at E:\openhoi\.orchestrator\wt\WP-08-verify3\target\wp08-verify3\gpu-failure.cjs:11:106 {
+  matcherResult: {
+    name: 'toHaveAttribute',
+    expected: 'webgl2',
+    message: 'expect(locator).toHaveAttribute(expected) failed\n' +
+      '\n' +
+      "Locator:  getByTestId('province-map')\n" +
+      'Expected: "webgl2"\n' +
+      'Received: "webgpu"\n' +
+      'Timeout:  5000ms\n' +
+      '\n' +
+      'Call log:\n' +
+      `  - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms\n` +
+      "  - waiting for getByTestId('province-map')\n" +
+      '    3 × locator resolved to <div class="province-map" aria-label="Province map" data-testid="province-map"></div>\n' +
+      '      - unexpected value "null"\n' +
+      '    - locator resolved to <div class="province-map" data-backend="webgpu" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-device="WebGPU device" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782,"x":4,"y":3,"zoom":1}">…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-frames="4" data-selected="" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="34.65000000037253" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782,"…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-frames="35" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="18.711428571439214" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-frames="65" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.767692307698038" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-frames="96" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.41562500000388" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-selected="" data-frames="126" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.23650793651385" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-selected="" data-frames="157" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.123566878983265" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.52173913043478…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-selected="" data-frames="187" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.050267379681138" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.52173913043478…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-selected="" data-frames="218" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.993577981658213" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.52173913043478…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-selected="" data-frames="249" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.953815261044177" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-selected="" data-frames="280" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.92142857142857" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>\n' +
+      '    - unexpected value "webgpu"\n',
+    pass: false,
+    actual: 'webgpu',
+    log: [
+      `  - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms`,
+      "  - waiting for getByTestId('province-map')",
+      '    3 × locator resolved to <div class="province-map" aria-label="Province map" data-testid="province-map"></div>',
+      '      - unexpected value "null"',
+      '    - locator resolved to <div class="province-map" data-backend="webgpu" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-device="WebGPU device" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782,"x":4,"y":3,"zoom":1}">…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-frames="4" data-selected="" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="34.65000000037253" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782,"…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-frames="35" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="18.711428571439214" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-frames="65" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.767692307698038" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-frames="96" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.41562500000388" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-selected="" data-frames="126" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.23650793651385" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-selected="" data-frames="157" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.123566878983265" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.52173913043478…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-selected="" data-frames="187" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.050267379681138" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.52173913043478…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-selected="" data-frames="218" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.993577981658213" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.52173913043478…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-selected="" data-frames="249" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.953815261044177" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-selected="" data-frames="280" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.92142857142857" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>',
+      '    - unexpected value "webgpu"'
+    ],
+    timeout: 5000,
+    ariaSnapshot: ''
+  }
+}
+ExpectError: expect(locator).toHaveAttribute(expected) failed
+
+Locator:  getByTestId('province-map')
+Expected: "webgl2"
+Received: "webgpu"
+Timeout:  5000ms
+
+Call log:
+  - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms
+  - waiting for getByTestId('province-map')
+    2 × locator resolved to <div class="province-map" aria-label="Province map" data-testid="province-map"></div>
+      - unexpected value "null"
+    - locator resolved to <div class="province-map" data-backend="webgpu" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-device="WebGPU device" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782,"x":4,"y":3,"zoom":1}">…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-frames="5" data-selected="" data-update-ms="0" class="province-map" data-frame-ms="28.4" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782,"x":4,"y":3,"z…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-frames="36" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="18.294444444434095" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-frames="66" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.553030303030305" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-frames="97" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.270103092795026" data-update-ms="0.10000000149011612" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-selected="" data-frames="128" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.12343750000582" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-selected="" data-frames="159" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.03522012578382" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-selected="" data-frames="191" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.97277486911385" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-selected="" data-frames="222" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.929279279282635" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.52173913043478…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-selected="" data-frames="252" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.898015873018828" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height…>…</div>
+    - unexpected value "webgpu"
+
+    at captureRawStack (E:\openhoi\.orchestrator\wt\WP-08-verify3\client\node_modules\playwright-core\lib\coreBundle.js:8588:17)
+    at callMatcherAsStep (E:\openhoi\.orchestrator\wt\WP-08-verify3\client\node_modules\playwright\lib\matchers\expect.js:13310:57)
+    at Object.toHaveAttribute (E:\openhoi\.orchestrator\wt\WP-08-verify3\client\node_modules\playwright\lib\matchers\expect.js:13302:23)
+    at E:\openhoi\.orchestrator\wt\WP-08-verify3\target\wp08-verify3\gpu-failure.cjs:11:106 {
+  matcherResult: {
+    name: 'toHaveAttribute',
+    expected: 'webgl2',
+    message: 'expect(locator).toHaveAttribute(expected) failed\n' +
+      '\n' +
+      "Locator:  getByTestId('province-map')\n" +
+      'Expected: "webgl2"\n' +
+      'Received: "webgpu"\n' +
+      'Timeout:  5000ms\n' +
+      '\n' +
+      'Call log:\n' +
+      `  - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms\n` +
+      "  - waiting for getByTestId('province-map')\n" +
+      '    2 × locator resolved to <div class="province-map" aria-label="Province map" data-testid="province-map"></div>\n' +
+      '      - unexpected value "null"\n' +
+      '    - locator resolved to <div class="province-map" data-backend="webgpu" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-device="WebGPU device" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782,"x":4,"y":3,"zoom":1}">…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-frames="5" data-selected="" data-update-ms="0" class="province-map" data-frame-ms="28.4" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782,"x":4,"y":3,"z…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-frames="36" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="18.294444444434095" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-frames="66" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.553030303030305" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-frames="97" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.270103092795026" data-update-ms="0.10000000149011612" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-selected="" data-frames="128" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.12343750000582" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-selected="" data-frames="159" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.03522012578382" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-selected="" data-frames="191" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.97277486911385" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-selected="" data-frames="222" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.929279279282635" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.52173913043478…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-selected="" data-frames="252" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.898015873018828" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height…>…</div>\n' +
+      '    - unexpected value "webgpu"\n',
+    pass: false,
+    actual: 'webgpu',
+    log: [
+      `  - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms`,
+      "  - waiting for getByTestId('province-map')",
+      '    2 × locator resolved to <div class="province-map" aria-label="Province map" data-testid="province-map"></div>',
+      '      - unexpected value "null"',
+      '    - locator resolved to <div class="province-map" data-backend="webgpu" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-device="WebGPU device" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782,"x":4,"y":3,"zoom":1}">…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-frames="5" data-selected="" data-update-ms="0" class="province-map" data-frame-ms="28.4" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782,"x":4,"y":3,"z…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-frames="36" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="18.294444444434095" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-frames="66" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.553030303030305" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-frames="97" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.270103092795026" data-update-ms="0.10000000149011612" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-selected="" data-frames="128" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.12343750000582" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-selected="" data-frames="159" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.03522012578382" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-selected="" data-frames="191" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.97277486911385" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-selected="" data-frames="222" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.929279279282635" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.52173913043478…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-selected="" data-frames="252" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.898015873018828" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height…>…</div>',
+      '    - unexpected value "webgpu"'
+    ],
+    timeout: 5000,
+    ariaSnapshot: ''
+  }
+}
+ExpectError: expect(locator).toHaveAttribute(expected) failed
+
+Locator:  getByTestId('province-map')
+Expected: "webgl2"
+Received: "webgpu"
+Timeout:  5000ms
+
+Call log:
+  - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms
+  - waiting for getByTestId('province-map')
+    2 × locator resolved to <div class="province-map" aria-label="Province map" data-testid="province-map"></div>
+      - unexpected value "null"
+    - locator resolved to <div class="province-map" data-backend="webgpu" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-device="WebGPU device" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782,"x":4,"y":3,"zoom":1}">…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-frames="4" data-selected="" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" data-frame-ms="35.125" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782,"x":4,"y":3,…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-frames="34" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="18.829411764683968" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-frames="65" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.79846153846727" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-frames="95" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.44105263158287" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-selected="" data-frames="126" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.251587301581388" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-selected="" data-frames="157" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.135031847129014" data-update-ms="0.10000000149011612" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-selected="" data-frames="188" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.056914893613058" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-selected="" data-frames="218" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.003669724765516" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.52173913043478…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-selected="" data-frames="249" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.961044176702337" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-selected="" data-frames="279" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.929390680999578" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.52173913043478…>…</div>
+    - unexpected value "webgpu"
+
+    at captureRawStack (E:\openhoi\.orchestrator\wt\WP-08-verify3\client\node_modules\playwright-core\lib\coreBundle.js:8588:17)
+    at callMatcherAsStep (E:\openhoi\.orchestrator\wt\WP-08-verify3\client\node_modules\playwright\lib\matchers\expect.js:13310:57)
+    at Object.toHaveAttribute (E:\openhoi\.orchestrator\wt\WP-08-verify3\client\node_modules\playwright\lib\matchers\expect.js:13302:23)
+    at E:\openhoi\.orchestrator\wt\WP-08-verify3\target\wp08-verify3\gpu-failure.cjs:11:106 {
+  matcherResult: {
+    name: 'toHaveAttribute',
+    expected: 'webgl2',
+    message: 'expect(locator).toHaveAttribute(expected) failed\n' +
+      '\n' +
+      "Locator:  getByTestId('province-map')\n" +
+      'Expected: "webgl2"\n' +
+      'Received: "webgpu"\n' +
+      'Timeout:  5000ms\n' +
+      '\n' +
+      'Call log:\n' +
+      `  - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms\n` +
+      "  - waiting for getByTestId('province-map')\n" +
+      '    2 × locator resolved to <div class="province-map" aria-label="Province map" data-testid="province-map"></div>\n' +
+      '      - unexpected value "null"\n' +
+      '    - locator resolved to <div class="province-map" data-backend="webgpu" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-device="WebGPU device" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782,"x":4,"y":3,"zoom":1}">…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-frames="4" data-selected="" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" data-frame-ms="35.125" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782,"x":4,"y":3,…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-frames="34" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="18.829411764683968" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-frames="65" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.79846153846727" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-frames="95" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.44105263158287" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-selected="" data-frames="126" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.251587301581388" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-selected="" data-frames="157" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.135031847129014" data-update-ms="0.10000000149011612" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-selected="" data-frames="188" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.056914893613058" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-selected="" data-frames="218" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.003669724765516" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.52173913043478…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-selected="" data-frames="249" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.961044176702337" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-selected="" data-frames="279" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.929390680999578" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.52173913043478…>…</div>\n' +
+      '    - unexpected value "webgpu"\n',
+    pass: false,
+    actual: 'webgpu',
+    log: [
+      `  - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms`,
+      "  - waiting for getByTestId('province-map')",
+      '    2 × locator resolved to <div class="province-map" aria-label="Province map" data-testid="province-map"></div>',
+      '      - unexpected value "null"',
+      '    - locator resolved to <div class="province-map" data-backend="webgpu" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-device="WebGPU device" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782,"x":4,"y":3,"zoom":1}">…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-frames="4" data-selected="" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" data-frame-ms="35.125" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782,"x":4,"y":3,…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-frames="34" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="18.829411764683968" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-frames="65" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.79846153846727" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-frames="95" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.44105263158287" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-selected="" data-frames="126" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.251587301581388" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-selected="" data-frames="157" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.135031847129014" data-update-ms="0.10000000149011612" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-selected="" data-frames="188" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.056914893613058" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-selected="" data-frames="218" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.003669724765516" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.52173913043478…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-selected="" data-frames="249" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.961044176702337" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-selected="" data-frames="279" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.929390680999578" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.52173913043478…>…</div>',
+      '    - unexpected value "webgpu"'
+    ],
+    timeout: 5000,
+    ariaSnapshot: ''
+  }
+}
+ExpectError: expect(locator).toHaveAttribute(expected) failed
+
+Locator:  getByTestId('province-map')
+Expected: "webgl2"
+Received: "webgpu"
+Timeout:  5000ms
+
+Call log:
+  - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms
+  - waiting for getByTestId('province-map')
+    - locator resolved to <div class="province-map" aria-label="Province map" data-testid="province-map"></div>
+    - unexpected value "null"
+    - locator resolved to <div class="province-map" data-backend="webgpu" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-device="WebGPU device" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782,"x":4,"y":3,"zoom":1}">…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-frames="5" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="23.239999999850987" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-frames="36" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.569444444444443" data-update-ms="0.30000000074505806" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-frames="66" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.1575757575814" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-frames="97" data-selected="" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.002061855662422" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-selected="" data-frames="128" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.92031250000582" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-selected="" data-frames="158" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.87151898733706" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-selected="" data-frames="189" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.83809523809721" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-selected="" data-frames="220" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.814545454542067" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.52173913043478…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-selected="" data-frames="250" class="province-map" data-backend="webgpu" data-updated-bytes="0" data-frame-ms="16.796" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.52173913…>…</div>
+    - unexpected value "webgpu"
+    - locator resolved to <div data-selected="" data-frames="281" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.781138790035588" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height…>…</div>
+    - unexpected value "webgpu"
+
+    at captureRawStack (E:\openhoi\.orchestrator\wt\WP-08-verify3\client\node_modules\playwright-core\lib\coreBundle.js:8588:17)
+    at callMatcherAsStep (E:\openhoi\.orchestrator\wt\WP-08-verify3\client\node_modules\playwright\lib\matchers\expect.js:13310:57)
+    at Object.toHaveAttribute (E:\openhoi\.orchestrator\wt\WP-08-verify3\client\node_modules\playwright\lib\matchers\expect.js:13302:23)
+    at E:\openhoi\.orchestrator\wt\WP-08-verify3\target\wp08-verify3\gpu-failure.cjs:11:106 {
+  matcherResult: {
+    name: 'toHaveAttribute',
+    expected: 'webgl2',
+    message: 'expect(locator).toHaveAttribute(expected) failed\n' +
+      '\n' +
+      "Locator:  getByTestId('province-map')\n" +
+      'Expected: "webgl2"\n' +
+      'Received: "webgpu"\n' +
+      'Timeout:  5000ms\n' +
+      '\n' +
+      'Call log:\n' +
+      `  - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms\n` +
+      "  - waiting for getByTestId('province-map')\n" +
+      '    - locator resolved to <div class="province-map" aria-label="Province map" data-testid="province-map"></div>\n' +
+      '    - unexpected value "null"\n' +
+      '    - locator resolved to <div class="province-map" data-backend="webgpu" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-device="WebGPU device" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782,"x":4,"y":3,"zoom":1}">…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-frames="5" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="23.239999999850987" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-frames="36" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.569444444444443" data-update-ms="0.30000000074505806" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-frames="66" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.1575757575814" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-frames="97" data-selected="" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.002061855662422" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-selected="" data-frames="128" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.92031250000582" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-selected="" data-frames="158" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.87151898733706" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-selected="" data-frames="189" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.83809523809721" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-selected="" data-frames="220" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.814545454542067" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.52173913043478…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-selected="" data-frames="250" class="province-map" data-backend="webgpu" data-updated-bytes="0" data-frame-ms="16.796" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.52173913…>…</div>\n' +
+      '    - unexpected value "webgpu"\n' +
+      '    - locator resolved to <div data-selected="" data-frames="281" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.781138790035588" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height…>…</div>\n' +
+      '    - unexpected value "webgpu"\n',
+    pass: false,
+    actual: 'webgpu',
+    log: [
+      `  - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms`,
+      "  - waiting for getByTestId('province-map')",
+      '    - locator resolved to <div class="province-map" aria-label="Province map" data-testid="province-map"></div>',
+      '    - unexpected value "null"',
+      '    - locator resolved to <div class="province-map" data-backend="webgpu" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-device="WebGPU device" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782,"x":4,"y":3,"zoom":1}">…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-frames="5" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="23.239999999850987" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-frames="36" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.569444444444443" data-update-ms="0.30000000074505806" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height"…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-frames="66" data-selected="" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.1575757575814" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-frames="97" data-selected="" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="17.002061855662422" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-selected="" data-frames="128" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.92031250000582" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-selected="" data-frames="158" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.87151898733706" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-selected="" data-frames="189" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.83809523809721" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.521739130434782…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-selected="" data-frames="220" data-update-ms="0" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.814545454542067" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.52173913043478…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-selected="" data-frames="250" class="province-map" data-backend="webgpu" data-updated-bytes="0" data-frame-ms="16.796" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height":6.52173913…>…</div>',
+      '    - unexpected value "webgpu"',
+      '    - locator resolved to <div data-selected="" data-frames="281" class="province-map" data-backend="webgpu" data-updated-bytes="0" aria-label="Province map" data-texture-limit="8192" data-testid="province-map" data-shader-length="10386" data-mode="map-mode-owner" data-device="WebGPU device" data-shader-language="wgsl" data-frame-ms="16.781138790035588" data-update-ms="0.09999999962747097" data-adapter="{"vendor":"nvidia","architecture":"turing","device":"","description":""}" data-camera="{"width":16.877470355731223,"height…>…</div>',
+      '    - unexpected value "webgpu"'
+    ],
+    timeout: 5000,
+    ariaSnapshot: ''
+  }
+}

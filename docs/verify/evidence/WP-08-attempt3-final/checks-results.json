@@ -1,0 +1,221 @@
+[
+  {
+    "name": "clippy",
+    "command": [
+      "cargo",
+      "clippy",
+      "--workspace",
+      "--",
+      "-D",
+      "warnings"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "rust-test",
+    "command": [
+      "cargo",
+      "test",
+      "--workspace"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "proto-generate",
+    "command": [
+      "cargo",
+      "run",
+      "-p",
+      "oh_proto",
+      "--example",
+      "generate"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "proto-diff",
+    "command": [
+      "git",
+      "diff",
+      "--exit-code",
+      "--",
+      "client/src/proto"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "typecheck",
+    "command": [
+      "npm.cmd",
+      "--prefix",
+      "client",
+      "run",
+      "typecheck"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "m0-365-1",
+    "command": [
+      "cargo",
+      "run",
+      "-p",
+      "oh_cli",
+      "--",
+      "run",
+      "--scenario",
+      "testland",
+      "--days",
+      "365",
+      "--seed",
+      "1",
+      "--hash-out"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "m0-365-2",
+    "command": [
+      "cargo",
+      "run",
+      "-p",
+      "oh_cli",
+      "--",
+      "run",
+      "--scenario",
+      "testland",
+      "--days",
+      "365",
+      "--seed",
+      "1",
+      "--hash-out"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "m1-365-1",
+    "command": [
+      "cargo",
+      "run",
+      "-p",
+      "oh_cli",
+      "--",
+      "run",
+      "--pack",
+      "data/packs/testland",
+      "--scenario",
+      "m1",
+      "--days",
+      "365",
+      "--seed",
+      "1",
+      "--hash-out"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "m1-365-2",
+    "command": [
+      "cargo",
+      "run",
+      "-p",
+      "oh_cli",
+      "--",
+      "run",
+      "--pack",
+      "data/packs/testland",
+      "--scenario",
+      "m1",
+      "--days",
+      "365",
+      "--seed",
+      "1",
+      "--hash-out"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "capture-m1",
+    "command": [
+      "python",
+      "crates/oh_sim/tools/check_sim_determinism.py",
+      "capture",
+      "--m1",
+      "--out",
+      "target/wp08-verify3/m1-1000"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "lifecycle",
+    "command": [
+      "python",
+      "crates/oh_server/tests/lifecycle.py"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "cargo-deny",
+    "command": [
+      "cargo",
+      "deny",
+      "check",
+      "licenses",
+      "bans",
+      "advisories",
+      "sources"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "npm-licenses",
+    "command": [
+      "npm.cmd",
+      "--prefix",
+      "client",
+      "run",
+      "licenses"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "docs",
+    "command": [
+      "python",
+      "tools/check_docs.py"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "assets",
+    "command": [
+      "python",
+      "tools/check_assets.py",
+      "--release"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "architecture",
+    "command": [
+      "python",
+      "tools/check_architecture.py"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "wp01-fixtures",
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tools/tests",
+      "-p",
+      "test_wp01.py",
+      "-v"
+    ],
+    "exit": 0
+  }
+]

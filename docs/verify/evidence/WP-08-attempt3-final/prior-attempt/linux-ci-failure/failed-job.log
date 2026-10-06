@@ -1,0 +1,519 @@
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	﻿2026-10-06T15:58:08.8425265Z ##[group]Run npm run test:e2e -- --config playwright.m1.config.ts
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T15:58:08.8425658Z [36;1mnpm run test:e2e -- --config playwright.m1.config.ts[0m
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T15:58:08.8480023Z shell: /usr/bin/bash -e {0}
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T15:58:08.8480231Z env:
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T15:58:08.8480387Z   OH_TEST_PORT: 19412
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T15:58:08.8480587Z   OH_E2E_EVIDENCE: ../target/wp09/ci/m1-e2e
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T15:58:08.8480843Z   OH_MALFORMED_EVIDENCE: ../target/wp09/ci/m1-malformed
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T15:58:08.8481084Z ##[endgroup]
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T15:58:08.9262644Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T15:58:08.9263071Z > openhoi-client@0.1.0 test:e2e
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T15:58:08.9263467Z > playwright test --config playwright.m1.config.ts
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T15:58:08.9263677Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T15:58:09.8166835Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T15:58:09.8167507Z Running 99 tests using 2 workers
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T15:59:48.3762764Z ·············F··F·····F···············F··FF······F······F·····F·············F···
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3615073Z ·FFFFF··········FFF
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3627883Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3635544Z   1) [firefox] › e2e-m1/malformed-world.spec.ts:5:1 › M1 malformed decoded ledger preserves last valid panel and closes connection
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3636319Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3636599Z     Error: expect(locator).toHaveText(expected) failed
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3636901Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3637056Z     Locator: getByRole('alert')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3637500Z     Expected: "Invalid server message; connection closed"
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3638104Z     Error: strict mode violation: getByRole('alert') resolved to 2 elements:
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3639226Z         1) <p role="alert">This browser could not initialize WebGPU or WebGL…</p> aka getByText('This browser could not')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3640270Z         2) <p role="alert">Invalid server message; connection closed</p> aka getByText('Invalid server message;')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3640810Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3640914Z     Call log:
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3641318Z       - Expect "toHaveText" getByRole('alert') with timeout 5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3642174Z       - waiting for getByRole('alert')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3642415Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3642423Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3642950Z       11 |  await page.goto('/');await expect(page.getByTestId('country-panel')).toContainText('Northern Test Nation');
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3644123Z       12 |  await expect(page.getByTestId('connection')).toHaveText('Disconnected');await expect(page.getByTestId('pause')).toBeDisabled();
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3645349Z     > 13 |  await expect(page.getByRole('alert')).toHaveText('Invalid server message; connection closed');expect(errors).toEqual([]);
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3646125Z          |                                        ^
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3646820Z       14 |  await expect(page.getByTestId('state-panel').locator('.ledger-value strong')).toHaveText('1');
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3647783Z       15 |  await page.screenshot({path:`${evidence}/${info.project.name}-world-malformed.png`,fullPage:true});
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3649112Z       16 |  await page.getByRole('combobox').selectOption('ko');await expect(page.getByRole('alert')).toHaveText('잘못된 서버 메시지로 연결을 종료했습니다');
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3650133Z         at /home/runner/work/OpenHOI4/OpenHOI4/client/e2e-m1/malformed-world.spec.ts:13:40
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3650996Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3652452Z     Error Context: test-results/malformed-world-M1-malform-c4d5e-panel-and-closes-connection-firefox/error-context.md
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3653397Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3654157Z   2) [firefox] › e2e-m1/map-redirect.spec.ts:15:3 › WP08 P06 metadata CORS redirect sends no foreign request after valid selection
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3654790Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3655037Z     Error: expect(locator).toHaveAttribute(expected) failed
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3655343Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3655514Z     Locator: getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3655916Z     Expected pattern: /^[1-9]\d*$/
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3656242Z     Received string:  ""
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3656535Z     Timeout: 5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3656691Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3656793Z     Call log:
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3657569Z       - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3658148Z       - waiting for getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3659069Z         12 × locator resolved to <div class="province-map" aria-label="Province map" data-testid="province-map"></div>
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3659768Z            - unexpected value "null"
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3659997Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3660006Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3660229Z       87 |     const map = page.getByTestId('province-map');
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3660639Z       88 |     if (reload) {
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3661111Z     > 89 |      await expect(map).toHaveAttribute('data-frames', /^[1-9]\d*$/);
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3661802Z          |                        ^
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3662498Z       90 |      await page.getByTestId('pause').click(); await expect(page.getByTestId('pause')).toHaveText('Resume');
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3663476Z       91 |      const box = (await map.boundingBox())!, camera = JSON.parse((await map.getAttribute('data-camera'))!);
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3664659Z       92 |      await map.click({ position: { x: (1 - camera.x) / camera.width * box.width + box.width / 2, y: (3 - camera.y) / camera.height * box.height + box.height / 2 } });
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3665684Z         at /home/runner/work/OpenHOI4/OpenHOI4/client/e2e-m1/map-redirect.spec.ts:89:24
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3666096Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3666656Z     Error Context: test-results/map-redirect-WP08-P06-meta-ec1da-quest-after-valid-selection-firefox/error-context.md
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3667302Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3668120Z   3) [firefox] › e2e-m1/map-redirect.spec.ts:15:3 › WP08 P06 index CORS redirect sends no foreign request after valid selection
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3668693Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3668954Z     Error: expect(locator).toHaveAttribute(expected) failed
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3669268Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3669427Z     Locator: getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3669795Z     Expected pattern: /^[1-9]\d*$/
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3670114Z     Received string:  ""
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3670373Z     Timeout: 5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3670528Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3670666Z     Call log:
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3671134Z       - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3671844Z       - waiting for getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3672734Z         12 × locator resolved to <div class="province-map" aria-label="Province map" data-testid="province-map"></div>
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3673301Z            - unexpected value "null"
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3673521Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3673537Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3673762Z       87 |     const map = page.getByTestId('province-map');
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3674163Z       88 |     if (reload) {
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3674637Z     > 89 |      await expect(map).toHaveAttribute('data-frames', /^[1-9]\d*$/);
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3675138Z          |                        ^
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3675852Z       90 |      await page.getByTestId('pause').click(); await expect(page.getByTestId('pause')).toHaveText('Resume');
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3676844Z       91 |      const box = (await map.boundingBox())!, camera = JSON.parse((await map.getAttribute('data-camera'))!);
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3678308Z       92 |      await map.click({ position: { x: (1 - camera.x) / camera.width * box.width + box.width / 2, y: (3 - camera.y) / camera.height * box.height + box.height / 2 } });
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3679360Z         at /home/runner/work/OpenHOI4/OpenHOI4/client/e2e-m1/map-redirect.spec.ts:89:24
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3679785Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3680365Z     Error Context: test-results/map-redirect-WP08-P06-inde-ac0ff-quest-after-valid-selection-firefox/error-context.md
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3681073Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3681874Z   4) [firefox] › e2e-m1/map.spec.ts:11:1 › REQ-MAP-04/05 PLAT-03 actual map pixels, modes, pick and viewport
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3682370Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3682636Z     Error: expect(locator).toHaveAttribute(expected) failed
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3683124Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3683283Z     Locator:  getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3683607Z     Expected: "webgl2"
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3683864Z     Received: ""
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3684098Z     Timeout:  5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3684257Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3684360Z     Call log:
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3684905Z       - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3685487Z       - waiting for getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3686405Z         13 × locator resolved to <div class="province-map" aria-label="Province map" data-testid="province-map"></div>
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3687117Z            - unexpected value "null"
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3687326Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3687333Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3687495Z       13 |  await page.goto('/?forceWebGL=1');
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3687907Z       14 |  const map=page.getByTestId('province-map');
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3688391Z     > 15 |  await expect(map).toHaveAttribute('data-backend','webgl2');
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3688817Z          |                    ^
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3689239Z       16 |  await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3689948Z       17 |  await expect(page.getByRole('button',{name:'Terrain',exact:true})).toBeInViewport();
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3690621Z       18 |  await expect(page.getByTestId('pause')).toBeInViewport();
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3691171Z         at /home/runner/work/OpenHOI4/OpenHOI4/client/e2e-m1/map.spec.ts:15:20
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3691665Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3692196Z     Error Context: test-results/map-REQ-MAP-04-05-PLAT-03--1c38b-els-modes-pick-and-viewport-firefox/error-context.md
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3692764Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3693375Z   5) [firefox] › e2e-m1/map.spec.ts:40:1 › REQ-PLAT-03 preferred actual backend produces the same map RGB and source shader
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3693877Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3694101Z     Error: expect(locator).toHaveAttribute(expected) failed
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3694373Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3694527Z     Locator: getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3694884Z     Expected pattern: /webgpu|webgl2/
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3695169Z     Received string:  ""
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3695419Z     Timeout: 5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3695550Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3695639Z     Call log:
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3696094Z       - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3696678Z       - waiting for getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3697554Z         13 × locator resolved to <div class="province-map" aria-label="Province map" data-testid="province-map"></div>
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3698222Z            - unexpected value "null"
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3698426Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3698434Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3698524Z       39 |
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3699134Z       40 | test('REQ-PLAT-03 preferred actual backend produces the same map RGB and source shader',async({page,browser},info)=>{
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3700473Z     > 41 |  await page.goto('/');const map=page.getByTestId('province-map');await expect(map).toHaveAttribute('data-backend',/webgpu|webgl2/);await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3701806Z          |                                                                                    ^
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3702897Z       42 |  await page.mouse.move(0,0);const shot=await map.screenshot({path:`${evidence}/${info.project.name}-preferred.png`});const p=await mapPoint(map,1,1);closeRGB(png(shot).pixel(p.x,p.y),[40,100,180]);
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3704713Z       43 |  const diagnostics=await map.evaluate(el=>({... (el as HTMLElement).dataset}));expect(diagnostics.shaderLanguage).toBe(diagnostics.backend==='webgpu'?'wgsl':'glsl');expect(Number(diagnostics.shaderLength)).toBeGreaterThan(0);
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3707443Z       44 |  for(const [name,x,color] of [['Control',3,[180,70,40]],['Terrain',1,[130,165,95]],['States',1,[140,95,170]],['Ownership',1,[40,100,180]]] as const){await page.getByRole('button',{name,exact:true}).click();await page.mouse.move(0,0);await page.waitForTimeout(60);const point=await mapPoint(map,x,1);closeRGB(png(await map.screenshot({path:`${evidence}/${info.project.name}-preferred-${name}.png`})).pixel(point.x,point.y),color,name);}
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3709392Z         at /home/runner/work/OpenHOI4/OpenHOI4/client/e2e-m1/map.spec.ts:41:84
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3709738Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3710267Z     Error Context: test-results/map-REQ-PLAT-03-preferred--2ff29-e-map-RGB-and-source-shader-firefox/error-context.md
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3710827Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3711421Z   6) [firefox] › e2e-m1/map.spec.ts:48:1 › REQ-MAP-04 changed server RGB updates only affected lookup texel on actual backend
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3712056Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3712280Z     Error: expect(locator).toHaveAttribute(expected) failed
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3712560Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3712709Z     Locator: getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3713064Z     Expected pattern: /^[1-9]\d*$/
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3713360Z     Received string:  ""
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3713614Z     Timeout: 5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3713751Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3713842Z     Call log:
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3714273Z       - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3714783Z       - waiting for getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3715664Z         12 × locator resolved to <div class="province-map" aria-label="Province map" data-testid="province-map"></div>
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3716356Z            - unexpected value "null"
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3716565Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3716578Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3717068Z       48 | test('REQ-MAP-04 changed server RGB updates only affected lookup texel on actual backend',async({page},info)=>{
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3719243Z       49 |  let inject=false;await page.routeWebSocket('**/ws',route=>{const server=route.connectToServer();server.onMessage(data=>{const m=decode(data as Buffer) as ServerMessage;if(inject&&m.type==='WorldResult'&&m.world&&m.request==='world'){m.world.provinces[0].owner_color=[18,44,110];route.send(Buffer.from(encode(m)));}else route.send(data);});});
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3723885Z     > 50 |  await page.goto('/');const map=page.getByTestId('province-map');await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);inject=true;await expect(map).toHaveAttribute('data-last-changed-bytes','4');await page.mouse.move(0,0);const point=await mapPoint(map,1,1);closeRGB(png(await map.screenshot()).pixel(point.x,point.y),[18,44,110]);const untouched=await mapPoint(map,3,1);closeRGB(png(await map.screenshot()).pixel(untouched.x,untouched.y),[40,100,180]);writeFileSync(`${evidence}/${info.project.name}-partial-update.json`,JSON.stringify(await map.evaluate(el=>({... (el as HTMLElement).dataset})),null,2));
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3726783Z          |                                                                                    ^
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3727177Z       51 | });
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3727765Z       52 | test('REQ-MAP-04/05 RG8 high dense byte and LUT second row pick real ID65535',async({page,request},info)=>{
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3728973Z       53 |  const meta=await (await request.get('/maps/testland/metadata')).json() as MapMetadata;let fixture:ReturnType<typeof wideDisplayFixture>|undefined;
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3730139Z         at /home/runner/work/OpenHOI4/OpenHOI4/client/e2e-m1/map.spec.ts:50:84
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3730519Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3731118Z     Error Context: test-results/map-REQ-MAP-04-changed-ser-06fa5-kup-texel-on-actual-backend-firefox/error-context.md
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3731853Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3732448Z   7) [firefox] › e2e-m1/map.spec.ts:52:1 › REQ-MAP-04/05 RG8 high dense byte and LUT second row pick real ID65535
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3732913Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3733140Z     Error: expect(locator).toHaveAttribute(expected) failed
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3733424Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3733583Z     Locator: getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3733939Z     Expected pattern: /^[1-9]\d*$/
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3734392Z     Received string:  ""
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3734683Z     Timeout: 5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3734842Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3734943Z     Call log:
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3735425Z       - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3736001Z       - waiting for getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3736884Z         11 × locator resolved to <div class="province-map" aria-label="Province map" data-testid="province-map"></div>
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3737577Z            - unexpected value "null"
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3737788Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3737795Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3739292Z       54 |  await page.routeWebSocket('**/ws',route=>{const server=route.connectToServer();server.onMessage(data=>{const m=decode(data as Buffer) as ServerMessage;if(m.type==='WorldResult'&&m.world&&m.request==='world'){fixture=wideDisplayFixture(m.world,meta);m.world=fixture.world;route.send(Buffer.from(encode(m)));}else route.send(data);});});
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3741674Z       55 |  await page.route('**/maps/display_fixture/metadata',r=>r.fulfill({json:fixture!.meta}));await page.route('**/maps/display_fixture/index.bin?*',r=>r.fulfill({body:fixture!.bytes,headers:{'x-pack-hash':meta.pack_hash}}));
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3744970Z     > 56 |  await page.goto('/');const map=page.getByTestId('province-map');await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);await page.mouse.move(0,0);const p=await mapPoint(map,256.5,3);closeRGB(png(await map.screenshot({path:`${evidence}/${info.project.name}-dense256.png`})).pixel(p.x,p.y),[17,123,231]);await map.click({position:p});await expect(page.getByTestId('selected-province')).toHaveText('65535');writeFileSync(`${evidence}/${info.project.name}-dense256.json`,JSON.stringify(await map.evaluate(el=>({... (el as HTMLElement).dataset})),null,2));
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3747306Z          |                                                                                    ^
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3747664Z       57 | });
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3747883Z       58 |
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3748723Z       59 | for(const force of [false,true])test(`REQ-MAP-05 independent three border pixel oracle, u16 sentinel and camera ${force?'WebGL2':'preferred'}`,async({page,request},info)=>{
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3749712Z         at /home/runner/work/OpenHOI4/OpenHOI4/client/e2e-m1/map.spec.ts:56:84
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3750058Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3750576Z     Error Context: test-results/map-REQ-MAP-04-05-RG8-high-71352-econd-row-pick-real-ID65535-firefox/error-context.md
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3751136Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3751858Z   8) [firefox] › e2e-m1/map.spec.ts:59:33 › REQ-MAP-05 independent three border pixel oracle, u16 sentinel and camera preferred
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3752366Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3752580Z     Error: expect(locator).toHaveAttribute(expected) failed
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3752854Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3752999Z     Locator: getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3753339Z     Expected pattern: /^[1-9]\d*$/
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3753635Z     Received string:  ""
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3753887Z     Timeout: 5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3754024Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3754120Z     Call log:
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3754670Z       - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3755184Z       - waiting for getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3755973Z         11 × locator resolved to <div class="province-map" aria-label="Province map" data-testid="province-map"></div>
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3756593Z            - unexpected value "null"
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3756789Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3756796Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3757238Z       63 |  await page.route('**/maps/display_fixture/metadata',route=>route.fulfill({json:fixture!.meta}));
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3758517Z       64 |  await page.route('**/maps/display_fixture/index.bin?*',route=>route.fulfill({body:fixture!.bytes,contentType:'application/octet-stream',headers:{'x-pack-hash':meta.pack_hash}}));
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3760227Z     > 65 |  await page.goto(force?'/?forceWebGL=1':'/');const map=page.getByTestId('province-map');await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);if(force)await expect(map).toHaveAttribute('data-backend','webgl2');
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3761768Z          |                                                                                                           ^
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3762775Z       66 |  await page.mouse.move(0,0);const shot=await map.screenshot({path:`${evidence}/${info.project.name}-borders-${force}.png`}),image=png(shot);
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3763851Z       67 |  const baseline=png(readFileSync(resolve(import.meta.dirname,'baselines/display-fixture.png')));
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3764641Z       68 |  expect([image.width,image.height]).toEqual([baseline.width,baseline.height]);
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3765313Z         at /home/runner/work/OpenHOI4/OpenHOI4/client/e2e-m1/map.spec.ts:65:107
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3765662Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3766230Z     Error Context: test-results/map-REQ-MAP-05-independent-d73a2-ntinel-and-camera-preferred-firefox/error-context.md
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3766885Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3767577Z   9) [firefox] › e2e-m1/map.spec.ts:59:33 › REQ-MAP-05 independent three border pixel oracle, u16 sentinel and camera WebGL2
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3768151Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3768388Z     Error: expect(locator).toHaveAttribute(expected) failed
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3768734Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3768907Z     Locator: getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3769291Z     Expected pattern: /^[1-9]\d*$/
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3769600Z     Received string:  ""
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3769860Z     Timeout: 5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3770002Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3770096Z     Call log:
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3770528Z       - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3771058Z       - waiting for getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3771953Z         12 × locator resolved to <div class="province-map" aria-label="Province map" data-testid="province-map"></div>
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3772670Z            - unexpected value "null"
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3772890Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3772897Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3773358Z       63 |  await page.route('**/maps/display_fixture/metadata',route=>route.fulfill({json:fixture!.meta}));
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3774744Z       64 |  await page.route('**/maps/display_fixture/index.bin?*',route=>route.fulfill({body:fixture!.bytes,contentType:'application/octet-stream',headers:{'x-pack-hash':meta.pack_hash}}));
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3776509Z     > 65 |  await page.goto(force?'/?forceWebGL=1':'/');const map=page.getByTestId('province-map');await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);if(force)await expect(map).toHaveAttribute('data-backend','webgl2');
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3777681Z          |                                                                                                           ^
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3778660Z       66 |  await page.mouse.move(0,0);const shot=await map.screenshot({path:`${evidence}/${info.project.name}-borders-${force}.png`}),image=png(shot);
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3779796Z       67 |  const baseline=png(readFileSync(resolve(import.meta.dirname,'baselines/display-fixture.png')));
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3780836Z       68 |  expect([image.width,image.height]).toEqual([baseline.width,baseline.height]);
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3781644Z         at /home/runner/work/OpenHOI4/OpenHOI4/client/e2e-m1/map.spec.ts:65:107
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3781997Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3782539Z     Error Context: test-results/map-REQ-MAP-05-independent-f177e--sentinel-and-camera-WebGL2-firefox/error-context.md
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3783110Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3783612Z   10) [firefox] › e2e-m1/map.spec.ts:93:93 › REQ-PLAT-03 missingGPU falls back to actual WebGL2 pixels
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3784089Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3784330Z     Error: expect(locator).toHaveAttribute(expected) failed
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3784632Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3784802Z     Locator:  getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3785153Z     Expected: "webgl2"
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3785556Z     Received: ""
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3785804Z     Timeout:  5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3785968Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3786070Z     Call log:
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3786507Z       - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3787025Z       - waiting for getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3787806Z         13 × locator resolved to <div class="province-map" aria-label="Province map" data-testid="province-map"></div>
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3788409Z            - unexpected value "null"
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3788609Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3788615Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3789445Z        99 |   if(kind==='deviceReject')Object.defineProperty(navigator,'gpu',{value:{requestAdapter:async()=>({features:new Set(),requestDevice:async()=>{throw new Error('test device rejection');}})}});
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3790333Z       100 |  },failure);
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3791419Z     > 101 |  await page.goto('/');const map=page.getByTestId('province-map');await expect(map).toHaveAttribute('data-backend','webgl2');await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);await page.mouse.move(0,0);
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3792440Z           |                                                                                    ^
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3793059Z       102 |  const p=await mapPoint(map,1,1);closeRGB(png(await map.screenshot({path:`${evidence}/${info.project.name}-${failure}.png`})).pixel(p.x,p.y),[40,100,180]);
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3793530Z       103 | });
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3793814Z       104 | test('REQ-PLAT-03 no backend shows localized notices',async({page})=>{
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3794242Z         at /home/runner/work/OpenHOI4/OpenHOI4/client/e2e-m1/map.spec.ts:101:84
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3794467Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3794825Z     Error Context: test-results/map-REQ-PLAT-03-missingGPU-04ddd-ack-to-actual-WebGL2-pixels-firefox/error-context.md
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3795204Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3795532Z   11) [firefox] › e2e-m1/map.spec.ts:93:93 › REQ-PLAT-03 nullAdapter falls back to actual WebGL2 pixels
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3795814Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3795960Z     Error: expect(locator).toHaveAttribute(expected) failed
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3796152Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3796261Z     Locator:  getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3796478Z     Expected: "webgl2"
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3796649Z     Received: ""
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3796812Z     Timeout:  5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3796917Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3796982Z     Call log:
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3797270Z       - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3797616Z       - waiting for getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3798132Z         13 × locator resolved to <div class="province-map" aria-label="Province map" data-testid="province-map"></div>
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3798537Z            - unexpected value "null"
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3798675Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3798680Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3799196Z        99 |   if(kind==='deviceReject')Object.defineProperty(navigator,'gpu',{value:{requestAdapter:async()=>({features:new Set(),requestDevice:async()=>{throw new Error('test device rejection');}})}});
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3799900Z       100 |  },failure);
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3800595Z     > 101 |  await page.goto('/');const map=page.getByTestId('province-map');await expect(map).toHaveAttribute('data-backend','webgl2');await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);await page.mouse.move(0,0);
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3801296Z           |                                                                                    ^
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3802148Z       102 |  const p=await mapPoint(map,1,1);closeRGB(png(await map.screenshot({path:`${evidence}/${info.project.name}-${failure}.png`})).pixel(p.x,p.y),[40,100,180]);
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3802654Z       103 | });
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3802935Z       104 | test('REQ-PLAT-03 no backend shows localized notices',async({page})=>{
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3803346Z         at /home/runner/work/OpenHOI4/OpenHOI4/client/e2e-m1/map.spec.ts:101:84
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3803691Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3804039Z     Error Context: test-results/map-REQ-PLAT-03-nullAdapte-fc40d-ack-to-actual-WebGL2-pixels-firefox/error-context.md
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3804411Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3804769Z   12) [firefox] › e2e-m1/map.spec.ts:93:93 › REQ-PLAT-03 adapterReject falls back to actual WebGL2 pixels
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3805045Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3805197Z     Error: expect(locator).toHaveAttribute(expected) failed
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3805384Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3805487Z     Locator:  getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3805707Z     Expected: "webgl2"
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3805878Z     Received: ""
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3806044Z     Timeout:  5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3806144Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3806215Z     Call log:
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3806503Z       - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3806847Z       - waiting for getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3807379Z         13 × locator resolved to <div class="province-map" aria-label="Province map" data-testid="province-map"></div>
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3807798Z            - unexpected value "null"
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3807936Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3807945Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3808459Z        99 |   if(kind==='deviceReject')Object.defineProperty(navigator,'gpu',{value:{requestAdapter:async()=>({features:new Set(),requestDevice:async()=>{throw new Error('test device rejection');}})}});
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3809030Z       100 |  },failure);
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3809724Z     > 101 |  await page.goto('/');const map=page.getByTestId('province-map');await expect(map).toHaveAttribute('data-backend','webgl2');await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);await page.mouse.move(0,0);
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3810430Z           |                                                                                    ^
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3811021Z       102 |  const p=await mapPoint(map,1,1);closeRGB(png(await map.screenshot({path:`${evidence}/${info.project.name}-${failure}.png`})).pixel(p.x,p.y),[40,100,180]);
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3811630Z       103 | });
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3812077Z       104 | test('REQ-PLAT-03 no backend shows localized notices',async({page})=>{
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3812558Z         at /home/runner/work/OpenHOI4/OpenHOI4/client/e2e-m1/map.spec.ts:101:84
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3812791Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3813143Z     Error Context: test-results/map-REQ-PLAT-03-adapterRej-f94b0-ack-to-actual-WebGL2-pixels-firefox/error-context.md
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3813502Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3813827Z   13) [firefox] › e2e-m1/map.spec.ts:93:93 › REQ-PLAT-03 deviceReject falls back to actual WebGL2 pixels
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3814105Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3814255Z     Error: expect(locator).toHaveAttribute(expected) failed
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3814438Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3814549Z     Locator:  getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3814768Z     Expected: "webgl2"
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3814941Z     Received: ""
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3815117Z     Timeout:  5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3815222Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3815292Z     Call log:
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3815584Z       - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3816143Z       - waiting for getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3816666Z         14 × locator resolved to <div class="province-map" aria-label="Province map" data-testid="province-map"></div>
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3817076Z            - unexpected value "null"
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3817215Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3817220Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3817739Z        99 |   if(kind==='deviceReject')Object.defineProperty(navigator,'gpu',{value:{requestAdapter:async()=>({features:new Set(),requestDevice:async()=>{throw new Error('test device rejection');}})}});
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3818305Z       100 |  },failure);
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3818987Z     > 101 |  await page.goto('/');const map=page.getByTestId('province-map');await expect(map).toHaveAttribute('data-backend','webgl2');await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);await page.mouse.move(0,0);
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3819802Z           |                                                                                    ^
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3820399Z       102 |  const p=await mapPoint(map,1,1);closeRGB(png(await map.screenshot({path:`${evidence}/${info.project.name}-${failure}.png`})).pixel(p.x,p.y),[40,100,180]);
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3820861Z       103 | });
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3821179Z       104 | test('REQ-PLAT-03 no backend shows localized notices',async({page})=>{
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3821811Z         at /home/runner/work/OpenHOI4/OpenHOI4/client/e2e-m1/map.spec.ts:101:84
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3822041Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3822389Z     Error Context: test-results/map-REQ-PLAT-03-deviceReje-3f628-ack-to-actual-WebGL2-pixels-firefox/error-context.md
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3822746Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3823055Z   14) [firefox] › e2e-m1/map.spec.ts:93:93 › REQ-PLAT-03 insecure falls back to actual WebGL2 pixels
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3823331Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3823474Z     Error: expect(locator).toHaveAttribute(expected) failed
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3823659Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3823777Z     Locator:  getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3823994Z     Expected: "webgl2"
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3824169Z     Received: ""
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3824337Z     Timeout:  5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3824442Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3824508Z     Call log:
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3824799Z       - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3825139Z       - waiting for getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3825648Z         13 × locator resolved to <div class="province-map" aria-label="Province map" data-testid="province-map"></div>
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3826053Z            - unexpected value "null"
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3826192Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3826197Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3826713Z        99 |   if(kind==='deviceReject')Object.defineProperty(navigator,'gpu',{value:{requestAdapter:async()=>({features:new Set(),requestDevice:async()=>{throw new Error('test device rejection');}})}});
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3827292Z       100 |  },failure);
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3827987Z     > 101 |  await page.goto('/');const map=page.getByTestId('province-map');await expect(map).toHaveAttribute('data-backend','webgl2');await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);await page.mouse.move(0,0);
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3828686Z           |                                                                                    ^
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3829280Z       102 |  const p=await mapPoint(map,1,1);closeRGB(png(await map.screenshot({path:`${evidence}/${info.project.name}-${failure}.png`})).pixel(p.x,p.y),[40,100,180]);
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3829753Z       103 | });
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3830031Z       104 | test('REQ-PLAT-03 no backend shows localized notices',async({page})=>{
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3830431Z         at /home/runner/work/OpenHOI4/OpenHOI4/client/e2e-m1/map.spec.ts:101:84
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3830661Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3831002Z     Error Context: test-results/map-REQ-PLAT-03-insecure-falls-back-to-actual-WebGL2-pixels-firefox/error-context.md
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3831651Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3832011Z   15) [firefox] › e2e-m1/map.spec.ts:126:70 › REQ-MAP-05 dangling preserves last valid map and closes wire
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3832292Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3832445Z     Error: expect(locator).toHaveAttribute(expected) failed
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3832634Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3832739Z     Locator: getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3832984Z     Expected pattern: /^[1-9]\d*$/
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3833188Z     Received string:  ""
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3833369Z     Timeout: 5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3833468Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3833536Z     Call log:
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3833823Z       - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3834166Z       - waiting for getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3834680Z         12 × locator resolved to <div class="province-map" aria-label="Province map" data-testid="province-map"></div>
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3835203Z            - unexpected value "null"
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3835346Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3835356Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3835782Z       126 | for(const invalid of ['dangling','changedDimensions','changedDense'])test(`REQ-MAP-05 ${invalid} preserves last valid map and closes wire`,async({page})=>{
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3837478Z       127 |  let count=0;await page.routeWebSocket('**/ws',route=>{const server=route.connectToServer();server.onMessage(data=>{const m=decode(data as Buffer) as ServerMessage;if(m.type==='WorldResult'&&m.world&&++count>=3){if(invalid==='dangling')m.world.provinces[0].owner=65535;if(invalid==='changedDimensions')m.world.width++;if(invalid==='changedDense')m.world.province_ids.reverse();route.send(Buffer.from(encode(m)));}else route.send(data);});});
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3839626Z     > 128 |  await page.goto('/');const map=page.getByTestId('province-map');await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);await expect(page.getByTestId('connection')).toHaveText('Disconnected');await expect(page.getByRole('alert')).toHaveText('Invalid server message; connection closed');await expect(page.getByTestId('pause')).toBeDisabled();
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3840684Z           |                                                                                    ^
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3841468Z       129 |  await page.mouse.move(0,0);const point=await mapPoint(map,1,1);closeRGB(png(await map.screenshot()).pixel(point.x,point.y),[40,100,180]);await expect(page.getByTestId('country-panel')).toContainText('Northern Test Nation');
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3842257Z       130 | });
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3842410Z       131 |
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3842690Z         at /home/runner/work/OpenHOI4/OpenHOI4/client/e2e-m1/map.spec.ts:128:84
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3842922Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3843270Z     Error Context: test-results/map-REQ-MAP-05-dangling-pr-b61af-t-valid-map-and-closes-wire-firefox/error-context.md
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3843635Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3844017Z   16) [firefox] › e2e-m1/map.spec.ts:126:70 › REQ-MAP-05 changedDimensions preserves last valid map and closes wire
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3844337Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3844483Z     Error: expect(locator).toHaveAttribute(expected) failed
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3844670Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3844777Z     Locator: getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3845017Z     Expected pattern: /^[1-9]\d*$/
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3845221Z     Received string:  ""
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3845400Z     Timeout: 5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3845501Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3845563Z     Call log:
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3845849Z       - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3846203Z       - waiting for getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3846721Z         12 × locator resolved to <div class="province-map" aria-label="Province map" data-testid="province-map"></div>
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3847148Z            - unexpected value "null"
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3847294Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3847298Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3847730Z       126 | for(const invalid of ['dangling','changedDimensions','changedDense'])test(`REQ-MAP-05 ${invalid} preserves last valid map and closes wire`,async({page})=>{
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3849525Z       127 |  let count=0;await page.routeWebSocket('**/ws',route=>{const server=route.connectToServer();server.onMessage(data=>{const m=decode(data as Buffer) as ServerMessage;if(m.type==='WorldResult'&&m.world&&++count>=3){if(invalid==='dangling')m.world.provinces[0].owner=65535;if(invalid==='changedDimensions')m.world.width++;if(invalid==='changedDense')m.world.province_ids.reverse();route.send(Buffer.from(encode(m)));}else route.send(data);});});
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3851722Z     > 128 |  await page.goto('/');const map=page.getByTestId('province-map');await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);await expect(page.getByTestId('connection')).toHaveText('Disconnected');await expect(page.getByRole('alert')).toHaveText('Invalid server message; connection closed');await expect(page.getByTestId('pause')).toBeDisabled();
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3852919Z           |                                                                                    ^
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3853711Z       129 |  await page.mouse.move(0,0);const point=await mapPoint(map,1,1);closeRGB(png(await map.screenshot()).pixel(point.x,point.y),[40,100,180]);await expect(page.getByTestId('country-panel')).toContainText('Northern Test Nation');
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3854340Z       130 | });
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3854498Z       131 |
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3854782Z         at /home/runner/work/OpenHOI4/OpenHOI4/client/e2e-m1/map.spec.ts:128:84
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3855006Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3855361Z     Error Context: test-results/map-REQ-MAP-05-changedDime-1793f-t-valid-map-and-closes-wire-firefox/error-context.md
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3855718Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3856070Z   17) [firefox] › e2e-m1/map.spec.ts:126:70 › REQ-MAP-05 changedDense preserves last valid map and closes wire
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3856371Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3856517Z     Error: expect(locator).toHaveAttribute(expected) failed
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3856710Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3856819Z     Locator: getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3857061Z     Expected pattern: /^[1-9]\d*$/
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3857269Z     Received string:  ""
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3857449Z     Timeout: 5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3857550Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3857613Z     Call log:
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3857906Z       - Expect "toHaveAttribute" getByTestId('province-map') with timeout 5000ms
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3858254Z       - waiting for getByTestId('province-map')
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3858766Z         13 × locator resolved to <div class="province-map" aria-label="Province map" data-testid="province-map"></div>
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3859171Z            - unexpected value "null"
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3859310Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3859315Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3859742Z       126 | for(const invalid of ['dangling','changedDimensions','changedDense'])test(`REQ-MAP-05 ${invalid} preserves last valid map and closes wire`,async({page})=>{
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3861379Z       127 |  let count=0;await page.routeWebSocket('**/ws',route=>{const server=route.connectToServer();server.onMessage(data=>{const m=decode(data as Buffer) as ServerMessage;if(m.type==='WorldResult'&&m.world&&++count>=3){if(invalid==='dangling')m.world.provinces[0].owner=65535;if(invalid==='changedDimensions')m.world.width++;if(invalid==='changedDense')m.world.province_ids.reverse();route.send(Buffer.from(encode(m)));}else route.send(data);});});
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3863599Z     > 128 |  await page.goto('/');const map=page.getByTestId('province-map');await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);await expect(page.getByTestId('connection')).toHaveText('Disconnected');await expect(page.getByRole('alert')).toHaveText('Invalid server message; connection closed');await expect(page.getByTestId('pause')).toBeDisabled();
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3864652Z           |                                                                                    ^
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3865433Z       129 |  await page.mouse.move(0,0);const point=await mapPoint(map,1,1);closeRGB(png(await map.screenshot()).pixel(point.x,point.y),[40,100,180]);await expect(page.getByTestId('country-panel')).toContainText('Northern Test Nation');
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3866188Z       130 | });
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3866353Z       131 |
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3866629Z         at /home/runner/work/OpenHOI4/OpenHOI4/client/e2e-m1/map.spec.ts:128:84
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3866851Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3867200Z     Error Context: test-results/map-REQ-MAP-05-changedDens-078e6-t-valid-map-and-closes-wire-firefox/error-context.md
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3867571Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3867984Z   18) [firefox] › e2e-m1/national.spec.ts:6:1 › AC-M1-03 actual Rust M1 panels, separate owner/control, ledger, languages and time
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3868323Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3868478Z     Error: expect(received).toEqual(expected) // deep equality
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3868769Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3868850Z     - Expected  - 1
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3869026Z     + Received  + 3
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3869132Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3869198Z     - Array []
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3869356Z     + Array [
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3869630Z     +   "can't access property \"getSupportedExtensions\", this.gl is null",
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3869914Z     + ]
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3869996Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3870388Z       27 |  await page.getByTestId('pause').click();await expect(page.getByTestId('tick')).not.toHaveText(tick!);await page.getByTestId('pause').click();
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3871430Z       28 |  for(const lang of ['en','ko'])for(const file of ['map.ftl','national.ftl']){const f=await request.get(`/pack/localisation/${lang}/${file}`);expect(f.status()).toBe(200);expect(f.headers()['content-type']).toContain('text/plain');}
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3872990Z     > 29 |  expect(errors).toEqual([]);writeFileSync(`${evidence}/${info.project.name}-m1.json`,JSON.stringify({browser:browser.version(),project:info.project.name,scenario:'m1',seed:'1',errors,worldTick,viewport:{width:1280,height:720},render:'actual Rust M1 DOM panels; WP08 GPU map pending'},null,2));
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3873825Z          |                 ^
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3874009Z       30 | });
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3874364Z       31 | test('REQ-NAT-01 MAP-08 actual query metadata, dense mapping, colors and refusal',async({page})=>{
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3874764Z       32 |  await page.goto('/');
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3875101Z         at /home/runner/work/OpenHOI4/OpenHOI4/client/e2e-m1/national.spec.ts:29:17
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3875344Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3875687Z     Error Context: test-results/national-AC-M1-03-actual-R-63c86-l-ledger-languages-and-time-firefox/error-context.md
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3876039Z
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3876103Z   18 failed
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3876636Z     [firefox] › e2e-m1/malformed-world.spec.ts:5:1 › M1 malformed decoded ledger preserves last valid panel and closes connection
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3877394Z     [firefox] › e2e-m1/map-redirect.spec.ts:15:3 › WP08 P06 metadata CORS redirect sends no foreign request after valid selection
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3878112Z     [firefox] › e2e-m1/map-redirect.spec.ts:15:3 › WP08 P06 index CORS redirect sends no foreign request after valid selection
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3878758Z     [firefox] › e2e-m1/map.spec.ts:11:1 › REQ-MAP-04/05 PLAT-03 actual map pixels, modes, pick and viewport
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3879411Z     [firefox] › e2e-m1/map.spec.ts:40:1 › REQ-PLAT-03 preferred actual backend produces the same map RGB and source shader
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3880087Z     [firefox] › e2e-m1/map.spec.ts:48:1 › REQ-MAP-04 changed server RGB updates only affected lookup texel on actual backend
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3880719Z     [firefox] › e2e-m1/map.spec.ts:52:1 › REQ-MAP-04/05 RG8 high dense byte and LUT second row pick real ID65535
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3881375Z     [firefox] › e2e-m1/map.spec.ts:59:33 › REQ-MAP-05 independent three border pixel oracle, u16 sentinel and camera preferred
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3882213Z     [firefox] › e2e-m1/map.spec.ts:59:33 › REQ-MAP-05 independent three border pixel oracle, u16 sentinel and camera WebGL2
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3882945Z     [firefox] › e2e-m1/map.spec.ts:93:93 › REQ-PLAT-03 missingGPU falls back to actual WebGL2 pixels
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3896504Z     [firefox] › e2e-m1/map.spec.ts:93:93 › REQ-PLAT-03 nullAdapter falls back to actual WebGL2 pixels
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3897536Z     [firefox] › e2e-m1/map.spec.ts:93:93 › REQ-PLAT-03 adapterReject falls back to actual WebGL2 pixels
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3898282Z     [firefox] › e2e-m1/map.spec.ts:93:93 › REQ-PLAT-03 deviceReject falls back to actual WebGL2 pixels
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3898981Z     [firefox] › e2e-m1/map.spec.ts:93:93 › REQ-PLAT-03 insecure falls back to actual WebGL2 pixels ─
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3899582Z     [firefox] › e2e-m1/map.spec.ts:126:70 › REQ-MAP-05 dangling preserves last valid map and closes wire
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3900391Z     [firefox] › e2e-m1/map.spec.ts:126:70 › REQ-MAP-05 changedDimensions preserves last valid map and closes wire
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3901047Z     [firefox] › e2e-m1/map.spec.ts:126:70 › REQ-MAP-05 changedDense preserves last valid map and closes wire
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3901971Z     [firefox] › e2e-m1/national.spec.ts:6:1 › AC-M1-03 actual Rust M1 panels, separate owner/control, ledger, languages and time
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3902426Z   81 passed (2.6m)
+client	Actual M1 panels, ownership/control, ledger and malformed wire E2E	2026-10-06T16:00:47.3979844Z ##[error]Process completed with exit code 1.

@@ -1,0 +1,11 @@
+{
+  "run": 37495546810,
+  "head": "2c2aacc88bd22b0f3ba4393b22bef4b119616e69",
+  "clientJob": 112379020254,
+  "conclusion": "failure",
+  "artifactId": 11426998948,
+  "APIdigest": "sha256:749083087f571d0513312691760c1ed9959523fe782981d01807661df0b9d3e8",
+  "verifiedZipSHA256": "749083087f571d0513312691760c1ed9959523fe782981d01807661df0b9d3e8",
+  "files": 124,
+  "scope": "exact2c failed native Firefox argv before app; headed step skipped; no106 claim"
+}

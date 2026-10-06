@@ -1,0 +1,125 @@
+{
+  "total_count": 6,
+  "artifacts": [
+    {
+      "id": 11428950001,
+      "node_id": "MDg6QXJ0aWZhY3QxMTQyODk1MDAwMQ==",
+      "name": "m1-sim-hash-ubuntu-latest",
+      "size_in_bytes": 635,
+      "url": "https://api.github.com/repos/peppone-choi/OpenHOI4/actions/artifacts/11428950001",
+      "archive_download_url": "https://api.github.com/repos/peppone-choi/OpenHOI4/actions/artifacts/11428950001/zip",
+      "expired": false,
+      "digest": "sha256:398f3ef4da8b457857632a6fd124e03ddf94e31ab956e92ac08f20655003b330",
+      "created_at": "2026-10-06T16:38:48Z",
+      "updated_at": "2026-10-06T16:38:48Z",
+      "expires_at": "2027-01-04T16:38:00Z",
+      "workflow_run": {
+        "id": 37497228737,
+        "repository_id": 1406923098,
+        "head_repository_id": 1406923098,
+        "head_branch": "codex/wp08-map-rendering",
+        "head_sha": "62a89ae0c332483d0198ab3b3fc0fc3db1231c68"
+      }
+    },
+    {
+      "id": 11428545507,
+      "node_id": "MDg6QXJ0aWZhY3QxMTQyODU0NTUwNw==",
+      "name": "sim-hash-ubuntu-latest",
+      "size_in_bytes": 415,
+      "url": "https://api.github.com/repos/peppone-choi/OpenHOI4/actions/artifacts/11428545507",
+      "archive_download_url": "https://api.github.com/repos/peppone-choi/OpenHOI4/actions/artifacts/11428545507/zip",
+      "expired": false,
+      "digest": "sha256:7d25414315709847e467770d5c3562fdad687c452e79781f3451a46330a413fe",
+      "created_at": "2026-10-06T16:38:48Z",
+      "updated_at": "2026-10-06T16:38:48Z",
+      "expires_at": "2027-01-04T16:38:00Z",
+      "workflow_run": {
+        "id": 37497228737,
+        "repository_id": 1406923098,
+        "head_repository_id": 1406923098,
+        "head_branch": "codex/wp08-map-rendering",
+        "head_sha": "62a89ae0c332483d0198ab3b3fc0fc3db1231c68"
+      }
+    },
+    {
+      "id": 11427758208,
+      "node_id": "MDg6QXJ0aWZhY3QxMTQyNzc1ODIwOA==",
+      "name": "sim-hash-windows-latest",
+      "size_in_bytes": 418,
+      "url": "https://api.github.com/repos/peppone-choi/OpenHOI4/actions/artifacts/11427758208",
+      "archive_download_url": "https://api.github.com/repos/peppone-choi/OpenHOI4/actions/artifacts/11427758208/zip",
+      "expired": false,
+      "digest": "sha256:c7110765fdd728d5696e5adc13bb109341e51413b52a4bbe1dec42768b03b3d4",
+      "created_at": "2026-10-06T16:39:25Z",
+      "updated_at": "2026-10-06T16:39:25Z",
+      "expires_at": "2027-01-04T16:38:00Z",
+      "workflow_run": {
+        "id": 37497228737,
+        "repository_id": 1406923098,
+        "head_repository_id": 1406923098,
+        "head_branch": "codex/wp08-map-rendering",
+        "head_sha": "62a89ae0c332483d0198ab3b3fc0fc3db1231c68"
+      }
+    },
+    {
+      "id": 11427688320,
+      "node_id": "MDg6QXJ0aWZhY3QxMTQyNzY4ODMyMA==",
+      "name": "m1-sim-hash-windows-latest",
+      "size_in_bytes": 638,
+      "url": "https://api.github.com/repos/peppone-choi/OpenHOI4/actions/artifacts/11427688320",
+      "archive_download_url": "https://api.github.com/repos/peppone-choi/OpenHOI4/actions/artifacts/11427688320/zip",
+      "expired": false,
+      "digest": "sha256:dd1e4aec39d83ee5a09606093799984a77e14d186f702ae891ee50a509304ec2",
+      "created_at": "2026-10-06T16:39:24Z",
+      "updated_at": "2026-10-06T16:39:24Z",
+      "expires_at": "2027-01-04T16:38:00Z",
+      "workflow_run": {
+        "id": 37497228737,
+        "repository_id": 1406923098,
+        "head_repository_id": 1406923098,
+        "head_branch": "codex/wp08-map-rendering",
+        "head_sha": "62a89ae0c332483d0198ab3b3fc0fc3db1231c68"
+      }
+    },
+    {
+      "id": 11427369821,
+      "node_id": "MDg6QXJ0aWZhY3QxMTQyNzM2OTgyMQ==",
+      "name": "sim-hash-macos-latest",
+      "size_in_bytes": 415,
+      "url": "https://api.github.com/repos/peppone-choi/OpenHOI4/actions/artifacts/11427369821",
+      "archive_download_url": "https://api.github.com/repos/peppone-choi/OpenHOI4/actions/artifacts/11427369821/zip",
+      "expired": false,
+      "digest": "sha256:f4e55076f48cdd74ad9dfef127d27c2cd25fafb62d7732e4fe3eb396242bd4b7",
+      "created_at": "2026-10-06T16:39:28Z",
+      "updated_at": "2026-10-06T16:39:28Z",
+      "expires_at": "2027-01-04T16:38:00Z",
+      "workflow_run": {
+        "id": 37497228737,
+        "repository_id": 1406923098,
+        "head_repository_id": 1406923098,
+        "head_branch": "codex/wp08-map-rendering",
+        "head_sha": "62a89ae0c332483d0198ab3b3fc0fc3db1231c68"
+      }
+    },
+    {
+      "id": 11427344811,
+      "node_id": "MDg6QXJ0aWZhY3QxMTQyNzM0NDgxMQ==",
+      "name": "m1-sim-hash-macos-latest",
+      "size_in_bytes": 635,
+      "url": "https://api.github.com/repos/peppone-choi/OpenHOI4/actions/artifacts/11427344811",
+      "archive_download_url": "https://api.github.com/repos/peppone-choi/OpenHOI4/actions/artifacts/11427344811/zip",
+      "expired": false,
+      "digest": "sha256:a9cc3741443422e3c412ee035a5d69598d2dfeb2665245c223dd033958064326",
+      "created_at": "2026-10-06T16:39:27Z",
+      "updated_at": "2026-10-06T16:39:27Z",
+      "expires_at": "2027-01-04T16:38:00Z",
+      "workflow_run": {
+        "id": 37497228737,
+        "repository_id": 1406923098,
+        "head_repository_id": 1406923098,
+        "head_branch": "codex/wp08-map-rendering",
+        "head_sha": "62a89ae0c332483d0198ab3b3fc0fc3db1231c68"
+      }
+    }
+  ]
+}

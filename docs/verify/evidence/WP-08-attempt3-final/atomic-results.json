@@ -1,0 +1,1027 @@
+[
+  {
+    "name": "chrome",
+    "fault": "dangling",
+    "before": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "after": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "injected": true,
+    "errors": [],
+    "commands": [
+      {
+        "type": "Command",
+        "sequence": "1",
+        "command": {
+          "type": "Pause",
+          "paused": true
+        }
+      }
+    ],
+    "pass": true
+  },
+  {
+    "name": "chrome",
+    "fault": "changedDimensions",
+    "before": {
+      "tick": "1",
+      "date": "2000-01-01",
+      "hour": "1",
+      "worldTick": "1",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "after": {
+      "tick": "1",
+      "date": "2000-01-01",
+      "hour": "1",
+      "worldTick": "1",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "injected": true,
+    "errors": [],
+    "commands": [
+      {
+        "type": "Command",
+        "sequence": "1",
+        "command": {
+          "type": "Pause",
+          "paused": true
+        }
+      }
+    ],
+    "pass": true
+  },
+  {
+    "name": "chrome",
+    "fault": "changedDense",
+    "before": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "after": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "injected": true,
+    "errors": [],
+    "commands": [
+      {
+        "type": "Command",
+        "sequence": "1",
+        "command": {
+          "type": "Pause",
+          "paused": true
+        }
+      }
+    ],
+    "pass": true
+  },
+  {
+    "name": "chrome",
+    "fault": "badPalette",
+    "before": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "after": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "injected": true,
+    "errors": [],
+    "commands": [
+      {
+        "type": "Command",
+        "sequence": "1",
+        "command": {
+          "type": "Pause",
+          "paused": true
+        }
+      }
+    ],
+    "pass": true
+  },
+  {
+    "name": "chrome",
+    "fault": "badStateMembership",
+    "before": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "after": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "injected": true,
+    "errors": [],
+    "commands": [
+      {
+        "type": "Command",
+        "sequence": "1",
+        "command": {
+          "type": "Pause",
+          "paused": true
+        }
+      }
+    ],
+    "pass": true
+  },
+  {
+    "name": "edge",
+    "fault": "dangling",
+    "before": {
+      "tick": "1",
+      "date": "2000-01-01",
+      "hour": "1",
+      "worldTick": "1",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "after": {
+      "tick": "1",
+      "date": "2000-01-01",
+      "hour": "1",
+      "worldTick": "1",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "injected": true,
+    "errors": [],
+    "commands": [
+      {
+        "type": "Command",
+        "sequence": "1",
+        "command": {
+          "type": "Pause",
+          "paused": true
+        }
+      }
+    ],
+    "pass": true
+  },
+  {
+    "name": "edge",
+    "fault": "changedDimensions",
+    "before": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "after": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "injected": true,
+    "errors": [],
+    "commands": [
+      {
+        "type": "Command",
+        "sequence": "1",
+        "command": {
+          "type": "Pause",
+          "paused": true
+        }
+      }
+    ],
+    "pass": true
+  },
+  {
+    "name": "edge",
+    "fault": "changedDense",
+    "before": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "after": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "injected": true,
+    "errors": [],
+    "commands": [
+      {
+        "type": "Command",
+        "sequence": "1",
+        "command": {
+          "type": "Pause",
+          "paused": true
+        }
+      }
+    ],
+    "pass": true
+  },
+  {
+    "name": "edge",
+    "fault": "badPalette",
+    "before": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "after": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "injected": true,
+    "errors": [],
+    "commands": [
+      {
+        "type": "Command",
+        "sequence": "1",
+        "command": {
+          "type": "Pause",
+          "paused": true
+        }
+      }
+    ],
+    "pass": true
+  },
+  {
+    "name": "edge",
+    "fault": "badStateMembership",
+    "before": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "after": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "injected": true,
+    "errors": [],
+    "commands": [
+      {
+        "type": "Command",
+        "sequence": "1",
+        "command": {
+          "type": "Pause",
+          "paused": true
+        }
+      }
+    ],
+    "pass": true
+  },
+  {
+    "name": "chromium",
+    "fault": "dangling",
+    "before": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "after": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "injected": true,
+    "errors": [],
+    "commands": [
+      {
+        "type": "Command",
+        "sequence": "1",
+        "command": {
+          "type": "Pause",
+          "paused": true
+        }
+      }
+    ],
+    "pass": true
+  },
+  {
+    "name": "chromium",
+    "fault": "changedDimensions",
+    "before": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "after": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "injected": true,
+    "errors": [],
+    "commands": [
+      {
+        "type": "Command",
+        "sequence": "1",
+        "command": {
+          "type": "Pause",
+          "paused": true
+        }
+      }
+    ],
+    "pass": true
+  },
+  {
+    "name": "chromium",
+    "fault": "changedDense",
+    "before": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "after": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "injected": true,
+    "errors": [],
+    "commands": [
+      {
+        "type": "Command",
+        "sequence": "1",
+        "command": {
+          "type": "Pause",
+          "paused": true
+        }
+      }
+    ],
+    "pass": true
+  },
+  {
+    "name": "chromium",
+    "fault": "badPalette",
+    "before": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "after": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "injected": true,
+    "errors": [],
+    "commands": [
+      {
+        "type": "Command",
+        "sequence": "1",
+        "command": {
+          "type": "Pause",
+          "paused": true
+        }
+      }
+    ],
+    "pass": true
+  },
+  {
+    "name": "chromium",
+    "fault": "badStateMembership",
+    "before": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "after": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "injected": true,
+    "errors": [],
+    "commands": [
+      {
+        "type": "Command",
+        "sequence": "1",
+        "command": {
+          "type": "Pause",
+          "paused": true
+        }
+      }
+    ],
+    "pass": true
+  },
+  {
+    "name": "firefox",
+    "fault": "dangling",
+    "before": {
+      "tick": "1",
+      "date": "2000-01-01",
+      "hour": "1",
+      "worldTick": "1",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "after": {
+      "tick": "1",
+      "date": "2000-01-01",
+      "hour": "1",
+      "worldTick": "1",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "injected": true,
+    "errors": [],
+    "commands": [
+      {
+        "type": "Command",
+        "sequence": "1",
+        "command": {
+          "type": "Pause",
+          "paused": true
+        }
+      }
+    ],
+    "pass": true
+  },
+  {
+    "name": "firefox",
+    "fault": "changedDimensions",
+    "before": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "after": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "injected": true,
+    "errors": [],
+    "commands": [
+      {
+        "type": "Command",
+        "sequence": "1",
+        "command": {
+          "type": "Pause",
+          "paused": true
+        }
+      }
+    ],
+    "pass": true
+  },
+  {
+    "name": "firefox",
+    "fault": "changedDense",
+    "before": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "after": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "injected": true,
+    "errors": [],
+    "commands": [
+      {
+        "type": "Command",
+        "sequence": "1",
+        "command": {
+          "type": "Pause",
+          "paused": true
+        }
+      }
+    ],
+    "pass": true
+  },
+  {
+    "name": "firefox",
+    "fault": "badPalette",
+    "before": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "after": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "injected": true,
+    "errors": [],
+    "commands": [
+      {
+        "type": "Command",
+        "sequence": "1",
+        "command": {
+          "type": "Pause",
+          "paused": true
+        }
+      }
+    ],
+    "pass": true
+  },
+  {
+    "name": "firefox",
+    "fault": "badStateMembership",
+    "before": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "after": {
+      "tick": "0",
+      "date": "2000-01-01",
+      "hour": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "injected": true,
+    "errors": [],
+    "commands": [
+      {
+        "type": "Command",
+        "sequence": "1",
+        "command": {
+          "type": "Pause",
+          "paused": true
+        }
+      }
+    ],
+    "pass": true
+  },
+  {
+    "name": "webkit",
+    "fault": "dangling",
+    "before": {
+      "tick": "1",
+      "date": "2000-01-01",
+      "hour": "1",
+      "worldTick": "1",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "after": {
+      "tick": "1",
+      "date": "2000-01-01",
+      "hour": "1",
+      "worldTick": "1",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "injected": true,
+    "errors": [],
+    "commands": [
+      {
+        "type": "Command",
+        "sequence": "1",
+        "command": {
+          "type": "Pause",
+          "paused": true
+        }
+      }
+    ],
+    "pass": true
+  },
+  {
+    "name": "webkit",
+    "fault": "changedDimensions",
+    "before": {
+      "tick": "1",
+      "date": "2000-01-01",
+      "hour": "1",
+      "worldTick": "1",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "after": {
+      "tick": "1",
+      "date": "2000-01-01",
+      "hour": "1",
+      "worldTick": "1",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "injected": true,
+    "errors": [],
+    "commands": [
+      {
+        "type": "Command",
+        "sequence": "1",
+        "command": {
+          "type": "Pause",
+          "paused": true
+        }
+      }
+    ],
+    "pass": true
+  },
+  {
+    "name": "webkit",
+    "fault": "changedDense",
+    "before": {
+      "tick": "1",
+      "date": "2000-01-01",
+      "hour": "1",
+      "worldTick": "1",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "after": {
+      "tick": "1",
+      "date": "2000-01-01",
+      "hour": "1",
+      "worldTick": "1",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "injected": true,
+    "errors": [],
+    "commands": [
+      {
+        "type": "Command",
+        "sequence": "1",
+        "command": {
+          "type": "Pause",
+          "paused": true
+        }
+      }
+    ],
+    "pass": true
+  },
+  {
+    "name": "webkit",
+    "fault": "badPalette",
+    "before": {
+      "tick": "1",
+      "date": "2000-01-01",
+      "hour": "1",
+      "worldTick": "1",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "after": {
+      "tick": "1",
+      "date": "2000-01-01",
+      "hour": "1",
+      "worldTick": "1",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "injected": true,
+    "errors": [],
+    "commands": [
+      {
+        "type": "Command",
+        "sequence": "1",
+        "command": {
+          "type": "Pause",
+          "paused": true
+        }
+      }
+    ],
+    "pass": true
+  },
+  {
+    "name": "webkit",
+    "fault": "badStateMembership",
+    "before": {
+      "tick": "1",
+      "date": "2000-01-01",
+      "hour": "1",
+      "worldTick": "1",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "after": {
+      "tick": "1",
+      "date": "2000-01-01",
+      "hour": "1",
+      "worldTick": "1",
+      "selection": "30",
+      "camera": "{\"width\":14.968973378586016,\"height\":5.784263717720592,\"x\":4,\"y\":3,\"zoom\":1.1274968515793757}",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "commands": 1
+    },
+    "injected": true,
+    "errors": [],
+    "commands": [
+      {
+        "type": "Command",
+        "sequence": "1",
+        "command": {
+          "type": "Pause",
+          "paused": true
+        }
+      }
+    ],
+    "pass": true
+  }
+]

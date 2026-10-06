@@ -1,0 +1,21 @@
+{
+  "pid": 9344,
+  "command": [
+    "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify4\\target\\debug\\oh_server.exe",
+    "--port",
+    "19438",
+    "--pack-root",
+    "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify4\\data\\packs"
+  ],
+  "started": "2026-10-07T02:05:07.812994+09:00",
+  "exeSHA256": "33f0695898d6aab725c36060bf9ffa92492d6a1d6cf1080dc1e21b0d5cec1874",
+  "servedJS": "/assets/index-DtlFQFqO.js",
+  "servedJSSHA256": "8e4fef1d102dbb4035a82396e106dc003d16a7905fa3f878411fa88c17831bac",
+  "packHash": "b8d30ba577f303c3",
+  "probeStarted": "2026-10-07T02:05:07.838992+09:00",
+  "probeExit": 0,
+  "probeFinished": "2026-10-07T02:05:11.447926+09:00",
+  "serverAlive": true,
+  "serverExit": 1,
+  "serverEnded": "2026-10-07T02:05:11.449927+09:00"
+}

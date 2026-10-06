@@ -1,0 +1,161 @@
+{
+  "gpu": [
+    {
+      "project": "chromium",
+      "backend": "webgl2",
+      "adapter": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "shader": "glsl",
+      "frames": "207",
+      "pixels": {
+        "Control": [
+          180,
+          70,
+          40
+        ],
+        "Terrain": [
+          130,
+          165,
+          95
+        ],
+        "States": [
+          140,
+          95,
+          170
+        ],
+        "Ownership": [
+          40,
+          100,
+          180
+        ]
+      },
+      "borders": [
+        [
+          100,
+          116,
+          135
+        ],
+        [
+          230,
+          212,
+          167
+        ],
+        [
+          16,
+          24,
+          32
+        ]
+      ],
+      "widths": [
+        1,
+        3,
+        4
+      ],
+      "mismatches": 0
+    },
+    {
+      "project": "webkit",
+      "backend": "webgl2",
+      "adapter": "Apple GPU",
+      "shader": "glsl",
+      "frames": "85",
+      "pixels": {
+        "Control": [
+          180,
+          70,
+          40
+        ],
+        "Terrain": [
+          130,
+          165,
+          95
+        ],
+        "States": [
+          140,
+          95,
+          170
+        ],
+        "Ownership": [
+          40,
+          100,
+          180
+        ]
+      },
+      "borders": [
+        [
+          100,
+          116,
+          135
+        ],
+        [
+          230,
+          212,
+          167
+        ],
+        [
+          16,
+          24,
+          32
+        ]
+      ],
+      "widths": [
+        1,
+        3,
+        4
+      ],
+      "mismatches": 1007
+    },
+    {
+      "project": "firefox",
+      "backend": "webgl2",
+      "adapter": "llvmpipe, or similar",
+      "shader": "glsl",
+      "frames": "69",
+      "pixels": {
+        "Control": [
+          180,
+          70,
+          40
+        ],
+        "Terrain": [
+          130,
+          165,
+          95
+        ],
+        "States": [
+          140,
+          95,
+          170
+        ],
+        "Ownership": [
+          40,
+          100,
+          180
+        ]
+      },
+      "borders": [
+        [
+          100,
+          116,
+          135
+        ],
+        [
+          230,
+          212,
+          167
+        ],
+        [
+          16,
+          24,
+          32
+        ]
+      ],
+      "widths": [
+        1,
+        3,
+        4
+      ],
+      "mismatches": 1007
+    }
+  ],
+  "rawCorsCases": 12
+}

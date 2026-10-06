@@ -1,0 +1,29 @@
+[
+  {
+    "path": "client.log",
+    "source_sha256": "1adf7dc762e4e777118e4df78e73a8b960e8fa06e9eddb3bd3a1ddabffa5b4fb",
+    "bytes": 277684,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "4496313fd587db82130da682cc95a0c7b38b0944cc43f2549a059fc0d97f8e44"
+  },
+  {
+    "path": "identity.json",
+    "source_sha256": "ecafd6aac52de1d3b08ce7ccd23b6465136e8f7b41b3e5a7f1ba93ebef4d60dd",
+    "bytes": 501,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "a04de30600a45b213ebb2b16eae6ae13e9166370772cba5eb2d44d38226bb4ef"
+  },
+  {
+    "path": "jobs.json",
+    "source_sha256": "57d43eb5c1f59ff3d8d238fc5e84f2c6b961b8981aa4c2cd3fc72608b3ac6c3f",
+    "bytes": 34629,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "2b7d15ab72b0c0ab168b6460c28e55178d915c49365122c7000dbd6d4475e385"
+  },
+  {
+    "path": "original-artifact.zip",
+    "source_sha256": "749083087f571d0513312691760c1ed9959523fe782981d01807661df0b9d3e8",
+    "bytes": 1829411,
+    "raw_archive": "original-evidence-bytes.zip"
+  }
+]

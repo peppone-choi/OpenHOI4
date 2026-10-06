@@ -1,0 +1,6 @@
+[
+  {
+    "script": "gpu-compile-failure.cjs",
+    "exit": 1
+  }
+]

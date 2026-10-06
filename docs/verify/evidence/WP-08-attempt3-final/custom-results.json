@@ -1,0 +1,14 @@
+[
+  {
+    "script": "cors-valid-redirect.cjs",
+    "exit": 0
+  },
+  {
+    "script": "cors-valid-index-redirect.cjs",
+    "exit": 0
+  },
+  {
+    "script": "ui-independent.cjs",
+    "exit": 1
+  }
+]

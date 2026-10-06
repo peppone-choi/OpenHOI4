@@ -1,0 +1,57 @@
+[
+  {
+    "manifest": "docs/worklog/evidence/WP-08/SHA256SUMS.json",
+    "count": 208,
+    "exact": 151,
+    "crlf": 57,
+    "other": []
+  },
+  {
+    "manifest": "docs/worklog/evidence/WP-08/p06-linux/SHA256SUMS.json",
+    "count": 414,
+    "exact": 414,
+    "crlf": 0,
+    "other": []
+  },
+  {
+    "manifest": "docs/worklog/evidence/WP-08/p06-linux-final/SHA256SUMS.json",
+    "count": 252,
+    "exact": 252,
+    "crlf": 0,
+    "other": []
+  },
+  {
+    "manifest": "docs/worklog/evidence/WP-08/p06-redirect/SHA256SUMS.json",
+    "count": 550,
+    "exact": 510,
+    "crlf": 38,
+    "other": [
+      {
+        "path": "independent-index-repro-original.cjs",
+        "expected": "66c4145a48c21b57fb835e40a3a7273097836ca1a19c2c1a0f0a2002daf46393",
+        "worktree": "2cde0db50aad9b7daec194950732c069c8d8c871681e3f406e08fddc94a72fc6",
+        "gitblob": "2cde0db50aad9b7daec194950732c069c8d8c871681e3f406e08fddc94a72fc6",
+        "crlfPlusBom": "768a6b36012e12446b02300f17e3b6ef0650b48cf040ecbbea214023eb3406ee",
+        "bom": "89fbb827b62fb5039eccb9112f748899728fd00096ceaabf9719473a10cb06e7",
+        "priorHash": "66c4145a48c21b57fb835e40a3a7273097836ca1a19c2c1a0f0a2002daf46393",
+        "sameTextIgnoringTrailing": true,
+        "expectedMatches": [],
+        "originalMixedEol": "66c4145a48c21b57fb835e40a3a7273097836ca1a19c2c1a0f0a2002daf46393",
+        "explainedByOnlyFinalCRLF": true
+      },
+      {
+        "path": "independent-repro-original.cjs",
+        "expected": "72c2e83ec8f7f1df1c1c54dea30552dec05bbc946d9e6fa846774acfecd3c08d",
+        "worktree": "e00f6a6b2f47362c43e32b886f3b52c02c7dfb8b66c63053699bedd55d2e1040",
+        "gitblob": "e00f6a6b2f47362c43e32b886f3b52c02c7dfb8b66c63053699bedd55d2e1040",
+        "crlfPlusBom": "04bd904cf65a378fa50e0c2468defd3a88701c43d508a4de72beaf85ba348c69",
+        "bom": "39c3806e5f4ddd0ce194f8f38776fb39607d8f6b409f6219a5f0d66a35c1b642",
+        "priorHash": "72c2e83ec8f7f1df1c1c54dea30552dec05bbc946d9e6fa846774acfecd3c08d",
+        "sameTextIgnoringTrailing": true,
+        "expectedMatches": [],
+        "originalMixedEol": "72c2e83ec8f7f1df1c1c54dea30552dec05bbc946d9e6fa846774acfecd3c08d",
+        "explainedByOnlyFinalCRLF": true
+      }
+    ]
+  }
+]

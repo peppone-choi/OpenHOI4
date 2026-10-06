@@ -194,16 +194,16 @@
       "worktree": "E:/openhoi/.orchestrator/wt/WP-08",
       "branch": "codex/wp08-map-rendering",
       "baseCommit": "b1da8f46fa7d2e849121424d5d2cf1ac36bfacd3",
-      "status": "integrated-awaiting-main-CI",
+      "status": "active-P06-WebKit-resize-and-WebGPU-pipeline-rejection",
       "appExit": "해당 없음(앱 실행)",
-      "verificationCommit": "87c1a99a30de25732376d628958c68d37ce64cda",
-      "cursor": "a62a6b0a-9800-4c41-882e-b7bcb95ecd27:37",
+      "verificationCommit": "62a89ae0c332483d0198ab3b3fc0fc3db1231c68",
+      "cursor": "a62a6b0a-9800-4c41-882e-b7bcb95ecd27:63",
       "preview": {
-        "url": "http://127.0.0.1:19425/",
-        "pid": 32876,
-        "sourceCommit": "87c1a99a30de25732376d628958c68d37ce64cda",
-        "evidence": "docs/verify/evidence/WP-08-preview-p06/",
-        "legacyPreview": "19418 f58 retained; automatic termination review blocked"
+        "url": "http://127.0.0.1:19431/",
+        "pid": 8836,
+        "sourceCommit": "2c2aacc88bd22b0f3ba4393b22bef4b119616e69",
+        "evidence": "docs/verify/evidence/WP-08-preview-2c/",
+        "legacyPreview": "19418 f58 and 19425 87 retained; automatic termination review blocked"
       },
       "mergeCommit": "9dcf19947006dd62fcfde48d7f9204a71d4b8e38"
     },
@@ -254,10 +254,44 @@
       "cursor": "2f323306-5aee-4793-8a19-b18d033003a0:26",
       "promptDelivery": "첫 준비파일 오류 출력 즉시 전문 정정; 초기 main 문서/Git 읽기만, 추적 변경·세션/프로세스조작 없음. 실제 검증은 지정2458tracked detached worktree",
       "finalReport": "docs/verify/WP-08.md"
+    },
+    {
+      "run": "M1-r1",
+      "WP": "WP-08",
+      "role": "verify",
+      "attempt": 3,
+      "threadId": "01a11209-2c3e-7b41-9ee2-8adbbfc2fbd4",
+      "hostId": "local",
+      "worktree": "E:/openhoi/.orchestrator/wt/WP-08-verify3",
+      "branch": "detached",
+      "verificationCommit": "2c2aacc88bd22b0f3ba4393b22bef4b119616e69",
+      "status": "FAIL-invariance-confirmed",
+      "beforeSnapshot": "E:/openhoi/.orchestrator/evidence/WP-08.verify3.before.json",
+      "appExit": "해당 없음(앱 실행)",
+      "cursor": "9ee6b16d-f678-4854-80bd-a57fe6a64b75:16",
+      "finalReport": "docs/verify/WP-08.attempt3.md"
+    },
+    {
+      "run": "M1-r1",
+      "WP": "WP-08",
+      "role": "verify",
+      "attempt": 4,
+      "threadId": "01a11216-61a5-7352-bd08-362acae836da",
+      "hostId": "local",
+      "worktree": "E:/openhoi/.orchestrator/wt/WP-08-verify4",
+      "branch": "detached",
+      "verificationCommit": "62a89ae0c332483d0198ab3b3fc0fc3db1231c68",
+      "status": "FAIL-invariance-confirmed",
+      "beforeSnapshot": "E:/openhoi/.orchestrator/evidence/WP-08.verify4.before.json",
+      "appExit": "해당 없음(앱 실행)",
+      "scope": "CI argv-only delta; independently prove 2c product/test byte identity and directly test selection/actual native case/Linux106, preserve prior full product verification",
+      "finalReport": "docs/verify/WP-08.attempt4.md",
+      "cursor": "ad6cbd6d-ba22-45d2-9725-5e45c940ceb4:7",
+      "runtimeIndependence": "initial native before collision; final resize independent PID9344 port19438; 19437 epoch excluded"
     }
   ],
   "groupsIntegratedThisRun": [
     "M1-W1"
   ],
-  "phase": "M1-W2-main-integration-CI"
+  "phase": "M1-W2-P06-presentation-and-pipeline-failure"
 }

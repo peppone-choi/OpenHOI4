@@ -1,0 +1,15 @@
+[
+  {
+    "path": "identity.json",
+    "source_sha256": "09530a85f3e7167dab7fa9bc502f07bbb9a4c900f7907a735c65ce30934294a1",
+    "bytes": 3666,
+    "raw_archive": "original-evidence-bytes.zip",
+    "review_copy_sha256": "09530a85f3e7167dab7fa9bc502f07bbb9a4c900f7907a735c65ce30934294a1"
+  },
+  {
+    "path": "raw-log-originals.zip",
+    "source_sha256": "c8aae6f3b2a5b8142982209498f1ea575f3e0f9dbd15bff46385166f9514a8f1",
+    "bytes": 64307,
+    "raw_archive": "original-evidence-bytes.zip"
+  }
+]

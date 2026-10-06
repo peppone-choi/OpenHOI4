@@ -1,0 +1,14 @@
+{
+  "head": "62a89ae0c332483d0198ab3b3fc0fc3db1231c68",
+  "run": 37497228851,
+  "conclusion": "success",
+  "job": 112384776863,
+  "job_conclusion": "success",
+  "url": "https://github.com/peppone-choi/OpenHOI4/actions/runs/37497228851",
+  "artifact": {
+    "id": 11428990579,
+    "digest": "sha256:af85ffa4cd2c8e18c94ba008713f8bb4af28b3c46278246708be68332bcd5d9e",
+    "verified_zip_sha256": "af85ffa4cd2c8e18c94ba008713f8bb4af28b3c46278246708be68332bcd5d9e",
+    "bytes": 2409733
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "testid": "province-map",
+  "backend": "webgl2",
+  "textureLimit": "16384",
+  "adapter": "Apple GPU",
+  "device": "WebGL 2.0",
+  "camera": "{\"width\":279.3478260869565,\"height\":107.9447103146319,\"x\":128.5,\"y\":3,\"zoom\":1}",
+  "shaderLanguage": "glsl",
+  "shaderLength": "16195",
+  "frames": "80",
+  "selected": "65535",
+  "mode": "map-mode-owner",
+  "updatedBytes": "0",
+  "updateMs": "3",
+  "frameMs": "23.0625",
+  "hover": "65535"
+}

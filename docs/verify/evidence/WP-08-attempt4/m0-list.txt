@@ -1,0 +1,42 @@
+
+> openhoi-client@0.1.0 test:e2e
+> playwright test --list
+
+Listing tests:
+  [chromium] › localization.spec.ts:9:1 › REQ-LOC-01 REQ-LOC-02 actual Rust executable ko/en switch and local CJK font
+  [chromium] › localization.spec.ts:58:1 › REQ-LOC-01 actual server Notice and CommandResult failure translate on language switch
+  [chromium] › localization.spec.ts:75:1 › REQ-LOC-01 actual server Notice renders through Fluent
+  [chromium] › localization.spec.ts:89:1 › AC-M1-03 ledger display fixture opens with keyboard and preserves supplied values
+  [chromium] › malformed.spec.ts:7:1 › P-06 malformed MessagePack Snapshot preserves shell and closes connection
+  [chromium] › network.spec.ts:6:1 › REQ-GEN-01 REQ-TIME-01 REQ-NET-01 authoritative pause, five speeds and date
+  [chromium] › network.spec.ts:31:1 › REQ-NET-02 executable serves built assets and ko/en localization
+  [chromium] › network.spec.ts:44:1 › REQ-NET-01 version mismatch, acceptance, rejection and unsupported scope
+  [chromium] › network.spec.ts:73:1 › REQ-NET-01 Create, supported query, Delta and explicit refusal
+  [chromium] › network.spec.ts:101:1 › REQ-NET-02 ko localization
+  [chromium] › network.spec.ts:112:1 › REQ-GEN-05 REQ-NET-05 server disconnect freezes displayed time and input
+  [chromium] › shell.spec.ts:3:1 › REQ-PLAT-01 built client loads without browser errors
+  [firefox] › localization.spec.ts:9:1 › REQ-LOC-01 REQ-LOC-02 actual Rust executable ko/en switch and local CJK font
+  [firefox] › localization.spec.ts:58:1 › REQ-LOC-01 actual server Notice and CommandResult failure translate on language switch
+  [firefox] › localization.spec.ts:75:1 › REQ-LOC-01 actual server Notice renders through Fluent
+  [firefox] › localization.spec.ts:89:1 › AC-M1-03 ledger display fixture opens with keyboard and preserves supplied values
+  [firefox] › malformed.spec.ts:7:1 › P-06 malformed MessagePack Snapshot preserves shell and closes connection
+  [firefox] › network.spec.ts:6:1 › REQ-GEN-01 REQ-TIME-01 REQ-NET-01 authoritative pause, five speeds and date
+  [firefox] › network.spec.ts:31:1 › REQ-NET-02 executable serves built assets and ko/en localization
+  [firefox] › network.spec.ts:44:1 › REQ-NET-01 version mismatch, acceptance, rejection and unsupported scope
+  [firefox] › network.spec.ts:73:1 › REQ-NET-01 Create, supported query, Delta and explicit refusal
+  [firefox] › network.spec.ts:101:1 › REQ-NET-02 ko localization
+  [firefox] › network.spec.ts:112:1 › REQ-GEN-05 REQ-NET-05 server disconnect freezes displayed time and input
+  [firefox] › shell.spec.ts:3:1 › REQ-PLAT-01 built client loads without browser errors
+  [webkit] › localization.spec.ts:9:1 › REQ-LOC-01 REQ-LOC-02 actual Rust executable ko/en switch and local CJK font
+  [webkit] › localization.spec.ts:58:1 › REQ-LOC-01 actual server Notice and CommandResult failure translate on language switch
+  [webkit] › localization.spec.ts:75:1 › REQ-LOC-01 actual server Notice renders through Fluent
+  [webkit] › localization.spec.ts:89:1 › AC-M1-03 ledger display fixture opens with keyboard and preserves supplied values
+  [webkit] › malformed.spec.ts:7:1 › P-06 malformed MessagePack Snapshot preserves shell and closes connection
+  [webkit] › network.spec.ts:6:1 › REQ-GEN-01 REQ-TIME-01 REQ-NET-01 authoritative pause, five speeds and date
+  [webkit] › network.spec.ts:31:1 › REQ-NET-02 executable serves built assets and ko/en localization
+  [webkit] › network.spec.ts:44:1 › REQ-NET-01 version mismatch, acceptance, rejection and unsupported scope
+  [webkit] › network.spec.ts:73:1 › REQ-NET-01 Create, supported query, Delta and explicit refusal
+  [webkit] › network.spec.ts:101:1 › REQ-NET-02 ko localization
+  [webkit] › network.spec.ts:112:1 › REQ-GEN-05 REQ-NET-05 server disconnect freezes displayed time and input
+  [webkit] › shell.spec.ts:3:1 › REQ-PLAT-01 built client loads without browser errors
+Total: 36 tests in 4 files

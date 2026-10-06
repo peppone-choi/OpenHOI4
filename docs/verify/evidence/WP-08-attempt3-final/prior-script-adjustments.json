@@ -1,0 +1,12 @@
+[
+  {
+    "file": "cors-valid-redirect.cjs",
+    "originalSha": "72c2e83ec8f7f1df1c1c54dea30552dec05bbc946d9e6fa846774acfecd3c08d",
+    "adjustments": "19412 -> owned19428; commit attribution updated, original retained; require path resolves this worktree; expected/CORS/bytes/header/request oracle unchanged"
+  },
+  {
+    "file": "cors-valid-index-redirect.cjs",
+    "originalSha": "66c4145a48c21b57fb835e40a3a7273097836ca1a19c2c1a0f0a2002daf46393",
+    "adjustments": "19412 -> owned19428; commit attribution updated, original retained; require path resolves this worktree; expected/CORS/bytes/header/request oracle unchanged"
+  }
+]

@@ -1,0 +1,66 @@
+{
+  "resource": "index",
+  "reload": false,
+  "controlEvidence": {
+    "status": 200,
+    "url": "http://127.0.0.1:4510/payload",
+    "redirected": true,
+    "cors": "cors",
+    "packHash": "b8d30ba577f303c3",
+    "controlRedirects": [
+      {
+        "status": 302,
+        "location": "http://127.0.0.1:4510/payload"
+      }
+    ],
+    "redirectProbe": {
+      "status": 302,
+      "location": "http://127.0.0.1:4510/payload"
+    },
+    "bodyLength": 96,
+    "bodySha256": "2673c2d45c8b460abbdd7cb6c2f18777029210b25370ec8e07fb3ee7fcaa418c"
+  },
+  "sourceOrigin": "http://127.0.0.1:4511",
+  "foreignURL": "http://127.0.0.1:4510/payload",
+  "foreignHits": [
+    {
+      "method": "GET",
+      "url": "/payload",
+      "origin": "http://127.0.0.1:4511"
+    }
+  ],
+  "requests": [
+    "http://127.0.0.1:4511/?forceWebGL=1",
+    "http://127.0.0.1:4511/assets/index-COkwvm1N.js",
+    "http://127.0.0.1:4511/assets/index-B9cOsW2B.css",
+    "http://127.0.0.1:4511/fonts/NotoSansKR.ttf",
+    "http://127.0.0.1:4511/pack/localisation/en/map.ftl",
+    "http://127.0.0.1:4511/pack/localisation/en/national.ftl",
+    "http://127.0.0.1:4511/pack/localisation/ko/map.ftl",
+    "http://127.0.0.1:4511/pack/localisation/ko/national.ftl",
+    "http://127.0.0.1:4511/maps/testland/metadata",
+    "http://127.0.0.1:4511/maps/testland/index.bin?pack=b8d30ba577f303c3",
+    "http://127.0.0.1:4510/payload"
+  ],
+  "rejectedRequestStartIndex": 0,
+  "actualSourceRedirects": [
+    {
+      "url": "/maps/testland/index.bin?pack=b8d30ba577f303c3",
+      "status": 302,
+      "location": "http://127.0.0.1:4510/payload"
+    }
+  ],
+  "failures": [],
+  "responseEvents": [
+    {
+      "url": "http://127.0.0.1:4511/maps/testland/index.bin?pack=b8d30ba577f303c3",
+      "status": 302,
+      "location": "http://127.0.0.1:4510/payload"
+    }
+  ],
+  "errors": [],
+  "cameraBefore": null,
+  "rendererOutcome": "initial load creates no renderer; identity reload disposes previous renderer, keeps authority UI/selection only",
+  "alerts": [],
+  "canvasCount": 1
+}

@@ -1,0 +1,49 @@
+{
+  "sourceCommit": "2134b131575ac30db48691e839f627405da66b52",
+  "platform": "linux",
+  "release": "6.17.0-1022-azure",
+  "node": "v24.4.0",
+  "name": "firefox",
+  "kind": "pure capability probe; no Rust/game assertions",
+  "launchOptions": {
+    "headless": true
+  },
+  "customPreferences": null,
+  "customGPUFlags": [],
+  "sandboxOverrides": [],
+  "console": [
+    {
+      "type": "warning",
+      "text": "[JavaScript Warning: \"Failed to create WebGL context: WebGL creation failed: \n* WebglAllowWindowsNativeGl:false restricts context creation on this system. ()\n* Exhausted GL driver options. (FEATURE_FAILURE_WEBGL_EXHAUSTED_DRIVERS)\" {file: \"debugger eval code line 311 > eval\" line: 7}]"
+    },
+    {
+      "type": "warning",
+      "text": "[JavaScript Warning: \"Failed to create WebGL context: WebGL creation failed: \n* AllowWebgl2:false restricts context creation on this system. ()\" {file: \"debugger eval code line 311 > eval\" line: 7}]"
+    }
+  ],
+  "pageErrors": [],
+  "browserVersion": "155.0",
+  "capabilities": {
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:155.0) Gecko/20100101 Firefox/155.0",
+    "secureContext": true,
+    "webgl": [
+      {
+        "type": "webgl",
+        "creationErrors": [
+          "WebGL creation failed: \n* WebglAllowWindowsNativeGl:false restricts context creation on this system. ()\n* Exhausted GL driver options. (FEATURE_FAILURE_WEBGL_EXHAUSTED_DRIVERS)"
+        ],
+        "available": false
+      },
+      {
+        "type": "webgl2",
+        "creationErrors": [
+          "WebGL creation failed: \n* AllowWebgl2:false restricts context creation on this system. ()"
+        ],
+        "available": false
+      }
+    ],
+    "webgpu": {
+      "present": false
+    }
+  }
+}

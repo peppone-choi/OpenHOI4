@@ -1,0 +1,6 @@
+[
+  {
+    "script": "initialization-red.cjs",
+    "exit": 1
+  }
+]
