@@ -1,0 +1,40 @@
+command: C:/Users/user/.cargo/bin\cargo.EXE test -p oh_core --locked
+cwd: E:\openhoi\.orchestrator\wt\WP-02
+exit: 0
+
+   Compiling oh_core v0.1.0 (E:\openhoi\.orchestrator\wt\WP-02\crates\oh_core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.70s
+     Running unittests src\lib.rs (target\debug\deps\oh_core-00d62ef75812a21f.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests\core.rs (target\debug\deps\core-22e61e6afc8c6dd4.exe)
+
+running 16 tests
+test req_gen_04_fnv1a_reference_vectors_and_incremental_hash ... ok
+test req_gen_04_fixed_exact_arithmetic_and_rounding ... ok
+test req_gen_04_fixed_and_id_wire_encoding ... ok
+test req_gen_04_serialization_errors_are_propagated ... ok
+test req_plat_02_chacha8_zero_seed_reference_vector ... ok
+test req_plat_02_portable_postcard_hash_vector ... ok
+test req_gen_04_rng_tuple_fields_and_entity_domains_are_distinct ... ok
+test req_plat_02_full_diagnostic_matches_independent_reference ... ok
+test req_gen_04_canonical_map_order_and_strict_decode ... ok
+test req_gen_04_rng_order_and_unrelated_draws_do_not_affect_entity_streams ... ok
+test req_gen_04_fixed_checked_arithmetic_matches_integer_reference ... ok
+test req_gen_04_typed_ids_round_trip ... ok
+test req_gen_04_rng_reconstruction ... ok
+test req_gen_04_fixed_serialization_preserves_all_bits ... ok
+test req_gen_04_map_permutations_are_canonical ... ok
+test req_gen_04_fnv_chunking_is_independent ... ok
+
+test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s
+
+   Doc-tests oh_core
+
+running 1 test
+test crates\oh_core\src\ids.rs - ids (line 7) - compile fail ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s

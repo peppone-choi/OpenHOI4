@@ -1,0 +1,5 @@
+command: C:/Users/user/.cargo/bin\cargo.EXE run --locked --quiet --release -p oh_core --example determinism
+cwd: E:\openhoi\.orchestrator\wt\WP-02
+exit: 0
+
+0dd81b8754bcc3f9

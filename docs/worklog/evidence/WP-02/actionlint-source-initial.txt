@@ -1,0 +1,9 @@
+command: C:\Users\user\AppData\Local\Programs\Python\Python311\python.EXE .orchestrator/evidence/WP-02/actionlint_download.py
+cwd: E:\openhoi\.orchestrator\wt\WP-02
+exit: 1
+
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-02\.orchestrator\evidence\WP-02\actionlint_download.py", line 9, in <module>
+    asset=next(asset for asset in release['assets'] if asset['name'].endswith('_windows_amd64.tar.gz'))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+StopIteration
