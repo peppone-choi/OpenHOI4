@@ -2,13 +2,13 @@
 
 | 항목 | 값 |
 |---|---|
-| 작성 시각 | 2026-10-07 04:48 KST, M1-r1 두 묶음 통합 후 종료 |
+| 작성 시각 | 2026-10-07 05:10 KST, M1-r1 두 묶음 통합 후 최신 CI 실패·읽기 진단을 인계 |
 | 현재 마일스톤 | M0 PASS 보존. M1 진행 중. 전체 목표 M6 |
-| 기본 브랜치 CI | main 79b0aa3267e8bf6fbb7ce1a26909fe80615375bd의 [일반CI](https://github.com/peppone-choi/OpenHOI4/actions/runs/37520570148), [Core](https://github.com/peppone-choi/OpenHOI4/actions/runs/37520570200), [Simulation](https://github.com/peppone-choi/OpenHOI4/actions/runs/37520570090) 동일 source HEAD 모두 success·실제 M1 세 OS ZIP/API digest와 60448355cecffa9d 일치. 최종 HANDOFF HEAD CI는 앱 RUN_RESULT/Actions exactHEAD에서 별도 확인 |
+| 기본 브랜치 CI | 최신 main941765e의 [일반CI](https://github.com/peppone-choi/OpenHOI4/actions/runs/37522389014) client FAIL·다른6jobs success. [Core](https://github.com/peppone-choi/OpenHOI4/actions/runs/37522389167)·[Simulation](https://github.com/peppone-choi/OpenHOI4/actions/runs/37522389067) success. 최신 전체CI 녹색 아님. 이전 main79b0aa3의 세CI·actualM1세OS ZIP/hash60448355cecffa9d와5602c6c의 세CI success는 보존. 이번 종료 문서 HEAD CI는 실제 관측 상태를 RUN_RESULT에 기록하며 성공 대기를 종료 조건으로 추가하지 않음 |
 
 ## 실제 상태와 이전 인수인계의 차이 (재개 시 기록)
 
-최초 read-only M1 준비 뒤 CEO가 전달한 사용자 본실행 승인으로 M1-r1을 진행했다. RUN 종료 조건은 M1 게이트·두 묶음 통합·결정으로 가능한 WP 없음 중 먼저 오는 것이다. W1(WP07/10/12)과 W2(WP09→08) 두 묶음이 새 독립 PASS·통합·같은 HEAD main CI를 충족했다. 이 RUN은 여기서 종료한다. WP11과 M1 게이트는 다음 RUN이다. 유지보수 WP01 AI 정책은 별도 묶음으로 세지 않았다.
+최초 read-only M1 준비 뒤 CEO가 전달한 사용자 본실행 승인으로 M1-r1을 진행했다. RUN 종료 조건은 M1 게이트·두 묶음 통합·결정으로 가능한 WP 없음 중 먼저 오는 것이다. W1(WP07/10/12)과 W2(WP09→08)는 source main79b0aa3에서 새 독립 PASS·통합·같은 HEAD main CI를 충족했다. 이후 문서 HEAD941765e에서 DPR 두 사례30초 timeout이 발생해 최신 CI 녹색이 아니다. CEO의 05:05 C-02/P08 지시에 따라 두 묶음 통합으로 이 RUN을 진행중 상태로 종료하고, 최신 실패·읽기 진단을 다음 RUN에 인계한다. 무기한 새 수정/검증 루프를 이 RUN에 추가하지 않는다. WP11과 M1 게이트는 미착수이며 최신 CI 실패 정리 뒤 다음 RUN에서 진행한다. 유지보수 WP01 AI 정책은 별도 묶음으로 세지 않았다.
 
 M0 gate d6ae2c8의 AC7 PASS·sameHEAD CI15jobs·7artifact ZIP SHA와 제품 골든은 유지했다. M0의 시간 hash를 실제 M1 국가/주·원장입력·큐 hash로 대체하지 않는다. 저장 재개는 아직 미구현이다.
 
@@ -22,13 +22,19 @@ M0 gate d6ae2c8의 AC7 PASS·sameHEAD CI15jobs·7artifact ZIP SHA와 제품 골�
 | WP07/10 | 독립 PASS·통합 | codex/wp07-map-data / codex/wp10-ledger | data/원장 기반에서 WP09/08 실제 연결됨 |
 | WP12 | 최초 malformed Snapshot FAIL 뒤 수정8831613 새 PASS·통합 | codex/wp12-localization | 첫 FAIL·새 PASS 보존 |
 | WP09 | 독립 PASS·통합 | codex/wp09-national-state, WP-09 | 실제 국가/주/원장/ordered queue/Fx/expiry/hash와3OS 확인 |
-| WP08 | 9fbc05a1e29062f93bb362450aaddc2068aa41e9 새 전체 독립 PASS·통합 ebc1c5b56c883250c60b75540649a693bddca86f | codex/wp08-map-rendering, WP-08 | GPU·HTTP·선택·실패 경계 증거 보존; 세계지도는 후속 |
+| WP08 | 9fbc 새 전체 독립 PASS·통합ebc1c5b·source main79b/5602 CI success, 최신941 DPR CI timeout | codex/wp08-map-rendering, WP-08; 기존 구현 채팅 읽기 진단 중 | M1-r2에서 원본·단계시간 대조→필요한P06→새독립검증/최신main CI |
 | WP11 | 미착수 | 없음 | 다음 RUN, 실제 M1 save-resume |
 | M1 게이트 | 미판정 | 없음 | WP11 전체통합 뒤 새 독립 게이트 |
 
 ## 세션과 실패 이력
 
-사용자 승인 앱 별도 local 채팅·WP별 명시 Git worktree로 실행했다. 모든 명령은 담당 경로, 검증은 exact commit detached 새 경로다. 부모가 HEAD/index/추적 목록/각SHA/diff/status를 전후 비교했다. 현재 구현/검증/UI 탐색 19채팅의 마지막 턴은 모두 completed, 앱 상태는 idle 또는 notLoaded이며 실행 중인 자식 채팅은 없다. CLI exit는 해당 없음으로 유지한다. [registry](docs/plans/evidence/M1-r1/app-threads.json)에는 chat/worktree/commit/판정·원문경로를 기록했다. 모델·인증·승인·sandbox·네트워크 설정 변경·전역 하네스 활성화·공개 배포·태그·비용 실행은 없다. 미병합 브랜치/worktree를 삭제하지 않았다.
+사용자 승인 앱 별도 local 채팅·WP별 명시 Git worktree로 실행했다. 모든 명령은 담당 경로, 검증은 exact commit detached 새 경로다. 부모가 HEAD/index/추적 목록/각SHA/diff/status를 전후 비교했다. 04:41 snapshot의 19채팅 completed는 이전 관측이다. 최신941 CI 실패 뒤 기존 WP08 구현 채팅01a11186-8f53-75c2-b9fb-873b27d8af82/local만 읽기 진단으로 재개했고 다른18은 종료됐다. 최근 관측cursor a62a6b0a-9800-4c41-882e-b7bcb95ecd27:118, source9fbc/clean, 지정 E:/openhoi/.orchestrator/wt/WP-08이다. 본인 ignored target/wp08-dpr-ci2/prior-main941에 원본을 보존하고 단계별 protocol/PNG 비용 계측을 준비한다. 추적 제품/fixture 수정·새커밋·새독립검증은 다음 RUN의 명시 재개 전 하지 않도록 전달했다. 진단 채팅을 종료/삭제하거나 중복 생성하지 않는다. CLI exit는 해당 없음으로 유지한다. [registry](docs/plans/evidence/M1-r1/app-threads.json)와 최신 인계 snapshot에는 실제 상태를 기록했다. 모델·인증·승인·sandbox·네트워크 설정 변경·전역 하네스 활성화·공개 배포·태그·비용 실행은 없다. 미병합 브랜치/worktree를 삭제하지 않았다.
+
+## 최신941 CI 실패와 다음 진단
+
+일반37522389014/client112470811853은 M036 PASS·M1 Chromium/WebKit80/82 PASS, native/headed Firefox 후속은 skipped다. DPR preferred는 완결4steps의 buffer/PNG/rawGL/RGB77,111,155·camera/authority가 정상이고 다섯 번째PNG도 생성됐지만 line56의 추가 관측에서 전체30초 deadline이 끝났다. forcedGL은6steps 전부 정상이며 finally canvas0/resources(media/listener/observer/RAF)0/errors[]인데 line59 cleanup poll에서30초가 끝났다. 수치 불일치 assertion은 보고되지 않았으며 계측비용 누적 가능성을 진단 중이다. 원본에 단계별 시간이 없어 CPU/driver 내부 원인·제품결함/순수fixture를 확정하지 않는다.
+
+[원본 CI 증거](docs/verify/evidence/WP-08-main941-CI-FAIL/)의 artifact11440549215는2,781,949byte·169members, API digest와 ZIP SHA2a3cd2e7231b769c3dda8ae4bf79b3133000d25301429a7533ea0b9912b98a0a가 일치한다. 부모 source6파일 wrapper ZIP/각SHA 불일치0. 기존 P05와 source79b/5602 success는 소급 변경하지 않고, 최신941 FAIL을 녹색으로 쓰지 않는다. 후보 개선은 같은 시점의 DOM/buffer/authority/resource 관측을 묶어 protocol 왕복을 줄이는 시험 구현이며 아직 적용하지 않았다. 6번 연속DPR·각PNG/rawGL/buffer/oldcontext/camera/authority·최종cleanup·30초/5초poll/retry0/skip0 강도를 보존한다.
 
 WP08 [첫 f58 FAIL](docs/verify/WP-08.attempt1.md)은 valid-CORS metadata/index 다른 origin redirect 허용, [87 PASS](docs/verify/WP-08.attempt2.md)는 수정된 HTTP 경계의 당시 Windows 범위다. 이어 main791 Linux Firefox18FAIL/81PASS·gl=null 정리예외를 별도 보존했다. branch2134 순수 native capability probe는 Firefox headless지원없음·같은buildXvfbheaded RGBA를 확인했으나 앱PASS가 아니다. 임시 probe workflow/script는 최종 tree에서 제거됐다.
 
@@ -76,6 +82,7 @@ M1 결정 대기 없음. OPEN01~12 개별 답과 포함 범위는 확정 반영�
 
 | 문제 | 범위 |
 |---|---|
+| 최신941 DPR CI 두 사례 timeout | 원본6완결/4완결 관측과30초 deadline 구분, 기존worker 읽기 진단 인계. 최신main 녹색 아님 |
 | 실제 저장/재개·validate/AIbench/repro 일부 명령 | 후속 WP이며 실행했다고 쓰지 않음 |
 | Windows WebKit 폰트 두께 | glyph/loaded/axis 회귀 통과, 실제Safari 미검증 |
 | 일부 M0 ASSETS/deny 설명·workspace 라이선스 metadata | D10 미정 시절 문구 후속정리, 현재 정책은01/02/README 확정 |
@@ -85,6 +92,6 @@ M1 결정 대기 없음. OPEN01~12 개별 답과 포함 범위는 확정 반영�
 
 ## 다음 세션이 처음 할 일 (3개 이내)
 
-1. 최종 registry/main HEAD·세CI·원본 M1 digest/hash·HANDOFF와 docs/plans/WP-11-resume-review.md를 확인한다. Simulation에는 지속 RNG cursor가 없고 seed/date/tick+DR03 stream key만 있으므로 존재하지 않는 cursor를 저장했다고 주장하지 않는다.
-2. 다음 RUN에서 WP11의 State/TimeConfig/ordered queue/WorldInputs/base/expired modifiers/Defs identity·pack/schema/version·유효 import·원자적 교체·잘못된 format 명시거부·native process 저장재개를 실제 field별 기획 후 구현/새독립검증/같은HEAD3OSCI로 진행한다. docs/plans/schema-planning.md·schema-source-review.md의 공개 위키 본문 접근제한을 따르며 원작문장/수치를 복사하지 않는다.
+1. 최종 registry/main HEAD·최신CI·941 실패 원본과 기존 WP08 읽기 진단 채팅의 실제 상태를 확인한다. 같은 채팅을 이어받아 단계 시간·fixture 비용/제품 경계를 대조하고 필요한 P06·새독립검증·최신main CI를 먼저 정리한다. 종료 문서 CI 미완료/실패는 CEO §4 결과와 대조하며 성공으로 가정하지 않는다.
+2. 이후 WP11은 docs/plans/WP-11-resume-review.md와 schema-planning/schema-source-review를 읽고 State/TimeConfig/ordered queue/WorldInputs/base/expired modifiers/Defs identity·pack/schema/version·유효 import·원자적 교체·잘못된 format 거부·native process 재개를 field별 기획 후 구현/새독립검증/같은HEAD3OSCI로 진행한다. 현재 지속 RNG cursor가 없으며 seed/date/tick+DR03 stream key뿐이므로 존재하지 않는 cursor를 저장했다고 주장하지 않는다. 위키 본문 접근제한·클린룸을 유지한다.
 3. WP11 통합 후 M1 필수14REQ/AC7를 새 독립 게이트로 판정한다. M1 PASS 전까지 M1 완료라고 기록하지 않는다.

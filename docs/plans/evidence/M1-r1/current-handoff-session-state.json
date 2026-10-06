@@ -1,0 +1,156 @@
+[
+  {
+    "threadId": "01a11102-9a30-77d3-a719-fb7f8a54e198",
+    "hostId": "local",
+    "status": "notLoaded",
+    "cursor": "6bb48d09-9737-4f1d-937c-541fce312e0f:2",
+    "turnStatus": "completed",
+    "turnId": "01a11120-cc91-7632-bdde-839a0daf8328"
+  },
+  {
+    "threadId": "01a11102-9f63-7780-ada9-f084404d31b8",
+    "hostId": "local",
+    "status": "idle",
+    "cursor": "dd5abf38-f9f8-44cd-a420-302aa4248298:1",
+    "turnStatus": "completed",
+    "turnId": "01a11102-a38c-76d0-8ac7-309c5bbdcfa7"
+  },
+  {
+    "threadId": "01a11102-a73c-7392-9806-41fe8a323b53",
+    "hostId": "local",
+    "status": "notLoaded",
+    "cursor": "14c4c3c1-03f5-4c9a-98be-55f6242181a4:3",
+    "turnStatus": "completed",
+    "turnId": "01a11130-dd14-75b1-bf14-7eed4d153d40"
+  },
+  {
+    "threadId": "01a11108-0f6e-7261-9d64-3fc5722fcafb",
+    "hostId": "local",
+    "status": "notLoaded",
+    "cursor": "4613d32e-fe4b-4502-ad74-bf0f87383b50:1",
+    "turnStatus": "completed",
+    "turnId": "01a1111a-a923-7551-8f4a-edea0cdfca97"
+  },
+  {
+    "threadId": "01a1110e-1532-7de0-9e92-6b768e9fd6aa",
+    "hostId": "local",
+    "status": "notLoaded",
+    "cursor": "954f9dc9-6458-43ed-8042-e8835ce8ae10:4",
+    "turnStatus": "completed",
+    "turnId": "01a11120-e145-7b80-a418-063e0b83defa"
+  },
+  {
+    "threadId": "01a11123-66ea-7f83-8df4-07378abd0fa2",
+    "hostId": "local",
+    "status": "notLoaded",
+    "cursor": "f67411b2-2c3a-4182-8dba-2332feadca1b:3",
+    "turnStatus": "completed",
+    "turnId": "01a11123-68a7-7453-9fb1-c97cd2717d22"
+  },
+  {
+    "threadId": "01a11126-c604-7a70-8dba-4c59bb4d8431",
+    "hostId": "local",
+    "status": "notLoaded",
+    "cursor": "74515009-1473-4ab7-960d-74b82c0a20c9:2",
+    "turnStatus": "completed",
+    "turnId": "01a11126-c85f-77d2-a3cf-dc3058ff8001"
+  },
+  {
+    "threadId": "01a11129-8470-7192-af35-70e559e3653b",
+    "hostId": "local",
+    "status": "notLoaded",
+    "cursor": "a7297988-9dcf-4333-9bf9-93a740207886:2",
+    "turnStatus": "completed",
+    "turnId": "01a11129-8694-7403-b4f8-e8383760acd8"
+  },
+  {
+    "threadId": "01a11144-d56e-7eb1-8118-6a05ef061796",
+    "hostId": "local",
+    "status": "notLoaded",
+    "cursor": "b012780c-62d4-490c-8441-8deb02510a2a:15",
+    "turnStatus": "completed",
+    "turnId": "01a11144-d798-7812-a35f-c5967904142c"
+  },
+  {
+    "threadId": "01a11152-7858-7510-8ed2-13f198fc32d9",
+    "hostId": "local",
+    "status": "notLoaded",
+    "cursor": "51c4cb7f-98d4-4128-ab89-b1ea671de664:21",
+    "turnStatus": "completed",
+    "turnId": "01a11152-7aa6-77e3-a40a-fdf8cbe18e0e"
+  },
+  {
+    "threadId": "01a1116d-e50b-7fa0-aaea-0d42f3214b5b",
+    "hostId": "local",
+    "status": "notLoaded",
+    "cursor": "dc507471-aaab-4271-96d8-6aae72a20571:17",
+    "turnStatus": "completed",
+    "turnId": "01a1116d-e71a-70e3-8877-ad0341ab5a3b"
+  },
+  {
+    "threadId": "01a11186-8f53-75c2-b9fb-873b27d8af82",
+    "hostId": "local",
+    "status": "active",
+    "cursor": "a62a6b0a-9800-4c41-882e-b7bcb95ecd27:118",
+    "turnStatus": "inProgress",
+    "turnId": "01a112d1-309c-7d83-a051-524f23dbe378",
+    "latestMessage": "실패한 main CI의 DPR 두 사례를 원본 JSON·PNG·로그부터 대조하겠습니다. 실제 표시·상태·해제 결함인지, 검사 단계의 누적 비용이 30초를 넘긴 것인지 구분하고, 단계별 시간은 ignored 진단 경로에 기록하겠습니다."
+  },
+  {
+    "threadId": "01a111b8-52f5-7853-b33e-a347d1efe57b",
+    "hostId": "local",
+    "status": "notLoaded",
+    "cursor": "a5cbb3ab-ede3-469d-8c50-829b57354bf8:22",
+    "turnStatus": "completed",
+    "turnId": "01a111b8-5534-7c82-977d-973660b6d01e"
+  },
+  {
+    "threadId": "01a111b8-5d52-7432-badf-6e09e77ea53d",
+    "hostId": "local",
+    "status": "notLoaded",
+    "cursor": "e7f0584a-c5c4-458b-aef9-7164e00fb2ca:15",
+    "turnStatus": "completed",
+    "turnId": "01a111b8-600f-7291-b078-a676040cdbff"
+  },
+  {
+    "threadId": "01a111db-1a89-78a1-b2b8-c8c20c812bfc",
+    "hostId": "local",
+    "status": "notLoaded",
+    "cursor": "2f323306-5aee-4793-8a19-b18d033003a0:27",
+    "turnStatus": "completed",
+    "turnId": "01a111db-1ccb-7c90-bec8-afb96ca65e9b"
+  },
+  {
+    "threadId": "01a11209-2c3e-7b41-9ee2-8adbbfc2fbd4",
+    "hostId": "local",
+    "status": "notLoaded",
+    "cursor": "9ee6b16d-f678-4854-80bd-a57fe6a64b75:17",
+    "turnStatus": "completed",
+    "turnId": "01a11209-2ef1-7901-8e44-e775adbb0cfe",
+    "latestMessage": "검증 리포트 — WP-08 항목 값 판정 FAIL 검증자 Codex 독립 검증 세션. 구현 비참여, 새 채팅, 추적 파일 무변경 커밋 detached 2c2aacc88bd22b0f3ba4393b22bef4b119616e69 검증 일시 2026-10-07 01:26~01:53 KST worktree E:/openhoi/.orchestrator/wt/WP-08-verify3 Windows 기존 회귀는 통과했지만, 추가 검사에서 CI 실행 오류와 두 GPU 표시·실패 처리 문제를 확인했다. 제품 수정·커밋·새 세션 생성·설정 변경은 하지 않았다. 독립 증거 폴더 직접 실행한 명령 명령·검사 종료 코드 결과 npm ci 0 103 packages, audit 취약점 0 npm test 최초 실행 1 Cargo PATH 미발견 설치된 Cargo 경로를 현재 프로세스 PATH에 추가한 뒤 npm test 0 130 PASS client build → server build 각 0 순서대로 빌드한 제품 클라이언트 동봉 cargo fmt / clippy / workspace test 각 0 모두 PASS proto generate / 생성 TS diff / typecheck 각 0 생성물 무변경, PASS 5제품 M1 Playwright 0 175 PASS 5제품 M0 Playwright 0 60 PASS M0·M1 365일 해시 각 2회 각 0 반복 일치 실제 M1 1000틱 capture 0 2회 일치 실제 실행파일 lifecycle 0 HTTP·활성 WS·종료 신호·exit 0·포트 반환 PASS cargo-deny / npm licenses 각 0 허용 라이선스 검사 PASS assets release / docs / architecture / WP-01 fixture 각 0 모두 PASS 원본 metadata/index CJS의 본인 경로·포트 실행본 각 0 외부 요청 0, localized 오류, GPU 미생성 exact f58 재빌드 제품에 현재 native redirect fixture 실행 1, 기대값 6 FAIL , 실제 foreign GET·canvas 생성 재현 추가 native 301/303/307/308 검사 최종 0 5제품·양 endpoint·같은/다른 origin 80 PASS PNG·CSV·실제 HTTP index 독립 oracle 0 48 texel 전체·ID·길이·FNV 일치 추가 scripted GUI continuity 1 Chrome·Edge·Chromium·Firefox PASS, WebKit resize 표시·캡처 FAIL 선택 후 잘못된 조회 갱신 원자성 0 25 PASS 초기화·GL compile-stage 실패 검사 0 15 PASS exact 87 제품의 동일 초기화 fixture 1, 기대값 null GL 경로 10 FAIL , 동일 추가 JS 오류 재현 실제 native WebGPU pipeline rejection 1 Chrome·Edge 실패 처리 누락 CI Firefox 명령 그대로 --list 1 파일명을 프로젝트명으로 해석하는 오류 최종 파일 불변성 검사 0 3,128개 추적 파일 무변경 명령·종료 코드, M1 출력, M0 출력, 증거 SHA 목록 보조 fixture 오류는 원본을 보존하고 제품 실패와 구분했다. 닫힌 원장 details의 클릭 오류, 자동 할당 포트 5061의 브라우저 거부, 실제 호출되지 않은 createSampler 주입은 제품 결함으로 세지 않았다. RGB·외부 요청 수·오류 단언을 약화하지 않았다. REQ별 확인 REQ·AC 실제 검사 결과 REQ-MAP-04 서버 팔레트와 실제 PNG, 네 모드, 부분 4byte 갱신, HTTP schema·hash·길이, PNG/CSV/index 정상 경로 PASS REQ-MAP-05 독립 12×6의 세 경계, ID0/65535, dense256·lookup 두 번째 행, hover/pick/clear/OOB/pan/zoom 기본 기능 PASS, WebKit resize 표시·캡처 FAIL REQ-PLAT"
+  },
+  {
+    "threadId": "01a11216-61a5-7352-bd08-362acae836da",
+    "hostId": "local",
+    "status": "idle",
+    "cursor": "ad6cbd6d-ba22-45d2-9725-5e45c940ceb4:7",
+    "turnStatus": "completed",
+    "turnId": "01a11216-6466-78e1-96b9-28c0d6629e9a"
+  },
+  {
+    "threadId": "01a11248-9ae6-7410-b958-d6b57baceec3",
+    "hostId": "local",
+    "status": "idle",
+    "cursor": "d0459c4a-a703-4632-b15a-759f207a80ad:13",
+    "turnStatus": "completed",
+    "turnId": "01a11248-9dad-7cd3-9dcc-2385c4b74c29"
+  },
+  {
+    "threadId": "01a1128f-0f4f-7661-b480-97741eb87b50",
+    "hostId": "local",
+    "status": "idle",
+    "cursor": "84a354ff-354d-412e-abe5-36b6e6f8516a:41",
+    "turnStatus": "completed",
+    "turnId": "01a1128f-118b-7be2-ae61-5b68005d32ab"
+  }
+]
