@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { encode, decode } from '@msgpack/msgpack';
 import { mkdirSync, writeFileSync } from 'node:fs';
-const evidence = '../docs/worklog/evidence/WP-12/p06';
+const evidence = process.env.OH_MALFORMED_EVIDENCE ?? '../docs/worklog/evidence/WP-12/p06';
 mkdirSync(evidence, { recursive: true });
 
 test('P-06 malformed MessagePack Snapshot preserves shell and closes connection', async ({ page }, info) => {
