@@ -1,10 +1,9 @@
 //! M0 headless `run` boundary: filesystem loading lives here, outside oh_sim.
 use oh_sim::{Date, Simulation, TimeConfig, formula};
-use serde::Deserialize;
-use std::{collections::BTreeMap, fs, path::Path};
+use std::{collections::BTreeMap, path::Path};
 
 /// Shared M0 host startup path; relative to the repository working directory.
-pub const M0_PACK_ROOT: &str = "data/packs/examples/m0";
+pub use oh_data::m0::M0_PACK_ROOT;
 pub const USAGE: &str = "usage: oh_cli run --scenario <id> (--ticks <n> | --days <n>) --seed <u64> [--hash-out]\nM0 supports run only; validate, ai-bench and repro belong to later work packages.\nM0 --scenario testland resolves data/packs/examples/m0/testland (manifest ID m0_testland).\nInputs: manifest.toml, defines.toml, scenarios/testland/scenario.toml under that pack.\nThis self-contained empty example is distinct from data/packs/testland (WP-03 skeleton / later WP-23 content).";
 
 #[derive(Debug, Eq, PartialEq)]
@@ -82,12 +81,6 @@ impl RunOptions {
     }
 }
 
-#[derive(Deserialize)]
-#[serde(deny_unknown_fields)]
-struct EmptyScenario {
-    start_date: String,
-}
-
 fn parse_date(value: &str) -> Result<Date, String> {
     let fields: Vec<_> = value.split('-').collect();
     if fields.len() != 3
@@ -130,30 +123,23 @@ impl LoadedScenario {
 /// M0 resolves one empty scenario in a self-contained pack (no merging).
 /// WP-05 can reuse these startup inputs and oh_sim's public session API.
 pub fn load_scenario(pack_root: &Path, scenario_id: &str) -> Result<LoadedScenario, String> {
-    // Defend the filesystem boundary even for callers constructing RunOptions.
-    if scenario_id.is_empty()
-        || !scenario_id
-            .bytes()
-            .all(|b| b.is_ascii_lowercase() || b.is_ascii_digit() || b == b'_')
-    {
-        return Err("scenario ID must match [a-z0-9_]+".into());
-    }
-    let pack_path = pack_root.join(scenario_id);
-    let pack = oh_data::load_pack(&pack_path).map_err(|err| err.to_string())?;
-    let config = TimeConfig::from_defines(&pack.defines)
-        .map_err(|err| format!("{}: {err}", pack_path.join("defines.toml").display()))?;
-    let path = pack_path
+    let loaded = oh_data::m0::load_m0_scenario(pack_root, scenario_id)?;
+    let config = TimeConfig::from_defines(&loaded.pack.defines).map_err(|err| {
+        format!(
+            "{}: {err}",
+            pack_root.join(scenario_id).join("defines.toml").display()
+        )
+    })?;
+    let path = pack_root
+        .join(scenario_id)
         .join("scenarios")
         .join(scenario_id)
         .join("scenario.toml");
-    let source = fs::read_to_string(&path).map_err(|err| format!("{}: {err}", path.display()))?;
-    let scenario: EmptyScenario =
-        toml::from_str(&source).map_err(|err| format!("{}: {err}", path.display()))?;
     let date =
-        parse_date(&scenario.start_date).map_err(|err| format!("{}: {err}", path.display()))?;
+        parse_date(&loaded.start_date).map_err(|err| format!("{}: {err}", path.display()))?;
     Ok(LoadedScenario {
-        pack,
-        scenario_id: scenario_id.into(),
+        pack: loaded.pack,
+        scenario_id: loaded.scenario_id,
         start_date: date,
         time: config,
     })
