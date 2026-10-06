@@ -1,0 +1,10 @@
+2026-10-06T17:34:28.0559791Z ##[group]Run cargo fmt --check
+2026-10-06T17:34:28.0560144Z [36;1mcargo fmt --check[0m
+2026-10-06T17:34:28.0632021Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-06T17:34:28.0632366Z env:
+2026-10-06T17:34:28.0632630Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:34:28.0633060Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.11.9\x64/lib/pkgconfig
+2026-10-06T17:34:28.0633505Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:34:28.0633912Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:34:28.0634304Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:34:28.0634610Z ##[endgroup]

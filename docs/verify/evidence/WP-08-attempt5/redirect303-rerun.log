@@ -1,0 +1,10 @@
+{"args": ["node", "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify5\\client\\node_modules\\@playwright\\test\\cli.js", "test", "redirect303.spec.ts", "--config", "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify5\\target\\wp08-verify5\\redirect-matrix\\config.ts", "--project", "edge", "--grep", "metadata same-origin", "--workers", "1", "--reporter", "line", "--output", "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify5\\target\\wp08-verify5\\redirect303-rerun-results"], "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify5\\target\\wp08-verify5\\redirect-matrix", "start": "2026-10-06T17:53:52.316224+00:00"}
+
+Running 1 test using 1 worker
+
+(node:31812) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node.EXE --trace-warnings ...` to show where the warning was created)
+
+
+[1/1] [edge] › redirect303.spec.ts:140:60 › WP08 P06 HTTP303 metadata same-origin redirect is also rejected before follow
+  1 passed (1.4s)

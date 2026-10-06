@@ -1,0 +1,10 @@
+{
+  "source": "E:\\openhoi\\docs\\verify\\evidence\\WP-08-attempt3",
+  "destination": "E:\\openhoi\\.orchestrator\\evidence\\WP-08-attempt3-generated-duplicate-0e294ea",
+  "files": 4791,
+  "total_bytes": 272351325,
+  "all_files_preserved_exactly": true,
+  "tracked_reference_count": 0,
+  "original_deletion_review": "blocked by policy; no deletion performed",
+  "action": "reversible in-workspace relocation preserving every byte"
+}

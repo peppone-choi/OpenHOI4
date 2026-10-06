@@ -1,0 +1,19 @@
+2026-10-06T17:37:16.7932436Z ##[group]Run python crates/oh_server/tests/lifecycle.py
+2026-10-06T17:37:16.7932926Z [36;1mpython crates/oh_server/tests/lifecycle.py[0m
+2026-10-06T17:37:16.8004963Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-06T17:37:16.8005335Z env:
+2026-10-06T17:37:16.8005607Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:37:16.8006079Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.11.9\x64/lib/pkgconfig
+2026-10-06T17:37:16.8006580Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:37:16.8006980Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:37:16.8007410Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:37:16.8007722Z ##[endgroup]
+2026-10-06T17:37:18.3192525Z OpenHOI4: http://127.0.0.1:56463/
+2026-10-06T17:37:18.3193265Z Pack: m0_testland (f611416c817dc014) from D:\a\OpenHOI4\OpenHOI4\data\packs\examples\m0
+2026-10-06T17:37:18.3194074Z Open this address in a browser. Ctrl+C to shut down. --help for usage.
+2026-10-06T17:37:18.3195150Z Shutting down OpenHOI.
+2026-10-06T17:37:18.3195518Z OpenHOI stopped normally.
+2026-10-06T17:37:18.3195738Z
+2026-10-06T17:37:18.3195748Z
+2026-10-06T17:37:18.3195968Z REQ-NET-02 isolated executable assets: PASS
+2026-10-06T17:37:18.3196692Z REQ-NET-06 actual CTRL_C_EVENT/SIGINT, active WS closure, exit 0, released port: PASS

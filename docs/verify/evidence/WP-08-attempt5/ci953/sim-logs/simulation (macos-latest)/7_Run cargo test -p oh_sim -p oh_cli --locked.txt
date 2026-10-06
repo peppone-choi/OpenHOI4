@@ -1,0 +1,147 @@
+2026-10-06T17:34:51.8164380Z ##[group]Run cargo test -p oh_sim -p oh_cli --locked
+2026-10-06T17:34:51.8165760Z [36;1mcargo test -p oh_sim -p oh_cli --locked[0m
+2026-10-06T17:34:51.8223620Z shell: /bin/bash -e {0}
+2026-10-06T17:34:51.8224220Z env:
+2026-10-06T17:34:51.8224600Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+2026-10-06T17:34:51.8225060Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.11.9/arm64/lib/pkgconfig
+2026-10-06T17:34:51.8225560Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+2026-10-06T17:34:51.8226100Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+2026-10-06T17:34:51.8226620Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+2026-10-06T17:34:51.8226950Z ##[endgroup]
+2026-10-06T17:34:52.3460800Z    Compiling cfg-if v1.0.5
+2026-10-06T17:34:52.3469790Z    Compiling serde_core v1.0.229
+2026-10-06T17:34:52.3471060Z    Compiling zerocopy v0.8.60
+2026-10-06T17:34:52.4040290Z    Compiling simd-adler32 v0.3.10
+2026-10-06T17:34:52.5890490Z    Compiling adler2 v2.0.1
+2026-10-06T17:34:52.6938350Z    Compiling thiserror v2.0.21
+2026-10-06T17:34:52.8256990Z    Compiling cobs v0.3.0
+2026-10-06T17:34:53.0263820Z    Compiling crc32fast v1.5.2
+2026-10-06T17:34:53.2276780Z    Compiling zmij v1.0.23
+2026-10-06T17:34:53.5227240Z    Compiling miniz_oxide v0.9.1
+2026-10-06T17:34:54.2775360Z    Compiling rand_core v0.10.1
+2026-10-06T17:34:54.4035570Z    Compiling typenum v1.20.1
+2026-10-06T17:34:54.8406850Z    Compiling serde v1.0.229
+2026-10-06T17:34:55.0462700Z    Compiling winnow v1.0.4
+2026-10-06T17:34:55.3399130Z    Compiling memchr v2.8.3
+2026-10-06T17:34:55.3972960Z    Compiling itoa v1.0.18
+2026-10-06T17:34:55.6329610Z    Compiling bytemuck v1.25.2
+2026-10-06T17:34:55.8315690Z    Compiling az v1.3.0
+2026-10-06T17:34:55.9655650Z    Compiling bitflags v2.13.2
+2026-10-06T17:34:56.1323900Z    Compiling serde_json v1.0.151
+2026-10-06T17:34:56.5369150Z    Compiling ppv-lite86 v0.2.21
+2026-10-06T17:34:56.6803500Z    Compiling half v2.7.1
+2026-10-06T17:34:56.7007600Z    Compiling rand_chacha v0.10.0
+2026-10-06T17:34:56.9005170Z    Compiling fixed v1.31.0
+2026-10-06T17:34:57.0413990Z    Compiling toml_parser v1.1.3+spec-1.1.0
+2026-10-06T17:34:57.1317270Z    Compiling postcard v1.1.3
+2026-10-06T17:34:57.3379310Z    Compiling toml_datetime v1.1.1+spec-1.1.0
+2026-10-06T17:34:57.6040410Z    Compiling serde_spanned v1.1.1
+2026-10-06T17:34:57.6041460Z    Compiling ref-cast v1.0.27
+2026-10-06T17:34:57.6545560Z    Compiling flate2 v1.1.10
+2026-10-06T17:34:57.6750980Z    Compiling miniz_oxide v0.8.9
+2026-10-06T17:34:57.9404930Z    Compiling fdeflate v0.3.7
+2026-10-06T17:34:58.1297590Z    Compiling dyn-clone v1.0.20
+2026-10-06T17:34:58.2048310Z    Compiling toml_writer v1.1.2+spec-1.1.0
+2026-10-06T17:34:58.2201700Z    Compiling semver v1.0.28
+2026-10-06T17:34:58.3279530Z    Compiling toml v1.1.6+spec-1.1.0
+2026-10-06T17:34:58.4304540Z    Compiling schemars v1.2.2
+2026-10-06T17:34:59.3874340Z    Compiling png v0.18.1
+2026-10-06T17:34:59.5561990Z    Compiling libc v0.2.190
+2026-10-06T17:35:00.1052420Z    Compiling getrandom v0.3.4
+2026-10-06T17:35:00.2166290Z    Compiling rand_core v0.9.5
+2026-10-06T17:35:00.3115560Z    Compiling num-traits v0.2.19
+2026-10-06T17:35:00.3270490Z    Compiling rand_xorshift v0.4.0
+2026-10-06T17:35:00.3802150Z    Compiling rand_chacha v0.9.0
+2026-10-06T17:35:00.6702670Z    Compiling rand v0.9.5
+2026-10-06T17:35:00.7289130Z    Compiling unarray v0.1.4
+2026-10-06T17:35:00.7688870Z    Compiling regex-syntax v0.8.11
+2026-10-06T17:35:02.1349140Z    Compiling proptest v1.11.0
+2026-10-06T17:35:03.3081230Z    Compiling oh_core v0.1.0 (/Users/runner/work/OpenHOI4/OpenHOI4/crates/oh_core)
+2026-10-06T17:35:03.4743150Z    Compiling oh_data v0.1.0 (/Users/runner/work/OpenHOI4/OpenHOI4/crates/oh_data)
+2026-10-06T17:35:04.4081260Z    Compiling oh_sim v0.1.0 (/Users/runner/work/OpenHOI4/OpenHOI4/crates/oh_sim)
+2026-10-06T17:35:05.9913100Z    Compiling oh_save v0.1.0 (/Users/runner/work/OpenHOI4/OpenHOI4/crates/oh_save)
+2026-10-06T17:35:06.0440310Z    Compiling oh_ai v0.1.0 (/Users/runner/work/OpenHOI4/OpenHOI4/crates/oh_ai)
+2026-10-06T17:35:06.1166380Z    Compiling oh_cli v0.1.0 (/Users/runner/work/OpenHOI4/OpenHOI4/crates/oh_cli)
+2026-10-06T17:35:08.5880870Z     Finished `test` profile [unoptimized + debuginfo] target(s) in 16.57s
+2026-10-06T17:35:08.6000880Z      Running unittests src/lib.rs (target/debug/deps/oh_cli-5852094f535f1ef2)
+2026-10-06T17:35:08.6052630Z
+2026-10-06T17:35:08.6053230Z      Running unittests src/main.rs (target/debug/deps/oh_cli-bc2f693a9d492f3e)
+2026-10-06T17:35:08.6053700Z running 0 tests
+2026-10-06T17:35:08.6054110Z
+2026-10-06T17:35:08.6054500Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:35:08.6054940Z
+2026-10-06T17:35:08.6085240Z
+2026-10-06T17:35:08.6096630Z running 0 tests
+2026-10-06T17:35:08.6096920Z
+2026-10-06T17:35:08.6097260Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:35:08.6097760Z
+2026-10-06T17:35:08.6155590Z      Running tests/run.rs (target/debug/deps/run-567bca15495fc3ce)
+2026-10-06T17:35:08.6155960Z
+2026-10-06T17:35:08.6159460Z running 6 tests
+2026-10-06T17:35:08.6212790Z test library_loads_data_epoch_and_rejects_bad_or_nonempty_scenario ... ok
+2026-10-06T17:35:08.6243260Z test m0_load_boundary_and_help_identify_unique_self_contained_pack ... ok
+2026-10-06T17:35:08.6399310Z test req_gen_06_ac_m0_02_exact_ticks_and_repeated_hash ... ok
+2026-10-06T17:35:08.6584190Z test cli_rejects_ambiguous_missing_invalid_and_unimplemented_inputs ... ok
+2026-10-06T17:35:08.6588960Z test m1_explicit_pack_uses_national_state_and_preserves_m0_default ... ok
+2026-10-06T17:35:08.6594750Z test req_gen_06_days_path_is_exact_and_zero_ticks_stays_initial ... ok
+2026-10-06T17:35:08.6595300Z
+2026-10-06T17:35:08.6595610Z test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+2026-10-06T17:35:08.6595970Z
+2026-10-06T17:35:08.6596950Z      Running unittests src/lib.rs (target/debug/deps/oh_sim-da1038f073c3fc20)
+2026-10-06T17:35:08.6625390Z
+2026-10-06T17:35:08.6626600Z running 0 tests
+2026-10-06T17:35:08.6627550Z      Running tests/ledger.rs (target/debug/deps/ledger-da07b4311f74528d)
+2026-10-06T17:35:08.6636470Z
+2026-10-06T17:35:08.6636940Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:35:08.6637380Z
+2026-10-06T17:35:08.6661010Z
+2026-10-06T17:35:08.6671510Z running 7 tests
+2026-10-06T17:35:08.6688840Z test req_ui_04_duplicates_invalid_identifiers_and_overflow_are_errors ... ok
+2026-10-06T17:35:08.6689630Z test req_ui_04_base_add_mul_trace_and_applied_bits ... ok
+2026-10-06T17:35:08.6690250Z test req_ui_04_expiry_boundary_target_isolation_and_base_only ... ok
+2026-10-06T17:35:08.6690970Z test req_ui_04_modifier_serialization_preserves_bits_and_expiry ... ok
+2026-10-06T17:35:08.6691560Z test req_ui_04_negative_zero_and_order_sensitive_rounding ... ok
+2026-10-06T17:35:08.7327600Z test req_ui_04_ledger_matches_independent_reference_and_permutations ... ok
+2026-10-06T17:35:08.7406670Z test req_ui_04_full_bit_range_matches_reference_or_checked_overflow ... ok
+2026-10-06T17:35:08.7407080Z
+2026-10-06T17:35:08.7407430Z test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+2026-10-06T17:35:08.7407830Z
+2026-10-06T17:35:08.7409260Z      Running tests/national.rs (target/debug/deps/national-414bc8e9ecd66bc8)
+2026-10-06T17:35:08.7449650Z
+2026-10-06T17:35:08.7453810Z running 5 tests
+2026-10-06T17:35:08.7500580Z test m1_generic_canonical_hash_includes_world ... ok
+2026-10-06T17:35:08.7502300Z test ac_m1_03_real_infrastructure_ledger_applied_and_recomputed ... ok
+2026-10-06T17:35:08.7502940Z test m1_expiry_input_order_and_atomic_overflow_are_authoritative ... ok
+2026-10-06T17:35:08.7509740Z test req_map_08_owner_and_controller_remain_distinct ... ok
+2026-10-06T17:35:08.7514770Z test m1_independent_fnv_oracle_and_every_initial_input_changes_hash ... ok
+2026-10-06T17:35:08.7515210Z
+2026-10-06T17:35:08.7516260Z test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+2026-10-06T17:35:08.7516630Z
+2026-10-06T17:35:08.7517440Z      Running tests/scheduler.rs (target/debug/deps/scheduler-6ecbdd9b03d796ce)
+2026-10-06T17:35:08.7559260Z
+2026-10-06T17:35:08.7559880Z running 8 tests
+2026-10-06T17:35:08.7561010Z test hash_includes_seed_config_and_pending_commands ... ok
+2026-10-06T17:35:08.7564780Z test overflow_preserves_state_and_queued_commands_and_pause_still_works ... ok
+2026-10-06T17:35:08.7565660Z test calendar_leap_year_and_year_boundaries ... ok
+2026-10-06T17:35:08.7566210Z test req_gen_05_commands_are_sorted_and_future_commands_wait ... ok
+2026-10-06T17:35:08.7566700Z test req_time_02_tick_day_month_snapshot_order ... ok
+2026-10-06T17:35:08.7567180Z test req_time_01_pause_resume_and_five_data_driven_speeds ... ok
+2026-10-06T17:35:08.7567630Z test time_defines_are_required_checked_and_change_host_pacing ... ok
+2026-10-06T17:35:08.7570150Z test req_gen_01_headless_state_and_hash_are_repeatable ... ok
+2026-10-06T17:35:08.7570520Z
+2026-10-06T17:35:08.7570770Z test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:35:08.7571140Z
+2026-10-06T17:35:08.7572290Z    Doc-tests oh_cli
+2026-10-06T17:35:08.8490560Z
+2026-10-06T17:35:08.8490970Z running 0 tests
+2026-10-06T17:35:08.8491360Z
+2026-10-06T17:35:08.8491680Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:35:08.8492050Z
+2026-10-06T17:35:08.8500960Z    Doc-tests oh_sim
+2026-10-06T17:35:08.9305640Z
+2026-10-06T17:35:08.9306760Z running 2 tests
+2026-10-06T17:35:08.9863900Z test crates/oh_sim/src/lib.rs - State (line 68) - compile fail ... ok
+2026-10-06T17:35:08.9876800Z test crates/oh_sim/src/ledger.rs - ledger::StatLedger (line 91) - compile fail ... ok
+2026-10-06T17:35:08.9877250Z
+2026-10-06T17:35:08.9877660Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+2026-10-06T17:35:08.9878000Z

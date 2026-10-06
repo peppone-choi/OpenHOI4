@@ -1,0 +1,27 @@
+2026-10-06T17:34:22.1819690Z ##[group]Run actions/setup-node@v7.0.0
+2026-10-06T17:34:22.1820140Z with:
+2026-10-06T17:34:22.1820440Z   node-version: 24.4.0
+2026-10-06T17:34:22.1820670Z   cache: npm
+2026-10-06T17:34:22.1820990Z   cache-dependency-path: client/package-lock.json
+2026-10-06T17:34:22.1821290Z   check-latest: false
+2026-10-06T17:34:22.1823930Z   token: ***
+2026-10-06T17:34:22.1824260Z   package-manager-cache: true
+2026-10-06T17:34:22.1824560Z ##[endgroup]
+2026-10-06T17:34:22.4089890Z Attempting to download 24.4.0...
+2026-10-06T17:34:23.4224010Z Acquiring 24.4.0 - arm64 from https://github.com/actions/node-versions/releases/download/24.4.0-16210503505/node-24.4.0-darwin-arm64.tar.gz
+2026-10-06T17:34:24.9277520Z Extracting ...
+2026-10-06T17:34:24.9531240Z [command]/usr/bin/tar xz --strip 1 -C /Users/runner/work/_temp/ee462ca4-f9a9-423d-9eac-5fe4eb5cebd1 -f /Users/runner/work/_temp/1fa4c317-eec6-4efd-b102-6d50771c0294
+2026-10-06T17:34:26.7410740Z Adding to the cache ...
+2026-10-06T17:34:30.5188180Z ##[group]Environment details
+2026-10-06T17:34:31.0017840Z node: v24.4.0
+2026-10-06T17:34:31.0027610Z npm: 11.4.2
+2026-10-06T17:34:31.0034200Z yarn: 1.22.22
+2026-10-06T17:34:31.0052630Z ##[endgroup]
+2026-10-06T17:34:31.0083300Z [command]/Users/runner/hostedtoolcache/node/24.4.0/arm64/bin/npm config get cache
+2026-10-06T17:34:31.1817020Z /Users/runner/.npm
+2026-10-06T17:34:31.4065140Z Cache hit for: node-cache-macOS-arm64-npm-c8fd7c5457bbb41b9b9c1b633e6d2a905ffea2ff30eea1c47886e6fc189580d2
+2026-10-06T17:34:31.7621360Z Received 36584844 of 36584844 (100.0%), 112.2 MBs/sec
+2026-10-06T17:34:31.7630060Z Cache Size: ~35 MB (36584844 B)
+2026-10-06T17:34:31.7721140Z [command]/opt/homebrew/bin/gtar -xf /Users/runner/work/_temp/29e64c0d-98d3-484e-9666-3fedcba74499/cache.tzst -P -C /Users/runner/work/OpenHOI4/OpenHOI4 --delay-directory-restore --use-compress-program unzstd
+2026-10-06T17:34:32.1071470Z Cache restored successfully
+2026-10-06T17:34:32.1085940Z Cache restored from key: node-cache-macOS-arm64-npm-c8fd7c5457bbb41b9b9c1b633e6d2a905ffea2ff30eea1c47886e6fc189580d2

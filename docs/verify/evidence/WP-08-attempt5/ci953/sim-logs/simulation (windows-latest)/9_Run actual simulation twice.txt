@@ -1,0 +1,11 @@
+2026-10-06T17:35:38.8543463Z ##[group]Run python crates/oh_sim/tools/check_sim_determinism.py capture --out target/sim-determinism
+2026-10-06T17:35:38.8544262Z [36;1mpython crates/oh_sim/tools/check_sim_determinism.py capture --out target/sim-determinism[0m
+2026-10-06T17:35:38.8615326Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-06T17:35:38.8615672Z env:
+2026-10-06T17:35:38.8616118Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:38.8616578Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.11.9\x64/lib/pkgconfig
+2026-10-06T17:35:38.8617029Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:38.8617442Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:38.8617846Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:38.8618162Z ##[endgroup]
+2026-10-06T17:35:39.5292895Z actual simulation: 1000 ticks, seed 1, two runs: ff921fd8148e699d

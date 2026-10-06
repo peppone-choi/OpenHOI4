@@ -1,0 +1,145 @@
+2026-10-06T17:34:23.8729070Z ##[group]Run cargo clippy -p oh_sim -p oh_cli --all-targets --locked -- -D warnings
+2026-10-06T17:34:23.8729850Z [36;1mcargo clippy -p oh_sim -p oh_cli --all-targets --locked -- -D warnings[0m
+2026-10-06T17:34:23.8765840Z shell: /bin/bash -e {0}
+2026-10-06T17:34:23.8766150Z env:
+2026-10-06T17:34:23.8766490Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+2026-10-06T17:34:23.8766960Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.11.9/arm64/lib/pkgconfig
+2026-10-06T17:34:23.8767460Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+2026-10-06T17:34:23.8767870Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+2026-10-06T17:34:23.8768400Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+2026-10-06T17:34:23.8768790Z ##[endgroup]
+2026-10-06T17:34:24.1040490Z     Updating crates.io index
+2026-10-06T17:34:24.3696100Z  Downloading crates ...
+2026-10-06T17:34:24.4114780Z   Downloaded autocfg v1.5.1
+2026-10-06T17:34:24.4175290Z   Downloaded memchr v2.8.3
+2026-10-06T17:34:24.4298810Z   Downloaded num-traits v0.2.19
+2026-10-06T17:34:24.4386750Z   Downloaded zerocopy-derive v0.8.60
+2026-10-06T17:34:24.4726560Z   Downloaded equivalent v1.0.2
+2026-10-06T17:34:24.4773390Z   Downloaded fdeflate v0.3.7
+2026-10-06T17:34:24.4797090Z   Downloaded png v0.18.1
+2026-10-06T17:34:24.4876230Z   Downloaded embedded-io v0.6.1
+2026-10-06T17:34:24.4906890Z   Downloaded hashbrown v0.17.1
+2026-10-06T17:34:24.5124160Z   Downloaded ref-cast v1.0.27
+2026-10-06T17:34:24.5313280Z   Downloaded cobs v0.3.0
+2026-10-06T17:34:24.5389720Z   Downloaded cfg-if v1.0.5
+2026-10-06T17:34:24.5402210Z   Downloaded proc-macro2 v1.0.107
+2026-10-06T17:34:24.5545990Z   Downloaded rand v0.9.5
+2026-10-06T17:34:24.5574690Z   Downloaded rand_core v0.9.5
+2026-10-06T17:34:24.5677470Z   Downloaded schemars_derive v1.2.2
+2026-10-06T17:34:24.5764850Z   Downloaded serde v1.0.229
+2026-10-06T17:34:24.5860740Z   Downloaded serde_derive_internals v0.30.0
+2026-10-06T17:34:24.5896520Z   Downloaded az v1.3.0
+2026-10-06T17:34:24.5949800Z   Downloaded rand_chacha v0.10.0
+2026-10-06T17:34:24.5974130Z   Downloaded rand_core v0.10.1
+2026-10-06T17:34:24.6017230Z   Downloaded embedded-io v0.4.0
+2026-10-06T17:34:24.6086560Z   Downloaded rand_xorshift v0.4.0
+2026-10-06T17:34:24.6138470Z   Downloaded ref-cast-impl v1.0.27
+2026-10-06T17:34:24.6225000Z   Downloaded unarray v0.1.4
+2026-10-06T17:34:24.9942830Z   Downloaded adler2 v2.0.1
+2026-10-06T17:34:25.0036300Z   Downloaded rand_chacha v0.9.0
+2026-10-06T17:34:25.0159910Z   Downloaded serde_spanned v1.1.1
+2026-10-06T17:34:25.0217410Z   Downloaded thiserror-impl v2.0.21
+2026-10-06T17:34:25.0218080Z   Downloaded dyn-clone v1.0.20
+2026-10-06T17:34:25.0218580Z   Downloaded itoa v1.0.18
+2026-10-06T17:34:25.0219260Z   Downloaded ppv-lite86 v0.2.21
+2026-10-06T17:34:25.0219690Z   Downloaded quote v1.0.47
+2026-10-06T17:34:25.0270810Z   Downloaded semver v1.0.28
+2026-10-06T17:34:25.0310000Z   Downloaded simd-adler32 v0.3.10
+2026-10-06T17:34:25.0349600Z   Downloaded toml_writer v1.1.2+spec-1.1.0
+2026-10-06T17:34:25.0391500Z   Downloaded miniz_oxide v0.8.9
+2026-10-06T17:34:25.0457770Z   Downloaded thiserror v2.0.21
+2026-10-06T17:34:25.0663870Z   Downloaded toml_parser v1.1.3+spec-1.1.0
+2026-10-06T17:34:25.0791410Z   Downloaded unicode-ident v1.0.26
+2026-10-06T17:34:25.0867090Z   Downloaded zmij v1.0.23
+2026-10-06T17:34:25.0904500Z   Downloaded bytemuck v1.25.2
+2026-10-06T17:34:25.0948820Z   Downloaded half v2.7.1
+2026-10-06T17:34:25.1034730Z   Downloaded postcard v1.1.3
+2026-10-06T17:34:25.1088420Z   Downloaded serde_core v1.0.229
+2026-10-06T17:34:25.1155760Z   Downloaded toml v1.1.6+spec-1.1.0
+2026-10-06T17:34:25.1283590Z   Downloaded toml_datetime v1.1.1+spec-1.1.0
+2026-10-06T17:34:25.2549480Z   Downloaded bitflags v2.13.2
+2026-10-06T17:34:25.2734810Z   Downloaded getrandom v0.3.4
+2026-10-06T17:34:25.2781650Z   Downloaded serde_derive v1.0.229
+2026-10-06T17:34:25.2882130Z   Downloaded crc32fast v1.5.2
+2026-10-06T17:34:25.2930650Z   Downloaded miniz_oxide v0.9.1
+2026-10-06T17:34:25.2985140Z   Downloaded typenum v1.20.1
+2026-10-06T17:34:25.3804400Z   Downloaded flate2 v1.1.10
+2026-10-06T17:34:25.4002730Z   Downloaded schemars v1.2.2
+2026-10-06T17:34:25.5278790Z   Downloaded indexmap v2.14.2
+2026-10-06T17:34:25.5378730Z   Downloaded fixed v1.31.0
+2026-10-06T17:34:25.5564780Z   Downloaded serde_json v1.0.151
+2026-10-06T17:34:25.5884440Z   Downloaded zlib-rs v0.6.8
+2026-10-06T17:34:25.6161330Z   Downloaded winnow v1.0.4
+2026-10-06T17:34:25.6517210Z   Downloaded proptest v1.11.0
+2026-10-06T17:34:25.7503450Z   Downloaded syn v2.0.119
+2026-10-06T17:34:25.7772470Z   Downloaded zerocopy v0.8.60
+2026-10-06T17:34:25.8305910Z   Downloaded regex-syntax v0.8.11
+2026-10-06T17:34:25.8453820Z   Downloaded syn v3.0.6
+2026-10-06T17:34:25.8890810Z   Downloaded libc v0.2.190
+2026-10-06T17:34:26.1821370Z    Compiling proc-macro2 v1.0.107
+2026-10-06T17:34:26.1928790Z    Compiling unicode-ident v1.0.26
+2026-10-06T17:34:26.2036940Z    Compiling quote v1.0.47
+2026-10-06T17:34:26.7605800Z     Checking cfg-if v1.0.5
+2026-10-06T17:34:26.8114760Z    Compiling serde_core v1.0.229
+2026-10-06T17:34:32.6618510Z    Compiling zerocopy v0.8.60
+2026-10-06T17:34:33.2736030Z    Compiling serde v1.0.229
+2026-10-06T17:34:33.7794680Z    Compiling syn v3.0.6
+2026-10-06T17:34:33.7848090Z    Compiling syn v2.0.119
+2026-10-06T17:34:34.7700910Z     Checking simd-adler32 v0.3.10
+2026-10-06T17:34:34.9090010Z    Compiling thiserror v2.0.21
+2026-10-06T17:34:35.2757340Z    Compiling crc32fast v1.5.2
+2026-10-06T17:34:35.4680120Z     Checking adler2 v2.0.1
+2026-10-06T17:34:35.5299930Z    Compiling zmij v1.0.23
+2026-10-06T17:34:35.8504280Z    Compiling ref-cast v1.0.27
+2026-10-06T17:34:36.0852490Z    Compiling serde_json v1.0.151
+2026-10-06T17:34:36.1510120Z    Compiling serde_derive v1.0.229
+2026-10-06T17:34:36.2407890Z    Compiling thiserror-impl v2.0.21
+2026-10-06T17:34:37.2557060Z    Compiling zerocopy-derive v0.8.60
+2026-10-06T17:34:37.3953260Z    Compiling fixed v1.31.0
+2026-10-06T17:34:37.5990640Z     Checking cobs v0.3.0
+2026-10-06T17:34:37.7393940Z    Compiling ref-cast-impl v1.0.27
+2026-10-06T17:34:38.5023020Z     Checking miniz_oxide v0.9.1
+2026-10-06T17:34:38.9795010Z    Compiling serde_derive_internals v0.30.0
+2026-10-06T17:34:39.1319710Z     Checking bytemuck v1.25.2
+2026-10-06T17:34:39.2982750Z     Checking az v1.3.0
+2026-10-06T17:34:39.6533330Z     Checking bitflags v2.13.2
+2026-10-06T17:34:39.8033370Z     Checking rand_core v0.10.1
+2026-10-06T17:34:39.8911030Z     Checking typenum v1.20.1
+2026-10-06T17:34:39.9789910Z     Checking winnow v1.0.4
+2026-10-06T17:34:40.2103030Z     Checking memchr v2.8.3
+2026-10-06T17:34:40.4985160Z     Checking itoa v1.0.18
+2026-10-06T17:34:40.5494470Z     Checking toml_parser v1.1.3+spec-1.1.0
+2026-10-06T17:34:40.8289500Z    Compiling schemars_derive v1.2.2
+2026-10-06T17:34:41.1405390Z     Checking postcard v1.1.3
+2026-10-06T17:34:41.4239230Z     Checking flate2 v1.1.10
+2026-10-06T17:34:41.7206310Z     Checking miniz_oxide v0.8.9
+2026-10-06T17:34:42.1848970Z     Checking fdeflate v0.3.7
+2026-10-06T17:34:42.2062110Z     Checking toml_datetime v1.1.1+spec-1.1.0
+2026-10-06T17:34:42.3175810Z     Checking ppv-lite86 v0.2.21
+2026-10-06T17:34:42.4075610Z     Checking half v2.7.1
+2026-10-06T17:34:42.4701320Z     Checking serde_spanned v1.1.1
+2026-10-06T17:34:42.5506200Z     Checking rand_chacha v0.10.0
+2026-10-06T17:34:42.5556610Z     Checking dyn-clone v1.0.20
+2026-10-06T17:34:42.6011370Z     Checking toml_writer v1.1.2+spec-1.1.0
+2026-10-06T17:34:42.6344840Z     Checking semver v1.0.28
+2026-10-06T17:34:42.6882580Z     Checking toml v1.1.6+spec-1.1.0
+2026-10-06T17:34:42.7586760Z     Checking schemars v1.2.2
+2026-10-06T17:34:43.4343400Z     Checking png v0.18.1
+2026-10-06T17:34:43.4444880Z    Compiling libc v0.2.190
+2026-10-06T17:34:43.9645850Z    Compiling getrandom v0.3.4
+2026-10-06T17:34:44.2937280Z    Compiling autocfg v1.5.1
+2026-10-06T17:34:44.5661710Z    Compiling num-traits v0.2.19
+2026-10-06T17:34:44.9648360Z     Checking rand_core v0.9.5
+2026-10-06T17:34:45.0448730Z     Checking rand_xorshift v0.4.0
+2026-10-06T17:34:45.0970780Z     Checking rand_chacha v0.9.0
+2026-10-06T17:34:45.2095990Z     Checking rand v0.9.5
+2026-10-06T17:34:45.3355530Z     Checking unarray v0.1.4
+2026-10-06T17:34:45.3800280Z     Checking regex-syntax v0.8.11
+2026-10-06T17:34:46.9462190Z     Checking proptest v1.11.0
+2026-10-06T17:34:50.1551000Z     Checking oh_core v0.1.0 (/Users/runner/work/OpenHOI4/OpenHOI4/crates/oh_core)
+2026-10-06T17:34:50.4628950Z     Checking oh_data v0.1.0 (/Users/runner/work/OpenHOI4/OpenHOI4/crates/oh_data)
+2026-10-06T17:34:51.0635510Z     Checking oh_sim v0.1.0 (/Users/runner/work/OpenHOI4/OpenHOI4/crates/oh_sim)
+2026-10-06T17:34:51.3265660Z     Checking oh_save v0.1.0 (/Users/runner/work/OpenHOI4/OpenHOI4/crates/oh_save)
+2026-10-06T17:34:51.3269200Z     Checking oh_ai v0.1.0 (/Users/runner/work/OpenHOI4/OpenHOI4/crates/oh_ai)
+2026-10-06T17:34:51.3894060Z     Checking oh_cli v0.1.0 (/Users/runner/work/OpenHOI4/OpenHOI4/crates/oh_cli)
+2026-10-06T17:34:51.6784240Z     Finished `dev` profile [unoptimized + debuginfo] target(s) in 27.66s

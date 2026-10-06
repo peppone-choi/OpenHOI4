@@ -1,0 +1,12 @@
+2026-10-06T17:34:38.4416970Z ##[group]Run python crates/oh_core/tools/check_determinism.py capture --out target/core-determinism
+2026-10-06T17:34:38.4417574Z [36;1mpython crates/oh_core/tools/check_determinism.py capture --out target/core-determinism[0m
+2026-10-06T17:34:38.4475816Z shell: /usr/bin/bash -e {0}
+2026-10-06T17:34:38.4476059Z env:
+2026-10-06T17:34:38.4476309Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:34:38.4476692Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib/pkgconfig
+2026-10-06T17:34:38.4477106Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:34:38.4477444Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:34:38.4477958Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:34:38.4478292Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib
+2026-10-06T17:34:38.4478576Z ##[endgroup]
+2026-10-06T17:34:38.5946681Z core probe two runs: 0dd81b8754bcc3f9

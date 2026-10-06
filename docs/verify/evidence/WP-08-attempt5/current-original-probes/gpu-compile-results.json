@@ -1,0 +1,68 @@
+[
+  {
+    "channel": "chrome",
+    "fault": "compile",
+    "probe": {
+      "fault": "compile",
+      "devices": 1,
+      "destroyed": 1,
+      "triggers": 1
+    },
+    "errors": [],
+    "actual": [
+      40,
+      100,
+      180
+    ],
+    "diagnostics": {
+      "testid": "province-map",
+      "textureLimit": "16384",
+      "adapter": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1660 Ti (0x00002182) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "device": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "backend": "webgl2",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+      "shaderLanguage": "glsl",
+      "shaderLength": "16167",
+      "frames": "15",
+      "selected": "",
+      "mode": "map-mode-owner",
+      "updatedBytes": "0",
+      "updateMs": "0",
+      "frameMs": "22.27999999995033"
+    },
+    "pass": true
+  },
+  {
+    "channel": "msedge",
+    "fault": "compile",
+    "probe": {
+      "fault": "compile",
+      "devices": 1,
+      "destroyed": 1,
+      "triggers": 1
+    },
+    "errors": [],
+    "actual": [
+      40,
+      100,
+      180
+    ],
+    "diagnostics": {
+      "testid": "province-map",
+      "textureLimit": "16384",
+      "adapter": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1660 Ti (0x00002182) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "device": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+      "backend": "webgl2",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+      "shaderLanguage": "glsl",
+      "shaderLength": "16167",
+      "frames": "14",
+      "selected": "",
+      "mode": "map-mode-owner",
+      "updatedBytes": "0",
+      "updateMs": "0.19999999925494194",
+      "frameMs": "22.428571428571427"
+    },
+    "pass": true
+  }
+]

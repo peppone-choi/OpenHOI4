@@ -1,0 +1,39 @@
+{
+  "channel": "msedge",
+  "fault": "compile",
+  "expected": "actual native WebGPU pipeline rejection must fall back to working WebGL2 and release old device, or show localized unavailable with canvas0",
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "THREE.WebGPURenderer: Async render pipeline creation failed (renderPipeline_MeshBasicNodeMaterial_14): independent WebGPU compile failure"
+  ],
+  "errors": [],
+  "alerts": [],
+  "canvas": 1,
+  "probe": {
+    "fault": "compile",
+    "devices": 1,
+    "destroyed": 1,
+    "triggers": 1
+  },
+  "diagnostics": {
+    "testid": "province-map",
+    "textureLimit": "16384",
+    "adapter": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1660 Ti (0x00002182) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "device": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "backend": "webgl2",
+    "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+    "shaderLanguage": "glsl",
+    "shaderLength": "16167",
+    "frames": "16",
+    "selected": "",
+    "mode": "map-mode-owner",
+    "updatedBytes": "0",
+    "updateMs": "0.19999999925494194",
+    "frameMs": "21.71875"
+  },
+  "province10PNG": [
+    40,
+    100,
+    180
+  ]
+}

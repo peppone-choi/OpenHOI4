@@ -1,0 +1,142 @@
+{"args": ["node", "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify5\\target\\wp08-verify5\\atomic.cjs"], "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify5", "start": "2026-10-06T17:52:58.968406+00:00"}
+chrome variant PASS
+chrome rgb PASS
+chrome membership PASS
+chrome ownerRef PASS
+chrome nullColor PASS
+chrome dense PASS
+edge variant PASS
+edge rgb PASS
+edge membership PASS
+edge ownerRef PASS
+edge nullColor PASS
+edge dense PASS
+chromium variant PASS
+chromium rgb PASS
+chromium membership PASS
+chromium ownerRef PASS
+chromium nullColor PASS
+chromium dense PASS
+firefox variant PASS
+firefox rgb PASS
+firefox membership PASS
+firefox ownerRef PASS
+firefox nullColor PASS
+firefox dense PASS
+webkit variant PASS
+webkit rgb locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for getByTestId('speed-2')[22m
+[2m    - locator resolved to <button aria-label="Speed 2" aria-pressed="false" data-testid="speed-2">2</button>[22m
+[2m  - attempting click action[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not enabled[22m
+[2m    - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not enabled[22m
+[2m    - retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m    48 × waiting for element to be visible, enabled and stable[22m
+[2m       - element is not enabled[22m
+[2m     - retrying click action[22m
+[2m       - waiting 500ms[22m
+
+    at E:\openhoi\.orchestrator\wt\WP-08-verify5\target\wp08-verify5\atomic.cjs:5:679 {
+  log: [
+    "  - waiting for getByTestId('speed-2')",
+    '    - locator resolved to <button aria-label="Speed 2" aria-pressed="false" data-testid="speed-2">2</button>',
+    '  - attempting click action',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is not enabled',
+    '    - retrying click action',
+    '    - waiting 20ms',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is not enabled',
+    '    - retrying click action',
+    '      - waiting 100ms',
+    '    48 × waiting for element to be visible, enabled and stable',
+    '       - element is not enabled',
+    '     - retrying click action',
+    '       - waiting 500ms'
+  ],
+  name: 'TimeoutError'
+}
+webkit membership PASS
+webkit ownerRef locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for getByTestId('speed-2')[22m
+[2m    - locator resolved to <button aria-label="Speed 2" aria-pressed="false" data-testid="speed-2">2</button>[22m
+[2m  - attempting click action[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not enabled[22m
+[2m    - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not enabled[22m
+[2m    - retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m    48 × waiting for element to be visible, enabled and stable[22m
+[2m       - element is not enabled[22m
+[2m     - retrying click action[22m
+[2m       - waiting 500ms[22m
+
+    at E:\openhoi\.orchestrator\wt\WP-08-verify5\target\wp08-verify5\atomic.cjs:5:679 {
+  log: [
+    "  - waiting for getByTestId('speed-2')",
+    '    - locator resolved to <button aria-label="Speed 2" aria-pressed="false" data-testid="speed-2">2</button>',
+    '  - attempting click action',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is not enabled',
+    '    - retrying click action',
+    '    - waiting 20ms',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is not enabled',
+    '    - retrying click action',
+    '      - waiting 100ms',
+    '    48 × waiting for element to be visible, enabled and stable',
+    '       - element is not enabled',
+    '     - retrying click action',
+    '       - waiting 500ms'
+  ],
+  name: 'TimeoutError'
+}
+webkit nullColor locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for getByTestId('speed-2')[22m
+[2m    - locator resolved to <button aria-label="Speed 2" aria-pressed="false" data-testid="speed-2">2</button>[22m
+[2m  - attempting click action[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not enabled[22m
+[2m    - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not enabled[22m
+[2m    - retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m    48 × waiting for element to be visible, enabled and stable[22m
+[2m       - element is not enabled[22m
+[2m     - retrying click action[22m
+[2m       - waiting 500ms[22m
+
+    at E:\openhoi\.orchestrator\wt\WP-08-verify5\target\wp08-verify5\atomic.cjs:5:679 {
+  log: [
+    "  - waiting for getByTestId('speed-2')",
+    '    - locator resolved to <button aria-label="Speed 2" aria-pressed="false" data-testid="speed-2">2</button>',
+    '  - attempting click action',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is not enabled',
+    '    - retrying click action',
+    '    - waiting 20ms',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is not enabled',
+    '    - retrying click action',
+    '      - waiting 100ms',
+    '    48 × waiting for element to be visible, enabled and stable',
+    '       - element is not enabled',
+    '     - retrying click action',
+    '       - waiting 500ms'
+  ],
+  name: 'TimeoutError'
+}
+webkit dense PASS

@@ -1,0 +1,37 @@
+{
+  "time": "2026-10-06T17:42:36.336070+00:00",
+  "head": "9531121ee5677e43436be69364fdef4bfce2fe86",
+  "port": 19444,
+  "netstat": [
+    "  TCP    127.0.0.1:19444        0.0.0.0:0              LISTENING       37196"
+  ],
+  "process": {
+    "ProcessId": 37196,
+    "ParentProcessId": 38068,
+    "ExecutablePath": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify5\\target\\debug\\oh_server.exe",
+    "CommandLine": "\"E:\\openhoi\\.orchestrator\\wt\\WP-08-verify5\\target\\debug\\oh_server.exe\"  --port 19444 --pack-root ../data/packs/examples/m0"
+  },
+  "exeSHA": "de5f898811722d51bd3eed00e2481ed8e813017286c9d82bc5b3d82a2a27039a",
+  "cwdEvidence": "Playwright webServer command spawned in E:\\openhoi\\.orchestrator\\wt\\WP-08-verify5\\client; resolved ../target/debug executable and ../data/packs",
+  "html200": 200,
+  "assets": [
+    {
+      "path": "/assets/index-B1tYOzvX.js",
+      "status": 200,
+      "length": 1170714,
+      "sha256": "e3885777875c6137d7313fd7fe28fd898cfb339ee56088a911cf534287fe149d",
+      "local": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify5\\client\\dist\\assets\\index-B1tYOzvX.js"
+    },
+    {
+      "path": "/assets/index-B9cOsW2B.css",
+      "status": 200,
+      "length": 4398,
+      "sha256": "0dd7e4ddfeed406768af619ad687ab1ec009b7847fac69e181a778b2be151e6e",
+      "local": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify5\\client\\dist\\assets\\index-B9cOsW2B.css"
+    }
+  ],
+  "metadata": {},
+  "indexLength": 0,
+  "indexSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "indexHeaders": {}
+}

@@ -1,0 +1,1338 @@
+2026-10-06T17:34:05.6915790Z Current runner version: '2.337.0'
+2026-10-06T17:34:05.6943269Z ##[group]Runner Image Provisioner
+2026-10-06T17:34:05.6944087Z Hosted Compute Agent
+2026-10-06T17:34:05.6944674Z Version: 20260901.588
+2026-10-06T17:34:05.6945291Z Commit: f88ec8081b781fac6c440065ac7ff9e710ce3d0b
+2026-10-06T17:34:05.6945977Z Build Date: 2026-09-01T19:56:44Z
+2026-10-06T17:34:05.6946749Z Worker ID: {b8efef44-b5d4-49f7-8ec5-ff808b7b88bd}
+2026-10-06T17:34:05.6947413Z Azure Region: westus3
+2026-10-06T17:34:05.6948027Z ##[endgroup]
+2026-10-06T17:34:05.6949548Z ##[group]Operating System
+2026-10-06T17:34:05.6950199Z Microsoft Windows Server 2025
+2026-10-06T17:34:05.6950790Z 10.0.26100
+2026-10-06T17:34:05.6951738Z Datacenter
+2026-10-06T17:34:05.6952296Z ##[endgroup]
+2026-10-06T17:34:05.6952813Z ##[group]Runner Image
+2026-10-06T17:34:05.6953395Z Image: windows-2025-vs2026
+2026-10-06T17:34:05.6953964Z Version: 20260925.250.1
+2026-10-06T17:34:05.6956315Z Included Software: https://github.com/actions/runner-images/blob/win25-vs2026/20260925.250/images/windows/Windows2025-VS2026-Readme.md
+2026-10-06T17:34:05.6959418Z Image Release: https://github.com/actions/runner-images/releases/tag/win25-vs2026%2F20260925.250
+2026-10-06T17:34:05.6961341Z ##[endgroup]
+2026-10-06T17:34:05.6963234Z ##[group]GITHUB_TOKEN Permissions
+2026-10-06T17:34:05.6966520Z Contents: read
+2026-10-06T17:34:05.6967450Z Metadata: read
+2026-10-06T17:34:05.6968314Z ##[endgroup]
+2026-10-06T17:34:05.6971909Z Secret source: Actions
+2026-10-06T17:34:05.6973381Z Cache mode: write
+2026-10-06T17:34:05.6974750Z Prepare workflow directory
+2026-10-06T17:34:05.7405323Z Prepare all required actions
+2026-10-06T17:34:05.7454485Z Getting action download info
+2026-10-06T17:34:06.0647096Z Download action repository 'actions/checkout@v7.0.1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-10-06T17:34:06.1996727Z Download action repository 'actions/setup-node@v7.0.0' (SHA:820762786026740c76f36085b0efc47a31fe5020)
+2026-10-06T17:34:06.3665777Z Download action repository 'actions/setup-python@v7.0.0' (SHA:5fda3b95a4ea91299a34e894583c3862153e4b97)
+2026-10-06T17:34:06.6584971Z Complete job name: server (windows-latest)
+2026-10-06T17:34:06.8414828Z ##[group]Run actions/checkout@v7.0.1
+2026-10-06T17:34:06.8416083Z with:
+2026-10-06T17:34:06.8416612Z   repository: peppone-choi/OpenHOI4
+2026-10-06T17:34:06.8421634Z   token: ***
+2026-10-06T17:34:06.8422026Z   ssh-strict: true
+2026-10-06T17:34:06.8422421Z   ssh-user: git
+2026-10-06T17:34:06.8422808Z   persist-credentials: true
+2026-10-06T17:34:06.8423245Z   clean: true
+2026-10-06T17:34:06.8423637Z   sparse-checkout-cone-mode: true
+2026-10-06T17:34:06.8424107Z   fetch-depth: 1
+2026-10-06T17:34:06.8424492Z   fetch-tags: false
+2026-10-06T17:34:06.8424888Z   show-progress: true
+2026-10-06T17:34:06.8425284Z   lfs: false
+2026-10-06T17:34:06.8425646Z   submodules: false
+2026-10-06T17:34:06.8426037Z   set-safe-directory: true
+2026-10-06T17:34:06.8426499Z   allow-unsafe-pr-checkout: false
+2026-10-06T17:34:06.8427223Z ##[endgroup]
+2026-10-06T17:34:07.0101142Z Syncing repository: peppone-choi/OpenHOI4
+2026-10-06T17:34:07.0103026Z ##[group]Getting Git version info
+2026-10-06T17:34:07.0103732Z Working directory is 'D:\a\OpenHOI4\OpenHOI4'
+2026-10-06T17:34:07.1143232Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-10-06T17:34:07.5645919Z git version 2.55.0.windows.5
+2026-10-06T17:34:07.5701158Z ##[endgroup]
+2026-10-06T17:34:07.5719991Z Temporarily overriding HOME='D:\a\_temp\1ac7b0eb-06d7-4df8-aa88-eea4c2dc0961' before making global git config changes
+2026-10-06T17:34:07.5722499Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-06T17:34:07.5732096Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\OpenHOI4\OpenHOI4
+2026-10-06T17:34:07.6749565Z Deleting the contents of 'D:\a\OpenHOI4\OpenHOI4'
+2026-10-06T17:34:07.6754537Z ##[group]Determining repository object format
+2026-10-06T17:34:07.6757005Z ##[endgroup]
+2026-10-06T17:34:07.6760730Z ##[group]Initializing the repository
+2026-10-06T17:34:07.6766080Z [command]"C:\Program Files\Git\bin\git.exe" init D:\a\OpenHOI4\OpenHOI4
+2026-10-06T17:34:07.7781177Z Initialized empty Git repository in D:/a/OpenHOI4/OpenHOI4/.git/
+2026-10-06T17:34:07.7828012Z [command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/peppone-choi/OpenHOI4
+2026-10-06T17:34:07.8569996Z ##[endgroup]
+2026-10-06T17:34:07.8571401Z ##[group]Disabling automatic garbage collection
+2026-10-06T17:34:07.8579344Z [command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+2026-10-06T17:34:07.8890662Z ##[endgroup]
+2026-10-06T17:34:07.8892018Z ##[group]Setting up auth
+2026-10-06T17:34:07.8892704Z Removing SSH command configuration
+2026-10-06T17:34:07.8902705Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-10-06T17:34:07.9211166Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-10-06T17:34:10.0763454Z Removing HTTP extra header
+2026-10-06T17:34:10.0776239Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-06T17:34:10.1080911Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-10-06T17:34:10.6562810Z Removing includeIf entries pointing to credentials config files
+2026-10-06T17:34:10.6573558Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-06T17:34:10.6893889Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-10-06T17:34:11.2232543Z [command]"C:\Program Files\Git\bin\git.exe" config --file D:\a\_temp\git-credentials-603dcf8b-a669-482e-adb2-bd3aca5ce788.config http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+2026-10-06T17:34:11.2545687Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:D:/a/OpenHOI4/OpenHOI4/.git.path D:\a\_temp\git-credentials-603dcf8b-a669-482e-adb2-bd3aca5ce788.config
+2026-10-06T17:34:11.2876978Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:D:/a/OpenHOI4/OpenHOI4/.git/worktrees/*.path D:\a\_temp\git-credentials-603dcf8b-a669-482e-adb2-bd3aca5ce788.config
+2026-10-06T17:34:11.3279866Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-603dcf8b-a669-482e-adb2-bd3aca5ce788.config
+2026-10-06T17:34:11.3596391Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-603dcf8b-a669-482e-adb2-bd3aca5ce788.config
+2026-10-06T17:34:11.3906603Z ##[endgroup]
+2026-10-06T17:34:11.3907164Z ##[group]Fetching the repository
+2026-10-06T17:34:11.3918672Z [command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +9531121ee5677e43436be69364fdef4bfce2fe86:refs/remotes/origin/codex/wp08-map-rendering
+2026-10-06T17:34:22.5142407Z From https://github.com/peppone-choi/OpenHOI4
+2026-10-06T17:34:22.5143493Z  * [new ref]         9531121ee5677e43436be69364fdef4bfce2fe86 -> origin/codex/wp08-map-rendering
+2026-10-06T17:34:22.5204212Z [command]"C:\Program Files\Git\bin\git.exe" branch --list --remote origin/codex/wp08-map-rendering
+2026-10-06T17:34:22.5581218Z   origin/codex/wp08-map-rendering
+2026-10-06T17:34:22.5623032Z [command]"C:\Program Files\Git\bin\git.exe" rev-parse refs/remotes/origin/codex/wp08-map-rendering
+2026-10-06T17:34:22.5881029Z 9531121ee5677e43436be69364fdef4bfce2fe86
+2026-10-06T17:34:22.5913813Z ##[endgroup]
+2026-10-06T17:34:22.5914454Z ##[group]Determining the checkout info
+2026-10-06T17:34:22.5915645Z ##[endgroup]
+2026-10-06T17:34:22.5924153Z [command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+2026-10-06T17:34:22.6371115Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+2026-10-06T17:34:22.6670161Z ##[group]Checking out the ref
+2026-10-06T17:34:22.6683945Z [command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force -B codex/wp08-map-rendering refs/remotes/origin/codex/wp08-map-rendering
+2026-10-06T17:34:23.7170102Z Updating files:  94% (3815/4041)
+2026-10-06T17:34:23.7256074Z Updating files:  95% (3839/4041)
+2026-10-06T17:34:23.7350730Z Updating files:  96% (3880/4041)
+2026-10-06T17:34:23.9180272Z Updating files:  97% (3920/4041)
+2026-10-06T17:34:23.9310385Z Updating files:  98% (3961/4041)
+2026-10-06T17:34:23.9419387Z Updating files:  99% (4001/4041)
+2026-10-06T17:34:23.9420090Z Updating files: 100% (4041/4041)
+2026-10-06T17:34:23.9420560Z Updating files: 100% (4041/4041), done.
+2026-10-06T17:34:23.9616176Z Switched to a new branch 'codex/wp08-map-rendering'
+2026-10-06T17:34:23.9682965Z branch 'codex/wp08-map-rendering' set up to track 'origin/codex/wp08-map-rendering'.
+2026-10-06T17:34:23.9782770Z ##[endgroup]
+2026-10-06T17:34:24.0268148Z [command]"C:\Program Files\Git\bin\git.exe" log -1 --format=%H
+2026-10-06T17:34:24.0555260Z 9531121ee5677e43436be69364fdef4bfce2fe86
+2026-10-06T17:34:24.1027897Z ##[group]Run rustup toolchain install 1.99.0 --profile minimal --component rustfmt --component clippy
+2026-10-06T17:34:24.1028780Z [36;1mrustup toolchain install 1.99.0 --profile minimal --component rustfmt --component clippy[0m
+2026-10-06T17:34:24.1563807Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-06T17:34:24.1564373Z ##[endgroup]
+2026-10-06T17:34:25.2595111Z info: syncing channel updates for 1.99.0-x86_64-pc-windows-msvc
+2026-10-06T17:34:25.8781375Z info: latest update on 2026-10-01 for version 1.99.0 (b940084d7 2026-09-28)
+2026-10-06T17:34:25.8880176Z info: downloading 5 components
+2026-10-06T17:34:38.1593288Z
+2026-10-06T17:34:38.2047178Z   1.99.0-x86_64-pc-windows-msvc installed - rustc 1.99.0 (b940084d7 2026-09-28)
+2026-10-06T17:34:38.2052087Z
+2026-10-06T17:34:38.3614676Z ##[group]Run actions/setup-node@v7.0.0
+2026-10-06T17:34:38.3615012Z with:
+2026-10-06T17:34:38.3615286Z   node-version: 24.4.0
+2026-10-06T17:34:38.3615577Z   cache: npm
+2026-10-06T17:34:38.3615799Z   cache-dependency-path: client/package-lock.json
+2026-10-06T17:34:38.3616151Z   check-latest: false
+2026-10-06T17:34:38.3618905Z   token: ***
+2026-10-06T17:34:38.3619109Z   package-manager-cache: true
+2026-10-06T17:34:38.3619371Z ##[endgroup]
+2026-10-06T17:34:38.5738993Z Attempting to download 24.4.0...
+2026-10-06T17:34:39.5947326Z Acquiring 24.4.0 - x64 from https://github.com/actions/node-versions/releases/download/24.4.0-16210503505/node-24.4.0-win32-x64.7z
+2026-10-06T17:34:40.2700174Z Extracting ...
+2026-10-06T17:34:43.7573219Z Adding to the cache ...
+2026-10-06T17:34:49.6527000Z ##[group]Environment details
+2026-10-06T17:34:51.2611782Z node: v24.4.0
+2026-10-06T17:34:51.2612126Z npm: 11.4.2
+2026-10-06T17:34:51.2612387Z yarn: 1.22.22
+2026-10-06T17:34:51.2613336Z ##[endgroup]
+2026-10-06T17:34:51.3412872Z [command]C:\Windows\system32\cmd.exe /D /S /C "C:\hostedtoolcache\windows\node\24.4.0\x64\npm.cmd config get cache"
+2026-10-06T17:34:51.6288564Z C:\npm\cache
+2026-10-06T17:34:52.1813813Z Cache hit for: node-cache-Windows-x64-npm-c8fd7c5457bbb41b9b9c1b633e6d2a905ffea2ff30eea1c47886e6fc189580d2
+2026-10-06T17:34:52.6896820Z Received 82112 of 82112 (100.0%), 0.3 MBs/sec
+2026-10-06T17:34:52.6898810Z Cache Size: ~0 MB (82112 B)
+2026-10-06T17:34:52.6963277Z [command]"C:\Program Files\Git\usr\bin\tar.exe" -xf D:/a/_temp/711062d8-cab7-4d86-9b55-b27603210189/cache.tzst -P -C D:/a/OpenHOI4/OpenHOI4 --force-local --use-compress-program "zstd -d"
+2026-10-06T17:34:52.8436606Z Cache restored successfully
+2026-10-06T17:34:52.8451460Z Cache restored from key: node-cache-Windows-x64-npm-c8fd7c5457bbb41b9b9c1b633e6d2a905ffea2ff30eea1c47886e6fc189580d2
+2026-10-06T17:34:52.8800454Z ##[group]Run npm --prefix client ci
+2026-10-06T17:34:52.8800847Z [36;1mnpm --prefix client ci[0m
+2026-10-06T17:34:52.8801119Z [36;1mnpm --prefix client run build[0m
+2026-10-06T17:34:52.8876917Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-06T17:34:52.8877268Z ##[endgroup]
+2026-10-06T17:34:58.0824291Z
+2026-10-06T17:34:58.0833413Z added 103 packages, and audited 104 packages in 4s
+2026-10-06T17:34:58.0833910Z
+2026-10-06T17:34:58.0834224Z 22 packages are looking for funding
+2026-10-06T17:34:58.0834727Z   run `npm fund` for details
+2026-10-06T17:34:58.0839558Z
+2026-10-06T17:34:58.0839908Z found 0 vulnerabilities
+2026-10-06T17:35:01.0222045Z
+2026-10-06T17:35:01.0222929Z > openhoi-client@0.1.0 build
+2026-10-06T17:35:01.0223912Z > tsc --noEmit && vite build
+2026-10-06T17:35:01.0228081Z
+2026-10-06T17:35:02.1397679Z [36mvite v8.3.3 [32mbuilding client environment for production...[36m[39m
+2026-10-06T17:35:02.1534292Z transforming...
+2026-10-06T17:35:02.4174291Z ✓ 55 modules transformed.
+2026-10-06T17:35:02.5081819Z rendering chunks...
+2026-10-06T17:35:02.6936238Z computing gzip size...
+2026-10-06T17:35:02.7112179Z dist/index.html                     0.36 kB │ gzip:   0.25 kB
+2026-10-06T17:35:02.7113474Z dist/assets/index-B9cOsW2B.css      4.39 kB │ gzip:   1.57 kB
+2026-10-06T17:35:02.7115227Z dist/assets/index-B1tYOzvX.js   1,170.71 kB │ gzip: 331.20 kB
+2026-10-06T17:35:02.7115811Z
+2026-10-06T17:35:02.7119789Z [32m✓ built in 571ms[39m
+2026-10-06T17:35:02.7127293Z [33m[plugin builtin:vite-reporter]
+2026-10-06T17:35:02.7128097Z (!) Some chunks are larger than 500 kB after minification. Consider:
+2026-10-06T17:35:02.7128944Z - Using dynamic import() to code-split the application
+2026-10-06T17:35:02.7129784Z - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+2026-10-06T17:35:02.7130832Z - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+2026-10-06T17:35:03.2443424Z ##[group]Run cargo fmt --check
+2026-10-06T17:35:03.2443782Z [36;1mcargo fmt --check[0m
+2026-10-06T17:35:03.2514583Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-06T17:35:03.2514952Z ##[endgroup]
+2026-10-06T17:35:05.8622960Z ##[group]Run cargo clippy --workspace --locked -- -D warnings
+2026-10-06T17:35:05.8623477Z [36;1mcargo clippy --workspace --locked -- -D warnings[0m
+2026-10-06T17:35:05.8694308Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-06T17:35:05.8694680Z ##[endgroup]
+2026-10-06T17:35:07.1146686Z     Updating crates.io index
+2026-10-06T17:35:07.6357684Z  Downloading crates ...
+2026-10-06T17:35:07.7575442Z   Downloaded adler2 v2.0.1
+2026-10-06T17:35:07.7732196Z   Downloaded atomic-waker v1.1.2
+2026-10-06T17:35:07.7881981Z   Downloaded crypto-common v0.1.7
+2026-10-06T17:35:07.8024131Z   Downloaded block-buffer v0.10.4
+2026-10-06T17:35:07.8193192Z   Downloaded az v1.3.0
+2026-10-06T17:35:07.8371653Z   Downloaded cpufeatures v0.2.17
+2026-10-06T17:35:07.8629119Z   Downloaded futures-core v0.3.34
+2026-10-06T17:35:07.9041201Z   Downloaded futures-sink v0.3.34
+2026-10-06T17:35:07.9127534Z   Downloaded percent-encoding v2.3.2
+2026-10-06T17:35:07.9284678Z   Downloaded form_urlencoded v1.2.2
+2026-10-06T17:35:07.9412997Z   Downloaded futures-task v0.3.34
+2026-10-06T17:35:07.9539025Z   Downloaded cfg-if v1.0.5
+2026-10-06T17:35:07.9679471Z   Downloaded embedded-io v0.4.0
+2026-10-06T17:35:07.9879045Z   Downloaded mime v0.3.17
+2026-10-06T17:35:07.9998017Z   Downloaded ref-cast-impl v1.0.27
+2026-10-06T17:35:08.0077284Z   Downloaded tower-layer v0.3.3
+2026-10-06T17:35:09.2061072Z   Downloaded http-body v1.1.0
+2026-10-06T17:35:09.2231198Z   Downloaded generic-array v0.14.7
+2026-10-06T17:35:09.2387799Z   Downloaded itoa v1.0.18
+2026-10-06T17:35:09.2533532Z   Downloaded serde_spanned v1.1.1
+2026-10-06T17:35:09.2620404Z   Downloaded embedded-io v0.6.1
+2026-10-06T17:35:09.2749067Z   Downloaded dyn-clone v1.0.20
+2026-10-06T17:35:09.2921353Z   Downloaded equivalent v1.0.2
+2026-10-06T17:35:09.3070025Z   Downloaded httpdate v1.0.3
+2026-10-06T17:35:09.3182469Z   Downloaded version_check v0.9.5
+2026-10-06T17:35:09.3295869Z   Downloaded winapi-util v0.1.11
+2026-10-06T17:35:09.3485793Z   Downloaded serde_urlencoded v0.7.1
+2026-10-06T17:35:09.3642827Z   Downloaded sync_wrapper v1.0.2
+2026-10-06T17:35:09.3732388Z   Downloaded ref-cast v1.0.27
+2026-10-06T17:35:09.4137536Z   Downloaded tokio-macros v2.7.2
+2026-10-06T17:35:09.4232964Z   Downloaded windows-link v0.2.1
+2026-10-06T17:35:09.4367295Z   Downloaded tower-service v0.3.3
+2026-10-06T17:35:09.4494722Z   Downloaded axum-core v0.5.6
+2026-10-06T17:35:09.4771914Z   Downloaded autocfg v1.5.1
+2026-10-06T17:35:09.5001136Z   Downloaded sha1 v0.10.7
+2026-10-06T17:35:09.5182606Z   Downloaded cobs v0.3.0
+2026-10-06T17:35:09.5310620Z   Downloaded http-body-util v0.1.5
+2026-10-06T17:35:09.5567925Z   Downloaded rand_core v0.9.5
+2026-10-06T17:35:09.5685299Z   Downloaded toml_datetime v1.1.1+spec-1.1.0
+2026-10-06T17:35:09.5787214Z   Downloaded pin-project-lite v0.2.17
+2026-10-06T17:35:09.6631707Z   Downloaded ppv-lite86 v0.2.21
+2026-10-06T17:35:09.6841006Z   Downloaded fdeflate v0.3.7
+2026-10-06T17:35:09.7018955Z   Downloaded rand_chacha v0.9.0
+2026-10-06T17:35:09.7160824Z   Downloaded serde_derive_internals v0.30.0
+2026-10-06T17:35:09.7318920Z   Downloaded quote v1.0.47
+2026-10-06T17:35:09.7827130Z   Downloaded ts-rs-macros v12.0.1
+2026-10-06T17:35:10.2212160Z   Downloaded digest v0.10.7
+2026-10-06T17:35:10.2650893Z   Downloaded rand_chacha v0.10.0
+2026-10-06T17:35:10.2818686Z   Downloaded rand_core v0.10.1
+2026-10-06T17:35:10.2980451Z   Downloaded serde_path_to_error v0.1.20
+2026-10-06T17:35:10.3118244Z   Downloaded simd-adler32 v0.3.10
+2026-10-06T17:35:10.3356961Z   Downloaded slab v0.4.12
+2026-10-06T17:35:10.3481894Z   Downloaded termcolor v1.4.1
+2026-10-06T17:35:10.3623714Z   Downloaded thiserror-impl v2.0.21
+2026-10-06T17:35:10.3764669Z   Downloaded toml_writer v1.1.2+spec-1.1.0
+2026-10-06T17:35:10.3871481Z   Downloaded rmp v0.8.15
+2026-10-06T17:35:10.4334261Z   Downloaded rmp-serde v1.3.1
+2026-10-06T17:35:10.4487881Z   Downloaded semver v1.0.28
+2026-10-06T17:35:10.4750545Z   Downloaded thiserror v2.0.21
+2026-10-06T17:35:10.5506339Z   Downloaded tokio-tungstenite v0.29.0
+2026-10-06T17:35:10.5745194Z   Downloaded unicode-ident v1.0.26
+2026-10-06T17:35:10.6005656Z   Downloaded zmij v1.0.23
+2026-10-06T17:35:10.6145967Z   Downloaded crc32fast v1.5.2
+2026-10-06T17:35:10.6397009Z   Downloaded data-encoding v2.11.1
+2026-10-06T17:35:10.6487995Z   Downloaded futures-channel v0.3.34
+2026-10-06T17:35:10.6657579Z   Downloaded matchit v0.8.4
+2026-10-06T17:35:10.6852821Z   Downloaded schemars_derive v1.2.2
+2026-10-06T17:35:10.7036343Z   Downloaded smallvec v1.16.2
+2026-10-06T17:35:10.7131378Z   Downloaded toml_parser v1.1.3+spec-1.1.0
+2026-10-06T17:35:10.7356585Z   Downloaded bitflags v2.13.2
+2026-10-06T17:35:10.7799759Z   Downloaded serde_core v1.0.229
+2026-10-06T17:35:10.8378165Z   Downloaded bytemuck v1.25.2
+2026-10-06T17:35:10.8728033Z   Downloaded httparse v1.10.1
+2026-10-06T17:35:10.8908105Z   Downloaded log v0.4.34
+2026-10-06T17:35:10.9077877Z   Downloaded ts-rs v12.0.1
+2026-10-06T17:35:10.9702687Z   Downloaded getrandom v0.3.4
+2026-10-06T17:35:11.0006664Z   Downloaded half v2.7.1
+2026-10-06T17:35:11.0246878Z   Downloaded socket2 v0.6.5
+2026-10-06T17:35:11.0367001Z   Downloaded toml v1.1.6+spec-1.1.0
+2026-10-06T17:35:11.0805663Z   Downloaded tungstenite v0.29.0
+2026-10-06T17:35:11.1131291Z   Downloaded serde_derive v1.0.229
+2026-10-06T17:35:11.1416508Z   Downloaded base64 v0.22.1
+2026-10-06T17:35:11.1755741Z   Downloaded bytes v1.12.1
+2026-10-06T17:35:12.1935529Z   Downloaded miniz_oxide v0.8.9
+2026-10-06T17:35:12.2130942Z   Downloaded miniz_oxide v0.9.1
+2026-10-06T17:35:12.2301356Z   Downloaded num-traits v0.2.19
+2026-10-06T17:35:12.2578197Z   Downloaded postcard v1.1.3
+2026-10-06T17:35:12.2776925Z   Downloaded proc-macro2 v1.0.107
+2026-10-06T17:35:12.3088418Z   Downloaded ryu v1.0.23
+2026-10-06T17:35:12.3391795Z   Downloaded serde v1.0.229
+2026-10-06T17:35:12.3783283Z   Downloaded flate2 v1.1.10
+2026-10-06T17:35:12.4379612Z   Downloaded mio v1.2.4
+2026-10-06T17:35:12.4953693Z   Downloaded typenum v1.20.1
+2026-10-06T17:35:12.5264441Z   Downloaded zlib-rs v0.6.8
+2026-10-06T17:35:13.0404550Z   Downloaded http v1.5.0
+2026-10-06T17:35:13.0690710Z   Downloaded memchr v2.8.3
+2026-10-06T17:35:13.1134771Z   Downloaded rand v0.9.5
+2026-10-06T17:35:13.1451592Z   Downloaded schemars v1.2.2
+2026-10-06T17:35:13.3266866Z   Downloaded tower v0.5.3
+2026-10-06T17:35:13.4258231Z   Downloaded indexmap v2.14.2
+2026-10-06T17:35:13.4586671Z   Downloaded hashbrown v0.17.1
+2026-10-06T17:35:13.4975007Z   Downloaded hyper-util v0.1.21
+2026-10-06T17:35:13.5465097Z   Downloaded png v0.18.1
+2026-10-06T17:35:13.5772042Z   Downloaded zerocopy-derive v0.8.60
+2026-10-06T17:35:13.7191091Z   Downloaded axum v0.8.9
+2026-10-06T17:35:13.7917282Z   Downloaded hyper v1.11.1
+2026-10-06T17:35:13.8477878Z   Downloaded serde_json v1.0.151
+2026-10-06T17:35:13.9102894Z   Downloaded futures-util v0.3.34
+2026-10-06T17:35:15.6658602Z   Downloaded winnow v1.0.4
+2026-10-06T17:35:15.7652712Z   Downloaded fixed v1.31.0
+2026-10-06T17:35:15.8224003Z   Downloaded syn v2.0.119
+2026-10-06T17:35:15.9027887Z   Downloaded syn v3.0.6
+2026-10-06T17:35:15.9981296Z   Downloaded zerocopy v0.8.60
+2026-10-06T17:35:16.2175047Z   Downloaded tokio v1.53.2
+2026-10-06T17:35:16.6730002Z   Downloaded windows-sys v0.61.2
+2026-10-06T17:35:18.7553576Z    Compiling proc-macro2 v1.0.107
+2026-10-06T17:35:18.7554278Z    Compiling quote v1.0.47
+2026-10-06T17:35:18.7555045Z    Compiling unicode-ident v1.0.26
+2026-10-06T17:35:18.7555561Z    Compiling serde_core v1.0.229
+2026-10-06T17:35:18.8892281Z     Checking cfg-if v1.0.5
+2026-10-06T17:35:18.9583750Z     Checking itoa v1.0.18
+2026-10-06T17:35:19.0729616Z    Compiling zerocopy v0.8.60
+2026-10-06T17:35:21.7917114Z     Checking typenum v1.20.1
+2026-10-06T17:35:21.8258362Z    Compiling serde v1.0.229
+2026-10-06T17:35:22.2479036Z    Compiling thiserror v2.0.21
+2026-10-06T17:35:23.1908018Z    Compiling syn v3.0.6
+2026-10-06T17:35:23.1956688Z    Compiling syn v2.0.119
+2026-10-06T17:35:23.2680711Z     Checking simd-adler32 v0.3.10
+2026-10-06T17:35:23.4372018Z    Compiling zmij v1.0.23
+2026-10-06T17:35:23.8016462Z     Checking bytes v1.12.1
+2026-10-06T17:35:24.4723946Z    Compiling crc32fast v1.5.2
+2026-10-06T17:35:24.7939649Z     Checking adler2 v2.0.1
+2026-10-06T17:35:24.8811822Z    Compiling serde_json v1.0.151
+2026-10-06T17:35:25.1531761Z     Checking memchr v2.8.3
+2026-10-06T17:35:25.3995640Z    Compiling ref-cast v1.0.27
+2026-10-06T17:35:25.7629965Z    Compiling fixed v1.31.0
+2026-10-06T17:35:25.7995180Z    Compiling version_check v0.9.5
+2026-10-06T17:35:26.2167376Z    Compiling generic-array v0.14.7
+2026-10-06T17:35:26.6141009Z    Compiling serde_derive_internals v0.30.0
+2026-10-06T17:35:27.3473253Z     Checking miniz_oxide v0.9.1
+2026-10-06T17:35:27.9198977Z     Checking pin-project-lite v0.2.17
+2026-10-06T17:35:27.9983818Z     Checking bytemuck v1.25.2
+2026-10-06T17:35:28.1747009Z     Checking az v1.3.0
+2026-10-06T17:35:28.2658851Z     Checking rand_core v0.10.1
+2026-10-06T17:35:28.4050736Z     Checking winnow v1.0.4
+2026-10-06T17:35:28.8452285Z     Checking futures-core v0.3.34
+2026-10-06T17:35:28.9596188Z     Checking windows-link v0.2.1
+2026-10-06T17:35:29.0115429Z     Checking windows-sys v0.61.2
+2026-10-06T17:35:29.5154046Z     Checking toml_parser v1.1.3+spec-1.1.0
+2026-10-06T17:35:29.6684568Z    Compiling serde_derive v1.0.229
+2026-10-06T17:35:29.9954559Z    Compiling thiserror-impl v2.0.21
+2026-10-06T17:35:30.9203721Z    Compiling zerocopy-derive v0.8.60
+2026-10-06T17:35:32.1961963Z     Checking cobs v0.3.0
+2026-10-06T17:35:32.3280756Z    Compiling ref-cast-impl v1.0.27
+2026-10-06T17:35:32.8363193Z    Compiling schemars_derive v1.2.2
+2026-10-06T17:35:33.1405272Z     Checking flate2 v1.1.10
+2026-10-06T17:35:33.6696126Z     Checking serde_spanned v1.1.1
+2026-10-06T17:35:33.7939908Z     Checking toml_datetime v1.1.1+spec-1.1.0
+2026-10-06T17:35:34.0540697Z     Checking miniz_oxide v0.8.9
+2026-10-06T17:35:34.5858471Z     Checking http v1.5.0
+2026-10-06T17:35:35.5033676Z     Checking fdeflate v0.3.7
+2026-10-06T17:35:35.5464773Z     Checking semver v1.0.28
+2026-10-06T17:35:35.5970873Z     Checking postcard v1.1.3
+2026-10-06T17:35:35.7782890Z     Checking dyn-clone v1.0.20
+2026-10-06T17:35:35.8058274Z     Checking toml_writer v1.1.2+spec-1.1.0
+2026-10-06T17:35:35.8633284Z    Compiling getrandom v0.3.4
+2026-10-06T17:35:36.0098145Z     Checking bitflags v2.13.2
+2026-10-06T17:35:36.0396815Z     Checking toml v1.1.6+spec-1.1.0
+2026-10-06T17:35:36.2062730Z     Checking png v0.18.1
+2026-10-06T17:35:36.2969768Z     Checking schemars v1.2.2
+2026-10-06T17:35:37.2489584Z    Compiling httparse v1.10.1
+2026-10-06T17:35:37.3989690Z     Checking mio v1.2.4
+2026-10-06T17:35:37.7329224Z     Checking socket2 v0.6.5
+2026-10-06T17:35:37.8861827Z    Compiling tokio-macros v2.7.2
+2026-10-06T17:35:37.8865181Z    Compiling autocfg v1.5.1
+2026-10-06T17:35:38.4565594Z    Compiling num-traits v0.2.19
+2026-10-06T17:35:38.7327448Z     Checking block-buffer v0.10.4
+2026-10-06T17:35:38.8278897Z     Checking tokio v1.53.2
+2026-10-06T17:35:38.8623863Z     Checking crypto-common v0.1.7
+2026-10-06T17:35:39.2482661Z     Checking rand_core v0.9.5
+2026-10-06T17:35:39.4358656Z     Checking http-body v1.1.0
+2026-10-06T17:35:39.5538304Z     Checking digest v0.10.7
+2026-10-06T17:35:39.9437838Z    Compiling winapi-util v0.1.11
+2026-10-06T17:35:40.0446734Z     Checking ppv-lite86 v0.2.21
+2026-10-06T17:35:40.1225827Z     Checking half v2.7.1
+2026-10-06T17:35:40.1933772Z     Checking cpufeatures v0.2.17
+2026-10-06T17:35:40.2471181Z     Checking tower-service v0.3.3
+2026-10-06T17:35:40.3426381Z     Checking slab v0.4.12
+2026-10-06T17:35:40.5095097Z     Checking rand_chacha v0.10.0
+2026-10-06T17:35:40.5150851Z     Checking rand_chacha v0.9.0
+2026-10-06T17:35:40.6896573Z     Checking futures-sink v0.3.34
+2026-10-06T17:35:40.7343288Z     Checking futures-task v0.3.34
+2026-10-06T17:35:40.7610777Z     Checking rand v0.9.5
+2026-10-06T17:35:40.8909606Z     Checking futures-util v0.3.34
+2026-10-06T17:35:41.5182534Z     Checking sha1 v0.10.7
+2026-10-06T17:35:41.6869952Z    Compiling termcolor v1.4.1
+2026-10-06T17:35:43.1827297Z     Checking futures-channel v0.3.34
+2026-10-06T17:35:43.3560350Z     Checking percent-encoding v2.3.2
+2026-10-06T17:35:43.4237318Z     Checking httpdate v1.0.3
+2026-10-06T17:35:43.4845733Z     Checking smallvec v1.16.2
+2026-10-06T17:35:43.5620051Z     Checking sync_wrapper v1.0.2
+2026-10-06T17:35:43.6660214Z     Checking atomic-waker v1.1.2
+2026-10-06T17:35:43.7007830Z     Checking data-encoding v2.11.1
+2026-10-06T17:35:43.7401796Z     Checking tower-layer v0.3.3
+2026-10-06T17:35:43.8040046Z     Checking log v0.4.34
+2026-10-06T17:35:43.9186758Z     Checking hyper v1.11.1
+2026-10-06T17:35:43.9695217Z     Checking form_urlencoded v1.2.2
+2026-10-06T17:35:44.0588901Z     Checking tungstenite v0.29.0
+2026-10-06T17:35:44.0854974Z     Checking rmp v0.8.15
+2026-10-06T17:35:44.4252503Z    Compiling ts-rs-macros v12.0.1
+2026-10-06T17:35:44.7088102Z     Checking http-body-util v0.1.5
+2026-10-06T17:35:44.7807661Z     Checking mime v0.3.17
+2026-10-06T17:35:44.9738328Z     Checking ryu v1.0.23
+2026-10-06T17:35:45.0258000Z     Checking axum-core v0.5.6
+2026-10-06T17:35:45.1172329Z     Checking serde_urlencoded v0.7.1
+2026-10-06T17:35:45.3988585Z     Checking hyper-util v0.1.21
+2026-10-06T17:35:45.7288610Z     Checking tokio-tungstenite v0.29.0
+2026-10-06T17:35:46.0507994Z     Checking rmp-serde v1.3.1
+2026-10-06T17:35:46.5667731Z     Checking tower v0.5.3
+2026-10-06T17:35:46.8063174Z     Checking serde_path_to_error v0.1.20
+2026-10-06T17:35:47.1044103Z     Checking base64 v0.22.1
+2026-10-06T17:35:47.1198092Z     Checking ts-rs v12.0.1
+2026-10-06T17:35:47.2314569Z     Checking matchit v0.8.4
+2026-10-06T17:35:47.4190794Z    Compiling oh_server v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_server)
+2026-10-06T17:35:47.4795822Z     Checking axum v0.8.9
+2026-10-06T17:35:51.3888365Z     Checking oh_core v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_core)
+2026-10-06T17:35:51.5501620Z     Checking oh_data v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_data)
+2026-10-06T17:35:52.1405064Z     Checking oh_sim v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_sim)
+2026-10-06T17:35:52.4368319Z     Checking oh_save v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_save)
+2026-10-06T17:35:52.4369149Z     Checking oh_ai v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_ai)
+2026-10-06T17:35:52.4369926Z     Checking oh_proto v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_proto)
+2026-10-06T17:35:52.4895655Z     Checking oh_cli v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_cli)
+2026-10-06T17:35:53.9266006Z     Finished `dev` profile [unoptimized + debuginfo] target(s) in 46.87s
+2026-10-06T17:35:54.1082261Z ##[group]Run cargo build --workspace --locked
+2026-10-06T17:35:54.1082675Z [36;1mcargo build --workspace --locked[0m
+2026-10-06T17:35:54.1153940Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-06T17:35:54.1154310Z ##[endgroup]
+2026-10-06T17:35:54.7260688Z    Compiling cfg-if v1.0.5
+2026-10-06T17:35:54.7261431Z    Compiling serde_core v1.0.229
+2026-10-06T17:35:54.7262231Z    Compiling itoa v1.0.18
+2026-10-06T17:35:54.7271144Z    Compiling zerocopy v0.8.60
+2026-10-06T17:35:54.7852902Z    Compiling typenum v1.20.1
+2026-10-06T17:35:54.9769800Z    Compiling windows-link v0.2.1
+2026-10-06T17:35:55.0347733Z    Compiling thiserror v2.0.21
+2026-10-06T17:35:55.1550273Z    Compiling simd-adler32 v0.3.10
+2026-10-06T17:35:55.4538134Z    Compiling bytes v1.12.1
+2026-10-06T17:35:55.9915373Z    Compiling adler2 v2.0.1
+2026-10-06T17:35:56.1299107Z    Compiling zmij v1.0.23
+2026-10-06T17:35:56.5857835Z    Compiling memchr v2.8.3
+2026-10-06T17:35:56.6277431Z    Compiling crc32fast v1.5.2
+2026-10-06T17:35:56.9462120Z    Compiling miniz_oxide v0.9.1
+2026-10-06T17:35:57.8316001Z    Compiling cobs v0.3.0
+2026-10-06T17:35:58.1083751Z    Compiling serde v1.0.229
+2026-10-06T17:35:58.2758523Z    Compiling serde_json v1.0.151
+2026-10-06T17:35:58.3592034Z    Compiling pin-project-lite v0.2.17
+2026-10-06T17:35:58.4652641Z    Compiling winnow v1.0.4
+2026-10-06T17:35:59.0656899Z    Compiling bytemuck v1.25.2
+2026-10-06T17:35:59.0668630Z    Compiling rand_core v0.10.1
+2026-10-06T17:35:59.2306680Z    Compiling futures-core v0.3.34
+2026-10-06T17:35:59.3400200Z    Compiling az v1.3.0
+2026-10-06T17:35:59.3990904Z    Compiling toml_parser v1.1.3+spec-1.1.0
+2026-10-06T17:36:00.7369141Z    Compiling postcard v1.1.3
+2026-10-06T17:36:00.8002355Z    Compiling ref-cast v1.0.27
+2026-10-06T17:36:00.8863440Z    Compiling toml_datetime v1.1.1+spec-1.1.0
+2026-10-06T17:36:01.1315857Z    Compiling ppv-lite86 v0.2.21
+2026-10-06T17:36:01.2175047Z    Compiling half v2.7.1
+2026-10-06T17:36:01.2619313Z    Compiling serde_spanned v1.1.1
+2026-10-06T17:36:01.3739437Z    Compiling flate2 v1.1.10
+2026-10-06T17:36:01.4038633Z    Compiling http v1.5.0
+2026-10-06T17:36:01.6135948Z    Compiling rand_chacha v0.10.0
+2026-10-06T17:36:01.6556987Z    Compiling fixed v1.31.0
+2026-10-06T17:36:02.0337905Z    Compiling miniz_oxide v0.8.9
+2026-10-06T17:36:02.0778157Z    Compiling fdeflate v0.3.7
+2026-10-06T17:36:02.8536511Z    Compiling windows-sys v0.61.2
+2026-10-06T17:36:03.2784217Z    Compiling semver v1.0.28
+2026-10-06T17:36:03.3119691Z    Compiling bitflags v2.13.2
+2026-10-06T17:36:03.6323024Z    Compiling toml_writer v1.1.2+spec-1.1.0
+2026-10-06T17:36:03.8683880Z    Compiling dyn-clone v1.0.20
+2026-10-06T17:36:03.8783800Z    Compiling toml v1.1.6+spec-1.1.0
+2026-10-06T17:36:04.0173958Z    Compiling schemars v1.2.2
+2026-10-06T17:36:07.2337600Z    Compiling png v0.18.1
+2026-10-06T17:36:07.6145617Z    Compiling generic-array v0.14.7
+2026-10-06T17:36:08.0277474Z    Compiling getrandom v0.3.4
+2026-10-06T17:36:08.2536954Z    Compiling mio v1.2.4
+2026-10-06T17:36:08.5750529Z    Compiling socket2 v0.6.5
+2026-10-06T17:36:09.4381798Z    Compiling tokio v1.53.2
+2026-10-06T17:36:09.8125927Z    Compiling block-buffer v0.10.4
+2026-10-06T17:36:09.8578976Z    Compiling crypto-common v0.1.7
+2026-10-06T17:36:09.9831406Z    Compiling rand_core v0.9.5
+2026-10-06T17:36:09.9834636Z    Compiling httparse v1.10.1
+2026-10-06T17:36:10.2478781Z    Compiling http-body v1.1.0
+2026-10-06T17:36:10.4636139Z    Compiling rand_chacha v0.9.0
+2026-10-06T17:36:11.1757757Z    Compiling digest v0.10.7
+2026-10-06T17:36:11.4233930Z    Compiling futures-sink v0.3.34
+2026-10-06T17:36:11.5106927Z    Compiling futures-task v0.3.34
+2026-10-06T17:36:11.7472616Z    Compiling tower-service v0.3.3
+2026-10-06T17:36:11.8362955Z    Compiling cpufeatures v0.2.17
+2026-10-06T17:36:11.8996318Z    Compiling slab v0.4.12
+2026-10-06T17:36:12.0846831Z    Compiling futures-util v0.3.34
+2026-10-06T17:36:12.3376070Z    Compiling winapi-util v0.1.11
+2026-10-06T17:36:12.5951097Z    Compiling termcolor v1.4.1
+2026-10-06T17:36:13.1236418Z    Compiling sha1 v0.10.7
+2026-10-06T17:36:13.4334387Z    Compiling num-traits v0.2.19
+2026-10-06T17:36:14.6670010Z    Compiling rand v0.9.5
+2026-10-06T17:36:15.6339703Z    Compiling oh_core v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_core)
+2026-10-06T17:36:15.6833029Z    Compiling futures-channel v0.3.34
+2026-10-06T17:36:15.9229996Z    Compiling oh_data v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_data)
+2026-10-06T17:36:15.9733963Z    Compiling sync_wrapper v1.0.2
+2026-10-06T17:36:16.0732048Z    Compiling smallvec v1.16.2
+2026-10-06T17:36:16.3419702Z    Compiling atomic-waker v1.1.2
+2026-10-06T17:36:16.4710108Z    Compiling log v0.4.34
+2026-10-06T17:36:16.5587160Z    Compiling data-encoding v2.11.1
+2026-10-06T17:36:16.7085404Z    Compiling tower-layer v0.3.3
+2026-10-06T17:36:16.9101516Z    Compiling httpdate v1.0.3
+2026-10-06T17:36:17.3032538Z    Compiling percent-encoding v2.3.2
+2026-10-06T17:36:17.5746472Z    Compiling oh_sim v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_sim)
+2026-10-06T17:36:18.5503490Z    Compiling oh_ai v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_ai)
+2026-10-06T17:36:18.6137480Z    Compiling oh_save v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_save)
+2026-10-06T17:36:18.6759830Z    Compiling form_urlencoded v1.2.2
+2026-10-06T17:36:18.9150967Z    Compiling hyper v1.11.1
+2026-10-06T17:36:19.3887300Z    Compiling tungstenite v0.29.0
+2026-10-06T17:36:20.8846237Z    Compiling rmp v0.8.15
+2026-10-06T17:36:21.3961460Z    Compiling ts-rs-macros v12.0.1
+2026-10-06T17:36:21.4374610Z    Compiling http-body-util v0.1.5
+2026-10-06T17:36:21.6158375Z    Compiling mime v0.3.17
+2026-10-06T17:36:21.7958038Z    Compiling ryu v1.0.23
+2026-10-06T17:36:22.0594426Z    Compiling serde_urlencoded v0.7.1
+2026-10-06T17:36:22.0928781Z    Compiling axum-core v0.5.6
+2026-10-06T17:36:22.3976992Z    Compiling rmp-serde v1.3.1
+2026-10-06T17:36:23.0775476Z    Compiling tokio-tungstenite v0.29.0
+2026-10-06T17:36:23.4740501Z    Compiling hyper-util v0.1.21
+2026-10-06T17:36:23.7583620Z    Compiling tower v0.5.3
+2026-10-06T17:36:23.9372667Z    Compiling serde_path_to_error v0.1.20
+2026-10-06T17:36:24.1305278Z    Compiling ts-rs v12.0.1
+2026-10-06T17:36:24.3912225Z    Compiling base64 v0.22.1
+2026-10-06T17:36:24.5497522Z    Compiling oh_server v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_server)
+2026-10-06T17:36:24.6687276Z    Compiling matchit v0.8.4
+2026-10-06T17:36:24.9773321Z    Compiling oh_proto v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_proto)
+2026-10-06T17:36:25.0058217Z    Compiling axum v0.8.9
+2026-10-06T17:36:25.3204457Z    Compiling oh_cli v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_cli)
+2026-10-06T17:36:33.1341138Z     Finished `dev` profile [unoptimized + debuginfo] target(s) in 38.69s
+2026-10-06T17:36:33.2721421Z ##[group]Run cargo test --workspace --locked
+2026-10-06T17:36:33.2731688Z [36;1mcargo test --workspace --locked[0m
+2026-10-06T17:36:33.2808734Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-06T17:36:33.2809143Z ##[endgroup]
+2026-10-06T17:36:33.6937015Z  Downloading crates ...
+2026-10-06T17:36:33.7641623Z   Downloaded rand_xorshift v0.4.0
+2026-10-06T17:36:33.7761727Z   Downloaded unarray v0.1.4
+2026-10-06T17:36:33.7905236Z   Downloaded regex-syntax v0.8.11
+2026-10-06T17:36:33.8298013Z   Downloaded proptest v1.11.0
+2026-10-06T17:36:34.0542705Z    Compiling rand_xorshift v0.4.0
+2026-10-06T17:36:34.0545666Z    Compiling unarray v0.1.4
+2026-10-06T17:36:34.0546883Z    Compiling regex-syntax v0.8.11
+2026-10-06T17:36:34.0576652Z    Compiling oh_cli v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_cli)
+2026-10-06T17:36:34.2429996Z    Compiling oh_server v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_server)
+2026-10-06T17:36:35.3522099Z    Compiling oh_proto v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_proto)
+2026-10-06T17:36:37.3680261Z    Compiling proptest v1.11.0
+2026-10-06T17:36:39.7841734Z    Compiling oh_save v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_save)
+2026-10-06T17:36:40.0274405Z    Compiling oh_ai v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_ai)
+2026-10-06T17:36:40.1246709Z    Compiling oh_data v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_data)
+2026-10-06T17:36:44.2095946Z    Compiling oh_core v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_core)
+2026-10-06T17:36:44.2097118Z    Compiling oh_sim v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_sim)
+2026-10-06T17:36:47.3346970Z     Finished `test` profile [unoptimized + debuginfo] target(s) in 13.70s
+2026-10-06T17:36:47.3478139Z      Running unittests src\lib.rs (target\debug\deps\oh_ai-ae4500f9ef8e5437.exe)
+2026-10-06T17:36:47.3587531Z
+2026-10-06T17:36:47.3589039Z running 0 tests
+2026-10-06T17:36:47.3589296Z
+2026-10-06T17:36:47.3589946Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:36:47.3590338Z
+2026-10-06T17:36:47.3609911Z      Running unittests src\lib.rs (target\debug\deps\oh_cli-a0cb0317792a7fed.exe)
+2026-10-06T17:36:47.3726057Z
+2026-10-06T17:36:47.3726633Z running 0 tests
+2026-10-06T17:36:47.3726881Z
+2026-10-06T17:36:47.3727479Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:36:47.3728098Z
+2026-10-06T17:36:47.3748479Z      Running unittests src\main.rs (target\debug\deps\oh_cli-d9ebb4ffcd5ce356.exe)
+2026-10-06T17:36:47.3867950Z
+2026-10-06T17:36:47.3868715Z running 0 tests
+2026-10-06T17:36:47.3868970Z
+2026-10-06T17:36:47.3869572Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:36:47.3870207Z
+2026-10-06T17:36:47.3890747Z      Running tests\run.rs (target\debug\deps\run-f23b244fb2839203.exe)
+2026-10-06T17:36:47.4010673Z
+2026-10-06T17:36:47.4011139Z running 6 tests
+2026-10-06T17:36:47.4069846Z test library_loads_data_epoch_and_rejects_bad_or_nonempty_scenario ... ok
+2026-10-06T17:36:47.4165144Z test m0_load_boundary_and_help_identify_unique_self_contained_pack ... ok
+2026-10-06T17:36:47.4438391Z test req_gen_06_ac_m0_02_exact_ticks_and_repeated_hash ... ok
+2026-10-06T17:36:47.4704211Z test req_gen_06_days_path_is_exact_and_zero_ticks_stays_initial ... ok
+2026-10-06T17:36:47.4899694Z test m1_explicit_pack_uses_national_state_and_preserves_m0_default ... ok
+2026-10-06T17:36:47.4922115Z test cli_rejects_ambiguous_missing_invalid_and_unimplemented_inputs ... ok
+2026-10-06T17:36:47.4922595Z
+2026-10-06T17:36:47.4922948Z test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.09s
+2026-10-06T17:36:47.4923302Z
+2026-10-06T17:36:47.4941810Z      Running unittests src\lib.rs (target\debug\deps\oh_core-5bcd1590d50e8e9c.exe)
+2026-10-06T17:36:47.5040427Z
+2026-10-06T17:36:47.5040906Z running 0 tests
+2026-10-06T17:36:47.5041177Z
+2026-10-06T17:36:47.5044658Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:36:47.5045349Z
+2026-10-06T17:36:47.5059828Z      Running tests\core.rs (target\debug\deps\core-b42bcf7fad693278.exe)
+2026-10-06T17:36:47.5161314Z
+2026-10-06T17:36:47.5161756Z running 16 tests
+2026-10-06T17:36:47.5168808Z test req_gen_04_fixed_exact_arithmetic_and_rounding ... ok
+2026-10-06T17:36:47.5169583Z test req_gen_04_fixed_and_id_wire_encoding ... ok
+2026-10-06T17:36:47.5172151Z test req_gen_04_canonical_map_order_and_strict_decode ... ok
+2026-10-06T17:36:47.5173988Z test req_gen_04_fnv1a_reference_vectors_and_incremental_hash ... ok
+2026-10-06T17:36:47.5270595Z test req_gen_04_fixed_checked_arithmetic_matches_integer_reference ... ok
+2026-10-06T17:36:47.5278294Z test req_gen_04_fixed_serialization_preserves_all_bits ... ok
+2026-10-06T17:36:47.5284116Z test req_gen_04_rng_order_and_unrelated_draws_do_not_affect_entity_streams ... ok
+2026-10-06T17:36:47.5299055Z test req_gen_04_rng_tuple_fields_and_entity_domains_are_distinct ... ok
+2026-10-06T17:36:47.5303687Z test req_gen_04_serialization_errors_are_propagated ... ok
+2026-10-06T17:36:47.5409458Z test req_gen_04_typed_ids_round_trip ... ok
+2026-10-06T17:36:47.5414734Z test req_plat_02_chacha8_zero_seed_reference_vector ... ok
+2026-10-06T17:36:47.5421341Z test req_plat_02_full_diagnostic_matches_independent_reference ... ok
+2026-10-06T17:36:47.5424792Z test req_plat_02_portable_postcard_hash_vector ... ok
+2026-10-06T17:36:47.5494268Z test req_gen_04_rng_reconstruction ... ok
+2026-10-06T17:36:47.5874833Z test req_gen_04_map_permutations_are_canonical ... ok
+2026-10-06T17:36:47.6836994Z test req_gen_04_fnv_chunking_is_independent ... ok
+2026-10-06T17:36:47.6837306Z
+2026-10-06T17:36:47.6837652Z test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.17s
+2026-10-06T17:36:47.6838406Z
+2026-10-06T17:36:47.6859767Z      Running unittests src\lib.rs (target\debug\deps\oh_data-a76bf0e41ff7b2d9.exe)
+2026-10-06T17:36:47.6962250Z
+2026-10-06T17:36:47.6962646Z running 0 tests
+2026-10-06T17:36:47.6962913Z
+2026-10-06T17:36:47.6963557Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:36:47.6964257Z
+2026-10-06T17:36:47.6980175Z      Running tests\loader.rs (target\debug\deps\loader-a85c025f7ea2ae01.exe)
+2026-10-06T17:36:47.7079949Z
+2026-10-06T17:36:47.7080383Z running 12 tests
+2026-10-06T17:36:47.7118096Z test ac_m0_03_additional_io_and_schema_cases ... ok
+2026-10-06T17:36:47.7122851Z test ac_m0_03_manifest_schema_errors_have_source_locations ... ok
+2026-10-06T17:36:47.7124326Z test ac_m0_03_missing_file_has_path_and_io_diagnostic ... ok
+2026-10-06T17:36:47.7125322Z test ac_m0_03_crlf_unicode_error_location ... ok
+2026-10-06T17:36:47.7132625Z test ac_m0_03_toml_syntax_errors_have_source_locations ... ok
+2026-10-06T17:36:47.7133843Z test req_gen_02_decimal_precision_does_not_round_through_float ... ok
+2026-10-06T17:36:47.7137542Z test ac_m0_03_defines_schema_errors_have_source_locations ... ok
+2026-10-06T17:36:47.7139828Z test ac_m0_03_schema_snapshots_match_generated_types ... ok
+2026-10-06T17:36:47.7144460Z test req_gen_02_no_gameplay_defaults_in_skeleton ... ok
+2026-10-06T17:36:47.7146058Z test req_gen_02_manifest_and_data_defined_numbers ... ok
+2026-10-06T17:36:47.7152885Z test req_gen_02_values_change_with_data ... ok
+2026-10-06T17:36:47.7153569Z test req_gen_02_repeat_load_and_order_are_stable ... ok
+2026-10-06T17:36:47.7154374Z
+2026-10-06T17:36:47.7155014Z test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+2026-10-06T17:36:47.7155661Z
+2026-10-06T17:36:47.7172619Z      Running tests\map.rs (target\debug\deps\map-3383e59470dc7240.exe)
+2026-10-06T17:36:47.7276192Z
+2026-10-06T17:36:47.7276576Z running 11 tests
+2026-10-06T17:36:47.7337679Z test req_map_01_rgb_definition_and_u16_index ... ok
+2026-10-06T17:36:47.7749911Z test req_map_02_row_order_crlf_and_irrational_distance_bits ... ok
+2026-10-06T17:36:47.7877749Z test req_map_02_sorted_four_neighbor_adjacency_golden_and_overrides ... ok
+2026-10-06T17:36:47.8612675Z test req_map_01_unknown_rgb_single_pixel_missing_and_disconnected_islands ... ok
+2026-10-06T17:36:48.0008205Z test req_map_09_victory_point_definition_and_invalid_references ... ok
+2026-10-06T17:36:48.0185367Z test req_map_01_png_format_and_csv_integrity ... ok
+2026-10-06T17:36:48.0403697Z test req_map_03_states_and_references ... ok
+2026-10-06T17:36:48.0405401Z test req_map_03_toml_schema_and_registry_integrity ... ok
+2026-10-06T17:36:48.0422252Z test structural_map_schemas_match_checked_in_files ... ok
+2026-10-06T17:36:48.1139611Z test strict_csv_and_override_errors_have_exact_locations ... ok
+2026-10-06T17:36:48.1272360Z test scale_is_exact_fixed_positive_and_checked ... ok
+2026-10-06T17:36:48.1272738Z
+2026-10-06T17:36:48.1273098Z test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.40s
+2026-10-06T17:36:48.1273458Z
+2026-10-06T17:36:48.1295448Z      Running tests\national.rs (target\debug\deps\national-6cbf4e608787e554.exe)
+2026-10-06T17:36:48.1398751Z
+2026-10-06T17:36:48.1399240Z running 3 tests
+2026-10-06T17:36:48.1418780Z test req_nat_01_generated_schemas_are_current ... ok
+2026-10-06T17:36:48.1454916Z test req_nat_01_validated_data_and_references ... ok
+2026-10-06T17:36:48.3097302Z test req_nat_01_schema_ranges_and_reference_rejections_are_atomic ... ok
+2026-10-06T17:36:48.3097716Z
+2026-10-06T17:36:48.3098138Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.17s
+2026-10-06T17:36:48.3098571Z
+2026-10-06T17:36:48.3118306Z      Running unittests src\lib.rs (target\debug\deps\oh_proto-4241e7f8ed636b67.exe)
+2026-10-06T17:36:48.3221178Z
+2026-10-06T17:36:48.3221849Z running 0 tests
+2026-10-06T17:36:48.3222092Z
+2026-10-06T17:36:48.3223104Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:36:48.3223503Z
+2026-10-06T17:36:48.3238830Z      Running tests\contract.rs (target\debug\deps\contract-9e336515a2bd3a13.exe)
+2026-10-06T17:36:48.3338621Z
+2026-10-06T17:36:48.3338980Z running 3 tests
+2026-10-06T17:36:48.3350846Z test req_net_01_messagepack_roundtrip ... ok
+2026-10-06T17:36:48.3353919Z test req_net_04_generated_types_are_current ... ok
+2026-10-06T17:36:48.3393174Z test m1_actual_world_messagepack_preserves_applied_ledger_and_full_display_strings ... ok
+2026-10-06T17:36:48.3393575Z
+2026-10-06T17:36:48.3394244Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+2026-10-06T17:36:48.3394924Z
+2026-10-06T17:36:48.3417229Z      Running unittests src\lib.rs (target\debug\deps\oh_save-0c20071c33b6fb91.exe)
+2026-10-06T17:36:48.3519533Z
+2026-10-06T17:36:48.3520008Z running 0 tests
+2026-10-06T17:36:48.3520296Z
+2026-10-06T17:36:48.3520954Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:36:48.3521693Z
+2026-10-06T17:36:48.3537490Z      Running unittests src\lib.rs (target\debug\deps\oh_server-db79e4387d9ae132.exe)
+2026-10-06T17:36:48.3639888Z
+2026-10-06T17:36:48.3640290Z running 4 tests
+2026-10-06T17:36:48.3695885Z test session::tests::req_gen_05_thread_uses_simulation_and_stops_with_queued_input ... ok
+2026-10-06T17:36:48.3784531Z test map::tests::display_settings_accept_black_and_reject_missing_or_invalid_before_http ... ok
+2026-10-06T17:36:48.3788590Z test map::tests::map_metadata_matches_validated_dense_bytes_and_pack_identity ... ok
+2026-10-06T17:36:48.3799960Z test national_tests::default_host_loads_m1_and_m0_requires_its_explicit_path ... ok
+2026-10-06T17:36:48.3800405Z
+2026-10-06T17:36:48.3801234Z test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+2026-10-06T17:36:48.3801602Z
+2026-10-06T17:36:48.3831447Z      Running unittests src\main.rs (target\debug\deps\oh_server-c08c112589c01258.exe)
+2026-10-06T17:36:48.3934171Z
+2026-10-06T17:36:48.3934506Z running 0 tests
+2026-10-06T17:36:48.3935025Z
+2026-10-06T17:36:48.3935417Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:36:48.3935915Z
+2026-10-06T17:36:48.3950982Z      Running tests\startup.rs (target\debug\deps\startup-fa0859432efc18cf.exe)
+2026-10-06T17:36:48.4051300Z
+2026-10-06T17:36:48.4051622Z running 2 tests
+2026-10-06T17:36:48.4213087Z test req_net_06_port_conflict ... ok
+2026-10-06T17:36:48.4558294Z test req_net_06_help_and_invalid_options ... ok
+2026-10-06T17:36:48.4558715Z
+2026-10-06T17:36:48.4559314Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+2026-10-06T17:36:48.4560214Z
+2026-10-06T17:36:48.4577568Z      Running unittests src\lib.rs (target\debug\deps\oh_sim-c706ceb65e97f81e.exe)
+2026-10-06T17:36:48.4685419Z
+2026-10-06T17:36:48.4685897Z running 0 tests
+2026-10-06T17:36:48.4686331Z
+2026-10-06T17:36:48.4687070Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:36:48.4687721Z
+2026-10-06T17:36:48.4704367Z      Running tests\ledger.rs (target\debug\deps\ledger-bbf9f8cc27d63d64.exe)
+2026-10-06T17:36:48.4814662Z
+2026-10-06T17:36:48.4815402Z running 7 tests
+2026-10-06T17:36:48.4822488Z test req_ui_04_expiry_boundary_target_isolation_and_base_only ... ok
+2026-10-06T17:36:48.4823505Z test req_ui_04_duplicates_invalid_identifiers_and_overflow_are_errors ... ok
+2026-10-06T17:36:48.4824375Z test req_ui_04_base_add_mul_trace_and_applied_bits ... ok
+2026-10-06T17:36:48.4829466Z test req_ui_04_negative_zero_and_order_sensitive_rounding ... ok
+2026-10-06T17:36:48.4830386Z test req_ui_04_modifier_serialization_preserves_bits_and_expiry ... ok
+2026-10-06T17:36:48.5452002Z test req_ui_04_full_bit_range_matches_reference_or_checked_overflow ... ok
+2026-10-06T17:36:48.5504657Z test req_ui_04_ledger_matches_independent_reference_and_permutations ... ok
+2026-10-06T17:36:48.5505282Z
+2026-10-06T17:36:48.5506182Z test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+2026-10-06T17:36:48.5506573Z
+2026-10-06T17:36:48.5527337Z      Running tests\national.rs (target\debug\deps\national-2d5a497db3c183d5.exe)
+2026-10-06T17:36:48.5631607Z
+2026-10-06T17:36:48.5631932Z running 5 tests
+2026-10-06T17:36:48.5775607Z test m1_generic_canonical_hash_includes_world ... ok
+2026-10-06T17:36:48.5778895Z test ac_m1_03_real_infrastructure_ledger_applied_and_recomputed ... ok
+2026-10-06T17:36:48.5802202Z test m1_independent_fnv_oracle_and_every_initial_input_changes_hash ... ok
+2026-10-06T17:36:48.5811590Z test m1_expiry_input_order_and_atomic_overflow_are_authoritative ... ok
+2026-10-06T17:36:48.5812483Z test req_map_08_owner_and_controller_remain_distinct ... ok
+2026-10-06T17:36:48.5812945Z
+2026-10-06T17:36:48.5813958Z test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+2026-10-06T17:36:48.5814569Z
+2026-10-06T17:36:48.5836341Z      Running tests\scheduler.rs (target\debug\deps\scheduler-68b55eee1bc09426.exe)
+2026-10-06T17:36:48.5938842Z
+2026-10-06T17:36:48.5939120Z running 8 tests
+2026-10-06T17:36:48.5949168Z test hash_includes_seed_config_and_pending_commands ... ok
+2026-10-06T17:36:48.5950497Z test overflow_preserves_state_and_queued_commands_and_pause_still_works ... ok
+2026-10-06T17:36:48.5952398Z test calendar_leap_year_and_year_boundaries ... ok
+2026-10-06T17:36:48.5954564Z test req_time_01_pause_resume_and_five_data_driven_speeds ... ok
+2026-10-06T17:36:48.5956642Z test req_gen_05_commands_are_sorted_and_future_commands_wait ... ok
+2026-10-06T17:36:48.5957122Z test req_time_02_tick_day_month_snapshot_order ... ok
+2026-10-06T17:36:48.5960097Z test time_defines_are_required_checked_and_change_host_pacing ... ok
+2026-10-06T17:36:48.5969662Z test req_gen_01_headless_state_and_hash_are_repeatable ... ok
+2026-10-06T17:36:48.5970096Z
+2026-10-06T17:36:48.5970630Z test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:36:48.5971580Z
+2026-10-06T17:36:48.5985553Z    Doc-tests oh_ai
+2026-10-06T17:36:48.6347180Z
+2026-10-06T17:36:48.6347695Z running 0 tests
+2026-10-06T17:36:48.6348379Z
+2026-10-06T17:36:48.6350707Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:36:48.6351333Z
+2026-10-06T17:36:48.6422805Z    Doc-tests oh_cli
+2026-10-06T17:36:48.6957827Z
+2026-10-06T17:36:48.6958400Z running 0 tests
+2026-10-06T17:36:48.6958708Z
+2026-10-06T17:36:48.6959743Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:36:48.6960644Z
+2026-10-06T17:36:48.7036870Z    Doc-tests oh_core
+2026-10-06T17:36:48.7686129Z
+2026-10-06T17:36:48.7686691Z running 1 test
+2026-10-06T17:36:48.8364871Z test crates\oh_core\src\ids.rs - ids (line 7) - compile fail ... ok
+2026-10-06T17:36:48.8365287Z
+2026-10-06T17:36:48.8365817Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+2026-10-06T17:36:48.8366393Z
+2026-10-06T17:36:48.8438976Z    Doc-tests oh_data
+2026-10-06T17:36:48.9807860Z
+2026-10-06T17:36:48.9808792Z running 0 tests
+2026-10-06T17:36:48.9809098Z
+2026-10-06T17:36:48.9810173Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:36:48.9810611Z
+2026-10-06T17:36:48.9895029Z    Doc-tests oh_proto
+2026-10-06T17:36:49.2059762Z
+2026-10-06T17:36:49.2060749Z running 0 tests
+2026-10-06T17:36:49.2061141Z
+2026-10-06T17:36:49.2062493Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:36:49.2063309Z
+2026-10-06T17:36:49.2148732Z    Doc-tests oh_save
+2026-10-06T17:36:49.2451164Z
+2026-10-06T17:36:49.2451734Z running 0 tests
+2026-10-06T17:36:49.2452010Z
+2026-10-06T17:36:49.2452554Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:36:49.2453130Z
+2026-10-06T17:36:49.2522421Z    Doc-tests oh_server
+2026-10-06T17:36:49.3528928Z
+2026-10-06T17:36:49.3529886Z running 0 tests
+2026-10-06T17:36:49.3530221Z
+2026-10-06T17:36:49.3530957Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:36:49.3531489Z
+2026-10-06T17:36:49.3612706Z    Doc-tests oh_sim
+2026-10-06T17:36:49.4478177Z
+2026-10-06T17:36:49.4478974Z running 2 tests
+2026-10-06T17:36:49.5423555Z test crates\oh_sim\src\lib.rs - State (line 68) - compile fail ... ok
+2026-10-06T17:36:49.5436280Z test crates\oh_sim\src\ledger.rs - ledger::StatLedger (line 91) - compile fail ... ok
+2026-10-06T17:36:49.5437138Z
+2026-10-06T17:36:49.5437736Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.10s
+2026-10-06T17:36:49.5438346Z
+2026-10-06T17:36:49.6858464Z ##[group]Run actions/setup-python@v7.0.0
+2026-10-06T17:36:49.6858818Z with:
+2026-10-06T17:36:49.6859017Z   python-version: 3.11
+2026-10-06T17:36:49.6859238Z   check-latest: false
+2026-10-06T17:36:49.6861656Z   token: ***
+2026-10-06T17:36:49.6861868Z   update-environment: true
+2026-10-06T17:36:49.6862106Z   allow-prereleases: false
+2026-10-06T17:36:49.6862348Z   freethreaded: false
+2026-10-06T17:36:49.6862542Z ##[endgroup]
+2026-10-06T17:36:49.8387212Z ##[group]Installed versions
+2026-10-06T17:36:49.8616085Z Successfully set up CPython (3.11.9)
+2026-10-06T17:36:49.8616938Z ##[endgroup]
+2026-10-06T17:36:49.8901948Z ##[group]Run python tools/check_architecture.py
+2026-10-06T17:36:49.8902379Z [36;1mpython tools/check_architecture.py[0m
+2026-10-06T17:36:49.9060929Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-06T17:36:49.9061292Z env:
+2026-10-06T17:36:49.9061565Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:36:49.9062027Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.11.9\x64/lib/pkgconfig
+2026-10-06T17:36:49.9062475Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:36:49.9062880Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:36:49.9063275Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:36:49.9063787Z ##[endgroup]
+2026-10-06T17:36:51.2109009Z  Downloading crates ...
+2026-10-06T17:36:51.2965780Z   Downloaded errno v0.3.14
+2026-10-06T17:36:51.3312460Z   Downloaded crunchy v0.2.4
+2026-10-06T17:36:51.3430247Z   Downloaded r-efi v5.3.0
+2026-10-06T17:36:51.3975815Z   Downloaded signal-hook-registry v1.4.8
+2026-10-06T17:36:51.4097034Z   Downloaded wasi v0.11.1+wasi-snapshot-preview1
+2026-10-06T17:36:51.4252033Z   Downloaded wit-bindgen v0.57.1
+2026-10-06T17:36:51.4588117Z   Downloaded wasip2 v1.0.4+wasi-0.2.12
+2026-10-06T17:36:51.4835972Z   Downloaded libc v0.2.190
+2026-10-06T17:36:52.5209743Z oh_ai v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_ai)
+2026-10-06T17:36:52.5211232Z └── oh_sim v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_sim)
+2026-10-06T17:36:52.5212347Z     ├── oh_core v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_core)
+2026-10-06T17:36:52.5213160Z     │   ├── fixed v1.31.0
+2026-10-06T17:36:52.5213732Z     │   │   ├── az v1.3.0
+2026-10-06T17:36:52.5214367Z     │   │   ├── bytemuck v1.25.2
+2026-10-06T17:36:52.5215043Z     │   │   ├── half v2.7.1
+2026-10-06T17:36:52.5215681Z     │   │   │   ├── cfg-if v1.0.5
+2026-10-06T17:36:52.5216354Z     │   │   │   └── zerocopy v0.8.60
+2026-10-06T17:36:52.5217226Z     │   │   │       └── zerocopy-derive v0.8.60 (proc-macro)
+2026-10-06T17:36:52.5218130Z     │   │   │           ├── proc-macro2 v1.0.107
+2026-10-06T17:36:52.5218978Z     │   │   │           │   └── unicode-ident v1.0.26
+2026-10-06T17:36:52.5219768Z     │   │   │           ├── quote v1.0.47
+2026-10-06T17:36:52.5220571Z     │   │   │           │   └── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:52.5221366Z     │   │   │           └── syn v2.0.119
+2026-10-06T17:36:52.5222116Z     │   │   │               ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:52.5222922Z     │   │   │               ├── quote v1.0.47 (*)
+2026-10-06T17:36:52.5223726Z     │   │   │               └── unicode-ident v1.0.26
+2026-10-06T17:36:52.5224327Z     │   │   ├── serde v1.0.229
+2026-10-06T17:36:52.5224877Z     │   │   │   ├── serde_core v1.0.229
+2026-10-06T17:36:52.5225479Z     │   │   │   └── serde_derive v1.0.229 (proc-macro)
+2026-10-06T17:36:52.5226077Z     │   │   │       ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:52.5226631Z     │   │   │       ├── quote v1.0.47 (*)
+2026-10-06T17:36:52.5227111Z     │   │   │       └── syn v3.0.6
+2026-10-06T17:36:52.5227628Z     │   │   │           ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:52.5228164Z     │   │   │           ├── quote v1.0.47 (*)
+2026-10-06T17:36:52.5229047Z     │   │   │           └── unicode-ident v1.0.26
+2026-10-06T17:36:52.5229584Z     │   │   └── typenum v1.20.1
+2026-10-06T17:36:52.5229992Z     │   ├── postcard v1.1.3
+2026-10-06T17:36:52.5230390Z     │   │   ├── cobs v0.3.0
+2026-10-06T17:36:52.5230815Z     │   │   │   └── thiserror v2.0.21
+2026-10-06T17:36:52.5231375Z     │   │   │       └── thiserror-impl v2.0.21 (proc-macro)
+2026-10-06T17:36:52.5231981Z     │   │   │           ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:52.5232568Z     │   │   │           ├── quote v1.0.47 (*)
+2026-10-06T17:36:52.5233081Z     │   │   │           └── syn v3.0.6 (*)
+2026-10-06T17:36:52.5233573Z     │   │   └── serde v1.0.229 (*)
+2026-10-06T17:36:52.5237051Z     │   ├── rand_chacha v0.10.0
+2026-10-06T17:36:52.5237706Z     │   │   ├── ppv-lite86 v0.2.21
+2026-10-06T17:36:52.5238222Z     │   │   │   └── zerocopy v0.8.60 (*)
+2026-10-06T17:36:52.5238716Z     │   │   └── rand_core v0.10.1
+2026-10-06T17:36:52.5239156Z     │   └── serde v1.0.229 (*)
+2026-10-06T17:36:52.5239755Z     ├── oh_data v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_data)
+2026-10-06T17:36:52.5240355Z     │   ├── fixed v1.31.0 (*)
+2026-10-06T17:36:52.5240986Z     │   ├── oh_core v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_core) (*)
+2026-10-06T17:36:52.5241581Z     │   ├── png v0.18.1
+2026-10-06T17:36:52.5242002Z     │   │   ├── bitflags v2.13.2
+2026-10-06T17:36:52.5242454Z     │   │   ├── crc32fast v1.5.2
+2026-10-06T17:36:52.5242924Z     │   │   │   └── cfg-if v1.0.5
+2026-10-06T17:36:52.5243682Z     │   │   ├── fdeflate v0.3.7
+2026-10-06T17:36:52.5244158Z     │   │   │   └── simd-adler32 v0.3.10
+2026-10-06T17:36:52.5244675Z     │   │   ├── flate2 v1.1.10
+2026-10-06T17:36:52.5245182Z     │   │   │   ├── crc32fast v1.5.2 (*)
+2026-10-06T17:36:52.5245705Z     │   │   │   └── miniz_oxide v0.9.1
+2026-10-06T17:36:52.5246214Z     │   │   │       ├── adler2 v2.0.1
+2026-10-06T17:36:52.5246703Z     │   │   │       └── simd-adler32 v0.3.10
+2026-10-06T17:36:52.5247208Z     │   │   └── miniz_oxide v0.8.9
+2026-10-06T17:36:52.5247672Z     │   │       ├── adler2 v2.0.1
+2026-10-06T17:36:52.5248149Z     │   │       └── simd-adler32 v0.3.10
+2026-10-06T17:36:52.5248593Z     │   ├── schemars v1.2.2
+2026-10-06T17:36:52.5249408Z     │   │   ├── dyn-clone v1.0.20
+2026-10-06T17:36:52.5249878Z     │   │   ├── ref-cast v1.0.27
+2026-10-06T17:36:52.5250395Z     │   │   │   └── ref-cast-impl v1.0.27 (proc-macro)
+2026-10-06T17:36:52.5250968Z     │   │   │       ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:52.5251546Z     │   │   │       ├── quote v1.0.47 (*)
+2026-10-06T17:36:52.5252053Z     │   │   │       └── syn v3.0.6 (*)
+2026-10-06T17:36:52.5252586Z     │   │   ├── schemars_derive v1.2.2 (proc-macro)
+2026-10-06T17:36:52.5253191Z     │   │   │   ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:52.5253718Z     │   │   │   ├── quote v1.0.47 (*)
+2026-10-06T17:36:52.5254246Z     │   │   │   ├── serde_derive_internals v0.30.0
+2026-10-06T17:36:52.5254839Z     │   │   │   │   ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:52.5255377Z     │   │   │   │   ├── quote v1.0.47 (*)
+2026-10-06T17:36:52.5255898Z     │   │   │   │   └── syn v3.0.6 (*)
+2026-10-06T17:36:52.5256389Z     │   │   │   └── syn v3.0.6 (*)
+2026-10-06T17:36:52.5256840Z     │   │   ├── semver v1.0.28
+2026-10-06T17:36:52.5257284Z     │   │   ├── serde v1.0.229 (*)
+2026-10-06T17:36:52.5257763Z     │   │   └── serde_json v1.0.151
+2026-10-06T17:36:52.5258210Z     │   │       ├── itoa v1.0.18
+2026-10-06T17:36:52.5258663Z     │   │       ├── memchr v2.8.3
+2026-10-06T17:36:52.5259140Z     │   │       ├── serde_core v1.0.229
+2026-10-06T17:36:52.5274791Z     │   │       └── zmij v1.0.23
+2026-10-06T17:36:52.5275282Z     │   ├── semver v1.0.28
+2026-10-06T17:36:52.5275790Z     │   ├── serde v1.0.229 (*)
+2026-10-06T17:36:52.5276278Z     │   ├── serde_json v1.0.151 (*)
+2026-10-06T17:36:52.5276781Z     │   └── toml v1.1.6+spec-1.1.0
+2026-10-06T17:36:52.5277262Z     │       ├── serde_core v1.0.229
+2026-10-06T17:36:52.5277775Z     │       ├── serde_spanned v1.1.1
+2026-10-06T17:36:52.5278286Z     │       │   └── serde_core v1.0.229
+2026-10-06T17:36:52.5278857Z     │       ├── toml_datetime v1.1.1+spec-1.1.0
+2026-10-06T17:36:52.5279430Z     │       │   └── serde_core v1.0.229
+2026-10-06T17:36:52.5279986Z     │       ├── toml_parser v1.1.3+spec-1.1.0
+2026-10-06T17:36:52.5280528Z     │       │   └── winnow v1.0.4
+2026-10-06T17:36:52.5281058Z     │       ├── toml_writer v1.1.2+spec-1.1.0
+2026-10-06T17:36:52.5281555Z     │       └── winnow v1.0.4
+2026-10-06T17:36:52.5281967Z     └── serde v1.0.229 (*)
+2026-10-06T17:36:52.6338008Z oh_core v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_core)
+2026-10-06T17:36:52.6339101Z ├── fixed v1.31.0
+2026-10-06T17:36:52.6339537Z │   ├── az v1.3.0
+2026-10-06T17:36:52.6341824Z │   ├── bytemuck v1.25.2
+2026-10-06T17:36:52.6342532Z │   ├── half v2.7.1
+2026-10-06T17:36:52.6343072Z │   │   ├── cfg-if v1.0.5
+2026-10-06T17:36:52.6343684Z │   │   └── zerocopy v0.8.60
+2026-10-06T17:36:52.6344510Z │   │       └── zerocopy-derive v0.8.60 (proc-macro)
+2026-10-06T17:36:52.6345395Z │   │           ├── proc-macro2 v1.0.107
+2026-10-06T17:36:52.6346243Z │   │           │   └── unicode-ident v1.0.26
+2026-10-06T17:36:52.6347041Z │   │           ├── quote v1.0.47
+2026-10-06T17:36:52.6347759Z │   │           │   └── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:52.6348362Z │   │           └── syn v2.0.119
+2026-10-06T17:36:52.6348955Z │   │               ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:52.6349515Z │   │               ├── quote v1.0.47 (*)
+2026-10-06T17:36:52.6350364Z │   │               └── unicode-ident v1.0.26
+2026-10-06T17:36:52.6350879Z │   ├── serde v1.0.229
+2026-10-06T17:36:52.6351320Z │   │   ├── serde_core v1.0.229
+2026-10-06T17:36:52.6351891Z │   │   └── serde_derive v1.0.229 (proc-macro)
+2026-10-06T17:36:52.6352508Z │   │       ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:52.6353076Z │   │       ├── quote v1.0.47 (*)
+2026-10-06T17:36:52.6353530Z │   │       └── syn v3.0.6
+2026-10-06T17:36:52.6354025Z │   │           ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:52.6354675Z │   │           ├── quote v1.0.47 (*)
+2026-10-06T17:36:52.6355261Z │   │           └── unicode-ident v1.0.26
+2026-10-06T17:36:52.6355744Z │   └── typenum v1.20.1
+2026-10-06T17:36:52.6356164Z ├── postcard v1.1.3
+2026-10-06T17:36:52.6356627Z │   ├── cobs v0.3.0
+2026-10-06T17:36:52.6357030Z │   │   └── thiserror v2.0.21
+2026-10-06T17:36:52.6357585Z │   │       └── thiserror-impl v2.0.21 (proc-macro)
+2026-10-06T17:36:52.6358229Z │   │           ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:52.6358787Z │   │           ├── quote v1.0.47 (*)
+2026-10-06T17:36:52.6359309Z │   │           └── syn v3.0.6 (*)
+2026-10-06T17:36:52.6359766Z │   └── serde v1.0.229 (*)
+2026-10-06T17:36:52.6360216Z ├── rand_chacha v0.10.0
+2026-10-06T17:36:52.6360706Z │   ├── ppv-lite86 v0.2.21
+2026-10-06T17:36:52.6361573Z │   │   └── zerocopy v0.8.60 (*)
+2026-10-06T17:36:52.6362043Z │   └── rand_core v0.10.1
+2026-10-06T17:36:52.6362471Z └── serde v1.0.229 (*)
+2026-10-06T17:36:52.7567226Z oh_data v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_data)
+2026-10-06T17:36:52.7568358Z ├── fixed v1.31.0
+2026-10-06T17:36:52.7568899Z │   ├── az v1.3.0
+2026-10-06T17:36:52.7569433Z │   ├── bytemuck v1.25.2
+2026-10-06T17:36:52.7570005Z │   ├── half v2.7.1
+2026-10-06T17:36:52.7570551Z │   │   ├── cfg-if v1.0.5
+2026-10-06T17:36:52.7571156Z │   │   └── zerocopy v0.8.60
+2026-10-06T17:36:52.7571993Z │   │       └── zerocopy-derive v0.8.60 (proc-macro)
+2026-10-06T17:36:52.7572931Z │   │           ├── proc-macro2 v1.0.107
+2026-10-06T17:36:52.7573927Z │   │           │   └── unicode-ident v1.0.26
+2026-10-06T17:36:52.7574724Z │   │           ├── quote v1.0.47
+2026-10-06T17:36:52.7575991Z │   │           │   └── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:52.7576805Z │   │           └── syn v2.0.119
+2026-10-06T17:36:52.7577533Z │   │               ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:52.7578267Z │   │               ├── quote v1.0.47 (*)
+2026-10-06T17:36:52.7578856Z │   │               └── unicode-ident v1.0.26
+2026-10-06T17:36:52.7579472Z │   ├── serde v1.0.229
+2026-10-06T17:36:52.7579949Z │   │   ├── serde_core v1.0.229
+2026-10-06T17:36:52.7580522Z │   │   └── serde_derive v1.0.229 (proc-macro)
+2026-10-06T17:36:52.7581071Z │   │       ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:52.7581644Z │   │       ├── quote v1.0.47 (*)
+2026-10-06T17:36:52.7582074Z │   │       └── syn v3.0.6
+2026-10-06T17:36:52.7582568Z │   │           ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:52.7585018Z │   │           ├── quote v1.0.47 (*)
+2026-10-06T17:36:52.7585577Z │   │           └── unicode-ident v1.0.26
+2026-10-06T17:36:52.7586089Z │   └── typenum v1.20.1
+2026-10-06T17:36:52.7586729Z ├── oh_core v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_core)
+2026-10-06T17:36:52.7587324Z │   ├── fixed v1.31.0 (*)
+2026-10-06T17:36:52.7587748Z │   ├── postcard v1.1.3
+2026-10-06T17:36:52.7588167Z │   │   ├── cobs v0.3.0
+2026-10-06T17:36:52.7588597Z │   │   │   └── thiserror v2.0.21
+2026-10-06T17:36:52.7589676Z │   │   │       └── thiserror-impl v2.0.21 (proc-macro)
+2026-10-06T17:36:52.7590848Z │   │   │           ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:52.7591436Z │   │   │           ├── quote v1.0.47 (*)
+2026-10-06T17:36:52.7591801Z │   │   │           └── syn v3.0.6 (*)
+2026-10-06T17:36:52.7592139Z │   │   └── serde v1.0.229 (*)
+2026-10-06T17:36:52.7592424Z │   ├── rand_chacha v0.10.0
+2026-10-06T17:36:52.7592722Z │   │   ├── ppv-lite86 v0.2.21
+2026-10-06T17:36:52.7593068Z │   │   │   └── zerocopy v0.8.60 (*)
+2026-10-06T17:36:52.7593378Z │   │   └── rand_core v0.10.1
+2026-10-06T17:36:52.7593645Z │   └── serde v1.0.229 (*)
+2026-10-06T17:36:52.7593884Z ├── png v0.18.1
+2026-10-06T17:36:52.7594145Z │   ├── bitflags v2.13.2
+2026-10-06T17:36:52.7594398Z │   ├── crc32fast v1.5.2
+2026-10-06T17:36:52.7594646Z │   │   └── cfg-if v1.0.5
+2026-10-06T17:36:52.7594898Z │   ├── fdeflate v0.3.7
+2026-10-06T17:36:52.7595176Z │   │   └── simd-adler32 v0.3.10
+2026-10-06T17:36:52.7595439Z │   ├── flate2 v1.1.10
+2026-10-06T17:36:52.7595712Z │   │   ├── crc32fast v1.5.2 (*)
+2026-10-06T17:36:52.7596011Z │   │   └── miniz_oxide v0.9.1
+2026-10-06T17:36:52.7596293Z │   │       ├── adler2 v2.0.1
+2026-10-06T17:36:52.7596588Z │   │       └── simd-adler32 v0.3.10
+2026-10-06T17:36:52.7596884Z │   └── miniz_oxide v0.8.9
+2026-10-06T17:36:52.7597136Z │       ├── adler2 v2.0.1
+2026-10-06T17:36:52.7597404Z │       └── simd-adler32 v0.3.10
+2026-10-06T17:36:52.7597669Z ├── schemars v1.2.2
+2026-10-06T17:36:52.7597933Z │   ├── dyn-clone v1.0.20
+2026-10-06T17:36:52.7598178Z │   ├── ref-cast v1.0.27
+2026-10-06T17:36:52.7598495Z │   │   └── ref-cast-impl v1.0.27 (proc-macro)
+2026-10-06T17:36:52.7598863Z │   │       ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:52.7599195Z │   │       ├── quote v1.0.47 (*)
+2026-10-06T17:36:52.7599485Z │   │       └── syn v3.0.6 (*)
+2026-10-06T17:36:52.7599807Z │   ├── schemars_derive v1.2.2 (proc-macro)
+2026-10-06T17:36:52.7600148Z │   │   ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:52.7600432Z │   │   ├── quote v1.0.47 (*)
+2026-10-06T17:36:52.7600747Z │   │   ├── serde_derive_internals v0.30.0
+2026-10-06T17:36:52.7601080Z │   │   │   ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:52.7601396Z │   │   │   ├── quote v1.0.47 (*)
+2026-10-06T17:36:52.7601690Z │   │   │   └── syn v3.0.6 (*)
+2026-10-06T17:36:52.7601952Z │   │   └── syn v3.0.6 (*)
+2026-10-06T17:36:52.7602203Z │   ├── semver v1.0.28
+2026-10-06T17:36:52.7602459Z │   ├── serde v1.0.229 (*)
+2026-10-06T17:36:52.7602748Z │   └── serde_json v1.0.151
+2026-10-06T17:36:52.7603004Z │       ├── itoa v1.0.18
+2026-10-06T17:36:52.7603254Z │       ├── memchr v2.8.3
+2026-10-06T17:36:52.7603531Z │       ├── serde_core v1.0.229
+2026-10-06T17:36:52.7604033Z │       └── zmij v1.0.23
+2026-10-06T17:36:52.7604295Z ├── semver v1.0.28
+2026-10-06T17:36:52.7604527Z ├── serde v1.0.229 (*)
+2026-10-06T17:36:52.7604772Z ├── serde_json v1.0.151 (*)
+2026-10-06T17:36:52.7605037Z └── toml v1.1.6+spec-1.1.0
+2026-10-06T17:36:52.7605291Z     ├── serde_core v1.0.229
+2026-10-06T17:36:52.7605960Z     ├── serde_spanned v1.1.1
+2026-10-06T17:36:52.7606248Z     │   └── serde_core v1.0.229
+2026-10-06T17:36:52.7606545Z     ├── toml_datetime v1.1.1+spec-1.1.0
+2026-10-06T17:36:52.7606859Z     │   └── serde_core v1.0.229
+2026-10-06T17:36:52.7607154Z     ├── toml_parser v1.1.3+spec-1.1.0
+2026-10-06T17:36:52.7607431Z     │   └── winnow v1.0.4
+2026-10-06T17:36:52.7607714Z     ├── toml_writer v1.1.2+spec-1.1.0
+2026-10-06T17:36:52.7608663Z     └── winnow v1.0.4
+2026-10-06T17:36:52.8824232Z oh_save v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_save)
+2026-10-06T17:36:52.8825427Z └── oh_sim v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_sim)
+2026-10-06T17:36:52.8826392Z     ├── oh_core v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_core)
+2026-10-06T17:36:52.8827079Z     │   ├── fixed v1.31.0
+2026-10-06T17:36:52.8827555Z     │   │   ├── az v1.3.0
+2026-10-06T17:36:52.8828069Z     │   │   ├── bytemuck v1.25.2
+2026-10-06T17:36:52.8828557Z     │   │   ├── half v2.7.1
+2026-10-06T17:36:52.8829086Z     │   │   │   ├── cfg-if v1.0.5
+2026-10-06T17:36:52.8829608Z     │   │   │   └── zerocopy v0.8.60
+2026-10-06T17:36:52.8830247Z     │   │   │       └── zerocopy-derive v0.8.60 (proc-macro)
+2026-10-06T17:36:52.8830980Z     │   │   │           ├── proc-macro2 v1.0.107
+2026-10-06T17:36:52.8831665Z     │   │   │           │   └── unicode-ident v1.0.26
+2026-10-06T17:36:52.8832296Z     │   │   │           ├── quote v1.0.47
+2026-10-06T17:36:52.8832890Z     │   │   │           │   └── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:52.8833482Z     │   │   │           └── syn v2.0.119
+2026-10-06T17:36:52.8834022Z     │   │   │               ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:52.8834615Z     │   │   │               ├── quote v1.0.47 (*)
+2026-10-06T17:36:52.8835188Z     │   │   │               └── unicode-ident v1.0.26
+2026-10-06T17:36:52.8835710Z     │   │   ├── serde v1.0.229
+2026-10-06T17:36:52.8836245Z     │   │   │   ├── serde_core v1.0.229
+2026-10-06T17:36:52.8836800Z     │   │   │   └── serde_derive v1.0.229 (proc-macro)
+2026-10-06T17:36:52.8837375Z     │   │   │       ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:52.8837916Z     │   │   │       ├── quote v1.0.47 (*)
+2026-10-06T17:36:52.8838406Z     │   │   │       └── syn v3.0.6
+2026-10-06T17:36:52.8838927Z     │   │   │           ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:52.8839482Z     │   │   │           ├── quote v1.0.47 (*)
+2026-10-06T17:36:52.8840031Z     │   │   │           └── unicode-ident v1.0.26
+2026-10-06T17:36:52.8840600Z     │   │   └── typenum v1.20.1
+2026-10-06T17:36:52.8841028Z     │   ├── postcard v1.1.3
+2026-10-06T17:36:52.8841863Z     │   │   ├── cobs v0.3.0
+2026-10-06T17:36:52.8844218Z     │   │   │   └── thiserror v2.0.21
+2026-10-06T17:36:52.8844916Z     │   │   │       └── thiserror-impl v2.0.21 (proc-macro)
+2026-10-06T17:36:52.8845572Z     │   │   │           ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:52.8846133Z     │   │   │           ├── quote v1.0.47 (*)
+2026-10-06T17:36:52.8846649Z     │   │   │           └── syn v3.0.6 (*)
+2026-10-06T17:36:52.8847145Z     │   │   └── serde v1.0.229 (*)
+2026-10-06T17:36:52.8847627Z     │   ├── rand_chacha v0.10.0
+2026-10-06T17:36:52.8848089Z     │   │   ├── ppv-lite86 v0.2.21
+2026-10-06T17:36:52.8848569Z     │   │   │   └── zerocopy v0.8.60 (*)
+2026-10-06T17:36:52.8849057Z     │   │   └── rand_core v0.10.1
+2026-10-06T17:36:52.8849528Z     │   └── serde v1.0.229 (*)
+2026-10-06T17:36:52.8850122Z     ├── oh_data v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_data)
+2026-10-06T17:36:52.8850961Z     │   ├── fixed v1.31.0 (*)
+2026-10-06T17:36:52.8851594Z     │   ├── oh_core v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_core) (*)
+2026-10-06T17:36:52.8852190Z     │   ├── png v0.18.1
+2026-10-06T17:36:52.8852643Z     │   │   ├── bitflags v2.13.2
+2026-10-06T17:36:52.8853103Z     │   │   ├── crc32fast v1.5.2
+2026-10-06T17:36:52.8853548Z     │   │   │   └── cfg-if v1.0.5
+2026-10-06T17:36:52.8854003Z     │   │   ├── fdeflate v0.3.7
+2026-10-06T17:36:52.8854466Z     │   │   │   └── simd-adler32 v0.3.10
+2026-10-06T17:36:52.8854950Z     │   │   ├── flate2 v1.1.10
+2026-10-06T17:36:52.8855434Z     │   │   │   ├── crc32fast v1.5.2 (*)
+2026-10-06T17:36:52.8855939Z     │   │   │   └── miniz_oxide v0.9.1
+2026-10-06T17:36:52.8856414Z     │   │   │       ├── adler2 v2.0.1
+2026-10-06T17:36:52.8858322Z     │   │   │       └── simd-adler32 v0.3.10
+2026-10-06T17:36:52.8858999Z     │   │   └── miniz_oxide v0.8.9
+2026-10-06T17:36:52.8859506Z     │   │       ├── adler2 v2.0.1
+2026-10-06T17:36:52.8860170Z     │   │       └── simd-adler32 v0.3.10
+2026-10-06T17:36:52.8860637Z     │   ├── schemars v1.2.2
+2026-10-06T17:36:52.8861059Z     │   │   ├── dyn-clone v1.0.20
+2026-10-06T17:36:52.8861656Z     │   │   ├── ref-cast v1.0.27
+2026-10-06T17:36:52.8862325Z     │   │   │   └── ref-cast-impl v1.0.27 (proc-macro)
+2026-10-06T17:36:52.8863054Z     │   │   │       ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:52.8863666Z     │   │   │       ├── quote v1.0.47 (*)
+2026-10-06T17:36:52.8864222Z     │   │   │       └── syn v3.0.6 (*)
+2026-10-06T17:36:52.8866220Z     │   │   ├── schemars_derive v1.2.2 (proc-macro)
+2026-10-06T17:36:52.8866905Z     │   │   │   ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:52.8867455Z     │   │   │   ├── quote v1.0.47 (*)
+2026-10-06T17:36:52.8868003Z     │   │   │   ├── serde_derive_internals v0.30.0
+2026-10-06T17:36:52.8868600Z     │   │   │   │   ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:52.8869147Z     │   │   │   │   ├── quote v1.0.47 (*)
+2026-10-06T17:36:52.8869688Z     │   │   │   │   └── syn v3.0.6 (*)
+2026-10-06T17:36:52.8870164Z     │   │   │   └── syn v3.0.6 (*)
+2026-10-06T17:36:52.8870670Z     │   │   ├── semver v1.0.28
+2026-10-06T17:36:52.8871148Z     │   │   ├── serde v1.0.229 (*)
+2026-10-06T17:36:52.8871628Z     │   │   └── serde_json v1.0.151
+2026-10-06T17:36:52.8872105Z     │   │       ├── itoa v1.0.18
+2026-10-06T17:36:52.8872534Z     │   │       ├── memchr v2.8.3
+2026-10-06T17:36:52.8872951Z     │   │       ├── serde_core v1.0.229
+2026-10-06T17:36:52.8873370Z     │   │       └── zmij v1.0.23
+2026-10-06T17:36:52.8873761Z     │   ├── semver v1.0.28
+2026-10-06T17:36:52.8874187Z     │   ├── serde v1.0.229 (*)
+2026-10-06T17:36:52.8874653Z     │   ├── serde_json v1.0.151 (*)
+2026-10-06T17:36:52.8875105Z     │   └── toml v1.1.6+spec-1.1.0
+2026-10-06T17:36:52.8875556Z     │       ├── serde_core v1.0.229
+2026-10-06T17:36:52.8876063Z     │       ├── serde_spanned v1.1.1
+2026-10-06T17:36:52.8876568Z     │       │   └── serde_core v1.0.229
+2026-10-06T17:36:52.8877095Z     │       ├── toml_datetime v1.1.1+spec-1.1.0
+2026-10-06T17:36:52.8877662Z     │       │   └── serde_core v1.0.229
+2026-10-06T17:36:52.8878204Z     │       ├── toml_parser v1.1.3+spec-1.1.0
+2026-10-06T17:36:52.8878972Z     │       │   └── winnow v1.0.4
+2026-10-06T17:36:52.8879522Z     │       ├── toml_writer v1.1.2+spec-1.1.0
+2026-10-06T17:36:52.8880015Z     │       └── winnow v1.0.4
+2026-10-06T17:36:52.8880403Z     └── serde v1.0.229 (*)
+2026-10-06T17:36:53.0065459Z oh_sim v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_sim)
+2026-10-06T17:36:53.0066775Z ├── oh_core v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_core)
+2026-10-06T17:36:53.0067483Z │   ├── fixed v1.31.0
+2026-10-06T17:36:53.0067973Z │   │   ├── az v1.3.0
+2026-10-06T17:36:53.0068455Z │   │   ├── bytemuck v1.25.2
+2026-10-06T17:36:53.0068951Z │   │   ├── half v2.7.1
+2026-10-06T17:36:53.0069436Z │   │   │   ├── cfg-if v1.0.5
+2026-10-06T17:36:53.0070276Z │   │   │   └── zerocopy v0.8.60
+2026-10-06T17:36:53.0071514Z │   │   │       └── zerocopy-derive v0.8.60 (proc-macro)
+2026-10-06T17:36:53.0072285Z │   │   │           ├── proc-macro2 v1.0.107
+2026-10-06T17:36:53.0072994Z │   │   │           │   └── unicode-ident v1.0.26
+2026-10-06T17:36:53.0073687Z │   │   │           ├── quote v1.0.47
+2026-10-06T17:36:53.0074364Z │   │   │           │   └── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:53.0074976Z │   │   │           └── syn v2.0.119
+2026-10-06T17:36:53.0075566Z │   │   │               ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:53.0076156Z │   │   │               ├── quote v1.0.47 (*)
+2026-10-06T17:36:53.0076743Z │   │   │               └── unicode-ident v1.0.26
+2026-10-06T17:36:53.0077240Z │   │   ├── serde v1.0.229
+2026-10-06T17:36:53.0077693Z │   │   │   ├── serde_core v1.0.229
+2026-10-06T17:36:53.0078267Z │   │   │   └── serde_derive v1.0.229 (proc-macro)
+2026-10-06T17:36:53.0078878Z │   │   │       ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:53.0079416Z │   │   │       ├── quote v1.0.47 (*)
+2026-10-06T17:36:53.0079981Z │   │   │       └── syn v3.0.6
+2026-10-06T17:36:53.0080505Z │   │   │           ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:53.0081072Z │   │   │           ├── quote v1.0.47 (*)
+2026-10-06T17:36:53.0081656Z │   │   │           └── unicode-ident v1.0.26
+2026-10-06T17:36:53.0082150Z │   │   └── typenum v1.20.1
+2026-10-06T17:36:53.0082574Z │   ├── postcard v1.1.3
+2026-10-06T17:36:53.0082987Z │   │   ├── cobs v0.3.0
+2026-10-06T17:36:53.0083427Z │   │   │   └── thiserror v2.0.21
+2026-10-06T17:36:53.0083999Z │   │   │       └── thiserror-impl v2.0.21 (proc-macro)
+2026-10-06T17:36:53.0084610Z │   │   │           ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:53.0085157Z │   │   │           ├── quote v1.0.47 (*)
+2026-10-06T17:36:53.0085670Z │   │   │           └── syn v3.0.6 (*)
+2026-10-06T17:36:53.0086167Z │   │   └── serde v1.0.229 (*)
+2026-10-06T17:36:53.0086585Z │   ├── rand_chacha v0.10.0
+2026-10-06T17:36:53.0087029Z │   │   ├── ppv-lite86 v0.2.21
+2026-10-06T17:36:53.0087541Z │   │   │   └── zerocopy v0.8.60 (*)
+2026-10-06T17:36:53.0088030Z │   │   └── rand_core v0.10.1
+2026-10-06T17:36:53.0088445Z │   └── serde v1.0.229 (*)
+2026-10-06T17:36:53.0089310Z ├── oh_data v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_data)
+2026-10-06T17:36:53.0089941Z │   ├── fixed v1.31.0 (*)
+2026-10-06T17:36:53.0090924Z │   ├── oh_core v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_core) (*)
+2026-10-06T17:36:53.0091522Z │   ├── png v0.18.1
+2026-10-06T17:36:53.0091949Z │   │   ├── bitflags v2.13.2
+2026-10-06T17:36:53.0092392Z │   │   ├── crc32fast v1.5.2
+2026-10-06T17:36:53.0092819Z │   │   │   └── cfg-if v1.0.5
+2026-10-06T17:36:53.0093247Z │   │   ├── fdeflate v0.3.7
+2026-10-06T17:36:53.0093713Z │   │   │   └── simd-adler32 v0.3.10
+2026-10-06T17:36:53.0094173Z │   │   ├── flate2 v1.1.10
+2026-10-06T17:36:53.0094656Z │   │   │   ├── crc32fast v1.5.2 (*)
+2026-10-06T17:36:53.0095172Z │   │   │   └── miniz_oxide v0.9.1
+2026-10-06T17:36:53.0095666Z │   │   │       ├── adler2 v2.0.1
+2026-10-06T17:36:53.0096444Z │   │   │       └── simd-adler32 v0.3.10
+2026-10-06T17:36:53.0096956Z │   │   └── miniz_oxide v0.8.9
+2026-10-06T17:36:53.0097384Z │   │       ├── adler2 v2.0.1
+2026-10-06T17:36:53.0097897Z │   │       └── simd-adler32 v0.3.10
+2026-10-06T17:36:53.0098361Z │   ├── schemars v1.2.2
+2026-10-06T17:36:53.0098760Z │   │   ├── dyn-clone v1.0.20
+2026-10-06T17:36:53.0099175Z │   │   ├── ref-cast v1.0.27
+2026-10-06T17:36:53.0099723Z │   │   │   └── ref-cast-impl v1.0.27 (proc-macro)
+2026-10-06T17:36:53.0100316Z │   │   │       ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:53.0100839Z │   │   │       ├── quote v1.0.47 (*)
+2026-10-06T17:36:53.0101347Z │   │   │       └── syn v3.0.6 (*)
+2026-10-06T17:36:53.0101889Z │   │   ├── schemars_derive v1.2.2 (proc-macro)
+2026-10-06T17:36:53.0102469Z │   │   │   ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:53.0102978Z │   │   │   ├── quote v1.0.47 (*)
+2026-10-06T17:36:53.0103507Z │   │   │   ├── serde_derive_internals v0.30.0
+2026-10-06T17:36:53.0104123Z │   │   │   │   ├── proc-macro2 v1.0.107 (*)
+2026-10-06T17:36:53.0104650Z │   │   │   │   ├── quote v1.0.47 (*)
+2026-10-06T17:36:53.0105127Z │   │   │   │   └── syn v3.0.6 (*)
+2026-10-06T17:36:53.0105614Z │   │   │   └── syn v3.0.6 (*)
+2026-10-06T17:36:53.0106032Z │   │   ├── semver v1.0.28
+2026-10-06T17:36:53.0106507Z │   │   ├── serde v1.0.229 (*)
+2026-10-06T17:36:53.0107247Z │   │   └── serde_json v1.0.151
+2026-10-06T17:36:53.0107693Z │   │       ├── itoa v1.0.18
+2026-10-06T17:36:53.0108112Z │   │       ├── memchr v2.8.3
+2026-10-06T17:36:53.0108581Z │   │       ├── serde_core v1.0.229
+2026-10-06T17:36:53.0109026Z │   │       └── zmij v1.0.23
+2026-10-06T17:36:53.0109444Z │   ├── semver v1.0.28
+2026-10-06T17:36:53.0109832Z │   ├── serde v1.0.229 (*)
+2026-10-06T17:36:53.0110610Z │   ├── serde_json v1.0.151 (*)
+2026-10-06T17:36:53.0111120Z │   └── toml v1.1.6+spec-1.1.0
+2026-10-06T17:36:53.0111615Z │       ├── serde_core v1.0.229
+2026-10-06T17:36:53.0112131Z │       ├── serde_spanned v1.1.1
+2026-10-06T17:36:53.0112633Z │       │   └── serde_core v1.0.229
+2026-10-06T17:36:53.0113195Z │       ├── toml_datetime v1.1.1+spec-1.1.0
+2026-10-06T17:36:53.0113740Z │       │   └── serde_core v1.0.229
+2026-10-06T17:36:53.0114291Z │       ├── toml_parser v1.1.3+spec-1.1.0
+2026-10-06T17:36:53.0114791Z │       │   └── winnow v1.0.4
+2026-10-06T17:36:53.0115303Z │       ├── toml_writer v1.1.2+spec-1.1.0
+2026-10-06T17:36:53.0115778Z │       └── winnow v1.0.4
+2026-10-06T17:36:53.0116197Z └── serde v1.0.229 (*)
+2026-10-06T17:36:53.1669446Z ##[group]Run cargo run -p oh_proto --locked --example wire_fixtures
+2026-10-06T17:36:53.1670006Z [36;1mcargo run -p oh_proto --locked --example wire_fixtures[0m
+2026-10-06T17:36:53.1742508Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-06T17:36:53.1742888Z env:
+2026-10-06T17:36:53.1743161Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:36:53.1743622Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.11.9\x64/lib/pkgconfig
+2026-10-06T17:36:53.1744098Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:36:53.1744501Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:36:53.1744911Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:36:53.1745227Z ##[endgroup]
+2026-10-06T17:36:53.6224522Z    Compiling serde_core v1.0.229
+2026-10-06T17:36:53.6232633Z    Compiling syn v3.0.6
+2026-10-06T17:36:53.6247121Z    Compiling serde_json v1.0.151
+2026-10-06T17:36:53.6261196Z    Compiling ppv-lite86 v0.2.21
+2026-10-06T17:36:53.9344511Z    Compiling memchr v2.8.3
+2026-10-06T17:36:54.1914482Z    Compiling rand_chacha v0.10.0
+2026-10-06T17:36:55.6257370Z    Compiling serde_derive_internals v0.30.0
+2026-10-06T17:36:56.7631822Z    Compiling serde_derive v1.0.229
+2026-10-06T17:36:56.7636727Z    Compiling thiserror-impl v2.0.21
+2026-10-06T17:36:56.8104489Z    Compiling ref-cast-impl v1.0.27
+2026-10-06T17:36:57.4682116Z    Compiling ref-cast v1.0.27
+2026-10-06T17:36:57.5531021Z    Compiling toml_datetime v1.1.1+spec-1.1.0
+2026-10-06T17:36:58.0562508Z    Compiling serde_spanned v1.1.1
+2026-10-06T17:36:58.2292426Z    Compiling schemars_derive v1.2.2
+2026-10-06T17:36:58.7830317Z    Compiling thiserror v2.0.21
+2026-10-06T17:36:58.9069767Z    Compiling cobs v0.3.0
+2026-10-06T17:36:59.1392740Z    Compiling toml v1.1.6+spec-1.1.0
+2026-10-06T17:36:59.7523282Z    Compiling ts-rs v12.0.1
+2026-10-06T17:37:01.6205157Z    Compiling serde v1.0.229
+2026-10-06T17:37:02.0942125Z    Compiling postcard v1.1.3
+2026-10-06T17:37:02.0942795Z    Compiling fixed v1.31.0
+2026-10-06T17:37:02.0943301Z    Compiling schemars v1.2.2
+2026-10-06T17:37:02.2813185Z    Compiling rmp-serde v1.3.1
+2026-10-06T17:37:10.7953104Z    Compiling oh_core v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_core)
+2026-10-06T17:37:11.0467271Z    Compiling oh_data v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_data)
+2026-10-06T17:37:11.9154987Z    Compiling oh_sim v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_sim)
+2026-10-06T17:37:13.1327823Z    Compiling oh_proto v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_proto)
+2026-10-06T17:37:16.6535853Z     Finished `dev` profile [unoptimized + debuginfo] target(s) in 23.13s
+2026-10-06T17:37:16.6594483Z      Running `target\debug\examples\wire_fixtures.exe`
+2026-10-06T17:37:16.7932461Z ##[group]Run python crates/oh_server/tests/lifecycle.py
+2026-10-06T17:37:16.7932929Z [36;1mpython crates/oh_server/tests/lifecycle.py[0m
+2026-10-06T17:37:16.8004981Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-06T17:37:16.8005337Z env:
+2026-10-06T17:37:16.8005610Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:37:16.8006081Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.11.9\x64/lib/pkgconfig
+2026-10-06T17:37:16.8006583Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:37:16.8006983Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:37:16.8007412Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:37:16.8007724Z ##[endgroup]
+2026-10-06T17:37:18.3192567Z OpenHOI4: http://127.0.0.1:56463/
+2026-10-06T17:37:18.3193269Z Pack: m0_testland (f611416c817dc014) from D:\a\OpenHOI4\OpenHOI4\data\packs\examples\m0
+2026-10-06T17:37:18.3194210Z Open this address in a browser. Ctrl+C to shut down. --help for usage.
+2026-10-06T17:37:18.3195155Z Shutting down OpenHOI.
+2026-10-06T17:37:18.3195521Z OpenHOI stopped normally.
+2026-10-06T17:37:18.3195742Z
+2026-10-06T17:37:18.3195749Z
+2026-10-06T17:37:18.3195971Z REQ-NET-02 isolated executable assets: PASS
+2026-10-06T17:37:18.3196695Z REQ-NET-06 actual CTRL_C_EVENT/SIGINT, active WS closure, exit 0, released port: PASS
+2026-10-06T17:37:18.4815173Z Post job cleanup.
+2026-10-06T17:37:18.6564946Z Post job cleanup.
+2026-10-06T17:37:18.8132705Z Cache hit occurred on the primary key node-cache-Windows-x64-npm-c8fd7c5457bbb41b9b9c1b633e6d2a905ffea2ff30eea1c47886e6fc189580d2, not saving cache.
+2026-10-06T17:37:18.8427699Z Post job cleanup.
+2026-10-06T17:37:19.0529655Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-10-06T17:37:19.0810528Z git version 2.55.0.windows.5
+2026-10-06T17:37:19.0883428Z Temporarily overriding HOME='D:\a\_temp\f4d6c615-ca4e-43b8-8397-702484ab227b' before making global git config changes
+2026-10-06T17:37:19.0884573Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-06T17:37:19.0895666Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\OpenHOI4\OpenHOI4
+2026-10-06T17:37:19.1216396Z Removing SSH command configuration
+2026-10-06T17:37:19.1227941Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-10-06T17:37:19.1561836Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-10-06T17:37:19.7224444Z Removing HTTP extra header
+2026-10-06T17:37:19.7235204Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-06T17:37:19.7555505Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-10-06T17:37:20.3141098Z Removing includeIf entries pointing to credentials config files
+2026-10-06T17:37:20.3152387Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-06T17:37:20.3427838Z includeif.gitdir:D:/a/OpenHOI4/OpenHOI4/.git.path
+2026-10-06T17:37:20.3428520Z includeif.gitdir:D:/a/OpenHOI4/OpenHOI4/.git/worktrees/*.path
+2026-10-06T17:37:20.3429075Z includeif.gitdir:/github/workspace/.git.path
+2026-10-06T17:37:20.3429644Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-06T17:37:20.3469899Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:D:/a/OpenHOI4/OpenHOI4/.git.path
+2026-10-06T17:37:20.3757493Z D:\a\_temp\git-credentials-603dcf8b-a669-482e-adb2-bd3aca5ce788.config
+2026-10-06T17:37:20.3807467Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:D:/a/OpenHOI4/OpenHOI4/.git.path D\:\\a\\_temp\\git\-credentials\-603dcf8b\-a669\-482e\-adb2\-bd3aca5ce788\.config
+2026-10-06T17:37:20.4132788Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:D:/a/OpenHOI4/OpenHOI4/.git/worktrees/*.path
+2026-10-06T17:37:20.4404663Z D:\a\_temp\git-credentials-603dcf8b-a669-482e-adb2-bd3aca5ce788.config
+2026-10-06T17:37:20.4447576Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:D:/a/OpenHOI4/OpenHOI4/.git/worktrees/*.path D\:\\a\\_temp\\git\-credentials\-603dcf8b\-a669\-482e\-adb2\-bd3aca5ce788\.config
+2026-10-06T17:37:20.4759648Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-10-06T17:37:20.5032181Z /github/runner_temp/git-credentials-603dcf8b-a669-482e-adb2-bd3aca5ce788.config
+2026-10-06T17:37:20.5074592Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-603dcf8b\-a669\-482e\-adb2\-bd3aca5ce788\.config
+2026-10-06T17:37:20.5384483Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-06T17:37:20.5646179Z /github/runner_temp/git-credentials-603dcf8b-a669-482e-adb2-bd3aca5ce788.config
+2026-10-06T17:37:20.5719266Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-603dcf8b\-a669\-482e\-adb2\-bd3aca5ce788\.config
+2026-10-06T17:37:20.6034439Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-10-06T17:37:21.1648269Z Removing credentials config 'D:\a\_temp\git-credentials-603dcf8b-a669-482e-adb2-bd3aca5ce788.config'
+2026-10-06T17:37:21.1845604Z Cleaning up orphan processes
+2026-10-06T17:37:21.2054769Z Terminate orphan process: pid (6776) (vctip)

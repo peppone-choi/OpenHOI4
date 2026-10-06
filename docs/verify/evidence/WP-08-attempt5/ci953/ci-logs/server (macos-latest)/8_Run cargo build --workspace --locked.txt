@@ -1,0 +1,106 @@
+2026-10-06T17:35:05.4699180Z ##[group]Run cargo build --workspace --locked
+2026-10-06T17:35:05.4699590Z [36;1mcargo build --workspace --locked[0m
+2026-10-06T17:35:05.4739030Z shell: /bin/bash -e {0}
+2026-10-06T17:35:05.4739270Z ##[endgroup]
+2026-10-06T17:35:06.1857100Z    Compiling cfg-if v1.0.5
+2026-10-06T17:35:06.1875700Z    Compiling serde_core v1.0.229
+2026-10-06T17:35:06.1978650Z    Compiling itoa v1.0.18
+2026-10-06T17:35:06.2452960Z    Compiling zerocopy v0.8.60
+2026-10-06T17:35:06.3367730Z    Compiling libc v0.2.190
+2026-10-06T17:35:07.0250400Z    Compiling typenum v1.20.1
+2026-10-06T17:35:07.5988730Z    Compiling thiserror v2.0.21
+2026-10-06T17:35:07.6595790Z    Compiling simd-adler32 v0.3.10
+2026-10-06T17:35:07.7855760Z    Compiling adler2 v2.0.1
+2026-10-06T17:35:07.8566790Z    Compiling bytes v1.12.1
+2026-10-06T17:35:07.9585440Z    Compiling serde v1.0.229
+2026-10-06T17:35:08.4554720Z    Compiling zmij v1.0.23
+2026-10-06T17:35:08.4768610Z    Compiling memchr v2.8.3
+2026-10-06T17:35:08.7277710Z    Compiling crc32fast v1.5.2
+2026-10-06T17:35:08.8529750Z    Compiling serde_json v1.0.151
+2026-10-06T17:35:08.8973130Z    Compiling miniz_oxide v0.9.1
+2026-10-06T17:35:09.4052030Z    Compiling ppv-lite86 v0.2.21
+2026-10-06T17:35:09.4802580Z    Compiling half v2.7.1
+2026-10-06T17:35:09.6078080Z    Compiling cobs v0.3.0
+2026-10-06T17:35:09.7131390Z    Compiling winnow v1.0.4
+2026-10-06T17:35:09.7332580Z    Compiling bytemuck v1.25.2
+2026-10-06T17:35:09.8714080Z    Compiling futures-core v0.3.34
+2026-10-06T17:35:09.9435120Z    Compiling rand_core v0.10.1
+2026-10-06T17:35:09.9891240Z    Compiling pin-project-lite v0.2.17
+2026-10-06T17:35:10.0335020Z    Compiling az v1.3.0
+2026-10-06T17:35:10.0437250Z    Compiling rand_chacha v0.10.0
+2026-10-06T17:35:10.0806690Z    Compiling toml_parser v1.1.3+spec-1.1.0
+2026-10-06T17:35:10.4238720Z    Compiling ref-cast v1.0.27
+2026-10-06T17:35:10.4771970Z    Compiling postcard v1.1.3
+2026-10-06T17:35:10.7168370Z    Compiling fixed v1.31.0
+2026-10-06T17:35:10.7317360Z    Compiling flate2 v1.1.10
+2026-10-06T17:35:10.8553980Z    Compiling http v1.5.0
+2026-10-06T17:35:11.0607840Z    Compiling serde_spanned v1.1.1
+2026-10-06T17:35:11.1295880Z    Compiling toml_datetime v1.1.1+spec-1.1.0
+2026-10-06T17:35:11.3199810Z    Compiling miniz_oxide v0.8.9
+2026-10-06T17:35:11.6442430Z    Compiling fdeflate v0.3.7
+2026-10-06T17:35:11.8980630Z    Compiling dyn-clone v1.0.20
+2026-10-06T17:35:11.9765800Z    Compiling toml_writer v1.1.2+spec-1.1.0
+2026-10-06T17:35:12.0067920Z    Compiling bitflags v2.13.2
+2026-10-06T17:35:12.1175380Z    Compiling semver v1.0.28
+2026-10-06T17:35:12.1577370Z    Compiling png v0.18.1
+2026-10-06T17:35:12.3501630Z    Compiling schemars v1.2.2
+2026-10-06T17:35:13.2745450Z    Compiling toml v1.1.6+spec-1.1.0
+2026-10-06T17:35:13.6839930Z    Compiling generic-array v0.14.7
+2026-10-06T17:35:14.0419360Z    Compiling errno v0.3.14
+2026-10-06T17:35:14.1088720Z    Compiling signal-hook-registry v1.4.8
+2026-10-06T17:35:14.2995990Z    Compiling getrandom v0.3.4
+2026-10-06T17:35:14.3822880Z    Compiling socket2 v0.6.5
+2026-10-06T17:35:14.4621010Z    Compiling mio v1.2.4
+2026-10-06T17:35:14.6780780Z    Compiling rand_core v0.9.5
+2026-10-06T17:35:14.7926450Z    Compiling tokio v1.53.2
+2026-10-06T17:35:14.9132700Z    Compiling httparse v1.10.1
+2026-10-06T17:35:15.0914340Z    Compiling block-buffer v0.10.4
+2026-10-06T17:35:15.1480360Z    Compiling crypto-common v0.1.7
+2026-10-06T17:35:15.1978060Z    Compiling http-body v1.1.0
+2026-10-06T17:35:15.2703840Z    Compiling digest v0.10.7
+2026-10-06T17:35:15.3736370Z    Compiling rand_chacha v0.9.0
+2026-10-06T17:35:15.7037550Z    Compiling cpufeatures v0.2.17
+2026-10-06T17:35:15.7692480Z    Compiling futures-task v0.3.34
+2026-10-06T17:35:15.8569460Z    Compiling tower-service v0.3.3
+2026-10-06T17:35:15.8996410Z    Compiling slab v0.4.12
+2026-10-06T17:35:15.9887560Z    Compiling futures-sink v0.3.34
+2026-10-06T17:35:16.0319710Z    Compiling futures-util v0.3.34
+2026-10-06T17:35:16.9168370Z    Compiling oh_core v0.1.0 (/Users/runner/work/OpenHOI4/OpenHOI4/crates/oh_core)
+2026-10-06T17:35:17.0664490Z    Compiling oh_data v0.1.0 (/Users/runner/work/OpenHOI4/OpenHOI4/crates/oh_data)
+2026-10-06T17:35:17.7471790Z    Compiling oh_sim v0.1.0 (/Users/runner/work/OpenHOI4/OpenHOI4/crates/oh_sim)
+2026-10-06T17:35:18.8842830Z    Compiling sha1 v0.10.7
+2026-10-06T17:35:18.9718340Z    Compiling num-traits v0.2.19
+2026-10-06T17:35:19.2126470Z    Compiling rand v0.9.5
+2026-10-06T17:35:19.5169010Z    Compiling futures-channel v0.3.34
+2026-10-06T17:35:19.6492650Z    Compiling smallvec v1.16.2
+2026-10-06T17:35:19.6530030Z    Compiling log v0.4.34
+2026-10-06T17:35:19.6773780Z    Compiling sync_wrapper v1.0.2
+2026-10-06T17:35:19.7198610Z    Compiling httpdate v1.0.3
+2026-10-06T17:35:19.7631780Z    Compiling atomic-waker v1.1.2
+2026-10-06T17:35:19.7818970Z    Compiling percent-encoding v2.3.2
+2026-10-06T17:35:19.8109910Z    Compiling data-encoding v2.11.1
+2026-10-06T17:35:19.8686170Z    Compiling tower-layer v0.3.3
+2026-10-06T17:35:19.8865530Z    Compiling form_urlencoded v1.2.2
+2026-10-06T17:35:19.9545240Z    Compiling hyper v1.11.1
+2026-10-06T17:35:19.9739950Z    Compiling rmp v0.8.15
+2026-10-06T17:35:20.1979500Z    Compiling tungstenite v0.29.0
+2026-10-06T17:35:20.4608030Z    Compiling oh_ai v0.1.0 (/Users/runner/work/OpenHOI4/OpenHOI4/crates/oh_ai)
+2026-10-06T17:35:20.5122790Z    Compiling oh_save v0.1.0 (/Users/runner/work/OpenHOI4/OpenHOI4/crates/oh_save)
+2026-10-06T17:35:20.5628410Z    Compiling http-body-util v0.1.5
+2026-10-06T17:35:20.7333190Z    Compiling mime v0.3.17
+2026-10-06T17:35:20.8950750Z    Compiling ryu v1.0.23
+2026-10-06T17:35:20.8995810Z    Compiling axum-core v0.5.6
+2026-10-06T17:35:21.0137820Z    Compiling serde_urlencoded v0.7.1
+2026-10-06T17:35:21.0602950Z    Compiling tokio-tungstenite v0.29.0
+2026-10-06T17:35:21.1795270Z    Compiling hyper-util v0.1.21
+2026-10-06T17:35:21.2227070Z    Compiling rmp-serde v1.3.1
+2026-10-06T17:35:21.3953990Z    Compiling ts-rs v12.0.1
+2026-10-06T17:35:21.5004630Z    Compiling tower v0.5.3
+2026-10-06T17:35:21.7679190Z    Compiling serde_path_to_error v0.1.20
+2026-10-06T17:35:21.9654830Z    Compiling base64 v0.22.1
+2026-10-06T17:35:21.9713120Z    Compiling oh_server v0.1.0 (/Users/runner/work/OpenHOI4/OpenHOI4/crates/oh_server)
+2026-10-06T17:35:22.0117200Z    Compiling matchit v0.8.4
+2026-10-06T17:35:22.2429530Z    Compiling axum v0.8.9
+2026-10-06T17:35:22.2526950Z    Compiling oh_proto v0.1.0 (/Users/runner/work/OpenHOI4/OpenHOI4/crates/oh_proto)
+2026-10-06T17:35:22.3271520Z    Compiling oh_cli v0.1.0 (/Users/runner/work/OpenHOI4/OpenHOI4/crates/oh_cli)
+2026-10-06T17:35:26.7727250Z     Finished `dev` profile [unoptimized + debuginfo] target(s) in 21.14s

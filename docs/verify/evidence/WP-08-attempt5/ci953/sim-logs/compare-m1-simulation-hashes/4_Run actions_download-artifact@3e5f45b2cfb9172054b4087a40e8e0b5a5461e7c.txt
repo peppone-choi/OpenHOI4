@@ -1,0 +1,39 @@
+2026-10-06T17:35:51.5101023Z ##[group]Run actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c
+2026-10-06T17:35:51.5102649Z with:
+2026-10-06T17:35:51.5103833Z   pattern: m1-sim-hash-*
+2026-10-06T17:35:51.5104848Z   path: m1-sim-hashes
+2026-10-06T17:35:51.5105802Z   merge-multiple: false
+2026-10-06T17:35:51.5106827Z   repository: peppone-choi/OpenHOI4
+2026-10-06T17:35:51.5107897Z   run-id: 37504540929
+2026-10-06T17:35:51.5108836Z   skip-decompress: false
+2026-10-06T17:35:51.5109848Z   digest-mismatch: error
+2026-10-06T17:35:51.5110818Z env:
+2026-10-06T17:35:51.5111856Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:35:51.5113702Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib/pkgconfig
+2026-10-06T17:35:51.5115380Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:35:51.5116914Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:35:51.5118441Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:35:51.5119976Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib
+2026-10-06T17:35:51.5121314Z ##[endgroup]
+2026-10-06T17:35:51.7421324Z Found 6 artifact(s)
+2026-10-06T17:35:51.7423373Z Filtering artifacts by pattern 'm1-sim-hash-*'
+2026-10-06T17:35:51.7444689Z Preparing to download the following artifacts:
+2026-10-06T17:35:51.7445684Z - m1-sim-hash-ubuntu-latest (ID: 11430644130, Size: 635, Expected Digest: sha256:39f0497f920a2a9b2f22b658188078ac357f6e61d9f33da532143c857d9842e5)
+2026-10-06T17:35:51.7447043Z - m1-sim-hash-windows-latest (ID: 11430554398, Size: 638, Expected Digest: sha256:1a82676d96a2608b5a81a8ab9a2e36b57dcc517893c0c96c543197e0e7382c2f)
+2026-10-06T17:35:51.7448335Z - m1-sim-hash-macos-latest (ID: 11430349509, Size: 635, Expected Digest: sha256:4f46d2b71cdb7e2f71810eac6a3bb96789ac38f2531dc3ff7a14c022efd92e15)
+2026-10-06T17:35:51.8936960Z Redirecting to blob download url: https://productionresultssa7.blob.core.windows.net/actions-results/79898495-1769-89c0-ba75-c5302c55b339/workflow-job-run-31f3a909-e687-5726-9691-d2b519902a35/artifacts/6578241981c54ee95dc8b81d5bb9e3418ec45624114136aaf79d1b17e2812705.zip
+2026-10-06T17:35:51.8938809Z Starting download of artifact to: /home/runner/work/OpenHOI4/OpenHOI4/m1-sim-hashes/m1-sim-hash-ubuntu-latest
+2026-10-06T17:35:51.9002759Z Redirecting to blob download url: https://productionresultssa7.blob.core.windows.net/actions-results/79898495-1769-89c0-ba75-c5302c55b339/workflow-job-run-5294c697-aecd-5348-a31a-6294a0c75fef/artifacts/b9b49313e4626acad7e859807089328af53ed53a726301f7467c739e414b3ecd.zip
+2026-10-06T17:35:51.9004668Z Starting download of artifact to: /home/runner/work/OpenHOI4/OpenHOI4/m1-sim-hashes/m1-sim-hash-macos-latest
+2026-10-06T17:35:51.9049198Z Redirecting to blob download url: https://productionresultssa7.blob.core.windows.net/actions-results/79898495-1769-89c0-ba75-c5302c55b339/workflow-job-run-d0c11472-4a2c-55ab-a1cf-94324a59eec7/artifacts/4bbdae35e9932538f264cbfc5bf60c55607bdf96ad38105edf1087d8495fa4cf.zip
+2026-10-06T17:35:51.9050848Z Starting download of artifact to: /home/runner/work/OpenHOI4/OpenHOI4/m1-sim-hashes/m1-sim-hash-windows-latest
+2026-10-06T17:35:51.9414043Z (node:2345) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-10-06T17:35:51.9416431Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-06T17:35:51.9554312Z SHA256 digest of downloaded artifact is 39f0497f920a2a9b2f22b658188078ac357f6e61d9f33da532143c857d9842e5
+2026-10-06T17:35:51.9555729Z Artifact download completed successfully.
+2026-10-06T17:35:51.9557458Z SHA256 digest of downloaded artifact is 4f46d2b71cdb7e2f71810eac6a3bb96789ac38f2531dc3ff7a14c022efd92e15
+2026-10-06T17:35:51.9558777Z Artifact download completed successfully.
+2026-10-06T17:35:51.9562866Z SHA256 digest of downloaded artifact is 1a82676d96a2608b5a81a8ab9a2e36b57dcc517893c0c96c543197e0e7382c2f
+2026-10-06T17:35:51.9565646Z Artifact download completed successfully.
+2026-10-06T17:35:51.9566730Z Total of 3 artifact(s) downloaded
+2026-10-06T17:35:51.9569171Z Download artifact has finished successfully

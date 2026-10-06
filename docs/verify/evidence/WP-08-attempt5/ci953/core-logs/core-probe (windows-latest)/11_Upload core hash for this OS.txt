@@ -1,0 +1,28 @@
+2026-10-06T17:35:26.4269402Z ##[group]Run actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+2026-10-06T17:35:26.4269919Z with:
+2026-10-06T17:35:26.4270136Z   name: core-hash-windows-latest
+2026-10-06T17:35:26.4270446Z   path: target/core-determinism/core-hash.txt
+2026-10-06T17:35:26.4270999Z   if-no-files-found: error
+2026-10-06T17:35:26.4271370Z   archive: true
+2026-10-06T17:35:26.4271657Z   compression-level: 6
+2026-10-06T17:35:26.4271888Z   overwrite: false
+2026-10-06T17:35:26.4272111Z   include-hidden-files: false
+2026-10-06T17:35:26.4272379Z env:
+2026-10-06T17:35:26.4272657Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:26.4273138Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.11.9\x64/lib/pkgconfig
+2026-10-06T17:35:26.4273610Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:26.4274043Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:26.4274465Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:26.4274836Z ##[endgroup]
+2026-10-06T17:35:26.6078962Z With the provided path, there will be 1 file uploaded
+2026-10-06T17:35:26.6084814Z Artifact name is valid!
+2026-10-06T17:35:26.6086406Z Root directory input is valid!
+2026-10-06T17:35:26.8489252Z Uploading artifact: core-hash-windows-latest.zip
+2026-10-06T17:35:26.8537924Z Beginning upload of artifact content to blob storage
+2026-10-06T17:35:27.0041519Z Uploaded bytes 160
+2026-10-06T17:35:27.0416982Z Finished uploading artifact content to blob storage!
+2026-10-06T17:35:27.0418508Z SHA256 digest of uploaded artifact is 5dbb1ca422e10e306bee4581153fe12a7cc4b7c931929a574155f755dddb5d3f
+2026-10-06T17:35:27.0419507Z Finalizing artifact upload
+2026-10-06T17:35:27.3390957Z Artifact core-hash-windows-latest successfully finalized. Artifact ID 11430493807
+2026-10-06T17:35:27.3392049Z Artifact core-hash-windows-latest has been successfully uploaded! Final size is 160 bytes. Artifact ID is 11430493807
+2026-10-06T17:35:27.3400188Z Artifact download URL: https://github.com/peppone-choi/OpenHOI4/actions/runs/37504541035/artifacts/11430493807

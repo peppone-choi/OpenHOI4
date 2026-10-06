@@ -1,0 +1,10 @@
+{"args": ["python", "crates/oh_server/tests/lifecycle.py"], "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify5", "start": "2026-10-06T17:38:03.663644+00:00"}
+OpenHOI4: http://127.0.0.1:14858/
+Pack: m0_testland (f611416c817dc014) from E:\openhoi\.orchestrator\wt\WP-08-verify5\data\packs\examples\m0
+Open this address in a browser. Ctrl+C to shut down. --help for usage.
+Shutting down OpenHOI.
+OpenHOI stopped normally.
+
+
+REQ-NET-02 isolated executable assets: PASS
+REQ-NET-06 actual CTRL_C_EVENT/SIGINT, active WS closure, exit 0, released port: PASS

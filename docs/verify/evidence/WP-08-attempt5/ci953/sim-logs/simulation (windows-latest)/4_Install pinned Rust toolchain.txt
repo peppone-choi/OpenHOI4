@@ -1,0 +1,16 @@
+2026-10-06T17:34:15.8136979Z ##[group]Run rustup toolchain install 1.99.0 --profile minimal --component rustfmt --component clippy
+2026-10-06T17:34:15.8138234Z [36;1mrustup toolchain install 1.99.0 --profile minimal --component rustfmt --component clippy[0m
+2026-10-06T17:34:15.8916838Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-06T17:34:15.8918427Z env:
+2026-10-06T17:34:15.8919454Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:34:15.8920745Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.11.9\x64/lib/pkgconfig
+2026-10-06T17:34:15.8921527Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:34:15.8922273Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:34:15.8922907Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:34:15.8923381Z ##[endgroup]
+2026-10-06T17:34:17.0594403Z info: syncing channel updates for 1.99.0-x86_64-pc-windows-msvc
+2026-10-06T17:34:17.6964873Z info: latest update on 2026-10-01 for version 1.99.0 (b940084d7 2026-09-28)
+2026-10-06T17:34:17.7051399Z info: downloading 5 components
+2026-10-06T17:34:27.8799419Z
+2026-10-06T17:34:27.9099858Z   1.99.0-x86_64-pc-windows-msvc installed - rustc 1.99.0 (b940084d7 2026-09-28)
+2026-10-06T17:34:27.9100603Z

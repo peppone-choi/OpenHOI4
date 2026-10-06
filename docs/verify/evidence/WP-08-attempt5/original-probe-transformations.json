@@ -1,0 +1,44 @@
+[
+  {
+    "label": "red62",
+    "name": "resize-probe.cjs",
+    "originalSHA": "1be6b67e6ce38bdac3f21aadd64c5a74134e75fce3b0576f9bab7b050d706d5d",
+    "executedSHA": "a1f0eed55cdb4e58a4cf6304079a286788f7024f619c50cc7d055b66d8020bc2",
+    "scope": "only absolute dependency/import paths + own port19443; assertions and timeouts unchanged"
+  },
+  {
+    "label": "red62",
+    "name": "gpu-compile-failure.cjs",
+    "originalSHA": "4fdfe601e6151f1de5471e6c3f5093d736e6735342190f1825949604b80bbea8",
+    "executedSHA": "cb2878c22f6ee1c73b50529921146d38c8f0a0d1be03a1b1244f41bdb9dcbb89",
+    "scope": "only absolute dependency/import paths + own port19443; assertions and timeouts unchanged"
+  },
+  {
+    "label": "red62",
+    "name": "initialization.cjs",
+    "originalSHA": "be2560ecb2c75bf6067e93b7939647d673a49de29f874fb7b64e6e92dcae739c",
+    "executedSHA": "0392bdb424a55fbdc3439c1288491b1766777247548e321b561ccbf4fd6ab4c3",
+    "scope": "only absolute dependency/import paths + own port19443; assertions and timeouts unchanged"
+  },
+  {
+    "label": "current",
+    "name": "resize-probe.cjs",
+    "originalSHA": "1be6b67e6ce38bdac3f21aadd64c5a74134e75fce3b0576f9bab7b050d706d5d",
+    "executedSHA": "afdbeac86da3fee82bfc5668d4f7ff6e1dbaf77423720249a6062364bfbac4e7",
+    "scope": "only absolute dependency/import paths + own port19443; assertions and timeouts unchanged"
+  },
+  {
+    "label": "current",
+    "name": "gpu-compile-failure.cjs",
+    "originalSHA": "4fdfe601e6151f1de5471e6c3f5093d736e6735342190f1825949604b80bbea8",
+    "executedSHA": "6346f0b853e85fced341efc1b3a4df7b61aee752d4278c6757539103c5be65b5",
+    "scope": "only absolute dependency/import paths + own port19443; assertions and timeouts unchanged"
+  },
+  {
+    "label": "current",
+    "name": "initialization.cjs",
+    "originalSHA": "be2560ecb2c75bf6067e93b7939647d673a49de29f874fb7b64e6e92dcae739c",
+    "executedSHA": "fa0f09b3d0b27b5c85846662362de2fe501aa0c6c9d1c2e332d037ad909cc785",
+    "scope": "only absolute dependency/import paths + own port19443; assertions and timeouts unchanged"
+  }
+]

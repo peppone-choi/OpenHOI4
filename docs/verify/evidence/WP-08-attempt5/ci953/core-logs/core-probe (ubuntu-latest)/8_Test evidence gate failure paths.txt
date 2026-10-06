@@ -1,0 +1,30 @@
+2026-10-06T17:34:38.1636738Z ##[group]Run python -m unittest discover -s crates/oh_core/tests -p test_determinism_workflow.py -v
+2026-10-06T17:34:38.1637368Z [36;1mpython -m unittest discover -s crates/oh_core/tests -p test_determinism_workflow.py -v[0m
+2026-10-06T17:34:38.1698781Z shell: /usr/bin/bash -e {0}
+2026-10-06T17:34:38.1699016Z env:
+2026-10-06T17:34:38.1699273Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:34:38.1699676Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib/pkgconfig
+2026-10-06T17:34:38.1700046Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:34:38.1700378Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:34:38.1700711Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:34:38.1701050Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib
+2026-10-06T17:34:38.1701509Z ##[endgroup]
+2026-10-06T17:34:38.3798371Z test_req_gen_04_capture_repeated_run_mismatch_fails (test_determinism_workflow.CoreDeterminismTests.test_req_gen_04_capture_repeated_run_mismatch_fails) ... ok
+2026-10-06T17:34:38.3804297Z test_req_gen_04_capture_requires_two_matching_runs (test_determinism_workflow.CoreDeterminismTests.test_req_gen_04_capture_requires_two_matching_runs) ... ok
+2026-10-06T17:34:38.3808825Z test_req_gen_04_failed_probe_does_not_produce_artifact (test_determinism_workflow.CoreDeterminismTests.test_req_gen_04_failed_probe_does_not_produce_artifact) ... ok
+2026-10-06T17:34:38.3821840Z test_req_gen_04_malformed_probe_does_not_produce_artifact (test_determinism_workflow.CoreDeterminismTests.test_req_gen_04_malformed_probe_does_not_produce_artifact) ... ok
+2026-10-06T17:34:38.3822789Z test_req_plat_02_extra_artifact_fails (test_determinism_workflow.CoreDeterminismTests.test_req_plat_02_extra_artifact_fails) ... ok
+2026-10-06T17:34:38.3827587Z test_req_plat_02_malformed_hash_fails (test_determinism_workflow.CoreDeterminismTests.test_req_plat_02_malformed_hash_fails) ... ok
+2026-10-06T17:34:38.3834526Z test_req_plat_02_missing_hash_file_fails (test_determinism_workflow.CoreDeterminismTests.test_req_plat_02_missing_hash_file_fails) ... ok
+2026-10-06T17:34:38.3839362Z test_req_plat_02_missing_os_fails (test_determinism_workflow.CoreDeterminismTests.test_req_plat_02_missing_os_fails) ... ok
+2026-10-06T17:34:38.3846743Z test_req_plat_02_three_different_artifacts_fail (test_determinism_workflow.CoreDeterminismTests.test_req_plat_02_three_different_artifacts_fail) ... ok
+2026-10-06T17:34:38.3853491Z test_req_plat_02_three_matching_artifacts_pass (test_determinism_workflow.CoreDeterminismTests.test_req_plat_02_three_matching_artifacts_pass) ... ok
+2026-10-06T17:34:38.3854029Z
+2026-10-06T17:34:38.3854251Z ----------------------------------------------------------------------
+2026-10-06T17:34:38.3854740Z Ran 10 tests in 0.006s
+2026-10-06T17:34:38.3854933Z
+2026-10-06T17:34:38.3855051Z OK
+2026-10-06T17:34:38.3855375Z core probe two runs: 0dd81b8754bcc3f9
+2026-10-06T17:34:38.3855768Z ubuntu-latest: 0dd81b8754bcc3f9
+2026-10-06T17:34:38.3856072Z windows-latest: 0dd81b8754bcc3f9
+2026-10-06T17:34:38.3856306Z macos-latest: 0dd81b8754bcc3f9

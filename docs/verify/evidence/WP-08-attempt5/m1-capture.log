@@ -1,0 +1,2 @@
+{"args": ["python", "crates/oh_sim/tools/check_sim_determinism.py", "capture", "--m1", "--out", "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify5\\target\\wp08-verify5\\m1-capture"], "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify5", "start": "2026-10-06T17:39:15.509801+00:00"}
+actual simulation: 1000 ticks, seed 1, two runs: 60448355cecffa9d

@@ -1,0 +1,270 @@
+2026-10-06T17:35:06.0816245Z ##[group]Run cargo test --workspace --locked
+2026-10-06T17:35:06.0816658Z [36;1mcargo test --workspace --locked[0m
+2026-10-06T17:35:06.0877572Z shell: /usr/bin/bash -e {0}
+2026-10-06T17:35:06.0877869Z ##[endgroup]
+2026-10-06T17:35:06.1571419Z  Downloading crates ...
+2026-10-06T17:35:06.2293877Z   Downloaded unarray v0.1.4
+2026-10-06T17:35:06.2314981Z   Downloaded rand_xorshift v0.4.0
+2026-10-06T17:35:06.2450609Z   Downloaded proptest v1.11.0
+2026-10-06T17:35:06.2548496Z   Downloaded regex-syntax v0.8.11
+2026-10-06T17:35:06.2830311Z    Compiling rand_xorshift v0.4.0
+2026-10-06T17:35:06.2831194Z    Compiling unarray v0.1.4
+2026-10-06T17:35:06.2833645Z    Compiling regex-syntax v0.8.11
+2026-10-06T17:35:06.2886011Z    Compiling oh_cli v0.1.0 (/home/runner/work/OpenHOI4/OpenHOI4/crates/oh_cli)
+2026-10-06T17:35:06.3417914Z    Compiling oh_server v0.1.0 (/home/runner/work/OpenHOI4/OpenHOI4/crates/oh_server)
+2026-10-06T17:35:06.6969989Z    Compiling oh_proto v0.1.0 (/home/runner/work/OpenHOI4/OpenHOI4/crates/oh_proto)
+2026-10-06T17:35:07.7809735Z    Compiling oh_ai v0.1.0 (/home/runner/work/OpenHOI4/OpenHOI4/crates/oh_ai)
+2026-10-06T17:35:07.8830194Z    Compiling oh_save v0.1.0 (/home/runner/work/OpenHOI4/OpenHOI4/crates/oh_save)
+2026-10-06T17:35:07.9770661Z    Compiling proptest v1.11.0
+2026-10-06T17:35:08.2640362Z    Compiling oh_data v0.1.0 (/home/runner/work/OpenHOI4/OpenHOI4/crates/oh_data)
+2026-10-06T17:35:10.7496667Z    Compiling oh_core v0.1.0 (/home/runner/work/OpenHOI4/OpenHOI4/crates/oh_core)
+2026-10-06T17:35:10.7497900Z    Compiling oh_sim v0.1.0 (/home/runner/work/OpenHOI4/OpenHOI4/crates/oh_sim)
+2026-10-06T17:35:11.9523379Z     Finished `test` profile [unoptimized + debuginfo] target(s) in 5.83s
+2026-10-06T17:35:11.9607271Z      Running unittests src/lib.rs (target/debug/deps/oh_ai-b5b40bff96959b4b)
+2026-10-06T17:35:11.9618003Z
+2026-10-06T17:35:11.9618433Z running 0 tests
+2026-10-06T17:35:11.9620819Z
+2026-10-06T17:35:11.9621565Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:35:11.9622338Z
+2026-10-06T17:35:11.9622842Z      Running unittests src/lib.rs (target/debug/deps/oh_cli-c5c70e3368b46459)
+2026-10-06T17:35:11.9632610Z
+2026-10-06T17:35:11.9633059Z running 0 tests
+2026-10-06T17:35:11.9633825Z      Running unittests src/main.rs (target/debug/deps/oh_cli-e0d408049dcf28e3)
+2026-10-06T17:35:11.9634275Z
+2026-10-06T17:35:11.9634677Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:35:11.9635091Z
+2026-10-06T17:35:11.9642502Z
+2026-10-06T17:35:11.9642780Z running 0 tests
+2026-10-06T17:35:11.9643040Z
+2026-10-06T17:35:11.9643512Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:35:11.9643899Z
+2026-10-06T17:35:11.9645304Z      Running tests/run.rs (target/debug/deps/run-22dde73a214dd629)
+2026-10-06T17:35:11.9654335Z
+2026-10-06T17:35:11.9654499Z running 6 tests
+2026-10-06T17:35:11.9680873Z test m0_load_boundary_and_help_identify_unique_self_contained_pack ... ok
+2026-10-06T17:35:11.9708724Z test library_loads_data_epoch_and_rejects_bad_or_nonempty_scenario ... ok
+2026-10-06T17:35:11.9779477Z test req_gen_06_ac_m0_02_exact_ticks_and_repeated_hash ... ok
+2026-10-06T17:35:11.9806434Z test cli_rejects_ambiguous_missing_invalid_and_unimplemented_inputs ... ok
+2026-10-06T17:35:11.9876087Z test req_gen_06_days_path_is_exact_and_zero_ticks_stays_initial ... ok
+2026-10-06T17:35:11.9908775Z test m1_explicit_pack_uses_national_state_and_preserves_m0_default ... ok
+2026-10-06T17:35:11.9909431Z
+2026-10-06T17:35:11.9910101Z test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+2026-10-06T17:35:11.9910591Z
+2026-10-06T17:35:11.9914031Z      Running unittests src/lib.rs (target/debug/deps/oh_core-da5fa828fe0e02b6)
+2026-10-06T17:35:11.9920516Z
+2026-10-06T17:35:11.9920737Z running 0 tests
+2026-10-06T17:35:11.9922332Z
+2026-10-06T17:35:11.9923180Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:35:11.9924144Z
+2026-10-06T17:35:11.9924584Z      Running tests/core.rs (target/debug/deps/core-4c4bc2459720e99b)
+2026-10-06T17:35:11.9932329Z
+2026-10-06T17:35:11.9932566Z running 16 tests
+2026-10-06T17:35:11.9936621Z test req_gen_04_fixed_and_id_wire_encoding ... ok
+2026-10-06T17:35:11.9939406Z test req_gen_04_canonical_map_order_and_strict_decode ... ok
+2026-10-06T17:35:11.9940541Z test req_gen_04_fixed_exact_arithmetic_and_rounding ... ok
+2026-10-06T17:35:11.9941951Z test req_gen_04_fnv1a_reference_vectors_and_incremental_hash ... ok
+2026-10-06T17:35:12.0031006Z test req_gen_04_fixed_checked_arithmetic_matches_integer_reference ... ok
+2026-10-06T17:35:12.0049169Z test req_gen_04_fixed_serialization_preserves_all_bits ... ok
+2026-10-06T17:35:12.0069354Z test req_gen_04_rng_order_and_unrelated_draws_do_not_affect_entity_streams ... ok
+2026-10-06T17:35:12.0099203Z test req_gen_04_rng_tuple_fields_and_entity_domains_are_distinct ... ok
+2026-10-06T17:35:12.0129074Z test req_gen_04_serialization_errors_are_propagated ... ok
+2026-10-06T17:35:12.0147278Z test req_gen_04_typed_ids_round_trip ... ok
+2026-10-06T17:35:12.0159275Z test req_plat_02_chacha8_zero_seed_reference_vector ... ok
+2026-10-06T17:35:12.0199186Z test req_plat_02_full_diagnostic_matches_independent_reference ... ok
+2026-10-06T17:35:12.0219207Z test req_plat_02_portable_postcard_hash_vector ... ok
+2026-10-06T17:35:12.0225066Z test req_gen_04_rng_reconstruction ... ok
+2026-10-06T17:35:12.0620748Z test req_gen_04_map_permutations_are_canonical ... ok
+2026-10-06T17:35:12.1518746Z test req_gen_04_fnv_chunking_is_independent ... ok
+2026-10-06T17:35:12.1519271Z
+2026-10-06T17:35:12.1519919Z test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s
+2026-10-06T17:35:12.1520457Z
+2026-10-06T17:35:12.1522194Z      Running unittests src/lib.rs (target/debug/deps/oh_data-8c4e765c20931c91)
+2026-10-06T17:35:12.1534586Z
+2026-10-06T17:35:12.1534776Z running 0 tests
+2026-10-06T17:35:12.1535060Z
+2026-10-06T17:35:12.1535669Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:35:12.1536062Z
+2026-10-06T17:35:12.1536981Z      Running tests/loader.rs (target/debug/deps/loader-b4e305d47526e4b6)
+2026-10-06T17:35:12.1546708Z
+2026-10-06T17:35:12.1546903Z running 12 tests
+2026-10-06T17:35:12.1559220Z test ac_m0_03_crlf_unicode_error_location ... ok
+2026-10-06T17:35:12.1560690Z test ac_m0_03_missing_file_has_path_and_io_diagnostic ... ok
+2026-10-06T17:35:12.1561874Z test ac_m0_03_additional_io_and_schema_cases ... ok
+2026-10-06T17:35:12.1568710Z test ac_m0_03_manifest_schema_errors_have_source_locations ... ok
+2026-10-06T17:35:12.1569658Z test ac_m0_03_defines_schema_errors_have_source_locations ... ok
+2026-10-06T17:35:12.1570294Z test ac_m0_03_schema_snapshots_match_generated_types ... ok
+2026-10-06T17:35:12.1571196Z test ac_m0_03_toml_syntax_errors_have_source_locations ... ok
+2026-10-06T17:35:12.1572137Z test req_gen_02_decimal_precision_does_not_round_through_float ... ok
+2026-10-06T17:35:12.1574602Z test req_gen_02_manifest_and_data_defined_numbers ... ok
+2026-10-06T17:35:12.1577258Z test req_gen_02_values_change_with_data ... ok
+2026-10-06T17:35:12.1577988Z test req_gen_02_no_gameplay_defaults_in_skeleton ... ok
+2026-10-06T17:35:12.1581190Z test req_gen_02_repeat_load_and_order_are_stable ... ok
+2026-10-06T17:35:12.1581470Z
+2026-10-06T17:35:12.1581870Z test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:35:12.1582296Z
+2026-10-06T17:35:12.1583813Z      Running tests/map.rs (target/debug/deps/map-6f768544bbfe02d6)
+2026-10-06T17:35:12.1594316Z
+2026-10-06T17:35:12.1594480Z running 11 tests
+2026-10-06T17:35:12.1629163Z test req_map_01_rgb_definition_and_u16_index ... ok
+2026-10-06T17:35:12.1650305Z test req_map_02_row_order_crlf_and_irrational_distance_bits ... ok
+2026-10-06T17:35:12.1654773Z test req_map_02_sorted_four_neighbor_adjacency_golden_and_overrides ... ok
+2026-10-06T17:35:12.1786237Z test req_map_01_unknown_rgb_single_pixel_missing_and_disconnected_islands ... ok
+2026-10-06T17:35:12.1827607Z test req_map_01_png_format_and_csv_integrity ... ok
+2026-10-06T17:35:12.1909378Z test req_map_03_toml_schema_and_registry_integrity ... ok
+2026-10-06T17:35:12.1910787Z test req_map_09_victory_point_definition_and_invalid_references ... ok
+2026-10-06T17:35:12.1915562Z test structural_map_schemas_match_checked_in_files ... ok
+2026-10-06T17:35:12.1917111Z test req_map_03_states_and_references ... ok
+2026-10-06T17:35:12.1965035Z test scale_is_exact_fixed_positive_and_checked ... ok
+2026-10-06T17:35:12.1976798Z test strict_csv_and_override_errors_have_exact_locations ... ok
+2026-10-06T17:35:12.1977312Z
+2026-10-06T17:35:12.1977862Z test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+2026-10-06T17:35:12.1978589Z
+2026-10-06T17:35:12.1980733Z      Running tests/national.rs (target/debug/deps/national-3d9dacae1d8e9947)
+2026-10-06T17:35:12.1992099Z
+2026-10-06T17:35:12.1992281Z running 3 tests
+2026-10-06T17:35:12.2010133Z test req_nat_01_generated_schemas_are_current ... ok
+2026-10-06T17:35:12.2026242Z test req_nat_01_validated_data_and_references ... ok
+2026-10-06T17:35:12.2393220Z test req_nat_01_schema_ranges_and_reference_rejections_are_atomic ... ok
+2026-10-06T17:35:12.2393684Z
+2026-10-06T17:35:12.2394213Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+2026-10-06T17:35:12.2394730Z
+2026-10-06T17:35:12.2396207Z      Running unittests src/lib.rs (target/debug/deps/oh_proto-1e175da060109e3a)
+2026-10-06T17:35:12.2405834Z
+2026-10-06T17:35:12.2406055Z running 0 tests
+2026-10-06T17:35:12.2406282Z
+2026-10-06T17:35:12.2406714Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:35:12.2407141Z
+2026-10-06T17:35:12.2408796Z      Running tests/contract.rs (target/debug/deps/contract-f86d9a4f78fcfd17)
+2026-10-06T17:35:12.2419170Z
+2026-10-06T17:35:12.2419361Z running 3 tests
+2026-10-06T17:35:12.2423405Z test req_net_01_messagepack_roundtrip ... ok
+2026-10-06T17:35:12.2426261Z test req_net_04_generated_types_are_current ... ok
+2026-10-06T17:35:12.2446828Z test m1_actual_world_messagepack_preserves_applied_ledger_and_full_display_strings ... ok
+2026-10-06T17:35:12.2447450Z
+2026-10-06T17:35:12.2447847Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:35:12.2448508Z
+2026-10-06T17:35:12.2449055Z      Running unittests src/lib.rs (target/debug/deps/oh_save-f423f992ce7cdc5e)
+2026-10-06T17:35:12.2458146Z
+2026-10-06T17:35:12.2458623Z running 0 tests
+2026-10-06T17:35:12.2458880Z
+2026-10-06T17:35:12.2459545Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:35:12.2460170Z
+2026-10-06T17:35:12.2461047Z      Running unittests src/lib.rs (target/debug/deps/oh_server-98f7151cfc332c76)
+2026-10-06T17:35:12.2472484Z
+2026-10-06T17:35:12.2472719Z running 4 tests
+2026-10-06T17:35:12.2489282Z test session::tests::req_gen_05_thread_uses_simulation_and_stops_with_queued_input ... ok
+2026-10-06T17:35:12.2510313Z test national_tests::default_host_loads_m1_and_m0_requires_its_explicit_path ... ok
+2026-10-06T17:35:12.2514680Z test map::tests::map_metadata_matches_validated_dense_bytes_and_pack_identity ... ok
+2026-10-06T17:35:12.2515769Z      Running unittests src/main.rs (target/debug/deps/oh_server-ffc04063804fd67d)
+2026-10-06T17:35:12.2516544Z test map::tests::display_settings_accept_black_and_reject_missing_or_invalid_before_http ... ok
+2026-10-06T17:35:12.2516988Z
+2026-10-06T17:35:12.2517358Z test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:35:12.2517731Z
+2026-10-06T17:35:12.2524091Z
+2026-10-06T17:35:12.2524257Z running 0 tests
+2026-10-06T17:35:12.2524516Z
+2026-10-06T17:35:12.2524913Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:35:12.2525294Z
+2026-10-06T17:35:12.2527019Z      Running tests/startup.rs (target/debug/deps/startup-03ef7757964a4edd)
+2026-10-06T17:35:12.2535301Z
+2026-10-06T17:35:12.2535534Z running 2 tests
+2026-10-06T17:35:12.2561867Z test req_net_06_port_conflict ... ok
+2026-10-06T17:35:12.2649652Z test req_net_06_help_and_invalid_options ... ok
+2026-10-06T17:35:12.2650115Z
+2026-10-06T17:35:12.2650774Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+2026-10-06T17:35:12.2651993Z
+2026-10-06T17:35:12.2652506Z      Running unittests src/lib.rs (target/debug/deps/oh_sim-c246d09e64b6acd2)
+2026-10-06T17:35:12.2661039Z
+2026-10-06T17:35:12.2661284Z running 0 tests
+2026-10-06T17:35:12.2661595Z
+2026-10-06T17:35:12.2662149Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:35:12.2662584Z
+2026-10-06T17:35:12.2663575Z      Running tests/ledger.rs (target/debug/deps/ledger-de589be6606f3564)
+2026-10-06T17:35:12.2673483Z
+2026-10-06T17:35:12.2673736Z running 7 tests
+2026-10-06T17:35:12.2677569Z test req_ui_04_base_add_mul_trace_and_applied_bits ... ok
+2026-10-06T17:35:12.2679210Z test req_ui_04_duplicates_invalid_identifiers_and_overflow_are_errors ... ok
+2026-10-06T17:35:12.2681803Z test req_ui_04_expiry_boundary_target_isolation_and_base_only ... ok
+2026-10-06T17:35:12.2682912Z test req_ui_04_modifier_serialization_preserves_bits_and_expiry ... ok
+2026-10-06T17:35:12.2683603Z test req_ui_04_negative_zero_and_order_sensitive_rounding ... ok
+2026-10-06T17:35:12.3252242Z test req_ui_04_full_bit_range_matches_reference_or_checked_overflow ... ok
+2026-10-06T17:35:12.3294127Z test req_ui_04_ledger_matches_independent_reference_and_permutations ... ok
+2026-10-06T17:35:12.3294527Z
+2026-10-06T17:35:12.3294952Z test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+2026-10-06T17:35:12.3295334Z
+2026-10-06T17:35:12.3297249Z      Running tests/national.rs (target/debug/deps/national-aa0db5e82b06990b)
+2026-10-06T17:35:12.3308758Z
+2026-10-06T17:35:12.3309076Z running 5 tests
+2026-10-06T17:35:12.3359458Z test ac_m1_03_real_infrastructure_ledger_applied_and_recomputed ... ok
+2026-10-06T17:35:12.3360638Z test m1_generic_canonical_hash_includes_world ... ok
+2026-10-06T17:35:12.3361345Z test req_map_08_owner_and_controller_remain_distinct ... ok
+2026-10-06T17:35:12.3385692Z test m1_expiry_input_order_and_atomic_overflow_are_authoritative ... ok
+2026-10-06T17:35:12.3390213Z test m1_independent_fnv_oracle_and_every_initial_input_changes_hash ... ok
+2026-10-06T17:35:12.3390760Z
+2026-10-06T17:35:12.3391182Z test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+2026-10-06T17:35:12.3391712Z
+2026-10-06T17:35:12.3392713Z      Running tests/scheduler.rs (target/debug/deps/scheduler-63ac7d167b902936)
+2026-10-06T17:35:12.3402241Z
+2026-10-06T17:35:12.3402433Z running 8 tests
+2026-10-06T17:35:12.3408053Z test hash_includes_seed_config_and_pending_commands ... ok
+2026-10-06T17:35:12.3410108Z test calendar_leap_year_and_year_boundaries ... ok
+2026-10-06T17:35:12.3410930Z test overflow_preserves_state_and_queued_commands_and_pause_still_works ... ok
+2026-10-06T17:35:12.3411552Z test req_gen_05_commands_are_sorted_and_future_commands_wait ... ok
+2026-10-06T17:35:12.3412106Z test req_time_01_pause_resume_and_five_data_driven_speeds ... ok
+2026-10-06T17:35:12.3412588Z test req_time_02_tick_day_month_snapshot_order ... ok
+2026-10-06T17:35:12.3413094Z test time_defines_are_required_checked_and_change_host_pacing ... ok
+2026-10-06T17:35:12.3417514Z test req_gen_01_headless_state_and_hash_are_repeatable ... ok
+2026-10-06T17:35:12.3418008Z
+2026-10-06T17:35:12.3418910Z test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:35:12.3419363Z
+2026-10-06T17:35:12.3419619Z    Doc-tests oh_ai
+2026-10-06T17:35:12.3535161Z
+2026-10-06T17:35:12.3535412Z running 0 tests
+2026-10-06T17:35:12.3535595Z
+2026-10-06T17:35:12.3536006Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:35:12.3536637Z
+2026-10-06T17:35:12.3544776Z    Doc-tests oh_cli
+2026-10-06T17:35:12.3730241Z
+2026-10-06T17:35:12.3730585Z running 0 tests
+2026-10-06T17:35:12.3730794Z
+2026-10-06T17:35:12.3731209Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:35:12.3731584Z
+2026-10-06T17:35:12.3741728Z    Doc-tests oh_core
+2026-10-06T17:35:12.4035828Z
+2026-10-06T17:35:12.4036693Z running 1 test
+2026-10-06T17:35:12.4317527Z test crates/oh_core/src/ids.rs - ids (line 7) - compile fail ... ok
+2026-10-06T17:35:12.4317927Z
+2026-10-06T17:35:12.4318729Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+2026-10-06T17:35:12.4319131Z
+2026-10-06T17:35:12.4330027Z    Doc-tests oh_data
+2026-10-06T17:35:12.5063678Z
+2026-10-06T17:35:12.5064196Z running 0 tests
+2026-10-06T17:35:12.5064481Z
+2026-10-06T17:35:12.5065058Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:35:12.5065473Z
+2026-10-06T17:35:12.5079274Z    Doc-tests oh_proto
+2026-10-06T17:35:12.6196116Z
+2026-10-06T17:35:12.6196934Z running 0 tests
+2026-10-06T17:35:12.6197224Z
+2026-10-06T17:35:12.6197887Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:35:12.6198485Z
+2026-10-06T17:35:12.6212709Z    Doc-tests oh_save
+2026-10-06T17:35:12.6329910Z
+2026-10-06T17:35:12.6330422Z running 0 tests
+2026-10-06T17:35:12.6330719Z
+2026-10-06T17:35:12.6331445Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:35:12.6332253Z
+2026-10-06T17:35:12.6340508Z    Doc-tests oh_server
+2026-10-06T17:35:12.6799670Z
+2026-10-06T17:35:12.6800258Z running 0 tests
+2026-10-06T17:35:12.6800546Z
+2026-10-06T17:35:12.6801200Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:35:12.6801822Z
+2026-10-06T17:35:12.6813849Z    Doc-tests oh_sim
+2026-10-06T17:35:12.7214231Z
+2026-10-06T17:35:12.7214638Z running 2 tests
+2026-10-06T17:35:12.7477073Z test crates/oh_sim/src/lib.rs - State (line 68) - compile fail ... ok
+2026-10-06T17:35:12.7480295Z test crates/oh_sim/src/ledger.rs - ledger::StatLedger (line 91) - compile fail ... ok
+2026-10-06T17:35:12.7480900Z
+2026-10-06T17:35:12.7481513Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+2026-10-06T17:35:12.7482158Z

@@ -1,0 +1,86 @@
+2026-10-06T17:35:50.0319838Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+2026-10-06T17:35:50.0321030Z with:
+2026-10-06T17:35:50.0321629Z   repository: peppone-choi/OpenHOI4
+2026-10-06T17:35:50.0326170Z   token: ***
+2026-10-06T17:35:50.0326759Z   ssh-strict: true
+2026-10-06T17:35:50.0327321Z   ssh-user: git
+2026-10-06T17:35:50.0327888Z   persist-credentials: true
+2026-10-06T17:35:50.0328532Z   clean: true
+2026-10-06T17:35:50.0329107Z   sparse-checkout-cone-mode: true
+2026-10-06T17:35:50.0329747Z   fetch-depth: 1
+2026-10-06T17:35:50.0330365Z   fetch-tags: false
+2026-10-06T17:35:50.0330930Z   show-progress: true
+2026-10-06T17:35:50.0331491Z   lfs: false
+2026-10-06T17:35:50.0332025Z   submodules: false
+2026-10-06T17:35:50.0332594Z   set-safe-directory: true
+2026-10-06T17:35:50.0333392Z   allow-unsafe-pr-checkout: false
+2026-10-06T17:35:50.0334384Z ##[endgroup]
+2026-10-06T17:35:50.1306225Z Syncing repository: peppone-choi/OpenHOI4
+2026-10-06T17:35:50.1308051Z ##[group]Getting Git version info
+2026-10-06T17:35:50.1308874Z Working directory is '/home/runner/work/OpenHOI4/OpenHOI4'
+2026-10-06T17:35:50.1310010Z [command]/usr/bin/git version
+2026-10-06T17:35:50.1388792Z git version 2.55.0
+2026-10-06T17:35:50.1409510Z ##[endgroup]
+2026-10-06T17:35:50.1421197Z Temporarily overriding HOME='/home/runner/work/_temp/1e3c47ba-48d6-4f5b-82fd-3c24c6dafd05' before making global git config changes
+2026-10-06T17:35:50.1422632Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-06T17:35:50.1427685Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/OpenHOI4/OpenHOI4
+2026-10-06T17:35:50.1473769Z Deleting the contents of '/home/runner/work/OpenHOI4/OpenHOI4'
+2026-10-06T17:35:50.1477720Z ##[group]Determining repository object format
+2026-10-06T17:35:50.1479092Z ##[endgroup]
+2026-10-06T17:35:50.1480237Z ##[group]Initializing the repository
+2026-10-06T17:35:50.1483260Z [command]/usr/bin/git init /home/runner/work/OpenHOI4/OpenHOI4
+2026-10-06T17:35:50.1572383Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-06T17:35:50.1573961Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-06T17:35:50.1575367Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-06T17:35:50.1576571Z hint: call:
+2026-10-06T17:35:50.1577341Z hint:
+2026-10-06T17:35:50.1578274Z hint: 	git config --global init.defaultBranch <name>
+2026-10-06T17:35:50.1579418Z hint:
+2026-10-06T17:35:50.1580525Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-06T17:35:50.1582306Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-06T17:35:50.1583923Z hint:
+2026-10-06T17:35:50.1584653Z hint: 	git branch -m <name>
+2026-10-06T17:35:50.1585487Z hint:
+2026-10-06T17:35:50.1586688Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-06T17:35:50.1588647Z Initialized empty Git repository in /home/runner/work/OpenHOI4/OpenHOI4/.git/
+2026-10-06T17:35:50.1591462Z [command]/usr/bin/git remote add origin https://github.com/peppone-choi/OpenHOI4
+2026-10-06T17:35:50.1633224Z ##[endgroup]
+2026-10-06T17:35:50.1634601Z ##[group]Disabling automatic garbage collection
+2026-10-06T17:35:50.1636910Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-06T17:35:50.1666756Z ##[endgroup]
+2026-10-06T17:35:50.1668103Z ##[group]Setting up auth
+2026-10-06T17:35:50.1669074Z Removing SSH command configuration
+2026-10-06T17:35:50.1673559Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-06T17:35:50.1702742Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-06T17:35:50.2038621Z Removing HTTP extra header
+2026-10-06T17:35:50.2044173Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-06T17:35:50.2074776Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-06T17:35:50.2298071Z Removing includeIf entries pointing to credentials config files
+2026-10-06T17:35:50.2305844Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-06T17:35:50.2346342Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-06T17:35:50.2608178Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-437ada3d-688d-4f3c-a180-80192eb1bd30.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-06T17:35:50.2647442Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/OpenHOI4/OpenHOI4/.git.path /home/runner/work/_temp/git-credentials-437ada3d-688d-4f3c-a180-80192eb1bd30.config
+2026-10-06T17:35:50.2679067Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/OpenHOI4/OpenHOI4/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-437ada3d-688d-4f3c-a180-80192eb1bd30.config
+2026-10-06T17:35:50.2715473Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-437ada3d-688d-4f3c-a180-80192eb1bd30.config
+2026-10-06T17:35:50.2752242Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-437ada3d-688d-4f3c-a180-80192eb1bd30.config
+2026-10-06T17:35:50.2781707Z ##[endgroup]
+2026-10-06T17:35:50.2783635Z ##[group]Fetching the repository
+2026-10-06T17:35:50.2790198Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +9531121ee5677e43436be69364fdef4bfce2fe86:refs/remotes/origin/codex/wp08-map-rendering
+2026-10-06T17:35:51.0667123Z From https://github.com/peppone-choi/OpenHOI4
+2026-10-06T17:35:51.0695236Z  * [new ref]         9531121ee5677e43436be69364fdef4bfce2fe86 -> origin/codex/wp08-map-rendering
+2026-10-06T17:35:51.0699642Z [command]/usr/bin/git branch --list --remote origin/codex/wp08-map-rendering
+2026-10-06T17:35:51.0704752Z   origin/codex/wp08-map-rendering
+2026-10-06T17:35:51.0714883Z [command]/usr/bin/git rev-parse refs/remotes/origin/codex/wp08-map-rendering
+2026-10-06T17:35:51.0738336Z 9531121ee5677e43436be69364fdef4bfce2fe86
+2026-10-06T17:35:51.0745811Z ##[endgroup]
+2026-10-06T17:35:51.0747165Z ##[group]Determining the checkout info
+2026-10-06T17:35:51.0748446Z ##[endgroup]
+2026-10-06T17:35:51.0750458Z [command]/usr/bin/git sparse-checkout disable
+2026-10-06T17:35:51.0806042Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-06T17:35:51.0836057Z ##[group]Checking out the ref
+2026-10-06T17:35:51.0839294Z [command]/usr/bin/git checkout --progress --force -B codex/wp08-map-rendering refs/remotes/origin/codex/wp08-map-rendering
+2026-10-06T17:35:51.3024585Z Switched to a new branch 'codex/wp08-map-rendering'
+2026-10-06T17:35:51.3028788Z branch 'codex/wp08-map-rendering' set up to track 'origin/codex/wp08-map-rendering'.
+2026-10-06T17:35:51.3046743Z ##[endgroup]
+2026-10-06T17:35:51.3091418Z [command]/usr/bin/git log -1 --format=%H
+2026-10-06T17:35:51.3116503Z 9531121ee5677e43436be69364fdef4bfce2fe86

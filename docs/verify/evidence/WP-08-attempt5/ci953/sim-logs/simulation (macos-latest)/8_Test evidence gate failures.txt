@@ -1,0 +1,36 @@
+2026-10-06T17:35:09.0124000Z ##[group]Run python -m unittest discover -s crates/oh_sim/tests -p test_sim_determinism.py -v
+2026-10-06T17:35:09.0126580Z [36;1mpython -m unittest discover -s crates/oh_sim/tests -p test_sim_determinism.py -v[0m
+2026-10-06T17:35:09.0214180Z shell: /bin/bash -e {0}
+2026-10-06T17:35:09.0214650Z env:
+2026-10-06T17:35:09.0215060Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+2026-10-06T17:35:09.0215800Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.11.9/arm64/lib/pkgconfig
+2026-10-06T17:35:09.0216390Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+2026-10-06T17:35:09.0216940Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+2026-10-06T17:35:09.0217430Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+2026-10-06T17:35:09.0217990Z ##[endgroup]
+2026-10-06T17:35:09.7026690Z test_capture_invokes_actual_m1_pack_and_scenario_twice (test_sim_determinism.M1EvidenceTests.test_capture_invokes_actual_m1_pack_and_scenario_twice) ... ok
+2026-10-06T17:35:09.7071100Z test_compare_requires_m1_command_identity_on_three_os (test_sim_determinism.M1EvidenceTests.test_compare_requires_m1_command_identity_on_three_os) ... ok
+2026-10-06T17:35:09.7090860Z test_m1_does_not_accept_m0_artifacts (test_sim_determinism.M1EvidenceTests.test_m1_does_not_accept_m0_artifacts) ... ok
+2026-10-06T17:35:09.7101250Z test_m1_failed_capture_cannot_leave_a_success_marker (test_sim_determinism.M1EvidenceTests.test_m1_failed_capture_cannot_leave_a_success_marker) ... ok
+2026-10-06T17:35:09.7102980Z test_capture_rejects_command_failure (test_sim_determinism.SimEvidenceTests.test_capture_rejects_command_failure) ... ok
+2026-10-06T17:35:09.7110110Z test_capture_rejects_repeated_hash_mismatch (test_sim_determinism.SimEvidenceTests.test_capture_rejects_repeated_hash_mismatch) ... ok
+2026-10-06T17:35:09.7118030Z test_capture_runs_real_1000_tick_cli_twice (test_sim_determinism.SimEvidenceTests.test_capture_runs_real_1000_tick_cli_twice) ... ok
+2026-10-06T17:35:09.7141090Z test_compare_accepts_three_equal_os (test_sim_determinism.SimEvidenceTests.test_compare_accepts_three_equal_os) ... ok
+2026-10-06T17:35:09.7164640Z test_compare_rejects_cross_os_mismatch_even_when_each_repeat_matches (test_sim_determinism.SimEvidenceTests.test_compare_rejects_cross_os_mismatch_even_when_each_repeat_matches) ... ok
+2026-10-06T17:35:09.7342910Z test_compare_rejects_invalid_or_mismatched_hash (test_sim_determinism.SimEvidenceTests.test_compare_rejects_invalid_or_mismatched_hash) ... ok
+2026-10-06T17:35:09.7418090Z test_compare_rejects_missing_extra_os_and_missing_repeat (test_sim_determinism.SimEvidenceTests.test_compare_rejects_missing_extra_os_and_missing_repeat) ... ok
+2026-10-06T17:35:09.7450730Z test_compare_rejects_repeat_disagreement (test_sim_determinism.SimEvidenceTests.test_compare_rejects_repeat_disagreement) ... ok
+2026-10-06T17:35:09.7457740Z test_failed_recapture_clears_old_success_marker (test_sim_determinism.SimEvidenceTests.test_failed_recapture_clears_old_success_marker) ... ok
+2026-10-06T17:35:09.7458570Z
+2026-10-06T17:35:09.7459010Z actual simulation: 1000 ticks, seed 1, two runs: 0123456789abcdef
+2026-10-06T17:35:09.7460920Z ----------------------------------------------------------------------
+2026-10-06T17:35:09.7461490Z Ran 13 tests in 0.046s
+2026-10-06T17:35:09.7461700Z
+2026-10-06T17:35:09.7461880Z OK
+2026-10-06T17:35:09.7462110Z ubuntu-latest: 0123456789abcdef
+2026-10-06T17:35:09.7465000Z windows-latest: 0123456789abcdef
+2026-10-06T17:35:09.7465310Z macos-latest: 0123456789abcdef
+2026-10-06T17:35:09.7465730Z actual simulation: 1000 ticks, seed 1, two runs: 0123456789abcdef
+2026-10-06T17:35:09.7466140Z ubuntu-latest: 0123456789abcdef
+2026-10-06T17:35:09.7466610Z windows-latest: 0123456789abcdef
+2026-10-06T17:35:09.7466960Z macos-latest: 0123456789abcdef

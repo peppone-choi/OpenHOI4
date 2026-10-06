@@ -1,0 +1,33 @@
+2026-10-06T17:34:11.1161050Z Current runner version: '2.337.0'
+2026-10-06T17:34:11.1201950Z ##[group]Runner Image Provisioner
+2026-10-06T17:34:11.1204300Z Hosted Compute Agent
+2026-10-06T17:34:11.1205560Z Version: 20260828.587
+2026-10-06T17:34:11.1206070Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+2026-10-06T17:34:11.1206640Z Build Date: 2026-08-28T16:44:25Z
+2026-10-06T17:34:11.1207210Z Worker ID: {29ee93c5-ebd1-45bb-9be7-9c2ff631ba12}
+2026-10-06T17:34:11.1207780Z Azure Region: westus
+2026-10-06T17:34:11.1208160Z ##[endgroup]
+2026-10-06T17:34:11.1209240Z ##[group]Operating System
+2026-10-06T17:34:11.1209750Z macOS
+2026-10-06T17:34:11.1210140Z 26.6.2
+2026-10-06T17:34:11.1210510Z 25G83
+2026-10-06T17:34:11.1210930Z ##[endgroup]
+2026-10-06T17:34:11.1211360Z ##[group]Runner Image
+2026-10-06T17:34:11.1211850Z Image: macos-26-arm64
+2026-10-06T17:34:11.1212320Z Version: 20260907.0351.1
+2026-10-06T17:34:11.1213060Z Included Software: https://github.com/actions/runner-images/blob/macos-26-arm64/20260907.0351/images/macos/macos-26-arm64-Readme.md
+2026-10-06T17:34:11.1214480Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-26-arm64%2F20260907.0351
+2026-10-06T17:34:11.1215270Z ##[endgroup]
+2026-10-06T17:34:11.1216180Z ##[group]GITHUB_TOKEN Permissions
+2026-10-06T17:34:11.1217770Z Contents: read
+2026-10-06T17:34:11.1218150Z Metadata: read
+2026-10-06T17:34:11.1218520Z ##[endgroup]
+2026-10-06T17:34:11.1220180Z Secret source: Actions
+2026-10-06T17:34:11.1220850Z Cache mode: write
+2026-10-06T17:34:11.1221410Z Prepare workflow directory
+2026-10-06T17:34:11.1495000Z Prepare all required actions
+2026-10-06T17:34:11.1538140Z Getting action download info
+2026-10-06T17:34:11.5129980Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-10-06T17:34:11.7336570Z Download action repository 'actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97' (SHA:5fda3b95a4ea91299a34e894583c3862153e4b97)
+2026-10-06T17:34:11.8380030Z Download action repository 'actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a' (SHA:043fb46d1a93c77aae656e7c1c64a875d1fc6a0a)
+2026-10-06T17:34:12.0161020Z Complete job name: core-probe (macos-latest)

@@ -1,0 +1,40 @@
+2026-10-06T17:35:13.5348182Z ##[group]Run cargo run -p oh_proto --locked --example wire_fixtures
+2026-10-06T17:35:13.5349072Z [36;1mcargo run -p oh_proto --locked --example wire_fixtures[0m
+2026-10-06T17:35:13.5409962Z shell: /usr/bin/bash -e {0}
+2026-10-06T17:35:13.5410236Z env:
+2026-10-06T17:35:13.5410542Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:35:13.5411010Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib/pkgconfig
+2026-10-06T17:35:13.5411455Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:35:13.5411871Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:35:13.5412281Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:35:13.5412676Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib
+2026-10-06T17:35:13.5413005Z ##[endgroup]
+2026-10-06T17:35:13.6168478Z    Compiling serde_core v1.0.229
+2026-10-06T17:35:13.6169313Z    Compiling syn v3.0.6
+2026-10-06T17:35:13.6178134Z    Compiling serde_json v1.0.151
+2026-10-06T17:35:13.6205788Z    Compiling ppv-lite86 v0.2.21
+2026-10-06T17:35:13.7178161Z    Compiling memchr v2.8.3
+2026-10-06T17:35:13.9529324Z    Compiling rand_chacha v0.10.0
+2026-10-06T17:35:14.7899098Z    Compiling serde_derive_internals v0.30.0
+2026-10-06T17:35:15.2829416Z    Compiling serde_derive v1.0.229
+2026-10-06T17:35:15.3555781Z    Compiling thiserror-impl v2.0.21
+2026-10-06T17:35:15.4460739Z    Compiling ref-cast-impl v1.0.27
+2026-10-06T17:35:15.7568691Z    Compiling ref-cast v1.0.27
+2026-10-06T17:35:15.7919741Z    Compiling serde_spanned v1.1.1
+2026-10-06T17:35:15.8530021Z    Compiling toml_datetime v1.1.1+spec-1.1.0
+2026-10-06T17:35:16.0879544Z    Compiling schemars_derive v1.2.2
+2026-10-06T17:35:16.4042227Z    Compiling thiserror v2.0.21
+2026-10-06T17:35:16.4411458Z    Compiling cobs v0.3.0
+2026-10-06T17:35:16.5365708Z    Compiling toml v1.1.6+spec-1.1.0
+2026-10-06T17:35:16.9479922Z    Compiling ts-rs v12.0.1
+2026-10-06T17:35:17.8389639Z    Compiling serde v1.0.229
+2026-10-06T17:35:18.1339655Z    Compiling postcard v1.1.3
+2026-10-06T17:35:18.1341345Z    Compiling fixed v1.31.0
+2026-10-06T17:35:18.1342002Z    Compiling schemars v1.2.2
+2026-10-06T17:35:18.1835054Z    Compiling rmp-serde v1.3.1
+2026-10-06T17:35:23.4607840Z    Compiling oh_core v0.1.0 (/home/runner/work/OpenHOI4/OpenHOI4/crates/oh_core)
+2026-10-06T17:35:23.5767738Z    Compiling oh_data v0.1.0 (/home/runner/work/OpenHOI4/OpenHOI4/crates/oh_data)
+2026-10-06T17:35:24.1055741Z    Compiling oh_sim v0.1.0 (/home/runner/work/OpenHOI4/OpenHOI4/crates/oh_sim)
+2026-10-06T17:35:24.4919858Z    Compiling oh_proto v0.1.0 (/home/runner/work/OpenHOI4/OpenHOI4/crates/oh_proto)
+2026-10-06T17:35:26.1784187Z     Finished `dev` profile [unoptimized + debuginfo] target(s) in 12.60s
+2026-10-06T17:35:26.1823812Z      Running `target/debug/examples/wire_fixtures`

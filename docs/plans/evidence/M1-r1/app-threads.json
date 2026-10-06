@@ -194,18 +194,19 @@
       "worktree": "E:/openhoi/.orchestrator/wt/WP-08",
       "branch": "codex/wp08-map-rendering",
       "baseCommit": "b1da8f46fa7d2e849121424d5d2cf1ac36bfacd3",
-      "status": "active-P06-WebKit-resize-and-WebGPU-pipeline-rejection",
+      "status": "active-P06-DPR-and-Linux-timing-diagnosis",
       "appExit": "해당 없음(앱 실행)",
-      "verificationCommit": "62a89ae0c332483d0198ab3b3fc0fc3db1231c68",
-      "cursor": "a62a6b0a-9800-4c41-882e-b7bcb95ecd27:63",
+      "verificationCommit": "9531121ee5677e43436be69364fdef4bfce2fe86",
+      "cursor": "a62a6b0a-9800-4c41-882e-b7bcb95ecd27:91",
       "preview": {
-        "url": "http://127.0.0.1:19431/",
-        "pid": 8836,
-        "sourceCommit": "2c2aacc88bd22b0f3ba4393b22bef4b119616e69",
-        "evidence": "docs/verify/evidence/WP-08-preview-2c/",
-        "legacyPreview": "19418 f58 and 19425 87 retained; automatic termination review blocked"
+        "url": "http://127.0.0.1:19451/",
+        "pid": 26488,
+        "sourceCommit": "9531121ee5677e43436be69364fdef4bfce2fe86",
+        "evidence": "docs/verify/evidence/WP-08-preview-953/",
+        "legacyPreview": "19418=f58,19425=87,19431=2c retained; automatic termination review blocked"
       },
-      "mergeCommit": "9dcf19947006dd62fcfde48d7f9204a71d4b8e38"
+      "mergeCommit": "9dcf19947006dd62fcfde48d7f9204a71d4b8e38",
+      "diagnosticCommit": "a15f64f7b241f7d64cce5b39ab9b95c0142e9b86"
     },
     {
       "run": "M1-r1",
@@ -288,10 +289,27 @@
       "finalReport": "docs/verify/WP-08.attempt4.md",
       "cursor": "ad6cbd6d-ba22-45d2-9725-5e45c940ceb4:7",
       "runtimeIndependence": "initial native before collision; final resize independent PID9344 port19438; 19437 epoch excluded"
+    },
+    {
+      "run": "M1-r1",
+      "WP": "WP-08",
+      "role": "verify",
+      "attempt": 5,
+      "threadId": "01a11248-9ae6-7410-b958-d6b57baceec3",
+      "hostId": "local",
+      "worktree": "E:/openhoi/.orchestrator/wt/WP-08-verify5",
+      "branch": "detached",
+      "verificationCommit": "9531121ee5677e43436be69364fdef4bfce2fe86",
+      "status": "FAIL-semantic-and-tracked-invariance-confirmed-raw-index-change-disclosed",
+      "beforeSnapshot": "E:/openhoi/.orchestrator/evidence/WP-08.verify5.before.json",
+      "appExit": "해당 없음(앱 실행)",
+      "scope": "fresh full actual GPU/UI/HTTP/lifecycle/schema P05; resize and native GPU pipeline failure red-green; exclusive19443/19444",
+      "cursor": "d0459c4a-a703-4632-b15a-759f207a80ad:13",
+      "finalReport": "docs/verify/WP-08.attempt5.md"
     }
   ],
   "groupsIntegratedThisRun": [
     "M1-W1"
   ],
-  "phase": "M1-W2-P06-presentation-and-pipeline-failure"
+  "phase": "M1-W2-953-Linux-resize-timeout-diagnosis-and-full-verification"
 }

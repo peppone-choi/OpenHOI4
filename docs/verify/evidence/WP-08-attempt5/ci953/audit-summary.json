@@ -1,0 +1,188 @@
+[
+  {
+    "label": "ci",
+    "run": 37504540992,
+    "head": "9531121ee5677e43436be69364fdef4bfce2fe86",
+    "status": "completed",
+    "conclusion": "failure",
+    "jobs": [
+      [
+        "docs",
+        112409705320,
+        "success"
+      ],
+      [
+        "server (ubuntu-latest)",
+        112409705577,
+        "success"
+      ],
+      [
+        "assets",
+        112409705580,
+        "success"
+      ],
+      [
+        "server (macos-latest)",
+        112409705585,
+        "success"
+      ],
+      [
+        "server (windows-latest)",
+        112409705662,
+        "success"
+      ],
+      [
+        "client",
+        112409705674,
+        "failure"
+      ],
+      [
+        "licenses",
+        112409705761,
+        "success"
+      ]
+    ],
+    "artifacts": [
+      {
+        "name": "wp05-protocol-browser-evidence",
+        "id": 11431581508,
+        "bytes": 1845226,
+        "zipSHA": "3c4ad1a62c167eeb9fc6235d788275032e3460017fc746a487645d14d3e40fc5",
+        "digest": "sha256:3c4ad1a62c167eeb9fc6235d788275032e3460017fc746a487645d14d3e40fc5"
+      }
+    ],
+    "logsZipSHA": "6d380e55a08e1341d7a827db07b85944964832734b82e75906c26f27a4c6db10"
+  },
+  {
+    "label": "core",
+    "run": 37504541035,
+    "head": "9531121ee5677e43436be69364fdef4bfce2fe86",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      [
+        "core-probe (windows-latest)",
+        112409705340,
+        "success"
+      ],
+      [
+        "core-probe (macos-latest)",
+        112409705514,
+        "success"
+      ],
+      [
+        "core-probe (ubuntu-latest)",
+        112409705704,
+        "success"
+      ],
+      [
+        "compare-core-hashes",
+        112410372534,
+        "success"
+      ]
+    ],
+    "artifacts": [
+      {
+        "name": "core-hash-macos-latest",
+        "id": 11431052603,
+        "bytes": 159,
+        "zipSHA": "fd2467f4aa4544afc58bbeb3bb14d5f96dc331d6a6bc4a8e2bcb0fc27e54eafd",
+        "digest": "sha256:fd2467f4aa4544afc58bbeb3bb14d5f96dc331d6a6bc4a8e2bcb0fc27e54eafd"
+      },
+      {
+        "name": "core-hash-ubuntu-latest",
+        "id": 11430579095,
+        "bytes": 159,
+        "zipSHA": "73560a6c85e6fb4146d9a2f73f2ea7f2e6a4d1839733f2c9ce69abb133ec3b40",
+        "digest": "sha256:73560a6c85e6fb4146d9a2f73f2ea7f2e6a4d1839733f2c9ce69abb133ec3b40"
+      },
+      {
+        "name": "core-hash-windows-latest",
+        "id": 11430493807,
+        "bytes": 160,
+        "zipSHA": "5dbb1ca422e10e306bee4581153fe12a7cc4b7c931929a574155f755dddb5d3f",
+        "digest": "sha256:5dbb1ca422e10e306bee4581153fe12a7cc4b7c931929a574155f755dddb5d3f"
+      }
+    ],
+    "logsZipSHA": "36fc0f910a049007275bb80ee4922820dfd4f9f4dbb2685c3650280bba694198"
+  },
+  {
+    "label": "sim",
+    "run": 37504540929,
+    "head": "9531121ee5677e43436be69364fdef4bfce2fe86",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      [
+        "simulation (windows-latest)",
+        112409705076,
+        "success"
+      ],
+      [
+        "simulation (ubuntu-latest)",
+        112409705087,
+        "success"
+      ],
+      [
+        "simulation (macos-latest)",
+        112409705088,
+        "success"
+      ],
+      [
+        "compare-m1-simulation-hashes",
+        112410474397,
+        "success"
+      ],
+      [
+        "compare-simulation-hashes",
+        112410474531,
+        "success"
+      ]
+    ],
+    "artifacts": [
+      {
+        "name": "sim-hash-macos-latest",
+        "id": 11430773825,
+        "bytes": 415,
+        "zipSHA": "2c30ce81e00338e3b0786417e05cb7d4387a766acdb2698dc40cb66cc6e9dc8b",
+        "digest": "sha256:2c30ce81e00338e3b0786417e05cb7d4387a766acdb2698dc40cb66cc6e9dc8b"
+      },
+      {
+        "name": "sim-hash-windows-latest",
+        "id": 11430768971,
+        "bytes": 418,
+        "zipSHA": "f639d4a2a75c763bbe01b1f5cbd838922107217f23947d7fc33a34c9468abc25",
+        "digest": "sha256:f639d4a2a75c763bbe01b1f5cbd838922107217f23947d7fc33a34c9468abc25"
+      },
+      {
+        "name": "m1-sim-hash-ubuntu-latest",
+        "id": 11430644130,
+        "bytes": 635,
+        "zipSHA": "39f0497f920a2a9b2f22b658188078ac357f6e61d9f33da532143c857d9842e5",
+        "digest": "sha256:39f0497f920a2a9b2f22b658188078ac357f6e61d9f33da532143c857d9842e5"
+      },
+      {
+        "name": "m1-sim-hash-windows-latest",
+        "id": 11430554398,
+        "bytes": 638,
+        "zipSHA": "1a82676d96a2608b5a81a8ab9a2e36b57dcc517893c0c96c543197e0e7382c2f",
+        "digest": "sha256:1a82676d96a2608b5a81a8ab9a2e36b57dcc517893c0c96c543197e0e7382c2f"
+      },
+      {
+        "name": "m1-sim-hash-macos-latest",
+        "id": 11430349509,
+        "bytes": 635,
+        "zipSHA": "4f46d2b71cdb7e2f71810eac6a3bb96789ac38f2531dc3ff7a14c022efd92e15",
+        "digest": "sha256:4f46d2b71cdb7e2f71810eac6a3bb96789ac38f2531dc3ff7a14c022efd92e15"
+      },
+      {
+        "name": "sim-hash-ubuntu-latest",
+        "id": 11430254554,
+        "bytes": 415,
+        "zipSHA": "f8b5ccc70bc554e51076ac85cc6edd1d04daa13bc95fc2b06b298e08f4abef63",
+        "digest": "sha256:f8b5ccc70bc554e51076ac85cc6edd1d04daa13bc95fc2b06b298e08f4abef63"
+      }
+    ],
+    "logsZipSHA": "99b095fb72977c811640d5fbbf3d9d6d7cecd21e5075cc6016e90533e742f42d"
+  }
+]

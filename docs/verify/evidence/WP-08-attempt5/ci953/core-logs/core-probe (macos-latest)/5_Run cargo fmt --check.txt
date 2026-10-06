@@ -1,0 +1,10 @@
+2026-10-06T17:34:23.0022250Z ##[group]Run cargo fmt --check
+2026-10-06T17:34:23.0022650Z [36;1mcargo fmt --check[0m
+2026-10-06T17:34:23.0105270Z shell: /bin/bash -e {0}
+2026-10-06T17:34:23.0105530Z env:
+2026-10-06T17:34:23.0106020Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+2026-10-06T17:34:23.0106610Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.11.9/arm64/lib/pkgconfig
+2026-10-06T17:34:23.0107260Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+2026-10-06T17:34:23.0107760Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+2026-10-06T17:34:23.0108340Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+2026-10-06T17:34:23.0108880Z ##[endgroup]

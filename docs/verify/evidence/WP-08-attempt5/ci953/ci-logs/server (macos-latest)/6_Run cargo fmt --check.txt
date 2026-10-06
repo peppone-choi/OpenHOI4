@@ -1,0 +1,4 @@
+2026-10-06T17:34:36.3079490Z ##[group]Run cargo fmt --check
+2026-10-06T17:34:36.3079880Z [36;1mcargo fmt --check[0m
+2026-10-06T17:34:36.3123930Z shell: /bin/bash -e {0}
+2026-10-06T17:34:36.3124300Z ##[endgroup]

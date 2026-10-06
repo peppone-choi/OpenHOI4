@@ -1,0 +1,14 @@
+2026-10-06T17:35:51.9700617Z ##[group]Run python crates/oh_sim/tools/check_sim_determinism.py compare --m1 --root m1-sim-hashes
+2026-10-06T17:35:51.9701548Z [36;1mpython crates/oh_sim/tools/check_sim_determinism.py compare --m1 --root m1-sim-hashes[0m
+2026-10-06T17:35:51.9961794Z shell: /usr/bin/bash -e {0}
+2026-10-06T17:35:51.9962192Z env:
+2026-10-06T17:35:51.9962566Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:35:51.9963403Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib/pkgconfig
+2026-10-06T17:35:51.9963971Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:35:51.9964492Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:35:51.9965017Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:35:51.9965526Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib
+2026-10-06T17:35:51.9965952Z ##[endgroup]
+2026-10-06T17:35:52.4716314Z ubuntu-latest: 60448355cecffa9d
+2026-10-06T17:35:52.4717241Z windows-latest: 60448355cecffa9d
+2026-10-06T17:35:52.4717967Z macos-latest: 60448355cecffa9d

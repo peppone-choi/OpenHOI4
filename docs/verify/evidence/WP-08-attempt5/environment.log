@@ -1,0 +1,66 @@
+{"args": ["powershell", "-NoProfile", "-Command", "node --version; npm --version; cargo --version; rustc --version; python --version; netstat -ano -p tcp | Select-String LISTENING; Get-Process | Where-Object {$_.ProcessName -match \"oh_server\"} | Select-Object Id,Path"], "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify5", "start": "2026-10-06T17:36:24.219720+00:00"}
+v24.4.0
+11.4.2
+cargo 1.99.0 (5f94df478 2026-08-27)
+rustc 1.99.0 (b940084d7 2026-09-28)
+Python 3.11.0
+
+  TCP    0.0.0.0:135            0.0.0.0:0              LISTENING       1524
+  TCP    0.0.0.0:445            0.0.0.0:0              LISTENING       4
+  TCP    0.0.0.0:902            0.0.0.0:0              LISTENING       5556
+  TCP    0.0.0.0:912            0.0.0.0:0              LISTENING       5556
+  TCP    0.0.0.0:1276           0.0.0.0:0              LISTENING       1116
+  TCP    0.0.0.0:2179           0.0.0.0:0              LISTENING       2432
+  TCP    0.0.0.0:5040           0.0.0.0:0              LISTENING       10144
+  TCP    0.0.0.0:5357           0.0.0.0:0              LISTENING       4
+  TCP    0.0.0.0:6379           0.0.0.0:0              LISTENING       5624
+  TCP    0.0.0.0:7680           0.0.0.0:0              LISTENING       12080
+  TCP    0.0.0.0:27036          0.0.0.0:0              LISTENING       2600
+  TCP    0.0.0.0:49664          0.0.0.0:0              LISTENING       1144
+  TCP    0.0.0.0:49665          0.0.0.0:0              LISTENING       1032
+  TCP    0.0.0.0:49666          0.0.0.0:0              LISTENING       1788
+  TCP    0.0.0.0:49667          0.0.0.0:0              LISTENING       2592
+  TCP    0.0.0.0:49668          0.0.0.0:0              LISTENING       5108
+  TCP    0.0.0.0:50080          0.0.0.0:0              LISTENING       4
+  TCP    0.0.0.0:50443          0.0.0.0:0              LISTENING       4
+  TCP    127.0.0.1:3767         0.0.0.0:0              LISTENING       12028
+  TCP    127.0.0.1:3821         0.0.0.0:0              LISTENING       2600
+  TCP    127.0.0.1:4472         0.0.0.0:0              LISTENING       2600
+  TCP    127.0.0.1:4732         0.0.0.0:0              LISTENING       15432
+  TCP    127.0.0.1:5301         0.0.0.0:0              LISTENING       18264
+  TCP    127.0.0.1:6463         0.0.0.0:0              LISTENING       15920
+  TCP    127.0.0.1:15292        0.0.0.0:0              LISTENING       19752
+  TCP    127.0.0.1:15393        0.0.0.0:0              LISTENING       19752
+  TCP    127.0.0.1:16494        0.0.0.0:0              LISTENING       19752
+  TCP    127.0.0.1:19418        0.0.0.0:0              LISTENING       19656
+  TCP    127.0.0.1:19420        0.0.0.0:0              LISTENING       1060
+  TCP    127.0.0.1:19422        0.0.0.0:0              LISTENING       28088
+  TCP    127.0.0.1:19425        0.0.0.0:0              LISTENING       32876
+  TCP    127.0.0.1:19431        0.0.0.0:0              LISTENING       8836
+  TCP    127.0.0.1:19450        0.0.0.0:0              LISTENING       31848
+  TCP    127.0.0.1:40308        0.0.0.0:0              LISTENING       20644
+  TCP    127.0.0.1:40309        0.0.0.0:0              LISTENING       20644
+  TCP    127.0.0.1:41026        0.0.0.0:0              LISTENING       5392
+  TCP    127.0.0.1:41027        0.0.0.0:0              LISTENING       5392
+  TCP    127.0.0.1:52829        0.0.0.0:0              LISTENING       15432
+  TCP    169.254.44.17:139      0.0.0.0:0              LISTENING       4
+  TCP    169.254.83.107:139     0.0.0.0:0              LISTENING       4
+  TCP    172.28.96.1:139        0.0.0.0:0              LISTENING       4
+  TCP    192.168.0.148:139      0.0.0.0:0              LISTENING       4
+  TCP    192.168.83.1:139       0.0.0.0:0              LISTENING       4
+  TCP    192.168.203.1:139      0.0.0.0:0              LISTENING       4
+
+Id   : 8836
+Path : E:\openhoi\.orchestrator\wt\WP-08\target\wp08-preview-final\preview-2c2aacc\oh_server.exe
+
+
+Id   : 19656
+Path : E:\openhoi\.orchestrator\wt\WP-08\target\wp08\play-final\oh_server.exe
+
+
+Id   : 31848
+Path : E:\openhoi\.orchestrator\wt\WP-08\target\wp08-resize\new-working\oh_server.exe
+
+
+Id   : 32876
+Path : E:\openhoi\.orchestrator\wt\WP-08\target\wp08\p06-redirect\preview-87c1a99\oh_server.exe

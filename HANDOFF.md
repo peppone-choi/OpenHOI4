@@ -2,7 +2,7 @@
 
 | 항목 | 값 |
 |---|---|
-| 작성 시각 | 2026-10-07, M1-r1 WP-08 Linux62 CI 성공 뒤 독립 F02/F03 P06 중 |
+| 작성 시각 | 2026-10-07, M1-r1 WP-08 새953 수정 제출 뒤 전체 독립 검증·LinuxCI 중 |
 | 현재 마일스톤 | M0 PASS 보존. M1 진행 중 |
 | 기본 브랜치 CI | main79140fbfc9966fc5104df735f068615633181d5b의 [일반CI](https://github.com/peppone-choi/OpenHOI4/actions/runs/37491594894) client FAIL·다른6jobs success, [Core](https://github.com/peppone-choi/OpenHOI4/actions/runs/37491595077)와 [Simulation](https://github.com/peppone-choi/OpenHOI4/actions/runs/37491594793) success. 전체CI 녹색 아님. 이전 b1da8f4 세CI/실제M1 세OS SHA/hash60448355cecffa9d 일치 증거는 보존 |
 
@@ -25,7 +25,7 @@ M0 게이트 `d6ae2c8`의 AC7 PASS와 당시 동일 HEAD CI15jobs·7artifactZIP 
 | WP10 | 통합됨 | codex/wp10-ledger, WP-10 | 계산 기반 PASS, 실제 적용·조회 WP09 |
 | WP12 | 수정 독립 PASS·통합됨 | codex/wp12-localization, WP-12 | 실제 원장 WP09 후속 |
 | WP09 | 통합됨 | codex/wp09-national-state, WP-09; 구현206fb45/mainb1da8f4 | 실제 국가/주·원장·M1 hash/CLI/3OS PASS, 지도선택 WP08 후속 |
-| WP08 | Windows87 PASS·main통합, 이후 Linux main FAIL; branch62 CI 성공이지만 독립 F02/F03 미해결 | codex/wp08-map-rendering, WP-08; verify3 detached2c FAIL 원본 보존, verify4 detached62 대조 | 화면 resize/GPU pipeline 실패 P06→새 exact 전체 독립 검증→main CI; W2 미계수 |
+| WP08 | 이전2c/62 독립FAIL 뒤 새953 수정 clean 제출·자체195/M060 PASS; 새전체P05·branchCI 중 | codex/wp08-map-rendering, WP-08; verify5 detached953/4041tracked/전용19443·44 | 새 전체 독립 판정→통합main CI; W2 미계수 |
 | WP11 | 다음 RUN 예정 | 아직 없음 | 실제 M1 mutable state·예약명령 save-resume |
 | M1 게이트 | 미판정 | 없음 | WP11까지 전체통합·독립 새검증 |
 
@@ -95,8 +95,12 @@ WP11 착수 전 [저장 경계 점검](docs/plans/WP-11-resume-review.md)을 읽
 
 [독립3차 FAIL 전문](docs/verify/WP-08.attempt3.md): 2c에서 Windows175/M060/unit130 등은 통과했지만 WebKit resize 후 화면·PNG가 배경색이 되고, 실제 WebGPU pipeline rejection을 Three가 resolve해 빈 화면을 성공으로 보고한다. 부모3128파일불변 확인. 동일제품62의 CI 수정 대조는 verify4, 새제품수정은 기존 구현자가 수행 중. W1만 묶음 완료/W2 미계수/WP11 미시작이다.
 
+최신9531121ee5677e43436be69364fdef4bfce2fe86은 WebGL surface 복원·pipeline error/GL link 확인·resource cleanup/AbortSignal 경계를 수정하고 resize/pipeline 회귀를 추가했다. 기존175 tests·pixel기준·5제품·Rust/data/assets/lock/proto/CI blobs는 그대로다. 자체 최종195/M060·unit130·Rust/type/docs/build 등 PASS를 독립PASS로 사용하지 않는다. 새 verify5 채팅01a11248-9ae6-7410-b958-d6b57baceec3은 detached953의4041tracked clean·빈전용19443/44를 확인하고 전체 P05를 진행한다. exact953 CI37504540992/Core37504541035/Simulation37504540929는 실행 중이다. 새대표19451 preview만 별도 준비하며 제품 추적 변경은 금지했다.
+
+이후953 일반CI37504540992는 client112409705674 FAIL로 종료했다. Linux M036 PASS/M1 Chromium·WebKit78중77PASS와 Chromium resize4mode 캡처 loop의 total30000ms timeout이다. fontsloaded/scrollintoView/elementstable 대기 기록이며 픽셀 불일치·제품 원인은 아직 미확정이다. Firefox native/headed는 이전 단계 실패 뒤 실행되지 않았다. Core/Sim만 성공, 실제M1 세OS ZIP digest/hash60448355cecffa9d는 [Simulation 한정 metadata](docs/verify/evidence/WP-08-CI-attempt3/simulation-only-identity.json)에 보존했다. 전체CI녹색으로 쓰지 않는다. 원본149member ZIP SHA3c4ad1a62c167eeb9fc6235d788275032e3460017fc746a487645d14d3e40fc5는 API digest와 일치했다. 구현자 P06 진단/953고정 독립검증 계속, timeout·단언·browser 완화 없음.
+
 현재 대표 preview는 [19431](http://127.0.0.1:19431/)의 제품2c/PID8836/packb8d30ba577f303c3다. 부모 exeSHA8c80989d67c9f352024c37bd86f05cbdad4bde7622769b0862119cab47d027e7·servedJS SHA8e4fef1d102dbb4035a82396e106dc003d16a7905fa3f878411fa88c17831bac을 재확인했다. [실제 IAB 관측·원시 캡처](docs/verify/evidence/WP-08-preview-2c/)는 pending P06 제품과 구분하며 독립 PASS나 최종 제품 증거가 아니다. 19418/19425는 역사 preview로 유지된다.
 
 포트 독립성 감사: 구현자가19437 서버 시작의 bind10048 실패를 확인하기 전에 기존 verify4 서버에 UI 입력했다. 구현자의 own-source 주장은 철회되고 원문 충돌은 보존됐다. verify4 최초 singlecase는 충돌 전, 후속 resize epoch는 영향 가능 범위를 별도 기록한다. verify3의19428와 구현자의 새19440 재현은 분리돼 있다. 최종 새 독립 검증은 독점 새포트와 실제 PID/servedJS/input epoch를 확인해야 하며 추적 불변성만으로 runtime 독립을 주장하지 않는다.
 
-부모가 생성한 중복 증거 사본의 삭제는 자동 승인 검토가 blocked by policy로 거절했다. 삭제 우회 없이 사본을 유지했다. 필요한562파일은 별도 attempt3-final에 보존했고 중복 attempt3 사본은 미추적 상태로 남아 있다. 원본 failed 검증 worktree/미병합 자료는 삭제하지 않았다.
+부모가 생성한 중복 증거 사본의 삭제는 자동 승인 검토가 blocked by policy로 거절했다. 삭제하지 않고 안전한 가역 대안으로 `.orchestrator/evidence/WP-08-attempt3-generated-duplicate-0e294ea/`에 폴더 전체를 옮겼다. 추적파일·추적참조0을 먼저 확인했고 이동 전후4,791파일·272,351,325byte·각SHA가 정확히 동일하다. [이동 기록](docs/verify/evidence/WP-08-attempt3-final/parent-duplicate-relocation.json)을 보존했다. 필요한562파일은 attempt3-final에 별도로 보존됐으며 원본 failed 검증 worktree/미병합 자료는 삭제하지 않았다.

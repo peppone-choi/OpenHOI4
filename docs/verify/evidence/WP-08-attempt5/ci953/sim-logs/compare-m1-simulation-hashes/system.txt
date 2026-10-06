@@ -1,0 +1,8 @@
+2026-10-06T17:35:46.3070000Z Evaluating compare-m1-simulation-hashes.if
+2026-10-06T17:35:46.3070000Z Evaluating: always()
+2026-10-06T17:35:46.3070000Z Result: true
+2026-10-06T17:35:46.4810000Z Requested labels: ubuntu-latest
+2026-10-06T17:35:46.4810000Z Job defined at: peppone-choi/OpenHOI4/.github/workflows/sim-determinism.yml@refs/heads/codex/wp08-map-rendering
+2026-10-06T17:35:46.4810000Z Waiting for a runner to pick up this job...
+2026-10-06T17:35:47.0280000Z Job is about to start running on the hosted runner: GitHub Actions 1000068961
+2026-10-06T17:35:47.0280000Z Job is waiting for a hosted runner to come online.

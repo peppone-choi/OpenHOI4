@@ -1,0 +1,140 @@
+[
+  {
+    "channel": "chrome",
+    "glFailure": "none",
+    "pass": false,
+    "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(failed.rejections.some(e=>e.native&&e.name==='GPUValidationError'))\n",
+    "errors": [],
+    "probe": {
+      "fail": true,
+      "glFailure": "none",
+      "devices": 2,
+      "destroyed": 2,
+      "nativeCalls": 2,
+      "rejections": [
+        {
+          "name": "GPUPipelineError",
+          "message": "Entry point \"\"__independent_missing_entrypoint__\"\" doesn't exist in the shader module [ShaderModule \"vertex\"].\n - While validating vertex stage ([ShaderModule \"vertex\"], entryPoint: \"__independent_missing_entrypoint__\").\n - While validating vertex state.\n",
+          "native": true
+        }
+      ],
+      "shaderCalls": 0,
+      "restored": false
+    }
+  },
+  {
+    "channel": "chrome",
+    "glFailure": "unavailable",
+    "pass": false,
+    "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(failed.rejections.some(e=>e.native&&e.name==='GPUValidationError'))\n",
+    "errors": [],
+    "probe": {
+      "fail": true,
+      "glFailure": "unavailable",
+      "devices": 2,
+      "destroyed": 2,
+      "nativeCalls": 2,
+      "rejections": [
+        {
+          "name": "GPUPipelineError",
+          "message": "Entry point \"\"__independent_missing_entrypoint__\"\" doesn't exist in the shader module [ShaderModule \"vertex\"].\n - While validating vertex stage ([ShaderModule \"vertex\"], entryPoint: \"__independent_missing_entrypoint__\").\n - While validating vertex state.\n",
+          "native": true
+        }
+      ],
+      "shaderCalls": 0,
+      "restored": false
+    }
+  },
+  {
+    "channel": "chrome",
+    "glFailure": "shader",
+    "pass": false,
+    "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(failed.rejections.some(e=>e.native&&e.name==='GPUValidationError'))\n",
+    "errors": [],
+    "probe": {
+      "fail": true,
+      "glFailure": "shader",
+      "devices": 2,
+      "destroyed": 2,
+      "nativeCalls": 2,
+      "rejections": [
+        {
+          "name": "GPUPipelineError",
+          "message": "Entry point \"\"__independent_missing_entrypoint__\"\" doesn't exist in the shader module [ShaderModule \"vertex\"].\n - While validating vertex stage ([ShaderModule \"vertex\"], entryPoint: \"__independent_missing_entrypoint__\").\n - While validating vertex state.\n",
+          "native": true
+        }
+      ],
+      "shaderCalls": 2,
+      "restored": false
+    }
+  },
+  {
+    "channel": "msedge",
+    "glFailure": "none",
+    "pass": false,
+    "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(failed.rejections.some(e=>e.native&&e.name==='GPUValidationError'))\n",
+    "errors": [],
+    "probe": {
+      "fail": true,
+      "glFailure": "none",
+      "devices": 2,
+      "destroyed": 2,
+      "nativeCalls": 2,
+      "rejections": [
+        {
+          "name": "GPUPipelineError",
+          "message": "Entry point \"\"__independent_missing_entrypoint__\"\" doesn't exist in the shader module [ShaderModule \"vertex\"].\n - While validating vertex stage ([ShaderModule \"vertex\"], entryPoint: \"__independent_missing_entrypoint__\").\n - While validating vertex state.\n",
+          "native": true
+        }
+      ],
+      "shaderCalls": 0,
+      "restored": false
+    }
+  },
+  {
+    "channel": "msedge",
+    "glFailure": "unavailable",
+    "pass": false,
+    "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(failed.rejections.some(e=>e.native&&e.name==='GPUValidationError'))\n",
+    "errors": [],
+    "probe": {
+      "fail": true,
+      "glFailure": "unavailable",
+      "devices": 2,
+      "destroyed": 2,
+      "nativeCalls": 2,
+      "rejections": [
+        {
+          "name": "GPUPipelineError",
+          "message": "Entry point \"\"__independent_missing_entrypoint__\"\" doesn't exist in the shader module [ShaderModule \"vertex\"].\n - While validating vertex stage ([ShaderModule \"vertex\"], entryPoint: \"__independent_missing_entrypoint__\").\n - While validating vertex state.\n",
+          "native": true
+        }
+      ],
+      "shaderCalls": 0,
+      "restored": false
+    }
+  },
+  {
+    "channel": "msedge",
+    "glFailure": "shader",
+    "pass": false,
+    "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(failed.rejections.some(e=>e.native&&e.name==='GPUValidationError'))\n",
+    "errors": [],
+    "probe": {
+      "fail": true,
+      "glFailure": "shader",
+      "devices": 2,
+      "destroyed": 2,
+      "nativeCalls": 2,
+      "rejections": [
+        {
+          "name": "GPUPipelineError",
+          "message": "Entry point \"\"__independent_missing_entrypoint__\"\" doesn't exist in the shader module [ShaderModule \"vertex\"].\n - While validating vertex stage ([ShaderModule \"vertex\"], entryPoint: \"__independent_missing_entrypoint__\").\n - While validating vertex state.\n",
+          "native": true
+        }
+      ],
+      "shaderCalls": 2,
+      "restored": false
+    }
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "head": "9531121ee5677e43436be69364fdef4bfce2fe86",
+  "scope": "WP08 minimum display schema only",
+  "read": [
+    "AGENTS.md",
+    "docs/03-production-prompts.md P05",
+    "docs/02-production-spec.md 3/4.4/5.4/11.1/15",
+    "docs/plans/WP-08-schema.md",
+    "docs/adr/ADR-0801-gpu-map-display.md",
+    "docs/adr/ADR-0802-map-initialization-failure.md",
+    "docs/adr/ADR-0803-map-presentation-recovery.md"
+  ],
+  "missingReference": "02 section5.11 does not exist in this HEAD; 5 ends5.10; actual schema inspected from4.4/WP08 plan and source",
+  "source": [
+    "crates/oh_data/src/map.rs MapData immutable defs / dense sortedID mapping",
+    "crates/oh_sim/src/world.rs Defs Arc / WorldInputs private ID-sorted states, modifiers and ledger",
+    "crates/oh_proto/src/lib.rs WorldView derived/from_sim, MapMetadata/MapStyle generated",
+    "crates/oh_server/src/map.rs style fromdefines, validated mapHTTP rawidentity/indexhash, 404/409",
+    "client/src/network.ts complete generated union shape/type bounds / invalid frame closes",
+    "client/src/App.tsx whole-world identity refs validation before publication; detail-query merge preserves fullrefs",
+    "client/src/map/model.ts RG8 dense decode, null validchannel, serverRGB only",
+    "client/src/map/renderer.ts commonTSL/nearest/noMip/256LUT/partial4bytes/lifecycle",
+    "client/src/map/MapView.tsx same-origin redirecterror/packidentity/epochAbort current ref authority"
+  ],
+  "fields": "required metadata/defaultnone/null disallowed; DTO u16 version/IDs, positiveu32dimensions/style, RGB u8[3], decimalbyteLength lowerhexidentity; WorldView Option refs allow0 distinct null, sorted stableIDs to denseposition mapping; HTTP/wire/index/sim hashes distinct",
+  "checks": "all48PNG+CSV→HTTPtexel mapping; sparse0/65535+dense256 and independent borderpixels; old/futureversion/wrongPack/badstyle/length/hash; actual malformedvariant/RGB/ref/null/stateMembership/dense atomicity30/30; Query actualnation/state/ledger and owner!=controller",
+  "save": "WP11 absent; mutable WorldInputs/time/RNG orderedcommands need future restore, no savedresume/cursor proof",
+  "policy": "no new gameplay rules/state authority calculations; shaders/camera are display-only technical float computations; numbers style fromdefines and UI keys ko/en; no changed golden/pixel tolerances/testweakening/Three version/configsettings",
+  "sources": [
+    "https://gpuweb.github.io/types/interfaces/GPUDevice.html",
+    "https://gpuweb.github.io/gpuweb/",
+    "https://playwright.dev/docs/ci",
+    "https://fetch.spec.whatwg.org/#http-redirect-fetch",
+    "https://registry.npmjs.org/three/0.186.1"
+  ]
+}

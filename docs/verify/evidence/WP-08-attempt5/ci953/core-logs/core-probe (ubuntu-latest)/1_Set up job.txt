@@ -1,0 +1,33 @@
+2026-10-06T17:34:04.7210030Z Current runner version: '2.337.0'
+2026-10-06T17:34:04.7235753Z ##[group]Runner Image Provisioner
+2026-10-06T17:34:04.7236726Z Hosted Compute Agent
+2026-10-06T17:34:04.7237327Z Version: 20260901.588
+2026-10-06T17:34:04.7237928Z Commit: f88ec8081b781fac6c440065ac7ff9e710ce3d0b
+2026-10-06T17:34:04.7238592Z Build Date: 2026-09-01T19:56:44Z
+2026-10-06T17:34:04.7239256Z Worker ID: {8021a7de-6e2c-4094-9805-e2d3b92a1a16}
+2026-10-06T17:34:04.7239960Z Azure Region: eastus
+2026-10-06T17:34:04.7240561Z ##[endgroup]
+2026-10-06T17:34:04.7241993Z ##[group]Operating System
+2026-10-06T17:34:04.7242577Z Ubuntu
+2026-10-06T17:34:04.7243133Z 24.04.5
+2026-10-06T17:34:04.7243647Z LTS
+2026-10-06T17:34:04.7244109Z ##[endgroup]
+2026-10-06T17:34:04.7244686Z ##[group]Runner Image
+2026-10-06T17:34:04.7245237Z Image: ubuntu-24.04
+2026-10-06T17:34:04.7246112Z Version: 20260927.320.1
+2026-10-06T17:34:04.7247184Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260927.320/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-06T17:34:04.7248952Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260927.320
+2026-10-06T17:34:04.7249835Z ##[endgroup]
+2026-10-06T17:34:04.7250950Z ##[group]GITHUB_TOKEN Permissions
+2026-10-06T17:34:04.7253253Z Contents: read
+2026-10-06T17:34:04.7253939Z Metadata: read
+2026-10-06T17:34:04.7254466Z ##[endgroup]
+2026-10-06T17:34:04.7256888Z Secret source: Actions
+2026-10-06T17:34:04.7257894Z Cache mode: write
+2026-10-06T17:34:04.7258823Z Prepare workflow directory
+2026-10-06T17:34:04.8040863Z Prepare all required actions
+2026-10-06T17:34:04.8108091Z Getting action download info
+2026-10-06T17:34:05.0080072Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-10-06T17:34:05.4595683Z Download action repository 'actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97' (SHA:5fda3b95a4ea91299a34e894583c3862153e4b97)
+2026-10-06T17:34:05.9108878Z Download action repository 'actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a' (SHA:043fb46d1a93c77aae656e7c1c64a875d1fc6a0a)
+2026-10-06T17:34:06.4286409Z Complete job name: core-probe (ubuntu-latest)

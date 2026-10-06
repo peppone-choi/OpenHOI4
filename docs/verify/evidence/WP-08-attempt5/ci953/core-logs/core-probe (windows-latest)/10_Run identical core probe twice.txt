@@ -1,0 +1,11 @@
+2026-10-06T17:35:25.6456915Z ##[group]Run python crates/oh_core/tools/check_determinism.py capture --out target/core-determinism
+2026-10-06T17:35:25.6458250Z [36;1mpython crates/oh_core/tools/check_determinism.py capture --out target/core-determinism[0m
+2026-10-06T17:35:25.6554159Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-06T17:35:25.6554546Z env:
+2026-10-06T17:35:25.6554832Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:25.6555507Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.11.9\x64/lib/pkgconfig
+2026-10-06T17:35:25.6555994Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:25.6556411Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:25.6556833Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:25.6557170Z ##[endgroup]
+2026-10-06T17:35:26.2800475Z core probe two runs: 0dd81b8754bcc3f9

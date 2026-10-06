@@ -1,0 +1,72 @@
+2026-10-06T17:35:04.6717829Z ##[group]Run cargo test -p oh_core --locked
+2026-10-06T17:35:04.6718296Z [36;1mcargo test -p oh_core --locked[0m
+2026-10-06T17:35:04.6790595Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-06T17:35:04.6790989Z env:
+2026-10-06T17:35:04.6791276Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:04.6791757Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.11.9\x64/lib/pkgconfig
+2026-10-06T17:35:04.6792233Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:04.6792686Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:04.6793113Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:04.6793443Z ##[endgroup]
+2026-10-06T17:35:05.1713587Z    Compiling cfg-if v1.0.5
+2026-10-06T17:35:05.1728300Z    Compiling zerocopy v0.8.60
+2026-10-06T17:35:05.1732396Z    Compiling serde_core v1.0.229
+2026-10-06T17:35:05.1741299Z    Compiling thiserror v2.0.21
+2026-10-06T17:35:05.2352563Z    Compiling getrandom v0.3.4
+2026-10-06T17:35:05.2794666Z    Compiling cobs v0.3.0
+2026-10-06T17:35:05.4912131Z    Compiling rand_core v0.9.5
+2026-10-06T17:35:05.5247558Z    Compiling rand_core v0.10.1
+2026-10-06T17:35:05.6890799Z    Compiling bytemuck v1.25.2
+2026-10-06T17:35:05.7618451Z    Compiling az v1.3.0
+2026-10-06T17:35:06.0042894Z    Compiling typenum v1.20.1
+2026-10-06T17:35:07.2355660Z    Compiling rand_xorshift v0.4.0
+2026-10-06T17:35:07.3811679Z    Compiling rand v0.9.5
+2026-10-06T17:35:07.6692587Z    Compiling num-traits v0.2.19
+2026-10-06T17:35:08.2162529Z    Compiling bitflags v2.13.2
+2026-10-06T17:35:08.5056152Z    Compiling serde v1.0.229
+2026-10-06T17:35:08.6318790Z    Compiling unarray v0.1.4
+2026-10-06T17:35:08.7660654Z    Compiling regex-syntax v0.8.11
+2026-10-06T17:35:09.2000518Z    Compiling postcard v1.1.3
+2026-10-06T17:35:10.6065880Z    Compiling ppv-lite86 v0.2.21
+2026-10-06T17:35:10.6066413Z    Compiling half v2.7.1
+2026-10-06T17:35:11.0169563Z    Compiling fixed v1.31.0
+2026-10-06T17:35:11.1126956Z    Compiling rand_chacha v0.9.0
+2026-10-06T17:35:11.5313379Z    Compiling rand_chacha v0.10.0
+2026-10-06T17:35:11.7720593Z    Compiling proptest v1.11.0
+2026-10-06T17:35:20.4310692Z    Compiling oh_core v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_core)
+2026-10-06T17:35:22.5367366Z     Finished `test` profile [unoptimized + debuginfo] target(s) in 17.52s
+2026-10-06T17:35:22.5411263Z      Running unittests src\lib.rs (target\debug\deps\oh_core-bbbb96c895938158.exe)
+2026-10-06T17:35:22.5517375Z
+2026-10-06T17:35:22.5517632Z running 0 tests
+2026-10-06T17:35:22.5517876Z
+2026-10-06T17:35:22.5518366Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:35:22.5519033Z
+2026-10-06T17:35:22.5536140Z      Running tests\core.rs (target\debug\deps\core-f3aaf5b3eeddb34b.exe)
+2026-10-06T17:35:22.5631910Z
+2026-10-06T17:35:22.5632180Z running 16 tests
+2026-10-06T17:35:22.5638705Z test req_gen_04_fixed_exact_arithmetic_and_rounding ... ok
+2026-10-06T17:35:22.5640084Z test req_gen_04_fixed_and_id_wire_encoding ... ok
+2026-10-06T17:35:22.5641408Z test req_gen_04_canonical_map_order_and_strict_decode ... ok
+2026-10-06T17:35:22.5644393Z test req_gen_04_fnv1a_reference_vectors_and_incremental_hash ... ok
+2026-10-06T17:35:22.5747925Z test req_gen_04_fixed_checked_arithmetic_matches_integer_reference ... ok
+2026-10-06T17:35:22.5751886Z test req_gen_04_fixed_serialization_preserves_all_bits ... ok
+2026-10-06T17:35:22.5762749Z test req_gen_04_rng_order_and_unrelated_draws_do_not_affect_entity_streams ... ok
+2026-10-06T17:35:22.5777572Z test req_gen_04_rng_tuple_fields_and_entity_domains_are_distinct ... ok
+2026-10-06T17:35:22.5781681Z test req_gen_04_serialization_errors_are_propagated ... ok
+2026-10-06T17:35:22.5892553Z test req_gen_04_typed_ids_round_trip ... ok
+2026-10-06T17:35:22.5897078Z test req_plat_02_chacha8_zero_seed_reference_vector ... ok
+2026-10-06T17:35:22.5903943Z test req_plat_02_full_diagnostic_matches_independent_reference ... ok
+2026-10-06T17:35:22.5910794Z test req_plat_02_portable_postcard_hash_vector ... ok
+2026-10-06T17:35:22.5952661Z test req_gen_04_rng_reconstruction ... ok
+2026-10-06T17:35:22.6361332Z test req_gen_04_map_permutations_are_canonical ... ok
+2026-10-06T17:35:22.7002412Z test req_gen_04_fnv_chunking_is_independent ... ok
+2026-10-06T17:35:22.7002887Z
+2026-10-06T17:35:22.7003328Z test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.14s
+2026-10-06T17:35:22.7003946Z
+2026-10-06T17:35:22.7025562Z    Doc-tests oh_core
+2026-10-06T17:35:22.7710397Z
+2026-10-06T17:35:22.7710874Z running 1 test
+2026-10-06T17:35:22.8378927Z test crates\oh_core\src\ids.rs - ids (line 7) - compile fail ... ok
+2026-10-06T17:35:22.8379364Z
+2026-10-06T17:35:22.8379682Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+2026-10-06T17:35:22.8380119Z

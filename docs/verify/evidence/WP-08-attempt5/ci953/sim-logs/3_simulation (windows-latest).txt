@@ -1,0 +1,597 @@
+2026-10-06T17:34:06.5294841Z Current runner version: '2.337.0'
+2026-10-06T17:34:06.5334235Z ##[group]Runner Image Provisioner
+2026-10-06T17:34:06.5335498Z Hosted Compute Agent
+2026-10-06T17:34:06.5336511Z Version: 20260901.588
+2026-10-06T17:34:06.5337500Z Commit: f88ec8081b781fac6c440065ac7ff9e710ce3d0b
+2026-10-06T17:34:06.5338780Z Build Date: 2026-09-01T19:56:44Z
+2026-10-06T17:34:06.5339898Z Worker ID: {ca4462c5-8e9a-4dd6-a26f-69d1cf50f379}
+2026-10-06T17:34:06.5341130Z Azure Region: eastus
+2026-10-06T17:34:06.5342027Z ##[endgroup]
+2026-10-06T17:34:06.5344588Z ##[group]Operating System
+2026-10-06T17:34:06.5346091Z Microsoft Windows Server 2025
+2026-10-06T17:34:06.5347142Z 10.0.26100
+2026-10-06T17:34:06.5347939Z Datacenter
+2026-10-06T17:34:06.5348762Z ##[endgroup]
+2026-10-06T17:34:06.5349659Z ##[group]Runner Image
+2026-10-06T17:34:06.5350604Z Image: windows-2025-vs2026
+2026-10-06T17:34:06.5351683Z Version: 20260925.250.1
+2026-10-06T17:34:06.5354102Z Included Software: https://github.com/actions/runner-images/blob/win25-vs2026/20260925.250/images/windows/Windows2025-VS2026-Readme.md
+2026-10-06T17:34:06.5357257Z Image Release: https://github.com/actions/runner-images/releases/tag/win25-vs2026%2F20260925.250
+2026-10-06T17:34:06.5358928Z ##[endgroup]
+2026-10-06T17:34:06.5360794Z ##[group]GITHUB_TOKEN Permissions
+2026-10-06T17:34:06.5363655Z Contents: read
+2026-10-06T17:34:06.5364738Z Metadata: read
+2026-10-06T17:34:06.5365626Z ##[endgroup]
+2026-10-06T17:34:06.5369158Z Secret source: Actions
+2026-10-06T17:34:06.5370542Z Cache mode: write
+2026-10-06T17:34:06.5371675Z Prepare workflow directory
+2026-10-06T17:34:06.5983243Z Prepare all required actions
+2026-10-06T17:34:06.6057237Z Getting action download info
+2026-10-06T17:34:06.8178400Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-10-06T17:34:06.9681784Z Download action repository 'actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97' (SHA:5fda3b95a4ea91299a34e894583c3862153e4b97)
+2026-10-06T17:34:07.1472738Z Download action repository 'actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a' (SHA:043fb46d1a93c77aae656e7c1c64a875d1fc6a0a)
+2026-10-06T17:34:07.3914915Z Complete job name: simulation (windows-latest)
+2026-10-06T17:34:07.6251981Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+2026-10-06T17:34:07.6254091Z with:
+2026-10-06T17:34:07.6254820Z   repository: peppone-choi/OpenHOI4
+2026-10-06T17:34:07.6262149Z   token: ***
+2026-10-06T17:34:07.6262849Z   ssh-strict: true
+2026-10-06T17:34:07.6263511Z   ssh-user: git
+2026-10-06T17:34:07.6264183Z   persist-credentials: true
+2026-10-06T17:34:07.6264936Z   clean: true
+2026-10-06T17:34:07.6265612Z   sparse-checkout-cone-mode: true
+2026-10-06T17:34:07.6266432Z   fetch-depth: 1
+2026-10-06T17:34:07.6267087Z   fetch-tags: false
+2026-10-06T17:34:07.6267767Z   show-progress: true
+2026-10-06T17:34:07.6268447Z   lfs: false
+2026-10-06T17:34:07.6269063Z   submodules: false
+2026-10-06T17:34:07.6269780Z   set-safe-directory: true
+2026-10-06T17:34:07.6270576Z   allow-unsafe-pr-checkout: false
+2026-10-06T17:34:07.6271976Z ##[endgroup]
+2026-10-06T17:34:07.9862437Z Syncing repository: peppone-choi/OpenHOI4
+2026-10-06T17:34:07.9865664Z ##[group]Getting Git version info
+2026-10-06T17:34:07.9866805Z Working directory is 'D:\a\OpenHOI4\OpenHOI4'
+2026-10-06T17:34:08.2266079Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-10-06T17:34:08.7039130Z git version 2.55.0.windows.5
+2026-10-06T17:34:08.7168828Z ##[endgroup]
+2026-10-06T17:34:08.7197764Z Temporarily overriding HOME='D:\a\_temp\a4d53b2d-44e3-46a2-8aba-d3dfaa08f544' before making global git config changes
+2026-10-06T17:34:08.7207911Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-06T17:34:08.7216429Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\OpenHOI4\OpenHOI4
+2026-10-06T17:34:08.8204422Z Deleting the contents of 'D:\a\OpenHOI4\OpenHOI4'
+2026-10-06T17:34:08.8222807Z ##[group]Determining repository object format
+2026-10-06T17:34:08.8227743Z ##[endgroup]
+2026-10-06T17:34:08.8230542Z ##[group]Initializing the repository
+2026-10-06T17:34:08.8232717Z [command]"C:\Program Files\Git\bin\git.exe" init D:\a\OpenHOI4\OpenHOI4
+2026-10-06T17:34:08.9552149Z Initialized empty Git repository in D:/a/OpenHOI4/OpenHOI4/.git/
+2026-10-06T17:34:08.9608816Z [command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/peppone-choi/OpenHOI4
+2026-10-06T17:34:09.0237989Z ##[endgroup]
+2026-10-06T17:34:09.0238529Z ##[group]Disabling automatic garbage collection
+2026-10-06T17:34:09.0247357Z [command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+2026-10-06T17:34:09.0547801Z ##[endgroup]
+2026-10-06T17:34:09.0548644Z ##[group]Setting up auth
+2026-10-06T17:34:09.0549339Z Removing SSH command configuration
+2026-10-06T17:34:09.0559115Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-10-06T17:34:09.0885476Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-10-06T17:34:10.7187432Z Removing HTTP extra header
+2026-10-06T17:34:10.7201023Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-06T17:34:10.7513602Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-10-06T17:34:11.3265620Z Removing includeIf entries pointing to credentials config files
+2026-10-06T17:34:11.3276320Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-06T17:34:11.3592934Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-10-06T17:34:11.9050763Z [command]"C:\Program Files\Git\bin\git.exe" config --file D:\a\_temp\git-credentials-0e77d9f6-59ff-4b88-93e7-dfc4ea7f2f4d.config http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+2026-10-06T17:34:11.9362260Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:D:/a/OpenHOI4/OpenHOI4/.git.path D:\a\_temp\git-credentials-0e77d9f6-59ff-4b88-93e7-dfc4ea7f2f4d.config
+2026-10-06T17:34:11.9670705Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:D:/a/OpenHOI4/OpenHOI4/.git/worktrees/*.path D:\a\_temp\git-credentials-0e77d9f6-59ff-4b88-93e7-dfc4ea7f2f4d.config
+2026-10-06T17:34:12.0050280Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-0e77d9f6-59ff-4b88-93e7-dfc4ea7f2f4d.config
+2026-10-06T17:34:12.0386263Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-0e77d9f6-59ff-4b88-93e7-dfc4ea7f2f4d.config
+2026-10-06T17:34:12.0703521Z ##[endgroup]
+2026-10-06T17:34:12.0704007Z ##[group]Fetching the repository
+2026-10-06T17:34:12.0716449Z [command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +9531121ee5677e43436be69364fdef4bfce2fe86:refs/remotes/origin/codex/wp08-map-rendering
+2026-10-06T17:34:13.8579186Z From https://github.com/peppone-choi/OpenHOI4
+2026-10-06T17:34:13.8581193Z  * [new ref]         9531121ee5677e43436be69364fdef4bfce2fe86 -> origin/codex/wp08-map-rendering
+2026-10-06T17:34:13.8639445Z [command]"C:\Program Files\Git\bin\git.exe" branch --list --remote origin/codex/wp08-map-rendering
+2026-10-06T17:34:13.9023044Z   origin/codex/wp08-map-rendering
+2026-10-06T17:34:13.9062508Z [command]"C:\Program Files\Git\bin\git.exe" rev-parse refs/remotes/origin/codex/wp08-map-rendering
+2026-10-06T17:34:13.9327595Z 9531121ee5677e43436be69364fdef4bfce2fe86
+2026-10-06T17:34:13.9361440Z ##[endgroup]
+2026-10-06T17:34:13.9362070Z ##[group]Determining the checkout info
+2026-10-06T17:34:13.9364003Z ##[endgroup]
+2026-10-06T17:34:13.9372289Z [command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+2026-10-06T17:34:13.9899051Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+2026-10-06T17:34:14.0193672Z ##[group]Checking out the ref
+2026-10-06T17:34:14.0203573Z [command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force -B codex/wp08-map-rendering refs/remotes/origin/codex/wp08-map-rendering
+2026-10-06T17:34:15.1378834Z Updating files:  87% (3519/4041)
+2026-10-06T17:34:15.1549817Z Updating files:  88% (3557/4041)
+2026-10-06T17:34:15.1683860Z Updating files:  89% (3597/4041)
+2026-10-06T17:34:15.1815642Z Updating files:  90% (3637/4041)
+2026-10-06T17:34:15.1927017Z Updating files:  91% (3678/4041)
+2026-10-06T17:34:15.2057444Z Updating files:  92% (3718/4041)
+2026-10-06T17:34:15.2205036Z Updating files:  93% (3759/4041)
+2026-10-06T17:34:15.2337190Z Updating files:  94% (3799/4041)
+2026-10-06T17:34:15.2476943Z Updating files:  95% (3839/4041)
+2026-10-06T17:34:15.2628413Z Updating files:  96% (3880/4041)
+2026-10-06T17:34:15.2781708Z Updating files:  97% (3920/4041)
+2026-10-06T17:34:15.2930412Z Updating files:  98% (3961/4041)
+2026-10-06T17:34:15.3079549Z Updating files:  99% (4001/4041)
+2026-10-06T17:34:15.3080070Z Updating files: 100% (4041/4041)
+2026-10-06T17:34:15.3084100Z Updating files: 100% (4041/4041), done.
+2026-10-06T17:34:15.3371850Z Switched to a new branch 'codex/wp08-map-rendering'
+2026-10-06T17:34:15.3450816Z branch 'codex/wp08-map-rendering' set up to track 'origin/codex/wp08-map-rendering'.
+2026-10-06T17:34:15.3594352Z ##[endgroup]
+2026-10-06T17:34:15.4221404Z [command]"C:\Program Files\Git\bin\git.exe" log -1 --format=%H
+2026-10-06T17:34:15.4797254Z 9531121ee5677e43436be69364fdef4bfce2fe86
+2026-10-06T17:34:15.5459927Z ##[group]Run actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+2026-10-06T17:34:15.5460391Z with:
+2026-10-06T17:34:15.5460596Z   python-version: 3.11
+2026-10-06T17:34:15.5460806Z   check-latest: false
+2026-10-06T17:34:15.5463094Z   token: ***
+2026-10-06T17:34:15.5463292Z   update-environment: true
+2026-10-06T17:34:15.5463523Z   allow-prereleases: false
+2026-10-06T17:34:15.5463731Z   freethreaded: false
+2026-10-06T17:34:15.5463931Z ##[endgroup]
+2026-10-06T17:34:15.7511009Z ##[group]Installed versions
+2026-10-06T17:34:15.7752409Z Successfully set up CPython (3.11.9)
+2026-10-06T17:34:15.7753419Z ##[endgroup]
+2026-10-06T17:34:15.8137002Z ##[group]Run rustup toolchain install 1.99.0 --profile minimal --component rustfmt --component clippy
+2026-10-06T17:34:15.8138240Z [36;1mrustup toolchain install 1.99.0 --profile minimal --component rustfmt --component clippy[0m
+2026-10-06T17:34:15.8916864Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-06T17:34:15.8918445Z env:
+2026-10-06T17:34:15.8919589Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:34:15.8920760Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.11.9\x64/lib/pkgconfig
+2026-10-06T17:34:15.8921532Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:34:15.8922277Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:34:15.8922911Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:34:15.8923384Z ##[endgroup]
+2026-10-06T17:34:17.0594442Z info: syncing channel updates for 1.99.0-x86_64-pc-windows-msvc
+2026-10-06T17:34:17.6964994Z info: latest update on 2026-10-01 for version 1.99.0 (b940084d7 2026-09-28)
+2026-10-06T17:34:17.7051426Z info: downloading 5 components
+2026-10-06T17:34:27.8799464Z
+2026-10-06T17:34:27.9099896Z   1.99.0-x86_64-pc-windows-msvc installed - rustc 1.99.0 (b940084d7 2026-09-28)
+2026-10-06T17:34:27.9100609Z
+2026-10-06T17:34:28.0559811Z ##[group]Run cargo fmt --check
+2026-10-06T17:34:28.0560147Z [36;1mcargo fmt --check[0m
+2026-10-06T17:34:28.0632030Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-06T17:34:28.0632369Z env:
+2026-10-06T17:34:28.0632632Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:34:28.0633063Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.11.9\x64/lib/pkgconfig
+2026-10-06T17:34:28.0633508Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:34:28.0633915Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:34:28.0634307Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:34:28.0634612Z ##[endgroup]
+2026-10-06T17:34:30.8428469Z ##[group]Run cargo clippy -p oh_sim -p oh_cli --all-targets --locked -- -D warnings
+2026-10-06T17:34:30.8429129Z [36;1mcargo clippy -p oh_sim -p oh_cli --all-targets --locked -- -D warnings[0m
+2026-10-06T17:34:30.8502197Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-06T17:34:30.8502537Z env:
+2026-10-06T17:34:30.8502791Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:34:30.8503267Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.11.9\x64/lib/pkgconfig
+2026-10-06T17:34:30.8503703Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:34:30.8504082Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:34:30.8504459Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:34:30.8504767Z ##[endgroup]
+2026-10-06T17:34:35.3312282Z     Updating crates.io index
+2026-10-06T17:34:35.8025833Z  Downloading crates ...
+2026-10-06T17:34:35.9115400Z   Downloaded itoa v1.0.18
+2026-10-06T17:34:35.9321653Z   Downloaded half v2.7.1
+2026-10-06T17:34:35.9875599Z   Downloaded fixed v1.31.0
+2026-10-06T17:34:36.1878069Z   Downloaded zerocopy v0.8.60
+2026-10-06T17:34:36.4301114Z   Downloaded adler2 v2.0.1
+2026-10-06T17:34:36.4452575Z   Downloaded cfg-if v1.0.5
+2026-10-06T17:34:36.4571427Z   Downloaded cobs v0.3.0
+2026-10-06T17:34:36.4698902Z   Downloaded rand_xorshift v0.4.0
+2026-10-06T17:34:36.4836386Z   Downloaded ref-cast v1.0.27
+2026-10-06T17:34:36.5204829Z   Downloaded serde_spanned v1.1.1
+2026-10-06T17:34:36.5303022Z   Downloaded unarray v0.1.4
+2026-10-06T17:34:36.5420118Z   Downloaded dyn-clone v1.0.20
+2026-10-06T17:34:36.5584543Z   Downloaded embedded-io v0.4.0
+2026-10-06T17:34:36.5784060Z   Downloaded embedded-io v0.6.1
+2026-10-06T17:34:36.5916802Z   Downloaded ref-cast-impl v1.0.27
+2026-10-06T17:34:36.5999962Z   Downloaded ppv-lite86 v0.2.21
+2026-10-06T17:34:36.6150331Z   Downloaded schemars_derive v1.2.2
+2026-10-06T17:34:36.6383910Z   Downloaded thiserror v2.0.21
+2026-10-06T17:34:37.0291394Z   Downloaded fdeflate v0.3.7
+2026-10-06T17:34:37.0492821Z   Downloaded quote v1.0.47
+2026-10-06T17:34:37.0852455Z   Downloaded rand_core v0.9.5
+2026-10-06T17:34:37.0967780Z   Downloaded serde_derive_internals v0.30.0
+2026-10-06T17:34:37.1155071Z   Downloaded simd-adler32 v0.3.10
+2026-10-06T17:34:37.1363033Z   Downloaded thiserror-impl v2.0.21
+2026-10-06T17:34:37.1514271Z   Downloaded toml_datetime v1.1.1+spec-1.1.0
+2026-10-06T17:34:37.1654440Z   Downloaded toml_writer v1.1.2+spec-1.1.0
+2026-10-06T17:34:37.1789596Z   Downloaded zmij v1.0.23
+2026-10-06T17:34:37.1994307Z   Downloaded autocfg v1.5.1
+2026-10-06T17:34:37.2203008Z   Downloaded az v1.3.0
+2026-10-06T17:34:37.2361274Z   Downloaded crc32fast v1.5.2
+2026-10-06T17:34:37.2555010Z   Downloaded equivalent v1.0.2
+2026-10-06T17:34:37.2656418Z   Downloaded rand_chacha v0.9.0
+2026-10-06T17:34:37.2777442Z   Downloaded rand_core v0.10.1
+2026-10-06T17:34:37.3057491Z   Downloaded semver v1.0.28
+2026-10-06T17:34:37.3312028Z   Downloaded toml_parser v1.1.3+spec-1.1.0
+2026-10-06T17:34:37.3560596Z   Downloaded unicode-ident v1.0.26
+2026-10-06T17:34:37.3878056Z   Downloaded num-traits v0.2.19
+2026-10-06T17:34:37.4216876Z   Downloaded postcard v1.1.3
+2026-10-06T17:34:37.4477855Z   Downloaded proc-macro2 v1.0.107
+2026-10-06T17:34:37.4841491Z   Downloaded rand_chacha v0.10.0
+2026-10-06T17:34:37.5269486Z   Downloaded serde_core v1.0.229
+2026-10-06T17:34:37.5559366Z   Downloaded serde_derive v1.0.229
+2026-10-06T17:34:37.5911122Z   Downloaded bitflags v2.13.2
+2026-10-06T17:34:37.6525045Z   Downloaded bytemuck v1.25.2
+2026-10-06T17:34:37.6901051Z   Downloaded getrandom v0.3.4
+2026-10-06T17:34:37.7352236Z   Downloaded miniz_oxide v0.8.9
+2026-10-06T17:34:37.7605554Z   Downloaded miniz_oxide v0.9.1
+2026-10-06T17:34:37.7825949Z   Downloaded serde v1.0.229
+2026-10-06T17:34:37.8116182Z   Downloaded toml v1.1.6+spec-1.1.0
+2026-10-06T17:34:37.8605968Z   Downloaded rand v0.9.5
+2026-10-06T17:34:37.9016191Z   Downloaded schemars v1.2.2
+2026-10-06T17:34:38.6553716Z   Downloaded typenum v1.20.1
+2026-10-06T17:34:38.6770469Z   Downloaded flate2 v1.1.10
+2026-10-06T17:34:38.7314168Z   Downloaded memchr v2.8.3
+2026-10-06T17:34:38.7870779Z   Downloaded indexmap v2.14.2
+2026-10-06T17:34:38.8226963Z   Downloaded hashbrown v0.17.1
+2026-10-06T17:34:38.8689158Z   Downloaded serde_json v1.0.151
+2026-10-06T17:34:38.9954147Z   Downloaded zerocopy-derive v0.8.60
+2026-10-06T17:34:39.8627793Z   Downloaded png v0.18.1
+2026-10-06T17:34:40.0940321Z   Downloaded winnow v1.0.4
+2026-10-06T17:34:40.4805876Z   Downloaded zlib-rs v0.6.8
+2026-10-06T17:34:40.5959159Z   Downloaded proptest v1.11.0
+2026-10-06T17:34:41.3412816Z   Downloaded syn v2.0.119
+2026-10-06T17:34:41.6158548Z   Downloaded syn v3.0.6
+2026-10-06T17:34:41.7171322Z   Downloaded regex-syntax v0.8.11
+2026-10-06T17:34:41.8655340Z    Compiling proc-macro2 v1.0.107
+2026-10-06T17:34:41.8655874Z    Compiling quote v1.0.47
+2026-10-06T17:34:41.8656886Z    Compiling unicode-ident v1.0.26
+2026-10-06T17:34:41.8657502Z     Checking cfg-if v1.0.5
+2026-10-06T17:34:41.9200499Z    Compiling serde_core v1.0.229
+2026-10-06T17:34:41.9883204Z    Compiling zerocopy v0.8.60
+2026-10-06T17:34:45.9943099Z    Compiling serde v1.0.229
+2026-10-06T17:34:46.0018104Z    Compiling thiserror v2.0.21
+2026-10-06T17:34:46.4464526Z     Checking simd-adler32 v0.3.10
+2026-10-06T17:34:46.6167573Z     Checking adler2 v2.0.1
+2026-10-06T17:34:46.6322510Z    Compiling zmij v1.0.23
+2026-10-06T17:34:46.7427303Z    Compiling crc32fast v1.5.2
+2026-10-06T17:34:47.2881645Z    Compiling syn v3.0.6
+2026-10-06T17:34:47.4101638Z    Compiling syn v2.0.119
+2026-10-06T17:34:47.4102558Z    Compiling ref-cast v1.0.27
+2026-10-06T17:34:47.8507879Z    Compiling serde_json v1.0.151
+2026-10-06T17:34:48.1161469Z    Compiling fixed v1.31.0
+2026-10-06T17:34:49.1468990Z     Checking miniz_oxide v0.9.1
+2026-10-06T17:34:49.1561677Z     Checking az v1.3.0
+2026-10-06T17:34:49.6910624Z    Compiling serde_derive_internals v0.30.0
+2026-10-06T17:34:50.5082511Z     Checking rand_core v0.10.1
+2026-10-06T17:34:50.6492545Z     Checking bitflags v2.13.2
+2026-10-06T17:34:50.8231143Z     Checking typenum v1.20.1
+2026-10-06T17:34:51.2511465Z     Checking memchr v2.8.3
+2026-10-06T17:34:51.2839436Z    Compiling serde_derive v1.0.229
+2026-10-06T17:34:51.8611763Z    Compiling thiserror-impl v2.0.21
+2026-10-06T17:34:51.9201057Z    Compiling ref-cast-impl v1.0.27
+2026-10-06T17:34:52.6027324Z     Checking itoa v1.0.18
+2026-10-06T17:34:52.7958100Z     Checking winnow v1.0.4
+2026-10-06T17:34:53.2367801Z     Checking bytemuck v1.25.2
+2026-10-06T17:34:53.4724017Z     Checking toml_parser v1.1.3+spec-1.1.0
+2026-10-06T17:34:53.6492904Z    Compiling zerocopy-derive v0.8.60
+2026-10-06T17:34:53.8966789Z     Checking cobs v0.3.0
+2026-10-06T17:34:54.1055716Z    Compiling schemars_derive v1.2.2
+2026-10-06T17:34:55.0300822Z     Checking flate2 v1.1.10
+2026-10-06T17:34:55.4704168Z     Checking toml_datetime v1.1.1+spec-1.1.0
+2026-10-06T17:34:55.7134313Z     Checking serde_spanned v1.1.1
+2026-10-06T17:34:55.8363468Z     Checking miniz_oxide v0.8.9
+2026-10-06T17:34:56.3700977Z     Checking fdeflate v0.3.7
+2026-10-06T17:34:56.6674745Z     Checking semver v1.0.28
+2026-10-06T17:34:56.7278014Z     Checking dyn-clone v1.0.20
+2026-10-06T17:34:56.8163223Z     Checking toml_writer v1.1.2+spec-1.1.0
+2026-10-06T17:34:56.9080007Z     Checking png v0.18.1
+2026-10-06T17:34:57.0299494Z     Checking toml v1.1.6+spec-1.1.0
+2026-10-06T17:34:57.0697377Z     Checking postcard v1.1.3
+2026-10-06T17:34:57.4613579Z     Checking schemars v1.2.2
+2026-10-06T17:34:57.8981636Z    Compiling getrandom v0.3.4
+2026-10-06T17:34:57.9907624Z    Compiling autocfg v1.5.1
+2026-10-06T17:34:58.3974905Z     Checking unarray v0.1.4
+2026-10-06T17:34:58.4627088Z     Checking rand_core v0.9.5
+2026-10-06T17:34:58.4896024Z     Checking regex-syntax v0.8.11
+2026-10-06T17:34:58.5847044Z    Compiling num-traits v0.2.19
+2026-10-06T17:34:58.6390571Z     Checking rand_xorshift v0.4.0
+2026-10-06T17:34:58.7453720Z     Checking rand v0.9.5
+2026-10-06T17:35:01.4533203Z     Checking ppv-lite86 v0.2.21
+2026-10-06T17:35:01.4534475Z     Checking half v2.7.1
+2026-10-06T17:35:01.8007831Z     Checking rand_chacha v0.10.0
+2026-10-06T17:35:01.8008376Z     Checking rand_chacha v0.9.0
+2026-10-06T17:35:01.9406413Z     Checking proptest v1.11.0
+2026-10-06T17:35:09.4233863Z     Checking oh_core v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_core)
+2026-10-06T17:35:09.5805059Z     Checking oh_data v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_data)
+2026-10-06T17:35:10.1301496Z     Checking oh_sim v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_sim)
+2026-10-06T17:35:10.4409049Z     Checking oh_ai v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_ai)
+2026-10-06T17:35:10.4409849Z     Checking oh_save v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_save)
+2026-10-06T17:35:10.5206720Z     Checking oh_cli v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_cli)
+2026-10-06T17:35:10.8405151Z     Finished `dev` profile [unoptimized + debuginfo] target(s) in 35.57s
+2026-10-06T17:35:11.0038033Z ##[group]Run cargo test -p oh_sim -p oh_cli --locked
+2026-10-06T17:35:11.0038515Z [36;1mcargo test -p oh_sim -p oh_cli --locked[0m
+2026-10-06T17:35:11.0107862Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-06T17:35:11.0108220Z env:
+2026-10-06T17:35:11.0108492Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:11.0108966Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.11.9\x64/lib/pkgconfig
+2026-10-06T17:35:11.0109419Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:11.0109811Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:11.0110199Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:11.0110510Z ##[endgroup]
+2026-10-06T17:35:11.4994249Z    Compiling cfg-if v1.0.5
+2026-10-06T17:35:11.5001671Z    Compiling serde_core v1.0.229
+2026-10-06T17:35:11.5005080Z    Compiling zerocopy v0.8.60
+2026-10-06T17:35:11.5013679Z    Compiling simd-adler32 v0.3.10
+2026-10-06T17:35:11.5592557Z    Compiling adler2 v2.0.1
+2026-10-06T17:35:11.6900682Z    Compiling thiserror v2.0.21
+2026-10-06T17:35:11.7794072Z    Compiling cobs v0.3.0
+2026-10-06T17:35:11.7928829Z    Compiling zmij v1.0.23
+2026-10-06T17:35:12.0104513Z    Compiling crc32fast v1.5.2
+2026-10-06T17:35:12.2840238Z    Compiling miniz_oxide v0.9.1
+2026-10-06T17:35:12.3540186Z    Compiling memchr v2.8.3
+2026-10-06T17:35:13.5837679Z    Compiling az v1.3.0
+2026-10-06T17:35:13.6118392Z    Compiling bytemuck v1.25.2
+2026-10-06T17:35:13.8804394Z    Compiling itoa v1.0.18
+2026-10-06T17:35:14.1260570Z    Compiling bitflags v2.13.2
+2026-10-06T17:35:14.4317797Z    Compiling rand_core v0.10.1
+2026-10-06T17:35:14.6063959Z    Compiling winnow v1.0.4
+2026-10-06T17:35:15.0809173Z    Compiling serde v1.0.229
+2026-10-06T17:35:15.1755892Z    Compiling typenum v1.20.1
+2026-10-06T17:35:15.4893977Z    Compiling toml_parser v1.1.3+spec-1.1.0
+2026-10-06T17:35:16.0178732Z    Compiling postcard v1.1.3
+2026-10-06T17:35:16.3657419Z    Compiling serde_json v1.0.151
+2026-10-06T17:35:16.4994300Z    Compiling toml_datetime v1.1.1+spec-1.1.0
+2026-10-06T17:35:16.8160290Z    Compiling serde_spanned v1.1.1
+2026-10-06T17:35:16.9606648Z    Compiling flate2 v1.1.10
+2026-10-06T17:35:16.9845803Z    Compiling ref-cast v1.0.27
+2026-10-06T17:35:17.0881242Z    Compiling fdeflate v0.3.7
+2026-10-06T17:35:17.6439114Z    Compiling ppv-lite86 v0.2.21
+2026-10-06T17:35:17.7545695Z    Compiling half v2.7.1
+2026-10-06T17:35:17.8220059Z    Compiling miniz_oxide v0.8.9
+2026-10-06T17:35:18.1320182Z    Compiling fixed v1.31.0
+2026-10-06T17:35:18.1921597Z    Compiling rand_chacha v0.10.0
+2026-10-06T17:35:18.5415809Z    Compiling toml_writer v1.1.2+spec-1.1.0
+2026-10-06T17:35:18.5996191Z    Compiling semver v1.0.28
+2026-10-06T17:35:18.7942069Z    Compiling dyn-clone v1.0.20
+2026-10-06T17:35:18.9574426Z    Compiling schemars v1.2.2
+2026-10-06T17:35:19.0847234Z    Compiling toml v1.1.6+spec-1.1.0
+2026-10-06T17:35:19.1474364Z    Compiling png v0.18.1
+2026-10-06T17:35:21.5034737Z    Compiling getrandom v0.3.4
+2026-10-06T17:35:21.7180759Z    Compiling rand_core v0.9.5
+2026-10-06T17:35:21.9731410Z    Compiling num-traits v0.2.19
+2026-10-06T17:35:22.1091659Z    Compiling rand v0.9.5
+2026-10-06T17:35:22.2442834Z    Compiling rand_chacha v0.9.0
+2026-10-06T17:35:22.6402556Z    Compiling rand_xorshift v0.4.0
+2026-10-06T17:35:22.7987445Z    Compiling unarray v0.1.4
+2026-10-06T17:35:22.8968476Z    Compiling regex-syntax v0.8.11
+2026-10-06T17:35:24.6421468Z    Compiling proptest v1.11.0
+2026-10-06T17:35:29.6686507Z    Compiling oh_core v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_core)
+2026-10-06T17:35:29.8890412Z    Compiling oh_data v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_data)
+2026-10-06T17:35:30.7357855Z    Compiling oh_sim v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_sim)
+2026-10-06T17:35:31.9103282Z    Compiling oh_save v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_save)
+2026-10-06T17:35:31.9697093Z    Compiling oh_ai v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_ai)
+2026-10-06T17:35:32.0283439Z    Compiling oh_cli v0.1.0 (D:\a\OpenHOI4\OpenHOI4\crates\oh_cli)
+2026-10-06T17:35:35.8884478Z     Finished `test` profile [unoptimized + debuginfo] target(s) in 24.56s
+2026-10-06T17:35:35.8961858Z      Running unittests src\lib.rs (target\debug\deps\oh_cli-5548426a4043a8f5.exe)
+2026-10-06T17:35:35.9070854Z
+2026-10-06T17:35:35.9071095Z running 0 tests
+2026-10-06T17:35:35.9071268Z
+2026-10-06T17:35:35.9071550Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:35:35.9071912Z
+2026-10-06T17:35:35.9087295Z      Running unittests src\main.rs (target\debug\deps\oh_cli-b1832107daf2672d.exe)
+2026-10-06T17:35:35.9180221Z
+2026-10-06T17:35:35.9180573Z running 0 tests
+2026-10-06T17:35:35.9181277Z
+2026-10-06T17:35:35.9181700Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:35:35.9182099Z
+2026-10-06T17:35:35.9197360Z      Running tests\run.rs (target\debug\deps\run-b8c74802c9ec91df.exe)
+2026-10-06T17:35:35.9292921Z
+2026-10-06T17:35:35.9293094Z running 6 tests
+2026-10-06T17:35:35.9353444Z test library_loads_data_epoch_and_rejects_bad_or_nonempty_scenario ... ok
+2026-10-06T17:35:35.9453699Z test m0_load_boundary_and_help_identify_unique_self_contained_pack ... ok
+2026-10-06T17:35:35.9770502Z test req_gen_06_ac_m0_02_exact_ticks_and_repeated_hash ... ok
+2026-10-06T17:35:36.0019083Z test req_gen_06_days_path_is_exact_and_zero_ticks_stays_initial ... ok
+2026-10-06T17:35:36.0227235Z test m1_explicit_pack_uses_national_state_and_preserves_m0_default ... ok
+2026-10-06T17:35:36.0298902Z test cli_rejects_ambiguous_missing_invalid_and_unimplemented_inputs ... ok
+2026-10-06T17:35:36.0299308Z
+2026-10-06T17:35:36.0300182Z test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.10s
+2026-10-06T17:35:36.0300554Z
+2026-10-06T17:35:36.0319289Z      Running unittests src\lib.rs (target\debug\deps\oh_sim-16a4f9a506961095.exe)
+2026-10-06T17:35:36.0414559Z
+2026-10-06T17:35:36.0414897Z running 0 tests
+2026-10-06T17:35:36.0415345Z
+2026-10-06T17:35:36.0415726Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:35:36.0416761Z
+2026-10-06T17:35:36.0431253Z      Running tests\ledger.rs (target\debug\deps\ledger-267267e9f8e7b516.exe)
+2026-10-06T17:35:36.0527136Z
+2026-10-06T17:35:36.0527303Z running 7 tests
+2026-10-06T17:35:36.0535978Z test req_ui_04_base_add_mul_trace_and_applied_bits ... ok
+2026-10-06T17:35:36.0537443Z test req_ui_04_expiry_boundary_target_isolation_and_base_only ... ok
+2026-10-06T17:35:36.0539005Z test req_ui_04_duplicates_invalid_identifiers_and_overflow_are_errors ... ok
+2026-10-06T17:35:36.0543804Z test req_ui_04_modifier_serialization_preserves_bits_and_expiry ... ok
+2026-10-06T17:35:36.0544447Z test req_ui_04_negative_zero_and_order_sensitive_rounding ... ok
+2026-10-06T17:35:36.1053971Z test req_ui_04_full_bit_range_matches_reference_or_checked_overflow ... ok
+2026-10-06T17:35:36.1120678Z test req_ui_04_ledger_matches_independent_reference_and_permutations ... ok
+2026-10-06T17:35:36.1121194Z
+2026-10-06T17:35:36.1122818Z test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+2026-10-06T17:35:36.1123492Z
+2026-10-06T17:35:36.1143125Z      Running tests\national.rs (target\debug\deps\national-2a74d57f032687a9.exe)
+2026-10-06T17:35:36.1244288Z
+2026-10-06T17:35:36.1244712Z running 5 tests
+2026-10-06T17:35:36.1371025Z test m1_generic_canonical_hash_includes_world ... ok
+2026-10-06T17:35:36.1372242Z test ac_m1_03_real_infrastructure_ledger_applied_and_recomputed ... ok
+2026-10-06T17:35:36.1398151Z test req_map_08_owner_and_controller_remain_distinct ... ok
+2026-10-06T17:35:36.1413122Z test m1_expiry_input_order_and_atomic_overflow_are_authoritative ... ok
+2026-10-06T17:35:36.1414014Z test m1_independent_fnv_oracle_and_every_initial_input_changes_hash ... ok
+2026-10-06T17:35:36.1415771Z
+2026-10-06T17:35:36.1416146Z test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+2026-10-06T17:35:36.1416587Z
+2026-10-06T17:35:36.1437143Z      Running tests\scheduler.rs (target\debug\deps\scheduler-fc7144316421c3ff.exe)
+2026-10-06T17:35:36.1539242Z
+2026-10-06T17:35:36.1539860Z running 8 tests
+2026-10-06T17:35:36.1547817Z test hash_includes_seed_config_and_pending_commands ... ok
+2026-10-06T17:35:36.1550250Z test overflow_preserves_state_and_queued_commands_and_pause_still_works ... ok
+2026-10-06T17:35:36.1552063Z test calendar_leap_year_and_year_boundaries ... ok
+2026-10-06T17:35:36.1555430Z test req_gen_05_commands_are_sorted_and_future_commands_wait ... ok
+2026-10-06T17:35:36.1558977Z test req_time_01_pause_resume_and_five_data_driven_speeds ... ok
+2026-10-06T17:35:36.1560438Z test req_time_02_tick_day_month_snapshot_order ... ok
+2026-10-06T17:35:36.1561458Z test time_defines_are_required_checked_and_change_host_pacing ... ok
+2026-10-06T17:35:36.1570062Z test req_gen_01_headless_state_and_hash_are_repeatable ... ok
+2026-10-06T17:35:36.1570519Z
+2026-10-06T17:35:36.1570878Z test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:35:36.1571258Z
+2026-10-06T17:35:36.1588646Z    Doc-tests oh_cli
+2026-10-06T17:35:36.2163219Z
+2026-10-06T17:35:36.2163647Z running 0 tests
+2026-10-06T17:35:36.2163915Z
+2026-10-06T17:35:36.2164363Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-06T17:35:36.2164967Z
+2026-10-06T17:35:36.2246857Z    Doc-tests oh_sim
+2026-10-06T17:35:36.3112385Z
+2026-10-06T17:35:36.3112883Z running 2 tests
+2026-10-06T17:35:36.4012516Z test crates\oh_sim\src\lib.rs - State (line 68) - compile fail ... ok
+2026-10-06T17:35:36.4018754Z test crates\oh_sim\src\ledger.rs - ledger::StatLedger (line 91) - compile fail ... ok
+2026-10-06T17:35:36.4019263Z
+2026-10-06T17:35:36.4019556Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.09s
+2026-10-06T17:35:36.4019910Z
+2026-10-06T17:35:36.5394892Z ##[group]Run python -m unittest discover -s crates/oh_sim/tests -p test_sim_determinism.py -v
+2026-10-06T17:35:36.5395858Z [36;1mpython -m unittest discover -s crates/oh_sim/tests -p test_sim_determinism.py -v[0m
+2026-10-06T17:35:36.5504659Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-06T17:35:36.5505246Z env:
+2026-10-06T17:35:36.5505683Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:36.5506484Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.11.9\x64/lib/pkgconfig
+2026-10-06T17:35:36.5507290Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:36.5507998Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:36.5508719Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:36.5509286Z ##[endgroup]
+2026-10-06T17:35:38.5162233Z test_capture_invokes_actual_m1_pack_and_scenario_twice (test_sim_determinism.M1EvidenceTests.test_capture_invokes_actual_m1_pack_and_scenario_twice) ... ok
+2026-10-06T17:35:38.5402550Z test_compare_requires_m1_command_identity_on_three_os (test_sim_determinism.M1EvidenceTests.test_compare_requires_m1_command_identity_on_three_os) ... ok
+2026-10-06T17:35:38.5482685Z test_m1_does_not_accept_m0_artifacts (test_sim_determinism.M1EvidenceTests.test_m1_does_not_accept_m0_artifacts) ... ok
+2026-10-06T17:35:38.5504417Z test_m1_failed_capture_cannot_leave_a_success_marker (test_sim_determinism.M1EvidenceTests.test_m1_failed_capture_cannot_leave_a_success_marker) ... ok
+2026-10-06T17:35:38.5515064Z test_capture_rejects_command_failure (test_sim_determinism.SimEvidenceTests.test_capture_rejects_command_failure) ... ok
+2026-10-06T17:35:38.5536957Z test_capture_rejects_repeated_hash_mismatch (test_sim_determinism.SimEvidenceTests.test_capture_rejects_repeated_hash_mismatch) ... ok
+2026-10-06T17:35:38.5565269Z test_capture_runs_real_1000_tick_cli_twice (test_sim_determinism.SimEvidenceTests.test_capture_runs_real_1000_tick_cli_twice) ... ok
+2026-10-06T17:35:38.5658919Z test_compare_accepts_three_equal_os (test_sim_determinism.SimEvidenceTests.test_compare_accepts_three_equal_os) ... ok
+2026-10-06T17:35:38.5758185Z test_compare_rejects_cross_os_mismatch_even_when_each_repeat_matches (test_sim_determinism.SimEvidenceTests.test_compare_rejects_cross_os_mismatch_even_when_each_repeat_matches) ... ok
+2026-10-06T17:35:38.6553229Z test_compare_rejects_invalid_or_mismatched_hash (test_sim_determinism.SimEvidenceTests.test_compare_rejects_invalid_or_mismatched_hash) ... ok
+2026-10-06T17:35:38.6803438Z test_compare_rejects_missing_extra_os_and_missing_repeat (test_sim_determinism.SimEvidenceTests.test_compare_rejects_missing_extra_os_and_missing_repeat) ... ok
+2026-10-06T17:35:38.6892237Z test_compare_rejects_repeat_disagreement (test_sim_determinism.SimEvidenceTests.test_compare_rejects_repeat_disagreement) ... ok
+2026-10-06T17:35:38.6909485Z test_failed_recapture_clears_old_success_marker (test_sim_determinism.SimEvidenceTests.test_failed_recapture_clears_old_success_marker) ... ok
+2026-10-06T17:35:38.6910267Z
+2026-10-06T17:35:38.6910529Z ----------------------------------------------------------------------
+2026-10-06T17:35:38.6911177Z Ran 13 tests in 0.180s
+2026-10-06T17:35:38.6911376Z
+2026-10-06T17:35:38.6911483Z OK
+2026-10-06T17:35:38.6911903Z actual simulation: 1000 ticks, seed 1, two runs: 0123456789abcdef
+2026-10-06T17:35:38.6912502Z ubuntu-latest: 0123456789abcdef
+2026-10-06T17:35:38.6912894Z windows-latest: 0123456789abcdef
+2026-10-06T17:35:38.6913279Z macos-latest: 0123456789abcdef
+2026-10-06T17:35:38.6913777Z actual simulation: 1000 ticks, seed 1, two runs: 0123456789abcdef
+2026-10-06T17:35:38.6914363Z ubuntu-latest: 0123456789abcdef
+2026-10-06T17:35:38.6914653Z windows-latest: 0123456789abcdef
+2026-10-06T17:35:38.6914941Z macos-latest: 0123456789abcdef
+2026-10-06T17:35:38.8543486Z ##[group]Run python crates/oh_sim/tools/check_sim_determinism.py capture --out target/sim-determinism
+2026-10-06T17:35:38.8544265Z [36;1mpython crates/oh_sim/tools/check_sim_determinism.py capture --out target/sim-determinism[0m
+2026-10-06T17:35:38.8615334Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-06T17:35:38.8615675Z env:
+2026-10-06T17:35:38.8616121Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:38.8616580Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.11.9\x64/lib/pkgconfig
+2026-10-06T17:35:38.8617032Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:38.8617444Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:38.8617848Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:38.8618172Z ##[endgroup]
+2026-10-06T17:35:39.5292929Z actual simulation: 1000 ticks, seed 1, two runs: ff921fd8148e699d
+2026-10-06T17:35:39.6703353Z ##[group]Run python crates/oh_sim/tools/check_sim_determinism.py capture --m1 --out target/m1-sim-determinism
+2026-10-06T17:35:39.6704203Z [36;1mpython crates/oh_sim/tools/check_sim_determinism.py capture --m1 --out target/m1-sim-determinism[0m
+2026-10-06T17:35:39.6784451Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-06T17:35:39.6784799Z env:
+2026-10-06T17:35:39.6785068Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:39.6785524Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.11.9\x64/lib/pkgconfig
+2026-10-06T17:35:39.6785980Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:39.6786581Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:39.6787173Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:39.6787490Z ##[endgroup]
+2026-10-06T17:35:40.4066046Z actual simulation: 1000 ticks, seed 1, two runs: 60448355cecffa9d
+2026-10-06T17:35:40.5534671Z ##[group]Run actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+2026-10-06T17:35:40.5535125Z with:
+2026-10-06T17:35:40.5535326Z   name: m1-sim-hash-windows-latest
+2026-10-06T17:35:40.5535592Z   path: target/m1-sim-determinism/
+2026-10-06T17:35:40.5535846Z   if-no-files-found: error
+2026-10-06T17:35:40.5536055Z   archive: true
+2026-10-06T17:35:40.5536243Z   compression-level: 6
+2026-10-06T17:35:40.5536437Z   overwrite: false
+2026-10-06T17:35:40.5536623Z   include-hidden-files: false
+2026-10-06T17:35:40.5536834Z env:
+2026-10-06T17:35:40.5537087Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:40.5537535Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.11.9\x64/lib/pkgconfig
+2026-10-06T17:35:40.5537984Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:40.5538378Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:40.5538795Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:40.5539100Z ##[endgroup]
+2026-10-06T17:35:40.7301929Z With the provided path, there will be 4 files uploaded
+2026-10-06T17:35:40.7308636Z Artifact name is valid!
+2026-10-06T17:35:40.7310422Z Root directory input is valid!
+2026-10-06T17:35:40.9097864Z Uploading artifact: m1-sim-hash-windows-latest.zip
+2026-10-06T17:35:40.9153603Z Beginning upload of artifact content to blob storage
+2026-10-06T17:35:41.0083728Z Uploaded bytes 638
+2026-10-06T17:35:41.0254292Z Finished uploading artifact content to blob storage!
+2026-10-06T17:35:41.0255509Z SHA256 digest of uploaded artifact is 1a82676d96a2608b5a81a8ab9a2e36b57dcc517893c0c96c543197e0e7382c2f
+2026-10-06T17:35:41.0256624Z Finalizing artifact upload
+2026-10-06T17:35:41.2560468Z Artifact m1-sim-hash-windows-latest successfully finalized. Artifact ID 11430554398
+2026-10-06T17:35:41.2561844Z Artifact m1-sim-hash-windows-latest has been successfully uploaded! Final size is 638 bytes. Artifact ID is 11430554398
+2026-10-06T17:35:41.2569856Z Artifact download URL: https://github.com/peppone-choi/OpenHOI4/actions/runs/37504540929/artifacts/11430554398
+2026-10-06T17:35:41.2861692Z ##[group]Run actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+2026-10-06T17:35:41.2862385Z with:
+2026-10-06T17:35:41.2862584Z   name: sim-hash-windows-latest
+2026-10-06T17:35:41.2862851Z   path: target/sim-determinism/
+2026-10-06T17:35:41.2863083Z   if-no-files-found: error
+2026-10-06T17:35:41.2863289Z   archive: true
+2026-10-06T17:35:41.2863477Z   compression-level: 6
+2026-10-06T17:35:41.2863674Z   overwrite: false
+2026-10-06T17:35:41.2863876Z   include-hidden-files: false
+2026-10-06T17:35:41.2864089Z env:
+2026-10-06T17:35:41.2864341Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:41.2865031Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.11.9\x64/lib/pkgconfig
+2026-10-06T17:35:41.2865711Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:41.2866174Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:41.2866669Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-06T17:35:41.2867037Z ##[endgroup]
+2026-10-06T17:35:41.4690975Z With the provided path, there will be 3 files uploaded
+2026-10-06T17:35:41.4697616Z Artifact name is valid!
+2026-10-06T17:35:41.4698900Z Root directory input is valid!
+2026-10-06T17:35:41.6834121Z Uploading artifact: sim-hash-windows-latest.zip
+2026-10-06T17:35:41.6881843Z Beginning upload of artifact content to blob storage
+2026-10-06T17:35:41.7640574Z Uploaded bytes 418
+2026-10-06T17:35:41.7805035Z Finished uploading artifact content to blob storage!
+2026-10-06T17:35:41.7806620Z SHA256 digest of uploaded artifact is f639d4a2a75c763bbe01b1f5cbd838922107217f23947d7fc33a34c9468abc25
+2026-10-06T17:35:41.7807664Z Finalizing artifact upload
+2026-10-06T17:35:41.9976706Z Artifact sim-hash-windows-latest successfully finalized. Artifact ID 11430768971
+2026-10-06T17:35:41.9977693Z Artifact sim-hash-windows-latest has been successfully uploaded! Final size is 418 bytes. Artifact ID is 11430768971
+2026-10-06T17:35:41.9985086Z Artifact download URL: https://github.com/peppone-choi/OpenHOI4/actions/runs/37504540929/artifacts/11430768971
+2026-10-06T17:35:42.0318542Z Post job cleanup.
+2026-10-06T17:35:42.2036861Z Post job cleanup.
+2026-10-06T17:35:42.4190534Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-10-06T17:35:42.4474357Z git version 2.55.0.windows.5
+2026-10-06T17:35:42.4544773Z Temporarily overriding HOME='D:\a\_temp\d66370f9-c803-42e8-8f19-fb60bab042fb' before making global git config changes
+2026-10-06T17:35:42.4545742Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-06T17:35:42.4555517Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\OpenHOI4\OpenHOI4
+2026-10-06T17:35:42.4880099Z Removing SSH command configuration
+2026-10-06T17:35:42.4890615Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-10-06T17:35:42.5212305Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-10-06T17:35:43.0596836Z Removing HTTP extra header
+2026-10-06T17:35:43.0607165Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-06T17:35:43.0917341Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-10-06T17:35:43.6408858Z Removing includeIf entries pointing to credentials config files
+2026-10-06T17:35:43.6424139Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-06T17:35:43.6738366Z includeif.gitdir:D:/a/OpenHOI4/OpenHOI4/.git.path
+2026-10-06T17:35:43.6739789Z includeif.gitdir:D:/a/OpenHOI4/OpenHOI4/.git/worktrees/*.path
+2026-10-06T17:35:43.6740482Z includeif.gitdir:/github/workspace/.git.path
+2026-10-06T17:35:43.6741469Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-06T17:35:43.6783703Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:D:/a/OpenHOI4/OpenHOI4/.git.path
+2026-10-06T17:35:43.7044390Z D:\a\_temp\git-credentials-0e77d9f6-59ff-4b88-93e7-dfc4ea7f2f4d.config
+2026-10-06T17:35:43.7087985Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:D:/a/OpenHOI4/OpenHOI4/.git.path D\:\\a\\_temp\\git\-credentials\-0e77d9f6\-59ff\-4b88\-93e7\-dfc4ea7f2f4d\.config
+2026-10-06T17:35:43.7439169Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:D:/a/OpenHOI4/OpenHOI4/.git/worktrees/*.path
+2026-10-06T17:35:43.7691536Z D:\a\_temp\git-credentials-0e77d9f6-59ff-4b88-93e7-dfc4ea7f2f4d.config
+2026-10-06T17:35:43.7733225Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:D:/a/OpenHOI4/OpenHOI4/.git/worktrees/*.path D\:\\a\\_temp\\git\-credentials\-0e77d9f6\-59ff\-4b88\-93e7\-dfc4ea7f2f4d\.config
+2026-10-06T17:35:43.8023561Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-10-06T17:35:43.8273983Z /github/runner_temp/git-credentials-0e77d9f6-59ff-4b88-93e7-dfc4ea7f2f4d.config
+2026-10-06T17:35:43.8321600Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-0e77d9f6\-59ff\-4b88\-93e7\-dfc4ea7f2f4d\.config
+2026-10-06T17:35:43.8625463Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-06T17:35:43.8887388Z /github/runner_temp/git-credentials-0e77d9f6-59ff-4b88-93e7-dfc4ea7f2f4d.config
+2026-10-06T17:35:43.8931690Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-0e77d9f6\-59ff\-4b88\-93e7\-dfc4ea7f2f4d\.config
+2026-10-06T17:35:43.9227196Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-10-06T17:35:44.4819375Z Removing credentials config 'D:\a\_temp\git-credentials-0e77d9f6-59ff-4b88-93e7-dfc4ea7f2f4d.config'
+2026-10-06T17:35:44.5011060Z Cleaning up orphan processes
+2026-10-06T17:35:44.5752389Z Terminate orphan process: pid (10088) (vctip)

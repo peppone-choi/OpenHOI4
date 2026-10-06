@@ -1,0 +1,37 @@
+{
+  "alerts": [],
+  "country": "Northern Test Nation",
+  "date": "2000-01-06",
+  "expanded": true,
+  "hour": "10",
+  "language": "en",
+  "ledger": "1",
+  "ledgerText": "Infrastructure 1Value ledgerTick: 130Base value1Final value1ContributionOperationValueAccumulated valueInfrastructureSource: Base valueBase value11",
+  "map": {
+    "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+    "backend": "webgpu",
+    "camera": "{\"width\":16.581027667984188,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}",
+    "device": "WebGPU device",
+    "frameMs": "16.67075498987583",
+    "frames": "10371",
+    "hover": "",
+    "mode": "map-mode-owner",
+    "selected": "10",
+    "shaderLanguage": "wgsl",
+    "shaderLength": "10386",
+    "testid": "province-map",
+    "textureLimit": "8192",
+    "updateMs": "0.10000000149011612",
+    "updatedBytes": "0"
+  },
+  "pause": "Resume",
+  "selected": "10",
+  "state": "Northern Test State",
+  "tick": "130",
+  "url": "http://127.0.0.1:19451/",
+  "viewport": {
+    "dpr": 1,
+    "height": 720,
+    "width": 1280
+  }
+}

@@ -1,0 +1,67 @@
+{"args": ["node", "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify5\\target\\wp08-verify5\\live-pipeline.cjs"], "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify5", "start": "2026-10-06T17:58:23.860392+00:00"}
+chrome none AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert.ok(failed.rejections.some(e=>e.native&&e.name==='GPUValidationError'))
+
+    at E:\openhoi\.orchestrator\wt\WP-08-verify5\target\wp08-verify5\live-pipeline.cjs:11:135 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '=='
+}
+chrome unavailable AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert.ok(failed.rejections.some(e=>e.native&&e.name==='GPUValidationError'))
+
+    at E:\openhoi\.orchestrator\wt\WP-08-verify5\target\wp08-verify5\live-pipeline.cjs:11:135 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '=='
+}
+chrome shader AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert.ok(failed.rejections.some(e=>e.native&&e.name==='GPUValidationError'))
+
+    at E:\openhoi\.orchestrator\wt\WP-08-verify5\target\wp08-verify5\live-pipeline.cjs:11:135 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '=='
+}
+msedge none AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert.ok(failed.rejections.some(e=>e.native&&e.name==='GPUValidationError'))
+
+    at E:\openhoi\.orchestrator\wt\WP-08-verify5\target\wp08-verify5\live-pipeline.cjs:11:135 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '=='
+}
+msedge unavailable AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert.ok(failed.rejections.some(e=>e.native&&e.name==='GPUValidationError'))
+
+    at E:\openhoi\.orchestrator\wt\WP-08-verify5\target\wp08-verify5\live-pipeline.cjs:11:135 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '=='
+}
+msedge shader AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert.ok(failed.rejections.some(e=>e.native&&e.name==='GPUValidationError'))
+
+    at E:\openhoi\.orchestrator\wt\WP-08-verify5\target\wp08-verify5\live-pipeline.cjs:11:135 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '=='
+}

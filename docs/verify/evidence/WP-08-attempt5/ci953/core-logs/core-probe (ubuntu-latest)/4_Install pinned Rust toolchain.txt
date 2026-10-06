@@ -1,0 +1,17 @@
+2026-10-06T17:34:08.7109166Z ##[group]Run rustup toolchain install 1.99.0 --profile minimal --component rustfmt --component clippy
+2026-10-06T17:34:08.7109963Z [36;1mrustup toolchain install 1.99.0 --profile minimal --component rustfmt --component clippy[0m
+2026-10-06T17:34:08.7395287Z shell: /usr/bin/bash -e {0}
+2026-10-06T17:34:08.7395674Z env:
+2026-10-06T17:34:08.7396003Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:34:08.7396494Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib/pkgconfig
+2026-10-06T17:34:08.7396957Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:34:08.7397361Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:34:08.7397773Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:34:08.7398185Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib
+2026-10-06T17:34:08.7398559Z ##[endgroup]
+2026-10-06T17:34:08.7864146Z info: syncing channel updates for 1.99.0-x86_64-unknown-linux-gnu
+2026-10-06T17:34:08.8982869Z info: latest update on 2026-10-01 for version 1.99.0 (b940084d7 2026-09-28)
+2026-10-06T17:34:08.8983566Z info: downloading 5 components
+2026-10-06T17:34:16.5770014Z
+2026-10-06T17:34:16.5837048Z   1.99.0-x86_64-unknown-linux-gnu installed - rustc 1.99.0 (b940084d7 2026-09-28)
+2026-10-06T17:34:16.5837474Z

@@ -1,0 +1,16 @@
+2026-10-06T17:36:16.4712392Z ##[group]Run npm --prefix client run licenses
+2026-10-06T17:36:16.4712798Z [36;1mnpm --prefix client run licenses[0m
+2026-10-06T17:36:16.4780134Z shell: /usr/bin/bash -e {0}
+2026-10-06T17:36:16.4780404Z env:
+2026-10-06T17:36:16.4780691Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:36:16.4781151Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib/pkgconfig
+2026-10-06T17:36:16.4781590Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:36:16.4781979Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:36:16.4782352Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:36:16.4782723Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib
+2026-10-06T17:36:16.4783224Z ##[endgroup]
+2026-10-06T17:36:16.5753199Z
+2026-10-06T17:36:16.5753998Z > openhoi-client@0.1.0 licenses
+2026-10-06T17:36:16.5754441Z > node ../tools/check_npm_licenses.cjs
+2026-10-06T17:36:16.5754704Z
+2026-10-06T17:36:16.6026827Z npm licenses: 103 dependencies; 0 error(s)

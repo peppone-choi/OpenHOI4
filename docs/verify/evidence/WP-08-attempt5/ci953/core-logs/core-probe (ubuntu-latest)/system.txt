@@ -1,0 +1,8 @@
+2026-10-06T17:34:01.7690000Z Requested labels: ubuntu-latest
+2026-10-06T17:34:01.7690000Z Job defined at: peppone-choi/OpenHOI4/.github/workflows/core-determinism.yml@refs/heads/codex/wp08-map-rendering
+2026-10-06T17:34:01.7690000Z Waiting for a runner to pick up this job...
+2026-10-06T17:34:01.7660000Z Evaluating core-probe.if
+2026-10-06T17:34:01.7660000Z Evaluating: success()
+2026-10-06T17:34:01.7660000Z Result: true
+2026-10-06T17:34:03.0400000Z Job is about to start running on the hosted runner: GitHub Actions 1000068945
+2026-10-06T17:34:03.0400000Z Job is waiting for a hosted runner to come online.

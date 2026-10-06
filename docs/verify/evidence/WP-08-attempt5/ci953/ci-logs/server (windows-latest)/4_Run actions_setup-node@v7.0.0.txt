@@ -1,0 +1,26 @@
+2026-10-06T17:34:38.3614651Z ##[group]Run actions/setup-node@v7.0.0
+2026-10-06T17:34:38.3615009Z with:
+2026-10-06T17:34:38.3615282Z   node-version: 24.4.0
+2026-10-06T17:34:38.3615574Z   cache: npm
+2026-10-06T17:34:38.3615796Z   cache-dependency-path: client/package-lock.json
+2026-10-06T17:34:38.3616146Z   check-latest: false
+2026-10-06T17:34:38.3618901Z   token: ***
+2026-10-06T17:34:38.3619107Z   package-manager-cache: true
+2026-10-06T17:34:38.3619367Z ##[endgroup]
+2026-10-06T17:34:38.5738954Z Attempting to download 24.4.0...
+2026-10-06T17:34:39.5947288Z Acquiring 24.4.0 - x64 from https://github.com/actions/node-versions/releases/download/24.4.0-16210503505/node-24.4.0-win32-x64.7z
+2026-10-06T17:34:40.2700126Z Extracting ...
+2026-10-06T17:34:43.7573173Z Adding to the cache ...
+2026-10-06T17:34:49.6526963Z ##[group]Environment details
+2026-10-06T17:34:51.2611736Z node: v24.4.0
+2026-10-06T17:34:51.2612120Z npm: 11.4.2
+2026-10-06T17:34:51.2612380Z yarn: 1.22.22
+2026-10-06T17:34:51.2613021Z ##[endgroup]
+2026-10-06T17:34:51.3412831Z [command]C:\Windows\system32\cmd.exe /D /S /C "C:\hostedtoolcache\windows\node\24.4.0\x64\npm.cmd config get cache"
+2026-10-06T17:34:51.6288526Z C:\npm\cache
+2026-10-06T17:34:52.1813782Z Cache hit for: node-cache-Windows-x64-npm-c8fd7c5457bbb41b9b9c1b633e6d2a905ffea2ff30eea1c47886e6fc189580d2
+2026-10-06T17:34:52.6896778Z Received 82112 of 82112 (100.0%), 0.3 MBs/sec
+2026-10-06T17:34:52.6898798Z Cache Size: ~0 MB (82112 B)
+2026-10-06T17:34:52.6963247Z [command]"C:\Program Files\Git\usr\bin\tar.exe" -xf D:/a/_temp/711062d8-cab7-4d86-9b55-b27603210189/cache.tzst -P -C D:/a/OpenHOI4/OpenHOI4 --force-local --use-compress-program "zstd -d"
+2026-10-06T17:34:52.8436563Z Cache restored successfully
+2026-10-06T17:34:52.8451439Z Cache restored from key: node-cache-Windows-x64-npm-c8fd7c5457bbb41b9b9c1b633e6d2a905ffea2ff30eea1c47886e6fc189580d2

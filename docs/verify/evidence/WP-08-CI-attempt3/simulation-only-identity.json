@@ -1,0 +1,32 @@
+{
+  "head": "9531121ee5677e43436be69364fdef4bfce2fe86",
+  "Simulation_run": 37504540929,
+  "Simulation_conclusion": "success",
+  "General_CI_conclusion": "failure",
+  "all_CI_success": false,
+  "artifacts": [
+    {
+      "id": 11430644130,
+      "name": "m1-sim-hash-ubuntu-latest",
+      "API_digest": "sha256:39f0497f920a2a9b2f22b658188078ac357f6e61d9f33da532143c857d9842e5",
+      "ZIP_sha256": "39f0497f920a2a9b2f22b658188078ac357f6e61d9f33da532143c857d9842e5",
+      "bytes": 635
+    },
+    {
+      "id": 11430554398,
+      "name": "m1-sim-hash-windows-latest",
+      "API_digest": "sha256:1a82676d96a2608b5a81a8ab9a2e36b57dcc517893c0c96c543197e0e7382c2f",
+      "ZIP_sha256": "1a82676d96a2608b5a81a8ab9a2e36b57dcc517893c0c96c543197e0e7382c2f",
+      "bytes": 638
+    },
+    {
+      "id": 11430349509,
+      "name": "m1-sim-hash-macos-latest",
+      "API_digest": "sha256:4f46d2b71cdb7e2f71810eac6a3bb96789ac38f2531dc3ff7a14c022efd92e15",
+      "ZIP_sha256": "4f46d2b71cdb7e2f71810eac6a3bb96789ac38f2531dc3ff7a14c022efd92e15",
+      "bytes": 635
+    }
+  ],
+  "compare_exit": 0,
+  "scope": "actual M1 3OS determinism only; does not replace failed client CI, independent PASS or M1 gate"
+}

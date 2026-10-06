@@ -1,0 +1,11 @@
+2026-10-06T17:35:10.7109180Z ##[group]Run python crates/oh_sim/tools/check_sim_determinism.py capture --m1 --out target/m1-sim-determinism
+2026-10-06T17:35:10.7109930Z [36;1mpython crates/oh_sim/tools/check_sim_determinism.py capture --m1 --out target/m1-sim-determinism[0m
+2026-10-06T17:35:10.7184960Z shell: /bin/bash -e {0}
+2026-10-06T17:35:10.7185250Z env:
+2026-10-06T17:35:10.7185650Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+2026-10-06T17:35:10.7186130Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.11.9/arm64/lib/pkgconfig
+2026-10-06T17:35:10.7186700Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+2026-10-06T17:35:10.7195980Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+2026-10-06T17:35:10.7197040Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+2026-10-06T17:35:10.7197820Z ##[endgroup]
+2026-10-06T17:35:11.2445140Z actual simulation: 1000 ticks, seed 1, two runs: 60448355cecffa9d

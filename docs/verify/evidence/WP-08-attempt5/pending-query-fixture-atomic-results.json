@@ -1,0 +1,968 @@
+[
+  {
+    "name": "chrome",
+    "kind": "variant",
+    "pass": true,
+    "before": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "after": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "errors": [],
+    "wireSentAfterDisconnect": 0
+  },
+  {
+    "name": "chrome",
+    "kind": "rgb",
+    "pass": true,
+    "before": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "after": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "errors": [],
+    "wireSentAfterDisconnect": 0
+  },
+  {
+    "name": "chrome",
+    "kind": "membership",
+    "pass": true,
+    "before": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "after": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "errors": [],
+    "wireSentAfterDisconnect": 0
+  },
+  {
+    "name": "chrome",
+    "kind": "ownerRef",
+    "pass": true,
+    "before": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "after": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "errors": [],
+    "wireSentAfterDisconnect": 0
+  },
+  {
+    "name": "chrome",
+    "kind": "nullColor",
+    "pass": true,
+    "before": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "after": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "errors": [],
+    "wireSentAfterDisconnect": 0
+  },
+  {
+    "name": "chrome",
+    "kind": "dense",
+    "pass": true,
+    "before": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "after": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "errors": [],
+    "wireSentAfterDisconnect": 0
+  },
+  {
+    "name": "edge",
+    "kind": "variant",
+    "pass": true,
+    "before": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "after": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "errors": [],
+    "wireSentAfterDisconnect": 0
+  },
+  {
+    "name": "edge",
+    "kind": "rgb",
+    "pass": true,
+    "before": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "after": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "errors": [],
+    "wireSentAfterDisconnect": 0
+  },
+  {
+    "name": "edge",
+    "kind": "membership",
+    "pass": true,
+    "before": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "after": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "errors": [],
+    "wireSentAfterDisconnect": 0
+  },
+  {
+    "name": "edge",
+    "kind": "ownerRef",
+    "pass": true,
+    "before": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "after": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "errors": [],
+    "wireSentAfterDisconnect": 0
+  },
+  {
+    "name": "edge",
+    "kind": "nullColor",
+    "pass": true,
+    "before": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "after": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "errors": [],
+    "wireSentAfterDisconnect": 0
+  },
+  {
+    "name": "edge",
+    "kind": "dense",
+    "pass": true,
+    "before": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "after": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "errors": [],
+    "wireSentAfterDisconnect": 0
+  },
+  {
+    "name": "chromium",
+    "kind": "variant",
+    "pass": true,
+    "before": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "after": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "errors": [],
+    "wireSentAfterDisconnect": 0
+  },
+  {
+    "name": "chromium",
+    "kind": "rgb",
+    "pass": true,
+    "before": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "after": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "errors": [],
+    "wireSentAfterDisconnect": 0
+  },
+  {
+    "name": "chromium",
+    "kind": "membership",
+    "pass": true,
+    "before": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "after": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "errors": [],
+    "wireSentAfterDisconnect": 0
+  },
+  {
+    "name": "chromium",
+    "kind": "ownerRef",
+    "pass": true,
+    "before": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "after": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "errors": [],
+    "wireSentAfterDisconnect": 0
+  },
+  {
+    "name": "chromium",
+    "kind": "nullColor",
+    "pass": true,
+    "before": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "after": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "errors": [],
+    "wireSentAfterDisconnect": 0
+  },
+  {
+    "name": "chromium",
+    "kind": "dense",
+    "pass": true,
+    "before": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "after": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "errors": [],
+    "wireSentAfterDisconnect": 0
+  },
+  {
+    "name": "firefox",
+    "kind": "variant",
+    "pass": true,
+    "before": {
+      "date": "2000-01-01",
+      "hour": "1",
+      "tick": "1",
+      "worldTick": "1",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "after": {
+      "date": "2000-01-01",
+      "hour": "1",
+      "tick": "1",
+      "worldTick": "1",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "errors": [],
+    "wireSentAfterDisconnect": 0
+  },
+  {
+    "name": "firefox",
+    "kind": "rgb",
+    "pass": true,
+    "before": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "after": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "errors": [],
+    "wireSentAfterDisconnect": 0
+  },
+  {
+    "name": "firefox",
+    "kind": "membership",
+    "pass": true,
+    "before": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "after": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "errors": [],
+    "wireSentAfterDisconnect": 0
+  },
+  {
+    "name": "firefox",
+    "kind": "ownerRef",
+    "pass": true,
+    "before": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "after": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "errors": [],
+    "wireSentAfterDisconnect": 0
+  },
+  {
+    "name": "firefox",
+    "kind": "nullColor",
+    "pass": true,
+    "before": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "after": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "errors": [],
+    "wireSentAfterDisconnect": 0
+  },
+  {
+    "name": "firefox",
+    "kind": "dense",
+    "pass": true,
+    "before": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "after": {
+      "date": "2000-01-01",
+      "hour": "0",
+      "tick": "0",
+      "worldTick": "0",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "errors": [],
+    "wireSentAfterDisconnect": 0
+  },
+  {
+    "name": "webkit",
+    "kind": "variant",
+    "pass": true,
+    "before": {
+      "date": "2000-01-01",
+      "hour": "1",
+      "tick": "1",
+      "worldTick": "1",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "after": {
+      "date": "2000-01-01",
+      "hour": "1",
+      "tick": "1",
+      "worldTick": "1",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "errors": [],
+    "wireSentAfterDisconnect": 0
+  },
+  {
+    "name": "webkit",
+    "kind": "rgb",
+    "pass": false,
+    "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('speed-2')\u001b[22m\n\u001b[2m    - locator resolved to <button aria-label=\"Speed 2\" aria-pressed=\"false\" data-testid=\"speed-2\">2</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    48 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+    "errors": [],
+    "sent": [
+      {
+        "type": "Hello",
+        "protocol_version": "m0-v1"
+      },
+      {
+        "type": "Join",
+        "session": "local",
+        "nation": null
+      },
+      {
+        "type": "Query",
+        "request": "world",
+        "kind": "world"
+      },
+      {
+        "type": "Query",
+        "request": "world",
+        "kind": "world"
+      },
+      {
+        "type": "Command",
+        "sequence": "1",
+        "command": {
+          "type": "Pause",
+          "paused": true
+        }
+      },
+      {
+        "type": "Query",
+        "request": "world",
+        "kind": "world"
+      },
+      {
+        "type": "Query",
+        "request": "world",
+        "kind": "world"
+      },
+      {
+        "type": "Query",
+        "request": "nation:2",
+        "kind": "nation:2"
+      },
+      {
+        "type": "Query",
+        "request": "state:2",
+        "kind": "state:2"
+      },
+      {
+        "type": "Query",
+        "request": "world",
+        "kind": "world"
+      }
+    ]
+  },
+  {
+    "name": "webkit",
+    "kind": "membership",
+    "pass": true,
+    "before": {
+      "date": "2000-01-01",
+      "hour": "1",
+      "tick": "1",
+      "worldTick": "1",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "after": {
+      "date": "2000-01-01",
+      "hour": "1",
+      "tick": "1",
+      "worldTick": "1",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "errors": [],
+    "wireSentAfterDisconnect": 0
+  },
+  {
+    "name": "webkit",
+    "kind": "ownerRef",
+    "pass": false,
+    "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('speed-2')\u001b[22m\n\u001b[2m    - locator resolved to <button aria-label=\"Speed 2\" aria-pressed=\"false\" data-testid=\"speed-2\">2</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    48 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+    "errors": [],
+    "sent": [
+      {
+        "type": "Hello",
+        "protocol_version": "m0-v1"
+      },
+      {
+        "type": "Join",
+        "session": "local",
+        "nation": null
+      },
+      {
+        "type": "Query",
+        "request": "world",
+        "kind": "world"
+      },
+      {
+        "type": "Query",
+        "request": "world",
+        "kind": "world"
+      },
+      {
+        "type": "Command",
+        "sequence": "1",
+        "command": {
+          "type": "Pause",
+          "paused": true
+        }
+      },
+      {
+        "type": "Query",
+        "request": "world",
+        "kind": "world"
+      },
+      {
+        "type": "Query",
+        "request": "world",
+        "kind": "world"
+      },
+      {
+        "type": "Query",
+        "request": "nation:2",
+        "kind": "nation:2"
+      },
+      {
+        "type": "Query",
+        "request": "state:2",
+        "kind": "state:2"
+      },
+      {
+        "type": "Query",
+        "request": "world",
+        "kind": "world"
+      }
+    ]
+  },
+  {
+    "name": "webkit",
+    "kind": "nullColor",
+    "pass": false,
+    "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('speed-2')\u001b[22m\n\u001b[2m    - locator resolved to <button aria-label=\"Speed 2\" aria-pressed=\"false\" data-testid=\"speed-2\">2</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    48 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+    "errors": [],
+    "sent": [
+      {
+        "type": "Hello",
+        "protocol_version": "m0-v1"
+      },
+      {
+        "type": "Join",
+        "session": "local",
+        "nation": null
+      },
+      {
+        "type": "Query",
+        "request": "world",
+        "kind": "world"
+      },
+      {
+        "type": "Query",
+        "request": "world",
+        "kind": "world"
+      },
+      {
+        "type": "Command",
+        "sequence": "1",
+        "command": {
+          "type": "Pause",
+          "paused": true
+        }
+      },
+      {
+        "type": "Query",
+        "request": "world",
+        "kind": "world"
+      },
+      {
+        "type": "Query",
+        "request": "world",
+        "kind": "world"
+      },
+      {
+        "type": "Query",
+        "request": "nation:2",
+        "kind": "nation:2"
+      },
+      {
+        "type": "Query",
+        "request": "state:2",
+        "kind": "state:2"
+      },
+      {
+        "type": "Query",
+        "request": "world",
+        "kind": "world"
+      }
+    ]
+  },
+  {
+    "name": "webkit",
+    "kind": "dense",
+    "pass": true,
+    "before": {
+      "date": "2000-01-01",
+      "hour": "1",
+      "tick": "1",
+      "worldTick": "1",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "after": {
+      "date": "2000-01-01",
+      "hour": "1",
+      "tick": "1",
+      "worldTick": "1",
+      "selection": "30",
+      "country": "Southern Test Nation",
+      "state": "Southern Test State",
+      "ledger": "0",
+      "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":4,\"y\":3,\"zoom\":1}"
+    },
+    "errors": [],
+    "wireSentAfterDisconnect": 0
+  }
+]

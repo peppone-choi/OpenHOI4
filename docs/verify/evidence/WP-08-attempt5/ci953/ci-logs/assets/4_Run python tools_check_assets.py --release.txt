@@ -1,0 +1,12 @@
+2026-10-06T17:34:06.9358040Z ##[group]Run python tools/check_assets.py --release
+2026-10-06T17:34:06.9358605Z [36;1mpython tools/check_assets.py --release[0m
+2026-10-06T17:34:06.9776116Z shell: /usr/bin/bash -e {0}
+2026-10-06T17:34:06.9776611Z env:
+2026-10-06T17:34:06.9777059Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-06T17:34:06.9777779Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig
+2026-10-06T17:34:06.9778477Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-06T17:34:06.9779118Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-06T17:34:06.9779737Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64
+2026-10-06T17:34:06.9780362Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib
+2026-10-06T17:34:06.9780893Z ##[endgroup]
+2026-10-06T17:34:07.6399081Z assets: 0 error(s)

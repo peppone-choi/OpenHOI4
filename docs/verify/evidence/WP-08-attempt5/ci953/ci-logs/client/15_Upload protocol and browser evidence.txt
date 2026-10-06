@@ -1,0 +1,28 @@
+2026-10-06T17:38:17.3488158Z ##[group]Run actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+2026-10-06T17:38:17.3488614Z with:
+2026-10-06T17:38:17.3488838Z   name: wp05-protocol-browser-evidence
+2026-10-06T17:38:17.3489215Z   path: target/wp05/
+target/wp09/
+target/wp08/
+client/test-results/
+
+2026-10-06T17:38:17.3489889Z   if-no-files-found: error
+2026-10-06T17:38:17.3490193Z   archive: true
+2026-10-06T17:38:17.3490409Z   compression-level: 6
+2026-10-06T17:38:17.3490630Z   overwrite: false
+2026-10-06T17:38:17.3490846Z   include-hidden-files: false
+2026-10-06T17:38:17.3491091Z ##[endgroup]
+2026-10-06T17:38:17.5181409Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-10-06T17:38:17.5184073Z The least common ancestor is /home/runner/work/OpenHOI4/OpenHOI4. This will be the root directory of the artifact
+2026-10-06T17:38:17.5184854Z With the provided path, there will be 149 files uploaded
+2026-10-06T17:38:17.5189858Z Artifact name is valid!
+2026-10-06T17:38:17.5190609Z Root directory input is valid!
+2026-10-06T17:38:17.7155416Z Uploading artifact: wp05-protocol-browser-evidence.zip
+2026-10-06T17:38:17.7199807Z Beginning upload of artifact content to blob storage
+2026-10-06T17:38:18.1868502Z Uploaded bytes 1845226
+2026-10-06T17:38:18.2028954Z Finished uploading artifact content to blob storage!
+2026-10-06T17:38:18.2031047Z SHA256 digest of uploaded artifact is 3c4ad1a62c167eeb9fc6235d788275032e3460017fc746a487645d14d3e40fc5
+2026-10-06T17:38:18.2032481Z Finalizing artifact upload
+2026-10-06T17:38:18.6235948Z Artifact wp05-protocol-browser-evidence successfully finalized. Artifact ID 11431581508
+2026-10-06T17:38:18.6237734Z Artifact wp05-protocol-browser-evidence has been successfully uploaded! Final size is 1845226 bytes. Artifact ID is 11431581508
+2026-10-06T17:38:18.6240333Z Artifact download URL: https://github.com/peppone-choi/OpenHOI4/actions/runs/37504540992/artifacts/11431581508

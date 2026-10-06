@@ -1,0 +1,33 @@
+2026-10-06T17:35:49.2259392Z Current runner version: '2.337.0'
+2026-10-06T17:35:49.2286486Z ##[group]Runner Image Provisioner
+2026-10-06T17:35:49.2287407Z Hosted Compute Agent
+2026-10-06T17:35:49.2288026Z Version: 20260901.588
+2026-10-06T17:35:49.2288745Z Commit: f88ec8081b781fac6c440065ac7ff9e710ce3d0b
+2026-10-06T17:35:49.2289474Z Build Date: 2026-09-01T19:56:44Z
+2026-10-06T17:35:49.2290187Z Worker ID: {3ffadbb7-e1a3-4f42-9945-6aa44be7e04f}
+2026-10-06T17:35:49.2290952Z Azure Region: eastus
+2026-10-06T17:35:49.2291578Z ##[endgroup]
+2026-10-06T17:35:49.2293651Z ##[group]Operating System
+2026-10-06T17:35:49.2294396Z Ubuntu
+2026-10-06T17:35:49.2294982Z 24.04.5
+2026-10-06T17:35:49.2295506Z LTS
+2026-10-06T17:35:49.2296051Z ##[endgroup]
+2026-10-06T17:35:49.2296645Z ##[group]Runner Image
+2026-10-06T17:35:49.2297240Z Image: ubuntu-24.04
+2026-10-06T17:35:49.2297897Z Version: 20260927.320.1
+2026-10-06T17:35:49.2299003Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260927.320/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-06T17:35:49.2300807Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260927.320
+2026-10-06T17:35:49.2301784Z ##[endgroup]
+2026-10-06T17:35:49.2303718Z ##[group]GITHUB_TOKEN Permissions
+2026-10-06T17:35:49.2305961Z Contents: read
+2026-10-06T17:35:49.2306663Z Metadata: read
+2026-10-06T17:35:49.2307234Z ##[endgroup]
+2026-10-06T17:35:49.2309686Z Secret source: Actions
+2026-10-06T17:35:49.2310929Z Cache mode: write
+2026-10-06T17:35:49.2311891Z Prepare workflow directory
+2026-10-06T17:35:49.2643861Z Prepare all required actions
+2026-10-06T17:35:49.2691073Z Getting action download info
+2026-10-06T17:35:49.5114411Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-10-06T17:35:49.5988501Z Download action repository 'actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97' (SHA:5fda3b95a4ea91299a34e894583c3862153e4b97)
+2026-10-06T17:35:49.6758621Z Download action repository 'actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c' (SHA:3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c)
+2026-10-06T17:35:49.9562104Z Complete job name: compare-m1-simulation-hashes

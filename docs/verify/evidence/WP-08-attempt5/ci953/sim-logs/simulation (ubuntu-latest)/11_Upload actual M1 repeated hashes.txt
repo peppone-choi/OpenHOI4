@@ -1,0 +1,29 @@
+2026-10-06T17:35:19.4520759Z ##[group]Run actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+2026-10-06T17:35:19.4520986Z with:
+2026-10-06T17:35:19.4521108Z   name: m1-sim-hash-ubuntu-latest
+2026-10-06T17:35:19.4521255Z   path: target/m1-sim-determinism/
+2026-10-06T17:35:19.4521397Z   if-no-files-found: error
+2026-10-06T17:35:19.4521519Z   archive: true
+2026-10-06T17:35:19.4521634Z   compression-level: 6
+2026-10-06T17:35:19.4521753Z   overwrite: false
+2026-10-06T17:35:19.4521870Z   include-hidden-files: false
+2026-10-06T17:35:19.4521997Z env:
+2026-10-06T17:35:19.4522131Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:35:19.4522371Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib/pkgconfig
+2026-10-06T17:35:19.4522592Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:35:19.4522792Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:35:19.4522989Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+2026-10-06T17:35:19.4523193Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib
+2026-10-06T17:35:19.4523385Z ##[endgroup]
+2026-10-06T17:35:19.5339361Z With the provided path, there will be 4 files uploaded
+2026-10-06T17:35:19.5342473Z Artifact name is valid!
+2026-10-06T17:35:19.5342762Z Root directory input is valid!
+2026-10-06T17:35:19.7768786Z Uploading artifact: m1-sim-hash-ubuntu-latest.zip
+2026-10-06T17:35:19.7793986Z Beginning upload of artifact content to blob storage
+2026-10-06T17:35:19.9405218Z Uploaded bytes 635
+2026-10-06T17:35:19.9810151Z Finished uploading artifact content to blob storage!
+2026-10-06T17:35:19.9810768Z SHA256 digest of uploaded artifact is 39f0497f920a2a9b2f22b658188078ac357f6e61d9f33da532143c857d9842e5
+2026-10-06T17:35:19.9811449Z Finalizing artifact upload
+2026-10-06T17:35:20.2883017Z Artifact m1-sim-hash-ubuntu-latest successfully finalized. Artifact ID 11430644130
+2026-10-06T17:35:20.2883623Z Artifact m1-sim-hash-ubuntu-latest has been successfully uploaded! Final size is 635 bytes. Artifact ID is 11430644130
+2026-10-06T17:35:20.2884987Z Artifact download URL: https://github.com/peppone-choi/OpenHOI4/actions/runs/37504540929/artifacts/11430644130

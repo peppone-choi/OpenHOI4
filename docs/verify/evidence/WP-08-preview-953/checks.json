@@ -1,0 +1,13 @@
+{
+  "authority_time_preserved": true,
+  "alerts0": true,
+  "console0": true,
+  "pan_changed": true,
+  "zoom_changed": true,
+  "reset_restored": true,
+  "resize_width1100": true,
+  "resize_restored": true,
+  "camera_restored": true,
+  "province30_ledger0": true,
+  "final10_ledger1_terrain": true
+}

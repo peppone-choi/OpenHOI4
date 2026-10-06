@@ -1,0 +1,4 @@
+{"args": ["cargo", "run", "-p", "oh_proto", "--locked", "--example", "generate"], "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify5", "start": "2026-10-06T17:37:50.935461+00:00"}
+   Compiling oh_proto v0.1.0 (E:\openhoi\.orchestrator\wt\WP-08-verify5\crates\oh_proto)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.52s
+     Running `target\debug\examples\generate.exe`
