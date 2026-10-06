@@ -1,0 +1,44 @@
+["npm.cmd", "--prefix", "client", "run", "test:e2e", "--", "--config", "../target/wp12-verify/playwright.config.ts", "--project=chromium", "independent.spec.ts"]
+
+> openhoi-client@0.1.0 test:e2e
+> playwright test --config ../target/wp12-verify/playwright.config.ts --project=chromium independent.spec.ts
+
+
+Running 2 tests using 1 worker
+
+(node:8896) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › ..\target\wp12-verify\e2e\independent.spec.ts:5:5 › independent loading, unknown notice and disconnect stay localized (292ms)
+  x  2 [chromium] › ..\target\wp12-verify\e2e\independent.spec.ts:23:5 › independent malformed MessagePack Snapshot must preserve shell and close connection (1.1s)
+
+
+  1) [chromium] › ..\target\wp12-verify\e2e\independent.spec.ts:23:5 › independent malformed MessagePack Snapshot must preserve shell and close connection
+
+    Error: Invalid server structure must not crash React
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 3
+
+    - Array []
+    + Array [
+    +   "Minified React error #31; visit https://react.dev/errors/31?args[]=object%20with%20keys%20%7Binvalid%7D for the full message or use the non-minified dev environment for full errors and additional helpful warnings.",
+    + ]
+
+      36 |  writeFileSync(out+'/malformed-snapshot.json',JSON.stringify(observed,null,2));
+      37 |  await page.screenshot({path:out+'/malformed-snapshot.png'});
+    > 38 |  expect(errors,'Invalid server structure must not crash React').toEqual([]);
+         |                                                                 ^
+      39 |  await expect(page.getByTestId('connection')).toHaveText('Disconnected');
+      40 |  await expect(page.getByTestId('pause')).toBeDisabled();
+      41 | });
+        at E:\openhoi\.orchestrator\wt\WP-12-verify\target\wp12-verify\e2e\independent.spec.ts:38:65
+
+    Error Context: ..\target\wp12-verify\test-results\independent-independent-ma-ae9f5--shell-and-close-connection-chromium\error-context.md
+
+  1 failed
+    [chromium] › ..\target\wp12-verify\e2e\independent.spec.ts:23:5 › independent malformed MessagePack Snapshot must preserve shell and close connection
+  1 passed (2.2s)
+
+EXIT=1

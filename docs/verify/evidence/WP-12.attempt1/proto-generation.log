@@ -1,0 +1,15 @@
+["python", "target/wp12-verify/proto_check.py"]
+     Locking 60 packages to highest Rust 1.99.0 compatible versions
+   Compiling oh_core v0.1.0 (E:\openhoi\.orchestrator\wt\WP-12-verify\crates\oh_core)
+   Compiling oh_data v0.1.0 (E:\openhoi\.orchestrator\wt\WP-12-verify\crates\oh_data)
+   Compiling oh_sim v0.1.0 (E:\openhoi\.orchestrator\wt\WP-12-verify\crates\oh_sim)
+   Compiling oh_proto v0.1.0 (E:\openhoi\.orchestrator\wt\WP-12-verify\crates\oh_proto)
+   Compiling wp12_verify_proto v0.0.0 (E:\openhoi\.orchestrator\wt\WP-12-verify\target\wp12-verify\proto-gen)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.86s
+     Running `target\debug\wp12_verify_proto.exe`
+
+Generation exit 0
+Generated equals tracked Git LF blob True
+protocol diff exit 0
+
+EXIT=0

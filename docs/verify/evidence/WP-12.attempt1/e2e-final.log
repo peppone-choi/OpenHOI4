@@ -1,0 +1,10 @@
+["npm.cmd", "--prefix", "client", "run", "test:e2e", "--", "--config", "../target/wp12-verify/playwright.config.ts"]
+
+> openhoi-client@0.1.0 test:e2e
+> playwright test --config ../target/wp12-verify/playwright.config.ts
+
+[WebServer] startup error: ../data/packs/examples/m0\testland\manifest.toml:1:1 — 지정된 경로를 찾을 수 없습니다. (os error 3)
+Error: Process from config.webServer was not able to start. Exit code: 1
+
+
+EXIT=1

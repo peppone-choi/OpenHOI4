@@ -1,0 +1,14 @@
+["python", "target/wp12-verify/glyph.py"]
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-12-verify\target\wp12-verify\glyph.py", line 7, in <module>
+    keys={lang:set(re.findall(r'^([a-z][a-z0-9-]+) =', (r/f'client/public/locales/{lang}.ftl').read_text(),re.M)) for lang in ['ko','en']}
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\openhoi\.orchestrator\wt\WP-12-verify\target\wp12-verify\glyph.py", line 7, in <dictcomp>
+    keys={lang:set(re.findall(r'^([a-z][a-z0-9-]+) =', (r/f'client/public/locales/{lang}.ftl').read_text(),re.M)) for lang in ['ko','en']}
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python311\Lib\pathlib.py", line 1059, in read_text
+    return f.read()
+           ^^^^^^^^
+UnicodeDecodeError: 'cp949' codec can't decode byte 0x88 in position 145: illegal multibyte sequence
+
+EXIT=1

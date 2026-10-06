@@ -1,0 +1,16 @@
+["python", "target/wp12-verify/integrity.py"]
+{
+  "head": true,
+  "status": true,
+  "index": true,
+  "diff": true,
+  "cached": true,
+  "files": true,
+  "tracked_count_before": 978,
+  "tracked_count_after": 978,
+  "changed_paths": [],
+  "beforeSHA": "9b8031ba84d653ea070658703adb004fd68a4948904ceb23fc967cfea79da61c",
+  "afterSHA": "9b8031ba84d653ea070658703adb004fd68a4948904ceb23fc967cfea79da61c"
+}
+
+EXIT=0

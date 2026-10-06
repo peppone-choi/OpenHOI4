@@ -1,0 +1,63 @@
+["git", "diff", "--check", "1bfea48511c6b75efb0dd26ee6e980a90d77da04", "a91d324e3c644cb6cb8e44247181c21fd40b3f0e"]
+client/licenses/CC-BY-SA-4.0.txt:428: new blank line at EOF.
+client/public/fonts/OFL.txt:21: trailing whitespace.
++fonts, including any derivative works, can be bundled, embedded,
+docs/worklog/evidence/WP-12/font-source.txt:10: new blank line at EOF.
+docs/worklog/evidence/WP-12/ledger-fixture-first-failure.log:95: trailing whitespace.
++  1) [webkit] › e2e\localization.spec.ts:88:1 › AC-M1-03 ledger display fixture opens with keyboard and preserves supplied values
+docs/worklog/evidence/WP-12/ledger-fixture-first-failure.log:111: trailing whitespace.
++    [webkit] › e2e\localization.spec.ts:88:1 › AC-M1-03 ledger display fixture opens with keyboard and preserves supplied values
+docs/worklog/evidence/WP-12/license-sources.txt:12: new blank line at EOF.
+docs/worklog/evidence/WP-12/port-exclusions.txt:4: trailing whitespace.
++Start Port    End Port
+docs/worklog/evidence/WP-12/port-exclusions.txt:5: trailing whitespace.
++----------    --------
+docs/worklog/evidence/WP-12/port-exclusions.txt:6: trailing whitespace.
++      3834        3933
+docs/worklog/evidence/WP-12/port-exclusions.txt:7: trailing whitespace.
++      3934        4033
+docs/worklog/evidence/WP-12/port-exclusions.txt:8: trailing whitespace.
++      4034        4133
+docs/worklog/evidence/WP-12/port-exclusions.txt:9: trailing whitespace.
++      4134        4233
+docs/worklog/evidence/WP-12/port-exclusions.txt:10: trailing whitespace.
++      4234        4333
+docs/worklog/evidence/WP-12/port-exclusions.txt:11: trailing whitespace.
++      4356        4455
+docs/worklog/evidence/WP-12/port-exclusions.txt:12: trailing whitespace.
++      5357        5357
+docs/worklog/evidence/WP-12/port-exclusions.txt:15: trailing whitespace.
++     50080       50080
+docs/worklog/evidence/WP-12/port-exclusions.txt:16: trailing whitespace.
++     50443       50443
+docs/worklog/evidence/WP-12/port-exclusions.txt:19: new blank line at EOF.
+docs/worklog/evidence/WP-12/staged-diff-check.log:3: trailing whitespace.
+++fonts, including any derivative works, can be bundled, embedded,
+docs/worklog/evidence/WP-12/staged-diff-check.log:6: trailing whitespace.
+++  1) [webkit] › e2e\localization.spec.ts:88:1 › AC-M1-03 ledger display fixture opens with keyboard and preserves supplied values
+docs/worklog/evidence/WP-12/staged-diff-check.log:8: trailing whitespace.
+++    [webkit] › e2e\localization.spec.ts:88:1 › AC-M1-03 ledger display fixture opens with keyboard and preserves supplied values
+docs/worklog/evidence/WP-12/staged-diff-check.log:11: trailing whitespace.
+++Start Port    End Port
+docs/worklog/evidence/WP-12/staged-diff-check.log:13: trailing whitespace.
+++----------    --------
+docs/worklog/evidence/WP-12/staged-diff-check.log:15: trailing whitespace.
+++      3834        3933
+docs/worklog/evidence/WP-12/staged-diff-check.log:17: trailing whitespace.
+++      3934        4033
+docs/worklog/evidence/WP-12/staged-diff-check.log:19: trailing whitespace.
+++      4034        4133
+docs/worklog/evidence/WP-12/staged-diff-check.log:21: trailing whitespace.
+++      4134        4233
+docs/worklog/evidence/WP-12/staged-diff-check.log:23: trailing whitespace.
+++      4234        4333
+docs/worklog/evidence/WP-12/staged-diff-check.log:25: trailing whitespace.
+++      4356        4455
+docs/worklog/evidence/WP-12/staged-diff-check.log:27: trailing whitespace.
+++      5357        5357
+docs/worklog/evidence/WP-12/staged-diff-check.log:29: trailing whitespace.
+++     50080       50080
+docs/worklog/evidence/WP-12/staged-diff-check.log:31: trailing whitespace.
+++     50443       50443
+
+EXIT=2

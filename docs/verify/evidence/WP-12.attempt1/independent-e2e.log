@@ -1,0 +1,12 @@
+["npm.cmd", "--prefix", "client", "run", "test:e2e", "--", "--config", "../target/wp12-verify/playwright.config.ts", "--project", "chromium", "independent.spec.ts"]
+
+> openhoi-client@0.1.0 test:e2e
+> playwright test --config ../target/wp12-verify/playwright.config.ts --project chromium independent.spec.ts
+
+Error: Project(s) "independent.spec.ts" not found. Available projects: "chromium", "firefox", "webkit"
+    at Object.filterProjects (E:\openhoi\.orchestrator\wt\WP-12-verify\client\node_modules\playwright\lib\runner\index.js:2170:11)
+    at runTests (E:\openhoi\.orchestrator\wt\WP-12-verify\client\node_modules\playwright\lib\cli\testActions.js:61:30)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at _Command.<anonymous> (E:\openhoi\.orchestrator\wt\WP-12-verify\client\node_modules\playwright\lib\program.js:55:7)
+
+EXIT=1
