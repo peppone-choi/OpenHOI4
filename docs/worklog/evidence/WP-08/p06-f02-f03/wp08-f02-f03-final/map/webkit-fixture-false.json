@@ -1,0 +1,65 @@
+{
+  "boundaryPixels": [
+    [
+      100,
+      116,
+      135
+    ],
+    [
+      230,
+      212,
+      167
+    ],
+    [
+      16,
+      24,
+      32
+    ]
+  ],
+  "widths": [
+    1,
+    3,
+    4
+  ],
+  "mismatches": 1007,
+  "baselinePixels": 281820,
+  "before": {
+    "width": 11.775011511159299,
+    "height": 4.55006299611542,
+    "x": 4.482406854190552,
+    "y": 2.390572831210379,
+    "zoom": 1.4333294145603401
+  },
+  "after": {
+    "width": 11.775011511159299,
+    "height": 4.55006299611542,
+    "x": -1.3361585529631057,
+    "y": 2.390572831210379,
+    "zoom": 1.4333294145603401
+  },
+  "reset": {
+    "width": 16.877470355731223,
+    "height": 6.521739130434782,
+    "x": 6,
+    "y": 3,
+    "zoom": 1
+  },
+  "diagnostics": {
+    "testid": "province-map",
+    "backend": "webgl2",
+    "textureLimit": "16384",
+    "adapter": "Apple GPU",
+    "device": "WebGL 2.0",
+    "camera": "{\"width\":16.877470355731223,\"height\":6.521739130434782,\"x\":6,\"y\":3,\"zoom\":1}",
+    "shaderLanguage": "glsl",
+    "shaderLength": "16181",
+    "frames": "466",
+    "selected": "",
+    "mode": "map-mode-owner",
+    "updatedBytes": "0",
+    "updateMs": "0",
+    "frameMs": "6.377682403433476",
+    "hover": ""
+  },
+  "oracle": "independent 12x6 displayFixture.ts plus reviewed new screenshot baseline; no shipped golden changed"
+}

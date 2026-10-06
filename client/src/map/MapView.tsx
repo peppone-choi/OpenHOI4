@@ -2,7 +2,7 @@ import { useEffect,useRef,useState } from 'react';
 import type { WorldView } from '../proto/protocol';
 import { useLocalization } from '../i18n';
 import { decodeIndex,fnv,validateWorldDisplay } from './model';
-import { createMap } from './renderer';
+import { createMap,type MapCamera } from './renderer';
 import { isMapMetadata } from '../network';
 type MapInstance=Awaited<ReturnType<typeof createMap>>;
 /** Reject redirects before any target request; map files belong to this host. */
@@ -29,12 +29,15 @@ export function MapView({world,packHash,selected,onSelect}:{world:WorldView;pack
     const index=decodeIndex(buffer,world.width,world.height,world.province_ids);
     if(stopped)return;
     const force=new URLSearchParams(location.search).get('forceWebGL')==='1'||!window.isSecureContext||!navigator.gpu;
-    async function start(forceWebGL:boolean){
+    async function start(forceWebGL:boolean,camera?:MapCamera){
      const result=await createMap(host.current!,meta,bytes,index,current.current.world,setHover,id=>current.current.onSelect(id),()=>{
       setReady(false);
       instance.current?.dispose();instance.current=null;
       if(!forceWebGL&&!stopped)start(true).catch(()=>setError('map-backend-unavailable'));else if(!stopped)setError('map-backend-unavailable');
-     },forceWebGL);
+     },nextCamera=>{
+      if(stopped)return;setReady(false);setHover(null);instance.current?.dispose();instance.current=null;
+      start(true,nextCamera).catch(()=>{if(!stopped)setError('map-backend-unavailable');});
+     },forceWebGL,{camera,mode:current.current.mode,selected:current.current.selected,signal:controller.signal});
      if(stopped){result.dispose();return;}instance.current=result;result.update(current.current.world,current.current.mode,current.current.selected);setReady(true);
     }
     try{await start(force);}catch{if(force)throw new Error('map-backend-unavailable');await start(true).catch(()=>{throw new Error('map-backend-unavailable');});}

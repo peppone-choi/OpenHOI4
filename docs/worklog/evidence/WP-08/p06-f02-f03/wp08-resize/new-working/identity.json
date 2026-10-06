@@ -1,0 +1,9 @@
+{
+  "base": "62a89ae0c332483d0198ab3b3fc0fc3db1231c68",
+  "scope": "Uncommitted F02/F03 product patch; separate private runtime",
+  "patch_sha256": "23f5dfe9ce342968d82c7e001d3aa6df8a95376b05f32b31455156277c568d34",
+  "exe_sha256": "01b4b279a2298468a86e41184d7178299bdeab4052d3c705fe64ea6b270a046c",
+  "port": 19450,
+  "pack_hash": "b8d30ba577f303c3",
+  "pid": 31848
+}

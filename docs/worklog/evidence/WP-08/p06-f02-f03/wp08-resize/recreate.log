@@ -1,0 +1,32 @@
+
+Running 1 test using 1 worker
+
+(node:9276) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [webkit] › e2e-m1\map-resize.spec.ts:7:1 › REQ-MAP-05 resize and reset preserve presentation pixels and camera authority (7.5s)
+
+
+  1) [webkit] › e2e-m1\map-resize.spec.ts:7:1 › REQ-MAP-05 resize and reset preserve presentation pixels and camera authority
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 3
+
+    - Array []
+    + Array [
+    +   "ResizeObserver loop completed with undelivered notifications.",
+    + ]
+
+      31 |   for(const [x,y] of [[1,1],[3,1],[1,3],[3,3],[1,5],[5,5]]){const dense=raw.readUInt16LE((y*meta.width+x)*2),id=meta.province_ids[dense],expected=world!.provinces.find(p=>p.id===id)![key]??world!.neutral_color,actual=image.pixel((x-cam.x)/cam.width*box.width+box.width/2,(y-cam.y)/cam.height*box.height+box.height/2);for(let i=0;i<3;i++)expect(Math.abs(actual[i]-expected[i]),`${mode} ${id}: ${actual}, expected ${expected}`).toBeLessThanOrEqual(1);oracle.push({mode,id,actual,expected});}
+      32 |  }
+    > 33 |  expect(errors).toEqual([]);expect(await page.getByRole('alert').count()).toBe(0);writeFileSync(`${evidence}/${info.project.name}-resize.json`,JSON.stringify({browser:browser.version(),captures,oracle,errors},null,2));
+         |                 ^
+      34 | });
+      35 |
+        at E:\openhoi\.orchestrator\wt\WP-08\client\e2e-m1\map-resize.spec.ts:33:17
+
+    Error Context: test-results\map-resize-REQ-MAP-05-resi-440c3-pixels-and-camera-authority-webkit\error-context.md
+
+  1 failed
+    [webkit] › e2e-m1\map-resize.spec.ts:7:1 › REQ-MAP-05 resize and reset preserve presentation pixels and camera authority

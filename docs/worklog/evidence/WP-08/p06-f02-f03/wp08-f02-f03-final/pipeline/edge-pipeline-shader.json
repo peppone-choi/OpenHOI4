@@ -1,0 +1,18 @@
+{
+  "browser": "154.0.4258.53",
+  "glFailure": "shader",
+  "probe": {
+    "devices": 1,
+    "destroyed": 1,
+    "triggers": 1,
+    "glShaderCalls": 2
+  },
+  "errors": [],
+  "consoleErrors": [
+    "THREE.WebGPURenderer: Async render pipeline creation failed (renderPipeline_MeshBasicNodeMaterial_14): WP08 actual pipeline rejection",
+    "THREE.WebGLProgram: Shader Error 0 - VALIDATE_STATUS false\n\nProgram Info Log: Vertex shader is not compiled.\nVERTEX\n\nERROR: 0:121: 'WP08' : syntax error\n\n  116: \n  117: \tgl_PointSize = 1.0;\n  118: \n  119: }\n  120: \n> 121: WP08 invalid shader source\nFRAGMENT\n\nERROR: 0:600: 'WP08' : syntax error\n\n  595: \t// result\n  596: \tfragColor = nodeVar125;\n  597: \n  598: }\n  599: \n> 600: WP08 invalid shader source"
+  ],
+  "tick": "0",
+  "backend": null,
+  "scope": "actual native GPU device pipeline rejection"
+}
