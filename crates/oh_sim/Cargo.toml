@@ -12,3 +12,6 @@ workspace = true
 oh_data.workspace = true
 oh_core.workspace = true
 serde = { version = "=1.0.229", features = ["derive"] }
+
+[dev-dependencies]
+proptest = { version = "=1.11.0", default-features = false, features = ["std"] }
