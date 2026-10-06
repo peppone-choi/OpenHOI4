@@ -1,0 +1,15 @@
+{
+  "command": [
+    "cargo",
+    "test",
+    "--manifest-path",
+    "E:\\openhoi\\.orchestrator\\wt\\WP-05-verify\\target\\evidence\\WP-05-verify\\stale-workspace\\Cargo.toml",
+    "-p",
+    "oh_proto",
+    "--test",
+    "contract",
+    "req_net_04_generated_types_are_current"
+  ],
+  "stale": 101,
+  "restored": 0
+}

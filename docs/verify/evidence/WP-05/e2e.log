@@ -1,0 +1,64 @@
+
+> openhoi-client@0.1.0 test:e2e
+> playwright test
+
+
+Running 35 tests using 8 workers
+
+(node:13072) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:31616) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:45844) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:40392) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:46600) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:49680) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:41100) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:49440) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  4 [chromium] › e2e\shell.spec.ts:3:1 › REQ-PLAT-01 built client loads without browser errors (334ms)
+  ok  3 [edge] › e2e\shell.spec.ts:3:1 › REQ-PLAT-01 built client loads without browser errors (536ms)
+  ok  6 [chrome] › e2e\shell.spec.ts:3:1 › REQ-PLAT-01 built client loads without browser errors (508ms)
+(node:33976) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  5 [chromium] › e2e\network.spec.ts:6:1 › REQ-GEN-01 REQ-TIME-01 REQ-NET-01 authoritative pause, five speeds and date (1.6s)
+  ok  9 [chromium] › e2e\network.spec.ts:31:1 › REQ-NET-02 executable serves built assets and ko/en localization (38ms)
+(node:17056) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  8 [chrome] › e2e\network.spec.ts:6:1 › REQ-GEN-01 REQ-TIME-01 REQ-NET-01 authoritative pause, five speeds and date (1.8s)
+  ok 12 [chrome] › e2e\network.spec.ts:31:1 › REQ-NET-02 executable serves built assets and ko/en localization (32ms)
+  ok  7 [edge] › e2e\network.spec.ts:6:1 › REQ-GEN-01 REQ-TIME-01 REQ-NET-01 authoritative pause, five speeds and date (2.0s)
+  ok 15 [edge] › e2e\network.spec.ts:31:1 › REQ-NET-02 executable serves built assets and ko/en localization (37ms)
+  ok  1 [firefox] › e2e\shell.spec.ts:3:1 › REQ-PLAT-01 built client loads without browser errors (1.7s)
+  ok 14 [webkit] › e2e\shell.spec.ts:3:1 › REQ-PLAT-01 built client loads without browser errors (372ms)
+  ok 10 [chromium] › e2e\network.spec.ts:44:1 › REQ-NET-01 version mismatch, acceptance, rejection and unsupported scope (1.7s)
+  ok 13 [chrome] › e2e\network.spec.ts:44:1 › REQ-NET-01 version mismatch, acceptance, rejection and unsupported scope (1.8s)
+  ok 16 [edge] › e2e\network.spec.ts:44:1 › REQ-NET-01 version mismatch, acceptance, rejection and unsupported scope (1.8s)
+  ok 17 [chromium] › e2e\network.spec.ts:73:1 › REQ-NET-01 Create, supported query, Delta and explicit refusal (847ms)
+  ok 20 [chromium] › e2e\network.spec.ts:101:1 › REQ-NET-02 ko localization (288ms)
+  ok 11 [webkit] › e2e\network.spec.ts:6:1 › REQ-GEN-01 REQ-TIME-01 REQ-NET-01 authoritative pause, five speeds and date (3.0s)
+  ok 22 [webkit] › e2e\network.spec.ts:31:1 › REQ-NET-02 executable serves built assets and ko/en localization (25ms)
+  ok 18 [chrome] › e2e\network.spec.ts:73:1 › REQ-NET-01 Create, supported query, Delta and explicit refusal (938ms)
+  ok 19 [edge] › e2e\network.spec.ts:73:1 › REQ-NET-01 Create, supported query, Delta and explicit refusal (977ms)
+  ok 24 [chrome] › e2e\network.spec.ts:101:1 › REQ-NET-02 ko localization (308ms)
+  ok 21 [chromium] › e2e\network.spec.ts:112:1 › REQ-GEN-05 REQ-NET-05 server disconnect freezes displayed time and input (922ms)
+  ok 25 [edge] › e2e\network.spec.ts:101:1 › REQ-NET-02 ko localization (347ms)
+  ok  2 [firefox] › e2e\network.spec.ts:6:1 › REQ-GEN-01 REQ-TIME-01 REQ-NET-01 authoritative pause, five speeds and date (4.9s)
+  ok 26 [chrome] › e2e\network.spec.ts:112:1 › REQ-GEN-05 REQ-NET-05 server disconnect freezes displayed time and input (1.0s)
+  ok 28 [firefox] › e2e\network.spec.ts:31:1 › REQ-NET-02 executable serves built assets and ko/en localization (24ms)
+  ok 27 [edge] › e2e\network.spec.ts:112:1 › REQ-GEN-05 REQ-NET-05 server disconnect freezes displayed time and input (982ms)
+  ok 23 [webkit] › e2e\network.spec.ts:44:1 › REQ-NET-01 version mismatch, acceptance, rejection and unsupported scope (1.8s)
+  ok 30 [webkit] › e2e\network.spec.ts:73:1 › REQ-NET-01 Create, supported query, Delta and explicit refusal (963ms)
+  ok 29 [firefox] › e2e\network.spec.ts:44:1 › REQ-NET-01 version mismatch, acceptance, rejection and unsupported scope (1.8s)
+  ok 31 [webkit] › e2e\network.spec.ts:101:1 › REQ-NET-02 ko localization (672ms)
+  ok 32 [firefox] › e2e\network.spec.ts:73:1 › REQ-NET-01 Create, supported query, Delta and explicit refusal (991ms)
+  ok 34 [firefox] › e2e\network.spec.ts:101:1 › REQ-NET-02 ko localization (331ms)
+  ok 33 [webkit] › e2e\network.spec.ts:112:1 › REQ-GEN-05 REQ-NET-05 server disconnect freezes displayed time and input (1.3s)
+  ok 35 [firefox] › e2e\network.spec.ts:112:1 › REQ-GEN-05 REQ-NET-05 server disconnect freezes displayed time and input (1.1s)
+
+  35 passed (12.0s)
