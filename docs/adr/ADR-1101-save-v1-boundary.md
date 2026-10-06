@@ -18,7 +18,7 @@
 - live 타입 Serialize 경계를 유지하고 oh_sim 소유의 저장 DTO만 Deserialize한다. export/import는 순수하고 모든 값·참조·달력/큐·원장 rawbit를 검사해 candidate를 만들며 host가 Ok일 때 한 번 교체한다. 저장 DTO bytes가 아니라 기존 Simulation canonical bytes를 해시한다.
 - 모든 State/TimeConfig/queue/nation/state/province·base/modifiers/expiry·원장/적용값을 저장한다. 원장은 saved tick에 재계산하여 전 필드를 대조한 뒤 설치한다. 존재하지 않는 RNG cursor나 미래 gameplay 필드를 넣지 않는다.
 - 팩 identity는 전체 UTF-8 상대 경로 정렬 Vec<(path,bytes)>의 postcard/FNV, definitions_hash는 현재 World 의미 경계, effective_defines_hash는 타입 태그를 포함한 병합 defines 경계로 분리한다. defs를 저장하지 않고 팩에서 재구성한다. force는 정의/defines/날짜/참조/원장/hash가 같을 때 pack content/version 차이만 경고 수용한다. 손상·포맷·엔진 불일치는 우회 불가다.
-- 신뢰한 `oh_save/defines.toml` 정책의 file/header/body/window/string/collection cap을 allocation/decompression 전에 적용한다. save 파일에서 policy를 읽지 않는다. bounded serde visitors와 단일 frame 잔여 검사를 사용한다.
+- 신뢰한 `oh_save/defines.toml` 정책의 file/header/body/window/string/collection cap을 allocation/decompression 전에 적용한다. save 파일에서 policy를 읽지 않는다. 구현은 allocation-free postcard shape preflight를 먼저 통과시킨 뒤 typed serde decode하며 단일 frame 잔여 검사를 사용한다.
 - complete encode→동일 디렉터리 tempfile write_all/flush/sync_all→persist 한 번을 파일 commit으로 삼는다. commit 전 오류는 이전 파일/상태/queue 보존, commit 후 directory durability 문제는 committed warning으로 구분한다. 전원 손실까지의 모든 filesystem durability를 보장하지 않는다.
 - M1 CLI save-out/resume과 server 시작 load-save를 연결한다. 현재 time queue NationId는 정렬 namespace이고 host0이 정의 국가에 없어도 유효하다. 서버 arrival는 pending sequence 최대값에서 이어간다. WS 저장 DTO/새 client지도/HTTP upload UI는 추가하지 않는다.
 
@@ -53,4 +53,14 @@
 
 확인한 라이선스 표현은 02 §14.3 목록에 들어간다. 실제 Cargo.lock 전체 검사·서드파티 고지는 구현 단계에 필요하며 현재 출처 확인만으로 모든 전이 의존성이 허용됐다고 기록하지 않는다. docs.rs의 zstd Cargo.toml/Cargo.toml.orig 및 fixed crate-source 경로 일부는 도구 Internal Error였으므로 그 경로를 열람 근거로 쓰지 않고 위의 정상 GitHub tag/rustdoc source를 사용했다. 위키 본문을 새로 열람한 기록은 없고 [기존 조사 실패 범위](../research/schema-source-review.md)를 유지한다. 원작 문장/수치표를 설계에 사용하지 않았다.
 
-추가 read-only registry 문맥은 현재 oh_data 경계에 없으므로 오케스트레이터의 좁은 소유 배정 뒤 구현한다. root Cargo/lock·binary fixture attributes·assets manifest는 필요한 항목만 조정하고 타세션 변경을 보존한다. 이번 ADR/설계 커밋에서는 제품·의존성·CI·골든·클라이언트를 수정하지 않는다.
+초기 90ebf63 설계 커밋에서는 제품·의존성·CI·골든·클라이언트를 수정하지 않았다. 후속 P-03 배정에서 oh_data의 기존 검증 registry read-only 반환이 추가로 배정됐다. 제품 구현·증거는 [WP-11 로그](../worklog/WP-11.md)에 기록한다.
+
+### 구현 연결과 설계 보강 (2026-10-07)
+
+실제 이름은 `oh_sim::save_state::SimulationSaveV1`, `Simulation::export_save/from_save`, `oh_save::SaveContext::national/m0`, `encode/decode`, `inspect_header`(메타데이터만), `read_file/write_atomic`이다. SaveContext 필드는 private이며 validated 로더 결과를 read-only로 제공한다. registry 파서는 복제하지 않았고 MapData의 기존 검증 집합을 accessor로 보존한다. 헤더/본문의 같은 필드 순서는 그대로다.
+
+preflight는 positional 포맷을 allocation 없이 읽어 모든 enum/bool/Option·정수 폭·길이·UTF-8·필드/잔여를 검사한다. 통과 이후 serde의 size_hint 할당이 수행된다. 문자열·개별 길이 제한에 더해 `[save] allocation_budget_bytes=268435456, entry_allocation_charge_bytes=512`를 도입했다. 컬렉션 요소마다 보수적인 512B, 문자열은 DTO/복원 사본 두 개 분량을 합산하여 budget 전에 거부한다. 이 수치는 host 수용 정책이며 sim 수치/파일 필드가 아니다. body/file 버퍼 상한과 구별하며 모든 allocator/OS RSS의 완전한 측정값이라고 주장하지 않는다.
+
+표시 시각 0·single-thread/no dictionary/window log23/level3/checksum enabled/no_asm와 번들 zstd1.5.7로 고정 fixture를 만들었다. `Cargo.lock`은 zstd0.13.3/safe7.2.2/sys2.0.16+zstd.1.5.7/tempfile3.27.0 및 실제 전이 버전을 고정한다. pkg-config 크레이트는 build dependency이나 pkg-config/동적 system-zstd feature를 활성화하지 않는다. Rust 모듈은 unsafe를 추가하지 않았다.
+
+신규 15개 패키지의 공식 crates.io version API를 직접 HTTPS로 읽고 license/checksum을 실제 lock과 전부 대조했다. 웹 도구의 docs.rs/API 실패는 접근 성공으로 바꾸어 쓰지 않는다. 성공은 PowerShell Invoke-RestMethod의 정상 요청이며 [원문](../worklog/evidence/WP-11/dependency-official.json)에 URL/2026-10-07/버전/license/checksum을 보존했다. rustix 실제 resolution은 1.1.5(초기 검토 후보1.1.4와 구별)다. r-efi의 OR 표현에서는 MIT, rustix/linux-raw-sys에서도 허용 MIT/Apache 선택지가 있다. `cargo deny check licenses bans sources` exit0과 번들 C의 [BSD-3-Clause 고지](../licenses/WP-11-zstd-1.5.7-BSD-3-Clause.txt)를 보존했다. wrapper metadata만으로 C 고지까지 검사됐다고 주장하지 않는다.

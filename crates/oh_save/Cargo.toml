@@ -10,3 +10,16 @@ workspace = true
 
 [dependencies]
 oh_sim.workspace = true
+oh_core.workspace = true
+oh_data.workspace = true
+serde = { version = "=1.0.229", features = ["derive"] }
+postcard = { version = "=1.1.3", default-features = false, features = ["alloc"] }
+toml = "=1.1.6"
+semver = "=1.0.28"
+zstd = { version = "=0.13.3", default-features = false, features = ["no_asm"] }
+zstd-safe = { version = "=7.2.2", default-features = false, features = ["std", "no_asm"] }
+zstd-sys = { version = "=2.0.16", default-features = false, features = ["no_asm"] }
+tempfile = "=3.27.0"
+
+[dev-dependencies]
+serde_json = "=1.0.151"

@@ -1,17 +1,13 @@
-use std::{env, path::Path, process::ExitCode};
+use std::{env, process::ExitCode};
 fn execute() -> Result<(), String> {
     let args: Vec<_> = env::args().skip(1).collect();
     if args == ["--help"] || args == ["-h"] {
         println!("{}", oh_cli::USAGE);
         return Ok(());
     }
-    let (options, pack) = oh_cli::parse_invocation(&args)?;
-    let sim = match pack {
-        Some(root) => oh_cli::run_national(&root, &options)?,
-        None => oh_cli::run(Path::new(oh_cli::M0_PACK_ROOT), &options)?,
-    };
+    let (sim, hash_out) = oh_cli::execute_invocation(&args)?;
     let hash = sim.state_hash().map_err(|err| err.to_string())?;
-    if options.hash_out {
+    if hash_out {
         println!("{hash:016x}");
     } else {
         let state = sim.snapshot();

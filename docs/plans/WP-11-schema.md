@@ -2,7 +2,7 @@
 
 | 항목 | 값 |
 |---|---|
-| 작성일·단계 | 2026-10-07, M1-r2 **구현 전 설계**. 아래 API·CLI·fixture·검사는 아직 구현/실행하지 않았다 |
+| 작성일·단계 | 2026-10-07, M1-r2 구현 전 설계(90ebf63) 후 P-03 구현 연결. 계약/예제와 실제 실행 결과는 [작업 로그](../worklog/WP-11.md)에서 구별한다 |
 | 브랜치·기준 소스 | `codex/wp11-save`, `bbf8762922cf74c3b54f6274c1bff83b0977da62` |
 | 근거 | 01 §4·§8 REQ-SAV-01/02, AC-M1-04; 02 §3·§5.11·§7·§12.2·§14.3·§15; P-03 |
 | 선행 계약 | ADR-0201, ADR-0401/0402, ADR-0901, ADR-1001; [착수 점검](WP-11-resume-review.md), [기획 규칙](schema-planning.md), [조사 범위](../research/schema-source-review.md) |
@@ -10,7 +10,7 @@
 
 ## 1. 목표·범위·현재 상태
 
-현재 `oh_save/src/lib.rs`는 자리 모듈이다. `Simulation/State/TimeConfig/World/WorldInputs/StatLedger`는 검증된 외부 복원 API가 없고 대부분 Serialize만 지원한다. 이 설계는 그 private 권위를 유지하면서 전체 M1 상태를 저장하고 native 새 프로세스에서 재개하는 경계를 정의한다. 기존 M0 직렬화와 골든은 보존한다. 제품 코드 작성은 오케스트레이터 후속 지시 뒤 시작한다.
+90ebf63 설계 당시 `oh_save/src/lib.rs`는 자리 모듈이고 `Simulation/State/TimeConfig/World/WorldInputs/StatLedger`는 검증된 외부 복원 API가 없었다. 후속 P-03에서 private 권위를 유지하는 DTO 검증 경계와 native 재개를 구현했다. 이 문서의 예제는 기대 계약이며 실제 실행·불충족·독립 검증 상태는 작업 로그를 따른다. 기존 M0 직렬화와 골든은 보존한다.
 
 M1 범위는 파일 encode/decode·안전한 교체, 순수 sim export/import, CLI 저장/재개와 서버 시작 시 저장 파일 로드다. M3 WP-37의 자동저장·순환 보관·HTTP 목록/업로드/다운로드·저장 버튼·구버전 마이그레이션 UI, M2 WP-25의 명령 로그/재현 ZIP은 구현하지 않는다. 국가 PC/법령/지도자·경제/인력/전투/외교·진행 중 RNG 스트림·멀티플레이 배정/소유 권한은 현재 실제 모델에 없으며 이 파일에 가상 저장 필드를 넣지 않는다.
 
@@ -176,7 +176,7 @@ force에서도 원래 header.state_hash와 candidate hash는 같아야 한다. �
 정책 수치는 새 `crates/oh_save/defines.toml`의 `[save]`로 host에 동봉한다. game rules/시계와 분리된 신뢰한 정책이며 저장 파일의 cap 필드를 신뢰하지 않는다. 코드에는 정책 숫자를 중복하지 않는다. 계획값은 header_max_bytes=65536, file_max_bytes=67108864, body_max_bytes=268435456, string_max_bytes=4096, queue_max_entries=1000000, modifiers_per_state=4096, map_entries_max=65536, packs_max=64, zstd_window_log_max=23, compression_level=3이다. 본문/문자열/집합 budget 합산은 checked 정수로 한다. nation/state/province 수는 u16 ID 도메인 한계와 로드된 정의의 정확 개수를 함께 제한한다. ledger 행 수는 modifiers cap+1이다. cap 정책 변경은 포맷 필드가 아니라 host 수용 정책 변경이며 오류 진단에 현재 limit을 낸다.
 
 1. 제한된 read로 file_max+1을 검사한다. metadata 길이만 믿거나 무제한 read_to_end 하지 않는다. 10B prefix truncation·magic·format→header_len/checked offset→bounded header 순서다.
-2. header를 한 postcard 값으로 decode하고 잔여 바이트 없음 확인. collection size_hint를 그대로 reserve하지 않는다. String은 slice/borrowed UTF-8로 길이를 먼저 보고, Vec는 bounded visitor로 cap·입력 잔여량/총 budget을 검사한 뒤 증분 할당한다. `u64::MAX` 개수+짧은 입력은 allocation 전에 실패해야 한다.
+2. allocation-free shape preflight에서 String slice/UTF-8·collection 개수·입력 잔여량과 allocation budget을 먼저 검사하고 한 postcard 값으로 typed decode한다. 검사 전 collection size_hint를 reserve하지 않는다. `u64::MAX` 개수+짧은 입력은 allocation 전에 실패해야 한다. 구현의 추가 host budget/charge는 ADR-1101 구현 보강을 따른다.
 3. 모든 required 필드·format/engine/metadata shape·duplicate/missing pack ID를 검사한다. bad metadata면 zstd를 열지 않는다. 허용 경로는 호출자가 정하며 header로 임의 경로를 읽지 않는다.
 4. zstd 표준 frame magic 확인, dictionary 없음, skippable/concatenated 금지. `Decoder::with_buffer(&[u8]).single_frame()`와 window cap을 사용하고 body_max+1을 넘으면 즉시 오류. frame content size가 없거나 거짓이어도 실제 출력 cap 적용. 끝까지 읽어 frame truncation/checksum을 검사하고 `finish()`의 미소비 compressed slice가 비어 있음을 확인한다.
 5. body 한 postcard 값·잔여 없음·bounded DTO 검사. decode 후 같은 DTO를 재encode하여 원본 postcard header/body bytes와 비교한다. overlong/nonminimal varint 같은 비정규 표현을 거부한다. canonical reencode는 구조 검사를 대신하지 않는다.
@@ -222,7 +222,7 @@ M1 서버 연결은 **CLI에서 만든 파일을 새 서버 프로세스로 로�
 | `docs/plans/WP-11-schema.md`, ADR-1101, worklog/WP-11.md | 계약·검증 증거·범위 보고 |
 | root Cargo.toml/Cargo.lock·.gitattributes·assets/ASSETS.toml | 공유파일 필요 항목만: 의존 resolution/pin, `.ohsave binary` fixture 취급, 직접 제작 fixture 등록. 사전 충돌 대조, 타세션 수정 보존 |
 
-**추가 소유 배정 필요:** 현재 oh_data MapData/LoadedNational/Defs에 resource/building registry가 보존되지 않는다. 구현 전 오케스트레이터가 `crates/oh_data/src/map.rs`의 기존 검증 registry를 read-only로 반환하는 최소 확장 및 관련 테스트를 WP-11에 배정해야 한다. 이 파일을 이번 설계 세션에서 수정하지 않는다. registry 파서를 oh_save에 복제하거나 definition에 나온 key만 허용하여 문제를 숨기지 않는다. 이 확장은 규칙 추가가 아니라 기존 검증 결과 전달이며 map 렌더링 계약 변경과 분리한다.
+**추가 소유 배정 반영:** 설계 때 없던 oh_data resource/building registry read-only 반환은 후속 P-03에서 `crates/oh_data/src/map.rs`와 관련 tests를 좁게 배정받아 구현했다. registry 파서를 oh_save에 복제하거나 definition에 나온 key만 허용하지 않았다. 기존 검증 결과 전달이며 지도 HTTP/client 렌더링 변경과 분리한다.
 
 다음 구현 순서: (1) 후속 지시/읽기 문맥 소유 확정, T01/T02 red와 format fixture red 기록 → (2) sim DTO/export/import·참조/원장 실패 원자성 → (3) bounded postcard/zstd/header/identity·파일교체 → (4) CLI native fresh-process 연결 → (5) server startup load·조회/arrival → (6) 독립 정수/바이트 기준·3OS capture 및 실패 증거 검사 → (7) fmt/clippy/workspace test·M0/M1 hash2·docs/license/assets, 자기 브랜치 커밋 → (8) 새 정확 HEAD 독립 검증에 계약/fixture/실패 이력 전달. 구현자가 PASS/완료 게이트를 판정하거나 main을 병합하지 않는다.
 

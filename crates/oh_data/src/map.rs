@@ -115,8 +115,17 @@ pub struct MapData {
     pub km_per_pixel: Fixed,
     pub warnings: Vec<MapWarning>,
     province_states: BTreeMap<u16, u16>,
+    resource_ids: BTreeSet<String>,
+    building_ids: BTreeSet<String>,
 }
 impl MapData {
+    /// Validated registry identities, also for saved-state reference checking.
+    pub fn resource_ids(&self) -> &BTreeSet<String> {
+        &self.resource_ids
+    }
+    pub fn building_ids(&self) -> &BTreeSet<String> {
+        &self.building_ids
+    }
     pub fn province_index(&self, id: u16) -> Option<u16> {
         self.provinces
             .binary_search_by_key(&id, |p| p.id)
@@ -230,6 +239,8 @@ pub fn load_map(pack: impl AsRef<Path>, map_id: &str) -> Result<MapData, DataErr
         km_per_pixel,
         warnings,
         province_states,
+        resource_ids: resources,
+        building_ids: buildings,
     })
 }
 

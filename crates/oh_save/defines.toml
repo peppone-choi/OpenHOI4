@@ -1,0 +1,15 @@
+# Host save policy, not simulation rules or untrusted file fields.
+[save]
+header_max_bytes = 65536
+file_max_bytes = 67108864
+body_max_bytes = 268435456
+string_max_bytes = 4096
+queue_max_entries = 1000000
+modifiers_per_state = 4096
+map_entries_max = 65536
+packs_max = 64
+zstd_window_log_max = 23
+compression_level = 3
+saved_at_max = 253402300799
+allocation_budget_bytes = 268435456
+entry_allocation_charge_bytes = 512

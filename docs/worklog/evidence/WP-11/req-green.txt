@@ -1,0 +1,18 @@
+   Compiling oh_save v0.1.0 (E:\openhoi\.orchestrator\wt\WP-11\crates\oh_save)
+   Compiling oh_ai v0.1.0 (E:\openhoi\.orchestrator\wt\WP-11\crates\oh_ai)
+   Compiling oh_cli v0.1.0 (E:\openhoi\.orchestrator\wt\WP-11\crates\oh_cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.75s
+     Running tests\save_native.rs (target\debug\deps\save_native-4cabd52ca46316af.exe)
+
+running 1 test
+test req_sav_02_new_native_process_resumes_real_m1 ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.28s
+
+     Running tests\save.rs (target\debug\deps\save-1f7d4e3c6ecc5f1b.exe)
+
+running 2 tests
+test req_sav_02_m1_continue_after_restore ... ok
+test req_sav_01_complete_m1_roundtrip ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s

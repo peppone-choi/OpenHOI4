@@ -73,6 +73,9 @@ impl TimeConfig {
     pub fn initial_speed(&self) -> u8 {
         self.initial_speed
     }
+    pub fn speed_ms_per_tick(&self) -> [u64; 5] {
+        self.speed_ms_per_tick
+    }
     pub(crate) fn valid_speed(&self, speed: u8) -> bool {
         speed != 0 && usize::from(speed) <= self.speed_ms_per_tick.len()
     }

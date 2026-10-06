@@ -2,6 +2,7 @@
 //! WP-11 must restore all WorldInputs together with time/config/ordered commands,
 //! reload definitions, verify pack identity, and rebuild ledgers at the saved tick.
 use crate::ledger::{Modifier, ModifierOp, StatLedger};
+use crate::save_state::*;
 use oh_core::{Fx, NationId, ProvinceId, StateId};
 use serde::Serialize;
 use std::{collections::BTreeMap, sync::Arc};
@@ -137,6 +138,222 @@ pub struct World {
     inputs: WorldInputs,
 }
 impl World {
+    pub(crate) fn export_save(&self) -> WorldV1 {
+        WorldV1 {
+            definitions_hash: self.definitions_hash,
+            inputs: InputsV1 {
+                nations: self
+                    .inputs
+                    .nations
+                    .iter()
+                    .map(|n| NationV1 {
+                        id: n.id.0,
+                        tag: n.tag.clone(),
+                        government: n.government.clone(),
+                        support: n
+                            .support
+                            .iter()
+                            .map(|(k, v)| (k.clone(), v.to_bits()))
+                            .collect(),
+                    })
+                    .collect(),
+                states: self
+                    .inputs
+                    .states
+                    .iter()
+                    .map(|s| StateWorldV1 {
+                        id: s.id.0,
+                        owner: s.owner.0,
+                        population: s.population,
+                        resources: s.resources.iter().map(|(k, v)| (k.clone(), *v)).collect(),
+                        buildings: s.buildings.iter().map(|(k, v)| (k.clone(), *v)).collect(),
+                        base: s.base.to_bits(),
+                        modifiers: s
+                            .modifiers
+                            .iter()
+                            .map(|m| ModifierV1 {
+                                source: m.source.clone(),
+                                target_stat: m.target_stat.clone(),
+                                op: match m.op {
+                                    ModifierOp::Add => ModifierOpV1::Add,
+                                    ModifierOp::Mul => ModifierOpV1::Mul,
+                                },
+                                value: m.value.to_bits(),
+                                expires: m.expires,
+                            })
+                            .collect(),
+                        infrastructure: s.infrastructure.to_bits(),
+                        ledger: ledger_save(&s.ledger),
+                    })
+                    .collect(),
+                provinces: self
+                    .inputs
+                    .provinces
+                    .iter()
+                    .map(|p| ProvinceV1 {
+                        id: p.id.0,
+                        state: p.state.map(|v| v.0),
+                        owner: p.owner.map(|v| v.0),
+                        controller: p.controller.map(|v| v.0),
+                    })
+                    .collect(),
+            },
+        }
+    }
+    pub(crate) fn from_save(dto: WorldV1, template: &Self, tick: u64) -> Result<Self, String> {
+        if dto.definitions_hash != template.definitions_hash {
+            return Err("DefinitionsMismatch".into());
+        }
+        let input = dto.inputs;
+        if !strictly_sorted(input.nations.iter().map(|n| n.id))
+            || !strictly_sorted(input.states.iter().map(|s| s.id))
+            || !strictly_sorted(input.provinces.iter().map(|p| p.id))
+            || input
+                .nations
+                .iter()
+                .map(|n| n.id)
+                .ne(template.inputs.nations.iter().map(|n| n.id.0))
+            || input
+                .states
+                .iter()
+                .map(|s| s.id)
+                .ne(template.inputs.states.iter().map(|s| s.id.0))
+            || input.provinces.iter().map(|p| p.id).ne(template
+                .inputs
+                .provinces
+                .iter()
+                .map(|p| p.id.0))
+        {
+            return Err("InvalidReference: entity ID sets/order".into());
+        }
+        let mut nations = Vec::new();
+        for (n, definition) in input.nations.into_iter().zip(&template.defs.nations) {
+            if n.tag != definition.tag
+                || n.government.is_empty()
+                || n.support.is_empty()
+                || !strictly_sorted(n.support.iter().map(|(k, _)| k))
+            {
+                return Err(format!("InvalidNation: {}", n.id));
+            }
+            let mut total = 0i64;
+            let mut support = BTreeMap::new();
+            for (k, v) in n.support {
+                if k.is_empty() || !(0..=Fx::ONE.to_bits()).contains(&v) {
+                    return Err(format!("InvalidSupport: {}", n.id));
+                }
+                total = total.checked_add(v).ok_or("InvalidSupport: sum overflow")?;
+                support.insert(k, Fx::from_bits(v));
+            }
+            if total != Fx::ONE.to_bits() {
+                return Err(format!("InvalidSupport: {} sum", n.id));
+            }
+            nations.push(NationState {
+                id: NationId(n.id),
+                tag: n.tag,
+                government: n.government,
+                support,
+            });
+        }
+        let has_nation = |id: u16| {
+            nations
+                .binary_search_by_key(&NationId(id), |n| n.id)
+                .is_ok()
+        };
+        let mut states = Vec::new();
+        for s in input.states {
+            if !has_nation(s.owner) || s.population < 0 || s.base < 0 {
+                return Err(format!("InvalidState: {} owner/population/base", s.id));
+            }
+            let resources = counts(
+                s.resources,
+                template.defs.map.resource_ids(),
+                s.id,
+                "resources",
+            )?;
+            let buildings = counts(
+                s.buildings,
+                template.defs.map.building_ids(),
+                s.id,
+                "buildings",
+            )?;
+            if !s
+                .modifiers
+                .windows(2)
+                .all(|m| modifier_key(&m[0]) <= modifier_key(&m[1]))
+            {
+                return Err(format!("InvalidModifier: {} order", s.id));
+            }
+            let mut modifiers = Vec::new();
+            for m in s.modifiers {
+                if m.source.is_empty() || m.target_stat != "infrastructure" {
+                    return Err(format!("InvalidModifier: {} source/target", s.id));
+                }
+                modifiers.push(Modifier {
+                    source: m.source,
+                    target_stat: m.target_stat,
+                    op: match m.op {
+                        ModifierOpV1::Add => ModifierOp::Add,
+                        ModifierOpV1::Mul => ModifierOp::Mul,
+                    },
+                    value: Fx::from_bits(m.value),
+                    expires: m.expires,
+                });
+            }
+            let base = Fx::from_bits(s.base);
+            let ledger = StatLedger::evaluate("infrastructure", base, &modifiers, tick)
+                .map_err(|e| format!("InvalidLedger: {} {e}", s.id))?;
+            if ledger_save(&ledger) != s.ledger || ledger.value().to_bits() != s.infrastructure {
+                return Err(format!("LedgerMismatch: {}", s.id));
+            }
+            states.push(StateState {
+                id: StateId(s.id),
+                owner: NationId(s.owner),
+                population: s.population,
+                resources,
+                buildings,
+                base,
+                modifiers,
+                infrastructure: ledger.value(),
+                ledger,
+            });
+        }
+        let mut provinces = Vec::new();
+        for p in input.provinces {
+            let expected = template.defs.map.state_for_province(p.id);
+            if p.state != expected {
+                return Err(format!("InvalidReference: province {} state", p.id));
+            }
+            if let Some(state) = expected {
+                let owner = states
+                    .binary_search_by_key(&StateId(state), |s| s.id)
+                    .ok()
+                    .map(|i| states[i].owner.0);
+                if p.owner != owner || !p.controller.is_some_and(has_nation) {
+                    return Err(format!(
+                        "InvalidReference: province {} owner/controller",
+                        p.id
+                    ));
+                }
+            } else if p.owner.is_some() || p.controller.is_some() {
+                return Err(format!("InvalidReference: water province {}", p.id));
+            }
+            provinces.push(ProvinceState {
+                id: ProvinceId(p.id),
+                state: p.state.map(StateId),
+                owner: p.owner.map(NationId),
+                controller: p.controller.map(NationId),
+            });
+        }
+        Ok(Self {
+            defs: template.defs.clone(),
+            definitions_hash: dto.definitions_hash,
+            inputs: WorldInputs {
+                nations,
+                states,
+                provinces,
+            },
+        })
+    }
     pub fn from_loaded(loaded: &oh_data::national::LoadedNational) -> Result<Self, String> {
         let mut canonical = loaded.clone();
         canonical.nations.sort_by_key(|n| n.id);
@@ -370,5 +587,43 @@ impl World {
             s.ledger = ledger;
         }
         Ok(())
+    }
+}
+
+fn modifier_key(m: &ModifierV1) -> (&str, ModifierOpV1, &str, Option<u64>, i64) {
+    (&m.target_stat, m.op, &m.source, m.expires, m.value)
+}
+fn counts(
+    values: Vec<(String, i64)>,
+    registry: &std::collections::BTreeSet<String>,
+    id: u16,
+    field: &str,
+) -> Result<BTreeMap<String, i64>, String> {
+    if !strictly_sorted(values.iter().map(|(k, _)| k))
+        || values.iter().any(|(k, v)| !registry.contains(k) || *v < 0)
+    {
+        return Err(format!("InvalidReference: state {id} {field}"));
+    }
+    Ok(values.into_iter().collect())
+}
+fn ledger_save(l: &StatLedger) -> LedgerV1 {
+    LedgerV1 {
+        target_stat: l.target_stat().into(),
+        tick: l.tick(),
+        value: l.value().to_bits(),
+        entries: l
+            .entries()
+            .iter()
+            .map(|e| EntryV1 {
+                source: e.source.clone(),
+                op: match e.op {
+                    crate::ledger::LedgerOp::Base => LedgerOpV1::Base,
+                    crate::ledger::LedgerOp::Add => LedgerOpV1::Add,
+                    crate::ledger::LedgerOp::Mul => LedgerOpV1::Mul,
+                },
+                value: e.value.to_bits(),
+                accumulated: e.accumulated.to_bits(),
+            })
+            .collect(),
     }
 }
