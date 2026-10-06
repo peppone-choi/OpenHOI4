@@ -1,0 +1,28 @@
+{
+  "adopted_source_sha256": "be159587ac9acdd496f8a6bcb000d8229586f5d75a5dfa43b7f34b0a9e0171cf",
+  "rule_sections_identical": true,
+  "scope": "document candidate adoption only; no product verification or parameter defaults or migration approval",
+  "files": [
+    {
+      "member": "reviewed-source.md",
+      "bytes": 11594,
+      "sha256": "be159587ac9acdd496f8a6bcb000d8229586f5d75a5dfa43b7f34b0a9e0171cf"
+    },
+    {
+      "member": "CEO-review.md",
+      "bytes": 5068,
+      "sha256": "62dd3ebcf43eb94127ff313db08b8edd70d0042f691e022100064a7a723faaa1"
+    },
+    {
+      "member": "actual-arithmetic-review.json",
+      "bytes": 647,
+      "sha256": "5bcdbdc5f15d6faa42237579a3d3b904660b6b8305388363fd0dcd19efd277eb"
+    },
+    {
+      "member": "first-arithmetic-review.json",
+      "bytes": 784,
+      "sha256": "fbc499e9cea1e8d1673d5abfe4f430c5c0b35b95821a6a2cc43a2bb4f1bf37e6"
+    }
+  ],
+  "archive_sha256": "8559cae46979719470f63f43bd8f476e7b6048c017635116051d1059649fcce1"
+}
