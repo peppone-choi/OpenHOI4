@@ -38,3 +38,15 @@ footer { margin-top: 28px; font-size: .8rem; } a { color: var(--ui-muted); }
 .ledger-tooltip th, .ledger-tooltip td { text-align: start; padding: 8px; border-bottom: 1px solid var(--ui-border); font-variant-numeric: tabular-nums; }
 .ledger-tooltip small { display: block; }
 @media (max-width: 600px) { main { padding: 20px; } dl { gap: 24px; } section { padding: 20px; } .ledger-tooltip { max-width: calc(100vw - 88px); } }
+
+.national-panels { display: grid; grid-template-columns: repeat(auto-fit,minmax(290px,1fr)); gap: 1rem; }
+.national-panels section { border: 1px solid var(--ui-border); padding: 1rem; border-radius: .4rem; }
+.national-panels nav { display: flex; flex-wrap: wrap; gap: .4rem; }
+.national-panels dl div { display: flex; justify-content: space-between; gap: 1rem; }
+.national-panels table { width: 100%; text-align: left; }
+
+.national-panels dl { display: grid; gap: .65rem; }
+.national-panels dl div { align-items: baseline; }
+.national-panels dd { margin: 0; font-size: 1rem; }
+.national-panels .ledger-tooltip { position: static; max-width: none; margin-top: .5rem; }
+.national-panels th, .national-panels td { padding: .35rem; overflow-wrap: anywhere; }

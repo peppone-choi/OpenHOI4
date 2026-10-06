@@ -1,5 +1,5 @@
 import { decode, encode } from '@msgpack/msgpack';
-import { PROTOCOL_VERSION, type ClientMessage, type PackInfo, type ServerMessage, type TimeState } from './proto/protocol';
+import { PROTOCOL_VERSION, type ClientMessage, type PackInfo, type ServerMessage, type TimeState, type WorldView, type NationView, type SupportView, type StateView, type ScalarView, type ProvinceView, type LedgerView, type LedgerRow } from './proto/protocol';
 
 type Guard<T> = (value: unknown) => value is T;
 type Shape<T> = { [K in keyof T]-?: Guard<T[K]> };
@@ -8,6 +8,9 @@ const boolean: Guard<boolean> = (value): value is boolean => typeof value === 'b
 // Rust TimeState.hour/speed are u8. This checks their wire representation,
 // not calendar/speed game rules; no values are coerced or recalculated here.
 const u8: Guard<number> = (value): value is number => typeof value === 'number' && Number.isInteger(value) && value >= 0 && value <= 0xff;
+const u16: Guard<number> = (v): v is number => typeof v === 'number' && Number.isInteger(v) && v >= 0 && v <= 65535;
+const u32: Guard<number> = (v): v is number => typeof v === 'number' && Number.isInteger(v) && v >= 0 && v <= 4294967295;
+const color: Guard<[number, number, number]> = (v): v is [number, number, number] => Array.isArray(v) && v.length === 3 && v.every(u8);
 const literal = <T extends string>(expected: T): Guard<T> => (value): value is T => value === expected;
 const nullable = <T,>(guard: Guard<T>): Guard<T | null> => (value): value is T | null => value === null || guard(value);
 const array = <T,>(guard: Guard<T>): Guard<T[]> => (value): value is T[] => Array.isArray(value) && value.every(guard);
@@ -18,6 +21,14 @@ function shape<T>(fields: Shape<T>): Guard<T> {
 const timeState = shape<TimeState>({ date: string, hour: u8, tick: string, paused: boolean, speed: u8 });
 const packInfo = shape<PackInfo>({ id: string, version: string, hash: string });
 
+const ledgerRow = shape<LedgerRow>({ id: string, label_key: string, operation_key: string, value: string, accumulated: string, source_key: nullable(string) });
+const ledger = shape<LedgerView>({ base: string, final_value: string, tick: string, entries: array(ledgerRow) });
+const support = shape<SupportView>({ name_key: string, value: string });
+const nation = shape<NationView>({ id: u16, tag: string, name_key: string, color, capital: u16, government_key: string, support: array(support) });
+const scalar = shape<ScalarView>({ name_key: string, value: string });
+const stateView = shape<StateView>({ id: u16, name_key: string, provinces: array(u16), owner: u16, population: string, resources: array(scalar), buildings: array(scalar), infrastructure: ledger });
+const province = shape<ProvinceView>({ id: u16, state: nullable(u16), owner: nullable(u16), controller: nullable(u16), owner_color: nullable(color), controller_color: nullable(color), terrain_key: string, terrain_color: color, state_color: nullable(color) });
+const world = shape<WorldView>({ tick: string, map_id: string, width: u32, height: u32, province_ids: array(u16), neutral_color: color, mode_keys: array(string), nations: array(nation), states: array(stateView), provinces: array(province) });
 // Mapped from the generated Rust union: adding a variant/field or changing a
 // field type breaks typecheck until its runtime validator is updated.
 const serverFields = {
@@ -26,6 +37,7 @@ const serverFields = {
   Snapshot: { type: literal('Snapshot'), state: timeState },
   Delta: { type: literal('Delta'), sequence: string, state: timeState },
   QueryResult: { type: literal('QueryResult'), request: string, supported: boolean, reason_key: nullable(string), state: nullable(timeState) },
+  WorldResult: { type: literal('WorldResult'), request: string, supported: boolean, reason_key: nullable(string), world: nullable(world) },
   Notice: { type: literal('Notice'), key: string },
 } satisfies { [K in ServerMessage['type']]: Shape<Extract<ServerMessage, { type: K }>> };
 const serverGuards = Object.values(serverFields).map(fields => shape<Record<string, unknown>>(fields));

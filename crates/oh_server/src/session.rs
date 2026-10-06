@@ -10,6 +10,9 @@ use std::{
 use tokio::sync::{oneshot, watch};
 #[derive(Debug)]
 pub enum Request {
+    World {
+        reply: oneshot::Sender<Option<oh_proto::WorldView>>,
+    },
     Command {
         command: TimeCommand,
         reply: oneshot::Sender<Result<TimeState, &'static str>>,
@@ -38,6 +41,10 @@ impl Session {
                     };
                     match incoming.recv_timeout(wait) {
                         Err(mpsc::RecvTimeoutError::Disconnected) => break,
+                        Ok(Request::World { reply }) => {
+                            let _ = reply.send(oh_proto::WorldView::from_sim(&sim));
+                            continue;
+                        }
                         Ok(Request::Command { command, reply }) => {
                             // Each input is applied at the next simulation step's command phase.
                             let command = match command {

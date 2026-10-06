@@ -1,5 +1,5 @@
 //! Synchronous headless scheduler. No I/O, clocks, networking or rendering.
-//! All gameplay systems are empty M0 slots; only time commands mutate state.
+//! M0 gameplay slots stay empty; M1 adds private world state and ledger publication.
 //! The host validates authority and supplies a server arrival sequence. Both
 //! player and AI inputs use the same queue. Time commands assume single player;
 //! multiplayer authorization belongs to oh_server (02 §10).
@@ -9,10 +9,12 @@ use std::collections::BTreeMap;
 pub mod formula;
 pub mod ledger;
 mod time;
+pub mod world;
 pub use time::{Date, TimeConfig};
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum Error {
+    InvalidWorld,
     InvalidDate,
     InvalidSpeed,
     InvalidTimeDefines,
@@ -24,6 +26,7 @@ pub enum Error {
 impl std::fmt::Display for Error {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         f.write_str(match self {
+            Self::InvalidWorld => "invalid world or ledger calculation",
             Self::InvalidDate => "invalid Gregorian date",
             Self::InvalidSpeed => "speed must be in 1..=5",
             Self::InvalidTimeDefines => "time defines require five nonnegative integer speed_ms_per_tick values and initial_speed in 1..=5",
@@ -119,6 +122,8 @@ pub struct Simulation {
     state: State,
     config: TimeConfig,
     queue: BTreeMap<(u64, NationId, u64), Command>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    world: Option<world::World>,
 }
 impl Simulation {
     pub fn new(scenario: String, date: Date, seed: u64, config: TimeConfig) -> Result<Self, Error> {
@@ -137,7 +142,29 @@ impl Simulation {
             },
             config,
             queue: BTreeMap::new(),
+            world: None,
         })
+    }
+    pub fn with_world(
+        scenario: String,
+        date: Date,
+        seed: u64,
+        config: TimeConfig,
+        world: world::World,
+    ) -> Result<Self, Error> {
+        let mut sim = Self::new(scenario, date, seed, config)?;
+        sim.world = Some(world);
+        Ok(sim)
+    }
+    /// Read-only resume boundary: WP-11 must preserve config and the complete queue.
+    pub fn config(&self) -> &TimeConfig {
+        &self.config
+    }
+    pub fn pending_commands(&self) -> &BTreeMap<(u64, NationId, u64), Command> {
+        &self.queue
+    }
+    pub fn world(&self) -> Option<&world::World> {
+        self.world.as_ref()
     }
     pub fn snapshot(&self) -> State {
         self.state.clone()
@@ -171,6 +198,7 @@ impl Simulation {
     /// Clock failure is atomic: neither state nor pending commands are lost.
     pub fn step(&mut self) -> Result<Step, Error> {
         let mut next = self.state.clone();
+        let mut next_world = self.world.clone();
         let keys: Vec<_> = self
             .queue
             .keys()
@@ -229,11 +257,15 @@ impl Simulation {
                 }
             }
         }
+        if let Some(world) = next_world.as_mut() {
+            world.evaluate(next.tick).map_err(|_| Error::InvalidWorld)?;
+        }
         phases.push(Phase::Snapshot);
         for key in keys {
             self.queue.remove(&key);
         }
         self.state = next;
+        self.world = next_world;
         Ok(Step {
             advanced,
             commands,

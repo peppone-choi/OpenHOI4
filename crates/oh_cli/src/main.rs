@@ -5,8 +5,11 @@ fn execute() -> Result<(), String> {
         println!("{}", oh_cli::USAGE);
         return Ok(());
     }
-    let options = oh_cli::RunOptions::parse(&args)?;
-    let sim = oh_cli::run(Path::new(oh_cli::M0_PACK_ROOT), &options)?;
+    let (options, pack) = oh_cli::parse_invocation(&args)?;
+    let sim = match pack {
+        Some(root) => oh_cli::run_national(&root, &options)?,
+        None => oh_cli::run(Path::new(oh_cli::M0_PACK_ROOT), &options)?,
+    };
     let hash = sim.state_hash().map_err(|err| err.to_string())?;
     if options.hash_out {
         println!("{hash:016x}");

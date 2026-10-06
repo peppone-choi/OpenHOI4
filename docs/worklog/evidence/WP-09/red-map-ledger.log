@@ -1,0 +1,48 @@
+   Compiling getrandom v0.3.4
+   Compiling regex-syntax v0.8.11
+   Compiling unarray v0.1.4
+   Compiling oh_sim v0.1.0 (E:\openhoi\.orchestrator\wt\WP-09\crates\oh_sim)
+   Compiling rand_core v0.9.5
+   Compiling rand_chacha v0.9.0
+   Compiling rand v0.9.5
+   Compiling rand_xorshift v0.4.0
+   Compiling proptest v1.11.0
+error[E0433]: cannot find `national` in `oh_data`
+ --> crates\oh_sim\tests\national.rs:5:27
+  |
+5 |     let loaded = oh_data::national::load_scenario(&root, "m1").unwrap();
+  |                           ^^^^^^^^ could not find `national` in `oh_data`
+
+error[E0433]: cannot find `world` in `oh_sim`
+ --> crates\oh_sim\tests\national.rs:7:74
+  |
+7 |         TimeConfig::from_defines(&loaded.pack.defines).unwrap(), oh_sim::world::World::from_loaded(&loaded).unwrap()).unwrap()
+  |                                                                          ^^^^^ could not find `world` in `oh_sim`
+
+error[E0599]: no associated function or constant named `with_world` found for struct `Simulation` in the current scope
+   --> crates\oh_sim\tests\national.rs:6:17
+    |
+  6 |     Simulation::with_world("m1".into(), Date::new(2000,1,1).unwrap(), 1,
+    |                 ^^^^^^^^^^ associated function or constant not found in `Simulation`
+    |
+note: if you're trying to build a new `Simulation`, consider using `Simulation::new` which returns `Result<Simulation, oh_sim::Error>`
+   --> crates\oh_sim\src\lib.rs:124:5
+    |
+124 |     pub fn new(scenario: String, date: Date, seed: u64, config: TimeConfig) -> Result<Self, Error> {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0599]: no method named `world` found for struct `Simulation` in the current scope
+  --> crates\oh_sim\tests\national.rs:12:21
+   |
+12 |     let world = sim.world().unwrap();
+   |                     ^^^^^ method not found in `Simulation`
+
+error[E0599]: no method named `world` found for struct `Simulation` in the current scope
+  --> crates\oh_sim\tests\national.rs:22:17
+   |
+22 |     let s = sim.world().unwrap().state(StateId(1)).unwrap();
+   |                 ^^^^^ method not found in `Simulation`
+
+Some errors have detailed explanations: E0433, E0599.
+For more information about an error, try `rustc --explain E0433`.
+error: could not compile `oh_sim` (test "national") due to 5 previous errors

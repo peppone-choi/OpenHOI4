@@ -35,3 +35,18 @@ const translators = { en: createTranslator('en'), ko: createTranslator('ko') };
 export const Localization = createContext<{ language: Language; t: Translate }>({ language: 'en', t: translators.en });
 export function translatorFor(language: Language) { return translators[language]; }
 export function useLocalization() { return useContext(Localization); }
+
+export function translatorWithPack(language: Language, catalogs: Record<Language,string>): Translate {
+ return createTranslator(language,{en:en+'\n'+catalogs.en,ko:ko+'\n'+catalogs.ko});
+}
+export async function loadPackCatalogs(): Promise<Record<Language,string>> {
+ const load=async (language:Language)=>{
+  const parts=await Promise.all(['map.ftl','national.ftl'].map(async file=>{
+   const response=await fetch(`/pack/localisation/${language}/${file}`);
+   if(!response.ok)throw new Error('pack-localization-error');return response.text();
+  }));return parts.join('\n');
+ };
+ const [en,ko]=await Promise.all([load('en'),load('ko')]);
+ // Validate both bundles before publishing any partial catalog.
+ const catalogs={en,ko};translatorWithPack('en',catalogs);translatorWithPack('ko',catalogs);return catalogs;
+}

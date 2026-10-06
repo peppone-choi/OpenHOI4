@@ -119,6 +119,34 @@ fn main() {
             key: "unsupported-query".into(),
         },
     );
+    let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../data/packs/testland");
+    let loaded = oh_data::national::load_scenario(&root, "m1").unwrap();
+    let sim = oh_sim::Simulation::with_world(
+        "m1".into(),
+        oh_sim::Date::new(2000, 1, 1).unwrap(),
+        1,
+        oh_sim::TimeConfig::from_defines(&loaded.pack.defines).unwrap(),
+        oh_sim::world::World::from_loaded(&loaded).unwrap(),
+    )
+    .unwrap();
+    let mut national = Vec::new();
+    add(
+        &mut national,
+        "WorldResult",
+        ServerMessage::WorldResult {
+            request: "world".into(),
+            supported: true,
+            reason_key: None,
+            world: WorldView::from_sim(&sim),
+        },
+    );
+    let path = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../target/wp09");
+    std::fs::create_dir_all(&path).unwrap();
+    std::fs::write(
+        path.join("national-wire-fixtures.json"),
+        serde_json::to_vec_pretty(&national).unwrap(),
+    )
+    .unwrap();
     let path = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../target/wp05");
     std::fs::create_dir_all(&path).unwrap();
     std::fs::write(

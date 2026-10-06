@@ -1,12 +1,16 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { applyServerMessage, connect } from './network';
-import type { TimeCommand, TimeState } from './proto/protocol';
-import { Localization, translatorFor, type Language } from './i18n';
+import type { TimeCommand, TimeState, WorldView } from './proto/protocol';
+import { Localization, translatorFor, type Language, loadPackCatalogs, translatorWithPack } from './i18n';
 import { GameShell } from './components/GameShell';
+import { NationalPanels } from './components/NationalPanels';
 import { TimeControls } from './components/TimeControls';
 export function App() {
   const [language, setLanguage] = useState<Language>('en');
-  const t = translatorFor(language);
+  const [catalogs,setCatalogs]=useState<Record<Language,string>|null>(null);
+  const t=useMemo(()=>catalogs?translatorWithPack(language,catalogs):translatorFor(language),[language,catalogs]);
+  const [world,setWorld]=useState<WorldView|null>(null);
+  const loadedCatalogs=useRef(false);
   useEffect(() => {
     document.documentElement.lang = language;
     document.title = t('title');
@@ -24,6 +28,11 @@ export function App() {
       }
       if (message.type === 'Notice') setNotice(message.key);
       if (message.type === 'CommandResult') setNotice(message.reason_key);
+      if(message.type==='Snapshot'||message.type==='Delta') client.send({type:'Query',request:'world',kind:'world'});
+      if(message.type==='WorldResult' && message.world){
+        setWorld(message.world);
+        if(!loadedCatalogs.current){loadedCatalogs.current=true;loadPackCatalogs().then(setCatalogs).catch(()=>setNotice('pack-localization-error'));}
+      }
       setState(current => applyServerMessage(current, message));
     }, reasonKey => {
       setConnection('disconnected');
@@ -36,6 +45,7 @@ export function App() {
   return <Localization.Provider value={{ language, t }}>
     <GameShell connection={connection} onLanguage={setLanguage}>
       <TimeControls state={state} connected={connection === 'connected'} onCommand={command} />
+      {world && catalogs && <NationalPanels world={world}/> }
       {notice && <p role="alert">{t(notice)}</p>}
     </GameShell>
   </Localization.Provider>;

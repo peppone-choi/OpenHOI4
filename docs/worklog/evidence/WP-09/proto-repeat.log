@@ -1,0 +1,4 @@
+   Compiling oh_proto v0.1.0 (E:\openhoi\.orchestrator\wt\WP-09\crates\oh_proto)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.48s
+     Running `target\debug\examples\generate.exe`
+before=E24452AEC5E04C10096218A145960CCCB6155711FC8358A72C887098219CFD54 after=E24452AEC5E04C10096218A145960CCCB6155711FC8358A72C887098219CFD54 unchanged=True

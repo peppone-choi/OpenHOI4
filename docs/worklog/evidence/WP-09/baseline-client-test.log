@@ -1,0 +1,6 @@
+
+> openhoi-client@0.1.0 pretest
+> cargo run -p oh_proto --example wire_fixtures
+
+'cargo' is not recognized as an internal or external command,
+operable program or batch file.

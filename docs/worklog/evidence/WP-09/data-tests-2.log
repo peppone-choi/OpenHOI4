@@ -1,0 +1,10 @@
+   Compiling oh_data v0.1.0 (E:\openhoi\.orchestrator\wt\WP-09\crates\oh_data)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.03s
+     Running tests\national.rs (target\debug\deps\national-75ba760d8559e595.exe)
+
+running 3 tests
+test req_nat_01_generated_schemas_are_current ... ok
+test req_nat_01_validated_data_and_references ... ok
+test req_nat_01_schema_ranges_and_reference_rejections_are_atomic ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.32s

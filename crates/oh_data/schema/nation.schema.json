@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NationDefinition",
+  "type": "object",
+  "properties": {
+    "capital": {
+      "type": "integer",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0
+    },
+    "color": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "format": "uint8",
+        "maximum": 255,
+        "minimum": 0
+      },
+      "maxItems": 3,
+      "minItems": 3
+    },
+    "government_key": {
+      "type": "string"
+    },
+    "id": {
+      "type": "integer",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0
+    },
+    "ideology_support": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "name_key": {
+      "type": "string"
+    },
+    "tag": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "tag",
+    "name_key",
+    "color",
+    "capital",
+    "government_key",
+    "ideology_support"
+  ]
+}

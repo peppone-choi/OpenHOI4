@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: CC-BY-SA-4.0
 # Original OpenHOI4 UI translations; M0 JSON provenance remains preserved.
 title = OpenHOI4
-subtitle = 빈 시나리오
+subtitle = 로컬 시나리오
 connecting = 연결 중
 connected = 연결됨
 disconnected = 연결 끊김
@@ -18,8 +18,8 @@ invalid-message = 잘못된 프로토콜 메시지입니다
 invalid-speed = 속도는 1~5 단계입니다
 invalid-sequence = 명령 순번이 잘못되었거나 중복되었습니다
 not-joined = 먼저 세션에 참가하세요
-unsupported-session = M0에서 지원하지 않는 세션입니다
-unsupported-create = M0에서는 빈 싱글플레이 시나리오만 지원합니다
+unsupported-session = 지원하지 않는 로컬 세션입니다
+unsupported-create = 불러온 싱글플레이 시나리오만 지원합니다
 already-joined = 이미 활성 세션이 있습니다
 unsupported-query = 이 조회는 후속 마일스톤에서 지원합니다
 simulation-error = 오류로 시뮬레이션이 중단되었습니다
@@ -49,3 +49,23 @@ font-license = Noto Sans KR · SIL Open Font License 1.1
 ledger-value = 값
 ledger-accumulated = 누적값
 ledger-base-source = 기본값
+
+country-panel = 국가
+state-panel = 주
+nation-tag = 태그
+capital-province = 수도 프로빈스
+nation-government = 정부
+ideology-support = 이념 지지율 (비율)
+owner = 소유국
+controller = 통제국
+population = 인구
+infrastructure = 인프라
+resource-steel = 철강
+building-industry = 공업 시설
+province-label = 프로빈스
+unknown-entity = 요청한 개체가 없습니다
+pack-localization-error = 시나리오 번역을 불러올 수 없습니다
+map-mode-owner = 소유
+map-mode-control = 통제
+map-mode-terrain = 지형
+map-mode-state = 주

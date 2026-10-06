@@ -1,0 +1,44 @@
+
+> openhoi-client@0.1.0 test:e2e
+> playwright test --config playwright.m1.config.ts
+
+
+Running 15 tests using 8 workers
+
+(node:29920) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:27340) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:32868) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:15464) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:28284) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:32080) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3528) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:16036) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  7 [chromium] › e2e-m1\national.spec.ts:6:1 › AC-M1-03 actual Rust M1 panels, separate owner/control, ledger, languages and time (2.0s)
+  ok  8 [edge] › e2e-m1\malformed-world.spec.ts:5:1 › M1 malformed decoded ledger preserves last valid panel and closes connection (2.2s)
+  ok  4 [chromium] › e2e-m1\malformed-world.spec.ts:5:1 › M1 malformed decoded ledger preserves last valid panel and closes connection (2.5s)
+  ok  2 [chrome] › e2e-m1\malformed-world.spec.ts:5:1 › M1 malformed decoded ledger preserves last valid panel and closes connection (2.3s)
+  ok  9 [chromium] › e2e-m1\national.spec.ts:31:1 › REQ-NAT-01 MAP-08 actual query metadata, dense mapping, colors and refusal (722ms)
+  ok  3 [edge] › e2e-m1\national.spec.ts:6:1 › AC-M1-03 actual Rust M1 panels, separate owner/control, ledger, languages and time (2.7s)
+  ok  1 [chrome] › e2e-m1\national.spec.ts:6:1 › AC-M1-03 actual Rust M1 panels, separate owner/control, ledger, languages and time (2.7s)
+(node:28172) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 10 [edge] › e2e-m1\national.spec.ts:31:1 › REQ-NAT-01 MAP-08 actual query metadata, dense mapping, colors and refusal (825ms)
+  ok 11 [chrome] › e2e-m1\national.spec.ts:31:1 › REQ-NAT-01 MAP-08 actual query metadata, dense mapping, colors and refusal (814ms)
+(node:34708) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  5 [firefox] › e2e-m1\national.spec.ts:6:1 › AC-M1-03 actual Rust M1 panels, separate owner/control, ledger, languages and time (5.0s)
+  ok  6 [firefox] › e2e-m1\malformed-world.spec.ts:5:1 › M1 malformed decoded ledger preserves last valid panel and closes connection (4.6s)
+  ok 13 [webkit] › e2e-m1\malformed-world.spec.ts:5:1 › M1 malformed decoded ledger preserves last valid panel and closes connection (2.0s)
+  ok 14 [firefox] › e2e-m1\national.spec.ts:31:1 › REQ-NAT-01 MAP-08 actual query metadata, dense mapping, colors and refusal (962ms)
+  ok 12 [webkit] › e2e-m1\national.spec.ts:6:1 › AC-M1-03 actual Rust M1 panels, separate owner/control, ledger, languages and time (3.8s)
+  ok 15 [webkit] › e2e-m1\national.spec.ts:31:1 › REQ-NAT-01 MAP-08 actual query metadata, dense mapping, colors and refusal (714ms)
+
+  15 passed (9.8s)
