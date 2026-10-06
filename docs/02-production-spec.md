@@ -825,7 +825,7 @@ python3 tools/check_docs.py
 
 **코드 의존성 허용 목록:** `MIT`, `Apache-2.0`, `BSD-2-Clause`, `BSD-3-Clause`, `ISC`, `Zlib`, `MPL-2.0`, `Unicode-3.0`, `BSL-1.0`, `CC0-1.0`.
 
-이 목록은 D-10의 두 후보(GPL-3.0-or-later, MIT)와 모두 함께 쓸 수 있는 범위다. GPL 계열 의존성은 D-10이 확정될 때까지 금지한다.
+사용자 2026-10-06 답변으로 D-10은 코드 GPL-3.0-or-later, 직접 제작 데이터·에셋 CC BY-SA 4.0으로 확정됐다. 기존 코드 의존성 허용 목록은 유지한다. GPL 계열 의존성을 새로 추가하려면 이 목록과 실제 호환성을 별도 검토하며 이번 결정만으로 허용 목록을 확대하지 않는다. 외부 폰트·자료는 원래 라이선스와 고지를 유지한다.
 
 **폰트:** `OFL-1.1`.
 
@@ -840,7 +840,7 @@ python3 tools/check_docs.py
 path = "data/packs/base/gfx/flags/POL.png"
 author = "OpenHOI contributors"
 source = "original"
-license = "CC-BY-SA-4.0"     # D-10 확정 전 잠정
+license = "CC-BY-SA-4.0"     # D-10: 직접 제작 데이터·에셋의 확정 라이선스
 modified = false
 ai_generated = false         # OPEN-09: true인 에셋은 릴리스 빌드에서 거부
 notes = ""
