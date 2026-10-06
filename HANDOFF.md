@@ -2,7 +2,7 @@
 
 | 항목 | 값 |
 |---|---|
-| 작성 시각 | 2026-10-07, M1-r1 W1 통합 후 WP-08 P-06 수정 중 |
+| 작성 시각 | 2026-10-07, M1-r1 W1 통합 후 WP-08 수정 새독립 검증 중 |
 | 현재 마일스톤 | M0 PASS 보존. M1 진행 중 |
 | 기본 브랜치 CI | main b1da8f46fa7d2e849121424d5d2cf1ac36bfacd3의 [CI](https://github.com/peppone-choi/OpenHOI4/actions/runs/37474935905), [Core](https://github.com/peppone-choi/OpenHOI4/actions/runs/37474935898), [Simulation](https://github.com/peppone-choi/OpenHOI4/actions/runs/37474935881) 모두 success. 실제 M1 3OS 아티팩트 SHA와 hash60448355cecffa9d 일치도 직접 확인. 이후 문서 HEAD CI는 별도 확인 |
 
@@ -25,19 +25,21 @@ M0 게이트 `d6ae2c8`의 AC7 PASS와 당시 동일 HEAD CI15jobs·7artifactZIP 
 | WP10 | 통합됨 | codex/wp10-ledger, WP-10 | 계산 기반 PASS, 실제 적용·조회 WP09 |
 | WP12 | 수정 독립 PASS·통합됨 | codex/wp12-localization, WP-12 | 실제 원장 WP09 후속 |
 | WP09 | 통합됨 | codex/wp09-national-state, WP-09; 구현206fb45/mainb1da8f4 | 실제 국가/주·원장·M1 hash/CLI/3OS PASS, 지도선택 WP08 후속 |
-| WP08 | 첫 독립 FAIL, P-06 수정 중 | codex/wp08-map-rendering, WP-08, baseb1da8f4/첫제출f58c0c6 | metadata/index 외부 redirect 요청 차단→수정커밋 새독립검증 |
+| WP08 | 첫 독립 FAIL 보존, 수정87c1a99 새독립검증 중 | codex/wp08-map-rendering, WP-08; verify2 detached87c1a99 | 새PASS·부모불변성→main통합·P07·같은HEAD CI |
 | WP11 | 다음 RUN 예정 | 아직 없음 | 실제 M1 mutable state·예약명령 save-resume |
 | M1 게이트 | 미판정 | 없음 | WP11까지 전체통합·독립 새검증 |
 
 ## 세션 상태와 실행 경로
 
-사용자가 승인한 앱 별도 local 채팅·WP별명시 Git worktree 경로를 썼다. 모델·인증·샌드박스·승인·네트워크 설정은 변경하지 않았다. 모든 구현 명령은 WP worktree, 검증은 정확한 구현커밋 detached별도 worktree다. 부모도 검증 전후 HEAD/index/추적목록/각SHA/diff/status를 비교했다. 현재 채팅ID/실제상태/경로/커밋은 `.orchestrator/app-threads.json` 및 종료 시 보존복사본을 참조한다. 원본 첫 WP12/WP08 FAIL 검증 worktree는 보존했다. 현재 실행 중인 채팅은 WP08 P06 구현 `01a11186-8f53-75c2-b9fb-873b27d8af82` host local이며 W1·WP09·WP08 첫검증과 별도 UI플레이는 종료했다. [보존 registry](docs/plans/evidence/M1-r1/app-threads.json)는 이후 종료 시 갱신할 사본이다. 미병합자료를 삭제하지 않았다.
+사용자가 승인한 앱 별도 local 채팅·WP별명시 Git worktree 경로를 썼다. 모델·인증·샌드박스·승인·네트워크 설정은 변경하지 않았다. 모든 구현 명령은 WP worktree, 검증은 정확한 구현커밋 detached별도 worktree다. 부모도 검증 전후 HEAD/index/추적목록/각SHA/diff/status를 비교했다. 현재 채팅ID/실제상태/경로/커밋은 `.orchestrator/app-threads.json` 및 종료 시 보존복사본을 참조한다. 원본 첫 WP12/WP08 FAIL 검증 worktree는 보존했다. 현재 실행 중인 채팅은 WP08 수정 새검증 `01a111db-1a89-78a1-b2b8-c8c20c812bfc` host local, E:/openhoi/.orchestrator/wt/WP-08-verify2 detached87c1a99이다. W1·WP09·WP08 구현/첫검증과 별도 UI플레이는 종료했다. [보존 registry](docs/plans/evidence/M1-r1/app-threads.json)는 이후 종료 시 갱신할 사본이다. 미병합자료를 삭제하지 않았다. 새 검증 첫 메시지에서 부모가 준비파일 오류 출력을 잘못 전달해 즉시 전문으로 정정했다. 정정 전 main 문서/Git 읽기만 했고 파일 수정·세션 생성·프로세스 조작은 없음을 검증자가 보고했다. 실제 검증 시작은 지정 worktree 2458 tracked clean에서 별도 기록했다.
 
 WP08 f58c0c6의 [첫 독립 FAIL 전문](docs/verify/WP-08.attempt1.md)과 273개 원본 증거를 보존했다. unit130/M1 E2E135/M0 E2E60·실제 WebGPU/WebGL2·픽셀·해시는 통과했지만, valid-CORS metadata와 index redirect가 다른 origin 응답을 받는 실제 결함으로 최종 FAIL이다. CORS가 잘못 구성된 최초 helper 실패와 수정된 실제 재현을 구분했다. 부모1905 tracked SHA/index/list/diff/status 불변 확인. 구현 채팅이 수정하고 새 독립 채팅이 정확한 수정 커밋을 검증한다.
 
 별도 [UI 탐색 리포트](docs/play/M1-r1.md)는 f58c0c6에서 지도/선택/4모드/팬줌/시간5단계/원장/ko-en-ko/키보드/좁은화면을 직접 조작한 관측 범위 PASS다. 전체 WP08 또는 M1 게이트 PASS를 대신하지 않는다. 12캡처·관측JSON·제공JS·전후불변 증거를 보존했다. 속도5의 급격한 날짜 진행, 색 범례·국가 선택 의미, 좁은 화면의 스크롤은 사용성 의견이며 진행불가·크래시는 관측되지 않았다. 저장UI는 없어 미실행이다.
 
-로컬 첫지도 preview는 http://127.0.0.1:19418/ 에 f58c0c6 단일 실행파일로 열려 있다. PID19656, WP08 target/wp08/play-final/oh_server.exe SHA256 3215ef41356d73b04f104c7bb3e36c408b424cfc017ba4ff57c8c97d9ca8e970, packhash b8d30ba577f303c3. 마지막 플레이 관측은 정지/speed1/tick1687141/2192-06-19 13시/ko/state모드/선택10이다. 최초445 캡처의 unavailable terrain 문구는 f58에서 고쳤으나 외부redirect 수정은 아직 미반영이다. 현재 제공JS 대응과 실행명령은 [identity](docs/verify/evidence/M1-play/preview-identity.json)에 있다. 앱 open 요청 queued를 실제 탭 표시 확인으로 기록하지 않았다.
+현재 대표 preview는 http://127.0.0.1:19425/ 의 수정87c1a99 단일 실행파일이다. 부모도 PID32876/path/명령·exeSHA7ac204825929972da31b3e88afadfa2e014b7898b046d1bfbf5b1f9713e714a0·servedJS1169414bytes/SHA7c50c1bf1c77e859d3132e2c43ac34db3e056b57a65762260e7593ef3de401b5와 dist 대응을 확인했다. packhash b8d30ba577f303c3/schema1/m1seed1. 구현자의 새 직접IAB 관측은 정지/speed1/tick12/2000-01-01 12시/ko/지형/선택10/원장1이다. 원시상태 주입 없이30남부선택→pan→reset→ko→10/원장 동선을 확인했다. [새 runtime/3캡처와 부모identity](docs/verify/evidence/WP-08-preview-p06/README.md)를 보존했다. 이 직접 확인을 새 독립 PASS로 대신하지 않는다. 앱 open 요청 queued를 실제 탭 표시 확인으로 기록하지 않았다.
+
+기존19418 f58/PID19656 서버는 유지된다. 기존 preview 종료를 포함한 교체 명령은 자동 승인 검토에서 blocked by policy로 거절됐고 구체 사유는 없었다. 종료 재시도·우회·설정 변경 없이 별도 새19425 preview를 시작했다. 첫 f58 플레이의 정지/tick1687141/2192-06-19 및 최초445 unavailable terrain 문구 캡처는 과거 증거로 보존한다. 대표URL과 과거URL을 혼동하지 않는다.
 
 ## 마지막 로컬 검증
 
@@ -69,7 +71,7 @@ OPEN01~12는 일괄 기본안승인 철회 후 모두 개별 사용자답변으�
 | 문제 | 재현 방법·범위 |
 |---|---|
 | WP12 최초 빈화면 오류 | originala91d324 malformed Snapshot, 첫FAIL 보존·8831613수정·새PASS |
-| WP08 HTTP redirect | f58에서 metadata/index valid-CORS 다른origin응답 실제render, 최초FAIL 보존·P06 수정중 |
+| WP08 HTTP redirect | f58 metadata/index 다른origin render 최초FAIL 보존; 수정87c1a99 새독립 검증중 |
 | Windows WebKit 폰트 얇음 | loaded/axis/glyph는통과, 실제Safari 미검증, 화면/제한기록 |
 | 일부 M0 provenance/라이선스설명 구식 | ASSETS/deny의 D10미정 당시문구·workspace metadata 후속정리; 확정정책은01/02/README |
 | validate/AIbench/repro/완결게임/저장 일부 후속 | 미구현명령을 실행했다고 기록하지 않음 |
