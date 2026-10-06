@@ -1,0 +1,27 @@
+{
+  "old_test_count": 21,
+  "new_test_count": 32,
+  "removed": [],
+  "modified": [],
+  "changed_files": [
+    "docs/adr/ADR-0102-reviewed-ai-assets.md",
+    "docs/worklog/WP-01.md",
+    "docs/worklog/evidence/WP-01-ai-policy-r1/assets.txt",
+    "docs/worklog/evidence/WP-01-ai-policy-r1/client-build.txt",
+    "docs/worklog/evidence/WP-01-ai-policy-r1/clippy.txt",
+    "docs/worklog/evidence/WP-01-ai-policy-r1/diff.txt",
+    "docs/worklog/evidence/WP-01-ai-policy-r1/docs.txt",
+    "docs/worklog/evidence/WP-01-ai-policy-r1/fixtures.txt",
+    "docs/worklog/evidence/WP-01-ai-policy-r1/fmt.txt",
+    "docs/worklog/evidence/WP-01-ai-policy-r1/hash-1.txt",
+    "docs/worklog/evidence/WP-01-ai-policy-r1/hash-2.txt",
+    "docs/worklog/evidence/WP-01-ai-policy-r1/npm-ci.txt",
+    "docs/worklog/evidence/WP-01-ai-policy-r1/red.txt",
+    "docs/worklog/evidence/WP-01-ai-policy-r1/results.json",
+    "docs/worklog/evidence/WP-01-ai-policy-r1/run_checks.py",
+    "docs/worklog/evidence/WP-01-ai-policy-r1/rust-tests.txt",
+    "docs/worklog/evidence/WP-01-ai-policy-r1/start-state.txt",
+    "tools/check_assets.py",
+    "tools/tests/test_wp01.py"
+  ]
+}

@@ -1,0 +1,163 @@
+[
+  {
+    "name": "npm-ci",
+    "command": [
+      "npm.cmd",
+      "--prefix",
+      "client",
+      "ci"
+    ],
+    "exit": 0,
+    "seconds": 1.63
+  },
+  {
+    "name": "client-build",
+    "command": [
+      "npm.cmd",
+      "--prefix",
+      "client",
+      "run",
+      "build"
+    ],
+    "exit": 0,
+    "seconds": 1.4
+  },
+  {
+    "name": "fmt",
+    "command": [
+      "C:/Users/user/.cargo/bin/cargo.exe",
+      "fmt",
+      "--check"
+    ],
+    "exit": 0,
+    "seconds": 2.18
+  },
+  {
+    "name": "clippy",
+    "command": [
+      "C:/Users/user/.cargo/bin/cargo.exe",
+      "clippy",
+      "--workspace",
+      "--",
+      "-D",
+      "warnings"
+    ],
+    "exit": 0,
+    "seconds": 18.05
+  },
+  {
+    "name": "workspace-test",
+    "command": [
+      "C:/Users/user/.cargo/bin/cargo.exe",
+      "test",
+      "--workspace"
+    ],
+    "exit": 0,
+    "seconds": 20.62
+  },
+  {
+    "name": "hash-1",
+    "command": [
+      "C:/Users/user/.cargo/bin/cargo.exe",
+      "run",
+      "-p",
+      "oh_cli",
+      "--",
+      "run",
+      "--scenario",
+      "testland",
+      "--days",
+      "365",
+      "--seed",
+      "1",
+      "--hash-out"
+    ],
+    "exit": 0,
+    "seconds": 11.56
+  },
+  {
+    "name": "hash-2",
+    "command": [
+      "C:/Users/user/.cargo/bin/cargo.exe",
+      "run",
+      "-p",
+      "oh_cli",
+      "--",
+      "run",
+      "--scenario",
+      "testland",
+      "--days",
+      "365",
+      "--seed",
+      "1",
+      "--hash-out"
+    ],
+    "exit": 0,
+    "seconds": 0.13
+  },
+  {
+    "name": "wp01-tests",
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tools/tests",
+      "-p",
+      "test_wp01.py",
+      "-v"
+    ],
+    "exit": 0,
+    "seconds": 7.83
+  },
+  {
+    "name": "assets-release",
+    "command": [
+      "python",
+      "tools/check_assets.py",
+      "--release"
+    ],
+    "exit": 0,
+    "seconds": 0.07
+  },
+  {
+    "name": "docs",
+    "command": [
+      "python",
+      "tools/check_docs.py"
+    ],
+    "exit": 0,
+    "seconds": 0.07
+  },
+  {
+    "name": "architecture",
+    "command": [
+      "python",
+      "tools/check_architecture.py"
+    ],
+    "exit": 0,
+    "seconds": 0.63
+  },
+  {
+    "name": "npm-license",
+    "command": [
+      "node",
+      "tools/check_npm_licenses.cjs"
+    ],
+    "exit": 0,
+    "seconds": 0.03
+  },
+  {
+    "name": "cargo-license",
+    "command": [
+      "C:/Users/user/.cargo/bin/cargo.exe",
+      "deny",
+      "check",
+      "licenses",
+      "bans"
+    ],
+    "exit": 0,
+    "seconds": 0.35
+  }
+]

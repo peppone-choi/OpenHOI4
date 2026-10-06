@@ -1,0 +1,542 @@
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe -m unittest discover -s E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests -p test_wp01.py -k AssetTests -v
+test_req_leg_02_ai_asset_dev_passes (test_wp01.AssetTests.test_req_leg_02_ai_asset_dev_passes) ... ok
+test_req_leg_02_ai_asset_release_fails (test_wp01.AssetTests.test_req_leg_02_ai_asset_release_fails) ... ok
+test_req_leg_02_boolean_string_fails (test_wp01.AssetTests.test_req_leg_02_boolean_string_fails) ... ok
+test_req_leg_02_duplicate_fails (test_wp01.AssetTests.test_req_leg_02_duplicate_fails) ... ok
+test_req_leg_02_missing_file_fails (test_wp01.AssetTests.test_req_leg_02_missing_file_fails) ... ok
+test_req_leg_02_missing_metadata_fails (test_wp01.AssetTests.test_req_leg_02_missing_metadata_fails) ... ok
+test_req_leg_02_nonai_release_and_font_checks_preserved (test_wp01.AssetTests.test_req_leg_02_nonai_release_and_font_checks_preserved) ... ok
+test_req_leg_02_registered_data_passes (test_wp01.AssetTests.test_req_leg_02_registered_data_passes) ... ok
+test_req_leg_02_reviewed_ai_changed_files_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_changed_files_fail) ... FAIL
+test_req_leg_02_reviewed_ai_forbidden_license_fails (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_forbidden_license_fails) ... ok
+test_req_leg_02_reviewed_ai_hash_mismatch_fails (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_hash_mismatch_fails) ... FAIL
+test_req_leg_02_reviewed_ai_image_release_passes (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_image_release_passes) ... FAIL
+test_req_leg_02_reviewed_ai_invalid_timestamp_fails (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_invalid_timestamp_fails) ... FAIL
+test_req_leg_02_reviewed_ai_missing_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_missing_fields_fail) ...
+  test_req_leg_02_reviewed_ai_missing_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_missing_fields_fail) (table='ai_provenance', field='tool') ... FAIL
+  test_req_leg_02_reviewed_ai_missing_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_missing_fields_fail) (table='ai_provenance', field='usage_terms_path') ... FAIL
+  test_req_leg_02_reviewed_ai_missing_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_missing_fields_fail) (table='ai_provenance', field='usage_terms_sha256') ... FAIL
+test_req_leg_02_reviewed_ai_missing_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_missing_fields_fail) ... FAIL
+test_req_leg_02_reviewed_ai_nonimage_fails (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_nonimage_fails) ... FAIL
+test_req_leg_02_reviewed_ai_reference_validation_fails (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_reference_validation_fails) ... FAIL
+test_req_leg_02_reviewed_ai_unapproved_status_fails (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_unapproved_status_fails) ... FAIL
+test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) ...
+  test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) (table='ai_provenance', field='tool', invalid=False) ... FAIL
+  test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) (table='ai_provenance', field='tool', invalid='') ... FAIL
+  test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) (table='ai_provenance', field='tool', invalid='   ') ... FAIL
+  test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) (table='ai_provenance', field='tool', invalid=123) ... FAIL
+  test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) (table='ai_provenance', field='tool', invalid=['approved']) ... FAIL
+  test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) (table='ai_provenance', field='usage_terms_path', invalid=False) ... FAIL
+  test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) (table='ai_provenance', field='usage_terms_path', invalid='') ... FAIL
+  test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) (table='ai_provenance', field='usage_terms_path', invalid='   ') ... FAIL
+  test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) (table='ai_provenance', field='usage_terms_path', invalid=123) ... FAIL
+  test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) (table='ai_provenance', field='usage_terms_path', invalid=['approved']) ... FAIL
+  test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) (table='ai_provenance', field='usage_terms_sha256', invalid=False) ... FAIL
+  test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) (table='ai_provenance', field='usage_terms_sha256', invalid='') ... FAIL
+  test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) (table='ai_provenance', field='usage_terms_sha256', invalid='   ') ... FAIL
+  test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) (table='ai_provenance', field='usage_terms_sha256', invalid=123) ... FAIL
+  test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) (table='ai_provenance', field='usage_terms_sha256', invalid=['approved']) ... FAIL
+test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) ... FAIL
+test_req_leg_02_traversal_fails (test_wp01.AssetTests.test_req_leg_02_traversal_fails) ... ok
+test_req_leg_02_unapproved_asset_license_fails (test_wp01.AssetTests.test_req_leg_02_unapproved_asset_license_fails) ... ok
+test_req_leg_02_unregistered_data_fails (test_wp01.AssetTests.test_req_leg_02_unregistered_data_fails) ... ok
+test_req_leg_02_unregistered_imported_asset_fails (test_wp01.AssetTests.test_req_leg_02_unregistered_imported_asset_fails) ... ok
+test_req_leg_02_unregistered_localization_fails (test_wp01.AssetTests.test_req_leg_02_unregistered_localization_fails) ... ok
+test_req_leg_02_unregistered_public_file_fails (test_wp01.AssetTests.test_req_leg_02_unregistered_public_file_fails) ... ok
+
+======================================================================
+FAIL: test_req_leg_02_reviewed_ai_changed_files_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_changed_files_fail)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 218, in test_req_leg_02_reviewed_ai_changed_files_fail
+    self.check(1, field, "--release")
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 63, in check
+    self.assertIn(diagnostic, result.stdout + result.stderr)
+AssertionError: 'asset_sha256' not found in 'assets: 1 error(s)\n[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)\n'
+
+======================================================================
+FAIL: test_req_leg_02_reviewed_ai_hash_mismatch_fails (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_hash_mismatch_fails)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 212, in test_req_leg_02_reviewed_ai_hash_mismatch_fails
+    self.check(1, key, "--release")
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 63, in check
+    self.assertIn(diagnostic, result.stdout + result.stderr)
+AssertionError: 'usage_terms_sha256' not found in 'assets: 1 error(s)\n[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)\n'
+
+======================================================================
+FAIL: test_req_leg_02_reviewed_ai_image_release_passes (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_image_release_passes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 149, in test_req_leg_02_reviewed_ai_image_release_passes
+    self.check(0, "", "--release")
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 62, in check
+    self.assertEqual(result.returncode, code)
+AssertionError: 1 != 0
+
+======================================================================
+FAIL: test_req_leg_02_reviewed_ai_invalid_timestamp_fails (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_invalid_timestamp_fails)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 192, in test_req_leg_02_reviewed_ai_invalid_timestamp_fails
+    self.check(1, "reviewed_at", "--release")
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 63, in check
+    self.assertIn(diagnostic, result.stdout + result.stderr)
+AssertionError: 'reviewed_at' not found in 'assets: 1 error(s)\n[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)\n'
+
+======================================================================
+FAIL: test_req_leg_02_reviewed_ai_missing_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_missing_fields_fail) (table='ai_provenance', field='tool')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 159, in test_req_leg_02_reviewed_ai_missing_fields_fail
+    self.check(1, key, "--release")
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 63, in check
+    self.assertIn(diagnostic, result.stdout + result.stderr)
+AssertionError: 'tool' not found in 'assets: 1 error(s)\n[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)\n'
+
+======================================================================
+FAIL: test_req_leg_02_reviewed_ai_missing_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_missing_fields_fail) (table='ai_provenance', field='usage_terms_path')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 159, in test_req_leg_02_reviewed_ai_missing_fields_fail
+    self.check(1, key, "--release")
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 63, in check
+    self.assertIn(diagnostic, result.stdout + result.stderr)
+AssertionError: 'usage_terms_path' not found in 'assets: 1 error(s)\n[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)\n'
+
+======================================================================
+FAIL: test_req_leg_02_reviewed_ai_missing_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_missing_fields_fail) (table='ai_provenance', field='usage_terms_sha256')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 159, in test_req_leg_02_reviewed_ai_missing_fields_fail
+    self.check(1, key, "--release")
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 63, in check
+    self.assertIn(diagnostic, result.stdout + result.stderr)
+AssertionError: 'usage_terms_sha256' not found in 'assets: 1 error(s)\n[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)\n'
+
+======================================================================
+FAIL: test_req_leg_02_reviewed_ai_missing_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_missing_fields_fail)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 163, in test_req_leg_02_reviewed_ai_missing_fields_fail
+    self.check(1, table, "--release")
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 63, in check
+    self.assertIn(diagnostic, result.stdout + result.stderr)
+AssertionError: 'ai_provenance' not found in 'assets: 1 error(s)\n[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)\n'
+
+======================================================================
+FAIL: test_req_leg_02_reviewed_ai_nonimage_fails (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_nonimage_fails)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 228, in test_req_leg_02_reviewed_ai_nonimage_fails
+    self.check(1, "image", "--release")
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 63, in check
+    self.assertIn(diagnostic, result.stdout + result.stderr)
+AssertionError: 'image' not found in 'assets: 2 error(s)\n[ASSET] data/packs/demo/defines.toml: AI-generated asset blocked for release (OPEN-09)\n[ASSET] assets/fixture.png: unregistered asset/data file\n'
+
+======================================================================
+FAIL: test_req_leg_02_reviewed_ai_reference_validation_fails (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_reference_validation_fails)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 200, in test_req_leg_02_reviewed_ai_reference_validation_fails
+    self.check(1, key, "--release")
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 63, in check
+    self.assertIn(diagnostic, result.stdout + result.stderr)
+AssertionError: 'usage_terms_path' not found in 'assets: 1 error(s)\n[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)\n'
+
+======================================================================
+FAIL: test_req_leg_02_reviewed_ai_unapproved_status_fails (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_unapproved_status_fails)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 185, in test_req_leg_02_reviewed_ai_unapproved_status_fails
+    self.check(1, "status", "--release")
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 63, in check
+    self.assertIn(diagnostic, result.stdout + result.stderr)
+AssertionError: 'status' not found in 'assets: 1 error(s)\n[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)\n'
+
+======================================================================
+FAIL: test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) (table='ai_provenance', field='tool', invalid=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 173, in test_req_leg_02_reviewed_ai_wrong_fields_fail
+    self.check(1, key, "--release")
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 63, in check
+    self.assertIn(diagnostic, result.stdout + result.stderr)
+AssertionError: 'tool' not found in 'assets: 1 error(s)\n[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)\n'
+
+======================================================================
+FAIL: test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) (table='ai_provenance', field='tool', invalid='')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 173, in test_req_leg_02_reviewed_ai_wrong_fields_fail
+    self.check(1, key, "--release")
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 63, in check
+    self.assertIn(diagnostic, result.stdout + result.stderr)
+AssertionError: 'tool' not found in 'assets: 1 error(s)\n[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)\n'
+
+======================================================================
+FAIL: test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) (table='ai_provenance', field='tool', invalid='   ')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 173, in test_req_leg_02_reviewed_ai_wrong_fields_fail
+    self.check(1, key, "--release")
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 63, in check
+    self.assertIn(diagnostic, result.stdout + result.stderr)
+AssertionError: 'tool' not found in 'assets: 1 error(s)\n[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)\n'
+
+======================================================================
+FAIL: test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) (table='ai_provenance', field='tool', invalid=123)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 173, in test_req_leg_02_reviewed_ai_wrong_fields_fail
+    self.check(1, key, "--release")
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 63, in check
+    self.assertIn(diagnostic, result.stdout + result.stderr)
+AssertionError: 'tool' not found in 'assets: 1 error(s)\n[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)\n'
+
+======================================================================
+FAIL: test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) (table='ai_provenance', field='tool', invalid=['approved'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 173, in test_req_leg_02_reviewed_ai_wrong_fields_fail
+    self.check(1, key, "--release")
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 63, in check
+    self.assertIn(diagnostic, result.stdout + result.stderr)
+AssertionError: 'tool' not found in 'assets: 1 error(s)\n[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)\n'
+
+======================================================================
+FAIL: test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) (table='ai_provenance', field='usage_terms_path', invalid=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 173, in test_req_leg_02_reviewed_ai_wrong_fields_fail
+    self.check(1, key, "--release")
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 63, in check
+    self.assertIn(diagnostic, result.stdout + result.stderr)
+AssertionError: 'usage_terms_path' not found in 'assets: 1 error(s)\n[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)\n'
+
+======================================================================
+FAIL: test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) (table='ai_provenance', field='usage_terms_path', invalid='')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 173, in test_req_leg_02_reviewed_ai_wrong_fields_fail
+    self.check(1, key, "--release")
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 63, in check
+    self.assertIn(diagnostic, result.stdout + result.stderr)
+AssertionError: 'usage_terms_path' not found in 'assets: 1 error(s)\n[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)\n'
+
+======================================================================
+FAIL: test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) (table='ai_provenance', field='usage_terms_path', invalid='   ')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 173, in test_req_leg_02_reviewed_ai_wrong_fields_fail
+    self.check(1, key, "--release")
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 63, in check
+    self.assertIn(diagnostic, result.stdout + result.stderr)
+AssertionError: 'usage_terms_path' not found in 'assets: 1 error(s)\n[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)\n'
+
+======================================================================
+FAIL: test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) (table='ai_provenance', field='usage_terms_path', invalid=123)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 173, in test_req_leg_02_reviewed_ai_wrong_fields_fail
+    self.check(1, key, "--release")
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 63, in check
+    self.assertIn(diagnostic, result.stdout + result.stderr)
+AssertionError: 'usage_terms_path' not found in 'assets: 1 error(s)\n[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)\n'
+
+======================================================================
+FAIL: test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) (table='ai_provenance', field='usage_terms_path', invalid=['approved'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 173, in test_req_leg_02_reviewed_ai_wrong_fields_fail
+    self.check(1, key, "--release")
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 63, in check
+    self.assertIn(diagnostic, result.stdout + result.stderr)
+AssertionError: 'usage_terms_path' not found in 'assets: 1 error(s)\n[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)\n'
+
+======================================================================
+FAIL: test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) (table='ai_provenance', field='usage_terms_sha256', invalid=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 173, in test_req_leg_02_reviewed_ai_wrong_fields_fail
+    self.check(1, key, "--release")
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 63, in check
+    self.assertIn(diagnostic, result.stdout + result.stderr)
+AssertionError: 'usage_terms_sha256' not found in 'assets: 1 error(s)\n[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)\n'
+
+======================================================================
+FAIL: test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) (table='ai_provenance', field='usage_terms_sha256', invalid='')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 173, in test_req_leg_02_reviewed_ai_wrong_fields_fail
+    self.check(1, key, "--release")
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 63, in check
+    self.assertIn(diagnostic, result.stdout + result.stderr)
+AssertionError: 'usage_terms_sha256' not found in 'assets: 1 error(s)\n[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)\n'
+
+======================================================================
+FAIL: test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) (table='ai_provenance', field='usage_terms_sha256', invalid='   ')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 173, in test_req_leg_02_reviewed_ai_wrong_fields_fail
+    self.check(1, key, "--release")
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 63, in check
+    self.assertIn(diagnostic, result.stdout + result.stderr)
+AssertionError: 'usage_terms_sha256' not found in 'assets: 1 error(s)\n[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)\n'
+
+======================================================================
+FAIL: test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) (table='ai_provenance', field='usage_terms_sha256', invalid=123)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 173, in test_req_leg_02_reviewed_ai_wrong_fields_fail
+    self.check(1, key, "--release")
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 63, in check
+    self.assertIn(diagnostic, result.stdout + result.stderr)
+AssertionError: 'usage_terms_sha256' not found in 'assets: 1 error(s)\n[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)\n'
+
+======================================================================
+FAIL: test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail) (table='ai_provenance', field='usage_terms_sha256', invalid=['approved'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 173, in test_req_leg_02_reviewed_ai_wrong_fields_fail
+    self.check(1, key, "--release")
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 63, in check
+    self.assertIn(diagnostic, result.stdout + result.stderr)
+AssertionError: 'usage_terms_sha256' not found in 'assets: 1 error(s)\n[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)\n'
+
+======================================================================
+FAIL: test_req_leg_02_reviewed_ai_wrong_fields_fail (test_wp01.AssetTests.test_req_leg_02_reviewed_ai_wrong_fields_fail)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 178, in test_req_leg_02_reviewed_ai_wrong_fields_fail
+    self.check(1, table, "--release")
+  File "E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\tests\test_wp01.py", line 63, in check
+    self.assertIn(diagnostic, result.stdout + result.stderr)
+AssertionError: 'ai_provenance' not found in 'assets: 1 error(s)\n[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)\n'
+
+----------------------------------------------------------------------
+Ran 24 tests in 2.764s
+
+FAILED (failures=27)
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpzg735f40
+exit=0
+assets: 0 error(s)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpb3d9ebvo --release
+exit=1
+assets: 1 error(s)
+[ASSET] data/packs/demo/defines.toml: AI-generated asset blocked for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpw6bapsui
+exit=1
+assets: 1 error(s)
+[ASSET] data/packs/demo/defines.toml: ai_generated must be a boolean
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpt29f86f1
+exit=1
+assets: 1 error(s)
+[ASSET] data/packs/demo/defines.toml: duplicate record
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp04e31myu
+exit=1
+assets: 2 error(s)
+[ASSET] assets/missing.png: missing file
+[ASSET] data/packs/demo/defines.toml: unregistered asset/data file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpquj9ixvi
+exit=1
+assets: 1 error(s)
+[ASSET] data/packs/demo/defines.toml: missing author
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp_wv9tu9u --release
+exit=0
+assets: 0 error(s)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp_wv9tu9u --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/font.woff2: font license must be OFL-1.1
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp_wv9tu9u --release
+exit=0
+assets: 0 error(s)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp_npdz8n3
+exit=0
+assets: 0 error(s)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmplmts8ghn --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpf2dcfckh --release
+exit=1
+assets: 2 error(s)
+[ASSET] assets/fixture.png: unapproved license 'CC-BY-NC-4.0'
+[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpb0zygqcc --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpt9gwl24t --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpj8h8y_9w --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp7uh8gpfi --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp7uh8gpfi --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp7uh8gpfi --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp7uh8gpfi --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpm7qhk7_8 --release
+exit=1
+assets: 2 error(s)
+[ASSET] data/packs/demo/defines.toml: AI-generated asset blocked for release (OPEN-09)
+[ASSET] assets/fixture.png: unregistered asset/data file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpcu2we5_r --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpudd4c0nb --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpdlkrpyix --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpdlkrpyix --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpdlkrpyix --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpdlkrpyix --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpdlkrpyix --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpdlkrpyix --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpdlkrpyix --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpdlkrpyix --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpdlkrpyix --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpdlkrpyix --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpdlkrpyix --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpdlkrpyix --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpdlkrpyix --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpdlkrpyix --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpdlkrpyix --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpdlkrpyix --release
+exit=1
+assets: 1 error(s)
+[ASSET] assets/fixture.png: AI-generated asset blocked for release (OPEN-09)
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpbwoin1f5
+exit=1
+assets: 2 error(s)
+[ASSET] ../outside.png: path must be a normalized relative POSIX path
+[ASSET] data/packs/demo/defines.toml: unregistered asset/data file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpa_wzu0hr
+exit=1
+assets: 1 error(s)
+[ASSET] data/packs/demo/defines.toml: unapproved license 'CC-BY-NC-4.0'
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp6h1h3lpa
+exit=1
+assets: 1 error(s)
+[ASSET] data/packs/demo/defines.toml: unregistered asset/data file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmprl8qlltt
+exit=1
+assets: 1 error(s)
+[ASSET] client/src/assets/logo.svg: unregistered asset/data file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmp40i9acdz
+exit=1
+assets: 1 error(s)
+[ASSET] client/src/locales/ko.ftl: unregistered asset/data file
+
+$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe E:\openhoi\.orchestrator\wt\WP-01-ai-policy-verify\target\verify-ai-policy-r1\red-root\tools\check_assets.py --root C:\Users\user\AppData\Local\Temp\tmpvu9xs967
+exit=1
+assets: 1 error(s)
+[ASSET] client/public/unlisted.svg: unregistered asset/data file
+
+
+EXIT=1

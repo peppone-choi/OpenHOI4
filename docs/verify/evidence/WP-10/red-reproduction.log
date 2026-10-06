@@ -1,0 +1,64 @@
+Independent parent-source copy under ignored target only; current tests unmodified.
+parent=1bfea48511c6b75efb0dd26ee6e980a90d77da04
+command: cargo test --offline --manifest-path target/verify/WP-10/red-fixture/Cargo.toml --test ledger
+     Locking 63 packages to highest Rust 1.99.0 compatible versions
+   Compiling oh_sim v0.0.0 (E:\openhoi\.orchestrator\wt\WP-10-verify\target\verify\WP-10\red-fixture)
+error[E0432]: unresolved import `oh_sim::ledger`
+ --> tests\ledger.rs:5:5
+  |
+5 |     ledger::{LedgerError, LedgerOp, Modifier, ModifierOp, StatLedger},
+  |     ^^^^^^ could not find `ledger` in `oh_sim`
+
+error[E0425]: cannot find function `stat_value` in module `formula`
+  --> tests\ledger.rs:65:28
+   |
+65 |     let applied = formula::stat_value(Fx::from_bits(12 * UNIT), STAT, &modifiers, 7).unwrap();
+   |                            ^^^^^^^^^^ not found in `formula`
+
+error[E0425]: cannot find function `stat_value` in module `formula`
+   --> tests\ledger.rs:129:18
+    |
+129 |         formula::stat_value(Fx::from_bits(3), STAT, &modifiers, 0)
+    |                  ^^^^^^^^^^ not found in `formula`
+
+error[E0425]: cannot find function `stat_value` in module `formula`
+   --> tests\ledger.rs:135:18
+    |
+135 |         formula::stat_value(Fx::from_bits(-3), STAT, &modifiers, 0)
+    |                  ^^^^^^^^^^ not found in `formula`
+
+error[E0425]: cannot find function `stat_value` in module `formula`
+   --> tests\ledger.rs:142:18
+    |
+142 |         formula::stat_value(Fx::from_bits(3), STAT, &negative, 0)
+    |                  ^^^^^^^^^^ not found in `formula`
+
+error[E0425]: cannot find function `stat_value` in module `formula`
+   --> tests\ledger.rs:149:18
+    |
+149 |         formula::stat_value(Fx::MAX, STAT, &zero, 0).unwrap(),
+    |                  ^^^^^^^^^^ not found in `formula`
+
+error[E0425]: cannot find function `stat_value` in module `formula`
+   --> tests\ledger.rs:206:22
+    |
+206 |             formula::stat_value(base, STAT, &modifiers, 0),
+    |                      ^^^^^^^^^^ not found in `formula`
+
+error[E0425]: cannot find function `stat_value` in module `formula`
+   --> tests\ledger.rs:281:32
+    |
+281 |         let applied = formula::stat_value(Fx::from_bits(base), STAT, &modifiers, tick).unwrap();
+    |                                ^^^^^^^^^^ not found in `formula`
+
+error[E0425]: cannot find function `stat_value` in module `formula`
+   --> tests\ledger.rs:300:32
+    |
+300 |         let applied = formula::stat_value(Fx::from_bits(base), STAT, &modifiers, tick);
+    |                                ^^^^^^^^^^ not found in `formula`
+
+Some errors have detailed explanations: E0425, E0432.
+For more information about an error, try `rustc --explain E0425`.
+error: could not compile `oh_sim` (test "ledger") due to 9 previous errors
+
+exit: 101

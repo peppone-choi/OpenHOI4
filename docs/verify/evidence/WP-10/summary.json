@@ -1,0 +1,197 @@
+{
+  "initial_checks": [
+    {
+      "name": "npm-ci",
+      "cmd": [
+        "npm.cmd",
+        "--prefix",
+        "client",
+        "ci"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "client-build",
+      "cmd": [
+        "npm.cmd",
+        "--prefix",
+        "client",
+        "run",
+        "build"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "fmt",
+      "cmd": [
+        "cargo",
+        "fmt",
+        "--check"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "clippy",
+      "cmd": [
+        "cargo",
+        "clippy",
+        "--workspace",
+        "--locked",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "workspace-tests",
+      "cmd": [
+        "cargo",
+        "test",
+        "--workspace",
+        "--locked"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "sim-all-targets",
+      "cmd": [
+        "cargo",
+        "test",
+        "-p",
+        "oh_sim",
+        "--all-targets",
+        "--locked"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "hash1",
+      "cmd": [
+        "cargo",
+        "run",
+        "-p",
+        "oh_cli",
+        "--locked",
+        "--",
+        "run",
+        "--scenario",
+        "testland",
+        "--days",
+        "365",
+        "--seed",
+        "1",
+        "--hash-out"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "hash2",
+      "cmd": [
+        "cargo",
+        "run",
+        "-p",
+        "oh_cli",
+        "--locked",
+        "--",
+        "run",
+        "--scenario",
+        "testland",
+        "--days",
+        "365",
+        "--seed",
+        "1",
+        "--hash-out"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "architecture",
+      "cmd": [
+        "python",
+        "tools/check_architecture.py"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "docs",
+      "cmd": [
+        "python",
+        "tools/check_docs.py"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "assets",
+      "cmd": [
+        "python",
+        "tools/check_assets.py",
+        "--release"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "licenses",
+      "cmd": [
+        "cargo",
+        "deny",
+        "check",
+        "licenses",
+        "bans",
+        "advisories",
+        "sources"
+      ],
+      "exit": 1
+    },
+    {
+      "name": "npm-licenses",
+      "cmd": [
+        "npm.cmd",
+        "--prefix",
+        "client",
+        "run",
+        "licenses"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "diff-check",
+      "cmd": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "policy-tests",
+      "cmd": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools/tests",
+        "-p",
+        "test_wp01.py",
+        "-v"
+      ],
+      "exit": 0
+    }
+  ],
+  "retry_deny_exit": 0,
+  "probe_exit": 0,
+  "integrity": {
+    "head": true,
+    "status": true,
+    "diff": true,
+    "index_diff": true,
+    "files": true,
+    "index": true,
+    "tracked_count": 931,
+    "status_empty": true,
+    "expected_head": true,
+    "time_kst": "2026-10-06T21:14:30.543389+09:00"
+  },
+  "workspace_passed": 56
+}

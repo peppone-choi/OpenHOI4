@@ -1,0 +1,9 @@
+command: cargo run -p oh_cli --locked -- run --scenario testland --days 365 --seed 1 --hash-out
+   Compiling oh_save v0.1.0 (E:\openhoi\.orchestrator\wt\WP-10-verify\crates\oh_save)
+   Compiling oh_ai v0.1.0 (E:\openhoi\.orchestrator\wt\WP-10-verify\crates\oh_ai)
+   Compiling oh_cli v0.1.0 (E:\openhoi\.orchestrator\wt\WP-10-verify\crates\oh_cli)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.01s
+     Running `target\debug\oh_cli.exe run --scenario testland --days 365 --seed 1 --hash-out`
+b039d35666b77fc2
+
+exit: 0

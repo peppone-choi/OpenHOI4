@@ -1,0 +1,14 @@
+command: cargo run --offline --manifest-path target/verify/WP-10/probe/Cargo.toml
+     Locking 49 packages to highest Rust 1.99.0 compatible versions
+   Compiling oh_core v0.1.0 (E:\openhoi\.orchestrator\wt\WP-10-verify\crates\oh_core)
+   Compiling oh_data v0.1.0 (E:\openhoi\.orchestrator\wt\WP-10-verify\crates\oh_data)
+   Compiling oh_sim v0.1.0 (E:\openhoi\.orchestrator\wt\WP-10-verify\crates\oh_sim)
+   Compiling wp10-independent-probe v0.0.0 (E:\openhoi\.orchestrator\wt\WP-10-verify\target\verify\WP-10\probe)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.45s
+     Running `target\debug\wp10-independent-probe.exe`
+boundary Cartesian cases=27436 (19^3 * 4), exact overflow source/op and every trace bit checked
+all 120 Unicode/source/phase permutations match canonical bytes
+expiry before/equal/after/max, target isolation, empty identifiers, duplicates both ops, intermediate overflow, one-bit mismatch, 114 modifier roundtrips PASS
+INDEPENDENT PROBE PASS
+
+exit: 0

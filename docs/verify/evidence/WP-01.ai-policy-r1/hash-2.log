@@ -1,0 +1,6 @@
+$ C:/Users/user/.cargo/bin/cargo.exe run -p oh_cli -- run --scenario testland --days 365 --seed 1 --hash-out
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target\debug\oh_cli.exe run --scenario testland --days 365 --seed 1 --hash-out`
+b039d35666b77fc2
+
+EXIT=0

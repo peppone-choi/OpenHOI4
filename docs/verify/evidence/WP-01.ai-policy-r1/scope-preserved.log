@@ -1,0 +1,3 @@
+$ git diff --exit-code HEAD^ HEAD -- deny.toml Cargo.toml Cargo.lock client/package-lock.json .github/workflows/ci.yml assets/ASSETS.toml tests/golden crates client
+
+EXIT=0

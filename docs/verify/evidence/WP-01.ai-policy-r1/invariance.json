@@ -1,0 +1,8 @@
+{
+  "head": true,
+  "index": true,
+  "files": true,
+  "sha": true,
+  "diff": true,
+  "status": true
+}

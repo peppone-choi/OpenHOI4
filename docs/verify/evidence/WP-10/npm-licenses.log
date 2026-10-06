@@ -1,0 +1,8 @@
+command: npm.cmd --prefix client run licenses
+
+> openhoi-client@0.1.0 licenses
+> node ../tools/check_npm_licenses.cjs
+
+npm licenses: 94 dependencies; 0 error(s)
+
+exit: 0

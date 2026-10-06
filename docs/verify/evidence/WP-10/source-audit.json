@@ -1,0 +1,67 @@
+{
+  "parent": "1bfea48511c6b75efb0dd26ee6e980a90d77da04",
+  "head": "44cc3ea9a38d5c0450ad782635d59cbc88f57ce9",
+  "changed_paths": [
+    "Cargo.lock",
+    "crates/oh_sim/Cargo.toml",
+    "crates/oh_sim/src/formula.rs",
+    "crates/oh_sim/src/ledger.rs",
+    "crates/oh_sim/src/lib.rs",
+    "crates/oh_sim/tests/ledger.rs",
+    "docs/adr/ADR-1001-modifier-ledger-boundaries.md",
+    "docs/worklog/WP-10.md",
+    "docs/worklog/evidence/WP-10/client-build.txt",
+    "docs/worklog/evidence/WP-10/diff-first-padding.txt",
+    "docs/worklog/evidence/WP-10/docs-first-encoding.txt",
+    "docs/worklog/evidence/WP-10/final-architecture.txt",
+    "docs/worklog/evidence/WP-10/final-assets.txt",
+    "docs/worklog/evidence/WP-10/final-clippy-all-targets.txt",
+    "docs/worklog/evidence/WP-10/final-clippy-with-serialization.txt",
+    "docs/worklog/evidence/WP-10/final-clippy.txt",
+    "docs/worklog/evidence/WP-10/final-diff-check.txt",
+    "docs/worklog/evidence/WP-10/final-docs-after-log-update.txt",
+    "docs/worklog/evidence/WP-10/final-docs.txt",
+    "docs/worklog/evidence/WP-10/final-fmt-with-serialization.txt",
+    "docs/worklog/evidence/WP-10/final-fmt.txt",
+    "docs/worklog/evidence/WP-10/final-licenses.txt",
+    "docs/worklog/evidence/WP-10/final-sim-test.txt",
+    "docs/worklog/evidence/WP-10/final-workspace-test-with-serialization.txt",
+    "docs/worklog/evidence/WP-10/final-workspace-test.txt",
+    "docs/worklog/evidence/WP-10/green-ledger.txt",
+    "docs/worklog/evidence/WP-10/initial-state.txt",
+    "docs/worklog/evidence/WP-10/npm-ci.txt",
+    "docs/worklog/evidence/WP-10/red-ledger.txt",
+    "docs/worklog/evidence/WP-10/run-days-365-1.txt",
+    "docs/worklog/evidence/WP-10/run-days-365-2.txt"
+  ],
+  "existing_tests_changed": [],
+  "client_changed": [],
+  "rules_docs_changed": [],
+  "golden_changed": [],
+  "asset_data_changed": [],
+  "runtime_files": {
+    "crates/oh_sim/src/ledger.rs": {
+      "forbidden_tokens": [],
+      "sha256": "5df16cc3514199723eee9180553144bde904f94dc57f4336240247e1bcf1c971"
+    },
+    "crates/oh_sim/src/formula.rs": {
+      "forbidden_tokens": [],
+      "sha256": "3354d5dba0bfc84561bc290374178c6467406b6b446d06af643f1bf98acb0a05"
+    }
+  },
+  "official_sources": [
+    {
+      "url": "https://docs.rs/crate/proptest/1.11.0",
+      "verified": "package/version 1.11.0"
+    },
+    {
+      "url": "https://docs.rs/proptest/1.11.0/proptest/test_runner/struct.Config.html",
+      "verified": "cases/rng_seed/failure_persistence API"
+    },
+    {
+      "url": "https://docs.rs/fixed/1.31.0/fixed/struct.FixedI64.html#method.checked_mul",
+      "verified": "checked multiplication API"
+    }
+  ],
+  "dependency_delta": "diff --git a/Cargo.lock b/Cargo.lock\nindex 5ceac51..e98387d 100644\n--- a/Cargo.lock\n+++ b/Cargo.lock\n@@ -511,6 +511,7 @@ version = \"0.1.0\"\n dependencies = [\n  \"oh_core\",\n  \"oh_data\",\n+ \"proptest\",\n  \"serde\",\n ]\n \ndiff --git a/crates/oh_sim/Cargo.toml b/crates/oh_sim/Cargo.toml\nindex 1d46b87..21be8f4 100644\n--- a/crates/oh_sim/Cargo.toml\n+++ b/crates/oh_sim/Cargo.toml\n@@ -12,3 +12,6 @@ workspace = true\n oh_data.workspace = true\n oh_core.workspace = true\n serde = { version = \"=1.0.229\", features = [\"derive\"] }\n+\n+[dev-dependencies]\n+proptest = { version = \"=1.11.0\", default-features = false, features = [\"std\"] }\n"
+}
