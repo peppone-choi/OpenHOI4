@@ -1,0 +1,83 @@
+diff --git a/Cargo.lock b/Cargo.lock
+index b603fad..be9bbe0 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -162,7 +162,11 @@ name = "oh_cli"
+ version = "0.1.0"
+ dependencies = [
+  "oh_ai",
++ "oh_data",
+  "oh_save",
++ "oh_sim",
++ "serde",
++ "toml",
+ ]
+ 
+ [[package]]
+@@ -216,7 +220,9 @@ dependencies = [
+ name = "oh_sim"
+ version = "0.1.0"
+ dependencies = [
++ "oh_core",
+  "oh_data",
++ "serde",
+ ]
+ 
+ [[package]]
+diff --git a/assets/ASSETS.toml b/assets/ASSETS.toml
+index 55f8e42..a114f83 100644
+--- a/assets/ASSETS.toml
++++ b/assets/ASSETS.toml
+@@ -16,3 +16,30 @@ license = "original"
+ modified = false
+ ai_generated = false
+ notes = "Directly authored empty M0 defines skeleton; no gameplay coefficients. D-10 undecided. Code schemas and error fixtures under crates/oh_data are development inputs, not shipped game data or visual assets."
++
++[[asset]]
++path = "data/packs/examples/m0/testland/manifest.toml"
++author = "OpenHOI contributors"
++source = "original"
++license = "original"
++modified = false
++ai_generated = false
++notes = "Original metadata for isolated empty M0 test pack; D-10 undecided. No WP-23 content."
++
++[[asset]]
++path = "data/packs/examples/m0/testland/defines.toml"
++author = "OpenHOI contributors"
++source = "original"
++license = "original"
++modified = false
++ai_generated = false
++notes = "M0 pacing values from 02 section 5.3 and data-defined initial speed. No historical coefficients; D-10 undecided."
++
++[[asset]]
++path = "data/packs/examples/m0/testland/scenarios/testland/scenario.toml"
++author = "OpenHOI contributors"
++source = "original"
++license = "original"
++modified = false
++ai_generated = false
++notes = "Synthetic empty M0 epoch; no third-party or historical material. D-10 undecided."
+diff --git a/crates/oh_cli/Cargo.toml b/crates/oh_cli/Cargo.toml
+index ff6806c..9dc71c0 100644
+--- a/crates/oh_cli/Cargo.toml
++++ b/crates/oh_cli/Cargo.toml
+@@ -11,3 +11,7 @@ workspace = true
+ [dependencies]
+ oh_ai.workspace = true
+ oh_save.workspace = true
++oh_sim.workspace = true
++oh_data.workspace = true
++serde = { version = "=1.0.229", features = ["derive"] }
++toml = "=1.1.6"
+diff --git a/crates/oh_sim/Cargo.toml b/crates/oh_sim/Cargo.toml
+index 9cada62..1d46b87 100644
+--- a/crates/oh_sim/Cargo.toml
++++ b/crates/oh_sim/Cargo.toml
+@@ -10,3 +10,5 @@ workspace = true
+ 
+ [dependencies]
+ oh_data.workspace = true
++oh_core.workspace = true
++serde = { version = "=1.0.229", features = ["derive"] }

@@ -1,0 +1,9 @@
+HEAD/tracked list/status/diff/cached diff unchanged; clean detached worktree: PASS
+General branch CI exact SHA, all jobs success: PASS
+docs success
+licenses success
+assets success
+client success
+server (ubuntu-latest) success
+server (macos-latest) success
+server (windows-latest) success

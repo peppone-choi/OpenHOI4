@@ -1,0 +1,13 @@
+Source review:
+- WP-04 scope is M0 shared headless time scheduler, command API and run CLI only.
+- cli::M0_PACK_ROOT=data/packs/examples/m0; load_scenario(root,id) resolves testland with manifest id m0_testland; LoadedScenario::simulation(seed) is public.
+- oh_sim source contains no floats, HashMap/HashSet, entropy, system clock, I/O, networking, unsafe or threading. BTreeMap tuple (tick,NationId,sequence) defines serialization and application order.
+- State, Simulation and TimeConfig internals are private. Public mutation only enqueue and step; snapshots are owned copies. External rustc attempt yields E0616 for Simulation.state and State.speed.
+- Dynamic pacing and initial_speed are mandatory defines; no fallback. Numeric literals in production source are calendar/time unit definitions, array lengths, enum bounds, overflow handling and parsing. Calendar formula consolidated and ADR-0401 records technical conventions.
+- Actual gameplay phase bodies remain empty slots; no combat/economy/AI/new undecided rules. AI budgets, save/resume, full-content validation, repro and networking UI are later WP scope.
+- Parent diff for client, existing data/packs/testland, oh_data tests and golden/core fixtures is empty. npm/TS generation/Playwright are not applicable and not run.
+- Cargo.lock adds local dependency edges only; no external version changes. cargo deny exits 0. New original M0 inputs registered in assets/ASSETS.toml; assets validator exits 0.
+- Implementer red-cli logs really show three failures; red-sim API missing compile failures, not runtime assertion failures; red-gate import failure. Final local rerun confirms all current tests. Logs document failure stage accurately.
+- Implementer evidence is docs/worklog/evidence/WP-04, referenced explicitly by docs/worklog/WP-04.md. target/evidence/WP-04 does not exist in this detached checkout and is not cited as copied evidence.
+- sim workflow triggers push/PR/dispatch, all 3OS; no continue-on-error; required capture commands check return code; uploads reject missing files; compare always requires all three exact directories and both repeats. Gate negatives independently rerun through actual CLI/subprocess.
+- GitHub Simulation determinism run 37441857380 and general CI run 37441857511 have target head 88d730a386c6af4913705b209cc5ce6f2dfd050c and success. Metadata and downloaded raw artifacts independently asserted; artifact hashes match local Windows. No main integration performed.

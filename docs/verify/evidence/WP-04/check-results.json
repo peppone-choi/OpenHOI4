@@ -1,0 +1,17 @@
+[
+  {
+    "name": "fmt",
+    "exit": 0,
+    "command": "cargo fmt --check"
+  },
+  {
+    "name": "clippy",
+    "exit": 0,
+    "command": "cargo clippy --workspace -- -D warnings"
+  },
+  {
+    "name": "workspace-test",
+    "exit": 0,
+    "command": "cargo test --workspace"
+  }
+]

@@ -1,0 +1,8 @@
+equal : exit= 0 expected= 0
+missing_os : exit= 1 expected= 1
+missing_file : exit= 1 expected= 1
+extra_os : exit= 1 expected= 1
+invalid : exit= 1 expected= 1
+repeat_mismatch : exit= 1 expected= 1
+os_mismatch : exit= 1 expected= 1
+actual failing child exit=73 and stale success marker removed: PASS

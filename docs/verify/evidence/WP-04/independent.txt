@@ -1,0 +1,9 @@
+pause repeated pumps/resume, invalid speeds, past/duplicate command rejection, nation/sequence ordering: PASS
+calendar/phase boundary 2024-4-30 -> 2024-5-1: PASS
+calendar/phase boundary 2100-2-28 -> 2100-3-1: PASS
+calendar/phase boundary 2400-2-28 -> 2400-2-29: PASS
+calendar/phase boundary 2400-2-29 -> 2400-3-1: PASS
+calendar/phase boundary 2023-12-31 -> 2024-1-1: PASS
+calendar/phase boundary 2024-5-14 -> 2024-5-15: PASS
+independent file-loaded defines/date, missing and invalid time defines: PASS
+All independent public API checks passed

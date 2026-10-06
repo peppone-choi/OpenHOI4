@@ -1,0 +1,18 @@
+{
+  "docs_utf8": 0,
+  "remote_artifacts_metadata": 0,
+  "scope_diff_check": 0,
+  "clippy_all_targets": 0,
+  "remote_compare": 0,
+  "diff_check": 0,
+  "private_fields_expected": 1,
+  "cargo_deny": 0,
+  "private_fields_compile": 1,
+  "remote_raw_head_assertion": 0,
+  "branch_ci_view": 0,
+  "gate_independent": 0,
+  "remote_download": 0,
+  "probe_run": 0,
+  "remote_run_view": 0,
+  "probe_build": 0
+}
