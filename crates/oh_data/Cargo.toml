@@ -10,3 +10,9 @@ workspace = true
 
 [dependencies]
 oh_core.workspace = true
+serde = { version = "=1.0.229", features = ["derive"] }
+toml = "=1.1.6"
+schemars = { version = "=1.2.2", features = ["semver1"] }
+fixed = "=1.31.0"
+semver = "=1.0.28"
+serde_json = "=1.0.151"

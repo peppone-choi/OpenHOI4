@@ -1,0 +1,10 @@
+# Synthetic values for loader tests only; no gameplay balance.
+[fixture]
+count = 9223372036854775807
+ratio = 0.1
+negative = -2.5
+exponent = 1.25e-2
+separated = 1_000.25
+steps = [500, 200, 80, 25, 0]
+mixed = [1, 0.5, -2]
+hex_count = 0x10

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Defines",
+  "description": "System -> item -> numeric scalar or array, in deterministic lexical order.\nUnknown coefficient names remain available for future system registries.",
+  "type": "object",
+  "additionalProperties": {
+    "type": "object",
+    "additionalProperties": {
+      "$ref": "#/$defs/DefineValue"
+    }
+  },
+  "$defs": {
+    "DefineValue": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Number"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Number"
+          }
+        }
+      ]
+    },
+    "Number": {
+      "description": "TOML integers are i64; decimals are checked I32F32 parsed from their lexemes. Nonfinite or overflowing values are rejected.",
+      "type": "number"
+    }
+  }
+}

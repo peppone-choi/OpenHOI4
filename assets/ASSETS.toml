@@ -1,4 +1,18 @@
-# Every resource in assets/, data/packs/, client/public/, and client/src/
-# requires a record here. No distributable assets exist in WP-01.
-# License choice for the project remains pending (D-10).
-asset = []
+# Original M0 data skeletons only. Project license remains undecided (D-10).
+[[asset]]
+path = "data/packs/testland/manifest.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "original"
+modified = false
+ai_generated = false
+notes = "Directly authored loader metadata, no third-party game material. D-10 undecided; original records provenance without choosing a project license."
+
+[[asset]]
+path = "data/packs/testland/defines.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "original"
+modified = false
+ai_generated = false
+notes = "Directly authored empty M0 defines skeleton; no gameplay coefficients. D-10 undecided. Code schemas and error fixtures under crates/oh_data are development inputs, not shipped game data or visual assets."

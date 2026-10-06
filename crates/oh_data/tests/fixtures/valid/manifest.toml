@@ -1,0 +1,7 @@
+id = "testland"
+name_key = "testland_name"
+version = "0.1.0"
+engine = ">=0.1, <0.2"
+depends = [{ id = "base", version = ">=0.1" }]
+conflicts = ["other_pack"]
+load_after = ["base"]
