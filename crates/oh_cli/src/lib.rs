@@ -4,7 +4,7 @@ use std::{collections::BTreeMap, path::Path};
 
 /// Shared M0 host startup path; relative to the repository working directory.
 pub use oh_data::m0::M0_PACK_ROOT;
-pub const USAGE: &str = "usage: oh_cli run --scenario <id> (--ticks <n> | --days <n>) --seed <u64> [--hash-out]\nM1: run --pack data/packs/testland --scenario m1 --days 365 --seed 1 --hash-out\nM0 supports run only; validate, ai-bench and repro belong to later work packages.\nM0 --scenario testland resolves data/packs/examples/m0/testland (manifest ID m0_testland).\nInputs: manifest.toml, defines.toml, scenarios/testland/scenario.toml under that pack.\nThis self-contained empty example is distinct from data/packs/testland (WP-03 skeleton / later WP-23 content).";
+pub const USAGE: &str = "usage: oh_cli run --scenario <id> (--ticks <n> | --days <n>) --seed <u64> [--hash-out]\nM1: run --pack data/packs/testland --scenario m1 --days 365 --seed 1 --hash-out\nSave: run ... --save-out <file>; resume --load <file> --pack <root> (--ticks <n> | --days <n>) [--force] [--save-out <file>] [--hash-out]. M0 resume --pack uses its parent examples/m0 root.\nvalidate, ai-bench and repro belong to later work packages.\nM0 --scenario testland resolves data/packs/examples/m0/testland (manifest ID m0_testland).\nInputs: manifest.toml, defines.toml, scenarios/testland/scenario.toml under that pack.\nThis self-contained empty example is distinct from data/packs/testland (WP-03 skeleton / later WP-23 content).";
 
 #[derive(Debug, Eq, PartialEq)]
 pub struct RunOptions {
@@ -212,4 +212,133 @@ pub fn run_national(root: &Path, options: &RunOptions) -> Result<Simulation, Str
         sim.step().map_err(|e| e.to_string())?;
     }
     Ok(sim)
+}
+
+/// Minimal native checkpoint path. Existing RunOptions and M0 golden stay intact.
+pub fn execute_invocation(args: &[String]) -> Result<(Simulation, bool), String> {
+    let mut filtered = Vec::new();
+    let mut save = None;
+    let mut i = 0;
+    while i < args.len() {
+        if args[i] == "--save-out" {
+            if save.is_some() {
+                return Err("duplicate --save-out".into());
+            }
+            i += 1;
+            save = Some(std::path::PathBuf::from(
+                args.get(i)
+                    .filter(|s| !s.starts_with("--"))
+                    .ok_or("missing --save-out")?,
+            ));
+        } else {
+            filtered.push(args[i].clone());
+        }
+        i += 1;
+    }
+    let (sim, hash_out, context) = if filtered.first().is_some_and(|s| s == "resume") {
+        let mut values = BTreeMap::new();
+        let mut force = false;
+        let mut hash_out = false;
+        let mut i = 1;
+        while i < filtered.len() {
+            let key = filtered[i].as_str();
+            if key == "--force" || key == "--hash-out" {
+                let flag = if key == "--force" {
+                    &mut force
+                } else {
+                    &mut hash_out
+                };
+                if *flag {
+                    return Err(format!("duplicate {key}"));
+                }
+                *flag = true;
+                i += 1;
+                continue;
+            }
+            if !["--load", "--pack", "--ticks", "--days"].contains(&key) {
+                return Err(format!("unknown resume argument {key}"));
+            }
+            let value = filtered
+                .get(i + 1)
+                .filter(|s| !s.starts_with("--"))
+                .ok_or_else(|| format!("missing {key}"))?;
+            if values.insert(key, value.as_str()).is_some() {
+                return Err(format!("duplicate {key}"));
+            }
+            i += 2;
+        }
+        let get = |key: &str| {
+            values
+                .get(key)
+                .copied()
+                .ok_or_else(|| format!("missing {key}"))
+        };
+        let count = match (values.get("--ticks"), values.get("--days")) {
+            (Some(n), None) => n.parse::<u64>().map_err(|_| "invalid --ticks")?,
+            (None, Some(n)) => formula::ticks_for_days(n.parse().map_err(|_| "invalid --days")?)
+                .map_err(|e| e.to_string())?,
+            _ => return Err("provide exactly one of --ticks or --days".into()),
+        };
+        let limits = oh_save::Limits::default();
+        let bytes = oh_save::read_file(Path::new(get("--load")?), &limits)?;
+        let header = oh_save::inspect_header(&bytes, &limits)?;
+        let root = Path::new(get("--pack")?);
+        let context = if header.definitions_hash.is_some() {
+            oh_save::SaveContext::national(root, &header.scenario_id)?
+        } else {
+            oh_save::SaveContext::m0(root, &header.scenario_id)?
+        };
+        let loaded = oh_save::decode(&bytes, &context, force)?;
+        for warning in loaded.warnings {
+            eprintln!("oh_cli: {warning}");
+        }
+        let mut sim = loaded.simulation;
+        advance(&mut sim, count)?;
+        (sim, hash_out, Some(context))
+    } else {
+        let (options, pack) = parse_invocation(&filtered)?;
+        if save.is_some() {
+            let context = match &pack {
+                Some(root) => oh_save::SaveContext::national(root, &options.scenario)?,
+                None => oh_save::SaveContext::m0(Path::new(M0_PACK_ROOT), &options.scenario)?,
+            };
+            let mut sim = context.simulation(options.seed)?;
+            advance(&mut sim, options.ticks)?;
+            (sim, options.hash_out, Some(context))
+        } else {
+            let sim = match pack {
+                Some(root) => run_national(&root, &options)?,
+                None => run(Path::new(M0_PACK_ROOT), &options)?,
+            };
+            (sim, options.hash_out, None)
+        }
+    };
+    if let Some(path) = save {
+        let context = context.ok_or("missing save context")?;
+        let seconds = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .map_err(|e| e.to_string())?
+            .as_secs();
+        let bytes = oh_save::encode(
+            &sim,
+            &context,
+            i64::try_from(seconds).map_err(|_| "UTC timestamp overflow")?,
+            vec![],
+        )?;
+        let outcome = oh_save::write_atomic(&path, &bytes, &context)?;
+        if let Some(warning) = outcome.durability_warning {
+            eprintln!("oh_cli: {warning}");
+        }
+    }
+    Ok((sim, hash_out))
+}
+pub fn advance(sim: &mut Simulation, ticks: u64) -> Result<(), String> {
+    let mut candidate = sim.clone();
+    for _ in 0..ticks {
+        if !candidate.step().map_err(|e| e.to_string())?.advanced {
+            return Err("PausedCannotAdvance: no current-tick resume".into());
+        }
+    }
+    *sim = candidate;
+    Ok(())
 }

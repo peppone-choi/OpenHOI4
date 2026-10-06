@@ -12,6 +12,17 @@ async fn main() {
 }
 async fn run(args: Vec<String>) -> Result<(), String> {
     let options = oh_server::Options::parse(&args)?;
+    let (shutdown, stopped) = tokio::sync::watch::channel(false);
+    let prepared = if options.load_save.is_some() {
+        Some(oh_server::Host::load_with_save(
+            &options.pack_root,
+            stopped.clone(),
+            options.load_save.as_deref(),
+            options.force,
+        )?)
+    } else {
+        None
+    };
     let listener = tokio::net::TcpListener::bind((std::net::Ipv4Addr::LOCALHOST, options.port))
         .await
         .map_err(|e| {
@@ -20,8 +31,10 @@ async fn run(args: Vec<String>) -> Result<(), String> {
                 options.port
             )
         })?;
-    let (shutdown, stopped) = tokio::sync::watch::channel(false);
-    let host = oh_server::Host::load(&options.pack_root, stopped)?;
+    let host = match prepared {
+        Some(host) => host,
+        None => oh_server::Host::load(&options.pack_root, stopped)?,
+    };
     let url = format!("http://127.0.0.1:{}/", options.port);
     println!(
         "OpenHOI4: {url}\nPack: {} ({}) from {}\nOpen this address in a browser. Ctrl+C to shut down. --help for usage.",

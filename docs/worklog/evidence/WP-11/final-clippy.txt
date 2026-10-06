@@ -1,0 +1,4 @@
+    Checking oh_save v0.1.0 (E:\openhoi\.orchestrator\wt\WP-11\crates\oh_save)
+    Checking oh_server v0.1.0 (E:\openhoi\.orchestrator\wt\WP-11\crates\oh_server)
+    Checking oh_cli v0.1.0 (E:\openhoi\.orchestrator\wt\WP-11\crates\oh_cli)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.57s

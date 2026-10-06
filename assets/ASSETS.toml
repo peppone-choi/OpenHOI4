@@ -259,3 +259,12 @@ license = "CC-BY-SA-4.0"
 modified = false
 ai_generated = false
 notes = "New test-only screenshot baseline of directly authored independent 12x6 display fixture; actual Chromium WebGL2 rendering verified against border/RGB oracle and visually inspected. No existing golden changed; no external game geography or generative image tool."
+# Original save compatibility fixture (WP-11); no source game data.
+[[asset]]
+path = "crates/oh_save/tests/fixtures/m1-v1.ohsave"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "New synthetic M1 v1 save with fixed timestamp, ordered time queue, rawbit infrastructure modifiers and expiry. Original Testland inputs; no existing golden replaced."

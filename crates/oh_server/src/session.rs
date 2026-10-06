@@ -23,6 +23,25 @@ pub struct Session {
     pub states: watch::Receiver<TimeState>,
     thread: Option<thread::JoinHandle<()>>,
 }
+pub(crate) fn validate_resume(sim: &Simulation) -> Result<(), String> {
+    if sim
+        .pending_commands()
+        .keys()
+        .any(|(_, _, sequence)| *sequence == u64::MAX)
+    {
+        return Err("ArrivalOverflow: pending sequence".into());
+    }
+    let now = Instant::now();
+    if sim
+        .config()
+        .speed_ms_per_tick()
+        .iter()
+        .any(|ms| now.checked_add(Duration::from_millis(*ms)).is_none())
+    {
+        return Err("PacingOverflow: host Instant".into());
+    }
+    Ok(())
+}
 impl Session {
     pub fn start(mut sim: Simulation, capacity: usize, delta_ms: u64) -> Self {
         let (commands, incoming) = mpsc::sync_channel(capacity);
@@ -30,7 +49,12 @@ impl Session {
         let thread = thread::Builder::new()
             .name("openhoi-simulation".into())
             .spawn(move || {
-                let mut arrival = 0u64;
+                let mut arrival = sim
+                    .pending_commands()
+                    .keys()
+                    .map(|(_, _, sequence)| *sequence)
+                    .max()
+                    .unwrap_or(0);
                 let mut deadline = Instant::now() + Duration::from_millis(sim.ms_per_tick());
                 let mut published = Instant::now();
                 loop {
@@ -146,5 +170,45 @@ mod tests {
         tokio::time::timeout(Duration::from_secs(2), session.stop())
             .await
             .unwrap();
+    }
+    #[tokio::test]
+    async fn req_sav_02_restored_current_tick_queue_does_not_collide_with_new_arrival() {
+        let root =
+            std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../data/packs/examples/m0");
+        let context = oh_save::SaveContext::m0(&root, "testland").unwrap();
+        let mut dto = context.simulation(7).unwrap().export_save().unwrap();
+        dto.state.paused = true;
+        dto.queue = vec![
+            oh_sim::save_state::PendingV1 {
+                tick: 0,
+                nation: 0,
+                sequence: 1,
+                command: oh_sim::save_state::CommandV1::Pause(false),
+            },
+            oh_sim::save_state::PendingV1 {
+                tick: 12,
+                nation: 0,
+                sequence: 100,
+                command: oh_sim::save_state::CommandV1::SetSpeed(5),
+            },
+        ];
+        let sim = Simulation::from_save(dto, context.restore_context()).unwrap();
+        let session = Session::start(sim, 1, 100);
+        let (reply, result) = oneshot::channel();
+        session
+            .commands
+            .try_send(Request::Command {
+                command: TimeCommand::Pause { paused: true },
+                reply,
+            })
+            .unwrap();
+        let state = tokio::time::timeout(Duration::from_secs(2), result)
+            .await
+            .unwrap()
+            .unwrap()
+            .unwrap();
+        assert_eq!(state.tick, "0");
+        assert!(state.paused);
+        session.stop().await;
     }
 }

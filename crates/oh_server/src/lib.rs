@@ -23,12 +23,14 @@ use tokio::sync::{oneshot, watch};
 mod embedded {
     include!(concat!(env!("OUT_DIR"), "/assets.rs"));
 }
-pub const USAGE: &str = "OpenHOI4 local server\nUsage: oh_server [--open] [--port <1..65535>] [--pack-root <directory>]\nDefault: http://127.0.0.1:8080/ (loopback only)\nDefault pack-root: data/packs (M1 testland scenario m1); explicit data/packs/examples/m0 preserves M0\nBuild first: npm --prefix client ci; npm --prefix client run build; cargo build -p oh_server\nThe executable serves the built client; no Node/Vite server is needed to play.\n--open opens the address in your default browser. Ctrl+C shuts down normally.\n--help prints this help.";
+pub const USAGE: &str = "OpenHOI4 local server\nUsage: oh_server [--open] [--port <1..65535>] [--pack-root <directory>] [--load-save <file>] [--force]\nDefault: http://127.0.0.1:8080/ (loopback only)\nDefault pack-root: data/packs (M1 testland scenario m1); explicit data/packs/examples/m0 preserves M0\nBuild first: npm --prefix client ci; npm --prefix client run build; cargo build -p oh_server\nThe executable serves the built client; no Node/Vite server is needed to play.\n--open opens the address in your default browser. Ctrl+C shuts down normally.\n--help prints this help.";
 #[derive(Debug)]
 pub struct Options {
     pub port: u16,
     pub open: bool,
     pub pack_root: PathBuf,
+    pub load_save: Option<PathBuf>,
+    pub force: bool,
 }
 impl Options {
     pub fn parse(args: &[String]) -> Result<Self, String> {
@@ -36,6 +38,8 @@ impl Options {
             port: 8080,
             open: false,
             pack_root: "data/packs".into(),
+            load_save: None,
+            force: false,
         };
         let mut seen = std::collections::BTreeSet::new();
         let mut i = 0;
@@ -46,7 +50,8 @@ impl Options {
             }
             match key {
                 "--open" => options.open = true,
-                "--port" | "--pack-root" => {
+                "--force" => options.force = true,
+                "--port" | "--pack-root" | "--load-save" => {
                     i += 1;
                     let value = args
                         .get(i)
@@ -58,6 +63,8 @@ impl Options {
                             .ok()
                             .filter(|p| *p != 0)
                             .ok_or("--port must be an integer in 1..65535")?;
+                    } else if key == "--load-save" {
+                        options.load_save = Some(value.into());
                     } else {
                         options.pack_root = value.into();
                     }
@@ -66,6 +73,9 @@ impl Options {
             }
             i += 1;
         }
+        if options.force && options.load_save.is_none() {
+            return Err("--force requires --load-save".into());
+        }
         Ok(options)
     }
 }
@@ -73,6 +83,7 @@ impl Options {
 pub struct Host {
     loaded: Arc<oh_data::m0::LoadedM0>,
     world: Option<oh_sim::world::World>,
+    restored: Option<Simulation>,
     root: PathBuf,
     date: Date,
     time: TimeConfig,
@@ -91,6 +102,30 @@ fn positive(defines: &oh_data::Defines, key: &str) -> Result<u64, String> {
     }
 }
 impl Host {
+    pub fn load_with_save(
+        root: &Path,
+        shutdown: watch::Receiver<bool>,
+        file: Option<&Path>,
+        force: bool,
+    ) -> Result<Self, String> {
+        let mut host = Self::load(root, shutdown)?;
+        if let Some(file) = file {
+            let limits = oh_save::Limits::default();
+            let bytes = oh_save::read_file(file, &limits)?;
+            let context = if host.world.is_some() {
+                oh_save::SaveContext::national(&host.root, &host.loaded.scenario_id)?
+            } else {
+                oh_save::SaveContext::m0(root, &host.loaded.scenario_id)?
+            };
+            let loaded = oh_save::decode(&bytes, &context, force)?;
+            session::validate_resume(&loaded.simulation)?;
+            for warning in loaded.warnings {
+                eprintln!("oh_server: {warning}");
+            }
+            host.restored = Some(loaded.simulation);
+        }
+        Ok(host)
+    }
     pub fn load(root: &Path, shutdown: watch::Receiver<bool>) -> Result<Self, String> {
         let (loaded, world) = if root.join("testland/scenarios/m1/scenario.toml").exists() {
             let national = oh_data::national::load_scenario(&root.join("testland"), "m1")
@@ -154,6 +189,7 @@ impl Host {
             hash: format!("{hash:016x}"),
         };
         let host = Self {
+            restored: None,
             loaded: Arc::new(loaded),
             world,
             root: path,
@@ -171,6 +207,9 @@ impl Host {
         Ok(host)
     }
     fn simulation(&self, seed: u64) -> Result<Simulation, String> {
+        if let Some(sim) = &self.restored {
+            return Ok(sim.clone());
+        }
         let mut sim = Simulation::new(
             self.loaded.scenario_id.clone(),
             self.date,
@@ -188,37 +227,12 @@ impl Host {
             )
             .map_err(|e| e.to_string())?;
         }
+        session::validate_resume(&sim)?;
         Ok(sim)
     }
 }
 fn pack_hash(root: &Path) -> Result<u64, String> {
-    fn collect(root: &Path, dir: &Path, out: &mut Vec<(String, Vec<u8>)>) -> Result<(), String> {
-        let mut paths = std::fs::read_dir(dir)
-            .map_err(|e| e.to_string())?
-            .map(|e| e.map(|e| e.path()).map_err(|e| e.to_string()))
-            .collect::<Result<Vec<_>, _>>()?;
-        paths.sort();
-        for p in paths {
-            if p.is_symlink() {
-                return Err("pack symlinks unsupported".into());
-            }
-            if p.is_dir() {
-                collect(root, &p, out)?;
-            } else {
-                out.push((
-                    p.strip_prefix(root)
-                        .map_err(|e| e.to_string())?
-                        .to_string_lossy()
-                        .replace('\\', "/"),
-                    std::fs::read(&p).map_err(|e| e.to_string())?,
-                ));
-            }
-        }
-        Ok(())
-    }
-    let mut files = Vec::new();
-    collect(root, root, &mut files)?;
-    oh_core::state_hash(&files).map_err(|e| e.to_string())
+    oh_save::pack_hash(root)
 }
 pub fn router(host: Host) -> Router {
     Router::new()
@@ -347,6 +361,7 @@ async fn connection(mut socket: WebSocket, mut host: Host) {
                 match message {
                     ClientMessage::Hello { .. } => notice(&mut socket, "invalid-message").await,
                     ClientMessage::Create { scenario, seed, mode } => {
+                        if host.restored.is_some() { notice(&mut socket,"unsupported-create").await; continue; }
                         if active.is_some() { notice(&mut socket, "already-joined").await; continue; }
                         let Ok(seed) = seed.parse::<u64>() else { notice(&mut socket, "unsupported-create").await; continue; };
                         if scenario != host.loaded.scenario_id || mode != "single" { notice(&mut socket, "unsupported-create").await; continue; }
@@ -455,5 +470,46 @@ mod national_tests {
             Options::parse(&[]).unwrap().pack_root,
             PathBuf::from("data/packs")
         );
+    }
+    #[test]
+    fn req_sav_01_host_restores_actual_world_and_preserves_pending_arrival() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../data/packs");
+        let (_, shutdown) = watch::channel(false);
+        let context = oh_save::SaveContext::national(&root.join("testland"), "m1").unwrap();
+        let mut sim = context.simulation(7).unwrap();
+        sim.enqueue(0, oh_core::NationId(0), 1, oh_sim::Command::Pause(true))
+            .unwrap();
+        sim.step().unwrap();
+        sim.enqueue(24, oh_core::NationId(0), 100, oh_sim::Command::SetSpeed(5))
+            .unwrap();
+        let directory = root
+            .parent()
+            .unwrap()
+            .parent()
+            .unwrap()
+            .join("target/wp11-host");
+        std::fs::create_dir_all(&directory).unwrap();
+        let file = directory.join(format!("{}.ohsave", std::process::id()));
+        let bytes = oh_save::encode(&sim, &context, 0, vec![]).unwrap();
+        oh_save::write_atomic(&file, &bytes, &context).unwrap();
+        let host = Host::load_with_save(&root, shutdown.clone(), Some(&file), false).unwrap();
+        let restored = host.simulation(999).unwrap();
+        assert_eq!(restored.state_hash().unwrap(), sim.state_hash().unwrap());
+        assert!(restored.snapshot().paused());
+        assert_eq!(restored.snapshot().seed(), 7);
+        assert_eq!(restored.pending_commands().len(), 1);
+        let mut overflow = sim.clone();
+        overflow
+            .enqueue(
+                25,
+                oh_core::NationId(0),
+                u64::MAX,
+                oh_sim::Command::Pause(false),
+            )
+            .unwrap();
+        assert!(session::validate_resume(&overflow).is_err());
+        std::fs::write(&file, b"broken").unwrap();
+        assert!(Host::load_with_save(&root, shutdown, Some(&file), true).is_err());
+        assert_eq!(restored.state_hash().unwrap(), sim.state_hash().unwrap());
     }
 }

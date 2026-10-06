@@ -1,4 +1,24 @@
 //! Specification-derived synthetic map expectations; no existing golden changed.
+#[test]
+fn saved_state_reference_context_exposes_validated_registries() {
+    let loaded = oh_data::map::load_map(pack(), "testland").unwrap();
+    assert_eq!(
+        loaded
+            .resource_ids()
+            .iter()
+            .map(String::as_str)
+            .collect::<Vec<_>>(),
+        ["steel"]
+    );
+    assert_eq!(
+        loaded
+            .building_ids()
+            .iter()
+            .map(String::as_str)
+            .collect::<Vec<_>>(),
+        ["industry"]
+    );
+}
 use oh_data::map::{EdgeKind, ProvinceKind, load_map};
 use std::{
     fs,
