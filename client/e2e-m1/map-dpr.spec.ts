@@ -3,6 +3,7 @@ import {decode,encode} from '@msgpack/msgpack';
 import {mkdirSync,writeFileSync} from 'node:fs';
 import type {ServerMessage,WorldView} from '../src/proto/protocol';
 import {png} from './png';
+import {assertDprEpoch,readDprBuffer,readDprEpoch,readDprPixel} from './dpr-observation';
 const evidence=process.env.OH_MAP_DPR_EVIDENCE??'../target/wp08/dpr';mkdirSync(evidence,{recursive:true});
 for(const force of [false,true])test(`REQ-PLAT-03 DPR surface preserves display and authority ${force?'forced GL':'preferred'}`,async({browser,browserName},info)=>{
  // Chromium supports an actual live DPR change through tab-scoped CDP.
@@ -34,7 +35,7 @@ for(const force of [false,true])test(`REQ-PLAT-03 DPR surface preserves display 
  await page.getByTestId('speed-2').click();await expect.poll(()=>worlds).toBeGreaterThanOrEqual(2);await page.getByRole('button',{name:'Terrain',exact:true}).click();
  await page.mouse.move(box.x+box.width/2,box.y+box.height/2);await page.mouse.wheel(0,-200);await expect.poll(async()=>(await cam()).zoom).toBeGreaterThan(1);await page.mouse.down();await page.mouse.move(box.x+box.width/2+20,box.y+box.height/2+10,{steps:4});await page.mouse.up();await page.mouse.move(0,0);
  const saved=await cam(),authority={tick:await page.getByTestId('tick').textContent(),date:await page.getByTestId('date').textContent(),hour:await page.getByTestId('hour').textContent()},backend=await map.getAttribute('data-backend'),cdp=browserName==='chromium'?await context.newCDPSession(page):null;
- const buffer=()=>map.locator('canvas').evaluate((c:HTMLCanvasElement)=>({width:c.width,height:c.height,expectedWidth:Math.floor(c.clientWidth*devicePixelRatio),expectedHeight:Math.floor(c.clientHeight*devicePixelRatio)}));
+ const buffer=()=>page.evaluate(readDprBuffer);
  for(const dpr of cdp?[2,1.5,1,2,1.5,1]:[2]){
   const old=await map.locator('canvas').elementHandle();if(cdp)await cdp.send('Emulation.setDeviceMetricsOverride',{width:1280,height:720,deviceScaleFactor:dpr,mobile:false});
   await expect.poll(()=>page.evaluate(()=>devicePixelRatio)).toBe(dpr);
@@ -45,15 +46,18 @@ for(const force of [false,true])test(`REQ-PLAT-03 DPR surface preserves display 
   // Element screenshots on Chromium restore the configured context DPR1.
   // Capture the full native viewport without a clip for this live DPR test.
   // Existing resize/mode tests retain their element screenshot stability gate.
-  const path=`${evidence}/${info.project.name}-${force}-dpr${dpr}-${steps.length}.png`,b=(await map.boundingBox())!,c=await cam(),viewport=await page.evaluate(()=>({width:innerWidth,height:innerHeight,scrollX,scrollY}));
+  const epoch=await map.locator('canvas').elementHandle();expect(epoch).not.toBeNull();
+  const before=await epoch!.evaluate(readDprEpoch);assertDprEpoch(before,{backend,dpr,box,camera:saved});
+  const path=`${evidence}/${info.project.name}-${force}-dpr${dpr}-${steps.length}.png`,b=before.box,c=before.camera,viewport=before.viewport;
   const bytes=cdp?Buffer.from((await cdp.send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false})).data,'base64'):await map.screenshot({path});if(cdp)writeFileSync(path,bytes);
   const image=png(bytes),x=(1-c.x)/c.width*b.width+b.width/2,y=(1-c.y)/c.height*b.height+b.height/2;
   const actual=cdp?image.pixel((b.x+x)*image.width/viewport.width,(b.y+y)*image.height/viewport.height):image.pixel(x*image.width/b.width,y*image.height/b.height),expected=world!.provinces.find(p=>p.id===10)!.terrain_color!;for(let i=0;i<3;i++)expect(Math.abs(actual[i]-expected[i])).toBeLessThanOrEqual(1);
-  const gpu=await map.evaluate(async(host,{x,y})=>{if(host.dataset.backend!=='webgl2')return null;const canvas=host.querySelector('canvas')!,gl=canvas.getContext('webgl2')!;return new Promise<{pixel:number[];error:number;lost:boolean}>(resolve=>requestAnimationFrame(()=>{const pixel=new Uint8Array(4);gl.readPixels(Math.floor(x*canvas.width/host.clientWidth),canvas.height-1-Math.floor(y*canvas.height/host.clientHeight),1,1,gl.RGBA,gl.UNSIGNED_BYTE,pixel);resolve({pixel:Array.from(pixel),error:gl.getError(),lost:gl.isContextLost()});}));},{x,y});
+  const gpu=await epoch!.evaluate(readDprPixel,{x,y});
   if(gpu){expect(gpu.error).toBe(0);expect(gpu.lost).toBe(false);for(let i=0;i<3;i++)expect(Math.abs(gpu.pixel[i]-expected[i])).toBeLessThanOrEqual(1);}
   await expect.poll(()=>page.evaluate(()=>devicePixelRatio)).toBe(dpr);await expect.poll(async()=>{const b=await buffer();return {width:b.width-b.expectedWidth,height:b.height-b.expectedHeight};}).toEqual({width:0,height:0});
   await expect(page.getByTestId('selected-province')).toHaveText('30');await expect(page.getByTestId('state-panel').locator('.ledger-value strong')).toHaveText('0');for(const [key,value] of Object.entries(authority))await expect(page.getByTestId(key)).toHaveText(value!);
-  const resources=await life();expect(resources).toMatchObject({listeners:6,observers:1});steps.push({dpr,backend,buffer:await buffer(),actual,expected,gpu,image:{width:image.width,height:image.height,capture:cdp?'native full viewport without clip':'element screenshot'},camera:c,box:b,authority,resources});
+  const after=await epoch!.evaluate(readDprEpoch);assertDprEpoch(after,{backend,dpr,box:b,camera:c});expect(after.buffer).toEqual({width:after.buffer.expectedWidth,height:after.buffer.expectedHeight,expectedWidth:after.buffer.expectedWidth,expectedHeight:after.buffer.expectedHeight});
+  const resources=after.resources;expect(resources).toMatchObject({listeners:6,observers:1});steps.push({dpr,backend,buffer:after.buffer,actual,expected,gpu,image:{width:image.width,height:image.height,capture:cdp?'native full viewport without clip':'element screenshot'},camera:c,box:b,authority,resources,epoch:{before,after}});await epoch!.dispose();
  }
  await cdp?.detach();expect(metadata).toBe(1);expect(index).toBe(1);
  reload=true;await page.getByTestId('speed-3').click();await expect(page.getByRole('alert').filter({hasText:'Map data'})).toContainText('Map data');await expect(map.locator('canvas')).toHaveCount(0);await expect.poll(life).toEqual({media:0,listeners:0,observers:0,rafs:0});
