@@ -16,3 +16,30 @@ license = "original"
 modified = false
 ai_generated = false
 notes = "Directly authored empty M0 defines skeleton; no gameplay coefficients. D-10 undecided. Code schemas and error fixtures under crates/oh_data are development inputs, not shipped game data or visual assets."
+
+[[asset]]
+path = "data/packs/examples/m0/testland/manifest.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "original"
+modified = false
+ai_generated = false
+notes = "Original metadata for isolated empty M0 test pack; D-10 undecided. No WP-23 content."
+
+[[asset]]
+path = "data/packs/examples/m0/testland/defines.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "original"
+modified = false
+ai_generated = false
+notes = "M0 pacing values from 02 section 5.3 and data-defined initial speed. No historical coefficients; D-10 undecided."
+
+[[asset]]
+path = "data/packs/examples/m0/testland/scenarios/testland/scenario.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "original"
+modified = false
+ai_generated = false
+notes = "Synthetic empty M0 epoch; no third-party or historical material. D-10 undecided."

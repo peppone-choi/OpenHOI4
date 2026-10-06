@@ -10,3 +10,5 @@ workspace = true
 
 [dependencies]
 oh_data.workspace = true
+oh_core.workspace = true
+serde = { version = "=1.0.229", features = ["derive"] }
