@@ -19,3 +19,11 @@ Linux Firefox에서 M1 브라우저 18FAIL/81PASS. map backend/frame 속성이 �
 WP08 구현 채팅이 기존 source에서 초기화 실패→정리/pageerror를 먼저 재현·수정한다. 실제 가용 backend에서 기존 픽셀·국경·선택·대체 경로 단언을 유지하고, 실제 없는 backend에서는 현지화 안내·정상 권위 상태 보존·추가 JS 오류0을 검사한다.
 
 로컬 Linux 서비스/설정은 가동하거나 바꾸지 않는다. 현재 WP08 브랜치에만 한정한 단발 Linux capability probe는 구현자가 구체 파일/커밋을 작성하고 부모가 검토·푸시한다. raw headless/headed context/버전/초기화 오류·실제 픽셀과 원본 아티팩트를 대조한다. 임시 진단 workflow는 최종 main에 남기지 않는다. sandbox·권한·네트워크·GPU preference 강제·테스트 약화로 CI를 통과시키지 않는다. 진단과 수정 후 정확한 커밋을 새 독립 검증하고 main CI를 재확인한다. 새로운 게임 규칙이나 전역 하네스는 추가하지 않는다.
+
+## 단발 Linux 진단 실제 결과
+
+정확한2134b131575ac30db48691e839f627405da66b52의 [진단37493784925](https://github.com/peppone-choi/OpenHOI4/actions/runs/37493784925)에서 동일 Firefox155를 headless/headed로 비교했다. headless는 WebGL1/2 context가 없고 GL2 creation error에 AllowWebgl2:false가 나왔다. 같은 빌드의 임시 Xvfb headed는 WebGL1/2 context·max texture16384, llvmpipe(or similar)·RGBA[37,91,173,255] 일치·glError0/pageerror0이었다. Chromium의 headless SwiftShader도 실제 GL2 pixel이 일치했다. WebKit의 reported Apple GPU 문자열은 Linux에서 실제 Apple 장치 증거로 쓰지 않는다.
+
+[원본 identity/API digest](../verify/evidence/WP-08-linux-probe/identity.json), 전체 로그·6JSON/PNG·원본ZIP을 보존했다. ZIP SHA256 `3816dc0db972596914542727dbe7c78daa388a05cc4c006cee18d5e072487a77`가 API digest와 일치했다. 이 원시 capability 결과를 Rust/앱 지도 또는 전체CI PASS로 주장하지 않는다.
+
+이 결과를 근거로 기존 Firefox 지도 픽셀 단언을 Linux 임시 Xvfb headed 환경에서 그대로 실행하고, Chromium/WebKit headless 검사는 유지한다. Firefox native headless의 실제 가용성/지원불가 안내·권위 상태 보존·추가 pageerror0은 별도 새 회귀로 확인한다. prefs/보안/GPU flags 변경·skip 또는 기존 단언 완화 없이 구현자가 구체 CI/수명 경계와 ADR을 갱신한다. 실제 앱 테스트와 정확한 최종 main CI 결과는 이후 별도로 대조한다.
