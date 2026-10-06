@@ -1,0 +1,243 @@
+["C:/Users/user/.cargo/bin/cargo.exe", "deny", "check", "licenses", "bans", "advisories", "sources"]
+warning[license-not-encountered]: license was not encountered
+  ┌─ E:\openhoi\.orchestrator\wt\WP-12-verify2\deny.toml:3:105
+  │
+3 │ allow = ["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Zlib", "MPL-2.0", "Unicode-3.0", "BSL-1.0", "CC0-1.0"]
+  │                                                                                                         ━━━━━━━ unmatched license allowance
+
+warning[license-not-encountered]: license was not encountered
+  ┌─ E:\openhoi\.orchestrator\wt\WP-12-verify2\deny.toml:3:116
+  │
+3 │ allow = ["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Zlib", "MPL-2.0", "Unicode-3.0", "BSL-1.0", "CC0-1.0"]
+  │                                                                                                                    ━━━━━━━ unmatched license allowance
+
+warning[license-not-encountered]: license was not encountered
+  ┌─ E:\openhoi\.orchestrator\wt\WP-12-verify2\deny.toml:3:64
+  │
+3 │ allow = ["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Zlib", "MPL-2.0", "Unicode-3.0", "BSL-1.0", "CC0-1.0"]
+  │                                                                ━━━ unmatched license allowance
+
+warning[license-not-encountered]: license was not encountered
+  ┌─ E:\openhoi\.orchestrator\wt\WP-12-verify2\deny.toml:3:79
+  │
+3 │ allow = ["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Zlib", "MPL-2.0", "Unicode-3.0", "BSL-1.0", "CC0-1.0"]
+  │                                                                               ━━━━━━━ unmatched license allowance
+
+warning[duplicate]: found 2 duplicate entries for crate 'rand_chacha'
+   ┌─ E:\openhoi\.orchestrator\wt\WP-12-verify2/Cargo.lock:61:1
+   │
+61 │ ╭ rand_chacha 0.9.0 registry+https://github.com/rust-lang/crates.io-index
+62 │ │ rand_chacha 0.10.0 registry+https://github.com/rust-lang/crates.io-index
+   │ ╰────────────────────────────────────────────────────────────────────────┘ lock entries
+   │
+   ├ rand_chacha v0.9.0
+     ├── proptest v1.11.0
+     │   └── (dev) oh_core v0.1.0
+     │       ├── oh_data v0.1.0
+     │       │   ├── oh_cli v0.1.0
+     │       │   ├── oh_server v0.1.0
+     │       │   └── oh_sim v0.1.0
+     │       │       ├── oh_ai v0.1.0
+     │       │       │   ├── oh_cli v0.1.0 (*)
+     │       │       │   └── oh_server v0.1.0 (*)
+     │       │       ├── oh_cli v0.1.0 (*)
+     │       │       ├── oh_proto v0.1.0
+     │       │       │   └── oh_server v0.1.0 (*)
+     │       │       ├── oh_save v0.1.0
+     │       │       │   ├── oh_cli v0.1.0 (*)
+     │       │       │   └── oh_server v0.1.0 (*)
+     │       │       └── oh_server v0.1.0 (*)
+     │       ├── oh_server v0.1.0 (*)
+     │       └── oh_sim v0.1.0 (*)
+     └── rand v0.9.5
+         ├── proptest v1.11.0 (*)
+         └── tungstenite v0.29.0
+             └── tokio-tungstenite v0.29.0
+                 └── axum v0.8.9
+                     └── oh_server v0.1.0 (*)
+   ├ rand_chacha v0.10.0
+     └── oh_core v0.1.0
+         ├── oh_data v0.1.0
+         │   ├── oh_cli v0.1.0
+         │   ├── oh_server v0.1.0
+         │   └── oh_sim v0.1.0
+         │       ├── oh_ai v0.1.0
+         │       │   ├── oh_cli v0.1.0 (*)
+         │       │   └── oh_server v0.1.0 (*)
+         │       ├── oh_cli v0.1.0 (*)
+         │       ├── oh_proto v0.1.0
+         │       │   └── oh_server v0.1.0 (*)
+         │       ├── oh_save v0.1.0
+         │       │   ├── oh_cli v0.1.0 (*)
+         │       │   └── oh_server v0.1.0 (*)
+         │       └── oh_server v0.1.0 (*)
+         ├── oh_server v0.1.0 (*)
+         └── oh_sim v0.1.0 (*)
+
+warning[duplicate]: found 2 duplicate entries for crate 'rand_core'
+   ┌─ E:\openhoi\.orchestrator\wt\WP-12-verify2/Cargo.lock:63:1
+   │
+63 │ ╭ rand_core 0.9.5 registry+https://github.com/rust-lang/crates.io-index
+64 │ │ rand_core 0.10.1 registry+https://github.com/rust-lang/crates.io-index
+   │ ╰──────────────────────────────────────────────────────────────────────┘ lock entries
+   │
+   ├ rand_core v0.9.5
+     ├── rand v0.9.5
+     │   ├── proptest v1.11.0
+     │   │   └── (dev) oh_core v0.1.0
+     │   │       ├── oh_data v0.1.0
+     │   │       │   ├── oh_cli v0.1.0
+     │   │       │   ├── oh_server v0.1.0
+     │   │       │   └── oh_sim v0.1.0
+     │   │       │       ├── oh_ai v0.1.0
+     │   │       │       │   ├── oh_cli v0.1.0 (*)
+     │   │       │       │   └── oh_server v0.1.0 (*)
+     │   │       │       ├── oh_cli v0.1.0 (*)
+     │   │       │       ├── oh_proto v0.1.0
+     │   │       │       │   └── oh_server v0.1.0 (*)
+     │   │       │       ├── oh_save v0.1.0
+     │   │       │       │   ├── oh_cli v0.1.0 (*)
+     │   │       │       │   └── oh_server v0.1.0 (*)
+     │   │       │       └── oh_server v0.1.0 (*)
+     │   │       ├── oh_server v0.1.0 (*)
+     │   │       └── oh_sim v0.1.0 (*)
+     │   └── tungstenite v0.29.0
+     │       └── tokio-tungstenite v0.29.0
+     │           └── axum v0.8.9
+     │               └── oh_server v0.1.0 (*)
+     ├── rand_chacha v0.9.0
+     │   ├── proptest v1.11.0 (*)
+     │   └── rand v0.9.5 (*)
+     └── rand_xorshift v0.4.0
+         └── proptest v1.11.0 (*)
+   ├ rand_core v0.10.1
+     └── rand_chacha v0.10.0
+         └── oh_core v0.1.0
+             ├── oh_data v0.1.0
+             │   ├── oh_cli v0.1.0
+             │   ├── oh_server v0.1.0
+             │   └── oh_sim v0.1.0
+             │       ├── oh_ai v0.1.0
+             │       │   ├── oh_cli v0.1.0 (*)
+             │       │   └── oh_server v0.1.0 (*)
+             │       ├── oh_cli v0.1.0 (*)
+             │       ├── oh_proto v0.1.0
+             │       │   └── oh_server v0.1.0 (*)
+             │       ├── oh_save v0.1.0
+             │       │   ├── oh_cli v0.1.0 (*)
+             │       │   └── oh_server v0.1.0 (*)
+             │       └── oh_server v0.1.0 (*)
+             ├── oh_server v0.1.0 (*)
+             └── oh_sim v0.1.0 (*)
+
+warning[duplicate]: found 2 duplicate entries for crate 'syn'
+   ┌─ E:\openhoi\.orchestrator\wt\WP-12-verify2/Cargo.lock:85:1
+   │
+85 │ ╭ syn 2.0.119 registry+https://github.com/rust-lang/crates.io-index
+86 │ │ syn 3.0.6 registry+https://github.com/rust-lang/crates.io-index
+   │ ╰───────────────────────────────────────────────────────────────┘ lock entries
+   │
+   ├ syn v2.0.119
+     ├── ts-rs-macros v12.0.1
+     │   └── ts-rs v12.0.1
+     │       └── oh_proto v0.1.0
+     │           └── oh_server v0.1.0
+     └── zerocopy-derive v0.8.60
+         └── zerocopy v0.8.60
+             ├── half v2.7.1
+             │   └── fixed v1.31.0
+             │       ├── oh_core v0.1.0
+             │       │   ├── oh_data v0.1.0
+             │       │   │   ├── oh_cli v0.1.0
+             │       │   │   ├── oh_server v0.1.0 (*)
+             │       │   │   └── oh_sim v0.1.0
+             │       │   │       ├── oh_ai v0.1.0
+             │       │   │       │   ├── oh_cli v0.1.0 (*)
+             │       │   │       │   └── oh_server v0.1.0 (*)
+             │       │   │       ├── oh_cli v0.1.0 (*)
+             │       │   │       ├── oh_proto v0.1.0 (*)
+             │       │   │       ├── oh_save v0.1.0
+             │       │   │       │   ├── oh_cli v0.1.0 (*)
+             │       │   │       │   └── oh_server v0.1.0 (*)
+             │       │   │       └── oh_server v0.1.0 (*)
+             │       │   ├── oh_server v0.1.0 (*)
+             │       │   └── oh_sim v0.1.0 (*)
+             │       └── oh_data v0.1.0 (*)
+             └── ppv-lite86 v0.2.21
+                 ├── rand_chacha v0.10.0
+                 │   └── oh_core v0.1.0 (*)
+                 └── rand_chacha v0.9.0
+                     ├── proptest v1.11.0
+                     │   └── (dev) oh_core v0.1.0 (*)
+                     └── rand v0.9.5
+                         ├── proptest v1.11.0 (*)
+                         └── tungstenite v0.29.0
+                             └── tokio-tungstenite v0.29.0
+                                 └── axum v0.8.9
+                                     └── oh_server v0.1.0 (*)
+   ├ syn v3.0.6
+     ├── ref-cast-impl v1.0.27
+     │   └── ref-cast v1.0.27
+     │       └── schemars v1.2.2
+     │           └── oh_data v0.1.0
+     │               ├── oh_cli v0.1.0
+     │               ├── oh_server v0.1.0
+     │               └── oh_sim v0.1.0
+     │                   ├── oh_ai v0.1.0
+     │                   │   ├── oh_cli v0.1.0 (*)
+     │                   │   └── oh_server v0.1.0 (*)
+     │                   ├── oh_cli v0.1.0 (*)
+     │                   ├── oh_proto v0.1.0
+     │                   │   └── oh_server v0.1.0 (*)
+     │                   ├── oh_save v0.1.0
+     │                   │   ├── oh_cli v0.1.0 (*)
+     │                   │   └── oh_server v0.1.0 (*)
+     │                   └── oh_server v0.1.0 (*)
+     ├── schemars_derive v1.2.2
+     │   └── schemars v1.2.2 (*)
+     ├── serde_derive v1.0.229
+     │   └── serde v1.0.229
+     │       ├── fixed v1.31.0
+     │       │   ├── oh_core v0.1.0
+     │       │   │   ├── oh_data v0.1.0 (*)
+     │       │   │   ├── oh_server v0.1.0 (*)
+     │       │   │   └── oh_sim v0.1.0 (*)
+     │       │   └── oh_data v0.1.0 (*)
+     │       ├── oh_cli v0.1.0 (*)
+     │       ├── oh_core v0.1.0 (*)
+     │       ├── oh_data v0.1.0 (*)
+     │       ├── oh_proto v0.1.0 (*)
+     │       ├── oh_sim v0.1.0 (*)
+     │       ├── postcard v1.1.3
+     │       │   └── oh_core v0.1.0 (*)
+     │       ├── rmp-serde v1.3.1
+     │       │   └── oh_proto v0.1.0 (*)
+     │       └── schemars v1.2.2 (*)
+     ├── serde_derive_internals v0.30.0
+     │   └── schemars_derive v1.2.2 (*)
+     ├── thiserror-impl v2.0.21
+     │   └── thiserror v2.0.21
+     │       ├── cobs v0.3.0
+     │       │   └── postcard v1.1.3 (*)
+     │       ├── ts-rs v12.0.1
+     │       │   └── oh_proto v0.1.0 (*)
+     │       └── tungstenite v0.29.0
+     │           └── tokio-tungstenite v0.29.0
+     │               └── axum v0.8.9
+     │                   └── oh_server v0.1.0 (*)
+     └── tokio-macros v2.7.2
+         └── tokio v1.53.2
+             ├── axum v0.8.9 (*)
+             ├── hyper v1.11.1
+             │   ├── axum v0.8.9 (*)
+             │   └── hyper-util v0.1.21
+             │       └── axum v0.8.9 (*)
+             ├── hyper-util v0.1.21 (*)
+             ├── oh_server v0.1.0 (*)
+             ├── tokio-tungstenite v0.29.0 (*)
+             └── tower v0.5.3
+                 └── axum v0.8.9 (*)
+
+advisories ok, bans ok, licenses ok, sources ok
+
+EXIT=0

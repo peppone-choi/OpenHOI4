@@ -1,0 +1,22 @@
+["node", "target/wp12-verify2/wire.mjs"]
+{
+  omittedChecks: 41,
+  transportChecks: 10,
+  cases: 489,
+  rejected: 423,
+  accepted: 66,
+  mismatches: [],
+  outsideGeneratedUnion: [
+    {
+      label: 'Welcome/type/0',
+      rust: true,
+      ts: false,
+      reason: 'Serde accepts numeric enum discriminant; Rust serializer and generated wire contract use string literals'
+    }
+  ],
+  connection_checks: 'invalid frames: no callbacks, close once, no later receive/send; normal variants preserved'
+}
+(node:33536) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+EXIT=0

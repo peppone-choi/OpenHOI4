@@ -1,0 +1,26 @@
+{
+  "catalog_characters": 118,
+  "missing": [],
+  "Hangul_missing": [],
+  "CJK_sample": {
+    "漢": true,
+    "字": true
+  },
+  "names": {
+    "1": "Noto Sans KR Thin",
+    "2": "Regular",
+    "5": "Version 2.004-H2;hotconv 1.0.118;makeotfexe 2.5.65603",
+    "6": "NotoSansKR-Thin"
+  },
+  "axes": [
+    {
+      "tag": "wght",
+      "min": 100.0,
+      "default": 100.0,
+      "max": 900.0
+    }
+  ],
+  "ko_only_keys": [],
+  "en_only_keys": [],
+  "key_count": 49
+}

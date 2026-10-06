@@ -1,0 +1,22 @@
+["C:/Users/user/.cargo/bin/cargo.exe", "run", "-p", "oh_cli", "--", "run", "--scenario", "testland", "--days", "365", "--seed", "1", "--hash-out"]
+   Compiling thiserror v2.0.21
+   Compiling syn v2.0.119
+   Compiling cobs v0.3.0
+   Compiling postcard v1.1.3
+   Compiling zerocopy-derive v0.8.60
+   Compiling zerocopy v0.8.60
+   Compiling half v2.7.1
+   Compiling ppv-lite86 v0.2.21
+   Compiling fixed v1.31.0
+   Compiling rand_chacha v0.10.0
+   Compiling oh_core v0.1.0 (E:\openhoi\.orchestrator\wt\WP-12-verify2\crates\oh_core)
+   Compiling oh_data v0.1.0 (E:\openhoi\.orchestrator\wt\WP-12-verify2\crates\oh_data)
+   Compiling oh_sim v0.1.0 (E:\openhoi\.orchestrator\wt\WP-12-verify2\crates\oh_sim)
+   Compiling oh_save v0.1.0 (E:\openhoi\.orchestrator\wt\WP-12-verify2\crates\oh_save)
+   Compiling oh_ai v0.1.0 (E:\openhoi\.orchestrator\wt\WP-12-verify2\crates\oh_ai)
+   Compiling oh_cli v0.1.0 (E:\openhoi\.orchestrator\wt\WP-12-verify2\crates\oh_cli)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 13.27s
+     Running `target\debug\oh_cli.exe run --scenario testland --days 365 --seed 1 --hash-out`
+b039d35666b77fc2
+
+EXIT=0

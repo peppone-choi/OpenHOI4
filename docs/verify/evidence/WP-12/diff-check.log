@@ -1,0 +1,3 @@
+["git", "-C", "E:/openhoi/.orchestrator/wt/WP-12-verify2", "diff", "--check"]
+
+EXIT=0

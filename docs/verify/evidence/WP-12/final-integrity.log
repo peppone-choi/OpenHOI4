@@ -1,0 +1,10 @@
+["python", "target/wp12-verify2/integrity.py"]
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-12-verify2\target\wp12-verify2\integrity.py", line 3, in <module>
+    import run
+  File "E:\openhoi\.orchestrator\wt\WP-12-verify2\target\wp12-verify2\run.py", line 22, in <module>
+    if sys.argv[1]=='snap':snap(sys.argv[2])
+       ~~~~~~~~^^^
+IndexError: list index out of range
+
+EXIT=1

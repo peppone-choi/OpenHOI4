@@ -1,0 +1,32 @@
+["node", "C:/Program Files/nodejs/node_modules/npm/bin/npm-cli.js", "--prefix", "client", "run", "test:e2e", "--", "--config", "../target/wp12-verify2/playwright.config.ts", "independent.spec.ts"]
+
+> openhoi-client@0.1.0 test:e2e
+> playwright test --config ../target/wp12-verify2/playwright.config.ts independent.spec.ts
+
+
+Running 10 tests using 5 workers
+
+(node:34336) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:35324) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3572) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:34424) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:17228) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  5 [chromium] › ..\target\wp12-verify2\e2e\independent.spec.ts:5:5 › independent loading, unknown notice and disconnect stay localized (489ms)
+  ok  2 [edge] › ..\target\wp12-verify2\e2e\independent.spec.ts:5:5 › independent loading, unknown notice and disconnect stay localized (660ms)
+  ok  4 [webkit] › ..\target\wp12-verify2\e2e\independent.spec.ts:5:5 › independent loading, unknown notice and disconnect stay localized (867ms)
+  ok  1 [chrome] › ..\target\wp12-verify2\e2e\independent.spec.ts:5:5 › independent loading, unknown notice and disconnect stay localized (629ms)
+  ok  6 [chromium] › ..\target\wp12-verify2\e2e\independent.spec.ts:23:5 › independent malformed MessagePack Snapshot must preserve shell and close connection (1.2s)
+  ok  7 [edge] › ..\target\wp12-verify2\e2e\independent.spec.ts:23:5 › independent malformed MessagePack Snapshot must preserve shell and close connection (1.4s)
+  ok  9 [chrome] › ..\target\wp12-verify2\e2e\independent.spec.ts:23:5 › independent malformed MessagePack Snapshot must preserve shell and close connection (1.4s)
+  ok  8 [webkit] › ..\target\wp12-verify2\e2e\independent.spec.ts:23:5 › independent malformed MessagePack Snapshot must preserve shell and close connection (1.4s)
+  ok  3 [firefox] › ..\target\wp12-verify2\e2e\independent.spec.ts:5:5 › independent loading, unknown notice and disconnect stay localized (1.6s)
+  ok 10 [firefox] › ..\target\wp12-verify2\e2e\independent.spec.ts:23:5 › independent malformed MessagePack Snapshot must preserve shell and close connection (1.6s)
+
+  10 passed (5.1s)
+
+EXIT=0

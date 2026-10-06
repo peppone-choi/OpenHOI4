@@ -1,0 +1,27 @@
+["node", "C:/Program Files/nodejs/node_modules/npm/bin/npm-cli.js", "--prefix", "client", "run", "test:e2e", "--", "--config", "../target/wp12-verify2/playwright.config.ts", "retained.spec.ts"]
+
+> openhoi-client@0.1.0 test:e2e
+> playwright test --config ../target/wp12-verify2/playwright.config.ts retained.spec.ts
+
+
+Running 5 tests using 5 workers
+
+(node:9444) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:23316) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:34420) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:26196) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:30608) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 3 [chromium] › ..\target\wp12-verify2\e2e\retained.spec.ts:5:5 › independent invalid Delta retains last normal state, closes once and blocks later traffic (877ms)
+  ok 1 [edge] › ..\target\wp12-verify2\e2e\retained.spec.ts:5:5 › independent invalid Delta retains last normal state, closes once and blocks later traffic (966ms)
+  ok 4 [chrome] › ..\target\wp12-verify2\e2e\retained.spec.ts:5:5 › independent invalid Delta retains last normal state, closes once and blocks later traffic (948ms)
+  ok 5 [webkit] › ..\target\wp12-verify2\e2e\retained.spec.ts:5:5 › independent invalid Delta retains last normal state, closes once and blocks later traffic (1.3s)
+  ok 2 [firefox] › ..\target\wp12-verify2\e2e\retained.spec.ts:5:5 › independent invalid Delta retains last normal state, closes once and blocks later traffic (2.5s)
+
+  5 passed (4.7s)
+
+EXIT=0

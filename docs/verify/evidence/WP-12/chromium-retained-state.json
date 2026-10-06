@@ -1,0 +1,22 @@
+{
+  "previous": [
+    "2000-01-01",
+    "0",
+    "0",
+    "1"
+  ],
+  "retained": [
+    "2000-01-01",
+    "0",
+    "0",
+    "1"
+  ],
+  "errors": [],
+  "audit": {
+    "closeCalls": 1,
+    "sendCalls": 2,
+    "events": 1
+  },
+  "beforeUpstream": 2,
+  "upstream": 2
+}

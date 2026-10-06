@@ -1,0 +1,35 @@
+["node", "target/wp12-verify2/wire.mjs"]
+{
+  cases: 489,
+  rejected: 423,
+  accepted: 66,
+  mismatches: [ { label: 'Welcome/type/0', rust: true, ts: false } ],
+  connection_checks: 'invalid frames: no callbacks, close once, no later receive/send; normal variants preserved'
+}
+node:internal/modules/run_main:105
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
++ [
++   {
++     label: 'Welcome/type/0',
++     rust: true,
++     ts: false
++   }
++ ]
+- []
+
+    at file:///E:/openhoi/.orchestrator/wt/WP-12-verify2/target/wp12-verify2/wire.mjs:50:100 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [ { label: 'Welcome/type/0', rust: true, ts: false } ],
+  expected: [],
+  operator: 'deepStrictEqual'
+}
+
+Node.js v24.4.0
+
+EXIT=1

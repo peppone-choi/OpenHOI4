@@ -1,0 +1,12 @@
+["python", "target/wp12-verify2/audit.py"]
+Evidence SHA index verified 57 errors []
+Preserved client/src/App.test.tsx True
+Preserved client/src/network.test.ts True
+Preserved client/e2e/network.spec.ts True
+Preserved client/src/proto/protocol.ts True
+Simulation/save/proto/golden modifications []
+font bytes 10414588 SHA 194018e6b2b293a7964f037b25c0249ce1418bc9ab3c971060a03aa57861e252 index-original-equal True working-original-equal True
+ofl bytes 4388 SHA 1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9 index-original-equal True working-original-equal True
+fluent 0.19.1 Apache-2.0
+
+EXIT=0
