@@ -1,0 +1,54 @@
+     Locking 58 packages to highest Rust 1.99.0 compatible versions
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.26
+   Compiling quote v1.0.47
+   Compiling serde_core v1.0.229
+   Compiling zerocopy v0.8.60
+   Compiling serde v1.0.229
+   Compiling cfg-if v1.0.5
+   Compiling thiserror v2.0.21
+   Compiling simd-adler32 v0.3.10
+   Compiling crc32fast v1.5.2
+   Compiling zmij v1.0.23
+   Compiling adler2 v2.0.1
+   Compiling ref-cast v1.0.27
+   Compiling fixed v1.31.0
+   Compiling serde_json v1.0.151
+   Compiling bytemuck v1.25.2
+   Compiling miniz_oxide v0.9.1
+   Compiling rand_core v0.10.1
+   Compiling winnow v1.0.4
+   Compiling typenum v1.20.1
+   Compiling memchr v2.8.3
+   Compiling itoa v1.0.18
+   Compiling az v1.3.0
+   Compiling fdeflate v0.3.7
+   Compiling toml_parser v1.1.3+spec-1.1.0
+   Compiling miniz_oxide v0.8.9
+   Compiling flate2 v1.1.10
+   Compiling bitflags v2.13.2
+   Compiling toml_writer v1.1.2+spec-1.1.0
+   Compiling semver v1.0.28
+   Compiling dyn-clone v1.0.20
+   Compiling png v0.18.1
+   Compiling syn v3.0.6
+   Compiling syn v2.0.119
+   Compiling toml_datetime v1.1.1+spec-1.1.0
+   Compiling serde_spanned v1.1.1
+   Compiling toml v1.1.6+spec-1.1.0
+   Compiling serde_derive_internals v0.30.0
+   Compiling serde_derive v1.0.229
+   Compiling thiserror-impl v2.0.21
+   Compiling ref-cast-impl v1.0.27
+   Compiling schemars_derive v1.2.2
+   Compiling zerocopy-derive v0.8.60
+   Compiling cobs v0.3.0
+   Compiling postcard v1.1.3
+   Compiling schemars v1.2.2
+   Compiling half v2.7.1
+   Compiling ppv-lite86 v0.2.21
+   Compiling rand_chacha v0.10.0
+   Compiling oh_core v0.1.0 (E:\openhoi\.orchestrator\wt\WP-07-verify\crates\oh_core)
+   Compiling oh_data v0.1.0 (E:\openhoi\.orchestrator\wt\WP-07-verify\crates\oh_data)
+   Compiling wp07_independent_probe v0.0.0 (E:\openhoi\.orchestrator\wt\WP-07-verify\target\wp07-independent\probe)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 19.01s
