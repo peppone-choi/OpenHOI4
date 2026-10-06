@@ -2,6 +2,8 @@ name: WP08 temporary Linux capability diagnosis
 on:
   push:
     branches: [codex/wp08-map-rendering]
+permissions:
+  contents: read
 jobs:
   capability:
     runs-on: ubuntu-latest
