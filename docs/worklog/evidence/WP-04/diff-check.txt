@@ -1,5 +1,2 @@
-docs/worklog/evidence/WP-04/diff-staged-initial.txt:2: trailing whitespace.
-++   │  
-docs/worklog/evidence/WP-04/diff-staged-initial.txt:4: trailing whitespace.
-++   │  
-exit_code=2
+git diff 3ac7c13 --check
+exit_code=0
