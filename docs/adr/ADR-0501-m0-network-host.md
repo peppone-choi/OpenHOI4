@@ -16,7 +16,7 @@
 - 각 연결의 서버는 동기 `oh_sim::Simulation`을 전용 OS 스레드에서만 호출한다. bounded std 채널로 명령을 보내고 oneshot으로 적용 결과를 받는다. 명령은 `enqueue` 후 다음 `step`의 명령 단계에서 적용한다. 서버 도착 순번과 클라이언트 중복 방지 순번은 따로 둔다. NationId(0)은 국가 없는 M0 시나리오의 기술적 큐 식별자이고 국가 게임 규칙이 아니다.
 - 시계·sleep·네트워크는 `oh_server`에만 둔다. 속도 비율은 WP-04 `TimeConfig`와 기존 `defines.toml`을 그대로 사용한다. 전송 주기·채널 용량·메시지 상한·접속 제한시간·기본 시드는 동일 팩의 `network` defines에 둔다. Delta는 최소 100ms 간격(02 §4.2 최대 10회/초)으로 최신 시간 상태를 보내며, 전체 후속 엔티티 필드는 해당 WP가 추가한다.
 - `oh_data::m0::load_m0_scenario`로 기존 CLI의 파일 로드 부분만 추출한다. `oh_cli::M0_PACK_ROOT`, `load_scenario`, `LoadedScenario::simulation`, CLI 인수·오류·해시는 유지한다. 날짜/시간 검증과 시뮬레이션 생성은 두 호스트에 남겨 oh_data→oh_sim 역방향 의존을 만들지 않는다.
-- Welcome에는 엔진/프로토콜 버전과 팩 ID·버전·원본 세 입력 파일의 정규 직렬화 xxHash64를 보낸다. 미래 팩 병합 해시 규칙은 만들지 않는다. HTTP는 M0에서 no-cache로 제공한다.
+- Welcome에는 엔진/프로토콜 버전과 팩 ID·버전·원본 세 입력 파일의 정규 postcard 직렬화에 대한 FNV-1a 64 해시를 보낸다(`oh_core::state_hash`). 독립 검증에서 발견한 알고리즘 명칭 오기를 실제 구현과 DR-07에 맞춰 정정했다. 미래 팩 병합 해시 규칙은 만들지 않는다. HTTP는 M0에서 no-cache로 제공한다.
 - Query(time)만 현재 서버 시간 상태를 반환한다. 원장·지도 조회는 supported=false와 현지화 사유를 반환한다. Notice는 현지화 키다. 순번 거부와 잘못된 속도는 CommandResult로 명시한다.
 - 브라우저는 받은 Snapshot/Delta를 저장하고 그대로 표시한다. 자체 날짜 진행·틱 타이머·속도 계수·게임 공식은 없다. 종료 뒤 입력을 비활성화한다. React StrictMode 정리 때 오래된 소켓의 콜백을 해제한다.
 
