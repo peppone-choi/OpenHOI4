@@ -695,6 +695,8 @@ D-15에 따른 역할이다. 모두 Codex다.
 
 오케스트레이터 Codex 세션은 `tools/orch.sh`로 구현 세션과 검증 세션을 만든다.
 
+**이번 M0 실행의 사용자 승인 대체 경로(2026-10-06).** 실제 하위 CLI가 모델·ChatGPT 인증 조합의 HTTP 400으로 실패했고, 사용자는 현재 앱 설정의 별도 채팅 실행을 선택했다. 이에 Codex 앱 채팅과 WP별 명시적 Git worktree로 동일한 구현/독립 검증 분리를 유지한다. 기본 cwd가 프로젝트 루트인 앱 채팅은 모든 명령을 지정한 전용 worktree에서 실행한다. 검증 전후 HEAD·추적 파일 목록·diff/status를 오케스트레이터가 비교하며 변경되면 무효다. CLI 설정과 도구는 유지한다. 근거와 시험 결과는 [ADR-0001](adr/ADR-0001-codex-app-orchestration.md), 운영 계획은 [M0 계획](plans/M0.md)에 기록한다.
+
 ```
 tools/orch.sh selftest                                   # 최초 1회: codex 호출·분리 실행 가능 여부
 tools/orch.sh start impl   <WP> <브랜치> <프롬프트 파일>   # 구현 세션 분리 실행 후 바로 반환
@@ -747,7 +749,7 @@ tools/orch.sh wait <WP>[:impl|:verify] ... [--timeout 초] # 대체 수단: 끝�
 2. 분리 실행(`start`)한 프로세스가 오케스트레이터 명령이 끝난 뒤에도 살아 있어야 한다.
    - `selftest`의 5단계로 확인한다.
    - 살아남지 못하는 환경이면 대체 수단을 쓴다: 한 묶음의 `start`를 연달아 실행한 직후 같은 명령에서 `wait`로 기다린다. 이 경우 구현 세션끼리는 병렬로 돌지만, 오케스트레이터는 그동안 다른 일을 하지 못한다. 그 사실을 계획에 적는다.
-3. Codex 샌드박스(`workspace-write`)의 기본 네트워크 허용 여부와 설정 키는 조사 시점 공식 문서에서 확인하지 못했다. WP-06에서 확인한다.
+3. 공식 설정 문서에서 `sandbox_workspace_write.network_access`는 workspace-write 외부 네트워크 허용 boolean 키다(2026-10-06 재확인). 이번 실행은 설정을 변경하지 않았다. CLI 모델 거절과 네트워크 차단을 구분하며, 하위 채팅의 실제 권한은 실행 문맥에서 확인한다. 결과는 ADR-0001에 기록한다.
 4. 인증 방식(로그인 또는 `CODEX_API_KEY`)과 사용량 한도도 확인한다.
 
 ---
