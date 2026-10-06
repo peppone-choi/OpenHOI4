@@ -15,5 +15,5 @@ oh_save.workspace = true
 oh_core.workspace = true
 oh_data.workspace = true
 oh_sim.workspace = true
-axum = { version = "=0.8.9", default-features = false, features = ["http1", "tokio", "ws"] }
+axum = { version = "=0.8.9", default-features = false, features = ["http1", "tokio", "ws", "json", "query"] }
 tokio = { version = "=1.53.2", features = ["rt-multi-thread", "macros", "net", "signal", "sync", "time"] }

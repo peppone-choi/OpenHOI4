@@ -11,3 +11,21 @@ command_capacity = 128
 max_message_bytes = 65536
 handshake_timeout_ms = 5000
 default_seed = 1
+
+# WP-08 presentation constants; never used by simulation rules or state hashes.
+[map_display]
+background = 0x141922
+nation_border = 0x101820
+state_border = 0xe6d4a7
+province_border = 0x647487
+selected = 0xffdf72
+hovered = 0xffffff
+nation_width_milli = 2400
+state_width_milli = 1400
+province_width_milli = 600
+highlight_milli = 280
+fit_milli = 920
+zoom_min_milli = 250
+zoom_max_milli = 8000
+wheel_milli = 120
+drag_threshold = 4

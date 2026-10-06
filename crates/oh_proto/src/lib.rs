@@ -123,6 +123,8 @@ pub fn typescript() -> String {
         StateView::decl(&ts_rs::Config::default()),
         ProvinceView::decl(&ts_rs::Config::default()),
         WorldView::decl(&ts_rs::Config::default()),
+        MapStyle::decl(&ts_rs::Config::default()),
+        MapMetadata::decl(&ts_rs::Config::default()),
         ClientMessage::decl(&ts_rs::Config::default()),
         ServerMessage::decl(&ts_rs::Config::default()),
     ] {
@@ -206,6 +208,37 @@ pub struct WorldView {
     pub nations: Vec<NationView>,
     pub states: Vec<StateView>,
     pub provinces: Vec<ProvinceView>,
+}
+/// Presentation settings only, loaded by the host from defines.toml.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, TS)]
+pub struct MapStyle {
+    pub background: [u8; 3],
+    pub nation_border: [u8; 3],
+    pub state_border: [u8; 3],
+    pub province_border: [u8; 3],
+    pub selected: [u8; 3],
+    pub hovered: [u8; 3],
+    pub nation_width_milli: u32,
+    pub state_width_milli: u32,
+    pub province_width_milli: u32,
+    pub highlight_milli: u32,
+    pub fit_milli: u32,
+    pub zoom_min_milli: u32,
+    pub zoom_max_milli: u32,
+    pub wheel_milli: u32,
+    pub drag_threshold: u32,
+}
+/// HTTP map contract. RG8 bytes are dense u16 LE, row-major from top-left.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, TS)]
+pub struct MapMetadata {
+    pub map_id: String,
+    pub width: u32,
+    pub height: u32,
+    pub province_ids: Vec<u16>,
+    pub pack_hash: String,
+    pub index_hash: String,
+    pub byte_length: u64,
+    pub style: MapStyle,
 }
 impl WorldView {
     pub fn from_sim(sim: &oh_sim::Simulation) -> Option<Self> {

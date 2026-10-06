@@ -1,4 +1,5 @@
 //! Local authoritative host. All I/O and clocks stay here, never in oh_sim.
+mod map;
 mod session;
 use axum::{
     Router,
@@ -221,6 +222,8 @@ pub fn router(host: Host) -> Router {
     Router::new()
         .route("/ws", get(upgrade))
         .route("/pack/localisation/{language}/{file}", get(pack_locale))
+        .route("/maps/{map_id}/metadata", get(map::metadata))
+        .route("/maps/{map_id}/index.bin", get(map::index))
         .fallback(get(static_file))
         .with_state(host)
 }

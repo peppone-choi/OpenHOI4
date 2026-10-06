@@ -1,0 +1,8 @@
+
+Running 1 test using 1 worker
+
+(node:23288) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e-m1\map.spec.ts:5:1 › REQ-MAP-04/05 PLAT-03 actual map pixels, modes, pick and viewport (1.3s)
+
+  1 passed (2.5s)
