@@ -1,0 +1,11 @@
+{
+  "version": "155.0",
+  "project": "firefox",
+  "platform": "win32",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "locale": "en-US",
+  "render": "headless M0 DOM, no game map/GPU measurement"
+}

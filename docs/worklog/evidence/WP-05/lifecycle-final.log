@@ -1,0 +1,9 @@
+OpenHOI M0: http://127.0.0.1:1356/
+Pack: m0_testland (b4514a0fdf3a7037) from E:\openhoi\.orchestrator\wt\WP-05\data\packs\examples\m0
+Open this address in a browser. Ctrl+C to shut down. --help for usage.
+Shutting down OpenHOI.
+OpenHOI stopped normally.
+
+
+REQ-NET-02 isolated executable assets: PASS
+REQ-NET-06 actual CTRL_C_EVENT/SIGINT, active WS closure, exit 0, released port: PASS

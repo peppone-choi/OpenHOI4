@@ -1,0 +1,7 @@
+
+> openhoi-client@0.1.0 build
+> tsc --noEmit && vite build
+
+src/network.test.ts(2,30): error TS2591: Cannot find name 'node:fs'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node` and then add 'node' to the types field in your tsconfig.
+src/network.test.ts(4,36): error TS2307: Cannot find module './network' or its corresponding type declarations.
+src/network.test.ts(5,36): error TS2307: Cannot find module './proto/protocol' or its corresponding type declarations.

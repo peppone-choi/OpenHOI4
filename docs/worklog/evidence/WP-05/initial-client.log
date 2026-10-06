@@ -1,0 +1,28 @@
+
+> openhoi-client@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 E:/openhoi/.orchestrator/wt/WP-05/client
+
+ ❯ src/network.test.ts (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/network.test.ts [ src/network.test.ts ]
+Error: Cannot find package '@msgpack/msgpack' imported from E:/openhoi/.orchestrator/wt/WP-05/client/src/network.test.ts
+ ❯ src/network.test.ts:3:1
+      1| import { expect, test } from 'vitest';
+      2| import { readFileSync } from 'node:fs';
+      3| import { decode } from '@msgpack/msgpack';
+       | ^
+      4| import { applyServerMessage } from './network';
+      5| import type { ServerMessage } from './proto/protocol';
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 passed (1)
+   Start at  18:28:44
+   Duration  718ms (import 59%, transform 20%, worker 19%, tests 2%)

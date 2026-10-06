@@ -1,0 +1,3 @@
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target\debug\oh_cli.exe run --scenario testland --ticks 1000 --seed 1 --hash-out`
+ff921fd8148e699d

@@ -1,0 +1,5 @@
+   Compiling oh_data v0.1.0 (E:\openhoi\.orchestrator\wt\WP-05\crates\oh_data)
+   Compiling oh_sim v0.1.0 (E:\openhoi\.orchestrator\wt\WP-05\crates\oh_sim)
+   Compiling oh_proto v0.1.0 (E:\openhoi\.orchestrator\wt\WP-05\crates\oh_proto)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.56s
+     Running `target\debug\examples\wire_fixtures.exe`

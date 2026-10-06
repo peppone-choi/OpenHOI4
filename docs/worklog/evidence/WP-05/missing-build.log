@@ -1,0 +1,15 @@
+   Compiling oh_server v0.1.0 (E:\openhoi\.orchestrator\wt\WP-05\crates\oh_server)
+    Checking oh_data v0.1.0 (E:\openhoi\.orchestrator\wt\WP-05\crates\oh_data)
+error: failed to run custom build command for `oh_server v0.1.0 (E:\openhoi\.orchestrator\wt\WP-05\crates\oh_server)`
+
+Caused by:
+  process didn't exit successfully: `E:\openhoi\.orchestrator\wt\WP-05\target\debug\build\oh_server-21657e13268cafc3\build-script-build` (exit code: 101)
+  --- stdout
+  cargo:rerun-if-changed=E:\openhoi\.orchestrator\wt\WP-05\crates\oh_server\../../client/dist
+
+  --- stderr
+
+  thread 'main' (48188) panicked at crates\oh_server\build.rs:40:5:
+  built client missing: run npm --prefix client ci && npm --prefix client run build BEFORE cargo build/test -p oh_server
+  note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+warning: build failed, waiting for other jobs to finish...

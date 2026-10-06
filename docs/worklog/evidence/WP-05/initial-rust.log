@@ -1,0 +1,91 @@
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.26
+   Compiling serde_core v1.0.229
+   Compiling zerocopy v0.8.60
+   Compiling serde v1.0.229
+   Compiling thiserror v2.0.21
+   Compiling zmij v1.0.23
+   Compiling cfg-if v1.0.5
+   Compiling fixed v1.31.0
+   Compiling serde_json v1.0.151
+   Compiling ref-cast v1.0.27
+   Compiling winnow v1.0.4
+   Compiling az v1.3.0
+   Compiling itoa v1.0.18
+   Compiling memchr v2.8.3
+   Compiling typenum v1.20.1
+   Compiling rand_core v0.10.1
+   Compiling bytemuck v1.25.2
+   Compiling dyn-clone v1.0.20
+   Compiling semver v1.0.28
+   Compiling toml_parser v1.1.3+spec-1.1.0
+   Compiling toml_writer v1.1.2+spec-1.1.0
+   Compiling syn v3.0.6
+   Compiling syn v2.0.119
+   Compiling serde_derive_internals v0.30.0
+   Compiling toml_datetime v1.1.1+spec-1.1.0
+   Compiling serde_spanned v1.1.1
+   Compiling toml v1.1.6+spec-1.1.0
+   Compiling serde_derive v1.0.229
+   Compiling thiserror-impl v2.0.21
+   Compiling ref-cast-impl v1.0.27
+   Compiling schemars_derive v1.2.2
+   Compiling zerocopy-derive v0.8.60
+   Compiling cobs v0.3.0
+   Compiling postcard v1.1.3
+   Compiling schemars v1.2.2
+   Compiling ppv-lite86 v0.2.21
+   Compiling half v2.7.1
+   Compiling rand_chacha v0.10.0
+   Compiling oh_core v0.1.0 (E:\openhoi\.orchestrator\wt\WP-05\crates\oh_core)
+   Compiling oh_data v0.1.0 (E:\openhoi\.orchestrator\wt\WP-05\crates\oh_data)
+   Compiling oh_sim v0.1.0 (E:\openhoi\.orchestrator\wt\WP-05\crates\oh_sim)
+   Compiling oh_proto v0.1.0 (E:\openhoi\.orchestrator\wt\WP-05\crates\oh_proto)
+   Compiling oh_save v0.1.0 (E:\openhoi\.orchestrator\wt\WP-05\crates\oh_save)
+   Compiling oh_ai v0.1.0 (E:\openhoi\.orchestrator\wt\WP-05\crates\oh_ai)
+   Compiling oh_server v0.1.0 (E:\openhoi\.orchestrator\wt\WP-05\crates\oh_server)
+error[E0432]: unresolved imports `oh_proto::ClientMessage`, `oh_proto::ServerMessage`, `oh_proto::TimeState`, `oh_proto::PROTOCOL_VERSION`
+ --> crates\oh_proto\tests\contract.rs:1:16
+  |
+1 | use oh_proto::{ClientMessage, ServerMessage, TimeState, PROTOCOL_VERSION};
+  |                ^^^^^^^^^^^^^  ^^^^^^^^^^^^^  ^^^^^^^^^  ^^^^^^^^^^^^^^^^ no `PROTOCOL_VERSION` in the root
+  |                |              |              |
+  |                |              |              no `TimeState` in the root
+  |                |              no `ServerMessage` in the root
+  |                no `ClientMessage` in the root
+
+error[E0425]: cannot find function `decode_client` in crate `oh_proto`
+ --> crates\oh_proto\tests\contract.rs:5:26
+  |
+5 |     assert_eq!(oh_proto::decode_client(&oh_proto::encode(&hello).unwrap()).unwrap(), hello);
+  |                          ^^^^^^^^^^^^^ not found in `oh_proto`
+
+error[E0425]: cannot find function `encode` in crate `oh_proto`
+ --> crates\oh_proto\tests\contract.rs:5:51
+  |
+5 |     assert_eq!(oh_proto::decode_client(&oh_proto::encode(&hello).unwrap()).unwrap(), hello);
+  |                                                   ^^^^^^ not found in `oh_proto`
+
+error[E0425]: cannot find function `decode_server` in crate `oh_proto`
+ --> crates\oh_proto\tests\contract.rs:7:26
+  |
+7 |     assert_eq!(oh_proto::decode_server(&oh_proto::encode(&snapshot).unwrap()).unwrap(), snapshot);
+  |                          ^^^^^^^^^^^^^ not found in `oh_proto`
+
+error[E0425]: cannot find function `encode` in crate `oh_proto`
+ --> crates\oh_proto\tests\contract.rs:7:51
+  |
+7 |     assert_eq!(oh_proto::decode_server(&oh_proto::encode(&snapshot).unwrap()).unwrap(), snapshot);
+  |                                                   ^^^^^^ not found in `oh_proto`
+
+error[E0425]: cannot find function `typescript` in crate `oh_proto`
+  --> crates\oh_proto\tests\contract.rs:12:66
+   |
+12 |     assert_eq!(std::fs::read_to_string(path).unwrap(), oh_proto::typescript());
+   |                                                                  ^^^^^^^^^^ not found in `oh_proto`
+
+Some errors have detailed explanations: E0425, E0432.
+For more information about an error, try `rustc --explain E0425`.
+error: could not compile `oh_proto` (test "contract") due to 6 previous errors
+warning: build failed, waiting for other jobs to finish...
