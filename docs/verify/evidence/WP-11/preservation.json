@@ -12341,7 +12341,8 @@
     "bytes": 23175,
     "source_sha256": "9112fd9ee09514d9969b8c543ae4a5ffd23aa2ed11cf27227259b295b2e2e502",
     "raw_archive_member": "outside-Edge-error-context.md",
-    "review_copy_sha256": "9112fd9ee09514d9969b8c543ae4a5ffd23aa2ed11cf27227259b295b2e2e502",
-    "review_path": "outside-Edge-error-context.md"
+    "review_copy_sha256": "951b54754bc386e2abbbaf7388beb031e50b8b7bc6e411997df0a4e4450c3225",
+    "review_path": "outside-Edge-error-context.md",
+    "review_normalization": "LF and trailing whitespace only; original bytes remain in ZIP"
   }
 ]

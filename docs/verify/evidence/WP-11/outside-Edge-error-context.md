@@ -94,7 +94,7 @@ Call log:
   36  |  expect(errors).toEqual([]);expect(requests.every(u=>new URL(u).host===new URL(page.url()).host)).toBe(true);
   37  |  writeFileSync(`${evidence}/${info.project.name}-map.json`,JSON.stringify({browser:browser.version(),requests,errors,diagnostics:await map.evaluate(el=>({... (el as HTMLElement).dataset})),viewport:{width:1280,height:720},scenario:'m1',seed:'1'},null,2));
   38  | });
-  39  | 
+  39  |
   40  | test('REQ-PLAT-03 preferred actual backend produces the same map RGB and source shader',async({page,browser},info)=>{
   41  |  await page.goto('/');const map=page.getByTestId('province-map');await expect(map).toHaveAttribute('data-backend',/webgpu|webgl2/);await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);
   42  |  await page.mouse.move(0,0);const shot=await map.screenshot({path:`${evidence}/${info.project.name}-preferred.png`});const p=await mapPoint(map,1,1);closeRGB(png(shot).pixel(p.x,p.y),[40,100,180]);
@@ -113,7 +113,7 @@ Call log:
   55  |  await page.route('**/maps/display_fixture/metadata',r=>r.fulfill({json:fixture!.meta}));await page.route('**/maps/display_fixture/index.bin?*',r=>r.fulfill({body:fixture!.bytes,headers:{'x-pack-hash':meta.pack_hash}}));
   56  |  await page.goto('/');const map=page.getByTestId('province-map');await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);await page.mouse.move(0,0);const p=await mapPoint(map,256.5,3);closeRGB(png(await map.screenshot({path:`${evidence}/${info.project.name}-dense256.png`})).pixel(p.x,p.y),[17,123,231]);await map.click({position:p});await expect(page.getByTestId('selected-province')).toHaveText('65535');writeFileSync(`${evidence}/${info.project.name}-dense256.json`,JSON.stringify(await map.evaluate(el=>({... (el as HTMLElement).dataset})),null,2));
   57  | });
-  58  | 
+  58  |
   59  | for(const force of [false,true])test(`REQ-MAP-05 independent three border pixel oracle, u16 sentinel and camera ${force?'WebGL2':'preferred'}`,async({page,request},info)=>{
   60  |  const meta=await (await request.get('/maps/testland/metadata')).json() as MapMetadata;
   61  |  let fixture:ReturnType<typeof displayFixture>|undefined;
@@ -147,7 +147,7 @@ Call log:
   89  |  await page.mouse.move(0,0);const resetImage=png(await map.screenshot());for(const [x,color] of [[2,meta.style.province_border],[4,meta.style.state_border],[6,meta.style.nation_border]] as const){const p=await mapPoint(map,x,1);closeRGB(resetImage.pixel(p.x,p.y),color);}
   90  |  writeFileSync(`${evidence}/${info.project.name}-fixture-${force}.json`,JSON.stringify({boundaryPixels,widths,mismatches,baselinePixels:image.width*image.height,before,after,reset,diagnostics:await map.evaluate(el=>({... (el as HTMLElement).dataset})),oracle:'independent 12x6 displayFixture.ts plus reviewed new screenshot baseline; no shipped golden changed'},null,2));
   91  | });
-  92  | 
+  92  |
   93  | for(const failure of ['missingGPU','nullAdapter','adapterReject','deviceReject','insecure'])test(`REQ-PLAT-03 ${failure} falls back to actual WebGL2 pixels`,async({page},info)=>{
   94  |  await page.addInitScript(kind=>{
   95  |   if(kind==='insecure')Object.defineProperty(window,'isSecureContext',{value:false});
@@ -193,5 +193,5 @@ Call log:
   134 |  await page.goto('/');const map=page.getByTestId('province-map');await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);await expect(page.getByTestId('connection')).toHaveText('Disconnected');await expect(page.getByRole('alert')).toHaveText('Invalid server message; connection closed');await expect(page.getByTestId('pause')).toBeDisabled();
   135 |  await page.mouse.move(0,0);const point=await mapPoint(map,1,1);closeRGB(png(await map.screenshot()).pixel(point.x,point.y),[40,100,180]);await expect(page.getByTestId('country-panel')).toContainText('Northern Test Nation');
   136 | });
-  137 | 
+  137 |
 ```
