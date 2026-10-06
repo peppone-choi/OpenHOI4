@@ -39,3 +39,11 @@ artifact11445156019는1,602,175byte·73members·SHA256 `acd52b982e8265a635e4bfef
 첫 진단의 [부모 수집 원본](../verify/evidence/WP-08-Linux-diagnostic-attempt1/README.md)을 원문 로그/API/원본 ZIP 바이트와 함께 보존했다. 같은 임시8a의 별도 정상 CI37531272956/Core37531272909/Simulation37531273012는 성공했고 원래 DPR fixture를 썼다. 이는 strict 후보 효과나 main 최신 녹색 증거가 아니다. 정상CI와 진단 실패를 따로 기록한다.
 
 후속 ignored 제안은 npm ci→원래 npm test→ko/en 원장 HTML bytes/SHA 기록→build, 구간별19471~19474 포트 및 이전 own PID/LISTEN 종료 관측, 준비·구간·전체 finally 원문과 source-after 보존을 포함한다. LISTEN 관측 실패·runtime identity/cleanup/불변성 실패면 남은 구간은 미실행으로 둔다. 유효한 full M1 단언 실패는 비교 데이터로 보존하면서 이미 계획한 다음 arm을 한 번 진행하고 전체 판정은 실패로 유지한다. 부모는 실제 파일·diff를 검토했고, 모의 실패 주입과 정상 HTML 생산 확인을 요청했다. 새 실행은 아직 미승인·미실행이다.
+
+## 수정 진단의 두 번째 준비 실패
+
+CEO가정확6파일수정안을추가1회대상으로채택했고부모는6d1fdccb3aed29709ceab7acc416a71c731c517d의15개committed/local/shadow바이트와manifest·정확6diff를대조한뒤단1push했다. [두 번째 원본](../verify/evidence/WP-08-Linux-diagnostic-attempt2/README.md)은진단37537984450/11446829246의FAIL을보존한다. 실제Linuxproducer130과controlM036은통과했지만복사config의기본server cwd가바뀌어M1 startup0case로실패했다. candidateM0/M1은미실행이고DPR비교측정은없다. 부모와CEO도config 위치가server 상대경로를바꾸는준비조건을검토에서놓쳤음을기록한다.
+
+이번에는whole source-after·partial/error·남은미실행기록이생성됐다. 원source9139/rawindex/HEAD/semantic/목록/각SHA/diff/status의8지문을직접대조한다. 첫warmup은actualPID/exe/servedJS byte동일과종료후PID없음/LISTEN없음이관측됐고,M1은기동이실패해해당identity를증명하지못했다. TIME_WAIT를첫barebind원인으로확대하지않는다.
+
+[공식 cwd 계약](https://playwright.dev/docs/test-webserver)과source의pinnedSDK를확인하고원client cwd를두generatedconfig의 webServer.cwd로명시하는2파일ignored최소안을검토중이다. 원command·옵션·브라우저·oracle/6DPR/82집합·timeout/retry/skip은유지한다. 같은actualconfig loader/native준비/팩·exe·servedJS와정리·outputguard를먼저검사해야하며추가Linuxpush/run은아직미승인이다. 다른성공CI를이실패나후보효과로대신하지않는다.

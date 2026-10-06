@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-11-verify2\target\wp11-verify2\reference.py", line 51, in <module>
+    assert a['paused']['dto']['state']['tick']==23 and a['paused']['dto']['state']['paused'];assert len(a['paused']['dto']['queue'])==2;assert a['points'][1]['dto']['state']['speed']==5 and a['points'][2]['dto']['state']['speed']==4
+                                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

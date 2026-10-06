@@ -1,0 +1,2 @@
+import pathlib
+p=pathlib.Path('target/wp11-verify2/e2e.py');s=p.read_text();s=s.replace("('m0-e2e','client/playwright.config.ts'),('m1-e2e','client/playwright.m1.config.ts')","('m0-e2e-cwd','playwright.config.ts'),('m1-e2e-cwd','playwright.m1.config.ts')").replace("'client/node_modules/@playwright/test/cli.js'","'node_modules/@playwright/test/cli.js'").replace('cwd=r,','cwd=r/\'client\',');pathlib.Path('target/wp11-verify2/e2e_cwd.py').write_text(s)

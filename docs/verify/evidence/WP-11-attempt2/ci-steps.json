@@ -1,0 +1,1 @@
+[["ci-fetch",["python","target/wp11-verify2/ci_fetch.py"]],["ci-compare",["python","crates/oh_save/tools/check_save_determinism.py","compare","--root","target/wp11-verify2/ci/three"]]]

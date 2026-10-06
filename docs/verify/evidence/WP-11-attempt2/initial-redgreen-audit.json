@@ -1,0 +1,6 @@
+{
+  "members": 10,
+  "archive_sha": "b4fa155394dd256d2a2304a8e799037422fc741e0dc7254dfce4dc16d9350491",
+  "SAV01_red": "unresolved API imports compile failure",
+  "SAV02_red": "unknown --save-out actual native assertion failure"
+}

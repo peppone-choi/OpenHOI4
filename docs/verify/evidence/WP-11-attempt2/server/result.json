@@ -1,0 +1,755 @@
+{
+  "head": "750c2732b00c164ddc252fa26c4984ababd64f35",
+  "url": "http://127.0.0.1:3489/",
+  "server_pid": 31168,
+  "server_command": [
+    "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify2\\target\\debug\\oh_server.exe",
+    "--port",
+    "3489",
+    "--pack-root",
+    "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify2\\target\\wp11-verify2\\server\\packs",
+    "--load-save",
+    "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify2\\target\\wp11-verify2\\native\\run-1\\paused.ohsave"
+  ],
+  "exe_sha256": "33110439e0e313efdcef3818740224e50f2fd9d072f11d56da9e3d1ea4fa34b3",
+  "js_path": "/assets/index-C11MJPRn.js",
+  "served_js_sha256": "d3707b855fe8bbc8d39ce319bbd17685b3e228396791634e91be62b00d86a5de",
+  "save_sha256": "dd0bacad5f4f4a439f22a2e000377765c5f0723a8087a23d2850101266afb712",
+  "pack_hash": "b27b821484f4c43b",
+  "query_command": [
+    "node",
+    "crates/oh_server/tests/save_query.cjs",
+    "http://127.0.0.1:3489/"
+  ],
+  "query_exit": 0,
+  "query": {
+    "pid": 3744,
+    "welcome": {
+      "type": "Welcome",
+      "engine_version": "0.1.0",
+      "protocol_version": "m0-v1",
+      "accepted": true,
+      "reason_key": null,
+      "packs": [
+        {
+          "id": "testland",
+          "version": "0.1.0",
+          "hash": "b27b821484f4c43b"
+        }
+      ],
+      "sessions": [
+        "local"
+      ]
+    },
+    "snapshot": {
+      "type": "Snapshot",
+      "state": {
+        "date": "2000-03-01",
+        "hour": 0,
+        "tick": "48",
+        "paused": true,
+        "speed": 5
+      }
+    },
+    "query": {
+      "type": "WorldResult",
+      "request": "saved-world",
+      "supported": true,
+      "reason_key": null,
+      "world": {
+        "tick": "48",
+        "map_id": "testland",
+        "width": 8,
+        "height": 6,
+        "province_ids": [
+          10,
+          20,
+          30,
+          40,
+          50,
+          60
+        ],
+        "neutral_color": [
+          65,
+          105,
+          145
+        ],
+        "mode_keys": [
+          "map-mode-owner",
+          "map-mode-control",
+          "map-mode-terrain",
+          "map-mode-state"
+        ],
+        "nations": [
+          {
+            "id": 1,
+            "tag": "NTH",
+            "name_key": "nation-testland-north",
+            "color": [
+              40,
+              100,
+              180
+            ],
+            "capital": 10,
+            "government_key": "government-test-republic",
+            "support": [
+              {
+                "name_key": "ideology-test-civic",
+                "value": "0.75"
+              },
+              {
+                "name_key": "ideology-test-local",
+                "value": "0.25"
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "tag": "STH",
+            "name_key": "nation-testland-south",
+            "color": [
+              180,
+              70,
+              40
+            ],
+            "capital": 30,
+            "government_key": "government-test-council",
+            "support": [
+              {
+                "name_key": "ideology-test-civic",
+                "value": "0.75"
+              },
+              {
+                "name_key": "ideology-test-local",
+                "value": "0.25"
+              }
+            ]
+          }
+        ],
+        "states": [
+          {
+            "id": 1,
+            "name_key": "state_testland_north",
+            "provinces": [
+              10,
+              20
+            ],
+            "owner": 1,
+            "population": "1000",
+            "resources": [
+              {
+                "name_key": "resource-steel",
+                "value": "2"
+              }
+            ],
+            "buildings": [
+              {
+                "name_key": "building-industry",
+                "value": "1"
+              }
+            ],
+            "infrastructure": {
+              "base": "1",
+              "final_value": "3.0000000005",
+              "tick": "48",
+              "entries": [
+                {
+                  "id": "0",
+                  "label_key": "infrastructure",
+                  "operation_key": "ledger-base",
+                  "value": "1",
+                  "accumulated": "1",
+                  "source_key": null
+                },
+                {
+                  "id": "1",
+                  "label_key": "a.raw",
+                  "operation_key": "ledger-add",
+                  "value": "0.0000000002",
+                  "accumulated": "1.0000000002",
+                  "source_key": "a.raw"
+                },
+                {
+                  "id": "2",
+                  "label_key": "b.add",
+                  "operation_key": "ledger-add",
+                  "value": "0.5",
+                  "accumulated": "1.5000000002",
+                  "source_key": "b.add"
+                },
+                {
+                  "id": "3",
+                  "label_key": "c.mul",
+                  "operation_key": "ledger-multiply",
+                  "value": "2",
+                  "accumulated": "3.0000000005",
+                  "source_key": "c.mul"
+                }
+              ]
+            }
+          },
+          {
+            "id": 2,
+            "name_key": "state_testland_south",
+            "provinces": [
+              30,
+              40
+            ],
+            "owner": 2,
+            "population": "2000",
+            "resources": [
+              {
+                "name_key": "resource-steel",
+                "value": "0"
+              }
+            ],
+            "buildings": [
+              {
+                "name_key": "building-industry",
+                "value": "0"
+              }
+            ],
+            "infrastructure": {
+              "base": "0",
+              "final_value": "0",
+              "tick": "48",
+              "entries": [
+                {
+                  "id": "0",
+                  "label_key": "infrastructure",
+                  "operation_key": "ledger-base",
+                  "value": "0",
+                  "accumulated": "0",
+                  "source_key": null
+                }
+              ]
+            }
+          }
+        ],
+        "provinces": [
+          {
+            "id": 10,
+            "state": 1,
+            "owner": 1,
+            "controller": 1,
+            "owner_color": [
+              40,
+              100,
+              180
+            ],
+            "controller_color": [
+              40,
+              100,
+              180
+            ],
+            "terrain_key": "plains",
+            "terrain_color": [
+              130,
+              165,
+              95
+            ],
+            "state_color": [
+              140,
+              95,
+              170
+            ]
+          },
+          {
+            "id": 20,
+            "state": 1,
+            "owner": 1,
+            "controller": 2,
+            "owner_color": [
+              40,
+              100,
+              180
+            ],
+            "controller_color": [
+              180,
+              70,
+              40
+            ],
+            "terrain_key": "hills",
+            "terrain_color": [
+              155,
+              135,
+              95
+            ],
+            "state_color": [
+              140,
+              95,
+              170
+            ]
+          },
+          {
+            "id": 30,
+            "state": 2,
+            "owner": 2,
+            "controller": 2,
+            "owner_color": [
+              180,
+              70,
+              40
+            ],
+            "controller_color": [
+              180,
+              70,
+              40
+            ],
+            "terrain_key": "plains",
+            "terrain_color": [
+              130,
+              165,
+              95
+            ],
+            "state_color": [
+              185,
+              155,
+              70
+            ]
+          },
+          {
+            "id": 40,
+            "state": 2,
+            "owner": 2,
+            "controller": 2,
+            "owner_color": [
+              180,
+              70,
+              40
+            ],
+            "controller_color": [
+              180,
+              70,
+              40
+            ],
+            "terrain_key": "hills",
+            "terrain_color": [
+              155,
+              135,
+              95
+            ],
+            "state_color": [
+              185,
+              155,
+              70
+            ]
+          },
+          {
+            "id": 50,
+            "state": null,
+            "owner": null,
+            "controller": null,
+            "owner_color": null,
+            "controller_color": null,
+            "terrain_key": "ocean",
+            "terrain_color": [
+              65,
+              105,
+              145
+            ],
+            "state_color": null
+          },
+          {
+            "id": 60,
+            "state": null,
+            "owner": null,
+            "controller": null,
+            "owner_color": null,
+            "controller_color": null,
+            "terrain_key": "inland_water",
+            "terrain_color": [
+              80,
+              130,
+              175
+            ],
+            "state_color": null
+          }
+        ]
+      }
+    },
+    "command": {
+      "type": "CommandResult",
+      "sequence": "1",
+      "accepted": true,
+      "reason_key": null
+    },
+    "state": {
+      "type": "Snapshot",
+      "state": {
+        "date": "2000-03-01",
+        "hour": 0,
+        "tick": "48",
+        "paused": true,
+        "speed": 2
+      }
+    },
+    "messages": [
+      {
+        "type": "Welcome",
+        "engine_version": "0.1.0",
+        "protocol_version": "m0-v1",
+        "accepted": true,
+        "reason_key": null,
+        "packs": [
+          {
+            "id": "testland",
+            "version": "0.1.0",
+            "hash": "b27b821484f4c43b"
+          }
+        ],
+        "sessions": [
+          "local"
+        ]
+      },
+      {
+        "type": "Notice",
+        "key": "unsupported-create"
+      },
+      {
+        "type": "Snapshot",
+        "state": {
+          "date": "2000-03-01",
+          "hour": 0,
+          "tick": "48",
+          "paused": true,
+          "speed": 5
+        }
+      },
+      {
+        "type": "WorldResult",
+        "request": "saved-world",
+        "supported": true,
+        "reason_key": null,
+        "world": {
+          "tick": "48",
+          "map_id": "testland",
+          "width": 8,
+          "height": 6,
+          "province_ids": [
+            10,
+            20,
+            30,
+            40,
+            50,
+            60
+          ],
+          "neutral_color": [
+            65,
+            105,
+            145
+          ],
+          "mode_keys": [
+            "map-mode-owner",
+            "map-mode-control",
+            "map-mode-terrain",
+            "map-mode-state"
+          ],
+          "nations": [
+            {
+              "id": 1,
+              "tag": "NTH",
+              "name_key": "nation-testland-north",
+              "color": [
+                40,
+                100,
+                180
+              ],
+              "capital": 10,
+              "government_key": "government-test-republic",
+              "support": [
+                {
+                  "name_key": "ideology-test-civic",
+                  "value": "0.75"
+                },
+                {
+                  "name_key": "ideology-test-local",
+                  "value": "0.25"
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "tag": "STH",
+              "name_key": "nation-testland-south",
+              "color": [
+                180,
+                70,
+                40
+              ],
+              "capital": 30,
+              "government_key": "government-test-council",
+              "support": [
+                {
+                  "name_key": "ideology-test-civic",
+                  "value": "0.75"
+                },
+                {
+                  "name_key": "ideology-test-local",
+                  "value": "0.25"
+                }
+              ]
+            }
+          ],
+          "states": [
+            {
+              "id": 1,
+              "name_key": "state_testland_north",
+              "provinces": [
+                10,
+                20
+              ],
+              "owner": 1,
+              "population": "1000",
+              "resources": [
+                {
+                  "name_key": "resource-steel",
+                  "value": "2"
+                }
+              ],
+              "buildings": [
+                {
+                  "name_key": "building-industry",
+                  "value": "1"
+                }
+              ],
+              "infrastructure": {
+                "base": "1",
+                "final_value": "3.0000000005",
+                "tick": "48",
+                "entries": [
+                  {
+                    "id": "0",
+                    "label_key": "infrastructure",
+                    "operation_key": "ledger-base",
+                    "value": "1",
+                    "accumulated": "1",
+                    "source_key": null
+                  },
+                  {
+                    "id": "1",
+                    "label_key": "a.raw",
+                    "operation_key": "ledger-add",
+                    "value": "0.0000000002",
+                    "accumulated": "1.0000000002",
+                    "source_key": "a.raw"
+                  },
+                  {
+                    "id": "2",
+                    "label_key": "b.add",
+                    "operation_key": "ledger-add",
+                    "value": "0.5",
+                    "accumulated": "1.5000000002",
+                    "source_key": "b.add"
+                  },
+                  {
+                    "id": "3",
+                    "label_key": "c.mul",
+                    "operation_key": "ledger-multiply",
+                    "value": "2",
+                    "accumulated": "3.0000000005",
+                    "source_key": "c.mul"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 2,
+              "name_key": "state_testland_south",
+              "provinces": [
+                30,
+                40
+              ],
+              "owner": 2,
+              "population": "2000",
+              "resources": [
+                {
+                  "name_key": "resource-steel",
+                  "value": "0"
+                }
+              ],
+              "buildings": [
+                {
+                  "name_key": "building-industry",
+                  "value": "0"
+                }
+              ],
+              "infrastructure": {
+                "base": "0",
+                "final_value": "0",
+                "tick": "48",
+                "entries": [
+                  {
+                    "id": "0",
+                    "label_key": "infrastructure",
+                    "operation_key": "ledger-base",
+                    "value": "0",
+                    "accumulated": "0",
+                    "source_key": null
+                  }
+                ]
+              }
+            }
+          ],
+          "provinces": [
+            {
+              "id": 10,
+              "state": 1,
+              "owner": 1,
+              "controller": 1,
+              "owner_color": [
+                40,
+                100,
+                180
+              ],
+              "controller_color": [
+                40,
+                100,
+                180
+              ],
+              "terrain_key": "plains",
+              "terrain_color": [
+                130,
+                165,
+                95
+              ],
+              "state_color": [
+                140,
+                95,
+                170
+              ]
+            },
+            {
+              "id": 20,
+              "state": 1,
+              "owner": 1,
+              "controller": 2,
+              "owner_color": [
+                40,
+                100,
+                180
+              ],
+              "controller_color": [
+                180,
+                70,
+                40
+              ],
+              "terrain_key": "hills",
+              "terrain_color": [
+                155,
+                135,
+                95
+              ],
+              "state_color": [
+                140,
+                95,
+                170
+              ]
+            },
+            {
+              "id": 30,
+              "state": 2,
+              "owner": 2,
+              "controller": 2,
+              "owner_color": [
+                180,
+                70,
+                40
+              ],
+              "controller_color": [
+                180,
+                70,
+                40
+              ],
+              "terrain_key": "plains",
+              "terrain_color": [
+                130,
+                165,
+                95
+              ],
+              "state_color": [
+                185,
+                155,
+                70
+              ]
+            },
+            {
+              "id": 40,
+              "state": 2,
+              "owner": 2,
+              "controller": 2,
+              "owner_color": [
+                180,
+                70,
+                40
+              ],
+              "controller_color": [
+                180,
+                70,
+                40
+              ],
+              "terrain_key": "hills",
+              "terrain_color": [
+                155,
+                135,
+                95
+              ],
+              "state_color": [
+                185,
+                155,
+                70
+              ]
+            },
+            {
+              "id": 50,
+              "state": null,
+              "owner": null,
+              "controller": null,
+              "owner_color": null,
+              "controller_color": null,
+              "terrain_key": "ocean",
+              "terrain_color": [
+                65,
+                105,
+                145
+              ],
+              "state_color": null
+            },
+            {
+              "id": 60,
+              "state": null,
+              "owner": null,
+              "controller": null,
+              "owner_color": null,
+              "controller_color": null,
+              "terrain_key": "inland_water",
+              "terrain_color": [
+                80,
+                130,
+                175
+              ],
+              "state_color": null
+            }
+          ]
+        }
+      },
+      {
+        "type": "CommandResult",
+        "sequence": "1",
+        "accepted": true,
+        "reason_key": null
+      },
+      {
+        "type": "Snapshot",
+        "state": {
+          "date": "2000-03-01",
+          "hour": 0,
+          "tick": "48",
+          "paused": true,
+          "speed": 2
+        }
+      }
+    ]
+  },
+  "server_exit": 0
+}

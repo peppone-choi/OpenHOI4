@@ -1,0 +1,19 @@
+[
+ ["npm-ci",["npm.cmd","--prefix","client","ci"]],
+ ["npm-test",["npm.cmd","--prefix","client","test"]],
+ ["npm-build",["npm.cmd","--prefix","client","run","build"]],
+ ["fmt",["cargo","fmt","--check"]],
+ ["clippy",["cargo","clippy","--workspace","--all-targets","--locked","--","-D","warnings"]],
+ ["workspace-test",["cargo","test","--workspace","--locked"]],
+ ["build",["cargo","build","--workspace","--locked"]],
+ ["typecheck",["npm.cmd","--prefix","client","run","typecheck"]],
+ ["npm-license",["npm.cmd","--prefix","client","run","licenses"]],
+ ["cargo-license",["cargo","deny","check","licenses","bans","sources"]],
+ ["docs",["python","tools/check_docs.py"]],
+ ["assets",["python","tools/check_assets.py","--release"]],
+ ["architecture",["python","tools/check_architecture.py"]],
+ ["evidence-tests",["python","-m","unittest","discover","-s","crates/oh_save/tests","-p","test_save_evidence.py","-v"]],
+ ["save-faults",["cargo","test","-p","oh_save","file::tests","--locked","--","--nocapture"]],
+ ["capture",["python","crates/oh_save/tools/check_save_determinism.py","capture","--out","target/wp11-verify2/native"]],
+ ["server-native",["python","crates/oh_server/tests/save_native.py","--capture","target/wp11-verify2/native","--out","target/wp11-verify2/server"]]
+]

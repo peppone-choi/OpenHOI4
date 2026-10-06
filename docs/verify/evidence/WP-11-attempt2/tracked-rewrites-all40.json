@@ -1,0 +1,522 @@
+[
+  {
+    "path": "docs/worklog/evidence/WP-12/chrome-en.png",
+    "before_sha": "4dbf1a80bdc13a354d30da5ad3f1454860b3869e1bff2cf911c54a2e54691d1a",
+    "after_sha": "ad382201e1d1f9812c8661907da92f3de0dc78641e39b1fd630591931157a7af",
+    "content_changed": true,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/chrome-en.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.711634+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:46.575843+00:00",
+      "index_size": 27339,
+      "current_size": 26865
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/chrome-font.json",
+    "before_sha": "2c802b6b064ff837b30030cca7f19905c53678833e5ad84378cd8f47f9831b93",
+    "after_sha": "1e1d8da7b62aa7f24d87cee81f105eeeeb5aea7c628f16405f1cb7d96a31bef0",
+    "content_changed": true,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/chrome-font.json",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.711634+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:46.692361+00:00",
+      "index_size": 767,
+      "current_size": 763
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/chrome-ko.png",
+    "before_sha": "f4066edf3f001328499526b671a656d402c065ec63cf838253cc79b6899c4990",
+    "after_sha": "f1ccba2503e5a6690cfdfa443588d039a60db4dada9456a2d42c104d39d97182",
+    "content_changed": true,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/chrome-ko.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.711634+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:46.418909+00:00",
+      "index_size": 22263,
+      "current_size": 22623
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/chrome-ledger-fixture-en.png",
+    "before_sha": "e0f7d38e5d30071b74db31495732d6f4e8a33ca3e1f4f63f9bbaf66db9bdf7de",
+    "after_sha": "e0f7d38e5d30071b74db31495732d6f4e8a33ca3e1f4f63f9bbaf66db9bdf7de",
+    "content_changed": false,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/chrome-ledger-fixture-en.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.711634+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:48.534928+00:00",
+      "index_size": 59568,
+      "current_size": 59568
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/chrome-ledger-fixture-ko.png",
+    "before_sha": "66207e46a30b4402dad7d95b67ac9d5f1ec6cd83710e6a8bde8002d84ba954c0",
+    "after_sha": "66207e46a30b4402dad7d95b67ac9d5f1ec6cd83710e6a8bde8002d84ba954c0",
+    "content_changed": false,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/chrome-ledger-fixture-ko.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.712635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:48.406928+00:00",
+      "index_size": 50962,
+      "current_size": 50962
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/chromium-en.png",
+    "before_sha": "ea4f37e409c6c300328fee90ae0fa57e299dbf0d89a549f5bb81bb712d5638da",
+    "after_sha": "1b40ca1d58a20dcad43d70be5b6badde89d13c436f7a3e68d14083208435f97d",
+    "content_changed": true,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/chromium-en.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.712635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:52.476217+00:00",
+      "index_size": 27079,
+      "current_size": 26699
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/chromium-font.json",
+    "before_sha": "d3d6a9a4f5cc29a8a62bbea6941aa289f26fc8a70455fd04be43f45f8822fb60",
+    "after_sha": "0be3eb9f080492e80114a9cd3e7116fdfb621319ed2b7383af0606292e785b5d",
+    "content_changed": true,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/chromium-font.json",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.712635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:52.545741+00:00",
+      "index_size": 769,
+      "current_size": 765
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/chromium-ko.png",
+    "before_sha": "79d4f91ff67d53cd2094f0bd8490ebbee2590d641deb2926a81bf40fa08b85bd",
+    "after_sha": "addc11ccfc82fa336ba0610cf927be140af88ff49832d10840c2337c8b7f0cce",
+    "content_changed": true,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/chromium-ko.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.712635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:52.421219+00:00",
+      "index_size": 22147,
+      "current_size": 22498
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/chromium-ledger-fixture-en.png",
+    "before_sha": "eb32c3b381c035d92cd2627d9361d5684aacb7b16c95a25721f98f4bd936f180",
+    "after_sha": "eb32c3b381c035d92cd2627d9361d5684aacb7b16c95a25721f98f4bd936f180",
+    "content_changed": false,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/chromium-ledger-fixture-en.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.712635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:54.232916+00:00",
+      "index_size": 58923,
+      "current_size": 58923
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/chromium-ledger-fixture-ko.png",
+    "before_sha": "8b0b69ad9aff4b188e6bfeab579e851f52a9a96058bfb143a996aa37778c5edd",
+    "after_sha": "8b0b69ad9aff4b188e6bfeab579e851f52a9a96058bfb143a996aa37778c5edd",
+    "content_changed": false,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/chromium-ledger-fixture-ko.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.713635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:54.132914+00:00",
+      "index_size": 50483,
+      "current_size": 50483
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/edge-en.png",
+    "before_sha": "4dbf1a80bdc13a354d30da5ad3f1454860b3869e1bff2cf911c54a2e54691d1a",
+    "after_sha": "7812d45fab094ed35233b6a2301d56fa9f787923330113cd7f4279e716556365",
+    "content_changed": true,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/edge-en.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.714635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:46.821363+00:00",
+      "index_size": 27339,
+      "current_size": 26960
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/edge-font.json",
+    "before_sha": "3ac57ad24617971e141d3158bb24886a07c18a7176abf210856434198f7f7982",
+    "after_sha": "848e456af95c2dc2c9ba97f51351725184e032db09d4c0344e67425f3142f160",
+    "content_changed": true,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/edge-font.json",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.714635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:46.921361+00:00",
+      "index_size": 765,
+      "current_size": 761
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/edge-ko.png",
+    "before_sha": "f4066edf3f001328499526b671a656d402c065ec63cf838253cc79b6899c4990",
+    "after_sha": "c9226db3b1ba58cabc6e0ebf50159b83096b5c61ea586e9771fe00f4f11cc8a0",
+    "content_changed": true,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/edge-ko.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.714635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:46.728363+00:00",
+      "index_size": 22263,
+      "current_size": 22607
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/edge-ledger-fixture-en.png",
+    "before_sha": "e0f7d38e5d30071b74db31495732d6f4e8a33ca3e1f4f63f9bbaf66db9bdf7de",
+    "after_sha": "e0f7d38e5d30071b74db31495732d6f4e8a33ca3e1f4f63f9bbaf66db9bdf7de",
+    "content_changed": false,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/edge-ledger-fixture-en.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.714635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:49.070452+00:00",
+      "index_size": 59568,
+      "current_size": 59568
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/edge-ledger-fixture-ko.png",
+    "before_sha": "66207e46a30b4402dad7d95b67ac9d5f1ec6cd83710e6a8bde8002d84ba954c0",
+    "after_sha": "66207e46a30b4402dad7d95b67ac9d5f1ec6cd83710e6a8bde8002d84ba954c0",
+    "content_changed": false,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/edge-ledger-fixture-ko.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.714635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:48.943449+00:00",
+      "index_size": 50962,
+      "current_size": 50962
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/firefox-en.png",
+    "before_sha": "dfac0a3d9f7ea1f81cfbbce47f6bd4da13b11c99692e7bc9ab4cb6700681a182",
+    "after_sha": "94dcad8bb091ab6ee82cdd8962943e50d6e88e186f2882c6ce4f67e005b0c44a",
+    "content_changed": true,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/firefox-en.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.715637+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:54.737061+00:00",
+      "index_size": 25489,
+      "current_size": 25217
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/firefox-font.json",
+    "before_sha": "0dd44f33b63acfe440537fd2ea4e45ad8b9b69d98211bbe2caa44adb646338a9",
+    "after_sha": "85c7ee61fe3f58da3745542dcd3ebaa85a8d8bdbb0fb0d59038e4cafc4f86344",
+    "content_changed": true,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/firefox-font.json",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.715637+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:54.831060+00:00",
+      "index_size": 760,
+      "current_size": 756
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/firefox-ko.png",
+    "before_sha": "7ce655be3cf95a5dda36d2b03bb925f5b4af8c7b173cccef7a255cd7443eac43",
+    "after_sha": "0a7dfd5c33a001ccca35b9653aea6586c871031bca4afcf3dcffe8dd14601653",
+    "content_changed": true,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/firefox-ko.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.715637+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:54.538442+00:00",
+      "index_size": 22154,
+      "current_size": 22271
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/firefox-ledger-fixture-en.png",
+    "before_sha": "0df4fb112698aedaf0e1a69d6b2107f8e790130e6d2b1d2d666d5bc034186b7a",
+    "after_sha": "0df4fb112698aedaf0e1a69d6b2107f8e790130e6d2b1d2d666d5bc034186b7a",
+    "content_changed": false,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/firefox-ledger-fixture-en.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.715637+00:00",
+      "current_mtime_utc": "2026-10-06T21:57:02.964956+00:00",
+      "index_size": 51797,
+      "current_size": 51797
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/firefox-ledger-fixture-ko.png",
+    "before_sha": "2ac53a26ef5af198a574df315d37f667ef0ffc3901a0cdc0f9823b5ff71bb2db",
+    "after_sha": "2ac53a26ef5af198a574df315d37f667ef0ffc3901a0cdc0f9823b5ff71bb2db",
+    "content_changed": false,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/firefox-ledger-fixture-ko.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.715637+00:00",
+      "current_mtime_utc": "2026-10-06T21:57:02.856831+00:00",
+      "index_size": 44433,
+      "current_size": 44433
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/p06/chrome-malformed-snapshot-ko.png",
+    "before_sha": "0d632466015cddfdd8f4b12145b2e3172255d4b1e8ddabd288828bfd299e36b7",
+    "after_sha": "4430ccd7621de4c7f873d27e5ecfb50ef0ab9f0dea4aa98e415c3a55fdc43c8c",
+    "content_changed": true,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/p06/chrome-malformed-snapshot-ko.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.724635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:46.682362+00:00",
+      "index_size": 27242,
+      "current_size": 27563
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/p06/chrome-malformed-snapshot.json",
+    "before_sha": "32fd26f0c4a0b45c8bddd65b71e2ccd83fea241d3fedf2fc5362db3810641688",
+    "after_sha": "b25fc663356fb465766878bc52dec691deac8a1a7b752d8bc79c571afd7e149e",
+    "content_changed": true,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/p06/chrome-malformed-snapshot.json",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.725635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:46.490910+00:00",
+      "index_size": 295,
+      "current_size": 295
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/p06/chrome-malformed-snapshot.png",
+    "before_sha": "819191a5477c66c6736e3831dd005a39157960fd6f9eb0a2b2db6d87a970d3a7",
+    "after_sha": "c12131f5d1647c5fe20385f2a86ac72192d6bcecb0a2c80d8f8efcd1e48eb638",
+    "content_changed": true,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/p06/chrome-malformed-snapshot.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.725635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:46.561957+00:00",
+      "index_size": 33011,
+      "current_size": 32624
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/p06/chromium-malformed-snapshot-ko.png",
+    "before_sha": "f054ac43ad87939f4ead51a4d0a3420ff36e3ad91e6282a82f0c819d5bb1bc54",
+    "after_sha": "9c41e366c121885342247a05663b31abcebebef670aa495a26f71a86ceac810f",
+    "content_changed": true,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/p06/chromium-malformed-snapshot-ko.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.725635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:52.683740+00:00",
+      "index_size": 27143,
+      "current_size": 27470
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/p06/chromium-malformed-snapshot.json",
+    "before_sha": "32fd26f0c4a0b45c8bddd65b71e2ccd83fea241d3fedf2fc5362db3810641688",
+    "after_sha": "b25fc663356fb465766878bc52dec691deac8a1a7b752d8bc79c571afd7e149e",
+    "content_changed": true,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/p06/chromium-malformed-snapshot.json",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.725635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:52.527741+00:00",
+      "index_size": 295,
+      "current_size": 295
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/p06/chromium-malformed-snapshot.png",
+    "before_sha": "69cbba6724094dd81bbbea731f242cbae8778c71698e42b61d7c536f508b6e4e",
+    "after_sha": "35d568baff39ceb03a592a0183269ff394aecbfdc7288b1ad060f82090c4bc38",
+    "content_changed": true,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/p06/chromium-malformed-snapshot.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.726635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:52.563742+00:00",
+      "index_size": 32647,
+      "current_size": 32264
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/p06/edge-malformed-snapshot-ko.png",
+    "before_sha": "0d632466015cddfdd8f4b12145b2e3172255d4b1e8ddabd288828bfd299e36b7",
+    "after_sha": "4430ccd7621de4c7f873d27e5ecfb50ef0ab9f0dea4aa98e415c3a55fdc43c8c",
+    "content_changed": true,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/p06/edge-malformed-snapshot-ko.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.726635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:47.667364+00:00",
+      "index_size": 27242,
+      "current_size": 27563
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/p06/edge-malformed-snapshot.json",
+    "before_sha": "32fd26f0c4a0b45c8bddd65b71e2ccd83fea241d3fedf2fc5362db3810641688",
+    "after_sha": "b25fc663356fb465766878bc52dec691deac8a1a7b752d8bc79c571afd7e149e",
+    "content_changed": true,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/p06/edge-malformed-snapshot.json",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.727637+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:46.935365+00:00",
+      "index_size": 295,
+      "current_size": 295
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/p06/edge-malformed-snapshot.png",
+    "before_sha": "819191a5477c66c6736e3831dd005a39157960fd6f9eb0a2b2db6d87a970d3a7",
+    "after_sha": "c12131f5d1647c5fe20385f2a86ac72192d6bcecb0a2c80d8f8efcd1e48eb638",
+    "content_changed": true,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/p06/edge-malformed-snapshot.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.727637+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:47.510363+00:00",
+      "index_size": 33011,
+      "current_size": 32624
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/p06/firefox-malformed-snapshot-ko.png",
+    "before_sha": "e59bd2fced31265f2c682aefbbfc010db2efa79cbbae1a88f521256e9eae6df9",
+    "after_sha": "1ecd7de7e32a24bf76ba857316d32ff9279630c01a2e1cf1ab7f9b8b71508430",
+    "content_changed": true,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/p06/firefox-malformed-snapshot-ko.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.727637+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:55.553790+00:00",
+      "index_size": 25435,
+      "current_size": 25568
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/p06/firefox-malformed-snapshot.json",
+    "before_sha": "7c7408992a0b0e01eb526354ca9e5a4d5653edea6d1d26677fe57f7795b115ee",
+    "after_sha": "042fbb3491251bb1c4da7d4fc8b14ce53f15a09f74fb1bb844289b32f3d5ec93",
+    "content_changed": true,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/p06/firefox-malformed-snapshot.json",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.727637+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:55.151112+00:00",
+      "index_size": 275,
+      "current_size": 275
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/p06/firefox-malformed-snapshot.png",
+    "before_sha": "f668093fd120012765095739fa82d6746aababef7189bdb9643eae590091b3d0",
+    "after_sha": "cf5ac9859d01eca527a790611b190dd704f6be569080feaccf4b514f7e0aa776",
+    "content_changed": true,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/p06/firefox-malformed-snapshot.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.727637+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:55.311722+00:00",
+      "index_size": 29142,
+      "current_size": 28859
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/p06/webkit-malformed-snapshot-ko.png",
+    "before_sha": "6d1cec53382461b32f9f33a858f6992d345e7bea939245e914d6956a1e19b615",
+    "after_sha": "ea5568f4841ab362aa75daf204fa18b05838ea96379264f68fe5a3f12cd5fbb4",
+    "content_changed": true,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/p06/webkit-malformed-snapshot-ko.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.731635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:57.520046+00:00",
+      "index_size": 18873,
+      "current_size": 19061
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/p06/webkit-malformed-snapshot.json",
+    "before_sha": "b948c54a302dfad1f8aefe88186adde34fa35d7a7e179555faf68769814b791d",
+    "after_sha": "9dd07b372dc78b4d5b890bf607c89c61b34668c05afad0a9cb34095e90fc83c4",
+    "content_changed": true,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/p06/webkit-malformed-snapshot.json",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.731635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:57.391214+00:00",
+      "index_size": 293,
+      "current_size": 293
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/p06/webkit-malformed-snapshot.png",
+    "before_sha": "247ff97f07687a9a399c1d848089be9106596c7c8aa3c79b25bc39e798e0a62b",
+    "after_sha": "3bf069c22e1c4a669f0ed71e9544726ac06c93c738bc8ce5f2e13744d88157a8",
+    "content_changed": true,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/p06/webkit-malformed-snapshot.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.731635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:57.420213+00:00",
+      "index_size": 23429,
+      "current_size": 23360
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/webkit-en.png",
+    "before_sha": "9d1c8ce1ac21a2dc3526684ab2d2b1a6199607ade6eb30de48ad452dacedb46a",
+    "after_sha": "faeeb7cc79d098ec3bc6622fb7826aaf4db15a9693a6ea4a2c3d49973bb949f7",
+    "content_changed": true,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/webkit-en.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.734636+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:57.029015+00:00",
+      "index_size": 20350,
+      "current_size": 20283
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/webkit-font.json",
+    "before_sha": "2908385360f876d2aa33d8f3572b59a146bbd9020db3f6022a34f29107417b25",
+    "after_sha": "027100aece278e4124cf0eae35dc8ec748407a4eaad9efd16cec70aef858295c",
+    "content_changed": true,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/webkit-font.json",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.734636+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:57.098151+00:00",
+      "index_size": 754,
+      "current_size": 750
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/webkit-ko.png",
+    "before_sha": "961c8e157f10c339ddf9d6c455cb7336b55efab85c24e0a7f3ffbcb4809062ef",
+    "after_sha": "f137ff84e66554b54a0c3ca2484393b94f7fa0402e808d1aa17b522bbf651909",
+    "content_changed": true,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/webkit-ko.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.734636+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:56.975015+00:00",
+      "index_size": 17175,
+      "current_size": 17360
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/webkit-ledger-fixture-en.png",
+    "before_sha": "665aca79e37af5d1396be9981ff8cab93ea066eaa204c894e4ea36a6c95da32d",
+    "after_sha": "665aca79e37af5d1396be9981ff8cab93ea066eaa204c894e4ea36a6c95da32d",
+    "content_changed": false,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/webkit-ledger-fixture-en.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.735637+00:00",
+      "current_mtime_utc": "2026-10-06T21:57:00.239508+00:00",
+      "index_size": 39788,
+      "current_size": 39788
+    }
+  },
+  {
+    "path": "docs/worklog/evidence/WP-12/webkit-ledger-fixture-ko.png",
+    "before_sha": "a8c8778db50ca1d3ef46d1654bcc8d165ab5c1e3bd6e01891b634f4cf76adf6d",
+    "after_sha": "a8c8778db50ca1d3ef46d1654bcc8d165ab5c1e3bd6e01891b634f4cf76adf6d",
+    "content_changed": false,
+    "stat": {
+      "path": "docs/worklog/evidence/WP-12/webkit-ledger-fixture-ko.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.735637+00:00",
+      "current_mtime_utc": "2026-10-06T21:57:00.088462+00:00",
+      "index_size": 32871,
+      "current_size": 32871
+    }
+  }
+]

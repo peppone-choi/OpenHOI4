@@ -1,0 +1,286 @@
+{
+  "index_version": 2,
+  "entry_count": 9175,
+  "stat_differences": [
+    {
+      "path": "docs/worklog/evidence/WP-12/chrome-en.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.711634+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:46.575843+00:00",
+      "index_size": 27339,
+      "current_size": 26865
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/chrome-font.json",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.711634+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:46.692361+00:00",
+      "index_size": 767,
+      "current_size": 763
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/chrome-ko.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.711634+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:46.418909+00:00",
+      "index_size": 22263,
+      "current_size": 22623
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/chrome-ledger-fixture-en.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.711634+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:48.534928+00:00",
+      "index_size": 59568,
+      "current_size": 59568
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/chrome-ledger-fixture-ko.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.712635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:48.406928+00:00",
+      "index_size": 50962,
+      "current_size": 50962
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/chromium-en.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.712635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:52.476217+00:00",
+      "index_size": 27079,
+      "current_size": 26699
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/chromium-font.json",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.712635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:52.545741+00:00",
+      "index_size": 769,
+      "current_size": 765
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/chromium-ko.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.712635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:52.421219+00:00",
+      "index_size": 22147,
+      "current_size": 22498
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/chromium-ledger-fixture-en.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.712635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:54.232916+00:00",
+      "index_size": 58923,
+      "current_size": 58923
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/chromium-ledger-fixture-ko.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.713635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:54.132914+00:00",
+      "index_size": 50483,
+      "current_size": 50483
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/edge-en.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.714635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:46.821363+00:00",
+      "index_size": 27339,
+      "current_size": 26960
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/edge-font.json",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.714635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:46.921361+00:00",
+      "index_size": 765,
+      "current_size": 761
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/edge-ko.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.714635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:46.728363+00:00",
+      "index_size": 22263,
+      "current_size": 22607
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/edge-ledger-fixture-en.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.714635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:49.070452+00:00",
+      "index_size": 59568,
+      "current_size": 59568
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/edge-ledger-fixture-ko.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.714635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:48.943449+00:00",
+      "index_size": 50962,
+      "current_size": 50962
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/firefox-en.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.715637+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:54.737061+00:00",
+      "index_size": 25489,
+      "current_size": 25217
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/firefox-font.json",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.715637+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:54.831060+00:00",
+      "index_size": 760,
+      "current_size": 756
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/firefox-ko.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.715637+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:54.538442+00:00",
+      "index_size": 22154,
+      "current_size": 22271
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/firefox-ledger-fixture-en.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.715637+00:00",
+      "current_mtime_utc": "2026-10-06T21:57:02.964956+00:00",
+      "index_size": 51797,
+      "current_size": 51797
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/firefox-ledger-fixture-ko.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.715637+00:00",
+      "current_mtime_utc": "2026-10-06T21:57:02.856831+00:00",
+      "index_size": 44433,
+      "current_size": 44433
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/p06/chrome-malformed-snapshot-ko.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.724635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:46.682362+00:00",
+      "index_size": 27242,
+      "current_size": 27563
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/p06/chrome-malformed-snapshot.json",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.725635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:46.490910+00:00",
+      "index_size": 295,
+      "current_size": 295
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/p06/chrome-malformed-snapshot.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.725635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:46.561957+00:00",
+      "index_size": 33011,
+      "current_size": 32624
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/p06/chromium-malformed-snapshot-ko.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.725635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:52.683740+00:00",
+      "index_size": 27143,
+      "current_size": 27470
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/p06/chromium-malformed-snapshot.json",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.725635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:52.527741+00:00",
+      "index_size": 295,
+      "current_size": 295
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/p06/chromium-malformed-snapshot.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.726635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:52.563742+00:00",
+      "index_size": 32647,
+      "current_size": 32264
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/p06/edge-malformed-snapshot-ko.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.726635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:47.667364+00:00",
+      "index_size": 27242,
+      "current_size": 27563
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/p06/edge-malformed-snapshot.json",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.727637+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:46.935365+00:00",
+      "index_size": 295,
+      "current_size": 295
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/p06/edge-malformed-snapshot.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.727637+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:47.510363+00:00",
+      "index_size": 33011,
+      "current_size": 32624
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/p06/firefox-malformed-snapshot-ko.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.727637+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:55.553790+00:00",
+      "index_size": 25435,
+      "current_size": 25568
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/p06/firefox-malformed-snapshot.json",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.727637+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:55.151112+00:00",
+      "index_size": 275,
+      "current_size": 275
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/p06/firefox-malformed-snapshot.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.727637+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:55.311722+00:00",
+      "index_size": 29142,
+      "current_size": 28859
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/p06/webkit-malformed-snapshot-ko.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.731635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:57.520046+00:00",
+      "index_size": 18873,
+      "current_size": 19061
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/p06/webkit-malformed-snapshot.json",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.731635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:57.391214+00:00",
+      "index_size": 293,
+      "current_size": 293
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/p06/webkit-malformed-snapshot.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.731635+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:57.420213+00:00",
+      "index_size": 23429,
+      "current_size": 23360
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/webkit-en.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.734636+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:57.029015+00:00",
+      "index_size": 20350,
+      "current_size": 20283
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/webkit-font.json",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.734636+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:57.098151+00:00",
+      "index_size": 754,
+      "current_size": 750
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/webkit-ko.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.734636+00:00",
+      "current_mtime_utc": "2026-10-06T21:56:56.975015+00:00",
+      "index_size": 17175,
+      "current_size": 17360
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/webkit-ledger-fixture-en.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.735637+00:00",
+      "current_mtime_utc": "2026-10-06T21:57:00.239508+00:00",
+      "index_size": 39788,
+      "current_size": 39788
+    },
+    {
+      "path": "docs/worklog/evidence/WP-12/webkit-ledger-fixture-ko.png",
+      "stored_index_mtime_utc": "2026-10-06T21:52:12.735637+00:00",
+      "current_mtime_utc": "2026-10-06T21:57:00.088462+00:00",
+      "index_size": 32871,
+      "current_size": 32871
+    }
+  ]
+}

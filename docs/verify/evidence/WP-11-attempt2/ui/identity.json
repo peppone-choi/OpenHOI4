@@ -1,0 +1,19 @@
+{
+  "pid": 32816,
+  "exe": "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify2\\target\\debug\\oh_server.exe",
+  "exe_sha": "33110439e0e313efdcef3818740224e50f2fd9d072f11d56da9e3d1ea4fa34b3",
+  "cmd": [
+    "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify2\\target\\debug\\oh_server.exe",
+    "--port",
+    "3800",
+    "--pack-root",
+    "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify2\\target\\wp11-verify2\\ui\\packs",
+    "--load-save",
+    "E:\\openhoi\\.orchestrator\\wt\\WP-11-verify2\\target\\wp11-verify2\\own-native\\paused.ohsave"
+  ],
+  "url": "http://127.0.0.1:3800/",
+  "js": "/assets/index-C11MJPRn.js",
+  "js_sha": "d3707b855fe8bbc8d39ce319bbd17685b3e228396791634e91be62b00d86a5de",
+  "save_sha": "2d80b465f35ccdfb671e87e2f932ba500e1105b699df849b4842b763b82ddef1",
+  "query_exit": 1
+}
