@@ -15,10 +15,10 @@
 | WP | 상태 | 브랜치·worktree | 다음 행동 |
 |---|---|---|---|
 | WP-00 | CLI FAIL, 앱 호출 시험 정상 종료 | orch/selftest와 전용 worktree 삭제 | CLI 실패를 성공으로 바꾸지 않음 |
-| WP-01 | 검증 PASS·코드 병합, main CI 대기 | wp/01-skeleton; E:/openhoi/.orchestrator/wt/WP-01 | 새 P-05 검증 채팅 결과와 branch CI를 확인 |
-| WP-02 | 미착수, 프롬프트 준비 | wp/02-core 예정 | WP-01 통합 뒤 WP-03과 연달아 시작 |
-| WP-03 | 미착수, 프롬프트 준비 | wp/03-data 예정 | WP-01 통합 뒤 WP-02와 연달아 시작 |
-| WP-06 | 문서 준비, 선행 대기 | main | WP-01 통합 뒤 마무리·새 독립 검증 |
+| WP-01 | 통합됨 | wp/01-skeleton; E:/openhoi/.orchestrator/wt/WP-01 | 새 P-05 검증 채팅 결과와 branch CI를 확인 |
+| WP-02 | 구현 착수 준비 | wp/02-core 예정 | WP-01 통합 뒤 WP-03과 연달아 시작 |
+| WP-03 | 구현 착수 준비 | wp/03-data 예정 | WP-01 통합 뒤 WP-02와 연달아 시작 |
+| WP-06 | 검증 대기 | main | WP-01 통합 뒤 마무리·새 독립 검증 |
 | WP-04 | 미착수, 프롬프트 준비 | wp/04-simulation 예정 | WP-02·WP-03 통합 뒤 시작 |
 | WP-05 | 미착수, 프롬프트 준비 | wp/05-network 예정 | WP-04 통합 뒤 시작 |
 
@@ -70,3 +70,5 @@
 WP-01 구현은 5f5da6273d7177f655ebaaaf4ef763b741920c7d로 정상 종료했다. 독립 검증 채팅 01a11046-cfca-7441-b040-dd1c8fc1ec65(hostId local)가 E:/openhoi/.orchestrator/wt/WP-01-verify detached worktree에서 실행 중이다. 검증 전 HEAD·추적 파일 목록은 .orchestrator/evidence/WP-01.verify.*-before에 저장했다. branch를 원격에 푸시하여 CI 실행을 시작했다.
 
 WP-01 독립 검증 PASS를 docs/verify/WP-01.md와 evidence/WP-01에 저장했다. 검증 전후 무변경을 직접 확인하고 main에 병합했다. 로컬 cargo test/npm ci/npm test/check_docs는 통과했다. 원격 main CI가 녹색이 된 뒤 WP-02·WP-03을 시작한다. 사용자 요구의 웹 GPU 렌더링은 WebGPU 우선·WebGL2 대체 경로로 WP-08/M1에 기록했다.
+
+WP-01 main CI https://github.com/peppone-choi/OpenHOI4/actions/runs/37435480879 (c662cfd) 전체 success를 확인했다. WP-02·WP-03 구현과 WP-06 독립 검증을 다음 단계로 시작한다. 앱 채팅 ID는 .orchestrator/evidence/app-threads.json에 이어 기록한다.
