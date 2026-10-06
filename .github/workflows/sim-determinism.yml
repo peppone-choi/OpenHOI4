@@ -1,0 +1,55 @@
+name: Simulation determinism
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  simulation:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+      - name: Install pinned Rust toolchain
+        run: rustup toolchain install 1.99.0 --profile minimal --component rustfmt --component clippy
+      - run: cargo fmt --check
+      - run: cargo clippy -p oh_sim -p oh_cli --all-targets --locked -- -D warnings
+      - run: cargo test -p oh_sim -p oh_cli --locked
+      - name: Test evidence gate failures
+        run: python -m unittest discover -s crates/oh_sim/tests -p test_sim_determinism.py -v
+      - name: Run actual simulation twice
+        run: python crates/oh_sim/tools/check_sim_determinism.py capture --out target/sim-determinism
+      - name: Upload simulation hashes and repeated outputs for this OS
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: sim-hash-${{ matrix.os }}
+          path: target/sim-determinism/
+          if-no-files-found: error
+          archive: true
+
+  compare-simulation-hashes:
+    needs: simulation
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          pattern: sim-hash-*
+          path: sim-hashes
+          merge-multiple: false
+      - name: Require two matching actual runs from each of all three OS
+        run: python crates/oh_sim/tools/check_sim_determinism.py compare --root sim-hashes

@@ -1,0 +1,5 @@
+# Original M0 time configuration; tentative pacing from 02 §5.3.
+# No economic, military, political or historical coefficients.
+[time]
+speed_ms_per_tick = [500, 200, 80, 25, 0]
+initial_speed = 1

@@ -11,3 +11,7 @@ workspace = true
 [dependencies]
 oh_ai.workspace = true
 oh_save.workspace = true
+oh_sim.workspace = true
+oh_data.workspace = true
+serde = { version = "=1.0.229", features = ["derive"] }
+toml = "=1.1.6"

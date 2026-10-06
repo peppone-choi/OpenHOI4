@@ -1,0 +1,2 @@
+actual simulation: 1000 ticks, seed 1, two runs: ff921fd8148e699d
+exit_code=0
