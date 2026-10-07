@@ -1,0 +1,58 @@
+{
+  "head": "de0e53058c92d91a6a0b6c30805a6b2ea77dde9d",
+  "judgement": "PASS",
+  "report": "E:\\openhoi\\docs\\verify\\WP-13.M2-r2.attempt2.md",
+  "parent_full_raw_invariance": true,
+  "verification_invariance_valid": true,
+  "snapshot_differences": [],
+  "raw_index_bytes_identical": true,
+  "manifest_files_checked": 5769,
+  "ZIP_members_checked": 5770,
+  "mismatches": 0,
+  "ZIP_sha256": "000e9801325cda84f73590ad70cd3365c11edac64bfc2e298426afa426e06978",
+  "ZIP_bytes": 29877804,
+  "actual_final_text_equal": true,
+  "parent_originals": [
+    {
+      "member": "actual-final-api.json",
+      "bytes": 16850,
+      "sha256": "767c037c657b9e72f7a4f3ba298946c65e314c96b8bbfa3c144fea449bb3cd84"
+    },
+    {
+      "member": "actual-prompt.md",
+      "bytes": 11919,
+      "sha256": "c505282e1eaf7c1af3e55e47f7bdba3b21dcf466186ce32fb7a1964c89368ac8"
+    },
+    {
+      "member": "parent-before.json",
+      "bytes": 3672381,
+      "sha256": "a93c737ae623873d3b700eb1082612e13f5f480410444b222ea3cd11ad0b3f7e"
+    },
+    {
+      "member": "parent-before.index",
+      "bytes": 1362757,
+      "sha256": "884679ba36adea985dc1a3288bf281758912a91ebd0966aec112077b6abe8937"
+    },
+    {
+      "member": "parent-after.json",
+      "bytes": 3672381,
+      "sha256": "a93c737ae623873d3b700eb1082612e13f5f480410444b222ea3cd11ad0b3f7e"
+    },
+    {
+      "member": "parent-after.index",
+      "bytes": 1362757,
+      "sha256": "884679ba36adea985dc1a3288bf281758912a91ebd0966aec112077b6abe8937"
+    },
+    {
+      "member": "producer-SHA256SUMS.json",
+      "bytes": 1256081,
+      "sha256": "402dbd6883741d7d7c0e90c4f71655fd9660fe11e02e60746fc46654d794f522"
+    },
+    {
+      "member": "producer-ZIP-IDENTITY.json",
+      "bytes": 1365,
+      "sha256": "0b6a3acb7290247c3bbc6432a0c17715561e2e75281b6d0bd7cbcad4153438ca"
+    }
+  ],
+  "parent_archive_sha256": "d00faeb74a55956269d6eca38460c1a8727be713d11298779f0cce3026a9c97e"
+}

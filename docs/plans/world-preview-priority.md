@@ -22,3 +22,5 @@ CEO가 실제 Breaking Point의 별도 native desktop/PID·PrintWindow·전역 a
 preview 두 구현의 실제 base는 `ea63081e0b79369227c99384922db80c6ef09fb1`이다. 마커 PNG/원문은 부모가 세계 지도 담당에게 정확 leaf 경로·bytes/SHA로 인계한다. 세계 지도 담당이 ASSETS 등록과 화면 연결을 한다. 실제 사용자 원문·create payload/prompt/result·첫 active 관측은 `.orchestrator/evidence/M2-r2-resume/`에 보존했다. 고유 통합WP14·원W1/W2 전체 통합0·M2 게이트 미판정은 유지한다. preview 작업을 원 M2 병렬 묶음 통합으로 세지 않는다.
 
 원작 지도·아이콘·국기·상징·파일·스크립트·수치표 복사와 tracing은 금지다. 원Testland/M0/M1·골든·저장 fixture·기존 codec/워크플로·D/OPEN 상태를 보존한다. 새 역사 국가·소유권·경제·전쟁 규칙과 HUD 권위 명령은 범위 밖이다. 별도 정확 checkpoint의 새 독립 시각 검수와 source 불변성을 얻고 일반 M5 게이트 완료와 구별한다.
+
+최신 사용자 프로빈스 형상 요청은 공개 플레이 화면에서 지역별 크기·장축·굴곡·산맥/강/해안/도시 주변 분할 원칙을 출처 URL과 함께 관찰하는 범위로 인수했다. 원 경계 좌표/파일 복사·tracing 없이 실제 생성 경계는 독립 지리·DEM/하천 자료에 근거해 개선한다. e209의 균일 nearest-seed 화면은 [첫 실제 checkpoint](evidence/world-preview-checkpoint-e209/README.md)로 보존하고 최종 형상으로 확정하지 않는다. 임의 굴곡 noise로 지리 근거를 대신하지 않으며 같은 축척 지역의 전후 실제 렌더링·연결성/조각/인접/재생성 hash를 대조한다. 이미지 편집으로 모더 부담을 줄이자는 별도 질문은 의견 검토이며 제품/schema 계약을 변경하지 않는다.

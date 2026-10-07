@@ -1,6 +1,14 @@
 # M2-r1 / M2-r2 증거와 실제 통합 상태
 
-현재 M2-r2: WP-24/17 담당 범위는 source164f 독립 PASS·부모 P-07·정확 mainf44 5CI/21job·원/current 실제3OS artifact 대조로 통합됨이다. 고유WP14, 원W1전체0/W2전체0/M2게이트없음. WP-13은 clean ff78의 새 독립 유효 FAIL 두 건을 보존한 뒤 P-06-1 수정 중이며 WP-25와 W2는 선행 인수 대기다. 아래 M2-r1 기록은 원 실패/소스별 역사로 보존한다.
+현재 M2-r2: WP-24/17 담당 범위는 source164f 독립 PASS·부모 P-07·정확 mainf44 5CI/21job·원/current 실제3OS artifact 대조로 통합됨이다. 고유WP14, 원W1전체0/W2전체0/M2게이트없음. WP-13은 원ff78의 유효 FAIL 두 건을 보존하고 P-06 source de0의 새 독립 P-05-2 담당 범위 PASS를 받았다. 부모 P-07·같은 main 기존5+Trigger CI·실제3OS 전에는 통합으로 세지 않는다. 최신 사용자 우선순위는 세계 지도·프로빈스·메인 HUD·실제3D 샘플 화면이며 새 기능 연결은 화면 확인 후다. 아래 M2-r1 기록은 원 실패/소스별 역사로 보존한다.
+
+## 새 WP-13 PASS와 세계 화면 체크포인트
+
+WP-13 P-06-1 source `de0e53058c92d91a6a0b6c30805a6b2ea77dde9d`는 명시 소유7파일만 바꿨다. [원 producer](../worklog/evidence/WP-13-M2-r2-P06-1/README.md)와 [새 독립 P-05 전문](../verify/WP-13.M2-r2.attempt2.md)을 보존했다. 부모가 최초/최종9951 tracked 전체SHA·HEAD·semantic/raw index·diff/status 불변과 raw `884679ba36adea985dc1a3288bf281758912a91ebd0966aec112077b6abe8937` byte동일, MF5769/ZIP5770 전수 불일치0를 확인했다. 원 ZIP29877804bytes/SHA `000e9801325cda84f73590ad70cd3365c11edac64bfc2e298426afa426e06978`이며 실제 API final11897chars는 target fullreport와 구분한다. Linux/macOS synthetic predicate를 실제3OS로 세지 않는다. 원ff78 FAIL과 준비 오류를 보존한다.
+
+세계/HUD 첫 `e209d0e161ef836cd4fc97b3dc0038ad280e345f`와 실제3D를 연결한 `a28f49c03f572a637aa699ca292810c9c9117896`의 [세계 화면](evidence/world-preview-checkpoint-e209/README.md)·[실제3D 화면](evidence/world-preview-checkpoint-a28/README.md)을 사용자에게 전달했다. 각각 원본16파일/ZIP17 및15파일/ZIP16 byte/SHA 불일치0다. [임시 에셋 원 producer](../worklog/evidence/PREVIEW-MARKERS-M2-r2-first/README.md)는 imagegen PNG 원본과 procedural GLB 원본을 분리 보존한다. 지도에는 승인된 GLB leaf만 인수했고 raster branch 전체를 병합하지 않았다.
+
+실제 로컬 URL은 `http://127.0.0.1:4317/?world-preview=1`, 구현 worktree의 자기 Vite PID33284이며 계속 수정 중인 미리보기다. 원 체크포인트 PNG는 고정 증거다. a28 독립 검수 앱은 아직 진행 중이며 기존 현지화 검사에서 HUD 키 catalog 누락을 발견했다. 최종 FAIL/PASS와 봉인을 기다리며 checker·원 테스트를 약하게 만들지 않는다. 후속 지도 형상 개선은 독립 NaturalEarth 하천·일부 NOAA 고도 자료를 반영 중이고 전세계 DEM·도시/능선 정밀도 완성을 주장하지 않는다. 원작 공개 플레이 화면은 분할 원칙 관찰만 허용한다. 모든 UI 검수는 자기 headless browser/PID/profile만 사용한다.
 
 2026-10-07, 원 W1-a P-07 수정 단계. WP-24 merge `0c58e4f8c78c1485cfee4ad9c7c4fe1c83b82898` 뒤 WP-17 merge `9a2302540cbe29610d052ad9286e3b8f74939933`를 만들었다. ASSETS 기존30행 원 bytes를 유지하고 서로 다른21+21행만 합집합으로 병합했다. 제품 코드 판단 충돌은 없었다. exact `500ba0f91cc53ed10660fca14294d4deb5a146d4` 통합 검사에서 npm ci/test/build·fmt·clippy는0, workspace는101이었다. 변경 팩 시험이 en에만 새 키를 추가하여 새 presentFTL parity 검사가 ko 누락을 거부했다. [원 P-07 실패](evidence/M2-r1-W1a-P07-500/README.md)의15파일 bytes를 보존했고 남은24명령은 미실행이다. WP-17에 같은 ko 키를 추가하는 유효 시험 입력 보완만 인계했으며 모든 원 단언·codec·validator·frozen fixture를 유지한다. 새 exact P-05/P-07/같은 main CI 전에는 통합 완료로 기록하지 않는다. W1 전체 통합 0개, W2 전체 통합 0개, M2 게이트 판정 없음. 소묶음 W1-a를 C-02의 별도 묶음으로 세지 않는다.
 

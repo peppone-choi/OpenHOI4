@@ -1,0 +1,84 @@
+{
+  "head": "a28f49c03f572a637aa699ca292810c9c9117896",
+  "scope": "Actual producer world/HUD/3D checkpoint, prior shape before geography refinement; independent verification/full source integration not claimed",
+  "files": [
+    {
+      "path": "world.png",
+      "bytes": 257678,
+      "sha256": "baf09a8a3172c346bfff2c81c753b32cede660774a97642dadbc52c1b953f7ab"
+    },
+    {
+      "path": "europe.png",
+      "bytes": 166301,
+      "sha256": "1dc66cb4575c709b8538e0804d859dfcf421f7aaa56cd5ea0b4676ea2f1b2ddc"
+    },
+    {
+      "path": "browser-capture.json",
+      "bytes": 10323,
+      "sha256": "e91479c9f2c91a098d93d57d823492b2ea10aa41b97a5b06a318e21f43c557c8"
+    },
+    {
+      "path": "browser-process.json",
+      "bytes": 2274,
+      "sha256": "128a04c355c87d232a6e059262bd777dd91468d845c448ff83cbf1e2ad6fe83f"
+    },
+    {
+      "path": "server-process.json",
+      "bytes": 209,
+      "sha256": "4491b23dded3ad271e7e945d59bcb0c4909c3f9ef98171ce82a1d660872b69ff"
+    },
+    {
+      "path": "capture-3d-checkpoint.log",
+      "bytes": 1224,
+      "sha256": "76afc9e99a8dfeee51abe0d6f78696eaa66118224a7ab4dc028d4b6fc39fea19"
+    },
+    {
+      "path": "npm-test-3d.log",
+      "bytes": 633,
+      "sha256": "ab81593efa0e0a660d43d6bc6e45a813fe480aaf1280a45e5979665040f09d58"
+    },
+    {
+      "path": "build-3d.log",
+      "bytes": 796,
+      "sha256": "c673825e403cf93d7e17206344f381f9785c19cf3b9554b7c1014fa72c3837ad"
+    },
+    {
+      "path": "units3d-red.log",
+      "bytes": 874,
+      "sha256": "da3fa8c7648ad0fbc0855313f427f91477129aa1e2c6e58624f9e089d7cc0314"
+    },
+    {
+      "path": "units3d-green.log",
+      "bytes": 223,
+      "sha256": "001c54f57de4685488ad3e5318d3b6593420c282db65e00c8ab5a53dee8bd0f3"
+    },
+    {
+      "path": "dem-red.log",
+      "bytes": 1263,
+      "sha256": "bc74286da26701d37716971219f312cfa2847b2e780519512cc261d17671935c"
+    },
+    {
+      "path": "dem-green.log",
+      "bytes": 105,
+      "sha256": "493bf660c1f255fb236f4ffdebf04898fa4384806f555207504e82504f42a878"
+    },
+    {
+      "path": "rust-checks.json",
+      "bytes": 2168,
+      "sha256": "a73eb11fdf5ba461fcaf14ed805f74cccc611d686e6504cadd884c3348d65c6e"
+    },
+    {
+      "path": "hash-365-a.log",
+      "bytes": 1056,
+      "sha256": "1ebe9f92a4faac716c12140baf86b0158614b3a4da007baffa8b06838117151f"
+    },
+    {
+      "path": "hash-365-b.log",
+      "bytes": 186,
+      "sha256": "98694f53183feab1fd7a1fbc04c46278540e86d35183dbece71f1e17bb825e06"
+    }
+  ],
+  "ZIP_members": 16,
+  "ZIP_sha256": "93451c7f00cc9f58067517bdea85b4e91a743e873cd741b0341ae705616b3efb",
+  "mismatches": 0
+}
