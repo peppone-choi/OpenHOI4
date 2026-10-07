@@ -49,6 +49,63 @@ pub struct TimeState {
     pub paused: bool,
     pub speed: u8,
 }
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, TS)]
+pub struct NationFlagsView {
+    pub nation: u16,
+    pub keys: Vec<String>,
+}
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, TS)]
+#[serde(tag = "type")]
+pub enum EndCauseView {
+    Date,
+    Condition,
+    Explicit { source: String },
+}
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, TS)]
+pub struct EndView {
+    pub tick: String,
+    pub date: String,
+    pub hour: u8,
+    pub causes: Vec<EndCauseView>,
+}
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, TS)]
+pub struct TriggerView {
+    pub definitions_hash: String,
+    pub flags: Vec<NationFlagsView>,
+    pub ended: Option<EndView>,
+}
+impl TriggerView {
+    pub fn from_sim(sim: &oh_sim::Simulation) -> Option<Self> {
+        let t = sim.trigger_state()?;
+        Some(Self {
+            definitions_hash: format!("{:016x}", t.definitions_hash),
+            flags: t
+                .flags
+                .iter()
+                .map(|(id, keys)| NationFlagsView {
+                    nation: *id,
+                    keys: keys.clone(),
+                })
+                .collect(),
+            ended: t.ended.as_ref().map(|e| EndView {
+                tick: e.tick.to_string(),
+                date: format!("{:04}-{:02}-{:02}", e.date.year, e.date.month, e.date.day),
+                hour: e.hour,
+                causes: e
+                    .causes
+                    .iter()
+                    .map(|c| match c {
+                        oh_sim::trigger::EndCause::Date => EndCauseView::Date,
+                        oh_sim::trigger::EndCause::Condition => EndCauseView::Condition,
+                        oh_sim::trigger::EndCause::Explicit(source) => EndCauseView::Explicit {
+                            source: source.clone(),
+                        },
+                    })
+                    .collect(),
+            }),
+        })
+    }
+}
 impl From<&oh_sim::State> for TimeState {
     fn from(state: &oh_sim::State) -> Self {
         Self {
@@ -63,6 +120,12 @@ impl From<&oh_sim::State> for TimeState {
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, TS)]
 #[serde(tag = "type")]
 pub enum ServerMessage {
+    TriggerResult {
+        request: String,
+        supported: bool,
+        reason_key: Option<String>,
+        trigger: Option<TriggerView>,
+    },
     Welcome {
         engine_version: String,
         protocol_version: String,
@@ -116,6 +179,10 @@ pub fn typescript() -> String {
         TimeCommand::decl(&ts_rs::Config::default()),
         PackInfo::decl(&ts_rs::Config::default()),
         TimeState::decl(&ts_rs::Config::default()),
+        NationFlagsView::decl(&ts_rs::Config::default()),
+        EndCauseView::decl(&ts_rs::Config::default()),
+        EndView::decl(&ts_rs::Config::default()),
+        TriggerView::decl(&ts_rs::Config::default()),
         LedgerRow::decl(&ts_rs::Config::default()),
         LedgerView::decl(&ts_rs::Config::default()),
         SupportView::decl(&ts_rs::Config::default()),

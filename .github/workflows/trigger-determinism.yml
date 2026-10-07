@@ -1,0 +1,50 @@
+name: Trigger determinism
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  trigger:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.11'
+      - name: Install pinned Rust
+        run: rustup toolchain install 1.99.0 --profile minimal --component rustfmt --component clippy
+      - run: cargo fmt --check
+      - run: cargo clippy -p oh_data -p oh_sim -p oh_save --all-targets --locked -- -D warnings
+      - run: cargo test -p oh_data -p oh_sim -p oh_save --locked
+      - name: Actual repeat saves, active/end/tick0/empty/paused condition and fresh native resumes
+        run: python crates/oh_sim/tools/check_trigger_determinism.py capture --out target/trigger-determinism
+      - name: Comparer rejection predicates (synthetic copies, not additional actual OS evidence)
+        run: python -m unittest discover -s crates/oh_sim/tests -p test_trigger_evidence.py -v
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: trigger-${{ matrix.os }}
+          path: target/trigger-determinism/
+          if-no-files-found: error
+          archive: true
+  compare:
+    needs: trigger
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c
+        with:
+          pattern: trigger-*
+          path: trigger-evidence
+          merge-multiple: false
+      - name: Require same clean HEAD, original bytes, full state and actual native exits from three OS
+        run: python crates/oh_sim/tools/check_trigger_determinism.py compare --root trigger-evidence

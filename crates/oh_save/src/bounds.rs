@@ -266,7 +266,7 @@ pub fn body_version(bytes: &[u8], limits: &Limits, version: u16) -> Result<()> {
             r.number(64)?;
         }
     }
-    if version == 3 {
+    if version == 3 || version == 4 {
         for _ in 0..r.entries(limits.map_entries_max)? {
             r.number(32)?;
             for _ in 0..r.entries(limits.map_entries_max)? {
@@ -277,6 +277,51 @@ pub fn body_version(bytes: &[u8], limits: &Limits, version: u16) -> Result<()> {
                 }
                 for _ in 0..4 {
                     r.number(64)?;
+                }
+            }
+        }
+    }
+    if version == 4 {
+        r.boolean()?; // movement presence
+        r.boolean()?; // explicit strait presence
+        for _ in 0..r.entries(limits.queue_max_entries)? {
+            r.number(64)?;
+            r.number(16)?;
+            r.number(64)?;
+            match r.tag(4)? {
+                0 => {
+                    r.boolean()?;
+                }
+                1 => {
+                    r.byte()?;
+                }
+                2 => {
+                    r.number(32)?;
+                    r.number(16)?;
+                }
+                3 => {
+                    r.number(32)?;
+                }
+                4 => {
+                    r.string()?;
+                }
+                _ => unreachable!(),
+            }
+        }
+        r.number(64)?; // trigger definitions identity
+        for _ in 0..r.entries(65536)? {
+            r.number(16)?;
+            for _ in 0..r.entries(limits.map_entries_max)? {
+                r.string()?;
+            }
+        }
+        if r.boolean()? {
+            r.number(64)?;
+            r.date()?;
+            r.byte()?;
+            for _ in 0..r.entries(limits.map_entries_max)? {
+                if r.tag(2)? == 2 {
+                    r.string()?;
                 }
             }
         }

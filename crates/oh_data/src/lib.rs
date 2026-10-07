@@ -13,6 +13,7 @@ pub mod national;
 pub mod pack_validation;
 mod raw;
 pub mod scenario_defines;
+pub mod trigger;
 
 use raw::Source;
 use schemars::{JsonSchema, Schema, SchemaGenerator};
@@ -173,7 +174,7 @@ fn read(path: &Path) -> Result<Source, DataError> {
     })
 }
 
-fn valid_id(value: &str) -> bool {
+pub fn valid_id(value: &str) -> bool {
     !value.is_empty()
         && value
             .bytes()

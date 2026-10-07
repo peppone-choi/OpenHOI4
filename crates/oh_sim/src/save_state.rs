@@ -158,6 +158,9 @@ fn ordinal(d: Date) -> u64 {
 
 impl Simulation {
     pub fn export_save(&self) -> Result<SimulationSaveV1, String> {
+        if self.trigger.is_some() {
+            return Err("TriggerRequiresV4".into());
+        }
         if self.movement.is_some() {
             return Err("MovementRequiresV2".into());
         }
@@ -201,6 +204,13 @@ impl Simulation {
     }
     /// Returns a fully checked new value; cannot mutate an existing simulation.
     pub fn from_save(dto: SimulationSaveV1, context: &RestoreContext) -> Result<Self, String> {
+        legacy_trigger_mode(context)?;
+        Self::from_save_base(dto, context)
+    }
+    pub(crate) fn from_save_base(
+        dto: SimulationSaveV1,
+        context: &RestoreContext,
+    ) -> Result<Self, String> {
         let state = &dto.state;
         let date = state.date.validate()?;
         if state.scenario != context.scenario
@@ -259,6 +269,7 @@ impl Simulation {
             queue,
             world,
             movement: None,
+            trigger: None,
         })
     }
 }
@@ -308,6 +319,9 @@ pub struct SimulationSaveV2 {
 }
 impl Simulation {
     pub fn export_save_v2(&self) -> Result<SimulationSaveV2, String> {
+        if self.trigger.is_some() {
+            return Err("TriggerRequiresV4".into());
+        }
         let movement = self.movement.as_ref().ok_or("V2RequiresMovement")?;
         if movement.has_strait_context() {
             return Err("StraitRequiresV3".into());
@@ -331,6 +345,7 @@ impl Simulation {
                         destination: destination.0,
                     },
                     Command::Stop { unit } => CommandV2::Stop { unit: unit.0 },
+                    Command::Effects { .. } => unreachable!("trigger requires v4"),
                 },
             })
             .collect();
@@ -372,9 +387,10 @@ impl Simulation {
         Ok(SimulationSaveV2 { base, queue, units })
     }
     pub fn from_save_v2(dto: SimulationSaveV2, context: &RestoreContext) -> Result<Self, String> {
+        legacy_trigger_mode(context)?;
         Self::from_movement_save(dto, context, None)
     }
-    fn from_movement_save(
+    pub(crate) fn from_movement_save(
         dto: SimulationSaveV2,
         context: &RestoreContext,
         straits: Option<BTreeMap<oh_core::DivisionId, crate::movement::DirectedStraits>>,
@@ -384,7 +400,7 @@ impl Simulation {
         if !dto.base.queue.is_empty() {
             return Err("InvalidV2: legacy queue must be empty".into());
         }
-        let mut sim = Self::from_save(dto.base, context)?;
+        let mut sim = Self::from_save_base(dto.base, context)?;
         let world = sim.world.as_ref().ok_or("V2RequiresWorld")?;
         if !strictly_sorted(dto.units.iter().map(|u| u.id)) {
             return Err("InvalidMovement: duplicate/unsorted units".into());
@@ -496,6 +512,9 @@ pub struct SimulationSaveV3 {
 }
 impl Simulation {
     pub fn export_save_v3(&self) -> Result<SimulationSaveV3, String> {
+        if self.trigger.is_some() {
+            return Err("TriggerRequiresV4".into());
+        }
         let contexts = self
             .movement
             .as_ref()
@@ -533,6 +552,13 @@ impl Simulation {
         })
     }
     pub fn from_save_v3(dto: SimulationSaveV3, context: &RestoreContext) -> Result<Self, String> {
+        legacy_trigger_mode(context)?;
+        Self::from_strait_save(dto, context)
+    }
+    pub(crate) fn from_strait_save(
+        dto: SimulationSaveV3,
+        context: &RestoreContext,
+    ) -> Result<Self, String> {
         use crate::movement::{CrossingKind, StraitContext, StraitFactors};
         use oh_core::{DivisionId, Fx, ProvinceId};
         if !strictly_sorted(dto.straits.iter().map(|c| c.unit)) {
@@ -565,4 +591,14 @@ impl Simulation {
         }
         Self::from_movement_save(dto.base, context, Some(straits))
     }
+}
+fn legacy_trigger_mode(context: &RestoreContext) -> Result<(), String> {
+    if context
+        .world
+        .as_ref()
+        .is_some_and(|w| w.defs().trigger().is_some())
+    {
+        return Err("TriggerModeMismatch: legacy None save/local Some definitions".into());
+    }
+    Ok(())
 }

@@ -101,3 +101,34 @@ fn m1_actual_world_messagepack_preserves_applied_ledger_and_full_display_strings
     assert_eq!(view.states[0].infrastructure.final_value, "2");
     assert_eq!(view.states[0].infrastructure.tick, "2");
 }
+#[test]
+fn req_time_04_trigger_query_retains_typed_end_and_exact_u64_text() {
+    let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../data/packs/testland");
+    let mut loaded = oh_data::national::load_scenario(&root, "m1").unwrap();
+    loaded.scenario.end_conditions =
+        Some(oh_data::trigger::parse_condition(r#"{"date_gte":"2000-01-01"}"#).unwrap());
+    let sim = oh_sim::Simulation::with_world(
+        "m1".into(),
+        oh_sim::Date::new(2000, 1, 1).unwrap(),
+        7,
+        oh_sim::TimeConfig::from_defines(&loaded.pack.defines).unwrap(),
+        oh_sim::world::World::from_loaded(&loaded).unwrap(),
+    )
+    .unwrap();
+    let view = oh_proto::TriggerView::from_sim(&sim).unwrap();
+    assert_eq!(view.ended.as_ref().unwrap().tick, "0");
+    assert_eq!(
+        view.ended.as_ref().unwrap().causes,
+        vec![oh_proto::EndCauseView::Condition]
+    );
+    let message = oh_proto::ServerMessage::TriggerResult {
+        request: "end".into(),
+        supported: true,
+        reason_key: None,
+        trigger: Some(view),
+    };
+    assert_eq!(
+        oh_proto::decode_server(&oh_proto::encode(&message).unwrap()).unwrap(),
+        message
+    );
+}

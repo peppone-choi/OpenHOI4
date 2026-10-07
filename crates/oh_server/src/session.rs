@@ -10,6 +10,9 @@ use std::{
 use tokio::sync::{oneshot, watch};
 #[derive(Debug)]
 pub enum Request {
+    Trigger {
+        reply: oneshot::Sender<Option<oh_proto::TriggerView>>,
+    },
     World {
         reply: oneshot::Sender<Option<oh_proto::WorldView>>,
     },
@@ -58,18 +61,26 @@ impl Session {
                 let mut deadline = Instant::now() + Duration::from_millis(sim.ms_per_tick());
                 let mut published = Instant::now();
                 loop {
-                    let wait = if sim.snapshot().paused() {
+                    let wait = if sim.snapshot().paused() || sim.is_ended() {
                         Duration::from_millis(delta_ms)
                     } else {
                         deadline.saturating_duration_since(Instant::now())
                     };
                     match incoming.recv_timeout(wait) {
+                        Ok(Request::Trigger { reply }) => {
+                            let _ = reply.send(oh_proto::TriggerView::from_sim(&sim));
+                            continue;
+                        }
                         Err(mpsc::RecvTimeoutError::Disconnected) => break,
                         Ok(Request::World { reply }) => {
                             let _ = reply.send(oh_proto::WorldView::from_sim(&sim));
                             continue;
                         }
                         Ok(Request::Command { command, reply }) => {
+                            if sim.is_ended() {
+                                let _ = reply.send(Err("scenario-ended"));
+                                continue;
+                            }
                             // Each input is applied at the next simulation step's command phase.
                             let command = match command {
                                 TimeCommand::Pause { paused } => oh_sim::Command::Pause(paused),
@@ -101,13 +112,16 @@ impl Session {
                             deadline = Instant::now() + Duration::from_millis(sim.ms_per_tick());
                         }
                         Err(mpsc::RecvTimeoutError::Timeout) => {
+                            if sim.is_ended() {
+                                continue;
+                            }
                             if sim.step().is_err() {
                                 break;
                             }
                             deadline = Instant::now() + Duration::from_millis(sim.ms_per_tick());
                         }
                     }
-                    if published.elapsed() >= Duration::from_millis(delta_ms) {
+                    if sim.is_ended() || published.elapsed() >= Duration::from_millis(delta_ms) {
                         outgoing.send_replace(TimeState::from(&sim.snapshot()));
                         published = Instant::now();
                     }

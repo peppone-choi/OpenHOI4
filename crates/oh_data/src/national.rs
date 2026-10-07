@@ -41,6 +41,55 @@ pub struct Scenario {
     pub control_overrides: BTreeMap<u16, String>,
     #[serde(default)]
     pub state_modifiers: BTreeMap<u16, Vec<ModifierInput>>,
+    #[serde(
+        default,
+        deserialize_with = "crate::trigger::present",
+        skip_serializing_if = "Option::is_none"
+    )]
+    #[schemars(with = "String")]
+    pub end_date: Option<String>,
+    #[serde(
+        default,
+        deserialize_with = "crate::trigger::present",
+        skip_serializing_if = "Option::is_none"
+    )]
+    #[schemars(with = "crate::trigger::Condition")]
+    pub end_conditions: Option<crate::trigger::Condition>,
+    #[serde(
+        default,
+        deserialize_with = "crate::trigger::present",
+        skip_serializing_if = "Option::is_none"
+    )]
+    #[schemars(with = "String")]
+    pub end_root: Option<String>,
+    #[serde(
+        default,
+        deserialize_with = "crate::trigger::present",
+        skip_serializing_if = "Option::is_none"
+    )]
+    #[schemars(with = "Vec<String>")]
+    pub flag_keys: Option<Vec<String>>,
+    #[serde(
+        default,
+        deserialize_with = "crate::trigger::present",
+        skip_serializing_if = "Option::is_none"
+    )]
+    #[schemars(with = "BTreeMap<String, Vec<String>>")]
+    pub initial_flags: Option<BTreeMap<String, Vec<String>>>,
+    #[serde(
+        default,
+        deserialize_with = "crate::trigger::present",
+        skip_serializing_if = "Option::is_none"
+    )]
+    #[schemars(with = "BTreeMap<String, crate::trigger::EffectProgram>")]
+    pub effect_programs: Option<BTreeMap<String, crate::trigger::EffectProgram>>,
+    #[serde(
+        default,
+        deserialize_with = "crate::trigger::present",
+        skip_serializing_if = "Option::is_none"
+    )]
+    #[schemars(with = "crate::trigger::ScoreWeights")]
+    pub score_weights: Option<crate::trigger::ScoreWeights>,
 }
 #[derive(Debug, Clone, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
 #[serde(deny_unknown_fields)]
@@ -187,6 +236,23 @@ pub(crate) fn read_scenario(root: &Path, id: &str) -> Result<LoadedNational, Dat
         .data;
     // M1 scenario overlay preserves the shipped M0 skeleton and golden contract.
     pack.defines = crate::scenario_defines::load(root, id, &pack.defines, true)?;
+    // Bound AST recursion before typed recursive deserialization.
+    let raw: toml::Value = document(&path)?;
+    let raw = serde_json::to_value(raw).map_err(|e| fail(&path, e.to_string()))?;
+    if let Some(c) = raw.get("end_conditions") {
+        crate::trigger::preflight_value(c).map_err(|e| field_error(&path, "end_conditions", &e))?;
+    }
+    if let Some(programs) = raw.get("effect_programs").and_then(|v| v.as_object()) {
+        for (id, p) in programs {
+            if let Some(es) = p.get("effects").and_then(|v| v.as_array()) {
+                for e in es {
+                    crate::trigger::preflight_value(e).map_err(|e| {
+                        field_error(&path, "effect_programs", &format!("program {id}: {e}"))
+                    })?;
+                }
+            }
+        }
+    }
     let scenario: Scenario = document(&path)?;
     let map = load_map(root, &scenario.map)?;
     let visual_path = root.join("maps").join(&scenario.map).join("visuals.toml");
@@ -267,14 +333,35 @@ pub(crate) fn read_scenario(root: &Path, id: &str) -> Result<LoadedNational, Dat
             }
         }
     }
-    Ok(LoadedNational {
+    let loaded = LoadedNational {
         pack,
         scenario_id: id.into(),
         scenario,
         nations,
         map,
         visuals,
-    })
+    };
+    crate::trigger::definition(&loaded).map_err(|message| {
+        let candidate = message
+            .split(|c: char| c == '.' || c == ':' || c.is_ascii_whitespace())
+            .next()
+            .unwrap_or("");
+        let field = [
+            "start_date",
+            "end_date",
+            "end_conditions",
+            "end_root",
+            "flag_keys",
+            "initial_flags",
+            "effect_programs",
+            "score_weights",
+        ]
+        .into_iter()
+        .find(|f| *f == candidate)
+        .unwrap_or("end_conditions");
+        field_error(&path, field, &format!("trigger {field}: {message}"))
+    })?;
+    Ok(loaded)
 }
 
 pub fn visuals_schema() -> Schema {

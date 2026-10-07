@@ -82,3 +82,4 @@ hills = 구릉
 ocean = 바다
 inland_water = 내륙 수역
 map-no-state = 이 프로빈스에는 주나 국가가 없습니다.
+scenario-ended = 시나리오가 종료됐습니다. 종료 상태를 조회하고 저장할 수 있습니다.

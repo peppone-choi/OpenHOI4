@@ -13,6 +13,36 @@
         }
       }
     },
+    "effect_programs": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/EffectProgram"
+      }
+    },
+    "end_conditions": {
+      "$ref": "#/$defs/Condition"
+    },
+    "end_date": {
+      "type": "string"
+    },
+    "end_root": {
+      "type": "string"
+    },
+    "flag_keys": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "initial_flags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
     "map": {
       "type": "string"
     },
@@ -30,6 +60,9 @@
           "type": "string"
         }
       }
+    },
+    "score_weights": {
+      "$ref": "#/$defs/ScoreWeights"
     },
     "start_date": {
       "type": "string"
@@ -56,6 +89,528 @@
     "ownership"
   ],
   "$defs": {
+    "BuildingArg": {
+      "type": "object",
+      "properties": {
+        "building": {
+          "type": "string"
+        },
+        "levels": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "state": {
+          "type": "integer",
+          "format": "uint16",
+          "maximum": 65535,
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "building",
+        "levels"
+      ]
+    },
+    "Compare": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "gte": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "gte"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "lte": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "lte"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "eq": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "eq"
+          ]
+        }
+      ]
+    },
+    "Condition": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "all": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Condition"
+              }
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "all"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "any": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Condition"
+              }
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "any"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "not": {
+              "$ref": "#/$defs/Condition"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "not"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "date_gte": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "date_gte"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "at_war": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "at_war"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "at_war_with": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "at_war_with"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "nation_is": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "nation_is"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "stability": {
+              "$ref": "#/$defs/Compare"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "stability"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "mobilization": {
+              "$ref": "#/$defs/Compare"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "mobilization"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "political_capital": {
+              "$ref": "#/$defs/Compare"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "political_capital"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "has_law": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "has_law"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "controls_province": {
+              "type": "integer",
+              "format": "uint16",
+              "maximum": 65535,
+              "minimum": 0
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "controls_province"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "owns_state": {
+              "type": "integer",
+              "format": "uint16",
+              "maximum": 65535,
+              "minimum": 0
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "owns_state"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "has_flag": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "has_flag"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "ideology_support": {
+              "$ref": "#/$defs/IdeologyArg"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "ideology_support"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "chance": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "chance"
+          ]
+        }
+      ]
+    },
+    "Effect": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "scope": {
+              "$ref": "#/$defs/ScopeArg"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "scope"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "if": {
+              "$ref": "#/$defs/IfArg"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "if"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "add_stability": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "add_stability"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "add_mobilization": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "add_mobilization"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "add_political_capital": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "add_political_capital"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "set_law": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "set_law"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "add_building": {
+              "$ref": "#/$defs/BuildingArg"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "add_building"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "transfer_state": {
+              "$ref": "#/$defs/TransferArg"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "transfer_state"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "declare_war": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "declare_war"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "add_manpower": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "add_manpower"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "add_equipment": {
+              "$ref": "#/$defs/EquipmentArg"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "add_equipment"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "set_flag": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "set_flag"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "clear_flag": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "clear_flag"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "end_scenario": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "end_scenario"
+          ]
+        }
+      ]
+    },
+    "EffectProgram": {
+      "type": "object",
+      "properties": {
+        "effects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Effect"
+          }
+        },
+        "root": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "effects"
+      ]
+    },
+    "EquipmentArg": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "equipment": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "equipment",
+        "amount"
+      ]
+    },
+    "IdeologyArg": {
+      "type": "object",
+      "properties": {
+        "ideology": {
+          "type": "string"
+        },
+        "value": {
+          "$ref": "#/$defs/Compare"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "ideology",
+        "value"
+      ]
+    },
+    "IfArg": {
+      "type": "object",
+      "properties": {
+        "condition": {
+          "$ref": "#/$defs/Condition"
+        },
+        "else": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Effect"
+          }
+        },
+        "then": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Effect"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "condition",
+        "then",
+        "else"
+      ]
+    },
     "ModifierInput": {
       "type": "object",
       "properties": {
@@ -86,6 +641,68 @@
         "target_stat",
         "operation",
         "value"
+      ]
+    },
+    "ScopeArg": {
+      "type": "object",
+      "properties": {
+        "effects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Effect"
+          }
+        },
+        "target": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "target",
+        "effects"
+      ]
+    },
+    "ScoreWeights": {
+      "type": "object",
+      "properties": {
+        "faction_victory": {
+          "type": "string"
+        },
+        "industrial_capacity": {
+          "type": "string"
+        },
+        "survival": {
+          "type": "string"
+        },
+        "victory_points": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "victory_points",
+        "industrial_capacity",
+        "survival",
+        "faction_victory"
+      ]
+    },
+    "TransferArg": {
+      "type": "object",
+      "properties": {
+        "nation": {
+          "type": "string"
+        },
+        "state": {
+          "type": "integer",
+          "format": "uint16",
+          "maximum": 65535,
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "nation"
       ]
     }
   }

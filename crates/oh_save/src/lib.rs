@@ -15,6 +15,7 @@ pub const FORMAT_VERSION: u16 = 1;
 /// Additive format; legacy writers still produce version 1.
 pub const MOVEMENT_FORMAT_VERSION: u16 = 2;
 pub const STRAIT_FORMAT_VERSION: u16 = 3;
+pub const TRIGGER_FORMAT_VERSION: u16 = 4;
 #[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
 pub struct PackV1 {
     pub id: String,
@@ -90,14 +91,22 @@ pub fn encode_with_limits(
     limits: &Limits,
 ) -> Result<Vec<u8>> {
     context.verify_unchanged()?;
-    let version = if sim.movement().is_some_and(|m| m.has_strait_context()) {
+    let version = if sim.trigger_state().is_some() {
+        TRIGGER_FORMAT_VERSION
+    } else if sim.movement().is_some_and(|m| m.has_strait_context()) {
         STRAIT_FORMAT_VERSION
     } else if sim.movement().is_some() {
         MOVEMENT_FORMAT_VERSION
     } else {
         FORMAT_VERSION
     };
-    let (body, candidate) = if version == STRAIT_FORMAT_VERSION {
+    let (body, candidate) = if version == TRIGGER_FORMAT_VERSION {
+        let dto = sim.export_save_v4()?;
+        (
+            serialize(&dto)?,
+            Simulation::from_save_v4(dto, &context.restore)?,
+        )
+    } else if version == STRAIT_FORMAT_VERSION {
         let dto = sim.export_save_v3()?;
         (
             serialize(&dto)?,
@@ -187,6 +196,7 @@ pub fn inspect_header(bytes: &[u8], limits: &Limits) -> Result<HeaderV1> {
         FORMAT_VERSION,
         MOVEMENT_FORMAT_VERSION,
         STRAIT_FORMAT_VERSION,
+        TRIGGER_FORMAT_VERSION,
     ]
     .contains(&version)
     {
@@ -230,6 +240,7 @@ pub fn decode_with_limits(
         FORMAT_VERSION,
         MOVEMENT_FORMAT_VERSION,
         STRAIT_FORMAT_VERSION,
+        TRIGGER_FORMAT_VERSION,
     ]
     .contains(&version)
     {
@@ -287,14 +298,17 @@ pub fn decode_with_limits(
     } else {
         bounds::body_version(&body, limits, version)?;
     }
-    let (base, dto2, dto3) = if version == STRAIT_FORMAT_VERSION {
+    let (base, dto2, dto3, dto4) = if version == TRIGGER_FORMAT_VERSION {
+        let dto: oh_sim::trigger_save::SimulationSaveV4 = deserialize(&body)?;
+        (dto.base.base.base.clone(), None, None, Some(dto))
+    } else if version == STRAIT_FORMAT_VERSION {
         let dto: SimulationSaveV3 = deserialize(&body)?;
-        (dto.base.base.clone(), None, Some(dto))
+        (dto.base.base.clone(), None, Some(dto), None)
     } else if version == MOVEMENT_FORMAT_VERSION {
         let dto: SimulationSaveV2 = deserialize(&body)?;
-        (dto.base.clone(), Some(dto), None)
+        (dto.base.clone(), Some(dto), None, None)
     } else {
-        (deserialize::<SimulationSaveV1>(&body)?, None, None)
+        (deserialize::<SimulationSaveV1>(&body)?, None, None, None)
     };
     if header.scenario_id != base.state.scenario
         || header.game_date != base.state.date
@@ -305,7 +319,9 @@ pub fn decode_with_limits(
         return Err("MetadataMismatch: header/body".into());
     }
     context.verify_unchanged()?;
-    let simulation = if let Some(dto) = dto3 {
+    let simulation = if let Some(dto) = dto4 {
+        Simulation::from_save_v4(dto, &context.restore)?
+    } else if let Some(dto) = dto3 {
         Simulation::from_save_v3(dto, &context.restore)?
     } else if let Some(dto) = dto2 {
         Simulation::from_save_v2(dto, &context.restore)?
@@ -323,10 +339,19 @@ pub fn decode_with_limits(
     })
 }
 fn check_header(h: &HeaderV1, c: &SaveContext, l: &Limits, force: bool) -> Result<Vec<String>> {
+    let has_trigger = c
+        .restore
+        .world
+        .as_ref()
+        .is_some_and(|w| w.defs().trigger().is_some());
+    if (h.format_version == TRIGGER_FORMAT_VERSION) != has_trigger {
+        return Err("TriggerModeMismatch: save/local definitions".into());
+    }
     if ![
         FORMAT_VERSION,
         MOVEMENT_FORMAT_VERSION,
         STRAIT_FORMAT_VERSION,
+        TRIGGER_FORMAT_VERSION,
     ]
     .contains(&h.format_version)
     {
