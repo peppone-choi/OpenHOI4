@@ -1,0 +1,13 @@
+{
+  "command": [
+    "E:\\openhoi\\target\\debug\\oh_cli.exe",
+    "validate",
+    "--deny-warnings",
+    "E:\\openhoi\\.orchestrator\\evidence\\M2-r2-WORLD-P07-regression\\native-legacy-nations\\tag\\testland"
+  ],
+  "cwd": "E:\\openhoi",
+  "pid": 39144,
+  "exit": 1,
+  "expected_exit": 1,
+  "passed": true
+}

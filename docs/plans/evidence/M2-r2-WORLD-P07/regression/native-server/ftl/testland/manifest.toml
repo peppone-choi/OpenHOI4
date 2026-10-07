@@ -1,0 +1,8 @@
+# Original M0 metadata; D-10 licensing remains undecided.
+id = "testland"
+name_key = "testland_name"
+version = "0.1.0"
+engine = ">=0.1, <0.2"
+depends = []
+conflicts = []
+load_after = []

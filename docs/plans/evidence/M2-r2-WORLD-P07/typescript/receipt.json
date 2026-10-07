@@ -1,0 +1,25 @@
+{
+  "head": "ea355b3b446a0a53276f9e1ce96da360bbb41470",
+  "compile_argv": [
+    "C:/Users/user/.cargo/bin/rustc.exe",
+    "--edition=2021",
+    "E:\\openhoi\\.orchestrator\\evidence\\M2-r2-WORLD-P07-typescript\\readonly.rs",
+    "--extern",
+    "oh_proto=E:\\openhoi\\target\\debug\\liboh_proto.rlib",
+    "-L",
+    "dependency=E:\\openhoi\\target\\debug\\deps",
+    "-o",
+    "E:\\openhoi\\.orchestrator\\evidence\\M2-r2-WORLD-P07-typescript\\readonly.exe"
+  ],
+  "compile_native_exit": 0,
+  "run_argv": [
+    "E:\\openhoi\\.orchestrator\\evidence\\M2-r2-WORLD-P07-typescript\\readonly.exe"
+  ],
+  "run_native_exit": 0,
+  "library_sha256": "ad6448a98d83bddf67f5567af8128ee407be136675d061a97b1ae73e6316552c",
+  "generated_bytes": 4119,
+  "generated_sha256": "060de85cc664ab6310e037696b8c60e865e976ff71351121d83f5e73d59477c4",
+  "exact_Git_blob_equal": true,
+  "raw_checkout_equal": true,
+  "tracked_file_rewritten": false
+}

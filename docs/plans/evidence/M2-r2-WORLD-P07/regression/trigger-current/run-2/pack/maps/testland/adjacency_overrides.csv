@@ -1,0 +1,5 @@
+a,b,kind
+10,20,river_small
+30,40,river_large
+10,40,strait
+40,50,impassable

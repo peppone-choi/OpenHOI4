@@ -1,0 +1,11 @@
+import { defineConfig } from "E:/openhoi/client/node_modules/@playwright/test/index.mjs";
+import base from "E:/openhoi/client/playwright.m1.config.ts";
+export default defineConfig({...base,
+testDir:"E:/openhoi/client/e2e-m1",
+outputDir:"E:/openhoi/target/evidence/M2-r2-WORLD-P07-screen/m1-results",
+reporter:[["list"],["json",{outputFile:"E:/openhoi/target/evidence/M2-r2-WORLD-P07-screen/m1-original-full.json"}]],
+use:{...base.use,launchOptions:{chromiumSandbox:true,ignoreDefaultArgs:["--disable-field-trial-config", "--disable-background-networking", "--disable-background-timer-throttling", "--disable-backgrounding-occluded-windows", "--disable-back-forward-cache", "--disable-breakpad", "--disable-client-side-phishing-detection", "--disable-component-extensions-with-background-pages", "--disable-component-update", "--no-default-browser-check", "--disable-default-apps", "--disable-dev-shm-usage", "--disable-edgeupdater", "--disable-extensions", "--disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion", "--enable-features=CDPScreenshotNewSurface", "--allow-pre-commit-input", "--disable-hang-monitor", "--disable-ipc-flooding-protection", "--disable-popup-blocking", "--disable-prompt-on-repost", "--disable-renderer-backgrounding", "--disable-updater-scheduler", "--force-color-profile=srgb", "--metrics-recording-only", "--no-first-run", "--password-store=basic", "--use-mock-keychain", "--no-service-autorun", "--export-tagged-pdf", "--disable-search-engine-choice-screen", "--unsafely-disable-devtools-self-xss-warnings", "--edge-skip-compat-layer-relaunch", "--disable-infobars", "--disable-search-engine-choice-screen", "--disable-sync", "--enable-unsafe-swiftshader", "--mute-audio", "--blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4", "--no-sandbox"]}},
+projects:[{name:"chrome-minimal",use:{browserName:"chromium",channel:"chrome"}}],
+webServer:{...base.webServer,cwd:"E:/openhoi/client"}
+});
+

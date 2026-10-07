@@ -1,0 +1,3 @@
+   Compiling oh_proto v0.1.0 (E:\openhoi\crates\oh_proto)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 3.38s
+     Running `E:\openhoi\target\debug\examples\wire_fixtures.exe`

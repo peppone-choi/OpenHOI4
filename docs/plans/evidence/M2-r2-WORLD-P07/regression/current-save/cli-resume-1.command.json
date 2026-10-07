@@ -1,0 +1,18 @@
+{
+  "command": [
+    "E:\\openhoi\\target\\debug\\oh_cli.exe",
+    "resume",
+    "--load",
+    "E:\\openhoi\\.orchestrator\\evidence\\M2-r2-WORLD-P07-regression\\current-save\\run-1\\saved.ohsave",
+    "--pack",
+    "E:\\openhoi\\.orchestrator\\evidence\\M2-r2-WORLD-P07-regression\\current-save\\run-1\\pack",
+    "--days",
+    "2",
+    "--hash-out"
+  ],
+  "cwd": "E:\\openhoi",
+  "pid": 34692,
+  "exit": 0,
+  "head": "ea355b3b446a0a53276f9e1ce96da360bbb41470",
+  "exe_sha256": "c4ec5dcd023debc0cec7c640fb5227ceb59d0a23e94ece6fefa3adb42747af18"
+}

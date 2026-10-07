@@ -1,0 +1,9 @@
+# IDs only; modifiers and terrain economics belong to later WPs.
+[[terrain]]
+id = "plains"
+[[terrain]]
+id = "hills"
+[[terrain]]
+id = "ocean"
+[[terrain]]
+id = "inland_water"

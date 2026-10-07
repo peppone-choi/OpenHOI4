@@ -1,0 +1,465 @@
+{
+  "canonical_hex": "026d310730d00f0301000001f403c801501900010530000101023000090001302a010000302a03010531000a010301f58be7bd9c8db5993a0201034e544818676f7665726e6d656e742d746573742d72657075626c696302136964656f6c6f67792d746573742d63697669638080808018136964656f6c6f67792d746573742d6c6f63616c8080808008020353544817676f7665726e6d656e742d746573742d636f756e63696c02136964656f6c6f67792d746573742d63697669638080808018136964656f6c6f67792d746573742d6c6f63616c8080808008020101d00f0105737465656c040108696e6475737472790280808080200305612e7261770e696e6672617374727563747572650002013105622e6164640e696e6672617374727563747572650080808080100005632e6d756c0e696e6672617374727563747572650180808080400084808080600e696e667261737472756374757265308480808060040000808080802080808080200105612e726177010282808080200105622e61646401808080801082808080300105632e6d756c02808080804084808080600202a01f0105737465656c000108696e647573747279000000000e696e66726173747275637475726530000100000000060a010101010101140101010101021e01020102010228010201020102320000003c000000",
+  "continuous": {
+    "config": {
+      "initial_speed": 1,
+      "speed_ms_per_tick": [
+        500,
+        200,
+        80,
+        25,
+        0
+      ]
+    },
+    "queue": [],
+    "state": {
+      "date": {
+        "day": 3,
+        "month": 3,
+        "year": 2000
+      },
+      "hour": 0,
+      "paused": false,
+      "scenario": "m1",
+      "seed": 7,
+      "speed": 3,
+      "tick": 96
+    },
+    "world": {
+      "definitions_hash": 4193647753822848501,
+      "inputs": {
+        "nations": [
+          {
+            "government": "government-test-republic",
+            "id": 1,
+            "support": [
+              [
+                "ideology-test-civic",
+                3221225472
+              ],
+              [
+                "ideology-test-local",
+                1073741824
+              ]
+            ],
+            "tag": "NTH"
+          },
+          {
+            "government": "government-test-council",
+            "id": 2,
+            "support": [
+              [
+                "ideology-test-civic",
+                3221225472
+              ],
+              [
+                "ideology-test-local",
+                1073741824
+              ]
+            ],
+            "tag": "STH"
+          }
+        ],
+        "provinces": [
+          {
+            "controller": 1,
+            "id": 10,
+            "owner": 1,
+            "state": 1
+          },
+          {
+            "controller": 2,
+            "id": 20,
+            "owner": 1,
+            "state": 1
+          },
+          {
+            "controller": 2,
+            "id": 30,
+            "owner": 2,
+            "state": 2
+          },
+          {
+            "controller": 2,
+            "id": 40,
+            "owner": 2,
+            "state": 2
+          },
+          {
+            "controller": null,
+            "id": 50,
+            "owner": null,
+            "state": null
+          },
+          {
+            "controller": null,
+            "id": 60,
+            "owner": null,
+            "state": null
+          }
+        ],
+        "states": [
+          {
+            "base": 4294967296,
+            "buildings": [
+              [
+                "industry",
+                1
+              ]
+            ],
+            "id": 1,
+            "infrastructure": 12884901888,
+            "ledger": {
+              "entries": [
+                {
+                  "accumulated": 4294967296,
+                  "op": "Base",
+                  "source": null,
+                  "value": 4294967296
+                },
+                {
+                  "accumulated": 6442450944,
+                  "op": "Add",
+                  "source": "b.add",
+                  "value": 2147483648
+                },
+                {
+                  "accumulated": 12884901888,
+                  "op": "Mul",
+                  "source": "c.mul",
+                  "value": 8589934592
+                }
+              ],
+              "target_stat": "infrastructure",
+              "tick": 96,
+              "value": 12884901888
+            },
+            "modifiers": [
+              {
+                "expires": 49,
+                "op": "Add",
+                "source": "a.raw",
+                "target_stat": "infrastructure",
+                "value": 1
+              },
+              {
+                "expires": null,
+                "op": "Add",
+                "source": "b.add",
+                "target_stat": "infrastructure",
+                "value": 2147483648
+              },
+              {
+                "expires": null,
+                "op": "Mul",
+                "source": "c.mul",
+                "target_stat": "infrastructure",
+                "value": 8589934592
+              }
+            ],
+            "owner": 1,
+            "population": 1000,
+            "resources": [
+              [
+                "steel",
+                2
+              ]
+            ]
+          },
+          {
+            "base": 0,
+            "buildings": [
+              [
+                "industry",
+                0
+              ]
+            ],
+            "id": 2,
+            "infrastructure": 0,
+            "ledger": {
+              "entries": [
+                {
+                  "accumulated": 0,
+                  "op": "Base",
+                  "source": null,
+                  "value": 0
+                }
+              ],
+              "target_stat": "infrastructure",
+              "tick": 96,
+              "value": 0
+            },
+            "modifiers": [],
+            "owner": 2,
+            "population": 2000,
+            "resources": [
+              [
+                "steel",
+                0
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "continuous_hash": "d19d028857bb7485",
+  "fixture": "actual-m1-expiry-v1",
+  "pack": {
+    "content_hash": 12861016185528173627,
+    "id": "testland",
+    "version": "0.1.0"
+  },
+  "pid": 35844,
+  "split": {
+    "config": {
+      "initial_speed": 1,
+      "speed_ms_per_tick": [
+        500,
+        200,
+        80,
+        25,
+        0
+      ]
+    },
+    "queue": [
+      {
+        "command": {
+          "SetSpeed": 2
+        },
+        "nation": 0,
+        "sequence": 1,
+        "tick": 48
+      },
+      {
+        "command": {
+          "Pause": true
+        },
+        "nation": 0,
+        "sequence": 9,
+        "tick": 48
+      },
+      {
+        "command": {
+          "Pause": false
+        },
+        "nation": 42,
+        "sequence": 1,
+        "tick": 48
+      },
+      {
+        "command": {
+          "SetSpeed": 5
+        },
+        "nation": 42,
+        "sequence": 3,
+        "tick": 48
+      },
+      {
+        "command": {
+          "SetSpeed": 3
+        },
+        "nation": 0,
+        "sequence": 10,
+        "tick": 49
+      }
+    ],
+    "state": {
+      "date": {
+        "day": 1,
+        "month": 3,
+        "year": 2000
+      },
+      "hour": 0,
+      "paused": false,
+      "scenario": "m1",
+      "seed": 7,
+      "speed": 1,
+      "tick": 48
+    },
+    "world": {
+      "definitions_hash": 4193647753822848501,
+      "inputs": {
+        "nations": [
+          {
+            "government": "government-test-republic",
+            "id": 1,
+            "support": [
+              [
+                "ideology-test-civic",
+                3221225472
+              ],
+              [
+                "ideology-test-local",
+                1073741824
+              ]
+            ],
+            "tag": "NTH"
+          },
+          {
+            "government": "government-test-council",
+            "id": 2,
+            "support": [
+              [
+                "ideology-test-civic",
+                3221225472
+              ],
+              [
+                "ideology-test-local",
+                1073741824
+              ]
+            ],
+            "tag": "STH"
+          }
+        ],
+        "provinces": [
+          {
+            "controller": 1,
+            "id": 10,
+            "owner": 1,
+            "state": 1
+          },
+          {
+            "controller": 2,
+            "id": 20,
+            "owner": 1,
+            "state": 1
+          },
+          {
+            "controller": 2,
+            "id": 30,
+            "owner": 2,
+            "state": 2
+          },
+          {
+            "controller": 2,
+            "id": 40,
+            "owner": 2,
+            "state": 2
+          },
+          {
+            "controller": null,
+            "id": 50,
+            "owner": null,
+            "state": null
+          },
+          {
+            "controller": null,
+            "id": 60,
+            "owner": null,
+            "state": null
+          }
+        ],
+        "states": [
+          {
+            "base": 4294967296,
+            "buildings": [
+              [
+                "industry",
+                1
+              ]
+            ],
+            "id": 1,
+            "infrastructure": 12884901890,
+            "ledger": {
+              "entries": [
+                {
+                  "accumulated": 4294967296,
+                  "op": "Base",
+                  "source": null,
+                  "value": 4294967296
+                },
+                {
+                  "accumulated": 4294967297,
+                  "op": "Add",
+                  "source": "a.raw",
+                  "value": 1
+                },
+                {
+                  "accumulated": 6442450945,
+                  "op": "Add",
+                  "source": "b.add",
+                  "value": 2147483648
+                },
+                {
+                  "accumulated": 12884901890,
+                  "op": "Mul",
+                  "source": "c.mul",
+                  "value": 8589934592
+                }
+              ],
+              "target_stat": "infrastructure",
+              "tick": 48,
+              "value": 12884901890
+            },
+            "modifiers": [
+              {
+                "expires": 49,
+                "op": "Add",
+                "source": "a.raw",
+                "target_stat": "infrastructure",
+                "value": 1
+              },
+              {
+                "expires": null,
+                "op": "Add",
+                "source": "b.add",
+                "target_stat": "infrastructure",
+                "value": 2147483648
+              },
+              {
+                "expires": null,
+                "op": "Mul",
+                "source": "c.mul",
+                "target_stat": "infrastructure",
+                "value": 8589934592
+              }
+            ],
+            "owner": 1,
+            "population": 1000,
+            "resources": [
+              [
+                "steel",
+                2
+              ]
+            ]
+          },
+          {
+            "base": 0,
+            "buildings": [
+              [
+                "industry",
+                0
+              ]
+            ],
+            "id": 2,
+            "infrastructure": 0,
+            "ledger": {
+              "entries": [
+                {
+                  "accumulated": 0,
+                  "op": "Base",
+                  "source": null,
+                  "value": 0
+                }
+              ],
+              "target_stat": "infrastructure",
+              "tick": 48,
+              "value": 0
+            },
+            "modifiers": [],
+            "owner": 2,
+            "population": 2000,
+            "resources": [
+              [
+                "steel",
+                0
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "split_hash": "4eb703aad086c7aa"
+}

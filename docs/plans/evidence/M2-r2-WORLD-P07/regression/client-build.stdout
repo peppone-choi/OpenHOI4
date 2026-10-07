@@ -1,0 +1,14 @@
+
+> openhoi-client@0.1.0 build
+> tsc --noEmit && vite build
+
+vite v8.3.3 building client environment for production...
+transforming...
+✓ 66 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                     0.36 kB │ gzip:   0.25 kB
+dist/assets/index-bBZPECI0.css     12.98 kB │ gzip:   3.70 kB
+dist/assets/index-D3VsxxWW.js   1,266.96 kB │ gzip: 359.74 kB
+
+✓ built in 1.13s

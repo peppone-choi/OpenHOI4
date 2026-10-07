@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "E:\openhoi\target\trigger-predicate-scratch\tmpmvhfqus9\public-source\crates\oh_sim\tools\check_trigger_determinism.py", line 382, in <module>
+    capture(args.out) if args.command == 'capture' else compare_artifacts(args.root)
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\openhoi\target\trigger-predicate-scratch\tmpmvhfqus9\public-source\crates\oh_sim\tools\check_trigger_determinism.py", line 370, in compare_artifacts
+    _compare_for_head(root, before['head'], emit=False)
+  File "E:\openhoi\target\trigger-predicate-scratch\tmpmvhfqus9\public-source\crates\oh_sim\tools\check_trigger_determinism.py", line 351, in _compare_for_head
+    assert result['head']==expected_head, 'artifact HEAD differs from current source HEAD'
+AssertionError: artifact HEAD differs from current source HEAD

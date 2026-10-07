@@ -1,0 +1,9 @@
+id = 1
+tag = "NTH"
+name_key = "nation-testland-north"
+color = [40, 100, 180]
+unknown = 10
+government_key = "government-test-republic"
+[ideology_support]
+ideology-test-civic = "0.75"
+ideology-test-local = "0.25"

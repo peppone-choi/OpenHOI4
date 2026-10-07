@@ -1,0 +1,1411 @@
+{
+  "head": "ea355b3b446a0a53276f9e1ce96da360bbb41470",
+  "scope": "World preview main P07 local checks only; same final main CI still required",
+  "regression_commands": 40,
+  "client_tests": 243,
+  "rust_tests": 195,
+  "map_python_executed": 33,
+  "map_python_passed": 32,
+  "map_python_skipped": 1,
+  "e2e_expected": 41,
+  "e2e_skipped": 0,
+  "e2e_flaky": 0,
+  "e2e_errors": 0,
+  "product_union_files": 387,
+  "append_union_files": 3,
+  "captures": [
+    {
+      "group": "page",
+      "pid": 11104,
+      "argv": [
+        "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+        "--headless",
+        "--user-data-dir=E:\\openhoi\\target\\evidence\\M2-r2-WORLD-P07-screen\\page\\chrome-profile-TgAt7l",
+        "--remote-debugging-pipe",
+        "--no-startup-window"
+      ],
+      "snapshots": 17,
+      "snapshots_data": [
+        {
+          "name": "world",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "geography",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "backend": "webgpu",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":8714.893617021276,\"height\":4716.936170212766,\"x\":4096,\"y\":2048,\"zoom\":1}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "frames": "29",
+            "selected": "",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "6.399999998509884",
+            "frameMs": "26.482758620689655"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "europe",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "geography",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":1452.4822695035461,\"height\":786.1560283687944,\"x\":4437.333333333333,\"y\":910.2222222222222,\"zoom\":6}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "6.399999998509884",
+            "frameMs": "18.774074074018884",
+            "backend": "webgpu",
+            "frames": "27"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "europe-selected",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "geography",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":1452.4822695035461,\"height\":786.1560283687944,\"x\":4437.333333333333,\"y\":910.2222222222222,\"zoom\":6}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "22669",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "5.399999998509884",
+            "frameMs": "17.739622641495377",
+            "backend": "webgpu",
+            "frames": "53",
+            "hover": "22669"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "europe-zoom-pan",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "geography",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":856.6498697809345,\"height\":463.66174201893085,\"x\":4293.251481448305,\"y\":891.2722140379271,\"zoom\":10.17322703761092}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "22669",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "5.399999998509884",
+            "frameMs": "17.301111111086275",
+            "backend": "webgpu",
+            "frames": "90",
+            "hover": "22821"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "borders-off",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "geography",
+            "borders": "off",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":856.6498697809345,\"height\":463.66174201893085,\"x\":4293.251481448305,\"y\":891.2722140379271,\"zoom\":10.17322703761092}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17781",
+            "selected": "22669",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "6.899999998509884",
+            "frameMs": "23.681818181818183",
+            "hover": "",
+            "backend": "webgpu",
+            "frames": "22"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "province-colors",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "provinces",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":856.6498697809345,\"height\":463.66174201893085,\"x\":4293.251481448305,\"y\":891.2722140379271,\"zoom\":10.17322703761092}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "22669",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "97604",
+            "updateMs": "6.699999999254942",
+            "frameMs": "18.93703703706463",
+            "hover": "",
+            "backend": "webgpu",
+            "frames": "27",
+            "lastChangedBytes": "97604",
+            "lastUpdateMs": "6.699999999254942",
+            "totalChangedBytes": "97604"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "korea",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "geography",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":378.90841813135984,\"height\":205.08418131359852,\"x\":6997.333333333334,\"y\":1206.0444444444445,\"zoom\":23}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "22669",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "5.800000000745058",
+            "frameMs": "18.8962962962687",
+            "hover": "",
+            "lastChangedBytes": "97604",
+            "lastUpdateMs": "6.199999999254942",
+            "totalChangedBytes": "195208",
+            "backend": "webgpu",
+            "frames": "27"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "himalaya-terrain",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "terrain",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":726.2411347517731,\"height\":393.0780141843972,\"x\":6030.222222222223,\"y\":1388.088888888889,\"zoom\":12}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "22855",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "4.5",
+            "frameMs": "18.43548387096774",
+            "hover": "22855",
+            "lastChangedBytes": "1968",
+            "lastUpdateMs": "5.199999999254942",
+            "totalChangedBytes": "197176",
+            "backend": "webgpu",
+            "frames": "31"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "americas",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "terrain",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":3485.9574468085107,\"height\":1886.7744680851065,\"x\":1934.2222222222222,\"y\":1592.888888888889,\"zoom\":2.5}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "22855",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "7.399999998509884",
+            "frameMs": "18.411538461509807",
+            "hover": "",
+            "lastChangedBytes": "1968",
+            "lastUpdateMs": "5.199999999254942",
+            "totalChangedBytes": "197176",
+            "backend": "webgpu",
+            "frames": "26"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "samples-off",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "terrain",
+            "borders": "on",
+            "unitSamples": "0",
+            "unitTriangles": "0",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":8714.893617021276,\"height\":4716.936170212766,\"x\":4096,\"y\":2048,\"zoom\":1}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "16068",
+            "selected": "22855",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "4.300000000745058",
+            "frameMs": "20.375",
+            "hover": "",
+            "lastChangedBytes": "1968",
+            "lastUpdateMs": "5.199999999254942",
+            "totalChangedBytes": "197176",
+            "backend": "webgpu",
+            "frames": "32"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "resize",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "terrain",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":8714.893617021276,\"height\":5290.453066332916,\"x\":4096,\"y\":2048,\"zoom\":1}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "22855",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "4.899999998509884",
+            "frameMs": "18.560869565152604",
+            "hover": "",
+            "lastChangedBytes": "1968",
+            "lastUpdateMs": "5.199999999254942",
+            "totalChangedBytes": "197176",
+            "backend": "webgpu",
+            "frames": "23"
+          },
+          "viewport": {
+            "width": 850,
+            "height": 650
+          }
+        },
+        {
+          "name": "resize-rail-scrolled",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "terrain",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":8714.893617021276,\"height\":5290.453066332916,\"x\":4096,\"y\":2048,\"zoom\":1}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "22855",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "4.899999998509884",
+            "frameMs": "17.681395348854537",
+            "hover": "",
+            "lastChangedBytes": "1968",
+            "lastUpdateMs": "5.199999999254942",
+            "totalChangedBytes": "197176",
+            "backend": "webgpu",
+            "frames": "43"
+          },
+          "viewport": {
+            "width": 850,
+            "height": 650
+          }
+        },
+        {
+          "name": "resize-1280x720",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "terrain",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":9517.972551013,\"height\":4357.446808510638,\"x\":4096,\"y\":2048,\"zoom\":1}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "22855",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "4.899999998509884",
+            "frameMs": "17.35873015869468",
+            "hover": "",
+            "lastChangedBytes": "1968",
+            "lastUpdateMs": "5.199999999254942",
+            "totalChangedBytes": "197176",
+            "backend": "webgpu",
+            "frames": "63"
+          },
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          }
+        },
+        {
+          "name": "english",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "terrain",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":8714.893617021276,\"height\":4716.936170212766,\"x\":4096,\"y\":2048,\"zoom\":1}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "22855",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "4.899999998509884",
+            "frameMs": "17.15",
+            "hover": "",
+            "lastChangedBytes": "1968",
+            "lastUpdateMs": "5.199999999254942",
+            "totalChangedBytes": "197176",
+            "backend": "webgpu",
+            "frames": "90"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "world-webgl2",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "geography",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "backend": "webgl2",
+            "textureLimit": "16384",
+            "adapter": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1660 Ti (0x00002182) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+            "device": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+            "camera": "{\"width\":8714.893617021276,\"height\":4716.936170212766,\"x\":4096,\"y\":2048,\"zoom\":1}",
+            "shaderLanguage": "glsl",
+            "shaderLength": "29143",
+            "frames": "29",
+            "selected": "",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "4.100000001490116",
+            "frameMs": "28.310344827586206"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "korea-webgl2",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "geography",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "16384",
+            "adapter": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1660 Ti (0x00002182) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+            "device": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+            "camera": "{\"width\":378.90841813135984,\"height\":205.08418131359852,\"x\":6997.333333333334,\"y\":1206.0444444444445,\"zoom\":23}",
+            "shaderLanguage": "glsl",
+            "shaderLength": "29143",
+            "selected": "",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "4.199999999254942",
+            "frameMs": "20.99333333335817",
+            "backend": "webgl2",
+            "frames": "30"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "resize-webgl2",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "geography",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "16384",
+            "adapter": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1660 Ti (0x00002182) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+            "device": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+            "camera": "{\"width\":378.90841813135984,\"height\":197.15078630897318,\"x\":6997.333333333334,\"y\":1206.0444444444445,\"zoom\":23}",
+            "shaderLanguage": "glsl",
+            "shaderLength": "29143",
+            "selected": "",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "5.300000000745058",
+            "frameMs": "36.936363636431366",
+            "backend": "webgl2",
+            "frames": "11"
+          },
+          "viewport": {
+            "width": 1280,
+            "height": 800
+          }
+        }
+      ],
+      "raw_failed_requests": 4,
+      "actual_signal_aborted_matches": 4,
+      "unexplained_failures": 0,
+      "parent_peak_working_set": 166268928,
+      "memory_scope": "Browser parent PID peak working set only; excludes renderer/GPU subprocesses. Not total browser/GPU/JS memory."
+    },
+    {
+      "group": "quality",
+      "pid": 18684,
+      "argv": [
+        "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+        "--headless",
+        "--user-data-dir=E:\\openhoi\\target\\evidence\\M2-r2-WORLD-P07-screen\\quality\\chrome-profile-7Ys0ro",
+        "--remote-debugging-pipe",
+        "--no-startup-window"
+      ],
+      "snapshots": 21,
+      "snapshots_data": [
+        {
+          "name": "world",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "geography",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "backend": "webgpu",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":8714.893617021276,\"height\":4716.936170212766,\"x\":4096,\"y\":2048,\"zoom\":1}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "frames": "30",
+            "selected": "",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "6.300000000745058",
+            "frameMs": "25.489999999975165"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "europe",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "geography",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":1452.4822695035461,\"height\":786.1560283687944,\"x\":4437.333333333333,\"y\":910.2222222222222,\"zoom\":6}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "4.799999997019768",
+            "frameMs": "18.95384615387481",
+            "backend": "webgpu",
+            "frames": "26"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "korea",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "geography",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":378.90841813135984,\"height\":205.08418131359852,\"x\":6997.333333333334,\"y\":1206.0444444444445,\"zoom\":23}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "8.099999997764826",
+            "frameMs": "20.22307692310558",
+            "backend": "webgpu",
+            "frames": "26"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "himalaya-geography",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "geography",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":726.2411347517731,\"height\":393.0780141843972,\"x\":6030.222222222223,\"y\":1388.088888888889,\"zoom\":12}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "5.5",
+            "frameMs": "18.75",
+            "backend": "webgpu",
+            "frames": "26"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "ireland",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "geography",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":290.49645390070924,\"height\":157.23120567375886,\"x\":3913.9555555555557,\"y\":841.9555555555555,\"zoom\":30}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "4.5",
+            "frameMs": "18.399999999967605",
+            "backend": "webgpu",
+            "frames": "23"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "great_britain",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "geography",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":435.74468085106383,\"height\":235.8468085106383,\"x\":4050.488888888889,\"y\":819.2,\"zoom\":20}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "6.399999998509884",
+            "frameMs": "18.891304347826086",
+            "backend": "webgpu",
+            "frames": "23"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "dublin",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "geography",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":145.24822695035462,\"height\":78.61560283687943,\"x\":3953.6189549841065,\"y\":834.0654933560888,\"zoom\":60}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "5.100000001490116",
+            "frameMs": "18.1913043477613",
+            "backend": "webgpu",
+            "frames": "23"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "dublin-selected",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "geography",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":145.24822695035462,\"height\":78.61560283687943,\"x\":3953.6189549841065,\"y\":834.0654933560888,\"zoom\":60}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "23023",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "5.099999997764826",
+            "frameMs": "17.47906976738988",
+            "backend": "webgpu",
+            "frames": "43",
+            "hover": "23023"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "london",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "geography",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":145.24822695035462,\"height\":78.61560283687943,\"x\":4093.29965056,\"y\":876.0447294577777,\"zoom\":60}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "5.299999997019768",
+            "frameMs": "19.113636363636363",
+            "hover": "23023",
+            "backend": "webgpu",
+            "frames": "22"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "london-selected",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "geography",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":145.24822695035462,\"height\":78.61560283687943,\"x\":4093.29965056,\"y\":876.0447294577777,\"zoom\":60}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "23080",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "6",
+            "frameMs": "17.952380952380953",
+            "hover": "23080",
+            "backend": "webgpu",
+            "frames": "42"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "seoul",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "geography",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":145.24822695035462,\"height\":78.61560283687943,\"x\":6985.905154275555,\"y\":1193.112576,\"zoom\":60}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "5",
+            "frameMs": "18.378260869532824",
+            "hover": "23080",
+            "backend": "webgpu",
+            "frames": "23"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "seoul-selected",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "geography",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":145.24822695035462,\"height\":78.61560283687943,\"x\":6985.905154275555,\"y\":1193.112576,\"zoom\":60}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "23751",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "7.800000000745058",
+            "frameMs": "17.58139534883721",
+            "hover": "23751",
+            "backend": "webgpu",
+            "frames": "43"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "tokyo",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "geography",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":145.24822695035462,\"height\":78.61560283687943,\"x\":7276.076637297778,\"y\":1235.9233353955556,\"zoom\":60}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "5.399999998509884",
+            "frameMs": "19.008695652303487",
+            "hover": "23751",
+            "backend": "webgpu",
+            "frames": "23"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "tokyo-selected",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "geography",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":145.24822695035462,\"height\":78.61560283687943,\"x\":7276.076637297778,\"y\":1235.9233353955556,\"zoom\":60}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "23828",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "4.399999998509884",
+            "frameMs": "17.862222222238778",
+            "hover": "23828",
+            "backend": "webgpu",
+            "frames": "45"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "japan",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "geography",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":580.9929078014185,\"height\":314.46241134751773,\"x\":7236.266666666666,\"y\":1206.0444444444445,\"zoom\":15}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "5.800000000745058",
+            "frameMs": "19.76956521735891",
+            "hover": "23828",
+            "backend": "webgpu",
+            "frames": "23"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "irish_sea",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "geography",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":193.6643026004728,\"height\":104.82080378250592,\"x\":3989.048888888889,\"y\":837.4044444444444,\"zoom\":45}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "4.5",
+            "frameMs": "18.07826086959761",
+            "hover": "23828",
+            "backend": "webgpu",
+            "frames": "23"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "irish_sea-selected",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "geography",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":193.6643026004728,\"height\":104.82080378250592,\"x\":3989.048888888889,\"y\":837.4044444444444,\"zoom\":45}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "6040",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "4.400000002235174",
+            "frameMs": "17.40681818186898",
+            "hover": "6040",
+            "backend": "webgpu",
+            "frames": "44"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "english_channel",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "geography",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":193.6643026004728,\"height\":104.82080378250592,\"x\":4057.3155555555554,\"y\":914.7733333333333,\"zoom\":45}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "5.199999999254942",
+            "frameMs": "18.520833333333332",
+            "hover": "6040",
+            "backend": "webgpu",
+            "frames": "24"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "english_channel-selected",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "geography",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":193.6643026004728,\"height\":104.82080378250592,\"x\":4057.3155555555554,\"y\":914.7733333333333,\"zoom\":45}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "3987",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "9.300000000745058",
+            "frameMs": "17.634782608679455",
+            "hover": "3987",
+            "backend": "webgpu",
+            "frames": "46"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "atlantic",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "geography",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":193.6643026004728,\"height\":104.82080378250592,\"x\":3299.5555555555557,\"y\":1479.111111111111,\"zoom\":45}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "9.800000000745058",
+            "frameMs": "19.808695652076732",
+            "hover": "3987",
+            "backend": "webgpu",
+            "frames": "23"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        },
+        {
+          "name": "atlantic-selected",
+          "host": {
+            "testid": "world-map",
+            "previewMode": "geography",
+            "borders": "on",
+            "unitSamples": "6",
+            "unitTriangles": "912",
+            "textureLimit": "8192",
+            "adapter": "{\"vendor\":\"nvidia\",\"architecture\":\"turing\",\"device\":\"\",\"description\":\"\"}",
+            "device": "WebGPU device",
+            "camera": "{\"width\":193.6643026004728,\"height\":104.82080378250592,\"x\":3299.5555555555557,\"y\":1479.111111111111,\"zoom\":45}",
+            "shaderLanguage": "wgsl",
+            "shaderLength": "17782",
+            "selected": "6528",
+            "mode": "map-mode-terrain",
+            "updatedBytes": "0",
+            "updateMs": "9.399999998509884",
+            "frameMs": "18.266666666666666",
+            "hover": "6528",
+            "backend": "webgpu",
+            "frames": "45"
+          },
+          "viewport": {
+            "width": 1600,
+            "height": 1000
+          }
+        }
+      ],
+      "raw_failed_requests": 2,
+      "actual_signal_aborted_matches": 2,
+      "unexplained_failures": 0,
+      "parent_peak_working_set": 165666816,
+      "memory_scope": "Browser parent PID peak working set only; excludes renderer/GPU subprocesses. Not total browser/GPU/JS memory."
+    }
+  ],
+  "actual_picks": [
+    {
+      "action": "geographic-sample-pick",
+      "key": "dublin",
+      "selected": "23023",
+      "hover": "23023",
+      "camera": {
+        "width": 145.24822695035462,
+        "height": 78.61560283687943,
+        "x": 3953.6189549841065,
+        "y": 834.0654933560888,
+        "zoom": 60
+      },
+      "screen": {
+        "x": 800,
+        "y": 529
+      },
+      "host": {
+        "x": 0,
+        "y": 96,
+        "width": 1600,
+        "height": 866
+      }
+    },
+    {
+      "action": "geographic-sample-pick",
+      "key": "london",
+      "selected": "23080",
+      "hover": "23080",
+      "camera": {
+        "width": 145.24822695035462,
+        "height": 78.61560283687943,
+        "x": 4093.29965056,
+        "y": 876.0447294577777,
+        "zoom": 60
+      },
+      "screen": {
+        "x": 800,
+        "y": 529
+      },
+      "host": {
+        "x": 0,
+        "y": 96,
+        "width": 1600,
+        "height": 866
+      }
+    },
+    {
+      "action": "geographic-sample-pick",
+      "key": "seoul",
+      "selected": "23751",
+      "hover": "23751",
+      "camera": {
+        "width": 145.24822695035462,
+        "height": 78.61560283687943,
+        "x": 6985.905154275555,
+        "y": 1193.112576,
+        "zoom": 60
+      },
+      "screen": {
+        "x": 800,
+        "y": 529
+      },
+      "host": {
+        "x": 0,
+        "y": 96,
+        "width": 1600,
+        "height": 866
+      }
+    },
+    {
+      "action": "geographic-sample-pick",
+      "key": "tokyo",
+      "selected": "23828",
+      "hover": "23828",
+      "camera": {
+        "width": 145.24822695035462,
+        "height": 78.61560283687943,
+        "x": 7276.076637297778,
+        "y": 1235.9233353955556,
+        "zoom": 60
+      },
+      "screen": {
+        "x": 800,
+        "y": 529
+      },
+      "host": {
+        "x": 0,
+        "y": 96,
+        "width": 1600,
+        "height": 866
+      }
+    },
+    {
+      "action": "geographic-sample-pick",
+      "key": "irish_sea",
+      "selected": "6040",
+      "hover": "6040",
+      "camera": {
+        "width": 193.6643026004728,
+        "height": 104.82080378250592,
+        "x": 3989.048888888889,
+        "y": 837.4044444444444,
+        "zoom": 45
+      },
+      "screen": {
+        "x": 800,
+        "y": 529
+      },
+      "host": {
+        "x": 0,
+        "y": 96,
+        "width": 1600,
+        "height": 866
+      }
+    },
+    {
+      "action": "geographic-sample-pick",
+      "key": "english_channel",
+      "selected": "3987",
+      "hover": "3987",
+      "camera": {
+        "width": 193.6643026004728,
+        "height": 104.82080378250592,
+        "x": 4057.3155555555554,
+        "y": 914.7733333333333,
+        "zoom": 45
+      },
+      "screen": {
+        "x": 800,
+        "y": 529
+      },
+      "host": {
+        "x": 0,
+        "y": 96,
+        "width": 1600,
+        "height": 866
+      }
+    },
+    {
+      "action": "geographic-sample-pick",
+      "key": "atlantic",
+      "selected": "6528",
+      "hover": "6528",
+      "camera": {
+        "width": 193.6643026004728,
+        "height": 104.82080378250592,
+        "x": 3299.5555555555557,
+        "y": 1479.111111111111,
+        "zoom": 45
+      },
+      "screen": {
+        "x": 800,
+        "y": 529
+      },
+      "host": {
+        "x": 0,
+        "y": 96,
+        "width": 1600,
+        "height": 866
+      }
+    }
+  ],
+  "sockets": {
+    "head": "ea355b3b446a0a53276f9e1ce96da360bbb41470",
+    "status": "",
+    "pid": 21408,
+    "argv": [
+      "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+      "--headless",
+      "--user-data-dir=E:\\openhoi\\target\\evidence\\M2-r2-WORLD-P07-screen\\socket-probe\\chrome-profile-pvugad",
+      "--remote-debugging-pipe",
+      "--no-startup-window"
+    ],
+    "cwd": "E:\\openhoi",
+    "sockets": [
+      {
+        "requestId": "24776.22",
+        "url": "ws://127.0.0.1:4581/?token=hara0y4e8pAo",
+        "initiator": {
+          "type": "script",
+          "stack": {
+            "callFrames": [
+              {
+                "functionName": "createConnection",
+                "scriptId": "5",
+                "url": "http://127.0.0.1:4581/@vite/client",
+                "lineNumber": 946,
+                "columnNumber": 26
+              },
+              {
+                "functionName": "connect",
+                "scriptId": "5",
+                "url": "http://127.0.0.1:4581/@vite/client",
+                "lineNumber": 212,
+                "columnNumber": 26
+              },
+              {
+                "functionName": "connect",
+                "scriptId": "5",
+                "url": "http://127.0.0.1:4581/@vite/client",
+                "lineNumber": 952,
+                "columnNumber": 22
+              },
+              {
+                "functionName": "connect",
+                "scriptId": "5",
+                "url": "http://127.0.0.1:4581/@vite/client",
+                "lineNumber": 80,
+                "columnNumber": 20
+              },
+              {
+                "functionName": "connect",
+                "scriptId": "5",
+                "url": "http://127.0.0.1:4581/@vite/client",
+                "lineNumber": 164,
+                "columnNumber": 44
+              },
+              {
+                "functionName": "",
+                "scriptId": "5",
+                "url": "http://127.0.0.1:4581/@vite/client",
+                "lineNumber": 1029,
+                "columnNumber": 10
+              }
+            ]
+          }
+        },
+        "protocol": "vite-hmr",
+        "purpose": "Vite development HMR"
+      }
+    ],
+    "handshakes": [
+      {
+        "requestId": "24776.22",
+        "protocol": "vite-hmr",
+        "time": 33433.709561
+      }
+    ],
+    "errors": [],
+    "nativeExit": 0,
+    "gameSockets": 0,
+    "unclassifiedSockets": 0
+  },
+  "readonly_generated_TS": {
+    "head": "ea355b3b446a0a53276f9e1ce96da360bbb41470",
+    "compile_argv": [
+      "C:/Users/user/.cargo/bin/rustc.exe",
+      "--edition=2021",
+      "E:\\openhoi\\.orchestrator\\evidence\\M2-r2-WORLD-P07-typescript\\readonly.rs",
+      "--extern",
+      "oh_proto=E:\\openhoi\\target\\debug\\liboh_proto.rlib",
+      "-L",
+      "dependency=E:\\openhoi\\target\\debug\\deps",
+      "-o",
+      "E:\\openhoi\\.orchestrator\\evidence\\M2-r2-WORLD-P07-typescript\\readonly.exe"
+    ],
+    "compile_native_exit": 0,
+    "run_argv": [
+      "E:\\openhoi\\.orchestrator\\evidence\\M2-r2-WORLD-P07-typescript\\readonly.exe"
+    ],
+    "run_native_exit": 0,
+    "library_sha256": "ad6448a98d83bddf67f5567af8128ee407be136675d061a97b1ae73e6316552c",
+    "generated_bytes": 4119,
+    "generated_sha256": "060de85cc664ab6310e037696b8c60e865e976ff71351121d83f5e73d59477c4",
+    "exact_Git_blob_equal": true,
+    "raw_checkout_equal": true,
+    "tracked_file_rewritten": false
+  },
+  "historical_F07_initial_observation": "withdrawn based on identical complete PNG bytes/RGB and actual visible DOM; original observation and correction preserved",
+  "source_P05": "docs/verify/WORLD-PREVIEW.M2-r2.attempt4.md",
+  "P05_source": "5794505abb2b0cfeaace8005183cb6606fc68301",
+  "bake_and_data": "P05 qualified fresh2/3 59.047/57.828s, original180s3GiB64MiB; four data blobs exact; no re-bake claimed for P07",
+  "limits": "Modern2002–2003 generalized footprint/source channels/tiny/source6125onepixel/globalDEM/authoritygame connection remain limited; wholeWP32/45/M2/M5/uservisualapproval not asserted",
+  "native_vite_cleanup": "own explicitly spawned Node PID terminate exit1, separate from successful Chrome native0; raw receipts included",
+  "sealed_utc": "2026-10-07T14:49:31.994143+00:00"
+}

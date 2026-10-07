@@ -1,0 +1,21 @@
+{
+  "command": [
+    "E:\\openhoi\\target\\debug\\oh_cli.exe",
+    "run",
+    "--pack",
+    "E:\\openhoi\\.orchestrator\\evidence\\M2-r2-WORLD-P07-regression\\native-legacy-nations\\ideology\\testland",
+    "--scenario",
+    "m1",
+    "--ticks",
+    "0",
+    "--seed",
+    "7",
+    "--save-out",
+    "E:\\openhoi\\.orchestrator\\evidence\\M2-r2-WORLD-P07-regression\\native-legacy-nations\\ideology\\new.ohsave"
+  ],
+  "cwd": "E:\\openhoi",
+  "pid": 38524,
+  "exit": 1,
+  "expected_exit": 1,
+  "passed": true
+}

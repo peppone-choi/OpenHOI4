@@ -1,5 +1,15 @@
 # 인수인계
 
+## 진행 중 M2-r2 WORLD 로컬 통합 검수 — 2026-10-07 23:55 KST
+
+[새 P05-4](docs/verify/WORLD-PREVIEW.M2-r2.attempt4.md)는 source5794505의 유효 한정 PASS다. actualidle/completed26/final15367chars와 원10017/full/rawd30e 불변, MF976/ZIP977 전수0 및 원174950491B/69c088…/48MBparts4 실제 재조립·CRC를 인수했다. 원 F05·첫 wrapper 경로 예외·qualifiedfresh2/3과 모든 원본은 보존한다.
+
+단순 합류 검수 커밋 `ea355b3b446a0a53276f9e1ce96da360bbb41470`에서 [P07](docs/plans/WORLD-PREVIEW-P07.md) 로컬 검사를 통과했다. 제품387Gitblob 기대 union exact, ASSETS/ko/en3append 원문·양쪽 suffix 및 경로100/번역161중복없음. 기본40명령은39native0+legacy strict거부1/expected1이며 driver0다. client243/Rust195/Python32PASS1skip/원M1단일41 및own최소Chrome full17·quality21/native0, 도시4·sea3 실제pick·HMR1/game0/unknown0을 확인했다. readonly TS4119B는Git/raw와same·trackedwritefalse다. 원 P07 MF1556/ZIP1557/16,892,531B/SHA9388119e… 전수 bytes/SHA/CRC0를 보존한다.
+
+부모 상단HUD 누락 최초판독은 원 PNG wholebytes/RGB·실제DOM과 모순되어 정정했다. 원F07관찰/PNG와 별도정정근거를 모두 보존했고 제품F07이나 새P06/P05로 다루지 않는다. 기존회귀driver summary의WP13 표지는원문유지·이번WORLD 실제범위문서로구분한다. 원Vite ownPID 명시종료exit1은 검사Chrome0와별도다.
+
+아직 최종 push/같은main CI와 실제3OS Save/Trigger artifact 확인이 남았다. 고유통합15·M0/M1 PASS·원W1/W2 전체0/0·M2게이트없음/외관우선/권위게임기능후속은 유지한다. 아래시점의활성/미통합관측은역사다. 이 절은 RUN 종료 P-08이 아니다.
+
 ## 진행 중 M2-r2 새 독립 검증 착수 — 2026-10-07 22:45 KST
 
 WORLD P06-4는 actual idle/completed88/turn `01a1166e-d443-7c01-9ea1-49d6b574b5f9`, 실제 final823자로 종료했다. 최종 source5794505와 [부모 원본 인수](docs/worklog/evidence/WORLD-PREVIEW-M2-r2-P06-4/README.md)는 critical326/source snapshot·artifact554·ZIP556 member bytes/SHA/CRC 전수 불일치0이다. Git323 rawexact와 원래3개 UTF8 CRLF/LF내용동등은 따로 기록했고 원 bytes를 보존했다. 원ZIP50,409,960B/SHA348727bdbe6637f375ef51d62e0dc96745c178eed6d6b77b901f7e18a8d6f036는 생산자 경로에 유지하고 48MB orderedparts2개를 실제 재조립해 전체SHA/556CRC를 확인했다. 원446 네 산출물은 bytes까지 동일하며 원F05·초기client timeout·공간 부족 실패와 회복도 보존했다.

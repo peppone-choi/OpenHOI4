@@ -1,0 +1,14 @@
+{
+  "command": [
+    "E:\\openhoi\\target\\debug\\examples\\trigger_fixture.exe",
+    "resume",
+    "E:\\openhoi\\.orchestrator\\evidence\\M2-r2-WORLD-P07-regression\\trigger-current\\run-2\\pack",
+    "E:\\openhoi\\.orchestrator\\evidence\\M2-r2-WORLD-P07-regression\\trigger-current\\run-2\\split.ohsave",
+    "100",
+    "E:\\openhoi\\.orchestrator\\evidence\\M2-r2-WORLD-P07-regression\\trigger-current\\continued-2"
+  ],
+  "cwd": "E:\\openhoi",
+  "pid": 33088,
+  "exit": 0,
+  "executable_sha256": "a1637380339273a1f8c759dc579be4d8e0e60d053bf1b53a55f9187c858aac8e"
+}

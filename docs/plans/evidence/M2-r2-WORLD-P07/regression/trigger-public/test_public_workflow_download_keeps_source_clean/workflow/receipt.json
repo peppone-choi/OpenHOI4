@@ -1,0 +1,25 @@
+{
+  "command": [
+    "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "E:\\openhoi\\target\\trigger-predicate-scratch\\tmpw98h7t2j\\public-source\\crates\\oh_sim\\tools\\check_trigger_determinism.py",
+    "compare",
+    "--root",
+    "E:\\openhoi\\target\\trigger-predicate-scratch\\tmpw98h7t2j\\public-source\\target\\trigger-evidence"
+  ],
+  "cwd": "E:\\openhoi\\target\\trigger-predicate-scratch\\tmpw98h7t2j\\public-source",
+  "native_exit": 0,
+  "pid": 33736,
+  "executable": "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+  "executable_sha256": "bf1b03022cadfc18049a7f0ecf1f3134c7676fcb6ff6c6941ae7f77e21285c73",
+  "source_before": {
+    "head": "6e2754808726d15e505e2febc73a6e7398784e56",
+    "status": "",
+    "index_sha256": "73f20f5682dcacdd354a07c52680b132ee40de9f295f4d7c4dbcd432e9f668da"
+  },
+  "source_after": {
+    "head": "6e2754808726d15e505e2febc73a6e7398784e56",
+    "status": "",
+    "index_sha256": "73f20f5682dcacdd354a07c52680b132ee40de9f295f4d7c4dbcd432e9f668da"
+  },
+  "synthetic_os_labels": true
+}

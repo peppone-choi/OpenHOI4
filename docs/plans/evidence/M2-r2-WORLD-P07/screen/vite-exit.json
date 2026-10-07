@@ -1,0 +1,6 @@
+{
+  "pid": 38896,
+  "native_exit": 1,
+  "cleanup": "Terminate only this explicitly spawned own Node PID after browser captures; original stdout/stderr retained",
+  "ended_utc": "2026-10-07T14:27:36.379763+00:00"
+}

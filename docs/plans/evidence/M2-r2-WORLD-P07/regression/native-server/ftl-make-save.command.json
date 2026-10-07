@@ -1,0 +1,18 @@
+{
+  "command": [
+    "E:\\openhoi\\target\\debug\\oh_cli.exe",
+    "run",
+    "--pack",
+    "E:\\openhoi\\.orchestrator\\evidence\\M2-r2-WORLD-P07-regression\\native-server\\ftl\\testland",
+    "--scenario",
+    "m1",
+    "--ticks",
+    "0",
+    "--seed",
+    "1",
+    "--save-out",
+    "E:\\openhoi\\.orchestrator\\evidence\\M2-r2-WORLD-P07-regression\\native-server\\ftl\\start.ohsave"
+  ],
+  "cwd": "E:\\openhoi",
+  "exit": 0
+}

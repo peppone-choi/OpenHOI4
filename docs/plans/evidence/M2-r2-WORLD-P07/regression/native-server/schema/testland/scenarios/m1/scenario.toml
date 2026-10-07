@@ -1,0 +1,9 @@
+# Original minimal M1 fixture; no economic/combat rules or WP-23 content.
+start_date = "2000-01-01"
+unknown = "testland"
+nations = ["NTH", "STH"]
+[ownership]
+1 = "NTH"
+2 = "STH"
+[control_overrides]
+20 = "STH"

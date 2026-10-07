@@ -1,0 +1,30 @@
+# Independent synthetic WP13 input, reuses existing testland geometry only.
+start_date = "2000-02-28"
+end_date = "2000-02-29"
+end_conditions = { date_gte = "2000-03-01" }
+flag_keys = ["x", "y"]
+map = "testland"
+nations = ["NTH", "STH"]
+
+[initial_flags]
+STH = ["y"]
+
+[effect_programs.prepare]
+root = "NTH"
+effects = [
+  { set_flag = "x" },
+  { scope = { target = "nation:STH", effects = [{ set_flag = "x" }] } },
+  { clear_flag = "x" },
+  { set_flag = "x" },
+  { set_flag = "x" },
+]
+
+[effect_programs.finish]
+root = "NTH"
+effects = [{ end_scenario = "z" }, { end_scenario = "a" }]
+
+[ownership]
+1 = "NTH"
+2 = "STH"
+[control_overrides]
+20 = "STH"

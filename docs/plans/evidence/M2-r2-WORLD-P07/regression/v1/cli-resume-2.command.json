@@ -1,0 +1,1 @@
+{"command": ["E:\\openhoi\\target\\debug\\oh_cli.exe", "resume", "--load", "E:\\openhoi\\.orchestrator\\evidence\\M2-r2-WORLD-P07-regression\\v1\\run-2\\saved.ohsave", "--pack", "E:\\openhoi\\.orchestrator\\evidence\\M2-r2-WORLD-P07-regression\\v1\\run-2\\pack", "--days", "2", "--hash-out"], "exit": 0}

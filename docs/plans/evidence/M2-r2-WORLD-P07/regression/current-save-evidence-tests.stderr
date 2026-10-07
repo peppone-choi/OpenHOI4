@@ -1,0 +1,26 @@
+test_changed_state_config_queue_ledger_or_canonical (test_save_current_evidence.CurrentEvidenceFailures.test_changed_state_config_queue_ledger_or_canonical) ... ok
+test_different_head (test_save_current_evidence.CurrentEvidenceFailures.test_different_head) ... ok
+test_dirty_source (test_save_current_evidence.CurrentEvidenceFailures.test_dirty_source) ... ok
+test_extra_deleted_pack_file_and_forged_pack_summary (test_save_current_evidence.CurrentEvidenceFailures.test_extra_deleted_pack_file_and_forged_pack_summary) ... ok
+test_failed_or_missing_native_exit (test_save_current_evidence.CurrentEvidenceFailures.test_failed_or_missing_native_exit) ... ok
+test_frozen_capture_command_cannot_replace_current (test_save_current_evidence.CurrentEvidenceFailures.test_frozen_capture_command_cannot_replace_current) ... ok
+test_independent_fixed_decimal_roundtrip_and_bounds (test_save_current_evidence.CurrentEvidenceFailures.test_independent_fixed_decimal_roundtrip_and_bounds) ... ok
+test_m0_run_cannot_replace_cli_resume (test_save_current_evidence.CurrentEvidenceFailures.test_m0_run_cannot_replace_cli_resume) ... ok
+test_missing_os (test_save_current_evidence.CurrentEvidenceFailures.test_missing_os) ... ok
+test_missing_raw_stdout_or_stderr (test_save_current_evidence.CurrentEvidenceFailures.test_missing_raw_stdout_or_stderr) ... ok
+test_missing_server_proof_or_wrong_native_exit_input (test_save_current_evidence.CurrentEvidenceFailures.test_missing_server_proof_or_wrong_native_exit_input) ... ok
+test_query_and_receipt_simultaneous_ledger_tick_tamper (test_save_current_evidence.CurrentEvidenceFailures.test_query_and_receipt_simultaneous_ledger_tick_tamper) ... ok
+test_same_pid_or_receipt_pid_mismatch (test_save_current_evidence.CurrentEvidenceFailures.test_same_pid_or_receipt_pid_mismatch) ... ok
+test_save_paused_pack_or_header_bytes_changed (test_save_current_evidence.CurrentEvidenceFailures.test_save_paused_pack_or_header_bytes_changed) ... ok
+test_synthetic_control (test_save_current_evidence.CurrentEvidenceFailures.test_synthetic_control) ... ok
+test_wire_ledger_mutants_raw_receipt_and_messages_cannot_self_certify (test_save_current_evidence.CurrentEvidenceFailures.test_wire_ledger_mutants_raw_receipt_and_messages_cannot_self_certify) ... ok
+test_wire_raw_only_receipt_only_and_duplicate_json_fields (test_save_current_evidence.CurrentEvidenceFailures.test_wire_raw_only_receipt_only_and_duplicate_json_fields) ... ok
+test_wrong_current_mode (test_save_current_evidence.CurrentEvidenceFailures.test_wrong_current_mode) ... ok
+test_wrong_executable_sha_or_changed_source_boundary (test_save_current_evidence.CurrentEvidenceFailures.test_wrong_executable_sha_or_changed_source_boundary) ... ok
+test_wrong_format (test_save_current_evidence.CurrentEvidenceFailures.test_wrong_format) ... ok
+test_required_server_positive_consumes_separate_current_capture (test_save_current_evidence.PipelineInputs.test_required_server_positive_consumes_separate_current_capture) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 34.614s
+
+OK

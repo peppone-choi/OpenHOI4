@@ -1,0 +1,6 @@
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.09s
+     Running `target\debug\oh_cli.exe validate data/packs/examples/m0/testland`
+error: data/packs/examples/m0/testland\manifest.toml:3:12 — missing ko message value testland_name
+error: data/packs/examples/m0/testland\manifest.toml:3:12 — missing en message value testland_name
+oh_cli: validation failed
+error: process didn't exit successfully: `target\debug\oh_cli.exe validate data/packs/examples/m0/testland` (exit code: 1)

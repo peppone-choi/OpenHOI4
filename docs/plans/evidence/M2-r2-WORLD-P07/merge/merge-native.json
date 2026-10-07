@@ -1,0 +1,14 @@
+{
+  "main": "c5d7f8e9628aec8a52227863204e9fc7fc5ab409",
+  "world": "5794505abb2b0cfeaace8005183cb6606fc68301",
+  "base": "ea63081e0b79369227c99384922db80c6ef09fb1",
+  "start_utc": "2026-10-07T14:19:14.572256+00:00",
+  "native_exit": 1,
+  "command": [
+    "git",
+    "merge",
+    "--no-ff",
+    "--no-commit",
+    "5794505abb2b0cfeaace8005183cb6606fc68301"
+  ]
+}

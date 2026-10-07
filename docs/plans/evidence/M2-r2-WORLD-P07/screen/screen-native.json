@@ -1,0 +1,56 @@
+[
+  {
+    "name": "original-m1-whole",
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.EXE",
+      "node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "E:\\openhoi\\target\\evidence\\M2-r2-WORLD-P07-screen\\m1-minimal.config.ts"
+    ],
+    "cwd": "E:\\openhoi\\client",
+    "started_utc": "2026-10-07T14:26:22.020321+00:00",
+    "ended_utc": "2026-10-07T14:27:09.561968+00:00",
+    "native_exit": 0
+  },
+  {
+    "name": "world-full",
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.EXE",
+      "tools/maps/capture_preview.mjs",
+      "http://127.0.0.1:4581/?world-preview=1",
+      "--full",
+      "--out=target/evidence/M2-r2-WORLD-P07-screen/page"
+    ],
+    "cwd": "E:\\openhoi",
+    "started_utc": "2026-10-07T14:27:10.098429+00:00",
+    "ended_utc": "2026-10-07T14:27:22.424364+00:00",
+    "native_exit": 0
+  },
+  {
+    "name": "world-quality",
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.EXE",
+      "tools/maps/capture_preview.mjs",
+      "http://127.0.0.1:4581/?world-preview=1",
+      "--quality",
+      "--compare",
+      "--out=target/evidence/M2-r2-WORLD-P07-screen/quality"
+    ],
+    "cwd": "E:\\openhoi",
+    "started_utc": "2026-10-07T14:27:22.424364+00:00",
+    "ended_utc": "2026-10-07T14:27:34.115888+00:00",
+    "native_exit": 0
+  },
+  {
+    "name": "socket-probe",
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.EXE",
+      "E:\\openhoi\\target\\evidence\\M2-r2-WORLD-P07-screen\\socket-probe.mjs"
+    ],
+    "cwd": "E:\\openhoi",
+    "started_utc": "2026-10-07T14:27:34.115888+00:00",
+    "ended_utc": "2026-10-07T14:27:36.345763+00:00",
+    "native_exit": 0
+  }
+]

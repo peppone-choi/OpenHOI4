@@ -1,0 +1,183 @@
+{
+  "head": "ea355b3b446a0a53276f9e1ce96da360bbb41470",
+  "dirty": false,
+  "input_header": {
+    "engine_version": "0.1.0",
+    "format_version": 1,
+    "scenario_id": "m1",
+    "packs": [
+      {
+        "id": "testland",
+        "version": "0.1.0",
+        "content_hash": 12861016185528173627
+      }
+    ],
+    "game_date": {
+      "year": 2000,
+      "month": 3,
+      "day": 1
+    },
+    "tick": 48,
+    "seed": 7,
+    "state_hash": "04f3fbbca0c44703",
+    "player_nations": [],
+    "saved_at_utc": 0,
+    "definitions_hash": 4193647753822848501,
+    "effective_defines_hash": 13657557416711793532
+  },
+  "source_files": [
+    {
+      "path": "common/buildings.toml",
+      "bytes": 29,
+      "sha256": "23826071aeb8a2bc7a1f032ec2adcc23424e5f60ac579ca9ee18be5bd52816b8"
+    },
+    {
+      "path": "common/resources.toml",
+      "bytes": 26,
+      "sha256": "514eee6a8dbc6835c6833c38dadbe5da7dae3d70d185aaecea73ba8dd62b61fc"
+    },
+    {
+      "path": "common/terrain.toml",
+      "bytes": 173,
+      "sha256": "db903c3403dded0c36b38ae28ab2b6f61a1c66efdc7c16a4c5240dceb475d289"
+    },
+    {
+      "path": "defines.toml",
+      "bytes": 206,
+      "sha256": "76d46941adae2f693574dc5551b4afcb9f1999cf5e513fd863de1d2d923587df"
+    },
+    {
+      "path": "localisation/en/map.ftl",
+      "bytes": 164,
+      "sha256": "ae6442ef5fd0912ae5d7cdbf0541edd417c83dfeb505d6f749b2b6687ddb9b4b"
+    },
+    {
+      "path": "localisation/en/national.ftl",
+      "bytes": 226,
+      "sha256": "e109c2e8097418bef7c251904497fae23b21f0a85abe6ed8a8dc208445c84407"
+    },
+    {
+      "path": "localisation/ko/map.ftl",
+      "bytes": 160,
+      "sha256": "b7ac3fb02aa96a16f8338bf81068aa378d7791e8be7306ddb2f0f42092bf700f"
+    },
+    {
+      "path": "localisation/ko/national.ftl",
+      "bytes": 227,
+      "sha256": "7824bf87a61e5041644e3d62b09ebc4debc6f0769878e36bf1b662198986e312"
+    },
+    {
+      "path": "manifest.toml",
+      "bytes": 186,
+      "sha256": "92656dc53031c8bf5d1e8af8b5a15e4448b3eb2eee498f56010811b78528dbcc"
+    },
+    {
+      "path": "maps/testland/adjacency_overrides.csv",
+      "bytes": 75,
+      "sha256": "251e1353688f511baf45b1b513a8a79ad3329ae21dfb1e6e29e9ba362572a525"
+    },
+    {
+      "path": "maps/testland/provinces.csv",
+      "bytes": 218,
+      "sha256": "f04d94464fe95d7c25069529a34f782e060ba9cf5185618384a3ac5dd2846c89"
+    },
+    {
+      "path": "maps/testland/provinces.png",
+      "bytes": 97,
+      "sha256": "05305d56dc90dfbfbd73fc1a5f3a480ec6e82551f60a93be7d8bc53ad3d73dab"
+    },
+    {
+      "path": "maps/testland/regions.toml",
+      "bytes": 67,
+      "sha256": "1b9eadcb639cef1b6e7b88451e1e7134a88d8b5cb108e4066ee70cc137f79485"
+    },
+    {
+      "path": "maps/testland/states.toml",
+      "bytes": 540,
+      "sha256": "d63380dfe0240f8fe50feabe8e253278a03020d24ad46e65cd69f5a3e0512f2b"
+    },
+    {
+      "path": "maps/testland/visuals.toml",
+      "bytes": 246,
+      "sha256": "df2b1566fabd3c1a263d543b425a52842584a6ca5bf33827290a1d4fa2f303b1"
+    },
+    {
+      "path": "scenarios/m1/defines.toml",
+      "bytes": 811,
+      "sha256": "91ac0d4669188dd911622bdbdba5efb43c5d242f195d6f1478f07afc91f45411"
+    },
+    {
+      "path": "scenarios/m1/nations/NTH.toml",
+      "bytes": 211,
+      "sha256": "04f0a06c29a74b41e7effe94a3e131da359f213ef35da849e70c59fbd3f8c29a"
+    },
+    {
+      "path": "scenarios/m1/nations/STH.toml",
+      "bytes": 209,
+      "sha256": "522a1ab15df094a0c15012e2c8c3b362dba7fb766ff0d2b6eea48b0f1bde0b2b"
+    },
+    {
+      "path": "scenarios/m1/scenario.toml",
+      "bytes": 538,
+      "sha256": "ce56ff2d9259ed60be06163fe57d6dba452d9e5075b56525f920c3dc23354481"
+    }
+  ],
+  "save_sha256": "dd0bacad5f4f4a439f22a2e000377765c5f0723a8087a23d2850101266afb712",
+  "source_preserved": true,
+  "save_preserved": true,
+  "receipts": [
+    {
+      "name": "historical",
+      "exe": "E:\\openhoi\\target\\debug\\oh_server.exe",
+      "exe_sha256": "9044ebd6a9ce25c9160bf32b1b163331f90a7b19207785caf18e90e3e3e13185",
+      "cwd": "E:\\openhoi",
+      "args": [
+        "E:\\openhoi\\target\\debug\\oh_server.exe",
+        "--port",
+        "8074",
+        "--pack-root",
+        "E:\\openhoi\\.orchestrator\\evidence\\M2-r2-WORLD-P07-regression\\v1\\server-rejected\\packs",
+        "--load-save",
+        "E:\\openhoi\\.orchestrator\\evidence\\M2-r2-WORLD-P07-regression\\v1\\run-1\\paused.ohsave"
+      ],
+      "pid": 9904,
+      "port": 8074,
+      "http_status": null,
+      "ws_status": null,
+      "ws_close": false,
+      "ctrl_c_sent": false,
+      "native_exit": 1,
+      "expect_online": false,
+      "expected_cause": "testland_name",
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "historical-force",
+      "exe": "E:\\openhoi\\target\\debug\\oh_server.exe",
+      "exe_sha256": "9044ebd6a9ce25c9160bf32b1b163331f90a7b19207785caf18e90e3e3e13185",
+      "cwd": "E:\\openhoi",
+      "args": [
+        "E:\\openhoi\\target\\debug\\oh_server.exe",
+        "--port",
+        "8076",
+        "--pack-root",
+        "E:\\openhoi\\.orchestrator\\evidence\\M2-r2-WORLD-P07-regression\\v1\\server-rejected\\packs",
+        "--load-save",
+        "E:\\openhoi\\.orchestrator\\evidence\\M2-r2-WORLD-P07-regression\\v1\\run-1\\paused.ohsave",
+        "--force"
+      ],
+      "pid": 9308,
+      "port": 8076,
+      "http_status": null,
+      "ws_status": null,
+      "ws_close": false,
+      "ctrl_c_sent": false,
+      "native_exit": 1,
+      "expect_online": false,
+      "expected_cause": "testland_name",
+      "passed": true,
+      "error": null
+    }
+  ]
+}

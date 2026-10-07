@@ -1,0 +1,24 @@
+{
+  "name": "m0-startup",
+  "exe": "E:\\openhoi\\target\\debug\\oh_server.exe",
+  "exe_sha256": "9044ebd6a9ce25c9160bf32b1b163331f90a7b19207785caf18e90e3e3e13185",
+  "cwd": "E:\\openhoi",
+  "args": [
+    "E:\\openhoi\\target\\debug\\oh_server.exe",
+    "--port",
+    "7874",
+    "--pack-root",
+    "E:\\openhoi\\.orchestrator\\evidence\\M2-r2-WORLD-P07-regression\\native-server\\m0"
+  ],
+  "pid": 17196,
+  "port": 7874,
+  "http_status": 200,
+  "ws_status": "HTTP/1.1 101 Switching Protocols",
+  "ws_close": true,
+  "ctrl_c_sent": true,
+  "native_exit": 0,
+  "expect_online": true,
+  "expected_cause": null,
+  "passed": true,
+  "error": null
+}

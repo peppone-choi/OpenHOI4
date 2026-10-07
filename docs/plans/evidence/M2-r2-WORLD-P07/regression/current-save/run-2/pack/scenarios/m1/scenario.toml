@@ -1,0 +1,16 @@
+# Original minimal M1 fixture; no economic/combat rules or WP-23 content.
+start_date = "2000-02-28"
+map = "testland"
+nations = ["NTH", "STH"]
+[ownership]
+1 = "NTH"
+2 = "STH"
+[control_overrides]
+20 = "STH"
+
+[state_modifiers]
+1 = [
+{ source = 'a.raw', target_stat = 'infrastructure', operation = 'add', value = '0.00000000023283064365386962890625', expires = 49 },
+{ source = 'b.add', target_stat = 'infrastructure', operation = 'add', value = '0.5' },
+{ source = 'c.mul', target_stat = 'infrastructure', operation = 'mul', value = '2' }
+]

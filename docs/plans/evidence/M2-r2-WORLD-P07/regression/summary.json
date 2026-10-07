@@ -1,0 +1,23 @@
+{
+  "head": "ea355b3b446a0a53276f9e1ce96da360bbb41470",
+  "passed": true,
+  "commands": 40,
+  "planned": 40,
+  "semantic_checks": {
+    "m0_hash": "b039d35666b77fc2",
+    "m1_hash": "b595dc2a1e5b4f8c",
+    "movement": {
+      "full_dto_canonical_hash_equal": true,
+      "save_sha256": "a6eba85f9d12d6141a479bf0b256ff76ed556a28bd9de67566ed0568d05e843e",
+      "split_hash": "18bff036731f4f26",
+      "continuous_hash": "a145b72ad0ad25e6"
+    },
+    "strait": {
+      "full_dto_canonical_hash_equal": true,
+      "save_sha256": "911fe1be92dfe331401d952e0e8c1d468938b918cceecfa830268160e048ae5a",
+      "split_hash": "84462b78cc1a0f5d",
+      "continuous_hash": "299a80d49c17f3ec"
+    }
+  },
+  "scope": "WP13 integration after exact independent PASS; old None/v1/v2/v3 + new actual flags/checkpoint v4; exact main all old+Trigger CI and actual3OS remain separate"
+}

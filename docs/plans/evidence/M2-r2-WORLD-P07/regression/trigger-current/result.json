@@ -1,0 +1,8 @@
+{
+  "mode": "trigger-v4",
+  "platform": "Windows",
+  "head": "ea355b3b446a0a53276f9e1ce96da360bbb41470",
+  "dirty": false,
+  "executable": "E:\\openhoi\\target\\debug\\examples\\trigger_fixture.exe",
+  "exe_sha256": "a1637380339273a1f8c759dc579be4d8e0e60d053bf1b53a55f9187c858aac8e"
+}

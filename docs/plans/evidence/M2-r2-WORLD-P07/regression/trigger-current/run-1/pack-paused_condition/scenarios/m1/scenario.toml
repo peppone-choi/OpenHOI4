@@ -1,0 +1,16 @@
+end_root = 'NTH'
+end_conditions = { has_flag = 'x' }
+flag_keys = ['x']
+# Original minimal M1 fixture; no economic/combat rules or WP-23 content.
+start_date = "2000-01-01"
+map = "testland"
+nations = ["NTH", "STH"]
+[ownership]
+1 = "NTH"
+2 = "STH"
+[control_overrides]
+20 = "STH"
+
+[effect_programs.set]
+root = 'NTH'
+effects = [{set_flag = 'x'}]

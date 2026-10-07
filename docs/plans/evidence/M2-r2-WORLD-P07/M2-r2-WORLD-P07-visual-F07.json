@@ -1,0 +1,18 @@
+{
+  "head": "ea355b3b446a0a53276f9e1ce96da360bbb41470",
+  "judgement": "FAIL",
+  "finding": "F07: main integration screenshots show blank upper96px where source579 renders top HUD; capture process native0 does not replace visual verification",
+  "files": [
+    {
+      "path": "target\\evidence\\M2-r2-WORLD-P07-screen\\page\\world.png",
+      "bytes": 325141,
+      "sha256": "77e10a758dfc1435c9cfac70a33d308abf5103272293c14e35aafdd46712c6ee"
+    },
+    {
+      "path": "target\\evidence\\M2-r2-WORLD-P07-screen\\quality\\seoul-selected.png",
+      "bytes": 169529,
+      "sha256": "e54be9767aa83f29691e2af96ef3f7c9827876ef8d1d3ad450f5724b02fcd920"
+    }
+  ],
+  "scope": "P07 visual observation; source P054 independent PASS retained; integration not completed"
+}

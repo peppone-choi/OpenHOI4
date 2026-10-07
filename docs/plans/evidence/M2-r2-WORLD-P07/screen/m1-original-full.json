@@ -1,0 +1,1549 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.EXE",
+      "E:\\openhoi\\client\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "E:\\openhoi\\target\\evidence\\M2-r2-WORLD-P07-screen\\m1-minimal.config.ts"
+    ],
+    "configFile": "E:\\openhoi\\target\\evidence\\M2-r2-WORLD-P07-screen\\m1-minimal.config.ts",
+    "rootDir": "E:/openhoi/client/e2e-m1",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "E:/openhoi/target/evidence/M2-r2-WORLD-P07-screen/m1-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chrome-minimal",
+        "name": "chrome-minimal",
+        "testDir": "E:/openhoi/client/e2e-m1",
+        "testIgnore": [],
+        "testMatch": [
+          "national.spec.ts",
+          "malformed-world.spec.ts",
+          "map.spec.ts",
+          "map-redirect.spec.ts",
+          "map-capability.spec.ts",
+          "map-resize.spec.ts",
+          "map-pipeline.spec.ts",
+          "map-dpr.spec.ts"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "E:/openhoi/target/evidence/M2-r2-WORLD-P07-screen/m1-original-full.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": {
+      "command": "\"E:\\openhoi\\target\\debug\\oh_server.exe\" --port 19526 --pack-root ../data/packs",
+      "url": "http://127.0.0.1:19526",
+      "reuseExistingServer": false,
+      "cwd": "E:/openhoi/client"
+    }
+  },
+  "suites": [
+    {
+      "title": "malformed-world.spec.ts",
+      "file": "malformed-world.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "M1 malformed decoded ledger preserves last valid panel and closes connection",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2259,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:23.760Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d29ad02e0cfc6dff29a7-c609cd35fedbe0d620fe",
+          "file": "malformed-world.spec.ts",
+          "line": 5,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "map-capability.spec.ts",
+      "file": "map-capability.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "REQ-PLAT-03 native backend capability renders pixels or preserves authority with localized notice",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1097,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:26.323Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "75fb0237d0611f7af642-56900fcd02a2002ed667",
+          "file": "map-capability.spec.ts",
+          "line": 6,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "map-dpr.spec.ts",
+      "file": "map-dpr.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "REQ-PLAT-03 DPR surface preserves display and authority preferred",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3636,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:27.447Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c44d3bdf73eafbfdcd5a-bb270a022146d2c2410f",
+          "file": "map-dpr.spec.ts",
+          "line": 8,
+          "column": 33
+        },
+        {
+          "title": "REQ-PLAT-03 DPR surface preserves display and authority forced GL",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2878,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:31.092Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c44d3bdf73eafbfdcd5a-686df7187b83ee284e14",
+          "file": "map-dpr.spec.ts",
+          "line": 8,
+          "column": 33
+        }
+      ]
+    },
+    {
+      "title": "map-pipeline.spec.ts",
+      "file": "map-pipeline.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "REQ-PLAT-03 actual device pipeline rejection falls back to GL pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 766,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:33.995Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7dada5185f1187ebe1ae-5be1b0be1126c74f8c15",
+          "file": "map-pipeline.spec.ts",
+          "line": 5,
+          "column": 65
+        },
+        {
+          "title": "REQ-PLAT-03 actual device pipeline rejection with GL unavailable shows notice",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 583,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:34.768Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7dada5185f1187ebe1ae-d119212e2ec53afc8174",
+          "file": "map-pipeline.spec.ts",
+          "line": 5,
+          "column": 65
+        },
+        {
+          "title": "REQ-PLAT-03 actual device pipeline rejection with GL shader shows notice",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 595,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:35.360Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7dada5185f1187ebe1ae-c3f27ed9df1b35269c14",
+          "file": "map-pipeline.spec.ts",
+          "line": 5,
+          "column": 65
+        }
+      ]
+    },
+    {
+      "title": "map-redirect.spec.ts",
+      "file": "map-redirect.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "WP08 P06 metadata CORS redirect sends no foreign request on first load",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 554,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:35.984Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "50edf8e080438619dcfe-174fb3e7f3c09f6324ed",
+          "file": "map-redirect.spec.ts",
+          "line": 15,
+          "column": 3
+        },
+        {
+          "title": "WP08 P06 metadata CORS redirect sends no foreign request after valid selection",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1007,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:36.544Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "50edf8e080438619dcfe-bfaecf1d5f4fd63f7ecf",
+          "file": "map-redirect.spec.ts",
+          "line": 15,
+          "column": 3
+        },
+        {
+          "title": "WP08 P06 index CORS redirect sends no foreign request on first load",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 633,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:37.557Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "50edf8e080438619dcfe-abd6d66342ebf0ce2e24",
+          "file": "map-redirect.spec.ts",
+          "line": 15,
+          "column": 3
+        },
+        {
+          "title": "WP08 P06 index CORS redirect sends no foreign request after valid selection",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 963,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:38.198Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "50edf8e080438619dcfe-ba81ccae6b7d7eb4f18e",
+          "file": "map-redirect.spec.ts",
+          "line": 15,
+          "column": 3
+        },
+        {
+          "title": "WP08 P06 metadata same-origin redirect is also rejected before follow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 406,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:39.167Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "50edf8e080438619dcfe-427005cec074822048b2",
+          "file": "map-redirect.spec.ts",
+          "line": 140,
+          "column": 56
+        },
+        {
+          "title": "WP08 P06 index same-origin redirect is also rejected before follow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 387,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:39.580Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "50edf8e080438619dcfe-878ebd7bc9660ff4c8d8",
+          "file": "map-redirect.spec.ts",
+          "line": 140,
+          "column": 56
+        }
+      ]
+    },
+    {
+      "title": "map-resize.spec.ts",
+      "file": "map-resize.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "REQ-MAP-05 resize and reset preserve presentation pixels and camera authority",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4089,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:39.992Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "de1f7520e46654feef07-fa37e797c63dfb1ee713",
+          "file": "map-resize.spec.ts",
+          "line": 7,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "map.spec.ts",
+      "file": "map.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "REQ-MAP-04/05 PLAT-03 actual map pixels, modes, pick and viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1637,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:44.098Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-255424b25c8ee0f62eb1",
+          "file": "map.spec.ts",
+          "line": 11,
+          "column": 1
+        },
+        {
+          "title": "REQ-PLAT-03 preferred actual backend produces the same map RGB and source shader",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1872,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:45.750Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-96ebd1b964759b0d358b",
+          "file": "map.spec.ts",
+          "line": 40,
+          "column": 1
+        },
+        {
+          "title": "REQ-MAP-04 changed server RGB updates only affected lookup texel on actual backend",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1237,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:47.627Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-98ae787547d58c8f24bb",
+          "file": "map.spec.ts",
+          "line": 48,
+          "column": 1
+        },
+        {
+          "title": "REQ-MAP-04/05 RG8 high dense byte and LUT second row pick real ID65535",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1367,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:48.871Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-945c71c0a980f652ed37",
+          "file": "map.spec.ts",
+          "line": 52,
+          "column": 1
+        },
+        {
+          "title": "REQ-MAP-05 independent three border pixel oracle, u16 sentinel and camera preferred",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1974,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:50.246Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-8f12e2e47f17e7693918",
+          "file": "map.spec.ts",
+          "line": 59,
+          "column": 33
+        },
+        {
+          "title": "REQ-MAP-05 independent three border pixel oracle, u16 sentinel and camera WebGL2",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1885,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:52.226Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-c893c65f82f5b8d1937b",
+          "file": "map.spec.ts",
+          "line": 59,
+          "column": 33
+        },
+        {
+          "title": "REQ-PLAT-03 missingGPU falls back to actual WebGL2 pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 557,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:54.118Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-ebba9b7df02c80922261",
+          "file": "map.spec.ts",
+          "line": 93,
+          "column": 93
+        },
+        {
+          "title": "REQ-PLAT-03 nullAdapter falls back to actual WebGL2 pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 577,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:54.680Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-bf294f7bab354ec2c6e3",
+          "file": "map.spec.ts",
+          "line": 93,
+          "column": 93
+        },
+        {
+          "title": "REQ-PLAT-03 adapterReject falls back to actual WebGL2 pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 577,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:55.266Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-a0276cd2f6cce73be6ab",
+          "file": "map.spec.ts",
+          "line": 93,
+          "column": 93
+        },
+        {
+          "title": "REQ-PLAT-03 deviceReject falls back to actual WebGL2 pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 643,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:55.848Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-4176e7a4dab3b06d2227",
+          "file": "map.spec.ts",
+          "line": 93,
+          "column": 93
+        },
+        {
+          "title": "REQ-PLAT-03 insecure falls back to actual WebGL2 pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 584,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:56.497Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-4eb4a3c16d2f76c7e25e",
+          "file": "map.spec.ts",
+          "line": 93,
+          "column": 93
+        },
+        {
+          "title": "REQ-PLAT-03 no backend shows localized notices",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 477,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:57.086Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-67959d99699e27149ceb",
+          "file": "map.spec.ts",
+          "line": 104,
+          "column": 37
+        },
+        {
+          "title": "REQ-PLAT-03 no backend shows localized notices after preferred rejection",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 471,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:57.569Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-f825a08f81a331a15918",
+          "file": "map.spec.ts",
+          "line": 104,
+          "column": 37
+        },
+        {
+          "title": "REQ-PLAT-03 actual WebGL2 texture limit is checked before texture creation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 342,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:58.045Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-7cf5cf13a0740e140c31",
+          "file": "map.spec.ts",
+          "line": 114,
+          "column": 1
+        },
+        {
+          "title": "REQ-MAP-04 missing bundled index fails visibly without external download",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 400,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:58.392Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-ed999c14607574e16d08",
+          "file": "map.spec.ts",
+          "line": 118,
+          "column": 1
+        },
+        {
+          "title": "REQ-MAP-04 schema boundary oldVersion rejects atomically",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 371,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:58.798Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-e727f6cfbfa17c313e0b",
+          "file": "map.spec.ts",
+          "line": 122,
+          "column": 116
+        },
+        {
+          "title": "REQ-MAP-04 schema boundary futureVersion rejects atomically",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 396,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:59.175Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-582212848ae9fdcfa37d",
+          "file": "map.spec.ts",
+          "line": 122,
+          "column": 116
+        },
+        {
+          "title": "REQ-MAP-04 schema boundary wrongPack rejects atomically",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 392,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:59.577Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-bf80df67e2499eb97c1e",
+          "file": "map.spec.ts",
+          "line": 122,
+          "column": 116
+        },
+        {
+          "title": "REQ-MAP-04 schema boundary duplicateIds rejects atomically",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 410,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:26:59.975Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-4463de82ebf5a45ca408",
+          "file": "map.spec.ts",
+          "line": 122,
+          "column": 116
+        },
+        {
+          "title": "REQ-MAP-04 schema boundary badStyle rejects atomically",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 379,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:27:00.392Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-77008eb35d6e927bd797",
+          "file": "map.spec.ts",
+          "line": 122,
+          "column": 116
+        },
+        {
+          "title": "REQ-MAP-04 schema boundary shortBytes rejects atomically",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 407,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:27:00.777Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-cd8e2039849002c45c07",
+          "file": "map.spec.ts",
+          "line": 122,
+          "column": 116
+        },
+        {
+          "title": "REQ-MAP-04 schema boundary wrongHash rejects atomically",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 390,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:27:01.192Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-553befbbb085bbef7138",
+          "file": "map.spec.ts",
+          "line": 122,
+          "column": 116
+        },
+        {
+          "title": "REQ-MAP-05 dangling preserves last valid map and closes wire",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1624,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:27:01.590Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-11a1e4df29e045f66eb4",
+          "file": "map.spec.ts",
+          "line": 132,
+          "column": 70
+        },
+        {
+          "title": "REQ-MAP-05 changedDimensions preserves last valid map and closes wire",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1635,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:27:03.220Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-49ae1323aab300751f20",
+          "file": "map.spec.ts",
+          "line": 132,
+          "column": 70
+        },
+        {
+          "title": "REQ-MAP-05 changedDense preserves last valid map and closes wire",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1613,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:27:04.865Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2d8799038d2916f69765-a7b75845f659559c8490",
+          "file": "map.spec.ts",
+          "line": 132,
+          "column": 70
+        }
+      ]
+    },
+    {
+      "title": "national.spec.ts",
+      "file": "national.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "AC-M1-03 actual Rust M1 panels, separate owner/control, ledger, languages and time",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1825,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:27:06.499Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e3875c40ce8d9797013e-0b5cc8ac82a6dbfcb3ad",
+          "file": "national.spec.ts",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "REQ-NAT-01 MAP-08 actual query metadata, dense mapping, colors and refusal",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-minimal",
+              "projectName": "chrome-minimal",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 773,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-07T14:27:08.330Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e3875c40ce8d9797013e-87af71fd45a79f89afe3",
+          "file": "national.spec.ts",
+          "line": 31,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-07T14:26:22.825Z",
+    "duration": 46721.212999999996,
+    "expected": 41,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

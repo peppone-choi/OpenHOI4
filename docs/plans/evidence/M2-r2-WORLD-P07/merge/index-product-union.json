@@ -1,0 +1,52 @@
+{
+  "base": "ea63081e0b79369227c99384922db80c6ef09fb1",
+  "main": "c5d7f8e9628aec8a52227863204e9fc7fc5ab409",
+  "world": "5794505abb2b0cfeaace8005183cb6606fc68301",
+  "target": "f6c495dc8b246412a297753ebbd570a574ad9dfb",
+  "scope": "Every product Git blob; main changes plus independently verified world changes, exactly three append unions",
+  "product_paths": [
+    "client",
+    "crates",
+    "data",
+    "assets",
+    "tests",
+    "tools",
+    ".github",
+    "Cargo.toml",
+    "Cargo.lock",
+    "deny.toml",
+    "rust-toolchain.toml",
+    "rustfmt.toml",
+    "clippy.toml"
+  ],
+  "checked_files": 387,
+  "unions": [
+    {
+      "path": "assets/ASSETS.toml",
+      "base_bytes": 30111,
+      "main_suffix_bytes": 475,
+      "world_suffix_bytes": 14267,
+      "union_sha256": "5de79ecc17eae94e3e22a4dd43097da8568bbac324a3a56035ac605ab59dd77f",
+      "asset_paths": 100,
+      "asset_ids": 0
+    },
+    {
+      "path": "client/public/locales/en.ftl",
+      "base_bytes": 2787,
+      "main_suffix_bytes": 92,
+      "world_suffix_bytes": 3541,
+      "union_sha256": "81c1e23f4988d8cd9e2ef38aaaf9e3e10f311b0448f5e021fad6da76b6ce6e4e",
+      "unique_localisation_keys": 161
+    },
+    {
+      "path": "client/public/locales/ko.ftl",
+      "base_bytes": 3105,
+      "main_suffix_bytes": 111,
+      "world_suffix_bytes": 3628,
+      "union_sha256": "ecd4067a27715dfcad6207f90d61eebd03b3cad3c4fad8fad0e9a0f80b6e8736",
+      "unique_localisation_keys": 161
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

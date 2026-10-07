@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "E:\openhoi\target\trigger-predicate-scratch\tmpnub5sqlf\public-source\crates\oh_sim\tools\check_trigger_determinism.py", line 382, in <module>
+    capture(args.out) if args.command == 'capture' else compare_artifacts(args.root)
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\openhoi\target\trigger-predicate-scratch\tmpnub5sqlf\public-source\crates\oh_sim\tools\check_trigger_determinism.py", line 370, in compare_artifacts
+    _compare_for_head(root, before['head'], emit=False)
+  File "E:\openhoi\target\trigger-predicate-scratch\tmpnub5sqlf\public-source\crates\oh_sim\tools\check_trigger_determinism.py", line 347, in _compare_for_head
+    assert {p.name for p in root.iterdir()} == expected, 'exact three OS artifacts required'
+AssertionError: exact three OS artifacts required

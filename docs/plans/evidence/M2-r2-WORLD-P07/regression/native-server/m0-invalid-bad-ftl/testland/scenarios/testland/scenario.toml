@@ -1,0 +1,3 @@
+# Original empty M0 scenario. Epoch is a synthetic test input, not history.
+# Full Testland countries/map/content and end conditions belong to later WPs.
+start_date = "2000-01-01"

@@ -1,0 +1,47 @@
+   Compiling oh_data v0.1.0 (E:\openhoi\crates\oh_data)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.66s
+     Running `target\debug\examples\catalog_check.exe E:\openhoi\client\public\locales\ko.ftl E:\openhoi\client\public\locales\en.ftl E:\openhoi\target\evidence\WP-24\client-uses.json`
+warning: E:\openhoi\client\public\locales\ko.ftl:23:1 — unused ko localisation key already-joined
+warning: E:\openhoi\client\public\locales\ko.ftl:16:1 — unused ko localisation key hello-required
+warning: E:\openhoi\client\public\locales\ko.ftl:17:1 — unused ko localisation key invalid-message
+warning: E:\openhoi\client\public\locales\ko.ftl:19:1 — unused ko localisation key invalid-sequence
+warning: E:\openhoi\client\public\locales\ko.ftl:18:1 — unused ko localisation key invalid-speed
+warning: E:\openhoi\client\public\locales\ko.ftl:43:1 — unused ko localisation key ledger-add
+warning: E:\openhoi\client\public\locales\ko.ftl:46:1 — unused ko localisation key ledger-clamp-max
+warning: E:\openhoi\client\public\locales\ko.ftl:45:1 — unused ko localisation key ledger-clamp-min
+warning: E:\openhoi\client\public\locales\ko.ftl:44:1 — unused ko localisation key ledger-multiply
+warning: E:\openhoi\client\public\locales\ko.ftl:47:1 — unused ko localisation key ledger-override
+warning: E:\openhoi\client\public\locales\ko.ftl:20:1 — unused ko localisation key not-joined
+warning: E:\openhoi\client\public\locales\ko.ftl:142:1 — unused ko localisation key preview-notGame
+warning: E:\openhoi\client\public\locales\ko.ftl:122:1 — unused ko localisation key preview-selectHelp
+warning: E:\openhoi\client\public\locales\ko.ftl:138:1 — unused ko localisation key preview-unitPending
+warning: E:\openhoi\client\public\locales\ko.ftl:15:1 — unused ko localisation key protocol-version
+warning: E:\openhoi\client\public\locales\ko.ftl:85:1 — unused ko localisation key scenario-ended
+warning: E:\openhoi\client\public\locales\ko.ftl:26:1 — unused ko localisation key session-closed
+warning: E:\openhoi\client\public\locales\ko.ftl:25:1 — unused ko localisation key simulation-error
+warning: E:\openhoi\client\public\locales\ko.ftl:66:1 — unused ko localisation key unknown-entity
+warning: E:\openhoi\client\public\locales\ko.ftl:22:1 — unused ko localisation key unsupported-create
+warning: E:\openhoi\client\public\locales\ko.ftl:24:1 — unused ko localisation key unsupported-query
+warning: E:\openhoi\client\public\locales\ko.ftl:21:1 — unused ko localisation key unsupported-session
+warning: E:\openhoi\client\public\locales\en.ftl:23:1 — unused en localisation key already-joined
+warning: E:\openhoi\client\public\locales\en.ftl:16:1 — unused en localisation key hello-required
+warning: E:\openhoi\client\public\locales\en.ftl:17:1 — unused en localisation key invalid-message
+warning: E:\openhoi\client\public\locales\en.ftl:19:1 — unused en localisation key invalid-sequence
+warning: E:\openhoi\client\public\locales\en.ftl:18:1 — unused en localisation key invalid-speed
+warning: E:\openhoi\client\public\locales\en.ftl:43:1 — unused en localisation key ledger-add
+warning: E:\openhoi\client\public\locales\en.ftl:46:1 — unused en localisation key ledger-clamp-max
+warning: E:\openhoi\client\public\locales\en.ftl:45:1 — unused en localisation key ledger-clamp-min
+warning: E:\openhoi\client\public\locales\en.ftl:44:1 — unused en localisation key ledger-multiply
+warning: E:\openhoi\client\public\locales\en.ftl:47:1 — unused en localisation key ledger-override
+warning: E:\openhoi\client\public\locales\en.ftl:20:1 — unused en localisation key not-joined
+warning: E:\openhoi\client\public\locales\en.ftl:142:1 — unused en localisation key preview-notGame
+warning: E:\openhoi\client\public\locales\en.ftl:122:1 — unused en localisation key preview-selectHelp
+warning: E:\openhoi\client\public\locales\en.ftl:138:1 — unused en localisation key preview-unitPending
+warning: E:\openhoi\client\public\locales\en.ftl:15:1 — unused en localisation key protocol-version
+warning: E:\openhoi\client\public\locales\en.ftl:85:1 — unused en localisation key scenario-ended
+warning: E:\openhoi\client\public\locales\en.ftl:26:1 — unused en localisation key session-closed
+warning: E:\openhoi\client\public\locales\en.ftl:25:1 — unused en localisation key simulation-error
+warning: E:\openhoi\client\public\locales\en.ftl:66:1 — unused en localisation key unknown-entity
+warning: E:\openhoi\client\public\locales\en.ftl:22:1 — unused en localisation key unsupported-create
+warning: E:\openhoi\client\public\locales\en.ftl:24:1 — unused en localisation key unsupported-query
+warning: E:\openhoi\client\public\locales\en.ftl:21:1 — unused en localisation key unsupported-session

@@ -1,0 +1,39 @@
+{
+  "head": "ea355b3b446a0a53276f9e1ce96da360bbb41470",
+  "previous_observation": "M2-r2-WORLD-P07-visual-F07.json preserved unchanged",
+  "status": "Initial visual interpretation withdrawn; no product F07 reproduced",
+  "whole1600x1000RGB_exact": true,
+  "root_sha256": "77e10a758dfc1435c9cfac70a33d308abf5103272293c14e35aafdd46712c6ee",
+  "source_sha256": "77e10a758dfc1435c9cfac70a33d308abf5103272293c14e35aafdd46712c6ee",
+  "header_DOM": {
+    "selector": ".preview-header",
+    "text": "O4OpenHOI4세계 지도 미리보기국가 선택 전미연결정치 자본—안정도—동원도—산업 역량—인력—자원—날짜 / 시간—미연결",
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 1600,
+      "height": 96
+    },
+    "style": {
+      "display": "flex",
+      "visibility": "visible",
+      "opacity": "1",
+      "position": "absolute",
+      "top": "0px",
+      "bottom": "904px",
+      "left": "0px",
+      "right": "0px",
+      "transform": "none",
+      "z-index": "auto",
+      "clip": "auto",
+      "clip-path": "none",
+      "content-visibility": "visible",
+      "overflow": "visible",
+      "background-color": "rgba(0, 0, 0, 0)",
+      "color": "rgb(228, 232, 222)",
+      "isolation": "auto"
+    }
+  },
+  "product_changes_for_observation": 0,
+  "native0_capture_not_overridden": true
+}

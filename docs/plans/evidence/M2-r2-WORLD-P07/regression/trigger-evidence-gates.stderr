@@ -1,0 +1,21 @@
+test_canonical_hash_and_definition_tampering_even_if_manifest_resigned (test_trigger_evidence.TriggerPredicates.test_canonical_hash_and_definition_tampering_even_if_manifest_resigned) ... ok
+test_different_head (test_trigger_evidence.TriggerPredicates.test_different_head) ... ok
+test_dirty_even_if_head_equal (test_trigger_evidence.TriggerPredicates.test_dirty_even_if_head_equal) ... ok
+test_missing_native_stdout (test_trigger_evidence.TriggerPredicates.test_missing_native_stdout) ... ok
+test_missing_os (test_trigger_evidence.TriggerPredicates.test_missing_os) ... ok
+test_native_exit_pid_executable_and_action (test_trigger_evidence.TriggerPredicates.test_native_exit_pid_executable_and_action) ... ok
+test_pack_source_identity_tampering (test_trigger_evidence.TriggerPredicates.test_pack_source_identity_tampering) ... ok
+test_public_all_same_stale_head_is_refused (test_trigger_evidence.TriggerPredicates.test_public_all_same_stale_head_is_refused) ... ok
+test_public_dirty_current_source_is_refused (test_trigger_evidence.TriggerPredicates.test_public_dirty_current_source_is_refused) ... ok
+test_public_legacy_unignored_download_is_rejected (test_trigger_evidence.TriggerPredicates.test_public_legacy_unignored_download_is_rejected) ... ok
+test_public_synthetic_same_clean_source_predicate (test_trigger_evidence.TriggerPredicates.test_public_synthetic_same_clean_source_predicate) ... ok
+test_public_workflow_download_keeps_source_clean (test_trigger_evidence.TriggerPredicates.test_public_workflow_download_keeps_source_clean) ... ok
+test_public_workflow_path_missing_os_is_rejected (test_trigger_evidence.TriggerPredicates.test_public_workflow_path_missing_os_is_rejected) ... ok
+test_public_workflow_path_resigned_invalid_save_is_rejected (test_trigger_evidence.TriggerPredicates.test_public_workflow_path_resigned_invalid_save_is_rejected) ... ok
+test_save_bytes_tampering_resigned (test_trigger_evidence.TriggerPredicates.test_save_bytes_tampering_resigned) ... ok
+test_synthetic_positive_is_predicate_only (test_trigger_evidence.TriggerPredicates.test_synthetic_positive_is_predicate_only) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 43.407s
+
+OK

@@ -1,0 +1,16 @@
+{
+  "command": [
+    "E:\\openhoi\\target\\debug\\oh_cli.exe",
+    "run",
+    "--scenario",
+    "testland",
+    "--ticks",
+    "1",
+    "--seed",
+    "7",
+    "--save-out",
+    "E:\\openhoi\\.orchestrator\\evidence\\M2-r2-WORLD-P07-regression\\native-server\\m0.ohsave"
+  ],
+  "cwd": "E:\\openhoi",
+  "exit": 0
+}

@@ -2,6 +2,8 @@
 
 ## 현재 체크포인트와 다음 표시 품질 개선
 
+2026-10-07 23:55 KST 후속 관측: source5794505의 새 [P05-4 한정 PASS](../verify/WORLD-PREVIEW.M2-r2.attempt4.md)와 전체10017/full/raw 불변·원 MF976/ZIP977 보관을 인수했다. 실제 단순 merge `ea355b3b446a0a53276f9e1ce96da360bbb41470`에서 제품387 expectedunion과 원3append를 보존했고 [P07 로컬 검수](WORLD-PREVIEW-P07.md)를 통과했다. client243/Rust195/Python32PASS1skip·원M1단일41/full17quality21 및 실제city/sea/3D/header·readonlyTS를 확인했다. 부모 상단HUD 누락 판독은 wholePNG bytes/RGB·DOM에 근거해 정정하고 원관찰을 별도보존했다. 기존driver 원scope 표지와 이번WORLD 실제범위도 구분한다. 새 최종main push/같은6CI25job·3OS artifact 확인 전이며 원통합15/W1W2 전체0/0·M2게이트없음/미리보기 한정·원천/권위게임 한계를 유지한다. 아래 활성상태는 당시의 기록이다.
+
 ### 2026-10-07 P06-4 성능 보완 인수와 새 P05-4
 
 같은 WORLD 담당은 clean5794505/actual completed88/final823자로 성능 보완을 제출했다. 원446 대비 생성기 계산·할당 개선과 새6개 비용 테스트/ADR-3202/append 로그의4파일만 바뀌었고, 원 source7/defines/감독180초·3GiB·64MiB/해상도/데이터4·기하·ID/도시·sea·GLB/client/기존tests·골든/게임·의존성·CI는 그대로다. 자체 fresh72.438/71.594초와 원446/shipped/fresh 두 번의4파일 exactbytes는 구현 관측이며 새 독립 성능 PASS가 아니다. 원 P05-3 F05는 유지한다. 병행 client palette5초 timeout/native1·139PASS는 원로그로 보존하고 설정 변경 없는 별도 전체140PASS와 구분한다.
