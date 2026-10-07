@@ -119,3 +119,21 @@ Korea geographicwindow[121.9921875,31.9921875,132.01171875,42.978515625] has83mo
 Known limits: moderncitysample sparse,globalDEM/precisemountainpasses/rivernetworkaccuracy incomplete,coastpixelstepsstillvisibleatzoom,narrowpassage/subpixelislandlimits,Caspianstillsea. HUD/date/economy/nation/state/editor/gameunits disconnected. ActualGLBarmy/air/navysixsamples912triangles remain sameassetbytes. No independentPASS/mainCI/WP32/45/M5completion claim.
 
 Pre-checkpoint unchangedRustfmt/clippy/workspace native0;client139PASS/buildnative0(before staticdata replacement); required fullchecks and cleanhead actualPNG follow. Existing bundle-size warning retained.
+
+### 첫체크포인트 후 실제조작과 GPU 업로드 관측
+
+76f7104cleanactualcapture checkpoint-first native0. checkpoint-full native0:zoom6→10.173/pan/selection20236/borderscamera보존/allpresets/koen/GLBtoggle6→0→6/WebGPU8192/WebGL2ANGLE16384/850×650/1280×720/1280×800. 850rail bounds124..536,lastarmy439..504,scrollHeight561/scrollTop151,documentwidth850exact. RawERR_ABORTED4는동일URL의actualsignalabortedcanceltrace4와대조,unexplained0/HTTP400+0/consoleerrors0/pageexceptions0; rawfailures를없다고표현하지않는다. BrowserparentPeakWS171,032,576bytes는renderer/GPUchild/JSheap합계가아니다. JSindex원+decode최소128MiB와GPU RG8index64MiB/lookup추가를input기하로산정,실제전체GPUmemory측정이라고주장하지않는다.
+
+Palette-modechange실제업로드1275.8ms:O(n)CPUadapter지만기존GPUAPI가바뀐20ktexel마다onepixeltexture를만들었다. Previewadapter가있고변경수가lookup한행보다많으면256²전체색표를한번copy하는표시경로만추가했다. 기본App/작은incremental path는기존그대로. palette-upload-full은동일4outputs/동일camera/native0,actualupdate5.6ms,육해/3D/ID/selection값변경없음. 이값은단일headless실측이며성능보증이나벤치평균이아니다. Beforeafterworld/europe/KoreaWebGL2/scrollrailPNGs4개는exactSHA동일. province/terrainPNG부분차이는분석해별도기록한다. 원testfixture/assert/timeout/retry/checker동일.
+
+### 최종 자체회귀 기록 — 독립 판정 아님
+
+원M1Chrome41tests 단일전체실행native0/41PASS/0skip/0flaky/0unexpected/43.9s(m1-original-full.log/.json/.exit/m1-native-summary.json). config는ignored externalm1-minimal.config.ts로originalconfig/testdir를import/참조,올바른clientcwd/own19435webserver. originalasserts/fixtures/timeout/retry보존. 모든actualchildlaunchlines는headless/hide-scrollbars/automaticownprofile/pipe/no-startup-window만,security/GPUswitch없음. 시작시optionalpaletteupload가dirty였으므로m1-tested-source.json의actualproductSHA를최종커밋과대조한다. HEAD만으로검수범위를허위확장하지않는다.
+
+Finalclient139PASS/build/typecheck0/103depslicensechecker0;Python18PASS;docs/assets/localisation0(기존unusedwarnings유지). Rustfmt/clippy/workspace0;M0hashb039d35666b77fc2×2/M1hashb595dc2a1e5b4f8c×2/native0. 원protocol/crates/gamepack/golden/network/checkers/GLBs추적diffempty,ko/enoldprefix/masterea63081prefix보존(protected-paths.json). 이검사는구현자의자체증거이며독립검증PASS/mainCI녹색/마일스톤완료를선언하지않는다.
+
+PNG원픽셀decode대조:province-colors8885changedpixels는toolbar579,113..887,149안에만,terrain2448pixels는Himalayaregionbutton832,897..911,928안에만있다. CSSbutton150mstransition중capture시점차이이며그외map/data/selection/meshpixels동일. 관측renderupdate1,275.8→5.6ms는단일관측,총브라우저/GPUmemory나처리시간성능보증아님. BrowserparentPeakWS166,268,928bytes만직접조회,renderer/GPUchildheap총합아님.
+
+현재scope내사용자결정필요없음. generalized8Kcoast확대계단/작은섬·통로누락가능/globalDEM/정확능선·고개·강network/역사도시·state·nation·economy·gameunit미연결.8Kunsupportedhardware는원capability실패를보고하고해상도fallback하지않는다. 공개hosting/mainmerge/push/tag/CUA/globalinput없음. ownVite127.0.0.1:4317PID33284유지.
+
+최종cleanHEAD실제fullPNG/동일카메라2d920baked입력before/finalafter와원실패/native로그/ZIP6입력(4ZIP·2TIFF)/outputs4/criticalfiles를newfinalidentity로봉인해부모에인계한다. oldtarget/evidence/WORLD-PREVIEW/final/identity봉인은변경하지않는다.

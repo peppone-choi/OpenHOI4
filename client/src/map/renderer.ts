@@ -130,7 +130,11 @@ export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8
    world=next;mode=nextMode;selected.value=id===null?-1:world.province_ids.indexOf(id);host.dataset.selected=String(id??'');host.dataset.mode=mode;
    const began=performance.now();const ranges=updatePalette(arrays.colors,world,mode);
    // Upload only changed texels through Three's public cross-backend copy API.
-   for(const range of ranges){const dense=range.start/4;const patch=dataTexture(arrays.colors.slice(range.start,range.start+range.count),1,1);renderer.copyTextureToTexture(patch,colors,null,new Vector2(dense%256,Math.floor(dense/256)));patch.dispose();}
+   if(presentation?.paletteAdapter&&ranges.length>LOOKUP_SIZE){
+    // Preview has many simultaneous art-colour changes; upload one bounded
+    // lookup rather than creating thousands of one-texel GPU textures.
+    const patch=dataTexture(arrays.colors,LOOKUP_SIZE,LOOKUP_SIZE);renderer.copyTextureToTexture(patch,colors);patch.dispose();
+   }else for(const range of ranges){const dense=range.start/4;const patch=dataTexture(arrays.colors.slice(range.start,range.start+range.count),1,1);renderer.copyTextureToTexture(patch,colors,null,new Vector2(dense%256,Math.floor(dense/256)));patch.dispose();}
    const refs=paletteFor(world,mode);
    for(const [data,next,texture] of [[arrays.nations,refs.nations,nations],[arrays.states,refs.states,states]] as const){
     world.province_ids.forEach((_,i)=>{const start=i*4;if(next.subarray(start,start+4).some((v,j)=>data[start+j]!==v)){data.set(next.subarray(start,start+4),start);const patch=dataTexture(data.slice(start,start+4),1,1);renderer.copyTextureToTexture(patch,texture,null,new Vector2(i%256,Math.floor(i/256)));patch.dispose();}});

@@ -30,3 +30,9 @@ F01 locale원실패는2d920수정, 새검사실행. F02는기존전체suite 원�
 새fine지역후처리의markers는region바깥과이어지는기존kind일치edgeID+실제도시거리·하천거리·validDEM slope 가중독립seed이다. 지역extent는표시 window이며국경이아니다. density는Korea160추가landseed,Europe80/Himalaya60의작은지역대조후선택가능하고실제도시위치등입력이없는형상근거를발명하지않는다. 최종ID는새mask전체4connected재분리. 도시coords는성긴현대지리샘플이며역사/소유/인구값없음.
 
 renderer에는preview전용 O(n)palette adapter와optional coast-kind-color interpolation을허용한다. 기존palettes/model/defaultApp은변경하지않는다. interpolation은표시filter만이며landmask/index/selection/adjacency는고정integer원본으로검사한다. kind가다른edge에만색interpolation을적용하고province내부경계는기존shader를사용한다. 해당option이없으면기존WP renderer 경로동일. 세계texture8192·denseRG8u16LE·256lookup유지. CPUloader불필요한64MiBcopy를줄이되DataViewLE해석과index검증보존.
+
+### 측정 범위 정정 및 최종 후보
+
+앞선0.406/1.25/3.157초 probe는메모리구조예비시험이며지역을전세계좌표로변환한metric/DEM미반영이었다. 실제DEM·지역extentmetric형상증거로전용하지않는다. 최종probe-*-final은지역cellcenter/실제KoreaDEM/정확extentmetric으로다시실행했다. evenly sampledseed메모리시험이며도시density형상검증과구별한다. native0실측: [{"size": 512, "seconds": 1.7659999999996217, "peak_working_set": 97636352, "private_bytes": 1065676800, "valid_dem_pixels": 262144}, {"size": 1024, "seconds": 2.186999999999898, "peak_working_set": 194600960, "private_bytes": 1085566976, "valid_dem_pixels": 1048576}, {"size": 2048, "seconds": 4.063000000000102, "peak_working_set": 579964928, "private_bytes": 1155244032, "valid_dem_pixels": 4194304}]。
+
+실제fullcandidate5/6은84.766/86.203초,peakcommit2,637,049,856/2,637,975,552bytes,180초/3GiB이내. 최종같은입력/tools 4산출SHA전부일치. 전체8K소스kindpixel·20,366ID연결성·bbox·대표DEM·35,753sortedadjacency검사native0. 첫candidate1~4전환kind시험실패·초기mutablelabel출력은과거시도로만보존하고최종입력으로사용하지않는다. 원ZIP6/2subsetDEMsourceSHA는metadata와동일하다.
