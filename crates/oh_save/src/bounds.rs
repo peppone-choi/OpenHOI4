@@ -221,7 +221,7 @@ pub fn body_version(bytes: &[u8], limits: &Limits, version: u16) -> Result<()> {
             r.optional_number(16)?;
         }
     }
-    if version == 2 {
+    if version >= 2 {
         for _ in 0..r.entries(limits.queue_max_entries)? {
             r.number(64)?;
             r.number(16)?;
@@ -264,6 +264,21 @@ pub fn body_version(bytes: &[u8], limits: &Limits, version: u16) -> Result<()> {
                 r.number(64)?;
             }
             r.number(64)?;
+        }
+    }
+    if version == 3 {
+        for _ in 0..r.entries(limits.map_entries_max)? {
+            r.number(32)?;
+            for _ in 0..r.entries(limits.map_entries_max)? {
+                r.number(16)?;
+                r.number(16)?;
+                if r.byte()? != 3 {
+                    return Err("Postcard: strait crossing kind".into());
+                }
+                for _ in 0..4 {
+                    r.number(64)?;
+                }
+            }
         }
     }
     r.end()

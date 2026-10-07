@@ -1,6 +1,6 @@
 # WP-17 이동 스키마 — REQ-MIL-04
 
-2026-10-07. 구현 전 계획. 최소 이동 authority이며 편제/훈련/장비/군은 WP-16이다. 기존 01 §4.7의 거리÷속도×보정만 사용한다. 공개 위키 본문은 조사 기록상 접근 실패이며 사용하지 않았다.
+2026-10-07. 아래 첫 표와 strait 미지원은 최초97f의 구현 전 계획/당시 범위다. 현재 REQUEST0007 대응은 아래 P-06 절에서 확장하며 원 기록을 보존한다. 최소 이동 authority이며 편제/훈련/장비/군은 WP-16이다. 기존 01 §4.7의 거리÷속도×보정만 사용한다. 공개 위키 본문은 조사 기록상 접근 실패이며 사용하지 않았다.
 
 | 필드 | 의미·타입·단위·범위 | 필수/null/default | 참조·수명·권위·분류 | hash/save/wire/UI·REQ |
 |---|---|---|---|---|
@@ -38,3 +38,23 @@ CEO 2026-10-07 REQUEST-0006 A 한정 잠정 채택: 중간 reroute는 현재 진
 부모 main 01 §4.7 / 02 §5.11 / 03 P-03 및 REQUEST-0006 원문 SHA256 0b9e2ba3756fa1022a876f11369dc8b4e4909fc49e84ea35bfbf9b7d75734b07, 독립 정수8경계(2026-10-07)를 읽고 채택 범위를 대조했다. 사용자 D/OPEN 추가확정·콘텐츠값·새 보급/접근/전투·저장 migration 승인이 아니다. None만 legacy이며 Some(empty)·정지unit·context·모든 Move/Stop 예약도 v2다. restore context는 기존 local world/pack/defines identity를 재검증하며 v2 external applied factors/access는 저장 authority로 복원·참조/양수/순서/route formula raw bit를 검사한다. context는 trusted host 초기 생성에서만 설정하고 수명은 unit/Simulation과 같다. 동적 갱신 API는 후속이다. 클라이언트/DTO 조회에서 이 값을 변경할 수 있는 경로는 없다.
 
 strait 누락 대조: 01 §4.1의 인접 crossing kind와 WP31 항구 간 해상수송은 같은 개념으로 추정하지 않는다. 현재 solver는 strait를 탐색 후보에서 제외한다(그 경계만 이어지면 NoPath). strait 통과 정책/계수·담당 WP는 결정 필요이며 해상수송에 임의 위임하지 않는다. sea/lake unit 위치 및 직접 육지 목적지는 InvalidReference, 실제 고립/impassable만의 연결은 NoPath, 보정 context 누락은 MissingContext로 구분한다.
+
+## P-06 REQUEST-0007 A 인수 설계 (코드 전, 2026-10-07)
+
+부모 main93e3dc1의 01 §4.7/02 §5.11/03 P-03/REQUEST-0007와 원 SHA256 `2731e99b719f836d42d2100da349392d199cbebba301796cbbeed098104b2e54`, 자체 독립8산술을 읽었다. CEO 한정 잠정 게임행동이며 D/OPEN 추가확정은 아니다. 원97f 커밋/테스트/증거와 원문은 보존한다.
+
+| 새 필드 | 의미/형/단위/범위 | 필수/null/default | 참조/수명/권위/분류 | hash/save/version/REQ |
+|---|---|---|---|---|
+| Movement.straits | Option<BTreeMap<DivisionId, directed context map>> | 기존 constructor None=97f legacy 계약, 새 trusted with_straits는 Some(빈 map 가능); unit마다 명시 context 필수 | unit별 1; 생성 이후 immutable; only trusted host 초기입력 | None skip→97f canonical 그대로; Some 전체 hash와 추가 v3 save; MIL-04 |
+| StraitInput.unit/corrections | DivisionId u32; BTreeMap<(ProvinceId,ProvinceId),StraitContext> | 모든 필드 명시, 중복unit 거부, direction reverse 자동 채움 없음 | 존재 unit 1, 양 endpoint land/allowed 및 실제 MapDataStrait; 정의+초기 adapter | unit 참조/정렬을 v3에 보존 |
+| StraitContext.kind | CrossingKind(Normal/RiverSmall/RiverLarge/Strait) | 필수, 실제 Strait만 수락; 다른 kind 오류 | MapData.edge.kind와 일치, normal/river 슬롯과 구별 | enum tag raw canonical; v3 kind u8 검증, MIL-04 |
+| StraitFactors.terrain/infrastructure/supply/strait | 각각 Fx >0 시간배율 | 전부 필수, null/1fallback 없음 | terrain/strait는 Defines 어댑터에서 movement.terrain_<target>, movement.strait; infra/supply는 trusted 외부입력, directed applied 값 수명=unit | checked distance÷speed→terrain→infra→supply→strait; river는 곱하지 않음; raw i64 전부 hash/save |
+| SimulationSaveV3 | frozen SimulationSaveV2 base + Vec<UnitStraitsV3> | v3 explicit Some context를 반드시 포함, base/v2에는 새field/variant 추가없음 | 정렬unique unitID, correction endpoints/kind/raw factors; references local restore context와 검증 | OHSV3 reader/writer 추가; v1/v2 모두 읽기·쓰기·hash·실행 유지, migration 없음 |
+
+흐름: trusted with_straits 생성→unit/context/land/allowed/kind/양수 구조 검사→enqueue preview→Commands apply 재검사→1h Movement→atomic commit. explicit mode에서 allowed 연결의 실제 Strait를 탐색 후보에 넣고 해당 direction context가 없으면 MissingContext(계산 실패를 NoPath로 숨기지 않음), 양끝점 allowed 밖은 edge 후보 제외/목적지 InvalidReference. legacy None은 원97f의 restricted land/river policy이며 새로운 정책 context를 자동 부여하지 않는다. 미래 host adapter는 명시 Some mode와 context를 공급한다. 함대/봉쇄/항구/통행권·진행중 allowed 변경 정책은 없다.
+
+기존 v2 bytes/head/hash 재개는 97f의 immutable source/producer 출력과 비교한다. v3 preflight는 frozen v2 base shape 후 unit별 context 벡터/enum kind·4 raw factors를 같은 queue/map cap·512byte entry allocation charge/예산으로 검사한 다음 semantic validation한다. unknown 미래 version·prefix/header mismatch·중복/미존재/비육지/wrong kind/null 표현/zero·negative·overflow·underflow는 새 live 값을 만들지 않는다.
+
+독립 예제: 10km/speed2, terrain/infra/supply=1, strait2는 10h=42949672960raw; tick9 출발/elapsed38654705664, tick10 도착/elapsed0. 정상 대체8h이면 normal path, 동점10h이면 전체 ProvinceId lexical. river7계수가 strait2와 중복되어70h가 되면 FAIL. direction reverse 누락은 MissingContext. 같은context insertion순서와 unit순서는 같은 canonical. applied strait1bit/kind(Defs identity) 변경은 hash sensitivity; wrong context kind는 거부. tick9+pendingStop/Move+Pause 저장/새process 재개 및 REQUEST-0006 reroute/Stop 잔여경계 유지. missing/0/음수/overflow/underflow/wrong reference/kind/nonland/타국 입력은 state/queue/clock 불변.
+
+P06 추가 실제 DTO 계약: SimulationSaveV3.base:SimulationSaveV2는 frozen fieldorder이며 base.base.queue는 빈Vec이고 base.queue가 모든 time/Move/Stop pending이다. straits:Vec<UnitStraitsV3{unit:u32,corrections:Vec<StraitCorrectionV3{from:u16,to:u16,kind:u8,factors:[i64;4]}>>는 모든 unit과 같은 sortedunique ID집합이다. 단위는 km/h·hour·무차원 시간계수, 각 factors slot은 [terrain,infrastructure,supply,strait] 순 raw I32F32 i64. kind=3(Strait)만 유효하고 0/1/2/255는 거부한다. 각 collection은 기존 map_entries_max 및 allocation_budget/entry_charge512의 preflight와 sortedunique semantic check 대상이다. Some(empty units/context)는 v3, Some unit의 empty corrections도 v3로 저장되어 missing direction을1로 만들지 않는다. host constructor/input/export/restore 참조검사와 live state는 독립이며 wire/파생조회 DTO에는 새 변경권한이 없다.

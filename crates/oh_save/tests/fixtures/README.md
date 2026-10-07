@@ -24,3 +24,18 @@ Only an exact clean source HEAD and real CI artifacts establish cross-OS evidenc
 Ownership/player permissions and browser upload/download are later milestones.
 
 Provenance: original OpenHOI contributors, CC-BY-SA-4.0 (registered in ASSETS).
+
+## Original WP-17 movement v2 compatibility fixture
+
+`movement-v2-97f.ohsave` and `movement-v2-97f.expected.json` are immutable raw
+producer output from source `97f688718dabed46bc477fa249798ac09e999581`, Windows
+native `movement_fixture` at tick1, unit900 at province10, elapsed1h, with
+pending Stop/Pause/Resume/Move. Save SHA256 is
+`d3706ae77d226ad480ce24e018137de6898bd45b0bd6dbb203b1a4a4c6c9df0f`.
+Split canonical hash is `18bff036731f4f26`; continuous/resumed tick24 hash is
+`a145b72ad0ad25e6`. Source artifact:
+`target/evidence/WP-17/exact-movement-1/` (producer identity/PIDs and SHA in
+`exact-movement-result.json`). This is a new compatibility fixture preserving
+an earlier implementation's bytes, not a replacement golden/expected value.
+Original engine-generated synthetic test output; content is the existing
+independently authored Testland pack. No original-game assets or values.

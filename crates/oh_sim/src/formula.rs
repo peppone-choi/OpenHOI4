@@ -113,3 +113,29 @@ pub fn movement_hours(
     }
     Ok(value)
 }
+
+/// Strait uses its own final time slot. No river factor participates.
+pub fn strait_hours(
+    distance: Fx,
+    speed: Fx,
+    factors: crate::movement::StraitFactors,
+) -> Result<Fx, crate::movement::MovementError> {
+    use crate::movement::MovementError;
+    if distance <= Fx::ZERO || speed <= Fx::ZERO {
+        return Err(MovementError::InvalidValue);
+    }
+    factors.validate()?;
+    let mut value = distance.checked_div(speed).ok_or(MovementError::Overflow)?;
+    for factor in [
+        factors.terrain,
+        factors.infrastructure,
+        factors.supply,
+        factors.strait,
+    ] {
+        value = value.checked_mul(factor).ok_or(MovementError::Overflow)?;
+    }
+    if value <= Fx::ZERO {
+        return Err(MovementError::InvalidValue);
+    }
+    Ok(value)
+}

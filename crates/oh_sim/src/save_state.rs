@@ -309,6 +309,9 @@ pub struct SimulationSaveV2 {
 impl Simulation {
     pub fn export_save_v2(&self) -> Result<SimulationSaveV2, String> {
         let movement = self.movement.as_ref().ok_or("V2RequiresMovement")?;
+        if movement.has_strait_context() {
+            return Err("StraitRequiresV3".into());
+        }
         let mut legacy = self.clone();
         legacy.movement = None;
         legacy.queue.clear();
@@ -369,6 +372,13 @@ impl Simulation {
         Ok(SimulationSaveV2 { base, queue, units })
     }
     pub fn from_save_v2(dto: SimulationSaveV2, context: &RestoreContext) -> Result<Self, String> {
+        Self::from_movement_save(dto, context, None)
+    }
+    fn from_movement_save(
+        dto: SimulationSaveV2,
+        context: &RestoreContext,
+        straits: Option<BTreeMap<oh_core::DivisionId, crate::movement::DirectedStraits>>,
+    ) -> Result<Self, String> {
         use crate::movement::{Factors, Leg, Movement, Unit};
         use oh_core::{DivisionId, Fx, ProvinceId};
         if !dto.base.queue.is_empty() {
@@ -419,7 +429,7 @@ impl Simulation {
                 elapsed: Fx::from_bits(u.elapsed),
             });
         }
-        let movement = Movement { units };
+        let movement = Movement { units, straits };
         movement.validate(world).map_err(|e| e.to_string())?;
         if !strictly_sorted(dto.queue.iter().map(|q| (q.tick, q.nation, q.sequence))) {
             return Err("InvalidQueue: duplicate/unsorted key".into());
@@ -463,5 +473,96 @@ impl Simulation {
         }
         sim.movement = Some(movement);
         Ok(sim)
+    }
+}
+
+/// Frozen v2 body plus independently typed direction/kind/raw time context.
+#[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
+pub struct StraitCorrectionV3 {
+    pub from: u16,
+    pub to: u16,
+    pub kind: u8,
+    pub factors: [i64; 4],
+}
+#[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
+pub struct UnitStraitsV3 {
+    pub unit: u32,
+    pub corrections: Vec<StraitCorrectionV3>,
+}
+#[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
+pub struct SimulationSaveV3 {
+    pub base: SimulationSaveV2,
+    pub straits: Vec<UnitStraitsV3>,
+}
+impl Simulation {
+    pub fn export_save_v3(&self) -> Result<SimulationSaveV3, String> {
+        let contexts = self
+            .movement
+            .as_ref()
+            .and_then(|m| m.straits.as_ref())
+            .ok_or("V3RequiresStraitContext")?;
+        let straits = contexts
+            .iter()
+            .map(|(unit, corrections)| UnitStraitsV3 {
+                unit: unit.0,
+                corrections: corrections
+                    .iter()
+                    .map(|(&(from, to), c)| StraitCorrectionV3 {
+                        from: from.0,
+                        to: to.0,
+                        kind: c.kind as u8,
+                        factors: [
+                            c.factors.terrain.to_bits(),
+                            c.factors.infrastructure.to_bits(),
+                            c.factors.supply.to_bits(),
+                            c.factors.strait.to_bits(),
+                        ],
+                    })
+                    .collect(),
+            })
+            .collect();
+        let mut legacy = self.clone();
+        legacy
+            .movement
+            .as_mut()
+            .ok_or("V3RequiresMovement")?
+            .straits = None;
+        Ok(SimulationSaveV3 {
+            base: legacy.export_save_v2()?,
+            straits,
+        })
+    }
+    pub fn from_save_v3(dto: SimulationSaveV3, context: &RestoreContext) -> Result<Self, String> {
+        use crate::movement::{CrossingKind, StraitContext, StraitFactors};
+        use oh_core::{DivisionId, Fx, ProvinceId};
+        if !strictly_sorted(dto.straits.iter().map(|c| c.unit)) {
+            return Err("InvalidStrait: duplicate/unsorted units".into());
+        }
+        let mut straits = BTreeMap::new();
+        for c in dto.straits {
+            if !strictly_sorted(c.corrections.iter().map(|e| (e.from, e.to))) {
+                return Err("InvalidStrait: duplicate/unsorted directions".into());
+            }
+            let mut corrections = BTreeMap::new();
+            for e in c.corrections {
+                if e.kind != CrossingKind::Strait as u8 {
+                    return Err("InvalidStrait: crossing kind".into());
+                }
+                corrections.insert(
+                    (ProvinceId(e.from), ProvinceId(e.to)),
+                    StraitContext {
+                        kind: CrossingKind::Strait,
+                        factors: StraitFactors {
+                            terrain: Fx::from_bits(e.factors[0]),
+                            infrastructure: Fx::from_bits(e.factors[1]),
+                            supply: Fx::from_bits(e.factors[2]),
+                            strait: Fx::from_bits(e.factors[3]),
+                        },
+                    },
+                );
+            }
+            straits.insert(DivisionId(c.unit), corrections);
+        }
+        Self::from_movement_save(dto.base, context, Some(straits))
     }
 }

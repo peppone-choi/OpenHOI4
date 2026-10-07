@@ -28,3 +28,5 @@ CEO 2026-10-07 REQUEST-0006 A 한정 잠정 채택으로 진행 edge reroute/Sto
 부모 main 01 §4.7 / 02 §5.11 / 03 P-03 및 REQUEST-0006 원문 SHA256 0b9e2ba3756fa1022a876f11369dc8b4e4909fc49e84ea35bfbf9b7d75734b07, 독립 정수8경계(2026-10-07)를 읽고 채택 범위를 대조했다. 사용자 D/OPEN 추가확정·콘텐츠값·새 보급/접근/전투·저장 migration 승인이 아니다. None만 legacy이며 Some(empty)·정지unit·context·모든 Move/Stop 예약도 v2다. restore context는 기존 local world/pack/defines identity를 재검증하며 v2 external applied factors/access는 저장 authority로 복원·참조/양수/순서/route formula raw bit를 검사한다. context는 trusted host 초기 생성에서만 설정하고 수명은 unit/Simulation과 같다. 동적 갱신 API는 후속이다. 클라이언트/DTO 조회에서 이 값을 변경할 수 있는 경로는 없다.
 
 strait 누락 대조: 01 §4.1의 인접 crossing kind와 WP31 항구 간 해상수송은 같은 개념으로 추정하지 않는다. 현재 solver는 strait를 탐색 후보에서 제외한다(그 경계만 이어지면 NoPath). strait 통과 정책/계수·담당 WP는 결정 필요이며 해상수송에 임의 위임하지 않는다. sea/lake unit 위치 및 직접 육지 목적지는 InvalidReference, 실제 고립/impassable만의 연결은 NoPath, 보정 context 누락은 MissingContext로 구분한다.
+
+P-06 후속 ADR-1702가 REQUEST-0007 A의 typed Strait 슬롯/explicit context/additive v3를 추가한다. 본 ADR의 원97f strait 미지원/미정 기록은 당시 상태이며, 일반/하천·REQ6·legacy bytes 기술 선택은 그대로 보존한다.

@@ -18,6 +18,7 @@ pub enum MovementError {
     InvalidReference,
     DuplicateUnit,
     InvalidValue,
+    InvalidKind,
     Overflow,
     NoPath,
     NotOwner,
@@ -87,6 +88,81 @@ impl Factors {
         }
     }
 }
+/// Crossing discriminator is authoritative, never supplied in client commands.
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Serialize)]
+#[repr(u8)]
+pub enum CrossingKind {
+    Normal,
+    RiverSmall,
+    RiverLarge,
+    Strait,
+}
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Serialize)]
+pub struct StraitFactors {
+    pub terrain: Fx,
+    pub infrastructure: Fx,
+    pub supply: Fx,
+    pub strait: Fx,
+}
+impl StraitFactors {
+    pub fn from_defines(
+        defs: &Defines,
+        map: &MapData,
+        from: ProvinceId,
+        to: ProvinceId,
+        infrastructure: Fx,
+        supply: Fx,
+    ) -> Result<Self, MovementError> {
+        if !land(map, from) || !land(map, to) {
+            return Err(MovementError::InvalidReference);
+        }
+        let edge = map
+            .edge(from.0, to.0)
+            .ok_or(MovementError::InvalidReference)?;
+        if edge.kind != EdgeKind::Strait {
+            return Err(MovementError::InvalidKind);
+        }
+        let p = &map.provinces[usize::from(
+            map.province_index(to.0)
+                .ok_or(MovementError::InvalidReference)?,
+        )];
+        let get = |key: &str| match defs.get(key) {
+            Some(DefineValue::Number(Number::Fixed(v))) => Ok(*v),
+            Some(DefineValue::Number(Number::Integer(v))) => {
+                Fx::checked_from_num(*v).ok_or(MovementError::Overflow)
+            }
+            _ => Err(MovementError::MissingContext),
+        };
+        let factors = Self {
+            terrain: get(&format!("movement.terrain_{}", p.terrain))?,
+            infrastructure,
+            supply,
+            strait: get("movement.strait")?,
+        };
+        factors.validate()?;
+        Ok(factors)
+    }
+    pub(crate) fn validate(self) -> Result<(), MovementError> {
+        if [self.terrain, self.infrastructure, self.supply, self.strait]
+            .iter()
+            .any(|v| *v <= Fx::ZERO)
+        {
+            return Err(MovementError::InvalidValue);
+        }
+        Ok(())
+    }
+}
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Serialize)]
+pub struct StraitContext {
+    pub kind: CrossingKind,
+    pub factors: StraitFactors,
+}
+pub type DirectedStraits = BTreeMap<(ProvinceId, ProvinceId), StraitContext>;
+#[derive(Clone, Debug)]
+pub struct StraitInput {
+    pub unit: DivisionId,
+    pub corrections: DirectedStraits,
+}
 #[derive(Clone, Debug)]
 pub struct UnitInput {
     pub id: DivisionId,
@@ -142,7 +218,11 @@ impl Unit {
             sum.checked_add(l.hours).ok_or(MovementError::Overflow)
         })
     }
-    fn validate(&self, world: &World) -> Result<(), MovementError> {
+    fn validate(
+        &self,
+        world: &World,
+        straits: Option<&DirectedStraits>,
+    ) -> Result<(), MovementError> {
         let map = world.defs().map();
         if world.nation(self.nation).is_none()
             || !land(map, self.province)
@@ -162,10 +242,13 @@ impl Unit {
         }
         let mut from = self.province;
         for l in &self.route {
-            if l.from != from || !self.allowed.contains(&l.to) || !usable(map, l.from, l.to) {
+            if l.from != from
+                || !self.allowed.contains(&l.to)
+                || !route_usable(map, l.from, l.to, straits.is_some())
+            {
                 return Err(MovementError::InvalidReference);
             }
-            if self.duration(map, l.from, l.to)? != l.hours {
+            if self.duration(map, l.from, l.to, straits)? != l.hours {
                 return Err(MovementError::InvalidValue);
             }
             from = l.to;
@@ -179,8 +262,23 @@ impl Unit {
         }
         Ok(())
     }
-    fn duration(&self, map: &MapData, a: ProvinceId, b: ProvinceId) -> Result<Fx, MovementError> {
+    fn duration(
+        &self,
+        map: &MapData,
+        a: ProvinceId,
+        b: ProvinceId,
+        straits: Option<&DirectedStraits>,
+    ) -> Result<Fx, MovementError> {
         let edge = map.edge(a.0, b.0).ok_or(MovementError::InvalidReference)?;
+        if edge.kind == EdgeKind::Strait {
+            let context = straits
+                .and_then(|c| c.get(&(a, b)))
+                .ok_or(MovementError::MissingContext)?;
+            if context.kind != CrossingKind::Strait {
+                return Err(MovementError::InvalidKind);
+            }
+            return crate::formula::strait_hours(edge.distance_km, self.speed, context.factors);
+        }
         let f = self
             .corrections
             .get(&(a, b))
@@ -192,6 +290,7 @@ impl Unit {
         map: &MapData,
         start: ProvinceId,
         end: ProvinceId,
+        straits: Option<&DirectedStraits>,
     ) -> Result<Vec<Leg>, MovementError> {
         if !land(map, end) || !self.allowed.contains(&end) {
             return Err(MovementError::InvalidReference);
@@ -202,7 +301,10 @@ impl Unit {
         let mut adjacency: BTreeMap<ProvinceId, Vec<ProvinceId>> = BTreeMap::new();
         for e in &map.edges {
             let (a, b) = (ProvinceId(e.a), ProvinceId(e.b));
-            if self.allowed.contains(&a) && self.allowed.contains(&b) && usable(map, a, b) {
+            if self.allowed.contains(&a)
+                && self.allowed.contains(&b)
+                && route_usable(map, a, b, straits.is_some())
+            {
                 adjacency.entry(a).or_default().push(b);
                 adjacency.entry(b).or_default().push(a);
             }
@@ -221,7 +323,7 @@ impl Unit {
                         Ok(Leg {
                             from: p[0],
                             to: p[1],
-                            hours: self.duration(map, p[0], p[1])?,
+                            hours: self.duration(map, p[0], p[1], straits)?,
                         })
                     })
                     .collect();
@@ -231,7 +333,7 @@ impl Unit {
                     continue;
                 }
                 let next = cost
-                    .checked_add(self.duration(map, a, b)?.to_bits())
+                    .checked_add(self.duration(map, a, b, straits)?.to_bits())
                     .ok_or(MovementError::Overflow)?;
                 let mut p = path.clone();
                 p.push(b);
@@ -259,9 +361,20 @@ fn usable(map: &MapData, a: ProvinceId, b: ProvinceId) -> bool {
             )
         })
 }
+fn route_usable(map: &MapData, a: ProvinceId, b: ProvinceId, explicit_straits: bool) -> bool {
+    usable(map, a, b)
+        || explicit_straits
+            && land(map, a)
+            && land(map, b)
+            && map
+                .edge(a.0, b.0)
+                .is_some_and(|e| e.kind == EdgeKind::Strait)
+}
 #[derive(Clone, Debug, Eq, PartialEq, Serialize)]
 pub struct Movement {
     pub(crate) units: Vec<Unit>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub(crate) straits: Option<BTreeMap<DivisionId, DirectedStraits>>,
 }
 impl Movement {
     pub fn new(world: &World, inputs: Vec<UnitInput>) -> Result<Self, MovementError> {
@@ -279,16 +392,70 @@ impl Movement {
             })
             .collect();
         units.sort_by_key(|u| u.id);
-        let m = Self { units };
+        let m = Self {
+            units,
+            straits: None,
+        };
         m.validate(world)?;
         Ok(m)
+    }
+    /// Trusted, explicit crossing authority. Legacy constructors keep v2 policy.
+    pub fn with_straits(
+        world: &World,
+        inputs: Vec<UnitInput>,
+        contexts: Vec<StraitInput>,
+    ) -> Result<Self, MovementError> {
+        let mut movement = Self::new(world, inputs)?;
+        let mut straits = BTreeMap::new();
+        for context in contexts {
+            if straits.insert(context.unit, context.corrections).is_some() {
+                return Err(MovementError::DuplicateUnit);
+            }
+        }
+        movement.straits = Some(straits);
+        movement.validate(world)?;
+        Ok(movement)
+    }
+    pub fn has_strait_context(&self) -> bool {
+        self.straits.is_some()
+    }
+    pub fn strait_context(&self, id: DivisionId) -> Option<&DirectedStraits> {
+        self.straits.as_ref()?.get(&id)
     }
     pub(crate) fn validate(&self, world: &World) -> Result<(), MovementError> {
         if !self.units.windows(2).all(|w| w[0].id < w[1].id) {
             return Err(MovementError::DuplicateUnit);
         }
+        if let Some(straits) = &self.straits {
+            if straits.keys().copied().ne(self.units.iter().map(|u| u.id)) {
+                return Err(MovementError::MissingContext);
+            }
+            for u in &self.units {
+                for (&(from, to), context) in &straits[&u.id] {
+                    if !land(world.defs().map(), from)
+                        || !land(world.defs().map(), to)
+                        || !u.allowed.contains(&from)
+                        || !u.allowed.contains(&to)
+                    {
+                        return Err(MovementError::InvalidReference);
+                    }
+                    let edge = world
+                        .defs()
+                        .map()
+                        .edge(from.0, to.0)
+                        .ok_or(MovementError::InvalidReference)?;
+                    if context.kind != CrossingKind::Strait
+                        || edge.kind != EdgeKind::Strait
+                        || u.corrections.contains_key(&(from, to))
+                    {
+                        return Err(MovementError::InvalidKind);
+                    }
+                    context.factors.validate()?;
+                }
+            }
+        }
         for u in &self.units {
-            u.validate(world)?;
+            u.validate(world, self.strait_context(u.id))?;
         }
         Ok(())
     }
@@ -308,10 +475,15 @@ impl Movement {
         destination: ProvinceId,
     ) -> Result<Vec<ProvinceId>, MovementError> {
         let u = self.unit(id).ok_or(MovementError::InvalidReference)?;
-        Ok(u.path(world.defs().map(), u.province, destination)?
-            .iter()
-            .map(|l| l.to)
-            .collect())
+        Ok(u.path(
+            world.defs().map(),
+            u.province,
+            destination,
+            self.strait_context(id),
+        )?
+        .iter()
+        .map(|l| l.to)
+        .collect())
     }
     pub(crate) fn command(
         &mut self,
@@ -336,7 +508,7 @@ impl Movement {
         };
         if let Some(end) = destination {
             let start = if keep { route[0].to } else { u.province };
-            route.extend(u.path(world.defs().map(), start, end)?);
+            route.extend(u.path(world.defs().map(), start, end, self.strait_context(id))?);
         }
         route.iter().try_fold(-u.elapsed, |sum, l| {
             sum.checked_add(l.hours).ok_or(MovementError::Overflow)

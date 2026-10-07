@@ -268,3 +268,22 @@ license = "CC-BY-SA-4.0"
 modified = false
 ai_generated = false
 notes = "New synthetic M1 v1 save with fixed timestamp, ordered time queue, rawbit infrastructure modifiers and expiry. Original Testland inputs; no existing golden replaced."
+
+# Frozen source97f raw v2 movement producer output (WP-17 P06).
+[[asset]]
+path = "crates/oh_save/tests/fixtures/movement-v2-97f.ohsave"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Unmodified native movement_fixture output from 97f688718dabed46bc477fa249798ac09e999581; original synthetic Testland. SHA256 d3706ae77d226ad480ce24e018137de6898bd45b0bd6dbb203b1a4a4c6c9df0f; split hash18bff036731f4f26, resumed hash a145b72ad0ad25e6. New compatibility fixture, no existing v1 fixture/golden replacement."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/movement-v2-97f.expected.json"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Unmodified raw capture.json from original source97f688718dabed46bc477fa249798ac09e999581 native producer; full v2 DTO/canonical bytes and split18bff036731f4f26/resumed a145b72ad0ad25e6. Added to preserve original v2 expectations, not replace any existing expected value."
