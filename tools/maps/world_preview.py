@@ -3,6 +3,7 @@ import argparse
 import hashlib
 import io
 import json
+import platform
 from pathlib import Path
 import struct
 import tomllib
@@ -135,7 +136,7 @@ def raster_lines(items,width,height):
     return mask
 
 
-def geodesic_labels(kind,k,seeds,river,elevation,options):
+def geodesic_labels(kind,k,seeds,river,elevation,options,extent=None):
     """Offline art partition: same-kind graph distance, physical geographic inputs."""
     h,w=kind.shape;mask=kind==k;flat=np.flatnonzero(mask);n=len(flat)
     nodes=np.full(kind.shape,-1,dtype=np.int32);nodes.ravel()[flat]=np.arange(n,dtype=np.int32)
@@ -146,8 +147,10 @@ def geodesic_labels(kind,k,seeds,river,elevation,options):
     def edges(a,b,yy,dx,dy,valid):
         na=nodes[a];nb=nodes[b];good=(na>=0)&(nb>=0)&valid
         if not np.any(good):return
-        lat=np.radians(90-(yy+.5)*180/h)
-        metric=np.broadcast_to(np.sqrt((np.cos(lat)*dx)**2+dy**2),na.shape)
+        west,south,east,north=extent or [-180,-90,180,90]
+        lat=np.radians(north-(yy+.5)*(north-south)/h)
+        ratio=((east-west)/w)/((north-south)/h) if extent else 1
+        metric=np.broadcast_to(np.sqrt((np.cos(lat)*dx*ratio)**2+dy**2),na.shape)
         dem_pair=np.isfinite(elevation[a])&np.isfinite(elevation[b])
         cost=metric*(1+options['river_crossing_penalty']*(river[a]|river[b])*(k==1)+dem_pair*np.abs(rises[a]-rises[b])/options['relief_meters']+dem_pair*options['ridge_penalty']*np.maximum(ridge[a],ridge[b]))
         parts.append((na[good],nb[good],cost[good]))
@@ -157,8 +160,9 @@ def geodesic_labels(kind,k,seeds,river,elevation,options):
     edges((slice(None,-1),slice(None,-1)),(slice(1,None),slice(1,None)),np.arange(h-1)[:,None],1,1,corner)
     corner=(kind[:-1,:-1]==k)&(kind[1:,1:]==k)
     edges((slice(None,-1),slice(1,None)),(slice(1,None),slice(None,-1)),np.arange(h-1)[:,None],1,1,corner)
-    edges((slice(None),-1),(slice(None),0),np.arange(h),1,0,True)
-    graph=csr_matrix((np.concatenate([p[2] for p in parts]),(np.concatenate([p[0] for p in parts]),np.concatenate([p[1] for p in parts]))),shape=(n,n))
+    if extent is None or extent[2]-extent[0]==360:
+        edges((slice(None),-1),(slice(None),0),np.arange(h),1,0,True)
+    graph=csr_matrix((np.concatenate([p[2] for p in parts]),(np.concatenate([p[0] for p in parts]),np.concatenate([p[1] for p in parts]))),shape=(n,n)) if parts else csr_matrix((n,n),dtype=float)
     del parts
     source_nodes=nodes[seeds[:,0],seeds[:,1]]
     if (source_nodes<0).any() or len(np.unique(source_nodes))!=len(source_nodes):raise ValueError('invalid geographic seed')
@@ -169,18 +173,20 @@ def geodesic_labels(kind,k,seeds,river,elevation,options):
     return output
 
 
-def rasterize(items,width,height):
+def rasterize(items,width,height,extent=None):
     """Even-odd fill at cell centers; rings retain polygon holes."""
     mask=np.zeros((height,width),dtype=bool)
+    west,south,east,north=extent or [-180,-90,180,90]
     for rings in items:
         all_points=np.concatenate(rings)
-        px=(all_points[:,0]+180)*width/360
-        py=(90-all_points[:,1])*height/180
+        px=(all_points[:,0]-west)*width/(east-west)
+        py=(north-all_points[:,1])*height/(north-south)
         x0=max(0,int(np.floor(px.min())));x1=min(width,int(np.ceil(px.max()))+1)
         y0=max(0,int(np.floor(py.min())));y1=min(height,int(np.ceil(py.max()))+1)
+        if x1<=x0 or y1<=y0:continue
         patch=np.zeros((y1-y0,x1-x0),dtype=bool)
         for ring in rings:
-            p=np.array(ring,dtype=float);x=(p[:,0]+180)*width/360;y=(90-p[:,1])*height/180
+            p=np.array(ring,dtype=float);x=(p[:,0]-west)*width/(east-west);y=(north-p[:,1])*height/(north-south)
             xa=x[:-1];xb=x[1:];ya=y[:-1];yb=y[1:]
             start=max(y0,int(np.ceil(y.min()-.5)));end=min(y1,int(np.ceil(y.max()-.5)))
             for row in range(start,end):
@@ -199,6 +205,101 @@ def rasterize(items,width,height):
 def sphere(x,y,width,height):
     lon=np.radians((x+.5)*360/width-180);lat=np.radians(90-(y+.5)*180/height)
     return np.column_stack((np.cos(lat)*np.cos(lon),np.cos(lat)*np.sin(lon),np.sin(lat)))
+
+
+def city_points(path):
+    """Read point coordinates only; no city names, countries or DBF values."""
+    with zipfile.ZipFile(path) as archive:
+        names=[n for n in archive.namelist() if n.endswith('.shp')]
+        if len(names)!=1:raise ValueError('one point SHP required')
+        data=archive.read(names[0])
+    if len(data)<100 or struct.unpack_from('>i',data)[0]!=9994 or struct.unpack_from('<i',data,32)[0]!=1:raise ValueError('invalid point SHP')
+    offset=100;points=[]
+    while offset<len(data):
+        if offset+8>len(data):raise ValueError('truncated point record')
+        size=struct.unpack_from('>i',data,offset+4)[0]*2;record=data[offset+8:offset+8+size];offset+=8+size
+        if size!=20 or len(record)!=20 or struct.unpack_from('<i',record)[0]!=1:raise ValueError('invalid city point record')
+        lon,lat=struct.unpack_from('<dd',record,4)
+        if not np.isfinite([lon,lat]).all() or abs(lon)>180 or abs(lat)>90:raise ValueError('invalid city coordinate')
+        points.append((lon,lat))
+    return np.unique(np.array(points),axis=0)
+
+
+def lonlat_sphere(lon,lat):
+    lon=np.radians(lon);lat=np.radians(lat)
+    return np.column_stack((np.cos(lat)*np.cos(lon),np.cos(lat)*np.sin(lon),np.sin(lat)))
+
+
+def city_distances(cities,extent,width,height,radius_km):
+    if len(cities)==0:return np.full((height,width),np.inf)
+    west,south,east,north=extent
+    yy,xx=np.indices((height,width));lon=west+(xx.ravel()+.5)*(east-west)/width;lat=north-(yy.ravel()+.5)*(north-south)/height
+    distance,_=cKDTree(lonlat_sphere(cities[:,0],cities[:,1])).query(lonlat_sphere(lon,lat),workers=1)
+    return (2*np.arcsin(np.minimum(1,distance/2))*radius_km).reshape(height,width)
+
+
+def dem_grid(dems,width,height,extent=None):
+    west,south,east,north=extent or [-180,-90,180,90]
+    output=np.full((height,width),np.nan);lat=north-(np.arange(height)+.5)*(north-south)/height;lon=west+(np.arange(width)+.5)*(east-west)/width
+    for raster,box in dems:
+        dw,ds,de,dn=box;yy=np.flatnonzero((lat>=ds)&(lat<dn));xx=np.flatnonzero((lon>=dw)&(lon<de))
+        ry=((dn-lat[yy])/(dn-ds)*raster.shape[0]).astype(int);rx=((lon[xx]-dw)/(de-dw)*raster.shape[1]).astype(int)
+        output[np.ix_(yy,xx)]=raster[np.ix_(ry,rx)]
+    return output
+
+
+def elevation_at(dems,lon,lat):
+    value=None
+    for raster,(west,south,east,north) in dems:
+        if west<=lon<east and south<=lat<north:
+            y=int((north-lat)/(north-south)*raster.shape[0]);x=int((lon-west)/(east-west)*raster.shape[1]);value=round(float(raster[y,x]))
+    return value
+
+
+def regional_refine(raw,kind,rivers,cities,dems,definitions,seed):
+    h,w=kind.shape;next_id=int(raw.max())+1;reports=[]
+    for region in definitions.get('density_regions',[]):
+        west,south,east,north=region['extent'];x0=max(0,int(np.ceil((west+180)*w/360-.5)));x1=min(w,int(np.ceil((east+180)*w/360-.5)))
+        y0=max(0,int(np.ceil((90-north)*h/180-.5)));y1=min(h,int(np.ceil((90-south)*h/180-.5)))
+        box=(slice(y0,y1),slice(x0,x1));local=kind[box];hh,ww=local.shape
+        if min(hh,ww)<3:raise ValueError('density region too small')
+        extent=[x0*360/w-180,90-y1*180/h,x1*360/w-180,90-y0*180/h]
+        actual_cities=cities[(cities[:,0]>=west)&(cities[:,0]<east)&(cities[:,1]>=south)&(cities[:,1]<north)]
+        distance=city_distances(actual_cities,extent,ww,hh,definitions['quality']['earth_radius_km']);heights=dem_grid(dems,ww,hh,extent)
+        ys,xs=np.nonzero((local==1)&(np.indices(local.shape)[0]>0)&(np.indices(local.shape)[0]<hh-1)&(np.indices(local.shape)[1]>0)&(np.indices(local.shape)[1]<ww-1))
+        weights=1+region['city_density']*np.exp(-(distance[ys,xs]/region['city_radius_km'])**2)
+        river_distance=ndimage.distance_transform_edt(~rivers[box]);weights*=1+definitions['partition']['river_density']/(1+river_distance[ys,xs])
+        interior=ndimage.binary_erosion(np.isfinite(heights));gradient=np.hypot(*np.gradient(np.where(np.isfinite(heights),heights,0)))
+        weights*=1+np.minimum(definitions['partition']['relief_density_cap'],gradient[ys,xs]/definitions['partition']['relief_meters'])*interior[ys,xs]
+        weights/=weights.sum();rng=np.random.Generator(np.random.PCG64(seed+len(reports)+1));chosen=rng.choice(len(ys),size=min(region['additional_land_seeds'],len(ys)),replace=False,p=weights)
+        boundary=np.zeros(local.shape,dtype=bool);boundary[[0,-1],:]=True;boundary[:,[0,-1]]=True;by,bx=np.nonzero(boundary&(local==1))
+        seeds=np.concatenate((np.column_stack((by,bx)),np.column_stack((ys[chosen],xs[chosen]))))
+        # Existing boundary IDs remain anchors; new source-backed seeds fill interior.
+        ids=np.concatenate((raw[box][by,bx],np.arange(next_id,next_id+len(chosen),dtype=np.int32)));next_id+=len(chosen)
+        if len(seeds):
+            labels=geodesic_labels(local,1,seeds,rivers[box],heights,definitions['partition'],extent=extent)
+            valid=labels>=0;raw[box][valid]=ids[labels[valid]]
+        reports.append({'id':region['id'],'extent':extent,'width':ww,'height':hh,'source_city_points':len(actual_cities),'added_seeds':len(chosen),'boundary_anchors':len(by)})
+        print('region '+json.dumps(reports[-1]),flush=True)
+    return raw,reports
+
+
+def refine_coast(coarse,coarse_kind,fine_kind):
+    h,w=fine_kind.shape;ch,cw=coarse.shape
+    if h%ch or w%cw:raise ValueError('fine coast must use integer scale')
+    sy=h//ch;sx=w//cw;output=np.repeat(np.repeat(coarse,sy,0),sx,1)
+    inherited=np.repeat(np.repeat(coarse_kind,sy,0),sx,1)
+    for k in (0,1,2):
+        mismatch=(fine_kind==k)&(inherited!=k)
+        if not mismatch.any():continue
+        if not np.any(inherited==k):raise ValueError('fine coast has missing coarse kind')
+        y,x=np.nonzero(mismatch)
+        # nearest cell assignment only for actual high-res source coast slivers.
+        nearest=ndimage.distance_transform_edt(inherited!=k,return_distances=False,return_indices=True)
+        # Read immutable coarse labels: earlier kind passes mutate output.
+        output[y,x]=coarse[nearest[0,y,x]//sy,nearest[1,y,x]//sx]
+        del nearest
+    return output
 
 
 def partition(kind,options,river=None,elevation=None,geographic_options=None):
@@ -240,7 +341,7 @@ def connected_ids(raw):
             continue
         parts,count=ndimage.label(raw[box]==seed)
         for component in range(1,count+1):
-            if next_id>=65536:
+            if next_id>=65535:
                 raise ValueError('u16 ID overflow')
             output[box][parts==component]=next_id;next_id+=1
     return output
@@ -274,26 +375,31 @@ def build(root,out):
     sources=verify_sources(root);definitions=tomllib.loads((root/'defines.toml').read_text())
     options=definitions['generation'];w=options['width'];h=options['height']
     source={s['id']:root/s['file'] for s in sources['sources']}
-    print('raster land/lakes',flush=True)
-    land=rasterize(polygons(source['land']),w,h);lake=rasterize(polygons(source['lakes']),w,h)
+    quality=definitions.get('quality');gw=quality['graph_width'] if quality else w;gh=quality['graph_height'] if quality else h
+    if w>8192 or h>8192 or w<1 or h<1 or w*h>32*1024*1024:raise ValueError('preview raster budget/texture upper limit')
+    dems=[read_dem(path.read_bytes()) for name,path in source.items() if name.endswith('_dem')]
+    print('raster coarse land/lakes',flush=True)
+    land=rasterize(polygons(source['land']),gw,gh);lake=rasterize(polygons(source['lakes']),gw,gh)
     kind=classify_mask(land,lake)
-    river=raster_lines(shapes(source['rivers'],3),w,h) if 'rivers' in source else np.zeros((h,w),dtype=bool)
-    elevation=np.full((h,w),np.nan)
-    dem_extent=None
-    if 'himalaya_dem' in source:
-        raster,dem_extent=read_dem(source['himalaya_dem'].read_bytes());west,south,east,north=dem_extent
-        yy=np.arange(h);xx=np.arange(w);lat=90-(yy+.5)*180/h;lon=(xx+.5)*360/w-180
-        sy=np.flatnonzero((lat>=south)&(lat<north));sx=np.flatnonzero((lon>=west)&(lon<east))
-        ry=((north-lat[sy])/(north-south)*raster.shape[0]).astype(int);rx=((lon[sx]-west)/(east-west)*raster.shape[1]).astype(int)
-        elevation[np.ix_(sy,sx)]=raster[np.ix_(ry,rx)]
-    print('partition',flush=True);index=connected_ids(partition(kind,options,river,elevation,definitions.get('partition')))
+    river=raster_lines(shapes(source['rivers'],3),gw,gh) if 'rivers' in source else np.zeros((gh,gw),dtype=bool)
+    elevation=dem_grid(dems,gw,gh);dem_extent=dems[0][1] if dems else None
+    print('partition coarse',flush=True);raw=partition(kind,options,river,elevation,definitions.get('partition'))
+    reports=[];cities=city_points(source['cities']) if 'cities' in source else np.empty((0,2))
+    del land,lake,river,elevation
+    if (gw,gh)!=(w,h):
+        print('raster fine coast',flush=True)
+        fine_kind=classify_mask(rasterize(polygons(source['land']),w,h),rasterize(polygons(source['lakes']),w,h))
+        raw=refine_coast(raw,kind,fine_kind);kind=fine_kind
+        river=raster_lines(shapes(source['rivers'],3),w,h)
+        raw,reports=regional_refine(raw,kind,river,cities,dems,definitions,options['seed']);del river
+    index=connected_ids(raw);del raw
     count=int(index.max())+1;rows=[];names=['sea','land','lake'];colors=definitions['colors']
     for dense,box in enumerate(ndimage.find_objects(index.astype(np.int32)+1)):
         cells=index[box]==dense;y,x=np.nonzero(cells);y+=box[0].start;x+=box[1].start
         # Actual representative cell, rather than an offshore polygon centroid.
         mid=len(x)//2;px=int(x[mid]);py=int(y[mid]);name=names[int(kind[py,px])]
         base=colors[name];variation=((dense*73)% (colors['province_variation']*2+1))-colors['province_variation']
-        height_value=round(float(elevation[py,px])) if np.isfinite(elevation[py,px]) else None
+        height_value=elevation_at(dems,(px+.5)*360/w-180,90-(py+.5)*180/h)
         terrain_color=base
         if height_value is not None and name=='land':
             for band in definitions['terrain']['bands']:
@@ -301,8 +407,8 @@ def build(root,out):
         rows.append(dict(id=dense+1,kind=name,pixels=len(x),bounds=[int(x.min()),int(y.min()),int(x.max())+1,int(y.max())+1],longitude=round((px+.5)*360/w-180,6),latitude=round(90-(py+.5)*180/h,6),geography_color=base,province_color=[max(0,min(255,c+variation)) for c in base],terrain_color=terrain_color,elevation_m=height_value))
     out.mkdir(parents=True,exist_ok=True);raw=index_bytes(index);(out/'index.bin').write_bytes(raw)
     hashes={'index.bin':sha(raw),'provinces.json':write_json(out/'provinces.json',rows),'adjacency.json':write_json(out/'adjacency.json',adjacency(index))}
-    limitations=['no-global-elevation','no-city-density','generalized-coast-river','subpixel-islands-lakes','no-game-state','no-ridge-pass-accuracy-guarantee'] if dem_extent else ['no-elevation','no-river-input','no-city-density','generalized-coast','subpixel-islands-lakes','no-game-state']
-    metadata=dict(schema='world-preview-v1',map_id='world_preview',width=w,height=h,projection='EPSG:4326 Plate Carree',extent=[-180,-90,180,90],axis='x east / y south',cell_degrees=360/w,byte_order='u16-le',province_ids=list(range(1,count+1)),counts={name:sum(p['kind']==name for p in rows) for name in names},style=definitions['style'],regions=definitions['regions'],options=options,partition=definitions.get('partition'),tools={'python':'3.11.0','numpy':np.__version__,'scipy':scipy.__version__},sources=sources['sources'],hashes=hashes,definitions_sha256=sha((root/'defines.toml').read_bytes()),limitations=limitations,elevation=bool(dem_extent),elevation_extent=dem_extent,river_input='rivers' in source)
+    limitations=['no-global-elevation','sparse-modern-city-samples','generalized-coast-river','subpixel-islands-lakes','no-game-state','no-ridge-pass-accuracy-guarantee'] if reports else ['no-global-elevation','no-city-density','generalized-coast-river','subpixel-islands-lakes','no-game-state','no-ridge-pass-accuracy-guarantee']
+    metadata=dict(schema='world-preview-v1',map_id='world_preview',width=w,height=h,projection='EPSG:4326 Plate Carree',extent=[-180,-90,180,90],axis='x east / y south',cell_degrees=360/w,byte_order='u16-le',province_ids=list(range(1,count+1)),counts={name:sum(p['kind']==name for p in rows) for name in names},style=definitions['style'],regions=definitions['regions'],options=options,partition=definitions.get('partition'),tools={'python':platform.python_version(),'numpy':np.__version__,'scipy':scipy.__version__},sources=sources['sources'],hashes=hashes,definitions_sha256=sha((root/'defines.toml').read_bytes()),limitations=limitations,elevation=bool(dem_extent),elevation_extent=dem_extent,elevation_extents=[d[1] for d in dems],river_input='rivers' in source,quality=quality,density_regions=reports,city_input=bool(reports),coast_antialias=bool(quality and quality.get('coast_antialias')))
     write_json(out/'metadata.json',metadata)
     print(json.dumps(dict(count=count,counts=metadata['counts'],hashes=hashes)),flush=True)
 

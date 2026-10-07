@@ -32,3 +32,11 @@
 terrain_color는 valid대표cell 고도표본을defines색대역으로표시하는거친지형모드다. globalDEM/정확능선·고개보증/river overlays/도시 density는없다. 한프로빈스평균높이로능선검증을대체하지않는다. elevation_m은대표좌표의반올림metre표본이지province전체높이/hover좌표높이가아니다. 호수는NaturalEarth lake layer를육지polygonhole에도우선적용한다. 실제NaturalEarth기본lakes원천은Caspian을포함하지않아현구분에서는sea로남는다. 이한계는알려진누락이며임의경계나좌표를만들어보완하지않는다. 육지모든주연결은게임팩콘텐츠범위에서후속.
 
 공개스크린샷은독립경계생성입력에포함하지않는다. 참고 관찰은 SOURCES 문서에 비좌표적형상원칙만기록하고 게임/UI/아이콘/수치/원경계 추출·tracing을하지않는다. 최신terrain이미지편집질문은의견만이므로새게임포맷/height16/editor계약은만들지않는다.
+
+## Quality P06-2 extension
+
+Latest candidate dimensions are8192×4096, cell0.0439453125°, index67,108,864bytes. The 4096 graph is retained; only bounded region graphs add city/river/DEM-informed detail. IDs are still1..65535/denseRG8LE; integer index/picking/adjacency are never interpolated. Optional metadata city_input/coast_antialias/quality/density_regions/elevation_extents declares actual inputs and limits. Required camera presets are all validated before rendering. The preview-only palette adapter must equal the existing terrain palette byte-for-byte while creating/updating lookup in O(n); default App palette behavior is unchanged. Optional coast kind colors filter class-change pixels only; default renderer path has no kind texture.
+
+Separate owned bake supervisor enforces180seconds/3GiB and67,108,864indexbytes without touching other processes. New output directory required; no old evidence/output overwrite on failure. Hardware must supportactual8192 texture; unsupported capability errors remain failures rather than resolution/backend substitution. Device/GPU/security settings are unchanged. Preview rail has its own bounded scrolling region at850×650 and1280×720. Game functions remain disconnected.
+
+New evidence is exclusively target/evidence/WORLD-PREVIEW-quality-P06-2. Earlier checkpoint final/identity is immutable. Prototype candidates failing whole-source classification are excluded. Final selection requires all pixels source-kind equal, every ID4connected/dense, exact representative DEM/bounds/pixels, exact sorted seam adjacency, same-source/tool repeated output SHAs, minimum-Chrome ownpage captures, original unchanged tests and a clean checkpoint. Self-check results do not constitute independent verification/mainCI orWP-32/45/M5 completion.

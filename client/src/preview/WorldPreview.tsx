@@ -1,10 +1,11 @@
 import { useEffect,useMemo,useRef,useState } from 'react';
 import { createMap,type MapCamera } from '../map/renderer';
 import type { MapMetadata } from '../proto/protocol';
-import { loadPreview,previewWorld,type PreviewData,type PreviewMode } from './model';
+import { loadPreview,previewWorld,previewFetch,type PreviewData,type PreviewMode } from './model';
 import { PreviewHud } from './PreviewHud';
 import { previewTranslator,type PreviewText } from './locales';
 import { loadUnitAssets,unitScene,disposeUnits,type UnitAsset,type UnitSample,type UnitLighting } from './units3d';
+import { previewPalette } from './palette';
 import './preview.css';
 
 type MapInstance=Awaited<ReturnType<typeof createMap>>;
@@ -22,7 +23,7 @@ export function WorldPreview(){
  useEffect(()=>{
   const controller=new AbortController();let loaded:LoadedUnits|null=null;
   async function load(){
-   const response=await fetch('/preview/world/units.json',{signal:controller.signal,mode:'same-origin',redirect:'error'});
+   const response=await previewFetch('/preview/world/units.json',controller.signal);
    if(!response.ok)throw new Error('preview-unit-data-error');const config=await response.json() as UnitConfig;
    if(config.schema!=='world-preview-unit-display-v1'||!Array.isArray(config.samples)||config.samples.some(s=>!['army','air','navy'].includes(s.asset)||![s.longitude,s.latitude,s.heading_degrees,s.scale,s.height,s.tilt_degrees].every(Number.isFinite)||Math.abs(s.latitude)>90||Math.abs(s.longitude)>180||s.scale<=0||s.height<0))throw new Error('preview-unit-data-error');
    const models=await loadUnitAssets(config.models,controller.signal);loaded={models,config};if(!controller.signal.aborted)setUnits(loaded);else disposeUnits(models.values());
@@ -49,7 +50,8 @@ export function WorldPreview(){
    },next=>{
     if(stopped)return;setReady(false);instance.current?.dispose();instance.current=null;
     void start(true,next).catch(()=>{if(!stopped)setError(true);});
-   },forceWebGL,{camera:cam,mode:'map-mode-terrain',selected:current.current.selected,signal:controller.signal,
+   },forceWebGL,{camera:cam,mode:'map-mode-terrain',selected:current.current.selected,signal:controller.signal,paletteAdapter:previewPalette,
+    coastKinds:data!.meta.coast_antialias?(()=>{const bytes=new Uint8Array(256*256*4);data!.provinces.forEach((p,i)=>bytes.set([p.kind==='land'?1:p.kind==='lake'?2:0,0,0,255],i*4));return bytes;})():undefined,
     sceneExtension:showUnits&&units?unitScene(units.models,units.config.samples,meta.width,meta.height,units.config.lighting,(count,triangles)=>{if(host.current){host.current.dataset.unitSamples=String(count);host.current.dataset.unitTriangles=String(triangles);}}):undefined});
    if(stopped){result.dispose();return;}instance.current=result;result.update(current.current.world!,'map-mode-terrain',current.current.selected);setReady(true);
   }
@@ -64,7 +66,7 @@ export function WorldPreview(){
   <PreviewHud t={t} slots={{unitDisplay:units?t('preview-sample'):unitError?t('preview-error'):t('preview-unitPending')}}>
    <section className="preview-toolbar"><div className="preview-modes">{(['geography','provinces','terrain'] as const).map(key=><button key={key} disabled={key==='terrain'&&!data?.meta.elevation} aria-pressed={mode===key} onClick={()=>setMode(key)}>{t(`preview-${key}`)}</button>)}</div><button aria-pressed={borders} onClick={()=>{keepCamera();setBorders(!borders);}}>{t('preview-borders')}</button><button aria-pressed={showUnits} disabled={!units} onClick={()=>{keepCamera();setShowUnits(!showUnits);}}>{t('preview-markers')}</button><button aria-label={t('preview-locale')} onClick={()=>setLanguage(language==='ko'?'en':'ko')}>{language==='ko'?t('preview-language-toggle-en'):t('preview-language-toggle-ko')}</button></section>
    <section className="preview-intro"><small>{t('preview-explore')}</small><h1>{t('preview-intro')}</h1><p>{t('preview-description')}</p></section>
-   <aside className="preview-inspector"><header><span className="inspector-dot"/>{t('preview-selection')}</header><div className="inspector-body"><small>{p?t(`preview-${p.kind}`):t('preview-selectHelp')}</small><h2>{p?`#${p.id.toLocaleString(language)}`:t('preview-nothing')}</h2>{p?<><div className="coordinate-grid"><span><small>{t('preview-latitude')}</small>{p.latitude.toFixed(3)}°</span><span><small>{t('preview-longitude')}</small>{p.longitude.toFixed(3)}°</span></div><div className="inspector-row"><span>{t('preview-elevation')}</span><span>{p.elevation_m===null?t('preview-pending'):`${p.elevation_m} m`}</span></div><button disabled={selected===null} onClick={()=>setSelected(null)}>{t('preview-close')}</button></>:<div className="inspector-placeholder" aria-hidden="true"><i/><i/><i/></div>}</div><details><summary>{t('preview-details')}</summary><dl><dt>{t('preview-source')}</dt><dd>Natural Earth {data?.meta.sources.find(s=>s.id==='land')?.version??'—'}</dd><dt>{t('preview-resolution')}</dt><dd>{data?`${data.meta.width} × ${data.meta.height}`:'—'}</dd><dt>{t('preview-count')}</dt><dd>{data?.provinces.length.toLocaleString(language)??'—'}</dd></dl><p>{data?.meta.elevation?t('preview-terrain-note'):t('preview-limits')}</p></details></aside>
+   <aside className="preview-inspector"><header><span className="inspector-dot"/>{t('preview-selection')}</header><div className="inspector-body"><small>{p?t(`preview-${p.kind}`):t('preview-selectHelp')}</small><h2>{p?`#${p.id.toLocaleString(language)}`:t('preview-nothing')}</h2>{p?<><div className="coordinate-grid"><span><small>{t('preview-latitude')}</small>{p.latitude.toFixed(3)}°</span><span><small>{t('preview-longitude')}</small>{p.longitude.toFixed(3)}°</span></div><div className="inspector-row"><span>{t('preview-elevation')}</span><span>{p.elevation_m===null?t('preview-pending'):`${p.elevation_m} m`}</span></div><button disabled={selected===null} onClick={()=>setSelected(null)}>{t('preview-close')}</button></>:<div className="inspector-placeholder" aria-hidden="true"><i/><i/><i/></div>}</div><details><summary>{t('preview-details')}</summary><dl><dt>{t('preview-source')}</dt><dd>Natural Earth {data?.meta.sources.find(s=>s.id==='land')?.version??'—'}</dd><dt>{t('preview-resolution')}</dt><dd>{data?`${data.meta.width} × ${data.meta.height}`:'—'}</dd><dt>{t('preview-count')}</dt><dd>{data?.provinces.length.toLocaleString(language)??'—'}</dd></dl><p>{data?.meta.city_input?t('preview-quality-terrain-note'):data?.meta.elevation?t('preview-terrain-note'):t('preview-limits')}</p></details></aside>
    <nav className="preview-regions" aria-label={t('preview-zoom')}>{(['world','europe','korea','himalaya','americas'] as const).map(key=><button key={key} aria-pressed={region===key} onClick={()=>{savedCamera.current=undefined;setRegion(key);setRevision(n=>n+1);}}>{t(`preview-${key}`)}</button>)}</nav>
    <footer className="preview-footer"><span className="status-dot"/>{t('preview-notGame')}<span>{t('preview-help')}</span></footer>
   </PreviewHud>

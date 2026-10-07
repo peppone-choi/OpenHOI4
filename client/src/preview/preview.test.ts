@@ -21,6 +21,21 @@ describe('world preview baked input',()=>{
   expect(()=>validatePreview({...meta,hashes:{'index.bin':'bad'}},provinces)).toThrow();
   expect(()=>validatePreview(meta,[{...provinces[0],kind:'fake'},...provinces.slice(1)])).toThrow();
  });
+ it('rejects missing region presets before a user can select them',()=>{
+  const meta=JSON.parse(readFileSync(resolve(root,'metadata.json'),'utf8'));
+  const provinces=JSON.parse(readFileSync(resolve(root,'provinces.json'),'utf8'));
+  const regions={...meta.regions};delete regions.korea;
+  expect(()=>validatePreview({...meta,regions},provinces)).toThrow();
+ });
+ it('rejects raster upper bounds and one-based ID overflow',()=>{
+  const meta=JSON.parse(readFileSync(resolve(root,'metadata.json'),'utf8'));
+  const provinces=JSON.parse(readFileSync(resolve(root,'provinces.json'),'utf8'));
+  expect(()=>validatePreview({...meta,width:8193},provinces)).toThrow();
+  expect(()=>validatePreview({...meta,province_ids:Array.from({length:65536},(_,i)=>i+1)},provinces)).toThrow();
+ });
+ it('hashes a view using its byte offset without copying the entire backing store',async()=>{
+  expect(await sha256(new Uint8Array([0,97,98,99,0]).subarray(1,4))).toBe('ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad');
+ });
  it('baked SHA is exact and display has no authority or invented ownership',async()=>{
   const meta=JSON.parse(readFileSync(resolve(root,'metadata.json'),'utf8'));
   const bytes=readFileSync(resolve(root,'index.bin'));

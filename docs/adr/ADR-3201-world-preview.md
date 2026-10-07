@@ -38,3 +38,11 @@
 source인수/strictTIFFparser/입력의형상효과/knowncoordinate/fullconnectivity/repeatSHA를직접검사했다. 공식 [SciPy dijkstra](https://docs.scipy.org/doc/scipy-1.17.0/reference/generated/scipy.sparse.csgraph.dijkstra.html)는 positive undirected weights/min_only/source mapping을지원한다. tie output은toolversion에영향받을수있어현재installed버전을고정·기록한다. [Natural Earth rivers](https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-rivers-lake-centerlines/) generalization/수로정렬·간헐하천누락과 sourceclass의Caspianlake미포함을한계로보존한다. 후속 detailedcity/DEM/riverpass검수 및게임주연결은미완료다.
 
 공개플레이화면의정성적shape관찰은 SOURCES의격리browser증거로만남기고geographicgenerator입력에포함하지않았다. 원경계coordinate/픽셀분석/tracing나원게임/UI/아이콘/수치표사용없음.
+
+## P06-2 technical extension (2026-10-07)
+
+Choose bounded8Kcoast/coarse4Kglobalgraph/fine small-window refinement after512/1024/2048regional graph measurements. This avoids an all-world8Kgraph. Fixed modern point positions add geographic density only; no historical/game city fields. Korea adds fixed actual60arcsecDEM alongside earlierHimalaya75arcsecsubset. Complete globalDEM/ridge/pass precision remains outside the claim. Exact source bytes and acquisition terms are registered.
+
+Retain integer IDtexture and default renderer contracts. A preview-only O(n)palette avoids repeated linear IDfind and an optional kind-color filter reduces coastal pixel visibility; picking still uses integer IDs. This is a display choice, not altered topology. Keep real proceduralGLBs/recipes unchanged. Add scoped rail scrolling and validate all camera presets. Bake process has180s/3GiBlimit and ownPIDreceipt; browser uses onlyheadless/ownprofile/pipe/no-startup-window. Original41M1Chrome tests use the original fixtures with documented hide-scrollbars to match original width expectations, preserving GPU/security defaults and all assertions/timeouts/retries.
+
+Exhaustive source comparison found mutable fine-label reuse across kind passes. Reproduction preserved; corrected by reading labels from immutable coarse input. Candidate1/2/3/4 and corresponding draft captures remain attempt evidence; only later validated candidates are accepted. No automatic quality fallback, game rule, external runtime data, original boundary tracing or master base-prefix edits.

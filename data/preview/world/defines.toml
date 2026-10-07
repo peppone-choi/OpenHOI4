@@ -1,12 +1,42 @@
 # Display/generation constants only. No gameplay values.
 [generation]
-width = 4096
-height = 2048
+width = 8192
+height = 4096
 seed = 320145
 land_seeds = 4200
 sea_seeds = 1500
 lake_seeds = 1
 query_rows = 32
+
+[quality]
+graph_width = 4096
+graph_height = 2048
+coast_antialias = true
+max_texture_dimension = 8192
+max_province_id = 65535
+bake_seconds = 180
+bake_memory_bytes = 3221225472
+max_index_bytes = 67108864
+earth_radius_km = 6371.0088
+
+[[density_regions]]
+id = "korea"
+extent = [122.0, 32.0, 132.0, 43.0]
+additional_land_seeds = 160
+city_density = 8.0
+city_radius_km = 55.0
+[[density_regions]]
+id = "europe"
+extent = [-5.0, 42.0, 25.0, 56.0]
+additional_land_seeds = 80
+city_density = 6.0
+city_radius_km = 65.0
+[[density_regions]]
+id = "himalaya"
+extent = [74.0, 25.0, 95.0, 35.0]
+additional_land_seeds = 60
+city_density = 4.0
+city_radius_km = 65.0
 
 # Offline art allocation costs, never simulation movement/combat coefficients.
 [partition]

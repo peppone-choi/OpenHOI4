@@ -1,6 +1,6 @@
 import { AmbientLight,DirectionalLight,Group,Mesh,Box3,type Scene,type OrthographicCamera,type BufferGeometry,type Material } from 'three/webgpu';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { sha256 } from './model';
+import { sha256,previewFetch } from './model';
 
 export type UnitSample={asset:'army'|'air'|'navy';longitude:number;latitude:number;heading_degrees:number;scale:number;height:number;tilt_degrees:number};
 export type UnitAsset={id:string;file:string;sha256:string};
@@ -28,7 +28,7 @@ export async function loadUnitAssets(manifest:UnitAsset[],signal:AbortSignal){
  try{
   for(const asset of manifest){
    if(!['army','air','navy'].includes(asset.id)||asset.file!==`${asset.id}.glb`||!/^[a-f0-9]{64}$/.test(asset.sha256)||loaded.has(asset.id))throw new Error('preview-unit-data-error');
-   const response=await fetch(`/preview/units3d/${asset.file}`,{signal,mode:'same-origin',redirect:'error'});
+   const response=await previewFetch(`/preview/units3d/${asset.file}`,signal);
    if(!response.ok)throw new Error('preview-unit-data-error');const bytes=new Uint8Array(await response.arrayBuffer());
    if(await sha256(bytes)!==asset.sha256)throw new Error('preview-unit-data-error');
    inspectGlb(bytes);const gltf=await loader.parseAsync(new Uint8Array(bytes).buffer,'');

@@ -56,6 +56,44 @@
       "terms": "https://www.naturalearthdata.com/about/terms-of-use/",
       "url": "https://naturalearth.s3.amazonaws.com/10m_physical/ne_10m_rivers_lake_centerlines.zip",
       "version": "5.0.0"
+    },
+    {
+      "acquired": "2026-10-07",
+      "file": "sources/ne_10m_populated_places_simple.zip",
+      "id": "cities",
+      "license": "public-domain",
+      "sha256": "2963ee08f7743f13f37d5243acd77a2f7a510e26a36c7e04b920f1b381f2b251",
+      "terms": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "url": "https://naturalearth.s3.amazonaws.com/10m_cultural/ne_10m_populated_places_simple.zip",
+      "usage": "modern SHP coordinates only; DBF/population not read",
+      "version": "5.1.2"
+    },
+    {
+      "acquired": "2026-10-07",
+      "extent": [
+        122,
+        32,
+        132,
+        43
+      ],
+      "file": "sources/ETOPO2022-korea.tif",
+      "horizontal_crs": "EPSG:4326",
+      "id": "korea_dem",
+      "license": "CC0-1.0",
+      "nodata": "no NoData tag; finite subset range validated offline",
+      "output_arcseconds": 60,
+      "output_size": [
+        600,
+        660
+      ],
+      "pixel_registration": "PixelIsArea",
+      "sha256": "b5735d418e82f52b73c660052da77f189de85b67bc128169d9e666fa4ea12614",
+      "source_arcseconds": 60,
+      "terms": "https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.ngdc.mgg.dem%3Aetopo_2022",
+      "unit": "metre",
+      "url": "https://gis.ngdc.noaa.gov/arcgis/rest/services/DEM_mosaics/DEM_all/ImageServer/exportImage?bbox=122%2C32%2C132%2C43&bboxSR=4326&size=600%2C660&imageSR=4326&format=tiff&pixelType=F32&interpolation=RSP_NearestNeighbor&compression=LZ77&renderingRule=%7B%22rasterFunction%22%3A+%22none%22%7D&mosaicRule=%7B%22where%22%3A+%22Name%3D%27ETOPO_2022_v1_60s_surface%27%22%7D&f=image",
+      "version": "ETOPO2022 v1 60s surface",
+      "vertical_datum": "EGM2008"
     }
   ]
 }

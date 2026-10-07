@@ -146,3 +146,5 @@ preview-zoom = 보기
 preview-terrain-note = 히말라야 고도 표본 반영. 전세계 하천을 분할 입력으로 사용하며 도시 밀도는 미반영입니다. 국가·경제·유닛 데이터는 추후 연결합니다.
 preview-language-toggle-en = EN
 preview-language-toggle-ko = 한국어
+
+preview-quality-terrain-note = 한반도·히말라야 고도와 현대 도시 위치 표본을 지역 분할에 반영했습니다. 전세계 상세 고도·고개 정확도는 미완료이며 게임 데이터는 미연결입니다.

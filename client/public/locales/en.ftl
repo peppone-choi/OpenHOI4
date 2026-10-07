@@ -146,3 +146,5 @@ preview-zoom = View
 preview-terrain-note = Himalaya elevation samples applied. Global rivers inform province allocation; city density is pending. Nation, economy and unit data will be connected later.
 preview-language-toggle-en = EN
 preview-language-toggle-ko = 한국어
+
+preview-quality-terrain-note = Korea and Himalaya elevation and modern city locations inform regional allocation. Global detailed elevation and pass accuracy remain incomplete; game data is not connected.

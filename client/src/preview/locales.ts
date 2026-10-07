@@ -64,7 +64,7 @@ export const previewKeys = [
  "preview-terrain-note",
  "preview-language-toggle-en",
  "preview-language-toggle-ko"
-] as const;
+,"preview-quality-terrain-note"] as const;
 export type PreviewKey=typeof previewKeys[number];
 export type PreviewText=(key:PreviewKey)=>string;
 export function previewTranslator(language:Language):PreviewText{return translatorFor(language);}
