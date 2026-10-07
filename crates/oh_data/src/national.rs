@@ -65,12 +65,35 @@ pub fn scenario_schema() -> Schema {
     schemars::schema_for!(Scenario)
 }
 fn fail(path: &Path, message: impl Into<String>) -> DataError {
+    let message = message.into();
+    let field = if message.contains("capital") {
+        Some("capital")
+    } else if message.contains("ideology") {
+        Some("ideology_support")
+    } else if message.contains("ownership") {
+        Some("ownership")
+    } else if message.contains("control") {
+        Some("control_overrides")
+    } else if message.contains("modifier") {
+        Some("state_modifiers")
+    } else if message.contains("tag") || message == "empty nations" {
+        Some("nations")
+    } else {
+        None
+    };
+    if let Some(field) = field
+        && let Ok(source) = read(path)
+        && let Ok(doc) = source.document()
+        && let Some(v) = doc.get(field)
+    {
+        return source.error(v.span().start, ErrorKind::Schema, message);
+    }
     DataError {
         path: path.into(),
         line: 1,
         column: 1,
         kind: ErrorKind::Schema,
-        message: message.into(),
+        message,
     }
 }
 fn document<T: serde::de::DeserializeOwned>(path: &Path) -> Result<T, DataError> {
@@ -83,6 +106,15 @@ fn document<T: serde::de::DeserializeOwned>(path: &Path) -> Result<T, DataError>
             e.message(),
         )
     })
+}
+fn field_error(path: &Path, field: &str, message: &str) -> DataError {
+    if let Ok(source) = read(path)
+        && let Ok(doc) = source.document()
+        && let Some(v) = doc.get(field)
+    {
+        return source.error(v.span().start, ErrorKind::Schema, message);
+    }
+    fail(path, message)
 }
 pub fn load_scenario(root: &Path, id: &str) -> Result<LoadedNational, DataError> {
     if !valid_id(id) {
@@ -134,12 +166,25 @@ pub fn load_scenario(root: &Path, id: &str) -> Result<LoadedNational, DataError>
             .join("nations")
             .join(format!("{tag}.toml"));
         let nation: NationDefinition = document(&np)?;
-        if &nation.tag != tag
-            || !ids.insert(nation.id)
-            || nation.name_key.is_empty()
-            || nation.government_key.is_empty()
-        {
-            return Err(fail(&np, "invalid nation fields"));
+        if &nation.tag != tag {
+            return Err(field_error(
+                &np,
+                "tag",
+                "nation tag does not match scenario reference",
+            ));
+        }
+        if !ids.insert(nation.id) {
+            return Err(field_error(&np, "id", "duplicate nation ID"));
+        }
+        if nation.name_key.is_empty() {
+            return Err(field_error(&np, "name_key", "empty nation name_key"));
+        }
+        if nation.government_key.is_empty() {
+            return Err(field_error(
+                &np,
+                "government_key",
+                "empty nation government_key",
+            ));
         }
         if map.state_for_province(nation.capital).is_none() {
             return Err(fail(&np, "capital must reference land"));
@@ -209,4 +254,22 @@ pub fn load_scenario(root: &Path, id: &str) -> Result<LoadedNational, DataError>
 
 pub fn visuals_schema() -> Schema {
     schemars::schema_for!(VisualPalette)
+}
+
+/// Shared palette validation for standalone maps and scenario loading.
+pub(crate) fn validate_visuals(path: &Path, map: &MapData) -> Result<(), DataError> {
+    let visuals: VisualPalette = document(path)?;
+    if visuals.state.len() != map.states.len()
+        || map
+            .states
+            .iter()
+            .any(|s| !visuals.state.contains_key(&s.id))
+        || map
+            .provinces
+            .iter()
+            .any(|p| !visuals.terrain.contains_key(&p.terrain))
+    {
+        return Err(fail(path, "palette must cover every state and terrain"));
+    }
+    Ok(())
 }

@@ -1,0 +1,27 @@
+name: Localisation
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  localisation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0 # Exact original-tree audit of the frozen v1 pack.
+      - run: rustup toolchain install 1.99.0 --profile minimal
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.11'
+      - name: Validate actual pack schema, references and ko/en Fluent
+        run: cargo run -p oh_cli --locked -- validate --deny-warnings data/packs/testland
+      - name: Validate client catalogs and static/generated key uses
+        run: python tools/check_localisation.py
+      - name: Localisation and pack negative fixtures
+        run: |
+          cargo test -p oh_data --locked --test pack_validation
+          cargo test -p oh_cli --locked --test validate
+          python -m unittest discover -s tools/tests -p test_localisation.py -v

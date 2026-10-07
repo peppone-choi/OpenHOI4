@@ -2,11 +2,14 @@
 //!
 //! The M0 entry point loads manifest metadata and numeric defines. The separate
 //! `map` entry point validates M1 geometry, state and VP definitions. Full content
-//! registries, pack merging and CLI validation belong to later WPs.
+//! registries and pack merging belong to later WPs. `pack_validation` resolves
+//! pack order and validates the currently registered content and Fluent catalogs.
 //! Numeric defines have no defaults. I/O stays outside the simulation layer.
+pub mod localisation;
 pub mod m0;
 pub mod map;
 pub mod national;
+pub mod pack_validation;
 mod raw;
 
 use raw::Source;

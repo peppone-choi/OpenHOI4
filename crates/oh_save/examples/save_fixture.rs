@@ -11,11 +11,15 @@ fn hex(bytes: &[u8]) -> String {
 fn main() -> Result<(), String> {
     let args: Vec<_> = std::env::args().skip(1).collect();
     match args.first().map(String::as_str) {
-        Some("capture") if args.len() == 2 => {
+        Some(mode @ ("capture" | "capture-current")) if args.len() == 2 => {
             let out = Path::new(&args[1]);
             std::fs::create_dir_all(out).map_err(|e| e.to_string())?;
             let root = out.join("pack");
-            support::mutable_pack(&root);
+            if mode == "capture" {
+                support::mutable_v1_pack(&root);
+            } else {
+                support::mutable_pack(&root);
+            }
             let c = SaveContext::national(&root, "m1")?;
             let mut continuous = support::scheduled(&c);
             support::advance(&mut continuous, 96);
@@ -67,7 +71,9 @@ fn main() -> Result<(), String> {
                 serde_json::json!({"pid":std::process::id(),"initial":initial,"initial_hash":format!("{initial_hash:016x}"),"resumed_hash":format!("{:016x}",loaded.state_hash().unwrap()),"resumed":loaded.export_save()?})
             );
         }
-        _ => return Err("save_fixture capture <out> | resume <pack> <file>".into()),
+        _ => {
+            return Err("save_fixture capture|capture-current <out> | resume <pack> <file>".into());
+        }
     }
     Ok(())
 }

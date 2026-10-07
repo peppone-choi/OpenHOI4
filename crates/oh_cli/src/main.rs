@@ -5,6 +5,10 @@ fn execute() -> Result<(), String> {
         println!("{}", oh_cli::USAGE);
         return Ok(());
     }
+    if args.first().is_some_and(|s| s == "validate") {
+        oh_cli::validate::execute(&args)?;
+        return Ok(());
+    }
     let (sim, hash_out) = oh_cli::execute_invocation(&args)?;
     let hash = sim.state_hash().map_err(|err| err.to_string())?;
     if hash_out {

@@ -268,3 +268,192 @@ license = "CC-BY-SA-4.0"
 modified = false
 ai_generated = false
 notes = "New synthetic M1 v1 save with fixed timestamp, ordered time queue, rawbit infrastructure modifiers and expiry. Original Testland inputs; no existing golden replaced."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/m1-pack-v1/common/buildings.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Exact byte copy of b6516ed4e571a0359e1da2ee69e9b68e3356339f:data/packs/testland/common/buildings.toml; frozen v1 compatibility input. Directly authored synthetic M1 map fixture, no historical or third-party game material. D-10 confirmed 2026-10-06; no WP-23 content."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/m1-pack-v1/common/resources.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Exact byte copy of b6516ed4e571a0359e1da2ee69e9b68e3356339f:data/packs/testland/common/resources.toml; frozen v1 compatibility input. Directly authored synthetic M1 map fixture, no historical or third-party game material. D-10 confirmed 2026-10-06; no WP-23 content."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/m1-pack-v1/common/terrain.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Exact byte copy of b6516ed4e571a0359e1da2ee69e9b68e3356339f:data/packs/testland/common/terrain.toml; frozen v1 compatibility input. Directly authored synthetic M1 map fixture, no historical or third-party game material. D-10 confirmed 2026-10-06; no WP-23 content."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/m1-pack-v1/defines.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "original"
+modified = false
+ai_generated = false
+notes = "Exact byte copy of b6516ed4e571a0359e1da2ee69e9b68e3356339f:data/packs/testland/defines.toml; frozen v1 compatibility input. Directly authored empty M0 defines skeleton; no gameplay coefficients. D-10 undecided. Code schemas and error fixtures under crates/oh_data are development inputs, not shipped game data or visual assets."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/m1-pack-v1/localisation/en/map.ftl"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Exact byte copy of b6516ed4e571a0359e1da2ee69e9b68e3356339f:data/packs/testland/localisation/en/map.ftl; frozen v1 compatibility input. Directly authored synthetic M1 map fixture, no historical or third-party game material. D-10 confirmed 2026-10-06; no WP-23 content."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/m1-pack-v1/localisation/en/national.ftl"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Exact byte copy of b6516ed4e571a0359e1da2ee69e9b68e3356339f:data/packs/testland/localisation/en/national.ftl; frozen v1 compatibility input. Original minimal M1 national-state fixture or display metadata; no historical/game source, no WP-23 content, no terrain/economic game effects."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/m1-pack-v1/localisation/ko/map.ftl"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Exact byte copy of b6516ed4e571a0359e1da2ee69e9b68e3356339f:data/packs/testland/localisation/ko/map.ftl; frozen v1 compatibility input. Directly authored synthetic M1 map fixture, no historical or third-party game material. D-10 confirmed 2026-10-06; no WP-23 content."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/m1-pack-v1/localisation/ko/national.ftl"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Exact byte copy of b6516ed4e571a0359e1da2ee69e9b68e3356339f:data/packs/testland/localisation/ko/national.ftl; frozen v1 compatibility input. Original minimal M1 national-state fixture or display metadata; no historical/game source, no WP-23 content, no terrain/economic game effects."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/m1-pack-v1/manifest.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "original"
+modified = false
+ai_generated = false
+notes = "Exact byte copy of b6516ed4e571a0359e1da2ee69e9b68e3356339f:data/packs/testland/manifest.toml; frozen v1 compatibility input. Directly authored loader metadata, no third-party game material. D-10 undecided; original records provenance without choosing a project license."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/m1-pack-v1/maps/testland/adjacency_overrides.csv"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Exact byte copy of b6516ed4e571a0359e1da2ee69e9b68e3356339f:data/packs/testland/maps/testland/adjacency_overrides.csv; frozen v1 compatibility input. Directly authored synthetic M1 map fixture, no historical or third-party game material. D-10 confirmed 2026-10-06; no WP-23 content."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/m1-pack-v1/maps/testland/provinces.csv"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Exact byte copy of b6516ed4e571a0359e1da2ee69e9b68e3356339f:data/packs/testland/maps/testland/provinces.csv; frozen v1 compatibility input. Directly authored synthetic M1 map fixture, no historical or third-party game material. D-10 confirmed 2026-10-06; no WP-23 content."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/m1-pack-v1/maps/testland/provinces.png"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Exact byte copy of b6516ed4e571a0359e1da2ee69e9b68e3356339f:data/packs/testland/maps/testland/provinces.png; frozen v1 compatibility input. Directly authored synthetic M1 map fixture, no historical or third-party game material. D-10 confirmed 2026-10-06; no WP-23 content."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/m1-pack-v1/maps/testland/regions.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Exact byte copy of b6516ed4e571a0359e1da2ee69e9b68e3356339f:data/packs/testland/maps/testland/regions.toml; frozen v1 compatibility input. Directly authored synthetic M1 map fixture, no historical or third-party game material. D-10 confirmed 2026-10-06; no WP-23 content."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/m1-pack-v1/maps/testland/states.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Exact byte copy of b6516ed4e571a0359e1da2ee69e9b68e3356339f:data/packs/testland/maps/testland/states.toml; frozen v1 compatibility input. Directly authored synthetic M1 map fixture, no historical or third-party game material. D-10 confirmed 2026-10-06; no WP-23 content."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/m1-pack-v1/maps/testland/visuals.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Exact byte copy of b6516ed4e571a0359e1da2ee69e9b68e3356339f:data/packs/testland/maps/testland/visuals.toml; frozen v1 compatibility input. Original minimal M1 national-state fixture or display metadata; no historical/game source, no WP-23 content, no terrain/economic game effects."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/m1-pack-v1/scenarios/m1/defines.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Exact byte copy of b6516ed4e571a0359e1da2ee69e9b68e3356339f:data/packs/testland/scenarios/m1/defines.toml; frozen v1 compatibility input. Original minimal M1 national-state fixture or display metadata; no historical/game source, no WP-23 content, no terrain/economic game effects."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/m1-pack-v1/scenarios/m1/nations/NTH.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Exact byte copy of b6516ed4e571a0359e1da2ee69e9b68e3356339f:data/packs/testland/scenarios/m1/nations/NTH.toml; frozen v1 compatibility input. Original minimal M1 national-state fixture or display metadata; no historical/game source, no WP-23 content, no terrain/economic game effects."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/m1-pack-v1/scenarios/m1/nations/STH.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Exact byte copy of b6516ed4e571a0359e1da2ee69e9b68e3356339f:data/packs/testland/scenarios/m1/nations/STH.toml; frozen v1 compatibility input. Original minimal M1 national-state fixture or display metadata; no historical/game source, no WP-23 content, no terrain/economic game effects."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/m1-pack-v1/scenarios/m1/scenario.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Exact byte copy of b6516ed4e571a0359e1da2ee69e9b68e3356339f:data/packs/testland/scenarios/m1/scenario.toml; frozen v1 compatibility input. Original minimal M1 national-state fixture or display metadata; no historical/game source, no WP-23 content, no terrain/economic game effects."
+
+[[asset]]
+path = "data/packs/testland/localisation/ko/pack.ftl"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original manifest display name translation (WP-24); no third-party material."
+
+[[asset]]
+path = "data/packs/testland/localisation/en/pack.ftl"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original manifest display name translation (WP-24); no third-party material."

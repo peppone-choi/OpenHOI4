@@ -1,10 +1,11 @@
 //! M0 headless `run` boundary: filesystem loading lives here, outside oh_sim.
 use oh_sim::{Date, Simulation, TimeConfig, formula};
 use std::{collections::BTreeMap, path::Path};
+pub mod validate;
 
 /// Shared M0 host startup path; relative to the repository working directory.
 pub use oh_data::m0::M0_PACK_ROOT;
-pub const USAGE: &str = "usage: oh_cli run --scenario <id> (--ticks <n> | --days <n>) --seed <u64> [--hash-out]\nM1: run --pack data/packs/testland --scenario m1 --days 365 --seed 1 --hash-out\nSave: run ... --save-out <file>; resume --load <file> --pack <root> (--ticks <n> | --days <n>) [--force] [--save-out <file>] [--hash-out]. M0 resume --pack uses its parent examples/m0 root.\nvalidate, ai-bench and repro belong to later work packages.\nM0 --scenario testland resolves data/packs/examples/m0/testland (manifest ID m0_testland).\nInputs: manifest.toml, defines.toml, scenarios/testland/scenario.toml under that pack.\nThis self-contained empty example is distinct from data/packs/testland (WP-03 skeleton / later WP-23 content).";
+pub const USAGE: &str = "usage: oh_cli run --scenario <id> (--ticks <n> | --days <n>) --seed <u64> [--hash-out]\nM1: run --pack data/packs/testland --scenario m1 --days 365 --seed 1 --hash-out\nSave: run ... --save-out <file>; resume --load <file> --pack <root> (--ticks <n> | --days <n>) [--force] [--save-out <file>] [--hash-out]. M0 resume --pack uses its parent examples/m0 root.\nValidate: validate [--deny-warnings] <pack-root>... resolves pack order and validates registered data/ko/en Fluent.\nai-bench and repro belong to later work packages.\nM0 --scenario testland resolves data/packs/examples/m0/testland (manifest ID m0_testland).\nInputs: manifest.toml, defines.toml, scenarios/testland/scenario.toml under that pack.\nThis self-contained empty example is distinct from data/packs/testland (WP-03 skeleton / later WP-23 content).";
 
 #[derive(Debug, Eq, PartialEq)]
 pub struct RunOptions {
@@ -184,6 +185,7 @@ pub fn load_national(
     root: &Path,
     id: &str,
 ) -> Result<(LoadedScenario, oh_sim::world::World), String> {
+    validate_for_run(root)?;
     let loaded = oh_data::national::load_scenario(root, id).map_err(|e| e.to_string())?;
     let world = oh_sim::world::World::from_loaded(&loaded)?;
     let time = TimeConfig::from_defines(&loaded.pack.defines).map_err(|e| e.to_string())?;
@@ -197,6 +199,25 @@ pub fn load_national(
         },
         world,
     ))
+}
+fn validate_for_run(root: &Path) -> Result<(), String> {
+    use oh_data::pack_validation::Severity;
+    let report = oh_data::pack_validation::validate_packs(&[root.to_path_buf()]);
+    for diagnostic in &report.diagnostics {
+        if diagnostic.severity == Severity::Warning {
+            eprintln!("warning: {}", diagnostic.error);
+        }
+    }
+    if report.failed(false) {
+        return Err(report
+            .diagnostics
+            .iter()
+            .filter(|d| d.severity == Severity::Error)
+            .map(|d| d.error.to_string())
+            .collect::<Vec<_>>()
+            .join("\n"));
+    }
+    Ok(())
 }
 pub fn run_national(root: &Path, options: &RunOptions) -> Result<Simulation, String> {
     let (loaded, world) = load_national(root, &options.scenario)?;
@@ -299,7 +320,10 @@ pub fn execute_invocation(args: &[String]) -> Result<(Simulation, bool), String>
         let (options, pack) = parse_invocation(&filtered)?;
         if save.is_some() {
             let context = match &pack {
-                Some(root) => oh_save::SaveContext::national(root, &options.scenario)?,
+                Some(root) => {
+                    validate_for_run(root)?;
+                    oh_save::SaveContext::national(root, &options.scenario)?
+                }
                 None => oh_save::SaveContext::m0(Path::new(M0_PACK_ROOT), &options.scenario)?,
             };
             let mut sim = context.simulation(options.seed)?;
