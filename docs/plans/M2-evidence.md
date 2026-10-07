@@ -1,6 +1,6 @@
 # M2-r1 / M2-r2 증거와 실제 통합 상태
 
-현재 M2-r2: WP-24/17 담당 범위는 source164f 독립 PASS·부모 P-07·정확 mainf44 5CI/21job·원/current 실제3OS artifact 대조로 통합됨이다. 고유WP14, 원W1전체0/W2전체0/M2게이트없음. WP-13 전용 앱은 정확 f44에서 구현 중이며 WP-25와 W2는 선행 인수 대기다. 아래 M2-r1 기록은 원 실패/소스별 역사로 보존한다.
+현재 M2-r2: WP-24/17 담당 범위는 source164f 독립 PASS·부모 P-07·정확 mainf44 5CI/21job·원/current 실제3OS artifact 대조로 통합됨이다. 고유WP14, 원W1전체0/W2전체0/M2게이트없음. WP-13은 정확 f44에서 구현한 clean ff78 제출·새 독립 P-05 진행 중이며 WP-25와 W2는 선행 인수 대기다. 아래 M2-r1 기록은 원 실패/소스별 역사로 보존한다.
 
 2026-10-07, 원 W1-a P-07 수정 단계. WP-24 merge `0c58e4f8c78c1485cfee4ad9c7c4fe1c83b82898` 뒤 WP-17 merge `9a2302540cbe29610d052ad9286e3b8f74939933`를 만들었다. ASSETS 기존30행 원 bytes를 유지하고 서로 다른21+21행만 합집합으로 병합했다. 제품 코드 판단 충돌은 없었다. exact `500ba0f91cc53ed10660fca14294d4deb5a146d4` 통합 검사에서 npm ci/test/build·fmt·clippy는0, workspace는101이었다. 변경 팩 시험이 en에만 새 키를 추가하여 새 presentFTL parity 검사가 ko 누락을 거부했다. [원 P-07 실패](evidence/M2-r1-W1a-P07-500/README.md)의15파일 bytes를 보존했고 남은24명령은 미실행이다. WP-17에 같은 ko 키를 추가하는 유효 시험 입력 보완만 인계했으며 모든 원 단언·codec·validator·frozen fixture를 유지한다. 새 exact P-05/P-07/같은 main CI 전에는 통합 완료로 기록하지 않는다. W1 전체 통합 0개, W2 전체 통합 0개, M2 게이트 판정 없음. 소묶음 W1-a를 C-02의 별도 묶음으로 세지 않는다.
 
@@ -13,7 +13,7 @@
 | WP-17 통합 입력 보완 `c28f90425905774c23b1d90a5d900c596ade2745` | [188파일 원 봉인](../worklog/evidence/WP-17-M2-r1-P06-integration/README.md), 같은 ko 시험키5줄과 기록만 변경 | [FAIL·불변성 무효](../verify/WP-17.M2-r1.attempt2.md). 필수 Save CI가 역사 CLI-only 팩을 서버 정상 입력으로 사용. tracked TS generator가 같은bytes를 재작성했고 raw entry mtime가 달라짐. index 갱신 주체는 미확인, 최초/최종 원raw 보존. manifest1597/ZIP1598 전수bytes 불일치0 | 유효 PASS 아님. WP-24가 current capture/서버 CI 연결을 좁은 P-06으로 보완한 뒤 새 source 독립 검증 필요 |
 | WP-24 CI 입력 P-06 `3d5636192c75a48020fff31a6acc721e31db81a8` | [1017파일 원 봉인](../worklog/evidence/WP-24-M2-r1-P06-current-CI/README.md), 원 manifest 포함 ZIP1018·전수 불일치0. 원 frozen checker·fixture·policy 보존, 별도 current checker/17회귀·server positive·historical negative 추가 | [시도3 유효 FAIL](../verify/WP-24.M2-r1.attempt3.md), actual final12035chars와 원 ZIP3221/manifest3220 전수0 보존. 최초/최종9878·HEAD·전체SHA·semantic/raw index·diff/status 동일. legacy nation TOML 누락과 current comparer의 원장 tick 변조 수용 재현 | 미통합. 좁은 P-06 후 새 source P-05/P-07 및 같은 main HEAD 5 workflow/필수 job·실제3OS 필요 |
 | WP-24 등록·조회 증거 P-06 `164f04e6378b959e54da67cbca19b1ff03b6fe9f` | [3795파일 원 봉인](../worklog/evidence/WP-24-M2-r1-P06-current-comparer/README.md), ZIP3796/6240862bytes·전수 불일치0. 기존 국가 내재 검사 단계 재사용·선택 오류 순서 보존, paused DTO/정수 원장 기반 조회 증거 대조 | [시도4 재개 유효 PASS](../verify/WP-24.M2-r1.attempt4.md), 원 interrupted와 재개 final 구분·최초/최종9880/raw `3e5d17f2339d464034ba0b211b42621abeeeea93260a3a618ce92b2c865e6161` 및 원 prompt를 앱 생성 전 보존 | 담당 범위 통합됨. [같은 mainf44 CI](evidence/M2-r2-f44-CI-final/README.md)·원/current 실제3OS 대조 완료. 원 FAIL/무효·CI 실패는 보존 |
-| WP-13 | exact f44 / codex/wp13-trigger-engine-m2r2 / 전용 WP-13-M2-r2, 앱01a114e4-115e-7823-ba09-966b6efb7594 | 구현 중, REQUEST-0009 A·schema/ADR/실제producer 인수 | 독립 P-05/P-07/새 상태 actual3OS/mainCI 대기 |
+| WP-13 | clean ff78a7501bace6fac1741d6cc596be524f887451 / codex/wp13-trigger-engine-m2r2, [producer 원 봉인](../worklog/evidence/WP-13-M2-r2-first/README.md) | 새 독립 앱01a11513-bd4e-7bc3-8008-89e97ff0244d, detached exact ff78 / WP-13-M2-r2-verify1, 최초9951/rawdf3bb6c3 불변성 직접 확인 | P-05 진행, P-07/기존5+신규Trigger CI·actual3OS 대기 |
 | WP-25 | WP-13 실제 종료/flags/save producer 통합 인수 대기 | 미착수 | 미통합 |
 | WP-14 / WP-23 | W1 전체 후 W2 producer 인수 | 미착수 | 미통합 |
 
@@ -34,3 +34,9 @@ REQUEST-0006/0007/0008은 한정 CEO 잠정 채택이며 사용자 D/OPEN 추가
 REQUEST-0009 A의CEO한정잠정은원요청/독립검토봉인과01/02/03/preflight에먼저대응했다. WP13은위sourceP05/P07 및같은HEAD5CI성공뒤실제producer를인수하고자기schema/ADR에서종료/flags/additive형식/후속score/항복관전을구체화한다.
 
 2026-10-07 M2-r2 최종 선행 인수: [정확 f44 일반/Core/Simulation/Save/Localisation·전21job 및 원/current 6 actual3OS artifact](evidence/M2-r2-f44-CI-final/README.md)를 직접대조해 모두성공이다. fullCI원773파일/ZIP전수0·SHAea834f5dedc5a163612370014d64c76ee6b81db29410666c521f8974f15e6d73. WP13 actual앱01a114e4는전용branch/worktree/exactf44·실제전문prompt8332chars/SHA76f93c81c5ed1c69f430fe038a9e15cefa6c7211268d88af3017ca962ddd7d4c에시작했다. 독립schema/실패테스트부터진행하며이부모문서는제품구현이아니다. 원W1-a를C02새묶음으로세지않는다.
+
+## WP-13 제출과 새 독립 검증
+
+actual 구현앱completed15의 final·38소유파일·cleanff78·원None/v1v2v3/Cargo/data/골든·부모문서 보호 및ASSETS기존prefix+새fixture1행을 확인했다. 부모 MF2154파일/ZIP2155와 producer 원ZIP자체6892323bytes/SHA851bbde074c5636d913a3cd19ba14bbfa098b8947045eb6bfcebb0c0f8b1b89a의 원member bytes/SHA 전수0을 대조했다. 원 app final/prompt/createpayload·manifest/custody는별도봉인했다. 구현자 Windows6종state/repeatfreshrestore/native/단위·hash 관측은독립PASS/actual3OS/main통합이아니다.
+
+새P05는app생성전exactdetachedff78/최초9951·HEAD/각SHA·semantic/rawdf3bb6c3ab0ec15d4bc35117f8d096b5bd27543bcea980cee03218691c4319d7·diff/status를완성했고ready현재도동일이다. 실제6639chars/9919bytes prompt/SHA7aa73bcc4ee7cddf0bf91b108133506e187d1ffbd675da7e546c1859c585070f 전달과첫active/self-before동일을확인했다. None/Some/force·초기평가1회/복원재평가없음·empty정의/6savedstate·nativeCLI/server종료/query·typedwire/runtime 및actual3OSchecker/새TriggerCI를직접검사한다. 준비중장기exec후속prompt조회가완료전FileNotFound/JSONparse였던첫시도는app생성전오류로보존했고원최초baseline을교체하지않았다. 새actualfinal·전후불변성·봉인전통합하지않는다. 고유WP14/원W1전체0/W2전체0/M2게이트없음이다.
