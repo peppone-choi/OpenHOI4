@@ -1,0 +1,36 @@
+{
+  "files": [
+    {
+      "path": "parent-preparation-notes.md",
+      "bytes": 1642,
+      "sha256": "abba921ea3b4635553c1485bbd76bddcc0d9c4395e136daccbaf7c43a19427e7"
+    },
+    {
+      "path": "WP13-create-payload.json",
+      "bytes": 13679,
+      "sha256": "06391725bc055ef5b33a09d9d9b1f5d04f3b7ebbf229de747385c6742214e1f3"
+    },
+    {
+      "path": "WP13-create-result.json",
+      "bytes": 132,
+      "sha256": "b4c65ceec41cdf9ec8a1b576e565e1e4043da68cfcd21a17f5e513d66c6ddb75"
+    },
+    {
+      "path": "WP13-first-poll.json",
+      "bytes": 1284,
+      "sha256": "41156499dae6548d8a62a4cd28550d515fb6f429baa74ef9469a8cfb944e4660"
+    },
+    {
+      "path": "registry-current.json",
+      "bytes": 52126,
+      "sha256": "861dc90aa3332a00afef77b0ff94484048ea0c324d95749667b1dd99e642dfa2"
+    },
+    {
+      "path": "actual-WP13-prompt.md",
+      "bytes": 13455,
+      "sha256": "76f93c81c5ed1c69f430fe038a9e15cefa6c7211268d88af3017ca962ddd7d4c"
+    }
+  ],
+  "ZIP_sha256": "9cb44887d3cefddc2138b4d48bbf89ee0ade80af276fe0475dab0031a24b2d72",
+  "mismatches": 0
+}
