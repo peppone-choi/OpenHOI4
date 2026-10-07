@@ -1,6 +1,6 @@
 # M2-r1 증거와 실제 통합 상태
 
-2026-10-07, W1-a P-07 단계. WP-24 merge `0c58e4f8c78c1485cfee4ad9c7c4fe1c83b82898` 뒤 WP-17 merge `9a2302540cbe29610d052ad9286e3b8f74939933`를 만들었다. ASSETS 기존30행 원 bytes를 유지하고 서로 다른21+21행만 합집합으로 병합했다. 제품 코드 판단 충돌은 없었다. 통합 검사·같은 main CI는 아직 실행 전이다. W1 전체 통합 0개, W2 전체 통합 0개, M2 게이트 판정 없음. 소묶음 W1-a를 C-02의 별도 묶음으로 세지 않는다.
+2026-10-07, W1-a P-07 수정 단계. WP-24 merge `0c58e4f8c78c1485cfee4ad9c7c4fe1c83b82898` 뒤 WP-17 merge `9a2302540cbe29610d052ad9286e3b8f74939933`를 만들었다. ASSETS 기존30행 원 bytes를 유지하고 서로 다른21+21행만 합집합으로 병합했다. 제품 코드 판단 충돌은 없었다. exact `500ba0f91cc53ed10660fca14294d4deb5a146d4` 통합 검사에서 npm ci/test/build·fmt·clippy는0, workspace는101이었다. 변경 팩 시험이 en에만 새 키를 추가하여 새 presentFTL parity 검사가 ko 누락을 거부했다. [원 P-07 실패](evidence/M2-r1-W1a-P07-500/README.md)의15파일 bytes를 보존했고 남은24명령은 미실행이다. WP-17에 같은 ko 키를 추가하는 유효 시험 입력 보완만 인계했으며 모든 원 단언·codec·validator·frozen fixture를 유지한다. 새 exact P-05/P-07/같은 main CI 전에는 통합 완료로 기록하지 않는다. W1 전체 통합 0개, W2 전체 통합 0개, M2 게이트 판정 없음. 소묶음 W1-a를 C-02의 별도 묶음으로 세지 않는다.
 
 | WP / source | 구현 원 증거 | 독립 P-05 | P-07 / 같은 main CI |
 |---|---|---|---|
