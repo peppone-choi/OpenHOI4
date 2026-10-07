@@ -1,3 +1,5 @@
+#[path = "support/strait_pack.rs"]
+mod historical;
 use oh_core::{DivisionId, Fx, ProvinceId};
 use oh_save::{SaveContext, decode, encode};
 use oh_sim::{
@@ -99,7 +101,7 @@ fn strait_v3_tick9_full_context_pending_and_resume() {
 }
 #[test]
 fn frozen_97f_v2_reader_writer_hash_dto_native_contract_unchanged() {
-    let c = context();
+    let c = historical::context();
     let bytes = include_bytes!("fixtures/movement-v2-97f.ohsave");
     let expected: serde_json::Value =
         serde_json::from_str(include_str!("fixtures/movement-v2-97f.expected.json")).unwrap();
@@ -331,6 +333,60 @@ fn v3_request6_stop_pause_reroute_pending_restore_boundary() {
                 .is_empty()
         );
         assert_eq!(s.movement().unwrap().units()[0].province(), ProvinceId(40));
+    }
+    assert_eq!(s.export_save_v3().unwrap(), r.export_save_v3().unwrap());
+    assert_eq!(s.state_hash().unwrap(), r.state_hash().unwrap());
+}
+#[test]
+fn original_v2_refuses_changed_pack_without_force_and_current_v3_roundtrips() {
+    fn copy(src: &std::path::Path, dst: &std::path::Path) {
+        std::fs::create_dir_all(dst).unwrap();
+        for entry in std::fs::read_dir(src).unwrap() {
+            let e = entry.unwrap();
+            let p = dst.join(e.file_name());
+            if e.file_type().unwrap().is_dir() {
+                copy(&e.path(), &p)
+            } else {
+                std::fs::copy(e.path(), p).unwrap();
+            }
+        }
+    }
+    let current = context();
+    let temp = tempfile::tempdir().unwrap();
+    let root = temp.path().join("changed-pack");
+    copy(current.root(), &root);
+    std::fs::write(
+        root.join("localisation/en/wp17-identity-probe.ftl"),
+        "wp17-identity-probe = Independent identity fixture\n",
+    )
+    .unwrap();
+    let changed = SaveContext::national(&root, "m1").unwrap();
+    assert_ne!(changed.pack().content_hash, current.pack().content_hash);
+    let original = include_bytes!("fixtures/movement-v2-97f.ohsave");
+    assert!(
+        decode(original, &changed, false)
+            .err()
+            .unwrap()
+            .contains("PackMismatch")
+    );
+    let mut s = sim(&changed);
+    let n = s.movement().unwrap().units()[0].nation();
+    s.enqueue(
+        0,
+        n,
+        1,
+        Command::Move {
+            unit: DivisionId(900),
+            destination: ProvinceId(40),
+        },
+    )
+    .unwrap();
+    s.step().unwrap();
+    let bytes = encode(&s, &changed, 0, vec![]).unwrap();
+    let mut r = decode(&bytes, &changed, false).unwrap().simulation;
+    for _ in 0..9 {
+        s.step().unwrap();
+        r.step().unwrap();
     }
     assert_eq!(s.export_save_v3().unwrap(), r.export_save_v3().unwrap());
     assert_eq!(s.state_hash().unwrap(), r.state_hash().unwrap());

@@ -39,3 +39,12 @@ Split canonical hash is `18bff036731f4f26`; continuous/resumed tick24 hash is
 an earlier implementation's bytes, not a replacement golden/expected value.
 Original engine-generated synthetic test output; content is the existing
 independently authored Testland pack. No original-game assets or values.
+
+Historical input: `movement-pack-97f/` preserves all nineteen original
+`data/packs/testland` Git blobs from the same source97f. Its independent
+whole-pack Postcard/FNV identity is `13318001328374612931`. File-level
+SHA256/source manifest is the sibling `movement-pack-97f.source.json`, outside
+the pack root so it cannot change identity. The original-v2 regression uses
+only this real historical input; current pack v3 roundtrip and changed-pack
+rejection are separate. No --force, header rewrite or expected replacement.
+The future WP24 frozen pack directory is neither assumed nor used here.
