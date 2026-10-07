@@ -1,0 +1,18 @@
+{
+  "tag": "WP-17-M2-r1-P05-1",
+  "archive_sha256": "27b2b1345153c4ec549bf00be3aa0cf26761675871e3a25428eddcc05adb54be",
+  "members": [
+    {
+      "member": "SHA256SUMS.json",
+      "bytes": 131748,
+      "sha256": "96155dee9e0ee8b79f99f5548f9e70d697dc495b14d4ef8cf2b7e56b98de2d8c"
+    },
+    {
+      "member": "ZIP-IDENTITY.json",
+      "bytes": 790,
+      "sha256": "a941f66f6556265f86de16df5712616831f7a76e3f8a4b6fb9c414db2ee212c2"
+    }
+  ],
+  "mismatches": 0,
+  "authority": "ZIP original source bytes; adjacent JSONs are presentation copies subject to Git newline normalization"
+}
