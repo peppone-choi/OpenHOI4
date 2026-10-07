@@ -360,6 +360,11 @@ fn original_v2_refuses_changed_pack_without_force_and_current_v3_roundtrips() {
         "wp17-identity-probe = Independent identity fixture\n",
     )
     .unwrap();
+    std::fs::write(
+        root.join("localisation/ko/wp17-identity-probe.ftl"),
+        "wp17-identity-probe = 독립 식별자 시험\n",
+    )
+    .unwrap();
     let changed = SaveContext::national(&root, "m1").unwrap();
     assert_ne!(changed.pack().content_hash, current.pack().content_hash);
     let original = include_bytes!("fixtures/movement-v2-97f.ohsave");

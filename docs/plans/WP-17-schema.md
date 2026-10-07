@@ -68,3 +68,11 @@ source633a003의 원97f v2 회귀는 live Testland context를 사용했으므로
 P07후 부모는 두 frozen directories의 실제19 path/bytes/hash를 대조해 provenance가같은지 인수한다. 현재회귀는 own 실제 frozeninput을 계속 사용하며 미래directory가 생겼다고 자동대체하지 않는다. 중복자료 제거/통합은 별도 계획이며 원파일/기대값/217원manifest를 삭제·변환하지 않는다.
 
 실제 ownership 인수 뒤 movement-pack-97f/ 19file을git97fblob에서변경없이복사했고 movement-pack-97f.source.json은팩밖 sibling으로둬 hash13318001328374612931을보존했다. 지원helper는strictsourceID/count19/파일크기/wholepackFNV를검사하고역사팩으로만원v2를읽고쓴다. 전수SHA는sourceblob와독립대조증거로확인한다. currentpackcontext와knownchangedpackrefusal+currentv3재개는별도테스트이며원packet header/expected/force를바꾸지않는다. protectedWP24frozen19를가정하거나참조하지않고부모P07후실제source19/hash대조인수를기록한다.
+
+## P-06 통합 locale 경계 — base500 인수 (2026-10-07, 변경 전 설계)
+
+원7f8 clean과 `7f8 → 500ba0f91cc53ed10660fca14294d4deb5a146d4` ancestry를 확인하고 fast-forward만으로 통합 source를 인수했다. 원P05/97f/7f8/633 및 기존증거는 보존한다. 이 통합에서 WP24 present-FTL 구조·ko/en parity 검사가 실제 national/SaveContext 초기화 경계에 적용된다.
+
+변경 팩 생성의 선행조건은 유효한 FTL AST와 ko/en 메시지·attribute·variable parity다. `wp17-identity-probe`는 시험 데이터 문자열이며 새 게임 규칙/codec 필드가 아니다. 시험만의 transient en/ko `wp17-identity-probe.ftl`에 같은 ID를 각각 명시한다. null/default/ignore/force 없음, 두 locale 파일 모두 임시팩 생성 단계에서 쓰고 loader 검증 뒤 SaveContext를 생성한다. 권위 상태/큐/시계는 생성 실패 전에 만들지 않는다.
+
+독립 예제: en만 새 키→locale missing-in-ko 거부; 같은 키·단순 Text AST의 en/ko를 같이 추가→유효 changed pack. 원historical source97f의 hash13318001328374612931과 현재팩/추가 changed팩의 identity를 구별한다. current→changed content_hash 불일치 단언, 원v2→changed PackMismatch 단언 및 changed currentv3 전체 DTO/hash 저장재개 단언을 그대로 유지한다. 실제 invalid FTL 거부는 기존 WP24 검증 테스트로 유지한다. 소유 변경은 이 시험의 팩 생성 부분과 own schema/worklog만이며 data/locale/host policy·codec/sim·frozen source/header/expected/helper·ASSETS/deps/CI는 수정하지 않는다.
