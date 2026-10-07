@@ -1,5 +1,19 @@
 # 인수인계
 
+## 진행 중 M2-r2 W2 실제 배정 — 2026-10-08
+
+W1전체1/고유WP16·exactmain2b5ca7CI26SUCCESS/원Linux·9artifact 인수후WP14 앱01a117ee…와WP23 앱01a117f0…를같은검증base의명시nativeWT/branch에배정했다. WP14P03 prompt9099B/SHAd3ff8e…·최초11805/raw96bfaf…, WP23P11 prompt4933B/SHA739c50…·최초11805/raw7ef2c2…·각payloadUTF8bytes exact다. WP14는경제정치schema/RED부터, WP23는기존map/nation/locale 계약의가상기하·6국부터진행하며경제입력은실제producer인수뒤만작성한다. 서로파일을고치지않고mainmerge/push/새세션생성은부모담당이다.
+
+root제품은검증main2b5ca와같고최종CI봉인/W1판정/W2배정추적문서가커밋전이다. 새docHEAD의sameCI와제품통합증거를분리한다. 원None-v1~v4·고정prior전체팩/현재library연결·원한도·A-CEO-r1/후속consumer·원모든FAIL/noCUAfocus를유지한다. W2전체0/M2게이트없음, 원C02중지경계아직미달이며RUN 종료P08이아니다.
+
+
+## 진행 중 M2-r2 W1 전체 인수 — 2026-10-08
+
+main2b5ca의7CI26job SUCCESS·actual9 SaveTriggerartifact/fresh3comparers0·actualLinux원1,735,129,560B/SHA02cbcba…751member·원고정prior/fullDTO/canonical/hash동등을인수했다. WP25 source d443/새P05-2 원10523chars·11741/rawa33c…/MF5644ZIP5646·P07 46unique/47calls·408제품entry exact와함께담당범위를통합했다. 고유WP16·원W1전체1/W2전체0·M2게이트없음이다. 원e85FAIL·d443client첫timeout/진단attempt2·불완전다운로드·부모출력경로/cleanGuard 준비오류와복구를삭제하지않는다.
+
+다음은같은RUN W2 WP14경제정치 및WP23기하/6국콘텐츠를명시소유로병행한다. A-CEO-r1 수정판·고정prior**전체**팩의immutable입력/현재library분리·원15%/한도·실제 --ref dispatch·원None/v1~v4 호환·후속consumer미완료를담당schema/ADR에인수한다. WP23 경제입력은실제producer스키마뒤만쓴다. 이문서상태수정/CI봉인은추적문서커밋전이며현재Git제품은exactmain2b5ca와같다. 새기본HEAD를만들면같은HEAD CI를별도확인한다. 아직원C02 두묶음 통합경계가아니며RUN 종료P08이아니다.
+
+
 ## 진행 중 M2-r2 WP25 유효 독립 PASS·P07 — 2026-10-08
 
 새P05-2 actualidle/completed16/원formal10523chars·최초11741/rawa33c…·MF5644/ZIP5646/45,901,757B/SHA555e22… 전수0를 인수했다. [검증 리포트](docs/verify/WP-25.M2-r2.attempt2.md)/[원인수](docs/verify/evidence/WP-25-M2-r2-P05-2/README.md)를참조한다. rootmain93fd8의408non-doc/HANDOFF Gitentry는source d443와exact이며parent P07의46고유검사/총47실행을완료했다. 첫native-repro출력경로오류/native1과원guard는보존하고허용target/evidence에서별도continuation5개0를확인했다. M0/M1각2·repeat/freshSave·전체DTO/canonical/hash·client243·native15·성능경계/metadata·CLIbench2가통과했다.

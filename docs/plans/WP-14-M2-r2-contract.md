@@ -45,3 +45,7 @@ WP-14→WP-23 각 유효 독립 PASS·부모 P07·같은 main 7개 workflow/전 
 ## 고정 성능 입력의 후속 콘텐츠 경계
 
 WP-23의 새m2 파일은 같은 testland 전체 content_hash를 바꾼다. WP-14에 bench/run.py·관련독립입력/metadata검사·README·기술ADR 소유를 추가 인계한다. baseline81deb와240000/warm2400/m1/seed1000/two pairs15%/native240s/build1200s를 유지하고, 양쪽 별도 실제라이브러리에 **고정prior81deb에서 추출한 동일immutablepack**을 입력한다. 새 current source는 현재 실제라이브러리이며 입력만 고정한다. 원driver/profile/lock/registry·입력provenance/list/bytes/SHA와완료fullDTO/canonical/hash를대조하고검사삭제/가짜packhash/기준교체로통과시키지않는다. 신규콘텐츠는자체strictvalidate/native/save/repro로검증한다. 현재WP25코드는변경하지않고다음담당이실제입력분리schema/ADR·회귀부터작성한다. 부모가defaultmain에존재하는performanceworkflow의exactsourceRef를한번dispatch해실Linux를검사하며구현자는CI브랜치조건/설정을바꾸지않는다.
+
+### CEO 추가 기술 인수 조건
+
+고정입력은prior팩**전체**이며m1파일만선택하거나current팩을편집해prior처럼만들지않는다. 동일path공유또는전복사의정렬path/byte길이/SHA/실제packhash exact·extra/missing/손상/symlink/reparse/참조이탈거부·load/warmup/측정전후immutableidentity를검사한다. 실제current/baseline pathdependency/lock/registry와binarylinkage/provenance를보존하고뒤바뀜회귀를거부한다. 고정m1벤치는신규경제활성부하·후속M2/M3/UI성능증거를대신하지않는다. 기존workflow_dispatch에는source_ref입력필드가없다. 부모가후보branch/ref의직전SHA를확인해기존workflow --ref로한번dispatch하고actualAPI/job/env/artifact exactSHA를다시검사한다. 설정/브랜치조건/한도변경·미실행PASS·묵시적반복은없다. 원CEOreview는아래새evidence에원bytes로보존했다.
