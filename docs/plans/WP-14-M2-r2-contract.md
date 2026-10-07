@@ -46,6 +46,16 @@ WP-14→WP-23 각 유효 독립 PASS·부모 P07·같은 main 7개 workflow/전 
 
 ## 고정 성능 입력의 후속 콘텐츠 경계
 
+### 드라이버 팩 identity 계측의 명시적 기술 예외
+
+부모가 발견한 dirty 후보의 `bench/driver.rs`·`bench/compare.py`·`bench/test_compare.py` 변경은 초기 좁은 소유 범위 밖이었다. 원/working raw/diff와 보류 지시를 보존한 뒤 CEO가 구체 diff를 조건부 잠정 인수했다. 이 시점부터 세 파일의 최소 팩 identity 계측·거부·회귀 검사를 WP14에 추가 소유로 인수한다. 기존 driver bytes와 동일했다고 소급 기록하지 않는다.
+
+driver의 허용 추가는 run_national/Instant 이전과 elapsed 산출·기존 완료 검사 이후의 실제 pack_hash, 두 값 불일치 거부, pack_hash/pack_hash_after 출력 두 필드다. 타이머부터 step 루프·elapsed 및 완료 검사·DTO/canonical/hash 계산은 그대로다. 계측 비용은 타이머 밖이며 원 전체 native timeout에는 포함된다. 같은 새 driver bytes/SHA를 baseline81deb/current 두 실제 library 각각에 빌드하고 두 src/main.rs와 대조한다. 원 driver·역사 표본은 따로 보존하며 새 필드 소급 채움·새 판정에 과거 시간 표본 혼합은 금지다.
+
+compare는 신규 두 필드의 필수 16자리 소문자 hex·before=after·양쪽 두 쌍 동일성만 강화한다. 원 전체 DTO/canonical/hash/완료·elapsed 검사와 15% predicate/기존 negative를 유지한다. 각 필드 누락/null/형식, 표본 내부/두 쌍/양쪽의 hash 차이, 모두 같은 잘못된 hash지만 실제 input 바인딩과 다른 경우를 거부하는 회귀가 필요하다. warmup prior-native hash 바인딩과 전체 immutable input path/list/bytes/SHA·loader/현재 library linkage 검사를 함께 유지한다.
+
+이 예외 외에 원 prior/lock/registry·m1/seed/steps/warmup/pairs/15%·240s/1200s·release/default features·일곱 workflow bytes/조건/한도는 불변이다. 최종 clean source의 새 Linux 양 쌍 및 새 독립 P05/실제 v5 세 OS 판정은 아직 필요하며 신규 경제 활성 부하·후속 소비자 검증을 대신하지 않는다. 원 CEO 검토와 세 파일 원문은 별도 증거로 보존한다.
+
 WP-23의 새m2 파일은 같은 testland 전체 content_hash를 바꾼다. WP-14에 bench/run.py·관련독립입력/metadata검사·README·기술ADR 소유를 추가 인계한다. baseline81deb와240000/warm2400/m1/seed1000/two pairs15%/native240s/build1200s를 유지하고, 양쪽 별도 실제라이브러리에 **고정prior81deb에서 추출한 동일immutablepack**을 입력한다. 새 current source는 현재 실제라이브러리이며 입력만 고정한다. 원driver/profile/lock/registry·입력provenance/list/bytes/SHA와완료fullDTO/canonical/hash를대조하고검사삭제/가짜packhash/기준교체로통과시키지않는다. 신규콘텐츠는자체strictvalidate/native/save/repro로검증한다. 현재WP25코드는변경하지않고다음담당이실제입력분리schema/ADR·회귀부터작성한다. 부모가defaultmain에존재하는performanceworkflow의exactsourceRef를한번dispatch해실Linux를검사하며구현자는CI브랜치조건/설정을바꾸지않는다.
 
 ### CEO 추가 기술 인수 조건
