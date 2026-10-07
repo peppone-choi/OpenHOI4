@@ -1,0 +1,16 @@
+{
+  "scope": "CEO independent specification/integer arithmetic review only, not product verification",
+  "request_source_sha256": "2731e99b719f836d42d2100da349392d199cbebba301796cbbeed098104b2e54",
+  "files": [
+    {
+      "path": "REQUEST-0007-2731e99b719f.raw.md",
+      "bytes": 3578,
+      "sha256": "2731e99b719f836d42d2100da349392d199cbebba301796cbbeed098104b2e54"
+    },
+    {
+      "path": "REQUEST-0007-independent-review.json",
+      "bytes": 1657,
+      "sha256": "24b544ec68db0f548eb67a76e0a63a6b50b96e034311000d4d1de99772ca571d"
+    }
+  ]
+}

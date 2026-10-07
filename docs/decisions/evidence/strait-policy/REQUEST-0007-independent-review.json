@@ -1,0 +1,58 @@
+{
+  "checked_at": "2026-10-07T10:04:57+09:00",
+  "request_sha256": "2731e99b719f836d42d2100da349392d199cbebba301796cbbeed098104b2e54",
+  "immutable_source": "E:\\openhoi\\.orchestrator\\ceo\\REQUEST-0007-2731e99b719f.raw.md",
+  "scope": "CEO independent integer arithmetic/specification review, not product verification",
+  "Q": 4294967296,
+  "cases": [
+    {
+      "case": "explicit strait2 with other coefficients1",
+      "duration_raw": 42949672960,
+      "expected_hours": 10
+    },
+    {
+      "case": "strait arrival boundary",
+      "tick": 9,
+      "province": 0,
+      "elapsed_raw": 38654705664
+    },
+    {
+      "case": "strait arrival boundary",
+      "tick": 10,
+      "province": 30,
+      "elapsed_raw": 0
+    },
+    {
+      "case": "normal alternate8 vs strait10",
+      "path": [
+        0,
+        10,
+        30
+      ],
+      "duration_raw": 34359738368
+    },
+    {
+      "case": "equal costs lexical whole-path tie",
+      "path": [
+        0,
+        10,
+        30
+      ]
+    },
+    {
+      "case": "positive product overflow",
+      "expected": "reject; no clamp/neutral"
+    },
+    {
+      "case": "positive raw-bit product underflow0",
+      "expected": "reject; no zero-time edge"
+    },
+    {
+      "case": "tick9 split and one-tick resume",
+      "remaining_raw": 4294967296,
+      "arrival_tick": 10
+    }
+  ],
+  "source_unchanged": true,
+  "adoption_scope": "existing MapData land-to-land Strait only; trusted allowed endpoints and explicit positive crossing kind; no sea navigation or fleet/blockade rules; no content values or existing v1 compatibility break"
+}

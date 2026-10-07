@@ -210,6 +210,7 @@ AGENTS.md §2(절대 규칙)와 §4(구현 세션 규칙)를 따른다.
 - 서버와 클라이언트를 함께 건드리는 WP라면 프로토콜 타입은 oh_proto에만 정의한다. TS 타입은 생성물을 쓴다.
 - 신규 시스템·스키마 변경 전 02 §5.11과 docs/plans/schema-planning.md에 따라 docs/plans/{{WP_ID}}-schema.md 또는 해당 ADR에 필드/참조/권위/해시·저장/wire·UI와 독립 경계 예제를 설계한다. 실제 문서 경로와 누락 대조를 작업 로그에 남긴다. 현재 기초 모델과 후속 미구현 필드를 구분한다.
 - WP-17 중간 edge Stop/reroute는 01 §4.7·REQUEST-0006 A의 CEO 한정 잠정 범위만 적용한다. elapsed0 즉시 전환, 진행 edge/elapsed 보존·끝점부터 새 path 사전 검증·도착후 정지/진행, 실패 enqueue/예정 의미오류/phase 오류의 상태·큐·clock 경계, Stop 잔여 budget 버림과 계속 경로의 잔여시간을 독립 예제로 검사한다. 기존 v1 지원과 모든 새/정지 unit·context·예약 명령의 v2/hash 보존을 함께 대조한다. 사용자 결정 상태·새 보급/통행/전투 효과·저장호환 파괴/migration 승인이 아니다.
+- WP-17 육지 간 Strait는 01 §4.7·REQUEST-0007 A의 CEO 한정 잠정 범위다. 실제 MapData kind·서버 allowed 양끝점·방향별 양수 명시 strait 계수, 하천과 분리된 슬롯/순서/raw bit·hash/save, 누락/0/음수/overflow/underflow/잘못된 kind·ref/권한/비육지·9/10틱·대체/동점·새 process 재개를 직접 검사한다. 함대/봉쇄/해역 통제·해상 수송·진행 중 allowed 변경/통행권 정책·기존 저장 거부/migration을 추가하지 않는다.
 - WP-44 차량은 01 보급 규칙·DETAIL-DRAFT-0002-transport-v2의 CEO 잠정 채택 범위만 사용한다. WP-15 실제 재고형/상한·장비/Hub ID·C 단위·phase/명령/서버 오류 계약을 먼저 대조하고 차이는 구현 전에 기록·재검토한다. 합성 k/r을 콘텐츠 기본값으로 쓰지 않으며 생산 규칙 변경·기존 저장 거부/호환 파괴/migration은 이 채택으로 승인되지 않았다. 독립 검증에는 shared W/A 보존·0필요량·floor/손실이월·L수명·유효반환과 입력거부/예정오류/phaseErr·저장재개 경계 예제를 전달한다.
 - 범위 밖의 수정이 필요하면 하지 말고 작업 로그의 "범위 밖 발견"에 적는다.
 
