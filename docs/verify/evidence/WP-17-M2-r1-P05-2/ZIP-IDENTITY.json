@@ -1,0 +1,33 @@
+{
+  "head": "c28f90425905774c23b1d90a5d900c596ade2745",
+  "judgement": "FAIL",
+  "manifest": {
+    "path": "SHA256SUMS.json",
+    "bytes": 300158,
+    "sha256": "08e9c2b96413d5bd37cefd6893618163dc8d0f28aa3b027ff7a5cfa1d3864ea8"
+  },
+  "ZIP": {
+    "path": "evidence.zip",
+    "bytes": 59112210,
+    "sha256": "cdf0721e0bc487da154f80f210caeb2756768c9978dfe4793b13da3f42419b37",
+    "members": 1598
+  },
+  "all_manifest_and_zip_member_bytes_verified": true,
+  "raw_index_before_sha256": "25179732746006fa6649ab57c296329cc1b5decabe1193ff5ba4d4f6fe48842c",
+  "raw_index_after_and_last_sha256": "0526b50cfd822864cbaf67798acc78e50e9cbe5cc13a6a2b3b35878ce593fd07",
+  "raw_invariance": false,
+  "semantic_files_invariance": true,
+  "no_repair_or_baseline_replacement": true,
+  "command_receipts": 75,
+  "seal_command": [
+    "python",
+    "E:\\openhoi\\.orchestrator\\wt\\WP-17-M2-r1-verify2\\target\\evidence\\WP-17-M2-r1-P05-2\\seal.py"
+  ],
+  "seal_cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-17-M2-r1-verify2",
+  "seal_pid": 38484,
+  "seal_environment": {
+    "GIT_OPTIONAL_LOCKS": "0"
+  },
+  "sealed_at_utc": "2026-10-07T03:25:48.233978+00:00",
+  "self_identity_and_zip_not_members": true
+}
