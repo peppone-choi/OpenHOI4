@@ -1,0 +1,5 @@
+# WORLD-PREVIEW P06-3 원 구현 증거
+
+exact `446540f9755f6d381f789192f3576a8cc17aadd2`의 actual completed final과원 identity/ZIP을보존한다. 부모는critical324의원source/snapshotbytes·artifact671·ZIP673members의원bytes/SHA/CRC를전수직접대조했고불일치0이다. Git324blobs중321개는rawexact,3개UTF8문서는CRLF/LF차이만있으며각원bytes/SHA를별도로기록했다. 원source/manifest/index를고치거나복구하지않았고최초부모rawGit동등성가정의준비FAIL도보존한다. 원107651219bytes ZIP은생산자경로에그대로있으며Git 파일크기한도에맞춰ordered48MB parts3개로같은전체bytes를보관한다. 부분/전체SHA와새출력전용재조립기는evidence-storage.json/reassemble_evidence.py에있다. 독립P05/통합/같은mainCI는별도이며이증거를PASS나전체WP·M5완료로쓰지않는다. 원실패·candidate1~4/oldcounter·source일반화/성능한계를보존한다.
+
+직접읽는JSON/Markdown사본은저장소text규칙에따라Git에서LF로정규화될수있다. 원producer identity/receipt·actualAPI/final/prompt의정확rawbytes/SHA는parent-originals.zip에별도보존했고원전체ZIP은orderedparts로보존했다. 개별text Gitblob을원rawbytes와같다고주장하지않는다.

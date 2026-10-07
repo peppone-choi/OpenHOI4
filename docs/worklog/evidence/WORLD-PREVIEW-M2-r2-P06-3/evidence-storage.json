@@ -1,0 +1,26 @@
+{
+  "mode": "ordered_exact_original_parts",
+  "original_bytes": 107651219,
+  "original_sha256": "fe53808374917360550ddf6bff6d2496b9519a99d2f9274ee069103a7fa4dab0",
+  "parts": [
+    {
+      "path": "evidence.zip.part001",
+      "bytes": 48000000,
+      "sha256": "5612f93433f05c7ff7aceb76c85a660371db24b8a36a830f4f91fc8766025bcf"
+    },
+    {
+      "path": "evidence.zip.part002",
+      "bytes": 48000000,
+      "sha256": "902a28618e8178d2e90b7899b16d9e60ab3d07c2d60476cbfda27a06ece15292"
+    },
+    {
+      "path": "evidence.zip.part003",
+      "bytes": 11651219,
+      "sha256": "881b3793690f73d300b327314e36a052547c9277423587b2ad09ab0f9da82c5a"
+    }
+  ],
+  "source_original_preserved": "E:\\openhoi\\.orchestrator\\wt\\WORLD-PREVIEW-M2-r2\\target\\evidence\\WORLD-PREVIEW-quality-P06-3\\final\\P06-3-446540f-evidence.zip",
+  "concatenated_SHA256_equal": true,
+  "official_GitHub_size_source": "https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github",
+  "source_access_date": "2026-10-07"
+}

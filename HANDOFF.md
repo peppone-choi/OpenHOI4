@@ -1,5 +1,27 @@
 # 인수인계
 
+## 진행 중 M2-r2 최신 관측 — 2026-10-07 21:56 KST
+
+새WORLD P05-3는 actual idle/completed15/turn `01a1164e-c360-79e0-935e-15ddcffab85c`의 **유효 FAIL F05**다. exact446540f/원10015파일·HEAD·semantic/rawindex·diff/status 전체동일,actualfinal9662chars·[공식전문](docs/verify/WORLD-PREVIEW.M2-r2.attempt3.md)과MF861/ZIP862 전수0를보존했다. 첫freshbake174.156s/native0/4파일shipped동일,second180.078s/native1 및extra180.188s/native1로원180s/3GiB/64MiBguard를넘었다. 원ZIP155621367bytes/SHA7790c6b6043de851602e3d737f8e0d8d265935572cb981faa36d8cdd7276ac7e와정확ordered48MB parts4를보존하고실제재조립전체SHA를확인했다. 데이터전체33554432sourcepixel/24889ID4connected/47,554adjacency/majorurban1846·3D·기존3browser각단일41·client140/Rust179 PASS는전체성능PASS를대신하지않는다. 원skip1은고정DEM별도독립전수검사와구분한다.
+
+같은WORLD 구현앱 `01a11536-8218-7c93-9082-70931a350875`에성능전용 P06-4를배정했고새turn `01a1166e-d443-7c01-9ea1-49d6b574b5f9` actualactive다. source446/기존WT·branch,原source7/defines/해상도·180s3GiB·기하/ID/도시/sea/원tests/golden·UI/프로토콜/게임/GLB/의존성/CI를유지한다. 원loop의계산·할당비용개선으로가능하면4산출bytes exact보존을우선하며원완성파일복사로fresh생성을가장하지않는다. profiling조건/원parallel부하·명확한실패를기록한새source+새독립P05 freshpair가필요하다. P05-3앱/기준선/index를재사용·교체하거나원FAIL을재시도PASS로없애지않는다. 실제prompt6960bytes/SHAdcdd3811e8ec3de824434567352df3abc6adde73df75098fef02fa7b9e9b59eb와전송payload는같다.
+
+부모main은a0389cc의과거6CI/25job 성공HEAD이며새custody/HANDOFF/docs 갱신은커밋전이다. 통합15/M0M1 PASS/원W1W2 전체0/0/M2게이트없음·외관우선/새기능후속/noCUA·focus·전역input/설정변경·공개배포금지는그대로다. 아래21:22절의P05진행중관측은역사이며현재권위는이절·registry·실제앱API다. 다음은동일소유성능보완final/원증거인수와새독립검수다.
+
+## 진행 중 M2-r2 최신 관측 — 2026-10-07 21:22 KST
+
+이 절은 RUN 종료 P-08이 아니다. 기본 브랜치 HEAD는 `a0389cc34ae45b89a7abb8c424240cfc5252e3d5`, 원격0/0·같은6workflow/25필수job 실제SUCCESS다. WP13 담당범위 통합을 포함한 고유WP15·M0/M1 PASS·원W1/W2 전체0/0·M2게이트 없음은 그대로다. 아래17:32 및이전M1 기록은 역사 관측이다. 이번 새producer custody와현재인계 문서는아직커밋/푸시전이며현재HEAD의과거CI를새문서commit CI로대신하지않는다.
+
+WORLD 동일 구현앱 `01a11536-8218-7c93-9082-70931a350875`의 P06-3 turn `01a115cf-54d3-7ef2-b628-6224ecf88d6d`는 actual idle/completed56·정확final663chars다. 최종source `446540f9755f6d381f789192f3576a8cc17aadd2`, 전용 WORLD-PREVIEW-M2-r2 worktree/기존branch를유지한다. 전세계24,889=land13,882/sea6,954/lake4,053·onepixel6,610·원source-kind onepixel6,125 보존, Ireland지리본섬17중13개≥9px·4tiny/GB68/Honshu+Kyushu173(원source연결한계)/Hokkaido16/Shikoku10이다. 현대 MODIS2002–2003 major시가지footprint 분리와sea ID선택은미리보기한정이고나라/주/경제/전투/1936·2026현재도시/전체DEM·정확능선·고개는미완료다. 후보5/6 실제176.000/147.016s와PeakCommit약2.639GB는원180s/3GiB이내이나첫회여유4초를전체성능보장으로쓰지않는다.
+
+[원producer 인수](docs/worklog/evidence/WORLD-PREVIEW-M2-r2-P06-3/README.md)는artifact671/ZIP673/source-snapshot324 rawbytes·SHA·CRC 전수0, Git321rawexact/3UTF8 CRLF-LF내용동일을별도기록했다. 최초부모Gitraw동등성가정준비FAIL은원helper/로그로보존하며source/index를복구하지않았다. 원ZIP107651219bytes/SHAfe53808374917360550ddf6bff6d2496b9519a99d2f9274ee069103a7fa4dab0는producer경로에보존하고48MB orderedparts3개를실제재조립해같은전체SHA/673CRC를직접확인했다. 원candidate1/2·d1de첫clean·3/4 oldcounter·새counterKeyError·fragmentaudit초안native1×2·a28/2d920 FAIL 모두보존한다. 수정통계11840는큰same-surface target없는noncore조각(427only-small/11413no-external-neighbour)이고실제섬계수가아니다. target의ordinaryprovince 전체가동일urban값이라는요구도없다.
+
+새 독립 P05-3 앱 `01a1164e-c04c-7f01-b036-42cc456be9bd`/turn `01a1164e-c360-79e0-935e-15ddcffab85c`은 actualactive다. exact446540f detached `.orchestrator/wt/WORLD-PREVIEW-M2-r2-verify3`, 최초10,015 tracked/wholeSHA·HEAD·semantic/rawindex·diff/status를앱생성전에봉인했고rawSHA `b6dfe05f2c0d0bf3b7d72a2a3a30978088f59567338b6e6b0641613dba9ce07d`다. 새검증자도자기최초스냅샷과부모원본전체동일을확인했다. 실제prompt16339bytes/SHA579b085aa38704d39ce1356d63ab6f4ed1c5fcf92a7b301dcca4ffb3c9bf2399와전송payload가exact다. 기존 P05 기준선/앱을재사용하지않고추적writer/기준선교체/index복구금지·검증결과아직없음이다.
+
+사용자 ProvGen v1.0 지시도인수했다. CEO가원5,319,403bytes ZIP/README/Settings를읽어LandMap·gray육지크기·해안거리sea·지형/도시점·minmax/산악폭제어를확인했다. source/LICENSE/경계성장·시드·merge·특정알고리즘·재현성은확인되지않았다. WORLD 자기대조문서만추가했고EXE/DLL실행/디컴파일/BMP열람·인수/예시값·palette·코드copy/새grayimporter/canonicalformat/게임/DOPEN변경없음이다. 도시point nearest전체tag는실제footprint분리를대신하지않는다. 원user요청은DIRECTIVES와 `.orchestrator/ceo/research/provgen/ALGORITHM_REVIEW.md`에있다.
+
+다음은새P05 actualfinal+whole/raw불변+원ZIP봉인 인수다. FAIL이면원판정/기준선을유지한P06/새검증으로이어가며PASS면간단한병합·원ASSETS/ko/en append양쪽원문보존·P07/같은최종main필수CI로통합한다. code판단충돌은구현소유가처리한다. 시각미리보기를전체WP32/45·M5 또는원W1/W2 묶음으로세지않고새게임기능은사용자외관우선순서의후속이다. noCUA/사용자focus·전역input·BP프로세스접근/설정변경/공개배포금지와원ToyTestland/golden/save호환·D/OPEN을유지한다. 실제최신상태는 `.orchestrator/app-threads.json`과원앱API가권위다.
+
 ## 진행 중 M2-r2 최신 사용자 우선순위 — 2026-10-07 17:32 KST
 
 현재 오케스트레이터 `01a114ca-469a-73c0-a9c4-9df475c37769`는 실행 중이며 이 절은 RUN 종료 P-08이 아니다. WP13 통합 관측 main `a15978321b5e73ccbc8b43eebd63ba3e68d0eb5e`는 origin과0/0·같은6CI/25job 모두SUCCESS다. 부모가 실제9 Save/Trigger3OS artifact/API digest/member/fullstate/canonical/hash/freshresume와 public comparer3종 native0를 직접대조했다. 고유 통합WP15·M0/M1 PASS 유지·M2 게이트 없음·원W1/W2 전체 통합0이다. 아래 이전 M1 종료 기록은 역사다.

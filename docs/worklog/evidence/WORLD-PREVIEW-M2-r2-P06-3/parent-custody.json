@@ -1,0 +1,97 @@
+{
+  "source_commit": "446540f9755f6d381f789192f3576a8cc17aadd2",
+  "scope": "Implementation producer evidence only; independentP05/P07/same-mainCI pending",
+  "critical_git_blobs_checked": 324,
+  "critical_source_and_snapshot_raw_exact": 324,
+  "critical_git_raw_exact": 321,
+  "critical_git_utf8_eol_only": [
+    {
+      "path": "data/preview/world/source-manifest.json",
+      "git_bytes": 5175,
+      "git_sha256": "c0eb1738f8e4ada8e37348467ad4a3bbed03f5d38fed3a659ecb40b6b4fd189b",
+      "snapshot_bytes": 5291,
+      "snapshot_sha256": "bcac8c3a922d6f48b031b654832eb004ac7736ca0a4f1465248ce7b0296cc934",
+      "UTF8_CRLF_LF_content_equal": true
+    },
+    {
+      "path": "docs/adr/ADR-3201-world-preview.md",
+      "git_bytes": 9540,
+      "git_sha256": "586501d33503670107a1bae485b868338a4824428bdc2717236a7a8a940c420b",
+      "snapshot_bytes": 9602,
+      "snapshot_sha256": "6f9fe5c8a43fad1991c0460e3e9d010bf9d8fe87e3e0a0ad6288bdc3b45ec661",
+      "UTF8_CRLF_LF_content_equal": true
+    },
+    {
+      "path": "docs/plans/WORLD-PREVIEW-schema.md",
+      "git_bytes": 10837,
+      "git_sha256": "3645c37c7722a53303ce94358e303ad49abe110b06f51cc410f86e317392a58a",
+      "snapshot_bytes": 10885,
+      "snapshot_sha256": "3c33a39d263dcb7254938b69cb763423d67de2b953d519b9fbe9a5a14e8893ae",
+      "UTF8_CRLF_LF_content_equal": true
+    }
+  ],
+  "artifact_files_checked": 671,
+  "original_ZIP_members_checked": 673,
+  "ZIP_crc_ok": true,
+  "mismatches": 0,
+  "actual_final_chars": 663,
+  "actual_final_equal": true,
+  "original_ZIP_sha256": "fe53808374917360550ddf6bff6d2496b9519a99d2f9274ee069103a7fa4dab0",
+  "original_ZIP_bytes": 107651219,
+  "producer_identity_sha256": "ac02556ce0825d4c1c4b4cbea5449a617d458444fb25b46aa5ad7ba2cc67bae4",
+  "storage": {
+    "mode": "ordered_exact_original_parts",
+    "original_bytes": 107651219,
+    "original_sha256": "fe53808374917360550ddf6bff6d2496b9519a99d2f9274ee069103a7fa4dab0",
+    "parts": [
+      {
+        "path": "evidence.zip.part001",
+        "bytes": 48000000,
+        "sha256": "5612f93433f05c7ff7aceb76c85a660371db24b8a36a830f4f91fc8766025bcf"
+      },
+      {
+        "path": "evidence.zip.part002",
+        "bytes": 48000000,
+        "sha256": "902a28618e8178d2e90b7899b16d9e60ab3d07c2d60476cbfda27a06ece15292"
+      },
+      {
+        "path": "evidence.zip.part003",
+        "bytes": 11651219,
+        "sha256": "881b3793690f73d300b327314e36a052547c9277423587b2ad09ab0f9da82c5a"
+      }
+    ],
+    "source_original_preserved": "E:\\openhoi\\.orchestrator\\wt\\WORLD-PREVIEW-M2-r2\\target\\evidence\\WORLD-PREVIEW-quality-P06-3\\final\\P06-3-446540f-evidence.zip",
+    "concatenated_SHA256_equal": true,
+    "official_GitHub_size_source": "https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github",
+    "source_access_date": "2026-10-07"
+  },
+  "parent_originals": [
+    {
+      "path": "actual-final-api.json",
+      "bytes": 51271,
+      "sha256": "7439a8c7dae61e9dd7545c05c350a9c313092c7743945f6ef68bfc8a065262ba"
+    },
+    {
+      "path": "producer-identity.json",
+      "bytes": 304443,
+      "sha256": "ac02556ce0825d4c1c4b4cbea5449a617d458444fb25b46aa5ad7ba2cc67bae4"
+    },
+    {
+      "path": "producer-archive-receipt.json",
+      "bytes": 596,
+      "sha256": "b1e1e9ba970043feade5ed418cdf0e1aa3fb37f88f3f1dcecea5e973c0b5fa33"
+    },
+    {
+      "path": "producer-README.txt",
+      "bytes": 2293,
+      "sha256": "63176c33edbbab7ea89fa998ed185f3a64a95eba519edcc5c4d1dd1f64b7c089"
+    },
+    {
+      "path": "original-quality-prompt.md",
+      "bytes": 7784,
+      "sha256": "9fb5e60afac543a35431df1d1e4e7287083b816ff382a66569afd27052e347f0"
+    }
+  ],
+  "parent_archive_sha256": "fa2456e819682813211d0bb905e125287b22e38ed29cd6e4b99db4192de5652c",
+  "checked_utc": "2026-10-07T12:10:34.526760+00:00"
+}

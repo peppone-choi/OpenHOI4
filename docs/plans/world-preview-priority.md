@@ -2,6 +2,18 @@
 
 ## 현재 체크포인트와 다음 표시 품질 개선
 
+### 2026-10-07 P06-3 실제 최종 후보와 새 독립검수
+
+후속실제판정: 새P05-3 actualcompleted15는[유효FAIL F05](../verify/WORLD-PREVIEW.M2-r2.attempt3.md)다. 전체source33554432pixel/24889ID4connected/urban1846/adjacency47554/3D/원3browser각단일41·회귀는통과했으나freshbake2/3이180.078/180.188s로원180sguard초과/native1였다. 최초whole10015/rawb6dfe05f… 불변/MF861·ZIP862 전수0·actualfinal9662chars/원155621367bytes ZIP7790c6b6…과orderedparts4를보존했다. 원FAIL은재시도성공/0.078초반올림으로면제하지않는다. sameWORLD 성능전용P06-4가原한도·source7/defs·해상도·기하ID·도시/해상·원tests골든/renderer를유지한계산비용개선으로진행중이며새source/새worktree/독립freshpair 검수가필요하다. 현재원W1/W2·전체WP/M5 또는preview통합PASS는아니다.
+
+WORLD 동일담당actualcompleted56/final663chars의 clean `446540f9755f6d381f789192f3576a8cc17aadd2`는24,889=land13,882/sea6,954/lake4,053이다. 원ab64 Ireland본섬1ID→후속17ID(13개≥9px·4tiny),GB68/Honshu+Kyushu173원천연결한계/Hokkaido16/Shikoku10을분리보고한다. onepixel6,610은원sourcekind onepixel6,125와실제urban-surface/보존core/생성fragment를구분하고숫자만품질PASS하지않는다. 독립built-up majorfootprint를도시와주변육지의별도ID로분리했고Dublin/London/Seoul/Tokyo actualpoint선택urbanfraction1.0·sea별actualhover/pick은원index와일치하는producer증거다. 100km²미만시가지는미분리이며2002–2003 MODIS일반화원천/현대도시점이1936권위값이나2026정확도시가아님을명시한다.
+
+원candidate1/2 26,213·d1de첫clean·3/4단편정리·최종5/6를각각보존한다. 최종같은source 두bake4파일SHA가같고176.000/147.016s·PeakCommit약2.639GB로원180s/3GiB내다. 첫회여유4초는한계다. 같은rawseed의최대조각이아닌≤8px조각을actualkind/urbanmask/eligibleclass가맞는4neighbor안정>8target으로옮기는정리만하고pixel/원천분류·섬/수로/전체core를삭제하지않았다. 이동pixel/계수sharededge의class조건과targetordinaryprovince다른위치의<100km²미분리urban을구분한다. 수정counter11840=only-small427/no-external-neighbour11413은실제섬수가아니다.
+
+[원구현전체인수](../worklog/evidence/WORLD-PREVIEW-M2-r2-P06-3/README.md):source-snapshot324/artifact671/ZIP673 원bytes·SHA·CRC0,Git321rawexact/3UTF8 EOL만내용동일,원ZIP107651219bytes/fe538083… 보존과48MBorderedparts3개동일whole실제재조립을확인했다. actualfinal과별도원receipt/실패·초기기하가정/감사0based·edge오해도보존한다. producer전체검사는independentPASS/통합을대신하지않는다. 새 P05-3 `01a1164e-c04c-7f01-b036-42cc456be9bd`는exact446540f/전용verify3/최초10015·rawb6dfe05f… 기준선을앱생성전에봉인한새독립검수다. 최초whole/raw동일만확인했고판정은아직없다. 전체WP32/45·M5·원W1/W2 묶음완료로세지않는다.
+
+사용자제공 ProvGen v1.0의실제README/Settings를CEO가읽고WORLD가자기코드와대조했다. 확인된역할은육해호수mask/gray육지크기/해안거리sea/지형·도시point·크기minmax·산악폭이고내부시드/성장·경계최적화·merge·특정알고리즘/재현성·크기단위/라이선스는미확인이다. 원ZIP19항목에는source/LICENSE가없다. EXE/DLL실행·디컴파일·BMP열람/인수·예시값/palette/코드copy는없고도시point전체태그로우리footprint를대체하지않는다. 모더편집graydensity이미지는후속기술후보로만두며canonicalformat·새importer/editor·게임규칙/DOPEN을바꾸지않았다. 새게임연결보다사용자지도/HUD외관우선/noCUA/focus/원후보실패보존은계속된다.
+
 ### 최신 사용자 제작 목표 — 아일랜드·도시·해상 밀도
 
 사용자는 아일랜드가 한 프로빈스인 화면을 지적했고, 전세계 목표를 "적어도 20000~30000개", 필요 도시 시가지를 별도 프로빈스로 분리, 바다도 고유 프로빈스 단위로 구획하라고 명시했다. 전체 land+sea+lake의20k~30k(최소20k)로 인수하며 육지만의수로 확대하거나30k를새절대상한으로확정하지않는다. 기존기술u16 max65535는유지한다. 도시/해상전투·경제·항만·상위전략해역게임규칙은이번외관생성요청이아니다.
@@ -35,9 +47,9 @@ CEO가 실제 Breaking Point의 별도 native desktop/PID·PrintWindow·전역 a
 | 세계 지도·HUD | `01a11536-8218-7c93-9082-70931a350875` / `.orchestrator/wt/WORLD-PREVIEW-M2-r2` / `codex/world-province-preview-m2r2` | 신규 tools/maps·data/preview/world·client preview/동봉 자료·작은 App route·preview 현지화, ASSETS master 신규 append |
 | 생성형 마커 | `01a11537-ccb8-7f80-938d-6b86803b1bf2` / `.orchestrator/wt/PREVIEW-MARKERS-M2-r2` / `codex/preview-marker-assets-m2r2` | client/public/preview/markers 3 PNG 및 assets/preview/markers 원문/manifest entry 초안. ASSETS master 수정 금지 |
 | 같은 에셋 앱의 최신 3D 소유 | 위 동일 앱·worktree·브랜치, 추가 앱 없음 | assets/preview/units3d 및 client/public/preview/units3d의 실제 GLB·recipe/metadata/entry 초안. 신규 raster 호출 중지, 원 PNG 보존 |
-| 진행 중 WP-13 P-06 | `01a114e4-115e-7823-ba09-966b6efb7594` / `.orchestrator/wt/WP-13-M2-r2` | 기존 인계 network/Trigger checker·회귀 및 자기 문서. 지도/HUD와 겹치지 않음 |
+| WP-13 담당범위 통합 | `01a114e4-115e-7823-ba09-966b6efb7594` / `.orchestrator/wt/WP-13-M2-r2`, source080e | typedAST/flags/종료checkpoint·P05/P07·같은main6CI 통합. 전체4점수/결과UI는후속. 지도/HUD와 겹치지 않음 |
 
-preview 두 구현의 실제 base는 `ea63081e0b79369227c99384922db80c6ef09fb1`이다. 마커 PNG/원문은 부모가 세계 지도 담당에게 정확 leaf 경로·bytes/SHA로 인계한다. 세계 지도 담당이 ASSETS 등록과 화면 연결을 한다. 실제 사용자 원문·create payload/prompt/result·첫 active 관측은 `.orchestrator/evidence/M2-r2-resume/`에 보존했다. 고유 통합WP14·원W1/W2 전체 통합0·M2 게이트 미판정은 유지한다. preview 작업을 원 M2 병렬 묶음 통합으로 세지 않는다.
+preview 두 구현의 실제 base는 `ea63081e0b79369227c99384922db80c6ef09fb1`이다. 마커 PNG/원문은 부모가 세계 지도 담당에게 정확 leaf 경로·bytes/SHA로 인계한다. 세계 지도 담당이 ASSETS 등록과 화면 연결을 한다. 실제 사용자 원문·create payload/prompt/result·첫 active 관측은 `.orchestrator/evidence/M2-r2-resume/`에 보존했다. 배정당시 고유통합WP14에서현재WP13 담당범위통합으로15가됐으며원W1/W2 전체 통합0·M2 게이트 미판정은 유지한다. preview 작업을 원 M2 병렬 묶음 통합으로 세지 않는다.
 
 원작 지도·아이콘·국기·상징·파일·스크립트·수치표 복사와 tracing은 금지다. 원Testland/M0/M1·골든·저장 fixture·기존 codec/워크플로·D/OPEN 상태를 보존한다. 새 역사 국가·소유권·경제·전쟁 규칙과 HUD 권위 명령은 범위 밖이다. 별도 정확 checkpoint의 새 독립 시각 검수와 source 불변성을 얻고 일반 M5 게이트 완료와 구별한다.
 
