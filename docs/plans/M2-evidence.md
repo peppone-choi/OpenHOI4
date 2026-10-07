@@ -5,7 +5,7 @@
 | WP / source | 구현 원 증거 | 독립 P-05 | P-07 / 같은 main CI |
 |---|---|---|---|
 | WP-24 최초 `c2c2f638fe5179d11ce5a318f6d991b4b2a0cd4d` | [2722파일 원 봉인](../worklog/evidence/WP-24-M2-r1-first/README.md) | [유효 FAIL](../verify/WP-24.M2-r1.attempt1.md), 실제 CLI legacy defines 및 native dependency/FTL 세 누락 | 미통합. 수정 source로 이 실패를 대체하지 않음 |
-| WP-24 P-06 `4aecc2287019ef96df99f8c3d03232c8a482fe8f` | [6268 regular 원 봉인](../worklog/evidence/WP-24-M2-r1-P06/README.md), reparse fixture는 원 manifest metadata만 보존하고 따라가지 않음 | 새 앱 `01a11439-8519-7980-a1e3-1ef7847be4eb` 실행 중. 최초9780/raw `b5c720316f2f2756f749ac55467c262c3dc49bc3e5e5f91deb9e56723731284e`, 새 기준선·8514byte 실제 prompt 동일 | 미통합. producer의 48/48·workspace 결과는 독립 PASS가 아님 |
+| WP-24 P-06 `4aecc2287019ef96df99f8c3d03232c8a482fe8f` | [6268 regular 원 봉인](../worklog/evidence/WP-24-M2-r1-P06/README.md), reparse fixture는 원 manifest metadata만 보존하고 따라가지 않음 | [새 유효 PASS](../verify/WP-24.M2-r1.attempt2.md). 실제final12645chars, 최초9780/raw `b5c720316f2f2756f749ac55467c262c3dc49bc3e5e5f91deb9e56723731284e` 전후동일, manifest2551/ZIP2552 전수 불일치0, 실제native70 | P-07 예정. 원 first FAIL과 일반 locale/역사warning 구분 유지 |
 | WP-17 최초 `97f688718dabed46bc477fa249798ac09e999581` | [217파일 원 봉인](../worklog/evidence/WP-17-M2-r1-first/README.md) | 이 source의 P-05 앱은 만들지 않음. 승인 해협 추가 후 최종 source를 검증 | 미통합 |
 | WP-17 P-06 `7f8cb7635ad10beb815503ca5a8137da0500faa3` | [234파일 원 봉인](../worklog/evidence/WP-17-M2-r1-P06/README.md) | [유효 scoped PASS](../verify/WP-17.M2-r1.attempt1.md). 실제final10836chars·최초9770/raw `182b8651813e1cf22211586db52b0cb98eae48e599d3e690109d30f2859549b9` 전후동일·manifest740/ZIP741 전수 불일치0 | WP-24 뒤 통합 예정. 실제 unit 생성/public wire/UI·M2 전체 완료 증거는 후속 |
 | WP-13 / WP-25 | 실제 선행 producer 인수와 W1-a 통합을 기다림 | 미착수 | 미통합 |
