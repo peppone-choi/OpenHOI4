@@ -40,3 +40,7 @@ REQUEST-0008 A는 한정 CEO 잠정 채택이다. 팩 밖 engine-owned 정책의
 ## 원본 보존
 
 앱 read_thread의 실제 final 전문을 저장한다. 요약된 wait text를 원 리포트 전문으로 대신하지 않는다. command receipts/manifest·ZIP member 전수 bytes/SHA를 부모가 대조하고 source/commit/최초·최종 snapshot·app status/cursor/원 prompt를 기록한다. 최초 FAIL/환경 준비 오류와 수정 새 exact PASS를 구분한다. 예상 CI/명령은 실행 증거가 아니다.
+
+## M2-r2 종료·플래그 독립 검증 인수
+
+REQUEST-0009 A의 CEO 한정 잠정과 실제 01§3.3/02§5.7을 대조한다. 명시root/null·단일AST·초기tick0/성공시간전진뒤평가·inclusive종료일/다음날00:00·세기윤일·typed복수원인/sourceID안정순서·nationflag수명/idempotence/scope복귀·깊이16/17/실제효과1000/1001·전체효과실패rollback을 자체 입력으로 직접 검사한다. 기존 예정명령 의미오류소비/phaseErr 전체state/queue/clock보존은 별도 경계다. 종료후step/새GameplayPauseSpeed enqueue 거부·futurequeue유지/querysave·hostpump정상응답을 실제 입구에서 확인한다. empty신규정의identity/additive형과None/원v1v2v3bytes/fixture/expected·bounded복원/rootID·모든state/canonical/hash/freshnative재개를 전수 대조한다. 네점수축과항복관전/UI는실제후속consumer까지추적하며부분0weight/합성host를전체M2완료로세지않는다.

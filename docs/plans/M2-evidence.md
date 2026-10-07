@@ -1,4 +1,4 @@
-# M2-r1 증거와 실제 통합 상태
+# M2-r1 / M2-r2 증거와 실제 통합 상태
 
 2026-10-07, W1-a P-07 수정 단계. WP-24 merge `0c58e4f8c78c1485cfee4ad9c7c4fe1c83b82898` 뒤 WP-17 merge `9a2302540cbe29610d052ad9286e3b8f74939933`를 만들었다. ASSETS 기존30행 원 bytes를 유지하고 서로 다른21+21행만 합집합으로 병합했다. 제품 코드 판단 충돌은 없었다. exact `500ba0f91cc53ed10660fca14294d4deb5a146d4` 통합 검사에서 npm ci/test/build·fmt·clippy는0, workspace는101이었다. 변경 팩 시험이 en에만 새 키를 추가하여 새 presentFTL parity 검사가 ko 누락을 거부했다. [원 P-07 실패](evidence/M2-r1-W1a-P07-500/README.md)의15파일 bytes를 보존했고 남은24명령은 미실행이다. WP-17에 같은 ko 키를 추가하는 유효 시험 입력 보완만 인계했으며 모든 원 단언·codec·validator·frozen fixture를 유지한다. 새 exact P-05/P-07/같은 main CI 전에는 통합 완료로 기록하지 않는다. W1 전체 통합 0개, W2 전체 통합 0개, M2 게이트 판정 없음. 소묶음 W1-a를 C-02의 별도 묶음으로 세지 않는다.
 
@@ -21,3 +21,11 @@
 REQUEST-0006/0007/0008은 한정 CEO 잠정 채택이며 사용자 D/OPEN 추가 확정이 아니다. 역사 이름 정책의 source3+mutable19·caller3·actual v1 context·정확한 두 진단과 strict/headless/current 경계는 새 WP-24 P-05에서 직접 검사한다. 원 v1·원97f v2·current v2/v3의 pack identity와 codec 보존은 합쳐진 실제 source의 P-07에서 다시 대조한다. 01 §11의 구현 차별화 행은 독립 PASS 후 통합 시 반영한다.
 
 2026-10-07T12:21 CEO 한정 기술 인수에 따라 원 frozen 두 capture·fixture/CLI/3OS 비교를 유지하고 별도 current capture 두 회·fresh native 전체 state/canonical/hash·원장/신원·3OS 비교를 서버 정상 input에 연결한다. 원 HTTP/WS/query/JS/정상 종료 단언을 유지하고 역사 mutable-v1 서버 거부는 별도 native1 negative로 남긴다. 정책 caller/codec/header/expected/골든·게임 규칙은 바꾸지 않는다. 검증에서는 tracked TS writer를 실행하지 않고 정확 read-only equality 또는 actual typescript()의 ignored 출력과 원 bytes를 비교한다. 원 raw 불변성 실패를 복구·면제·baseline 교체로 해소하지 않는다.
+
+## M2-r2 재개와 수정 source의 실제 통합 검사
+
+원 M2-r1/P05-4 turn과 후속 turn은 interrupted로 유지한다. 원 HANDOFF는 M1 종료에 멈춰 실제 M2와 달랐고 main1cf57fee는 실제원격82db보다ahead7/behind0·동일HEAD CI없음이었다. 최초현재9880/각SHA/HEAD/semantic/raw3e5d/diff/status 동일과 전용PID0을 직접확인하고 같은 독립 앱의 봉인만 재개했다. 재개actualturn01a114cb-7b42-7790-a841-b7dd0e5a880c에서 [최종유효PASS](../verify/WP-24.M2-r1.attempt4.md)를 받아 actualfinal15669chars/targetauthority동일·별도fullreport·MF3664/ZIP3665/34165286bytes/SHAec1056e672989d5dc29e9aa986060adc92f93a23b940d9185409498dcb9c5a65를 부모가전수0 대조했다. 최초/현재/최종rawbytes도같으며 원baseline/index복구나과거turn소급완료는없다. [원봉인/부모검사](../verify/evidence/WP-24-M2-r1-P05-4/README.md)를보존한다.
+
+수정source164f를main2244b03d7852afa9afed30ebf590e027caea6e32에충돌없이병합했다. 제품320파일Gitblob이exact164f와동일하다. 원7fWP17 scopedPASS와후속ko5line입력보완·이번exact164f전체workspace/v2v3/native/save입구검사를소스별상관으로인수하며원c28검증raw무효를PASS로바꾸지않는다. [이번P07원증거](evidence/M2-r2-W1a-P07-remaining/README.md)는실제기본브랜치검사이며원500P07FAIL/82CIFAIL/3dFAIL2/원preparation과구분한다. 최초25번째legacy검사에부모가필수red-save인자를빠뜨려준비AssertionError1이었다. 앞선24검사성공/원실패를보존하고이미생성한정상save를지정해같은HEAD의남은14검사를실행해통과했다. 제품수정·기존통과검사반복은없다. 같은main5workflow/필수jobs·실제원frozen/current3OS는푸시후별도관측한다. 이P07만으로통합완료WP/W1전체수를올리지않는다.
+
+REQUEST-0009 A의CEO한정잠정은원요청/독립검토봉인과01/02/03/preflight에먼저대응했다. WP13은위sourceP05/P07 및같은HEAD5CI성공뒤실제producer를인수하고자기schema/ADR에서종료/flags/additive형식/후속score/항복관전을구체화한다.

@@ -1,0 +1,3170 @@
+{
+  "head": "2244b03d7852afa9afed30ebf590e027caea6e32",
+  "result": "FAIL",
+  "driver_native_exit": 1,
+  "completed_commands": 25,
+  "planned_commands": 38,
+  "unexecuted_commands": 13,
+  "semantic_checks": {},
+  "files": [
+    {
+      "path": "actual-driver.py",
+      "bytes": 7163,
+      "sha256": "be8b4261b6c7bce662b31cf6653856a21e7af5ea6c71097586b6c60843934d33"
+    },
+    {
+      "path": "architecture.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "architecture.stdout",
+      "bytes": 22274,
+      "sha256": "fe16959fa6bcaa6c4351d320b405699925809740b3997cf2ee0d07b12ae5b0cb"
+    },
+    {
+      "path": "assets.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "assets.stdout",
+      "bytes": 20,
+      "sha256": "624a8c9d06ee1ec392b87747ca646a329412ce494d9e8117a03472dd0dd13001"
+    },
+    {
+      "path": "client-build.stderr",
+      "bytes": 365,
+      "sha256": "ac3b29edfcc148018d57688b3444e3b46378619fedc07a0d0e7d1faffb38cb85"
+    },
+    {
+      "path": "client-build.stdout",
+      "bytes": 431,
+      "sha256": "692beef752132f504154403b8edebb0e8bbf29c808ccfde71b3b81f93666adf4"
+    },
+    {
+      "path": "client-licenses.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "client-licenses.stdout",
+      "bytes": 121,
+      "sha256": "683345fc7b61c080ba42e4201eac74affcf939add674656ca04268348dd2e749"
+    },
+    {
+      "path": "client-test.stderr",
+      "bytes": 312,
+      "sha256": "e8dd17c399689adc3c0c8f1fbf21676448293d98120958d49ac195425efd72ae"
+    },
+    {
+      "path": "client-test.stdout",
+      "bytes": 323,
+      "sha256": "dc31d02b8c9b1c261d1025723b05eeca5eead57ba2dd7284881091f78d92899c"
+    },
+    {
+      "path": "clippy.stderr",
+      "bytes": 470,
+      "sha256": "5547e7579dba12b3dbd0a62b630e2441336c87614a245204cf2f2612493a28f6"
+    },
+    {
+      "path": "clippy.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "commands.json",
+      "bytes": 9668,
+      "sha256": "6d6e21b08701592f0a6fc06ea3846054654dd52aade6f895d860638c1984b715"
+    },
+    {
+      "path": "current-validate.stderr",
+      "bytes": 378,
+      "sha256": "cb9bf30ce71e1012b9453abb5a07b8bfc0b5696e78f59809ef3491038987a910"
+    },
+    {
+      "path": "current-validate.stdout",
+      "bytes": 71,
+      "sha256": "bc089b9a0a38665b12735949225fcfa1665b91f263db8498451a8e6615565330"
+    },
+    {
+      "path": "docs.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs.stdout",
+      "bytes": 319,
+      "sha256": "07c75d574c971070b8dd372b133ee634c3354d5c4dadea4b568290f4c0371c7d"
+    },
+    {
+      "path": "fmt.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "fmt.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "legacy-strict-negative.stderr",
+      "bytes": 509,
+      "sha256": "0a2a313dfdfd47557bd2511cd617812d9653b461829e389c7195d0cf8e1b68a0"
+    },
+    {
+      "path": "legacy-strict-negative.stdout",
+      "bytes": 20,
+      "sha256": "3be20a6e8b79fc4d30906663453b77e97293d0f469a419a1102f676814cb3f51"
+    },
+    {
+      "path": "locale-regressions.stderr",
+      "bytes": 494,
+      "sha256": "929f2f74e24840b5116da9fb2d3ee605e2789b1bd25123371fade54c98891cc8"
+    },
+    {
+      "path": "locale-regressions.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "localisation.stderr",
+      "bytes": 4070,
+      "sha256": "d964853388a8576c6b570a8d1621a84114a8386eb42b40ab8b9ad32a523b810d"
+    },
+    {
+      "path": "localisation.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "m0-hash-1.stderr",
+      "bytes": 168,
+      "sha256": "c452b5e0fd3a41126eda5b48805959b91687660b2aedb6472aed4b09034d2c09"
+    },
+    {
+      "path": "m0-hash-1.stdout",
+      "bytes": 18,
+      "sha256": "c31ea8e183c025a47876e2be9c1f48d345476ad92f30fefc9beacd5b3818547c"
+    },
+    {
+      "path": "m0-hash-2.stderr",
+      "bytes": 168,
+      "sha256": "c452b5e0fd3a41126eda5b48805959b91687660b2aedb6472aed4b09034d2c09"
+    },
+    {
+      "path": "m0-hash-2.stdout",
+      "bytes": 18,
+      "sha256": "c31ea8e183c025a47876e2be9c1f48d345476ad92f30fefc9beacd5b3818547c"
+    },
+    {
+      "path": "m1-hash-1.stderr",
+      "bytes": 189,
+      "sha256": "f0d8ce55a11a08da6e57ec5290301da113204983daa431aa6a512b0dbd4ac677"
+    },
+    {
+      "path": "m1-hash-1.stdout",
+      "bytes": 18,
+      "sha256": "a08667089717c567140d29bc6bab619df8b5def275eb9a3c0988e57cbb74a63d"
+    },
+    {
+      "path": "m1-hash-2.stderr",
+      "bytes": 189,
+      "sha256": "d21d88f8f53f79e309af816236c33b3bd286d118aabaaddfcc1ff7c63fd336df"
+    },
+    {
+      "path": "m1-hash-2.stdout",
+      "bytes": 18,
+      "sha256": "a08667089717c567140d29bc6bab619df8b5def275eb9a3c0988e57cbb74a63d"
+    },
+    {
+      "path": "native-build.stderr",
+      "bytes": 128,
+      "sha256": "f110ede30e011d50a61cf176cdeb26310fc3cefafb90d189c7d83400a3e83703"
+    },
+    {
+      "path": "native-build.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-legacy-nations.stderr",
+      "bytes": 391,
+      "sha256": "ab84d5512e41b37a544c2d931a8d0dd09f78ef417c3dfee6c0040b93b0747c37"
+    },
+    {
+      "path": "native-legacy-nations.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server-guards.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server-guards.stdout",
+      "bytes": 29,
+      "sha256": "e59b6c64000cb64355825f057227831b84c801481641ad72bee8ae3d119f05aa"
+    },
+    {
+      "path": "npm-ci.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "npm-ci.stdout",
+      "bytes": 150,
+      "sha256": "6a845a1fbe68a714766c403262c2a4abef0af235303514f58cacf892adc52e0d"
+    },
+    {
+      "path": "policy-tests.stderr",
+      "bytes": 3948,
+      "sha256": "df2441c4dc2c7d22b1a0a503fe045bc2ef381666bcade09dd9ffcb8e88364b77"
+    },
+    {
+      "path": "policy-tests.stdout",
+      "bytes": 38195,
+      "sha256": "48a6fed78ce0eb6311d7ae74573eee910cd1b765d261565a0caf90e420801e87"
+    },
+    {
+      "path": "rust-licenses.stderr",
+      "bytes": 29217,
+      "sha256": "65f06bfd416016faea24eb91a25f72c6e04a8633065b5f53851d0728cb925686"
+    },
+    {
+      "path": "rust-licenses.stdout",
+      "bytes": 37,
+      "sha256": "0351ada0ee996a6205f92b0b3fd8f30ec6b1fbee21f323c857516455d0cca220"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 225,
+      "sha256": "50ff3d5624816a986f1eeb33ba34d7720b47c7ff22656c66e210a60c5e2beca4"
+    },
+    {
+      "path": "typecheck.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "typecheck.stdout",
+      "bytes": 54,
+      "sha256": "bbc48de481b1d33617ae3626cc32ecd7de71e3b093691bd0aa00f450670a88b6"
+    },
+    {
+      "path": "v1-original-capture.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "v1-original-capture.stdout",
+      "bytes": 696,
+      "sha256": "ef8ac24a9eb6e2ca1c7422623f4dc367e04eb738216fa20218725b0bb7ed8f0e"
+    },
+    {
+      "path": "workspace-tests.stderr",
+      "bytes": 3597,
+      "sha256": "36d69bb285858d33e8e4b6721efb66642463cc661e39a1fdf5610539c6d3022f"
+    },
+    {
+      "path": "workspace-tests.stdout",
+      "bytes": 17808,
+      "sha256": "47cd2314c4a9001333d944a636eab0c72e21241d65f544730aa63e1a9179d45d"
+    },
+    {
+      "path": "native-legacy-nations/normal-headless.command.json",
+      "bytes": 399,
+      "sha256": "8cb60782f8574aafb61f2b994f4cc4ea2b224a6161209ac564c6e3fefc37795c"
+    },
+    {
+      "path": "native-legacy-nations/normal-headless.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-legacy-nations/normal-headless.stdout",
+      "bytes": 17,
+      "sha256": "91491b68fed82dcbe00250f6c40ac9aea7aaf4efb18132c2336d10e4e3ee226d"
+    },
+    {
+      "path": "native-legacy-nations/normal-restore-force.receipt.json",
+      "bytes": 822,
+      "sha256": "6f13d0a1d46bbdedae4b1ec8fba115566e90ccda6005ccc32b1f901223dc21fa"
+    },
+    {
+      "path": "native-legacy-nations/normal-restore-force.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-legacy-nations/normal-restore-force.stdout",
+      "bytes": 270,
+      "sha256": "14c57c6f15766cf72ef22add0454896b0e45aa2e29c96904d61e2e1ac1755ce9"
+    },
+    {
+      "path": "native-legacy-nations/normal-restore.receipt.json",
+      "bytes": 800,
+      "sha256": "942e05423a12541338383dd765b4b8ec2e874852496d8f19ce44e3648ff8bfba"
+    },
+    {
+      "path": "native-legacy-nations/normal-restore.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-legacy-nations/normal-restore.stdout",
+      "bytes": 270,
+      "sha256": "b8c78cbf3ab8fbbd429ddadf827cbbdc64fbf0cb1c9c608afddfb81cd5dd774e"
+    },
+    {
+      "path": "native-legacy-nations/normal-save-existing.command.json",
+      "bytes": 507,
+      "sha256": "fbeb440b14006faed78ff6f45ca1f190d6b5d89a62cdf72ab441d99e7dd30c34"
+    },
+    {
+      "path": "native-legacy-nations/normal-save-existing.stderr",
+      "bytes": 71,
+      "sha256": "6aa1ec82a13248c6ce32f0c96acb0126f443256597dd807f3c5e765b05739ae4"
+    },
+    {
+      "path": "native-legacy-nations/normal-save-existing.stdout",
+      "bytes": 71,
+      "sha256": "15bd68d1a3e1001007523e7fcfd88756558e2b0e6a06ee1f10f2e65434af4dcc"
+    },
+    {
+      "path": "native-legacy-nations/normal-save-new.command.json",
+      "bytes": 502,
+      "sha256": "4016525459d7a0a07b178247032be803358b933d02e2b9b819dc17458088108f"
+    },
+    {
+      "path": "native-legacy-nations/normal-save-new.stderr",
+      "bytes": 71,
+      "sha256": "6aa1ec82a13248c6ce32f0c96acb0126f443256597dd807f3c5e765b05739ae4"
+    },
+    {
+      "path": "native-legacy-nations/normal-save-new.stdout",
+      "bytes": 71,
+      "sha256": "15bd68d1a3e1001007523e7fcfd88756558e2b0e6a06ee1f10f2e65434af4dcc"
+    },
+    {
+      "path": "native-legacy-nations/normal-save-producer.command.json",
+      "bytes": 505,
+      "sha256": "5b0c7a3a26526140a297bec2553ac127d9b436a87fe301d3b3735c453aba9f35"
+    },
+    {
+      "path": "native-legacy-nations/normal-save-producer.stderr",
+      "bytes": 71,
+      "sha256": "6aa1ec82a13248c6ce32f0c96acb0126f443256597dd807f3c5e765b05739ae4"
+    },
+    {
+      "path": "native-legacy-nations/normal-save-producer.stdout",
+      "bytes": 71,
+      "sha256": "15bd68d1a3e1001007523e7fcfd88756558e2b0e6a06ee1f10f2e65434af4dcc"
+    },
+    {
+      "path": "native-legacy-nations/normal-startup.receipt.json",
+      "bytes": 673,
+      "sha256": "e4a104b7d83da89d824008d543daf0f6d634607b9a548a47d1c24f68815d3920"
+    },
+    {
+      "path": "native-legacy-nations/normal-startup.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-legacy-nations/normal-startup.stdout",
+      "bytes": 270,
+      "sha256": "7171a9cc6e0f44e7cfd792131586662cf2c903529dc8395b246b6b16d971a8f4"
+    },
+    {
+      "path": "native-legacy-nations/normal-validate.command.json",
+      "bytes": 313,
+      "sha256": "c804e2285df1a7005a6c4f26e88f37c0dca2fc9a5bd6e71492de8547b4f4a9a7"
+    },
+    {
+      "path": "native-legacy-nations/normal-validate.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-legacy-nations/normal-validate.stdout",
+      "bytes": 69,
+      "sha256": "b02eabd3cb20f49f8ea02219a1b7b0d4d27b964bdb2077468b4e972d3a829b4e"
+    },
+    {
+      "path": "native-legacy-nations/normal/existing.ohsave",
+      "bytes": 311,
+      "sha256": "1ab1af6dece3fb4b8ff0d9056613d78606544ac5c6b75b8bf92bb179a4f98bca"
+    },
+    {
+      "path": "native-legacy-nations/normal/new.ohsave",
+      "bytes": 311,
+      "sha256": "1ab1af6dece3fb4b8ff0d9056613d78606544ac5c6b75b8bf92bb179a4f98bca"
+    },
+    {
+      "path": "native-legacy-nations/normal/restore.ohsave",
+      "bytes": 311,
+      "sha256": "1ab1af6dece3fb4b8ff0d9056613d78606544ac5c6b75b8bf92bb179a4f98bca"
+    },
+    {
+      "path": "native-legacy-nations/normal/testland/defines.toml",
+      "bytes": 206,
+      "sha256": "76d46941adae2f693574dc5551b4afcb9f1999cf5e513fd863de1d2d923587df"
+    },
+    {
+      "path": "native-legacy-nations/normal/testland/manifest.toml",
+      "bytes": 186,
+      "sha256": "92656dc53031c8bf5d1e8af8b5a15e4448b3eb2eee498f56010811b78528dbcc"
+    },
+    {
+      "path": "native-legacy-nations/normal/testland/common/buildings.toml",
+      "bytes": 29,
+      "sha256": "23826071aeb8a2bc7a1f032ec2adcc23424e5f60ac579ca9ee18be5bd52816b8"
+    },
+    {
+      "path": "native-legacy-nations/normal/testland/common/resources.toml",
+      "bytes": 26,
+      "sha256": "514eee6a8dbc6835c6833c38dadbe5da7dae3d70d185aaecea73ba8dd62b61fc"
+    },
+    {
+      "path": "native-legacy-nations/normal/testland/common/terrain.toml",
+      "bytes": 173,
+      "sha256": "db903c3403dded0c36b38ae28ab2b6f61a1c66efdc7c16a4c5240dceb475d289"
+    },
+    {
+      "path": "native-legacy-nations/normal/testland/localisation/en/map.ftl",
+      "bytes": 164,
+      "sha256": "ae6442ef5fd0912ae5d7cdbf0541edd417c83dfeb505d6f749b2b6687ddb9b4b"
+    },
+    {
+      "path": "native-legacy-nations/normal/testland/localisation/en/national.ftl",
+      "bytes": 226,
+      "sha256": "e109c2e8097418bef7c251904497fae23b21f0a85abe6ed8a8dc208445c84407"
+    },
+    {
+      "path": "native-legacy-nations/normal/testland/localisation/en/pack.ftl",
+      "bytes": 65,
+      "sha256": "8d4e03d4a95283d7b6083005fb1f2906817c1a8c77780cf229415c4717454a0c"
+    },
+    {
+      "path": "native-legacy-nations/normal/testland/localisation/ko/map.ftl",
+      "bytes": 160,
+      "sha256": "b7ac3fb02aa96a16f8338bf81068aa378d7791e8be7306ddb2f0f42092bf700f"
+    },
+    {
+      "path": "native-legacy-nations/normal/testland/localisation/ko/national.ftl",
+      "bytes": 227,
+      "sha256": "7824bf87a61e5041644e3d62b09ebc4debc6f0769878e36bf1b662198986e312"
+    },
+    {
+      "path": "native-legacy-nations/normal/testland/localisation/ko/pack.ftl",
+      "bytes": 72,
+      "sha256": "7b1d7f95e23d2e8ab4244a124ec6baae7324d9d75b373121c74bd027962d5b42"
+    },
+    {
+      "path": "native-legacy-nations/normal/testland/maps/testland/adjacency_overrides.csv",
+      "bytes": 75,
+      "sha256": "251e1353688f511baf45b1b513a8a79ad3329ae21dfb1e6e29e9ba362572a525"
+    },
+    {
+      "path": "native-legacy-nations/normal/testland/maps/testland/provinces.csv",
+      "bytes": 218,
+      "sha256": "f04d94464fe95d7c25069529a34f782e060ba9cf5185618384a3ac5dd2846c89"
+    },
+    {
+      "path": "native-legacy-nations/normal/testland/maps/testland/provinces.png",
+      "bytes": 97,
+      "sha256": "05305d56dc90dfbfbd73fc1a5f3a480ec6e82551f60a93be7d8bc53ad3d73dab"
+    },
+    {
+      "path": "native-legacy-nations/normal/testland/maps/testland/regions.toml",
+      "bytes": 67,
+      "sha256": "1b9eadcb639cef1b6e7b88451e1e7134a88d8b5cb108e4066ee70cc137f79485"
+    },
+    {
+      "path": "native-legacy-nations/normal/testland/maps/testland/states.toml",
+      "bytes": 540,
+      "sha256": "d63380dfe0240f8fe50feabe8e253278a03020d24ad46e65cd69f5a3e0512f2b"
+    },
+    {
+      "path": "native-legacy-nations/normal/testland/maps/testland/visuals.toml",
+      "bytes": 246,
+      "sha256": "df2b1566fabd3c1a263d543b425a52842584a6ca5bf33827290a1d4fa2f303b1"
+    },
+    {
+      "path": "native-legacy-nations/normal/testland/scenarios/legacy/defines.toml",
+      "bytes": 59,
+      "sha256": "19cfe979a5d69016aff124451b076d38270a1be96b98895244dba14dcf183b73"
+    },
+    {
+      "path": "native-legacy-nations/normal/testland/scenarios/legacy/scenario.toml",
+      "bytes": 24,
+      "sha256": "c5b5a579e6f282ac33e4ab2ea23fe28091748d8e8aef344295454015a9b99e94"
+    },
+    {
+      "path": "native-legacy-nations/normal/testland/scenarios/m1/defines.toml",
+      "bytes": 811,
+      "sha256": "91ac0d4669188dd911622bdbdba5efb43c5d242f195d6f1478f07afc91f45411"
+    },
+    {
+      "path": "native-legacy-nations/normal/testland/scenarios/m1/scenario.toml",
+      "bytes": 205,
+      "sha256": "01258b9b99424f3855394d410ba369b407357239006e04d1d914265d36151dd5"
+    },
+    {
+      "path": "native-legacy-nations/normal/testland/scenarios/m1/nations/NTH.toml",
+      "bytes": 211,
+      "sha256": "04f0a06c29a74b41e7effe94a3e131da359f213ef35da849e70c59fbd3f8c29a"
+    },
+    {
+      "path": "native-legacy-nations/normal/testland/scenarios/m1/nations/STH.toml",
+      "bytes": 209,
+      "sha256": "522a1ab15df094a0c15012e2c8c3b362dba7fb766ff0d2b6eea48b0f1bde0b2b"
+    },
+    {
+      "path": "native-legacy-nations/syntax/testland/defines.toml",
+      "bytes": 206,
+      "sha256": "76d46941adae2f693574dc5551b4afcb9f1999cf5e513fd863de1d2d923587df"
+    },
+    {
+      "path": "native-legacy-nations/syntax/testland/manifest.toml",
+      "bytes": 186,
+      "sha256": "92656dc53031c8bf5d1e8af8b5a15e4448b3eb2eee498f56010811b78528dbcc"
+    },
+    {
+      "path": "native-legacy-nations/syntax/testland/common/buildings.toml",
+      "bytes": 29,
+      "sha256": "23826071aeb8a2bc7a1f032ec2adcc23424e5f60ac579ca9ee18be5bd52816b8"
+    },
+    {
+      "path": "native-legacy-nations/syntax/testland/common/resources.toml",
+      "bytes": 26,
+      "sha256": "514eee6a8dbc6835c6833c38dadbe5da7dae3d70d185aaecea73ba8dd62b61fc"
+    },
+    {
+      "path": "native-legacy-nations/syntax/testland/common/terrain.toml",
+      "bytes": 173,
+      "sha256": "db903c3403dded0c36b38ae28ab2b6f61a1c66efdc7c16a4c5240dceb475d289"
+    },
+    {
+      "path": "native-legacy-nations/syntax/testland/localisation/en/map.ftl",
+      "bytes": 164,
+      "sha256": "ae6442ef5fd0912ae5d7cdbf0541edd417c83dfeb505d6f749b2b6687ddb9b4b"
+    },
+    {
+      "path": "native-legacy-nations/syntax/testland/localisation/en/national.ftl",
+      "bytes": 226,
+      "sha256": "e109c2e8097418bef7c251904497fae23b21f0a85abe6ed8a8dc208445c84407"
+    },
+    {
+      "path": "native-legacy-nations/syntax/testland/localisation/en/pack.ftl",
+      "bytes": 65,
+      "sha256": "8d4e03d4a95283d7b6083005fb1f2906817c1a8c77780cf229415c4717454a0c"
+    },
+    {
+      "path": "native-legacy-nations/syntax/testland/localisation/ko/map.ftl",
+      "bytes": 160,
+      "sha256": "b7ac3fb02aa96a16f8338bf81068aa378d7791e8be7306ddb2f0f42092bf700f"
+    },
+    {
+      "path": "native-legacy-nations/syntax/testland/localisation/ko/national.ftl",
+      "bytes": 227,
+      "sha256": "7824bf87a61e5041644e3d62b09ebc4debc6f0769878e36bf1b662198986e312"
+    },
+    {
+      "path": "native-legacy-nations/syntax/testland/localisation/ko/pack.ftl",
+      "bytes": 72,
+      "sha256": "7b1d7f95e23d2e8ab4244a124ec6baae7324d9d75b373121c74bd027962d5b42"
+    },
+    {
+      "path": "native-legacy-nations/syntax/testland/maps/testland/adjacency_overrides.csv",
+      "bytes": 75,
+      "sha256": "251e1353688f511baf45b1b513a8a79ad3329ae21dfb1e6e29e9ba362572a525"
+    },
+    {
+      "path": "native-legacy-nations/syntax/testland/maps/testland/provinces.csv",
+      "bytes": 218,
+      "sha256": "f04d94464fe95d7c25069529a34f782e060ba9cf5185618384a3ac5dd2846c89"
+    },
+    {
+      "path": "native-legacy-nations/syntax/testland/maps/testland/provinces.png",
+      "bytes": 97,
+      "sha256": "05305d56dc90dfbfbd73fc1a5f3a480ec6e82551f60a93be7d8bc53ad3d73dab"
+    },
+    {
+      "path": "native-legacy-nations/syntax/testland/maps/testland/regions.toml",
+      "bytes": 67,
+      "sha256": "1b9eadcb639cef1b6e7b88451e1e7134a88d8b5cb108e4066ee70cc137f79485"
+    },
+    {
+      "path": "native-legacy-nations/syntax/testland/maps/testland/states.toml",
+      "bytes": 540,
+      "sha256": "d63380dfe0240f8fe50feabe8e253278a03020d24ad46e65cd69f5a3e0512f2b"
+    },
+    {
+      "path": "native-legacy-nations/syntax/testland/maps/testland/visuals.toml",
+      "bytes": 246,
+      "sha256": "df2b1566fabd3c1a263d543b425a52842584a6ca5bf33827290a1d4fa2f303b1"
+    },
+    {
+      "path": "native-legacy-nations/syntax/testland/scenarios/legacy/defines.toml",
+      "bytes": 59,
+      "sha256": "19cfe979a5d69016aff124451b076d38270a1be96b98895244dba14dcf183b73"
+    },
+    {
+      "path": "native-legacy-nations/syntax/testland/scenarios/legacy/scenario.toml",
+      "bytes": 24,
+      "sha256": "c5b5a579e6f282ac33e4ab2ea23fe28091748d8e8aef344295454015a9b99e94"
+    },
+    {
+      "path": "native-legacy-nations/syntax/testland/scenarios/legacy/nations/NTH.toml",
+      "bytes": 17,
+      "sha256": "d94fa3cd5af86e6d9f9b566fec5b76c312e1469a1d65c90ba5385dd1c8a4bdbe"
+    },
+    {
+      "path": "native-legacy-nations/syntax/testland/scenarios/m1/defines.toml",
+      "bytes": 811,
+      "sha256": "91ac0d4669188dd911622bdbdba5efb43c5d242f195d6f1478f07afc91f45411"
+    },
+    {
+      "path": "native-legacy-nations/syntax/testland/scenarios/m1/scenario.toml",
+      "bytes": 205,
+      "sha256": "01258b9b99424f3855394d410ba369b407357239006e04d1d914265d36151dd5"
+    },
+    {
+      "path": "native-legacy-nations/syntax/testland/scenarios/m1/nations/NTH.toml",
+      "bytes": 211,
+      "sha256": "04f0a06c29a74b41e7effe94a3e131da359f213ef35da849e70c59fbd3f8c29a"
+    },
+    {
+      "path": "native-legacy-nations/syntax/testland/scenarios/m1/nations/STH.toml",
+      "bytes": 209,
+      "sha256": "522a1ab15df094a0c15012e2c8c3b362dba7fb766ff0d2b6eea48b0f1bde0b2b"
+    },
+    {
+      "path": "native-server/bad-ftl-restore-force.receipt.json",
+      "bytes": 780,
+      "sha256": "6db7d35e6aadb50e69b69651d576c8a861a809725b10eb78f404096bcbd6f7f7"
+    },
+    {
+      "path": "native-server/bad-ftl-restore-force.stderr",
+      "bytes": 181,
+      "sha256": "9354c2e95212c62033621b2566f3369f499cb0a5c9413161f0f2ac644f63fa6c"
+    },
+    {
+      "path": "native-server/bad-ftl-restore-force.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/bad-ftl-restore.receipt.json",
+      "bytes": 758,
+      "sha256": "8c799cf6fded84c8cf338b4eb6f358240eeb5b677c6f1e8adb26a6dfaff95206"
+    },
+    {
+      "path": "native-server/bad-ftl-restore.stderr",
+      "bytes": 181,
+      "sha256": "9354c2e95212c62033621b2566f3369f499cb0a5c9413161f0f2ac644f63fa6c"
+    },
+    {
+      "path": "native-server/bad-ftl-restore.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/bad-ftl-startup.receipt.json",
+      "bytes": 652,
+      "sha256": "660a78166456a642bbb5f5cd9e0d27e6dddfc111afa8813a1f08abbd76aae900"
+    },
+    {
+      "path": "native-server/bad-ftl-startup.stderr",
+      "bytes": 181,
+      "sha256": "9354c2e95212c62033621b2566f3369f499cb0a5c9413161f0f2ac644f63fa6c"
+    },
+    {
+      "path": "native-server/bad-ftl-startup.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/conflict-make-save.command.json",
+      "bytes": 433,
+      "sha256": "fce7affb80e4ec5dc8ba99fc2299ca54c92690e9d2dfefb90f38eef2404bd9a0"
+    },
+    {
+      "path": "native-server/conflict-make-save.stderr",
+      "bytes": 71,
+      "sha256": "6aa1ec82a13248c6ce32f0c96acb0126f443256597dd807f3c5e765b05739ae4"
+    },
+    {
+      "path": "native-server/conflict-make-save.stdout",
+      "bytes": 71,
+      "sha256": "9d9f591a67b8c73da140e0c76ee412a6040c809fd7a739600d91f61821921388"
+    },
+    {
+      "path": "native-server/conflict-restore-force.receipt.json",
+      "bytes": 796,
+      "sha256": "aeb60d8f8fd831c92bf1da12ac86d6c6a8a952b11b034857ddfb049c24018acb"
+    },
+    {
+      "path": "native-server/conflict-restore-force.stderr",
+      "bytes": 146,
+      "sha256": "98c48e0f759a320e5a75d24af64cd4255c52814fd7cdca0c4f869965b65f6b87"
+    },
+    {
+      "path": "native-server/conflict-restore-force.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/conflict-restore.receipt.json",
+      "bytes": 774,
+      "sha256": "0a1903de523f55007c4329f6bc2fa16c92c452a5f034691048454be19a718074"
+    },
+    {
+      "path": "native-server/conflict-restore.stderr",
+      "bytes": 146,
+      "sha256": "98c48e0f759a320e5a75d24af64cd4255c52814fd7cdca0c4f869965b65f6b87"
+    },
+    {
+      "path": "native-server/conflict-restore.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/conflict-startup.receipt.json",
+      "bytes": 655,
+      "sha256": "cd4a7ba9eaca0be496ecdaf919da8ea8f9f32cc8bb89eff096864fccfd7c2c89"
+    },
+    {
+      "path": "native-server/conflict-startup.stderr",
+      "bytes": 146,
+      "sha256": "98c48e0f759a320e5a75d24af64cd4255c52814fd7cdca0c4f869965b65f6b87"
+    },
+    {
+      "path": "native-server/conflict-startup.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/defines-make-save.command.json",
+      "bytes": 431,
+      "sha256": "c8f52a8b2db2af8b780856cdc0acfd74e738e42480141ae91e0e55116fe29085"
+    },
+    {
+      "path": "native-server/defines-make-save.stderr",
+      "bytes": 71,
+      "sha256": "6aa1ec82a13248c6ce32f0c96acb0126f443256597dd807f3c5e765b05739ae4"
+    },
+    {
+      "path": "native-server/defines-make-save.stdout",
+      "bytes": 71,
+      "sha256": "9d9f591a67b8c73da140e0c76ee412a6040c809fd7a739600d91f61821921388"
+    },
+    {
+      "path": "native-server/defines-restore-force.receipt.json",
+      "bytes": 790,
+      "sha256": "53c70bb47a3c5b1277680c8aef86c1c797f5d085ebdee70fd2da1d5120e3ed45"
+    },
+    {
+      "path": "native-server/defines-restore-force.stderr",
+      "bytes": 160,
+      "sha256": "72eb86913b29eafa8463b23df0f745c73a1ec9a95232527d0bd3c189585fbde0"
+    },
+    {
+      "path": "native-server/defines-restore-force.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/defines-restore.receipt.json",
+      "bytes": 769,
+      "sha256": "b901d687cbbec6cebd40f00cf4eefc9f689cb75872ffa77325de54be35c5e094"
+    },
+    {
+      "path": "native-server/defines-restore.stderr",
+      "bytes": 160,
+      "sha256": "72eb86913b29eafa8463b23df0f745c73a1ec9a95232527d0bd3c189585fbde0"
+    },
+    {
+      "path": "native-server/defines-restore.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/defines-startup.receipt.json",
+      "bytes": 651,
+      "sha256": "55deac80f9453239a43d746591e667c499f6c0a512aa20ace578d7be5c5e8c70"
+    },
+    {
+      "path": "native-server/defines-startup.stderr",
+      "bytes": 160,
+      "sha256": "72eb86913b29eafa8463b23df0f745c73a1ec9a95232527d0bd3c189585fbde0"
+    },
+    {
+      "path": "native-server/defines-startup.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/dependency-make-save.command.json",
+      "bytes": 437,
+      "sha256": "435066e69f2b32eeb26b0d7c374a8ce600097270f9e5c51fd06029f4e0fbd5e9"
+    },
+    {
+      "path": "native-server/dependency-make-save.stderr",
+      "bytes": 71,
+      "sha256": "6aa1ec82a13248c6ce32f0c96acb0126f443256597dd807f3c5e765b05739ae4"
+    },
+    {
+      "path": "native-server/dependency-make-save.stdout",
+      "bytes": 71,
+      "sha256": "9d9f591a67b8c73da140e0c76ee412a6040c809fd7a739600d91f61821921388"
+    },
+    {
+      "path": "native-server/dependency-restore-force.receipt.json",
+      "bytes": 805,
+      "sha256": "8d0900a29375934d4f99b0d1985371714f7ded1671d7e616d028e7ae88de3ad0"
+    },
+    {
+      "path": "native-server/dependency-restore-force.stderr",
+      "bytes": 147,
+      "sha256": "e89383e3a3496dcd91e09fa64815a38a8f9554349a40cd8d8428e4a7846415ef"
+    },
+    {
+      "path": "native-server/dependency-restore-force.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/dependency-restore.receipt.json",
+      "bytes": 784,
+      "sha256": "63ea7d6628cd351a6787a8f46649678d3a5501ab9040507c90ca038a6f707bc7"
+    },
+    {
+      "path": "native-server/dependency-restore.stderr",
+      "bytes": 147,
+      "sha256": "e89383e3a3496dcd91e09fa64815a38a8f9554349a40cd8d8428e4a7846415ef"
+    },
+    {
+      "path": "native-server/dependency-restore.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/dependency-startup.receipt.json",
+      "bytes": 662,
+      "sha256": "748b35c25c2f34b8a2884baec72ad9454f465e083e914e934a13023f1cdc1028"
+    },
+    {
+      "path": "native-server/dependency-startup.stderr",
+      "bytes": 147,
+      "sha256": "e89383e3a3496dcd91e09fa64815a38a8f9554349a40cd8d8428e4a7846415ef"
+    },
+    {
+      "path": "native-server/dependency-startup.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/engine-make-save.command.json",
+      "bytes": 429,
+      "sha256": "1980d6586e3466534174b80317134d0c76eb7ff812ed0b71900319e16918ee76"
+    },
+    {
+      "path": "native-server/engine-make-save.stderr",
+      "bytes": 71,
+      "sha256": "6aa1ec82a13248c6ce32f0c96acb0126f443256597dd807f3c5e765b05739ae4"
+    },
+    {
+      "path": "native-server/engine-make-save.stdout",
+      "bytes": 71,
+      "sha256": "9d9f591a67b8c73da140e0c76ee412a6040c809fd7a739600d91f61821921388"
+    },
+    {
+      "path": "native-server/engine-restore-force.receipt.json",
+      "bytes": 788,
+      "sha256": "656eb3be75cd7208bcbeb6d56c531bbe1b955ad0c186c49c1684f205ad945325"
+    },
+    {
+      "path": "native-server/engine-restore-force.stderr",
+      "bytes": 156,
+      "sha256": "fec89f4e44a49f3a339c31d64e4512b4e08c3f2a867a411787decbb67f86cd69"
+    },
+    {
+      "path": "native-server/engine-restore-force.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/engine-restore.receipt.json",
+      "bytes": 765,
+      "sha256": "66144c5cb5e79d95fd8c2e972586137f88792732965d0a0a86086794361672b3"
+    },
+    {
+      "path": "native-server/engine-restore.stderr",
+      "bytes": 156,
+      "sha256": "fec89f4e44a49f3a339c31d64e4512b4e08c3f2a867a411787decbb67f86cd69"
+    },
+    {
+      "path": "native-server/engine-restore.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/engine-startup.receipt.json",
+      "bytes": 648,
+      "sha256": "e20300e6913469558d9c7b19b6394be6119c47bd51dde2ac36bb87d087bff5b0"
+    },
+    {
+      "path": "native-server/engine-startup.stderr",
+      "bytes": 156,
+      "sha256": "fec89f4e44a49f3a339c31d64e4512b4e08c3f2a867a411787decbb67f86cd69"
+    },
+    {
+      "path": "native-server/engine-startup.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/extra-restore-force.receipt.json",
+      "bytes": 776,
+      "sha256": "29679911a49a391099e8015881a95f11f40ab66abb7c814e54972be926e9fadf"
+    },
+    {
+      "path": "native-server/extra-restore-force.stderr",
+      "bytes": 315,
+      "sha256": "05f3d2bd15f3bf5bb8448ae1d1fb6f57c7c901a1db56154b815f50dc9c9d7e93"
+    },
+    {
+      "path": "native-server/extra-restore-force.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/extra-restore.receipt.json",
+      "bytes": 754,
+      "sha256": "c9596e0b9a5990e525058a21d96181bfaa044674998c7b7e844949b84247a829"
+    },
+    {
+      "path": "native-server/extra-restore.stderr",
+      "bytes": 315,
+      "sha256": "05f3d2bd15f3bf5bb8448ae1d1fb6f57c7c901a1db56154b815f50dc9c9d7e93"
+    },
+    {
+      "path": "native-server/extra-restore.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/extra-startup.receipt.json",
+      "bytes": 647,
+      "sha256": "0ec482048e859a8fa7d8d36e2c93fa87899b6d9dddd1a262de36c062a11375bd"
+    },
+    {
+      "path": "native-server/extra-startup.stderr",
+      "bytes": 315,
+      "sha256": "05f3d2bd15f3bf5bb8448ae1d1fb6f57c7c901a1db56154b815f50dc9c9d7e93"
+    },
+    {
+      "path": "native-server/extra-startup.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/ftl-make-save.command.json",
+      "bytes": 423,
+      "sha256": "2dc0b711081899637efbf8ab4e275ac40b08eb3a7b74725f125cbdd463b5150d"
+    },
+    {
+      "path": "native-server/ftl-make-save.stderr",
+      "bytes": 71,
+      "sha256": "6aa1ec82a13248c6ce32f0c96acb0126f443256597dd807f3c5e765b05739ae4"
+    },
+    {
+      "path": "native-server/ftl-make-save.stdout",
+      "bytes": 71,
+      "sha256": "9d9f591a67b8c73da140e0c76ee412a6040c809fd7a739600d91f61821921388"
+    },
+    {
+      "path": "native-server/ftl-restore-force.receipt.json",
+      "bytes": 780,
+      "sha256": "88cbc3f1804ac1b5dbd89301f8c78c47d5cad589856ab3658fe99382f83bcf95"
+    },
+    {
+      "path": "native-server/ftl-restore-force.stderr",
+      "bytes": 164,
+      "sha256": "c7fa8a82f876b9673ddf819add40ea7c9cfaa484e3c29e008a56673a5b976cdd"
+    },
+    {
+      "path": "native-server/ftl-restore-force.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/ftl-restore.receipt.json",
+      "bytes": 759,
+      "sha256": "cee962c835a0ccb8837065e733df1821504d907ce9b9edb36ba801684623b0b3"
+    },
+    {
+      "path": "native-server/ftl-restore.stderr",
+      "bytes": 164,
+      "sha256": "c7fa8a82f876b9673ddf819add40ea7c9cfaa484e3c29e008a56673a5b976cdd"
+    },
+    {
+      "path": "native-server/ftl-restore.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/ftl-startup.receipt.json",
+      "bytes": 645,
+      "sha256": "941d6eeee4764faef4ff48aeea6f76de9d2255e85f2298259d319eaaada65683"
+    },
+    {
+      "path": "native-server/ftl-startup.stderr",
+      "bytes": 164,
+      "sha256": "c7fa8a82f876b9673ddf819add40ea7c9cfaa484e3c29e008a56673a5b976cdd"
+    },
+    {
+      "path": "native-server/ftl-startup.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/m0-make-save.command.json",
+      "bytes": 316,
+      "sha256": "321c06055a0a1bf3c290a80dea2ac3f2bb6e004deb026098889e5cf7c2ec94bc"
+    },
+    {
+      "path": "native-server/m0-make-save.stderr",
+      "bytes": 71,
+      "sha256": "6aa1ec82a13248c6ce32f0c96acb0126f443256597dd807f3c5e765b05739ae4"
+    },
+    {
+      "path": "native-server/m0-make-save.stdout",
+      "bytes": 77,
+      "sha256": "7fb898ca849daafd2c6e270e95f58e18a975d0f9cf44d6561fa370c4f210758f"
+    },
+    {
+      "path": "native-server/m0-restore-force.receipt.json",
+      "bytes": 785,
+      "sha256": "29118f66e6ffc07cf33665a947af773ce38ae48a7ff5578633d7883a159f7b0d"
+    },
+    {
+      "path": "native-server/m0-restore-force.stderr",
+      "bytes": 440,
+      "sha256": "38d271fa8f97fd3ba6da7676bfa8f1e30d950286a58ae8ff04232fafb5604270"
+    },
+    {
+      "path": "native-server/m0-restore-force.stdout",
+      "bytes": 261,
+      "sha256": "2c122de3bc0968274ff2cac1e2921a68795b6c807db8b5423accd1581d0d2ff4"
+    },
+    {
+      "path": "native-server/m0-restore.receipt.json",
+      "bytes": 763,
+      "sha256": "e4937e89b307e9603c329c5307f91fa8d508fecc4ef2646558c4e2f6b1bed275"
+    },
+    {
+      "path": "native-server/m0-restore.stderr",
+      "bytes": 440,
+      "sha256": "38d271fa8f97fd3ba6da7676bfa8f1e30d950286a58ae8ff04232fafb5604270"
+    },
+    {
+      "path": "native-server/m0-restore.stdout",
+      "bytes": 261,
+      "sha256": "c76798036dc799081ccd0ddbae6e221a5b6cb5c5f97f0dfac0220e48e18c394c"
+    },
+    {
+      "path": "native-server/m0-startup.receipt.json",
+      "bytes": 657,
+      "sha256": "3c2ce6fe8587d7235d1301160379cde63b607a16fe0976361dbe48a239d08191"
+    },
+    {
+      "path": "native-server/m0-startup.stderr",
+      "bytes": 440,
+      "sha256": "3fe0cb474de84151a8dfbaa45d7b165735f265eb26bfa81f7d124a3f885e2c3a"
+    },
+    {
+      "path": "native-server/m0-startup.stdout",
+      "bytes": 261,
+      "sha256": "873c0205653c96fd39b2783bafe974462434345887a17c5b131b2c87218e8a29"
+    },
+    {
+      "path": "native-server/m0.ohsave",
+      "bytes": 126,
+      "sha256": "4aa6f803daf00df898a40383dd9be83afa9699cb77bb12473f5fbbdaf904956a"
+    },
+    {
+      "path": "native-server/missing-network-make-save.command.json",
+      "bytes": 447,
+      "sha256": "2ec253e4d0cd2796fe64ba7c5fe58d260118af55fad9cc0deb3fb3d8d8774b47"
+    },
+    {
+      "path": "native-server/missing-network-make-save.stderr",
+      "bytes": 71,
+      "sha256": "6aa1ec82a13248c6ce32f0c96acb0126f443256597dd807f3c5e765b05739ae4"
+    },
+    {
+      "path": "native-server/missing-network-make-save.stdout",
+      "bytes": 71,
+      "sha256": "9d9f591a67b8c73da140e0c76ee412a6040c809fd7a739600d91f61821921388"
+    },
+    {
+      "path": "native-server/missing-network-restore-force.receipt.json",
+      "bytes": 819,
+      "sha256": "14133b7c2bafcfd0d2e69bf71d4aba3d0895b006a6a9e718a76380b3c733c8c2"
+    },
+    {
+      "path": "native-server/missing-network-restore-force.stderr",
+      "bytes": 188,
+      "sha256": "a18a8903877674ca5f063d9fba93ac825af95d754fd987c60a41f7ed5e682de3"
+    },
+    {
+      "path": "native-server/missing-network-restore-force.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/missing-network-restore.receipt.json",
+      "bytes": 797,
+      "sha256": "8a0154fefc365ca0cbe20e32c8196d88c0a7963a3fbfe3aa71f3c2ef70190b3f"
+    },
+    {
+      "path": "native-server/missing-network-restore.stderr",
+      "bytes": 188,
+      "sha256": "a18a8903877674ca5f063d9fba93ac825af95d754fd987c60a41f7ed5e682de3"
+    },
+    {
+      "path": "native-server/missing-network-restore.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/missing-network-startup.receipt.json",
+      "bytes": 672,
+      "sha256": "6dc9b2338a3206f89ebe97efd3e31d6ed0fc2ef705d6a85af3491f185499b3e8"
+    },
+    {
+      "path": "native-server/missing-network-startup.stderr",
+      "bytes": 188,
+      "sha256": "a18a8903877674ca5f063d9fba93ac825af95d754fd987c60a41f7ed5e682de3"
+    },
+    {
+      "path": "native-server/missing-network-startup.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/missing-restore-force.receipt.json",
+      "bytes": 779,
+      "sha256": "a8080f066fd79a3ecde6379c01349977dd627e298513066f7843312b287c9117"
+    },
+    {
+      "path": "native-server/missing-restore-force.stderr",
+      "bytes": 184,
+      "sha256": "2ddf23a04e4e13cb67e1057f9733ae39d771fc072c9ed34da9c8a7bb1a112740"
+    },
+    {
+      "path": "native-server/missing-restore-force.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/missing-restore.receipt.json",
+      "bytes": 757,
+      "sha256": "88c184a9a951842fbf4b4dfc3b1335b373e189c2c6631bd4a63925377f01a731"
+    },
+    {
+      "path": "native-server/missing-restore.stderr",
+      "bytes": 184,
+      "sha256": "2ddf23a04e4e13cb67e1057f9733ae39d771fc072c9ed34da9c8a7bb1a112740"
+    },
+    {
+      "path": "native-server/missing-restore.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/missing-startup.receipt.json",
+      "bytes": 652,
+      "sha256": "2f39bed7ba49963604d628f183a83581b0f1c5fe7e197d9e284753b59ffcd76e"
+    },
+    {
+      "path": "native-server/missing-startup.stderr",
+      "bytes": 184,
+      "sha256": "2ddf23a04e4e13cb67e1057f9733ae39d771fc072c9ed34da9c8a7bb1a112740"
+    },
+    {
+      "path": "native-server/missing-startup.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/normal-make-save.command.json",
+      "bytes": 429,
+      "sha256": "b6c822e345e814d410860606fd05cf738f4cf216b06e01fee59a13106aad89d8"
+    },
+    {
+      "path": "native-server/normal-make-save.stderr",
+      "bytes": 71,
+      "sha256": "6aa1ec82a13248c6ce32f0c96acb0126f443256597dd807f3c5e765b05739ae4"
+    },
+    {
+      "path": "native-server/normal-make-save.stdout",
+      "bytes": 71,
+      "sha256": "9d9f591a67b8c73da140e0c76ee412a6040c809fd7a739600d91f61821921388"
+    },
+    {
+      "path": "native-server/normal-restore-force.receipt.json",
+      "bytes": 804,
+      "sha256": "eb2b7e5569ded8ef5119bcca1367d05f25ed75d6212c0b002667e57ccaba8831"
+    },
+    {
+      "path": "native-server/normal-restore-force.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/normal-restore-force.stdout",
+      "bytes": 262,
+      "sha256": "ddea67877f1c59de01eb8d9d4c92b1b8ec91a7e88c9d16f7c2980a91b5ed5d78"
+    },
+    {
+      "path": "native-server/normal-restore.receipt.json",
+      "bytes": 782,
+      "sha256": "ee5354ceb02d395c33ae37dbdcff21b4ab59a9d2e96df39416205521ccc65c5c"
+    },
+    {
+      "path": "native-server/normal-restore.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/normal-restore.stdout",
+      "bytes": 262,
+      "sha256": "52a91ffdd25b6a537e506702ea575475cfeac699b85eb44ae6f4c2513462c967"
+    },
+    {
+      "path": "native-server/normal-startup.receipt.json",
+      "bytes": 665,
+      "sha256": "4351c675ed2c34a6e0f063be756e93e35fd12e43dd1a90048df04c5b45e76695"
+    },
+    {
+      "path": "native-server/normal-startup.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/normal-startup.stdout",
+      "bytes": 262,
+      "sha256": "0de6e4d5bc6e42e231e40f83098964c10a9c40adee67307c082297cc73bb9991"
+    },
+    {
+      "path": "native-server/one-byte-restore-force.receipt.json",
+      "bytes": 781,
+      "sha256": "bb208a29e063469ae5d7be895313d101e12a67e5bfc1cba689d68ed2d06a8101"
+    },
+    {
+      "path": "native-server/one-byte-restore-force.stderr",
+      "bytes": 321,
+      "sha256": "96837bae58681a8835a0f8896b188173d8301fb9e1a66e03671f3a8968d63490"
+    },
+    {
+      "path": "native-server/one-byte-restore-force.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/one-byte-restore.receipt.json",
+      "bytes": 760,
+      "sha256": "10dfaa332064fc7ed30020ac9c6b51c47a2b67e6b37d243c5bb2bc042c03faef"
+    },
+    {
+      "path": "native-server/one-byte-restore.stderr",
+      "bytes": 321,
+      "sha256": "96837bae58681a8835a0f8896b188173d8301fb9e1a66e03671f3a8968d63490"
+    },
+    {
+      "path": "native-server/one-byte-restore.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/one-byte-startup.receipt.json",
+      "bytes": 654,
+      "sha256": "47055c9495e1db109e543f49c7e368ad4152f4146f13ef7441489ebe21e56530"
+    },
+    {
+      "path": "native-server/one-byte-startup.stderr",
+      "bytes": 321,
+      "sha256": "96837bae58681a8835a0f8896b188173d8301fb9e1a66e03671f3a8968d63490"
+    },
+    {
+      "path": "native-server/one-byte-startup.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/plain-frozen-restore-force.receipt.json",
+      "bytes": 790,
+      "sha256": "3d0299b32252341daa66f7c8c18bf5d14ea410e90a9cd148728b159861d66f54"
+    },
+    {
+      "path": "native-server/plain-frozen-restore-force.stderr",
+      "bytes": 329,
+      "sha256": "d6730d19a788493f51c980689104e08b763bdd40f7f658be9d935e783ff90761"
+    },
+    {
+      "path": "native-server/plain-frozen-restore-force.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/plain-frozen-restore.receipt.json",
+      "bytes": 768,
+      "sha256": "4175a6db18777f33853180155de821b12147a24111455f4a4a6fe371a0eff325"
+    },
+    {
+      "path": "native-server/plain-frozen-restore.stderr",
+      "bytes": 329,
+      "sha256": "d6730d19a788493f51c980689104e08b763bdd40f7f658be9d935e783ff90761"
+    },
+    {
+      "path": "native-server/plain-frozen-restore.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/plain-frozen-startup.receipt.json",
+      "bytes": 662,
+      "sha256": "18bbfa038b89d52377d3e7afd3dc59fa58cb14d93b8cdf30df90e43e02150b96"
+    },
+    {
+      "path": "native-server/plain-frozen-startup.stderr",
+      "bytes": 329,
+      "sha256": "d6730d19a788493f51c980689104e08b763bdd40f7f658be9d935e783ff90761"
+    },
+    {
+      "path": "native-server/plain-frozen-startup.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/reference-make-save.command.json",
+      "bytes": 435,
+      "sha256": "de5ab43eb576232ad2edcd26a8b6fc5a5472793737cf22eaba5d5f8b504465d6"
+    },
+    {
+      "path": "native-server/reference-make-save.stderr",
+      "bytes": 71,
+      "sha256": "6aa1ec82a13248c6ce32f0c96acb0126f443256597dd807f3c5e765b05739ae4"
+    },
+    {
+      "path": "native-server/reference-make-save.stdout",
+      "bytes": 71,
+      "sha256": "9d9f591a67b8c73da140e0c76ee412a6040c809fd7a739600d91f61821921388"
+    },
+    {
+      "path": "native-server/reference-restore-force.receipt.json",
+      "bytes": 792,
+      "sha256": "a41db67d5f25dfdc422132c399981a32654ce03b8bc42bbf1ae67ed9d7dfd018"
+    },
+    {
+      "path": "native-server/reference-restore-force.stderr",
+      "bytes": 163,
+      "sha256": "723745797ea05a96712f76695847c67b500e8e0a9878c09edb04269bd0d97866"
+    },
+    {
+      "path": "native-server/reference-restore-force.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/reference-restore.receipt.json",
+      "bytes": 770,
+      "sha256": "feeac626d920546ec45009e063dcaab8d4f1f2b83b141aa171bcc9dbd912a663"
+    },
+    {
+      "path": "native-server/reference-restore.stderr",
+      "bytes": 163,
+      "sha256": "723745797ea05a96712f76695847c67b500e8e0a9878c09edb04269bd0d97866"
+    },
+    {
+      "path": "native-server/reference-restore.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/reference-startup.receipt.json",
+      "bytes": 650,
+      "sha256": "c9ff9bc788c4639bf9c98ba33633e469ff307fb172adab0e9e8ac107a7982910"
+    },
+    {
+      "path": "native-server/reference-startup.stderr",
+      "bytes": 163,
+      "sha256": "723745797ea05a96712f76695847c67b500e8e0a9878c09edb04269bd0d97866"
+    },
+    {
+      "path": "native-server/reference-startup.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/results.json",
+      "bytes": 37936,
+      "sha256": "f800bfa421609a2f6b48bd8c18e80d52a58c6d805f898106690a1e674e3f1d29"
+    },
+    {
+      "path": "native-server/schema-make-save.command.json",
+      "bytes": 429,
+      "sha256": "0095eab82c115a331fe23f6b8c4d21ea4b24e856c784ba25887b979d9db2c5b1"
+    },
+    {
+      "path": "native-server/schema-make-save.stderr",
+      "bytes": 71,
+      "sha256": "6aa1ec82a13248c6ce32f0c96acb0126f443256597dd807f3c5e765b05739ae4"
+    },
+    {
+      "path": "native-server/schema-make-save.stdout",
+      "bytes": 71,
+      "sha256": "9d9f591a67b8c73da140e0c76ee412a6040c809fd7a739600d91f61821921388"
+    },
+    {
+      "path": "native-server/schema-restore-force.receipt.json",
+      "bytes": 788,
+      "sha256": "9720ba87ff69e60105185ca625b740fb75905699d017be042bf1559515c25c23"
+    },
+    {
+      "path": "native-server/schema-restore-force.stderr",
+      "bytes": 185,
+      "sha256": "5e1f101746e29ead465641862080becb348c9d482e0ace47bb4a0a04213a79ae"
+    },
+    {
+      "path": "native-server/schema-restore-force.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/schema-restore.receipt.json",
+      "bytes": 767,
+      "sha256": "f43f60268ccfb3e196613ffa1974d3abe5782e1df3b85cf498bd0a26227d51fe"
+    },
+    {
+      "path": "native-server/schema-restore.stderr",
+      "bytes": 185,
+      "sha256": "5e1f101746e29ead465641862080becb348c9d482e0ace47bb4a0a04213a79ae"
+    },
+    {
+      "path": "native-server/schema-restore.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/schema-startup.receipt.json",
+      "bytes": 650,
+      "sha256": "5be40a2a994ca61b4bcc76b35b270b6ca008c8d59b2489fb13cc1d23c9b53ea5"
+    },
+    {
+      "path": "native-server/schema-startup.stderr",
+      "bytes": 185,
+      "sha256": "5e1f101746e29ead465641862080becb348c9d482e0ace47bb4a0a04213a79ae"
+    },
+    {
+      "path": "native-server/schema-startup.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/version-make-save.command.json",
+      "bytes": 431,
+      "sha256": "13c26e2a9a240d895262b5f079f503774d2208d1706c2223ff632ddc87a1429c"
+    },
+    {
+      "path": "native-server/version-make-save.stderr",
+      "bytes": 71,
+      "sha256": "6aa1ec82a13248c6ce32f0c96acb0126f443256597dd807f3c5e765b05739ae4"
+    },
+    {
+      "path": "native-server/version-make-save.stdout",
+      "bytes": 71,
+      "sha256": "9d9f591a67b8c73da140e0c76ee412a6040c809fd7a739600d91f61821921388"
+    },
+    {
+      "path": "native-server/version-restore-force.receipt.json",
+      "bytes": 793,
+      "sha256": "5bee151d425039ba489ebdc59e94556d799fdb7fafaab91324589c3a98dd267a"
+    },
+    {
+      "path": "native-server/version-restore-force.stderr",
+      "bytes": 201,
+      "sha256": "6848b0f93f546d4ce5710cc07c273670a3b42840ca69c43a8cd21de033e50a1b"
+    },
+    {
+      "path": "native-server/version-restore-force.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/version-restore.receipt.json",
+      "bytes": 771,
+      "sha256": "a4c4c506a86a96717a357078a6cb2ccafceef59cabed939720903a9e006fd5ac"
+    },
+    {
+      "path": "native-server/version-restore.stderr",
+      "bytes": 201,
+      "sha256": "6848b0f93f546d4ce5710cc07c273670a3b42840ca69c43a8cd21de033e50a1b"
+    },
+    {
+      "path": "native-server/version-restore.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/version-startup.receipt.json",
+      "bytes": 653,
+      "sha256": "cf6549e6f5e41da0d4b4f498985ef01d88e1dc4d8de329692f4b93d7599de659"
+    },
+    {
+      "path": "native-server/version-startup.stderr",
+      "bytes": 201,
+      "sha256": "6848b0f93f546d4ce5710cc07c273670a3b42840ca69c43a8cd21de033e50a1b"
+    },
+    {
+      "path": "native-server/version-startup.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-server/conflict/start.ohsave",
+      "bytes": 307,
+      "sha256": "bbbf7ad28346be44b16d50e43c4ed295c74bee9d1ddc69619a13bc337d57d823"
+    },
+    {
+      "path": "native-server/conflict/testland/defines.toml",
+      "bytes": 206,
+      "sha256": "76d46941adae2f693574dc5551b4afcb9f1999cf5e513fd863de1d2d923587df"
+    },
+    {
+      "path": "native-server/conflict/testland/manifest.toml",
+      "bytes": 196,
+      "sha256": "0e888c30bdd4a1e357048642f77b9c898b3e625e3621a097b9336957b5d0b377"
+    },
+    {
+      "path": "native-server/conflict/testland/common/buildings.toml",
+      "bytes": 29,
+      "sha256": "23826071aeb8a2bc7a1f032ec2adcc23424e5f60ac579ca9ee18be5bd52816b8"
+    },
+    {
+      "path": "native-server/conflict/testland/common/resources.toml",
+      "bytes": 26,
+      "sha256": "514eee6a8dbc6835c6833c38dadbe5da7dae3d70d185aaecea73ba8dd62b61fc"
+    },
+    {
+      "path": "native-server/conflict/testland/common/terrain.toml",
+      "bytes": 173,
+      "sha256": "db903c3403dded0c36b38ae28ab2b6f61a1c66efdc7c16a4c5240dceb475d289"
+    },
+    {
+      "path": "native-server/conflict/testland/localisation/en/map.ftl",
+      "bytes": 164,
+      "sha256": "ae6442ef5fd0912ae5d7cdbf0541edd417c83dfeb505d6f749b2b6687ddb9b4b"
+    },
+    {
+      "path": "native-server/conflict/testland/localisation/en/national.ftl",
+      "bytes": 226,
+      "sha256": "e109c2e8097418bef7c251904497fae23b21f0a85abe6ed8a8dc208445c84407"
+    },
+    {
+      "path": "native-server/conflict/testland/localisation/en/pack.ftl",
+      "bytes": 65,
+      "sha256": "8d4e03d4a95283d7b6083005fb1f2906817c1a8c77780cf229415c4717454a0c"
+    },
+    {
+      "path": "native-server/conflict/testland/localisation/ko/map.ftl",
+      "bytes": 160,
+      "sha256": "b7ac3fb02aa96a16f8338bf81068aa378d7791e8be7306ddb2f0f42092bf700f"
+    },
+    {
+      "path": "native-server/conflict/testland/localisation/ko/national.ftl",
+      "bytes": 227,
+      "sha256": "7824bf87a61e5041644e3d62b09ebc4debc6f0769878e36bf1b662198986e312"
+    },
+    {
+      "path": "native-server/conflict/testland/localisation/ko/pack.ftl",
+      "bytes": 72,
+      "sha256": "7b1d7f95e23d2e8ab4244a124ec6baae7324d9d75b373121c74bd027962d5b42"
+    },
+    {
+      "path": "native-server/conflict/testland/maps/testland/adjacency_overrides.csv",
+      "bytes": 75,
+      "sha256": "251e1353688f511baf45b1b513a8a79ad3329ae21dfb1e6e29e9ba362572a525"
+    },
+    {
+      "path": "native-server/conflict/testland/maps/testland/provinces.csv",
+      "bytes": 218,
+      "sha256": "f04d94464fe95d7c25069529a34f782e060ba9cf5185618384a3ac5dd2846c89"
+    },
+    {
+      "path": "native-server/conflict/testland/maps/testland/provinces.png",
+      "bytes": 97,
+      "sha256": "05305d56dc90dfbfbd73fc1a5f3a480ec6e82551f60a93be7d8bc53ad3d73dab"
+    },
+    {
+      "path": "native-server/conflict/testland/maps/testland/regions.toml",
+      "bytes": 67,
+      "sha256": "1b9eadcb639cef1b6e7b88451e1e7134a88d8b5cb108e4066ee70cc137f79485"
+    },
+    {
+      "path": "native-server/conflict/testland/maps/testland/states.toml",
+      "bytes": 540,
+      "sha256": "d63380dfe0240f8fe50feabe8e253278a03020d24ad46e65cd69f5a3e0512f2b"
+    },
+    {
+      "path": "native-server/conflict/testland/maps/testland/visuals.toml",
+      "bytes": 246,
+      "sha256": "df2b1566fabd3c1a263d543b425a52842584a6ca5bf33827290a1d4fa2f303b1"
+    },
+    {
+      "path": "native-server/conflict/testland/scenarios/m1/defines.toml",
+      "bytes": 811,
+      "sha256": "91ac0d4669188dd911622bdbdba5efb43c5d242f195d6f1478f07afc91f45411"
+    },
+    {
+      "path": "native-server/conflict/testland/scenarios/m1/scenario.toml",
+      "bytes": 205,
+      "sha256": "01258b9b99424f3855394d410ba369b407357239006e04d1d914265d36151dd5"
+    },
+    {
+      "path": "native-server/conflict/testland/scenarios/m1/nations/NTH.toml",
+      "bytes": 211,
+      "sha256": "04f0a06c29a74b41e7effe94a3e131da359f213ef35da849e70c59fbd3f8c29a"
+    },
+    {
+      "path": "native-server/conflict/testland/scenarios/m1/nations/STH.toml",
+      "bytes": 209,
+      "sha256": "522a1ab15df094a0c15012e2c8c3b362dba7fb766ff0d2b6eea48b0f1bde0b2b"
+    },
+    {
+      "path": "native-server/defines/start.ohsave",
+      "bytes": 307,
+      "sha256": "0f9d2baf65e1a77cb0707b05656ed8ddaa844c63d26074d2b9d3406e73855fda"
+    },
+    {
+      "path": "native-server/defines/testland/defines.toml",
+      "bytes": 206,
+      "sha256": "76d46941adae2f693574dc5551b4afcb9f1999cf5e513fd863de1d2d923587df"
+    },
+    {
+      "path": "native-server/defines/testland/manifest.toml",
+      "bytes": 186,
+      "sha256": "92656dc53031c8bf5d1e8af8b5a15e4448b3eb2eee498f56010811b78528dbcc"
+    },
+    {
+      "path": "native-server/defines/testland/common/buildings.toml",
+      "bytes": 29,
+      "sha256": "23826071aeb8a2bc7a1f032ec2adcc23424e5f60ac579ca9ee18be5bd52816b8"
+    },
+    {
+      "path": "native-server/defines/testland/common/resources.toml",
+      "bytes": 26,
+      "sha256": "514eee6a8dbc6835c6833c38dadbe5da7dae3d70d185aaecea73ba8dd62b61fc"
+    },
+    {
+      "path": "native-server/defines/testland/common/terrain.toml",
+      "bytes": 173,
+      "sha256": "db903c3403dded0c36b38ae28ab2b6f61a1c66efdc7c16a4c5240dceb475d289"
+    },
+    {
+      "path": "native-server/defines/testland/localisation/en/map.ftl",
+      "bytes": 164,
+      "sha256": "ae6442ef5fd0912ae5d7cdbf0541edd417c83dfeb505d6f749b2b6687ddb9b4b"
+    },
+    {
+      "path": "native-server/defines/testland/localisation/en/national.ftl",
+      "bytes": 226,
+      "sha256": "e109c2e8097418bef7c251904497fae23b21f0a85abe6ed8a8dc208445c84407"
+    },
+    {
+      "path": "native-server/defines/testland/localisation/en/pack.ftl",
+      "bytes": 65,
+      "sha256": "8d4e03d4a95283d7b6083005fb1f2906817c1a8c77780cf229415c4717454a0c"
+    },
+    {
+      "path": "native-server/defines/testland/localisation/ko/map.ftl",
+      "bytes": 160,
+      "sha256": "b7ac3fb02aa96a16f8338bf81068aa378d7791e8be7306ddb2f0f42092bf700f"
+    },
+    {
+      "path": "native-server/defines/testland/localisation/ko/national.ftl",
+      "bytes": 227,
+      "sha256": "7824bf87a61e5041644e3d62b09ebc4debc6f0769878e36bf1b662198986e312"
+    },
+    {
+      "path": "native-server/defines/testland/localisation/ko/pack.ftl",
+      "bytes": 72,
+      "sha256": "7b1d7f95e23d2e8ab4244a124ec6baae7324d9d75b373121c74bd027962d5b42"
+    },
+    {
+      "path": "native-server/defines/testland/maps/testland/adjacency_overrides.csv",
+      "bytes": 75,
+      "sha256": "251e1353688f511baf45b1b513a8a79ad3329ae21dfb1e6e29e9ba362572a525"
+    },
+    {
+      "path": "native-server/defines/testland/maps/testland/provinces.csv",
+      "bytes": 218,
+      "sha256": "f04d94464fe95d7c25069529a34f782e060ba9cf5185618384a3ac5dd2846c89"
+    },
+    {
+      "path": "native-server/defines/testland/maps/testland/provinces.png",
+      "bytes": 97,
+      "sha256": "05305d56dc90dfbfbd73fc1a5f3a480ec6e82551f60a93be7d8bc53ad3d73dab"
+    },
+    {
+      "path": "native-server/defines/testland/maps/testland/regions.toml",
+      "bytes": 67,
+      "sha256": "1b9eadcb639cef1b6e7b88451e1e7134a88d8b5cb108e4066ee70cc137f79485"
+    },
+    {
+      "path": "native-server/defines/testland/maps/testland/states.toml",
+      "bytes": 540,
+      "sha256": "d63380dfe0240f8fe50feabe8e253278a03020d24ad46e65cd69f5a3e0512f2b"
+    },
+    {
+      "path": "native-server/defines/testland/maps/testland/visuals.toml",
+      "bytes": 246,
+      "sha256": "df2b1566fabd3c1a263d543b425a52842584a6ca5bf33827290a1d4fa2f303b1"
+    },
+    {
+      "path": "native-server/defines/testland/scenarios/m1/defines.toml",
+      "bytes": 17,
+      "sha256": "d94fa3cd5af86e6d9f9b566fec5b76c312e1469a1d65c90ba5385dd1c8a4bdbe"
+    },
+    {
+      "path": "native-server/defines/testland/scenarios/m1/scenario.toml",
+      "bytes": 205,
+      "sha256": "01258b9b99424f3855394d410ba369b407357239006e04d1d914265d36151dd5"
+    },
+    {
+      "path": "native-server/defines/testland/scenarios/m1/nations/NTH.toml",
+      "bytes": 211,
+      "sha256": "04f0a06c29a74b41e7effe94a3e131da359f213ef35da849e70c59fbd3f8c29a"
+    },
+    {
+      "path": "native-server/defines/testland/scenarios/m1/nations/STH.toml",
+      "bytes": 209,
+      "sha256": "522a1ab15df094a0c15012e2c8c3b362dba7fb766ff0d2b6eea48b0f1bde0b2b"
+    },
+    {
+      "path": "native-server/dependency/start.ohsave",
+      "bytes": 307,
+      "sha256": "f18cee9b5be75d6080e150de61b0d866e2a6c3a47774f81b90d233824e10f9f6"
+    },
+    {
+      "path": "native-server/dependency/testland/defines.toml",
+      "bytes": 206,
+      "sha256": "76d46941adae2f693574dc5551b4afcb9f1999cf5e513fd863de1d2d923587df"
+    },
+    {
+      "path": "native-server/dependency/testland/manifest.toml",
+      "bytes": 219,
+      "sha256": "d16ba1e436c61c26c73a758d847b1011437371aad2c534786bc95f1019f149e1"
+    },
+    {
+      "path": "native-server/dependency/testland/common/buildings.toml",
+      "bytes": 29,
+      "sha256": "23826071aeb8a2bc7a1f032ec2adcc23424e5f60ac579ca9ee18be5bd52816b8"
+    },
+    {
+      "path": "native-server/dependency/testland/common/resources.toml",
+      "bytes": 26,
+      "sha256": "514eee6a8dbc6835c6833c38dadbe5da7dae3d70d185aaecea73ba8dd62b61fc"
+    },
+    {
+      "path": "native-server/dependency/testland/common/terrain.toml",
+      "bytes": 173,
+      "sha256": "db903c3403dded0c36b38ae28ab2b6f61a1c66efdc7c16a4c5240dceb475d289"
+    },
+    {
+      "path": "native-server/dependency/testland/localisation/en/map.ftl",
+      "bytes": 164,
+      "sha256": "ae6442ef5fd0912ae5d7cdbf0541edd417c83dfeb505d6f749b2b6687ddb9b4b"
+    },
+    {
+      "path": "native-server/dependency/testland/localisation/en/national.ftl",
+      "bytes": 226,
+      "sha256": "e109c2e8097418bef7c251904497fae23b21f0a85abe6ed8a8dc208445c84407"
+    },
+    {
+      "path": "native-server/dependency/testland/localisation/en/pack.ftl",
+      "bytes": 65,
+      "sha256": "8d4e03d4a95283d7b6083005fb1f2906817c1a8c77780cf229415c4717454a0c"
+    },
+    {
+      "path": "native-server/dependency/testland/localisation/ko/map.ftl",
+      "bytes": 160,
+      "sha256": "b7ac3fb02aa96a16f8338bf81068aa378d7791e8be7306ddb2f0f42092bf700f"
+    },
+    {
+      "path": "native-server/dependency/testland/localisation/ko/national.ftl",
+      "bytes": 227,
+      "sha256": "7824bf87a61e5041644e3d62b09ebc4debc6f0769878e36bf1b662198986e312"
+    },
+    {
+      "path": "native-server/dependency/testland/localisation/ko/pack.ftl",
+      "bytes": 72,
+      "sha256": "7b1d7f95e23d2e8ab4244a124ec6baae7324d9d75b373121c74bd027962d5b42"
+    },
+    {
+      "path": "native-server/dependency/testland/maps/testland/adjacency_overrides.csv",
+      "bytes": 75,
+      "sha256": "251e1353688f511baf45b1b513a8a79ad3329ae21dfb1e6e29e9ba362572a525"
+    },
+    {
+      "path": "native-server/dependency/testland/maps/testland/provinces.csv",
+      "bytes": 218,
+      "sha256": "f04d94464fe95d7c25069529a34f782e060ba9cf5185618384a3ac5dd2846c89"
+    },
+    {
+      "path": "native-server/dependency/testland/maps/testland/provinces.png",
+      "bytes": 97,
+      "sha256": "05305d56dc90dfbfbd73fc1a5f3a480ec6e82551f60a93be7d8bc53ad3d73dab"
+    },
+    {
+      "path": "native-server/dependency/testland/maps/testland/regions.toml",
+      "bytes": 67,
+      "sha256": "1b9eadcb639cef1b6e7b88451e1e7134a88d8b5cb108e4066ee70cc137f79485"
+    },
+    {
+      "path": "native-server/dependency/testland/maps/testland/states.toml",
+      "bytes": 540,
+      "sha256": "d63380dfe0240f8fe50feabe8e253278a03020d24ad46e65cd69f5a3e0512f2b"
+    },
+    {
+      "path": "native-server/dependency/testland/maps/testland/visuals.toml",
+      "bytes": 246,
+      "sha256": "df2b1566fabd3c1a263d543b425a52842584a6ca5bf33827290a1d4fa2f303b1"
+    },
+    {
+      "path": "native-server/dependency/testland/scenarios/m1/defines.toml",
+      "bytes": 811,
+      "sha256": "91ac0d4669188dd911622bdbdba5efb43c5d242f195d6f1478f07afc91f45411"
+    },
+    {
+      "path": "native-server/dependency/testland/scenarios/m1/scenario.toml",
+      "bytes": 205,
+      "sha256": "01258b9b99424f3855394d410ba369b407357239006e04d1d914265d36151dd5"
+    },
+    {
+      "path": "native-server/dependency/testland/scenarios/m1/nations/NTH.toml",
+      "bytes": 211,
+      "sha256": "04f0a06c29a74b41e7effe94a3e131da359f213ef35da849e70c59fbd3f8c29a"
+    },
+    {
+      "path": "native-server/dependency/testland/scenarios/m1/nations/STH.toml",
+      "bytes": 209,
+      "sha256": "522a1ab15df094a0c15012e2c8c3b362dba7fb766ff0d2b6eea48b0f1bde0b2b"
+    },
+    {
+      "path": "native-server/engine/start.ohsave",
+      "bytes": 307,
+      "sha256": "7e6113ccb97cb4ce756e18f1684d6cb2d38693b76317e76dc42a8cea8a2260bc"
+    },
+    {
+      "path": "native-server/engine/testland/defines.toml",
+      "bytes": 206,
+      "sha256": "76d46941adae2f693574dc5551b4afcb9f1999cf5e513fd863de1d2d923587df"
+    },
+    {
+      "path": "native-server/engine/testland/manifest.toml",
+      "bytes": 180,
+      "sha256": "9d83f17c67f37b3f1ab69d07d6e457e06933f517cfafca0eb332e2c3945b4201"
+    },
+    {
+      "path": "native-server/engine/testland/common/buildings.toml",
+      "bytes": 29,
+      "sha256": "23826071aeb8a2bc7a1f032ec2adcc23424e5f60ac579ca9ee18be5bd52816b8"
+    },
+    {
+      "path": "native-server/engine/testland/common/resources.toml",
+      "bytes": 26,
+      "sha256": "514eee6a8dbc6835c6833c38dadbe5da7dae3d70d185aaecea73ba8dd62b61fc"
+    },
+    {
+      "path": "native-server/engine/testland/common/terrain.toml",
+      "bytes": 173,
+      "sha256": "db903c3403dded0c36b38ae28ab2b6f61a1c66efdc7c16a4c5240dceb475d289"
+    },
+    {
+      "path": "native-server/engine/testland/localisation/en/map.ftl",
+      "bytes": 164,
+      "sha256": "ae6442ef5fd0912ae5d7cdbf0541edd417c83dfeb505d6f749b2b6687ddb9b4b"
+    },
+    {
+      "path": "native-server/engine/testland/localisation/en/national.ftl",
+      "bytes": 226,
+      "sha256": "e109c2e8097418bef7c251904497fae23b21f0a85abe6ed8a8dc208445c84407"
+    },
+    {
+      "path": "native-server/engine/testland/localisation/en/pack.ftl",
+      "bytes": 65,
+      "sha256": "8d4e03d4a95283d7b6083005fb1f2906817c1a8c77780cf229415c4717454a0c"
+    },
+    {
+      "path": "native-server/engine/testland/localisation/ko/map.ftl",
+      "bytes": 160,
+      "sha256": "b7ac3fb02aa96a16f8338bf81068aa378d7791e8be7306ddb2f0f42092bf700f"
+    },
+    {
+      "path": "native-server/engine/testland/localisation/ko/national.ftl",
+      "bytes": 227,
+      "sha256": "7824bf87a61e5041644e3d62b09ebc4debc6f0769878e36bf1b662198986e312"
+    },
+    {
+      "path": "native-server/engine/testland/localisation/ko/pack.ftl",
+      "bytes": 72,
+      "sha256": "7b1d7f95e23d2e8ab4244a124ec6baae7324d9d75b373121c74bd027962d5b42"
+    },
+    {
+      "path": "native-server/engine/testland/maps/testland/adjacency_overrides.csv",
+      "bytes": 75,
+      "sha256": "251e1353688f511baf45b1b513a8a79ad3329ae21dfb1e6e29e9ba362572a525"
+    },
+    {
+      "path": "native-server/engine/testland/maps/testland/provinces.csv",
+      "bytes": 218,
+      "sha256": "f04d94464fe95d7c25069529a34f782e060ba9cf5185618384a3ac5dd2846c89"
+    },
+    {
+      "path": "native-server/engine/testland/maps/testland/provinces.png",
+      "bytes": 97,
+      "sha256": "05305d56dc90dfbfbd73fc1a5f3a480ec6e82551f60a93be7d8bc53ad3d73dab"
+    },
+    {
+      "path": "native-server/engine/testland/maps/testland/regions.toml",
+      "bytes": 67,
+      "sha256": "1b9eadcb639cef1b6e7b88451e1e7134a88d8b5cb108e4066ee70cc137f79485"
+    },
+    {
+      "path": "native-server/engine/testland/maps/testland/states.toml",
+      "bytes": 540,
+      "sha256": "d63380dfe0240f8fe50feabe8e253278a03020d24ad46e65cd69f5a3e0512f2b"
+    },
+    {
+      "path": "native-server/engine/testland/maps/testland/visuals.toml",
+      "bytes": 246,
+      "sha256": "df2b1566fabd3c1a263d543b425a52842584a6ca5bf33827290a1d4fa2f303b1"
+    },
+    {
+      "path": "native-server/engine/testland/scenarios/m1/defines.toml",
+      "bytes": 811,
+      "sha256": "91ac0d4669188dd911622bdbdba5efb43c5d242f195d6f1478f07afc91f45411"
+    },
+    {
+      "path": "native-server/engine/testland/scenarios/m1/scenario.toml",
+      "bytes": 205,
+      "sha256": "01258b9b99424f3855394d410ba369b407357239006e04d1d914265d36151dd5"
+    },
+    {
+      "path": "native-server/engine/testland/scenarios/m1/nations/NTH.toml",
+      "bytes": 211,
+      "sha256": "04f0a06c29a74b41e7effe94a3e131da359f213ef35da849e70c59fbd3f8c29a"
+    },
+    {
+      "path": "native-server/engine/testland/scenarios/m1/nations/STH.toml",
+      "bytes": 209,
+      "sha256": "522a1ab15df094a0c15012e2c8c3b362dba7fb766ff0d2b6eea48b0f1bde0b2b"
+    },
+    {
+      "path": "native-server/ftl/start.ohsave",
+      "bytes": 307,
+      "sha256": "10495016643cc7cf9a829c3446e2d8b39e11eea1d82f543efc611f5fc5a5902a"
+    },
+    {
+      "path": "native-server/ftl/testland/defines.toml",
+      "bytes": 206,
+      "sha256": "76d46941adae2f693574dc5551b4afcb9f1999cf5e513fd863de1d2d923587df"
+    },
+    {
+      "path": "native-server/ftl/testland/manifest.toml",
+      "bytes": 186,
+      "sha256": "92656dc53031c8bf5d1e8af8b5a15e4448b3eb2eee498f56010811b78528dbcc"
+    },
+    {
+      "path": "native-server/ftl/testland/common/buildings.toml",
+      "bytes": 29,
+      "sha256": "23826071aeb8a2bc7a1f032ec2adcc23424e5f60ac579ca9ee18be5bd52816b8"
+    },
+    {
+      "path": "native-server/ftl/testland/common/resources.toml",
+      "bytes": 26,
+      "sha256": "514eee6a8dbc6835c6833c38dadbe5da7dae3d70d185aaecea73ba8dd62b61fc"
+    },
+    {
+      "path": "native-server/ftl/testland/common/terrain.toml",
+      "bytes": 173,
+      "sha256": "db903c3403dded0c36b38ae28ab2b6f61a1c66efdc7c16a4c5240dceb475d289"
+    },
+    {
+      "path": "native-server/ftl/testland/localisation/en/map.ftl",
+      "bytes": 164,
+      "sha256": "ae6442ef5fd0912ae5d7cdbf0541edd417c83dfeb505d6f749b2b6687ddb9b4b"
+    },
+    {
+      "path": "native-server/ftl/testland/localisation/en/national.ftl",
+      "bytes": 226,
+      "sha256": "e109c2e8097418bef7c251904497fae23b21f0a85abe6ed8a8dc208445c84407"
+    },
+    {
+      "path": "native-server/ftl/testland/localisation/en/pack.ftl",
+      "bytes": 11,
+      "sha256": "352606f50e025d7679b6fb7cf8441b93a4d4bf3eb56396cf21dfcaa8be93c965"
+    },
+    {
+      "path": "native-server/ftl/testland/localisation/ko/map.ftl",
+      "bytes": 160,
+      "sha256": "b7ac3fb02aa96a16f8338bf81068aa378d7791e8be7306ddb2f0f42092bf700f"
+    },
+    {
+      "path": "native-server/ftl/testland/localisation/ko/national.ftl",
+      "bytes": 227,
+      "sha256": "7824bf87a61e5041644e3d62b09ebc4debc6f0769878e36bf1b662198986e312"
+    },
+    {
+      "path": "native-server/ftl/testland/localisation/ko/pack.ftl",
+      "bytes": 72,
+      "sha256": "7b1d7f95e23d2e8ab4244a124ec6baae7324d9d75b373121c74bd027962d5b42"
+    },
+    {
+      "path": "native-server/ftl/testland/maps/testland/adjacency_overrides.csv",
+      "bytes": 75,
+      "sha256": "251e1353688f511baf45b1b513a8a79ad3329ae21dfb1e6e29e9ba362572a525"
+    },
+    {
+      "path": "native-server/ftl/testland/maps/testland/provinces.csv",
+      "bytes": 218,
+      "sha256": "f04d94464fe95d7c25069529a34f782e060ba9cf5185618384a3ac5dd2846c89"
+    },
+    {
+      "path": "native-server/ftl/testland/maps/testland/provinces.png",
+      "bytes": 97,
+      "sha256": "05305d56dc90dfbfbd73fc1a5f3a480ec6e82551f60a93be7d8bc53ad3d73dab"
+    },
+    {
+      "path": "native-server/ftl/testland/maps/testland/regions.toml",
+      "bytes": 67,
+      "sha256": "1b9eadcb639cef1b6e7b88451e1e7134a88d8b5cb108e4066ee70cc137f79485"
+    },
+    {
+      "path": "native-server/ftl/testland/maps/testland/states.toml",
+      "bytes": 540,
+      "sha256": "d63380dfe0240f8fe50feabe8e253278a03020d24ad46e65cd69f5a3e0512f2b"
+    },
+    {
+      "path": "native-server/ftl/testland/maps/testland/visuals.toml",
+      "bytes": 246,
+      "sha256": "df2b1566fabd3c1a263d543b425a52842584a6ca5bf33827290a1d4fa2f303b1"
+    },
+    {
+      "path": "native-server/ftl/testland/scenarios/m1/defines.toml",
+      "bytes": 811,
+      "sha256": "91ac0d4669188dd911622bdbdba5efb43c5d242f195d6f1478f07afc91f45411"
+    },
+    {
+      "path": "native-server/ftl/testland/scenarios/m1/scenario.toml",
+      "bytes": 205,
+      "sha256": "01258b9b99424f3855394d410ba369b407357239006e04d1d914265d36151dd5"
+    },
+    {
+      "path": "native-server/ftl/testland/scenarios/m1/nations/NTH.toml",
+      "bytes": 211,
+      "sha256": "04f0a06c29a74b41e7effe94a3e131da359f213ef35da849e70c59fbd3f8c29a"
+    },
+    {
+      "path": "native-server/ftl/testland/scenarios/m1/nations/STH.toml",
+      "bytes": 209,
+      "sha256": "522a1ab15df094a0c15012e2c8c3b362dba7fb766ff0d2b6eea48b0f1bde0b2b"
+    },
+    {
+      "path": "native-server/m0/testland/defines.toml",
+      "bytes": 383,
+      "sha256": "ce61b20ea14151f6e69da48ef0fc3d6493c80e6d85245aee406d10f0b8c09341"
+    },
+    {
+      "path": "native-server/m0/testland/manifest.toml",
+      "bytes": 189,
+      "sha256": "4919babdf6d5d44bf48126f783ca020881c2b0d427fb995c8974d7e3041286c3"
+    },
+    {
+      "path": "native-server/m0/testland/scenarios/testland/scenario.toml",
+      "bytes": 180,
+      "sha256": "01d3cb6192a40792a512beeeb66b45b6ee602c8f54f77e8870d7b41b9b40a2ef"
+    },
+    {
+      "path": "native-server/m0-invalid-bad-ftl/testland/defines.toml",
+      "bytes": 383,
+      "sha256": "ce61b20ea14151f6e69da48ef0fc3d6493c80e6d85245aee406d10f0b8c09341"
+    },
+    {
+      "path": "native-server/m0-invalid-bad-ftl/testland/manifest.toml",
+      "bytes": 189,
+      "sha256": "4919babdf6d5d44bf48126f783ca020881c2b0d427fb995c8974d7e3041286c3"
+    },
+    {
+      "path": "native-server/m0-invalid-bad-ftl/testland/localisation/en/broken.ftl",
+      "bytes": 12,
+      "sha256": "541705a5a477bd368cf0bbd4db799f08197969f37b31c68f46635a6dacd06ee2"
+    },
+    {
+      "path": "native-server/m0-invalid-bad-ftl/testland/scenarios/testland/scenario.toml",
+      "bytes": 180,
+      "sha256": "01d3cb6192a40792a512beeeb66b45b6ee602c8f54f77e8870d7b41b9b40a2ef"
+    },
+    {
+      "path": "native-server/m0-invalid-extra/testland/defines.toml",
+      "bytes": 383,
+      "sha256": "ce61b20ea14151f6e69da48ef0fc3d6493c80e6d85245aee406d10f0b8c09341"
+    },
+    {
+      "path": "native-server/m0-invalid-extra/testland/extra.txt",
+      "bytes": 5,
+      "sha256": "c8dee78f8c7b466c881847accc196998bad00e2b96c5ef913dfbe454d3807c96"
+    },
+    {
+      "path": "native-server/m0-invalid-extra/testland/manifest.toml",
+      "bytes": 189,
+      "sha256": "4919babdf6d5d44bf48126f783ca020881c2b0d427fb995c8974d7e3041286c3"
+    },
+    {
+      "path": "native-server/m0-invalid-extra/testland/scenarios/testland/scenario.toml",
+      "bytes": 180,
+      "sha256": "01d3cb6192a40792a512beeeb66b45b6ee602c8f54f77e8870d7b41b9b40a2ef"
+    },
+    {
+      "path": "native-server/m0-invalid-missing/testland/manifest.toml",
+      "bytes": 189,
+      "sha256": "4919babdf6d5d44bf48126f783ca020881c2b0d427fb995c8974d7e3041286c3"
+    },
+    {
+      "path": "native-server/m0-invalid-missing/testland/scenarios/testland/scenario.toml",
+      "bytes": 180,
+      "sha256": "01d3cb6192a40792a512beeeb66b45b6ee602c8f54f77e8870d7b41b9b40a2ef"
+    },
+    {
+      "path": "native-server/m0-invalid-one-byte/testland/defines.toml",
+      "bytes": 383,
+      "sha256": "8cefde181a291040425c222438e6c8960fbe899cd5f75075dc4801d9d05fc1e2"
+    },
+    {
+      "path": "native-server/m0-invalid-one-byte/testland/manifest.toml",
+      "bytes": 189,
+      "sha256": "4919babdf6d5d44bf48126f783ca020881c2b0d427fb995c8974d7e3041286c3"
+    },
+    {
+      "path": "native-server/m0-invalid-one-byte/testland/scenarios/testland/scenario.toml",
+      "bytes": 180,
+      "sha256": "01d3cb6192a40792a512beeeb66b45b6ee602c8f54f77e8870d7b41b9b40a2ef"
+    },
+    {
+      "path": "native-server/m0-invalid-plain-frozen/testland/defines.toml",
+      "bytes": 206,
+      "sha256": "76d46941adae2f693574dc5551b4afcb9f1999cf5e513fd863de1d2d923587df"
+    },
+    {
+      "path": "native-server/m0-invalid-plain-frozen/testland/manifest.toml",
+      "bytes": 186,
+      "sha256": "92656dc53031c8bf5d1e8af8b5a15e4448b3eb2eee498f56010811b78528dbcc"
+    },
+    {
+      "path": "native-server/m0-invalid-plain-frozen/testland/common/buildings.toml",
+      "bytes": 29,
+      "sha256": "23826071aeb8a2bc7a1f032ec2adcc23424e5f60ac579ca9ee18be5bd52816b8"
+    },
+    {
+      "path": "native-server/m0-invalid-plain-frozen/testland/common/resources.toml",
+      "bytes": 26,
+      "sha256": "514eee6a8dbc6835c6833c38dadbe5da7dae3d70d185aaecea73ba8dd62b61fc"
+    },
+    {
+      "path": "native-server/m0-invalid-plain-frozen/testland/common/terrain.toml",
+      "bytes": 173,
+      "sha256": "db903c3403dded0c36b38ae28ab2b6f61a1c66efdc7c16a4c5240dceb475d289"
+    },
+    {
+      "path": "native-server/m0-invalid-plain-frozen/testland/localisation/en/map.ftl",
+      "bytes": 164,
+      "sha256": "ae6442ef5fd0912ae5d7cdbf0541edd417c83dfeb505d6f749b2b6687ddb9b4b"
+    },
+    {
+      "path": "native-server/m0-invalid-plain-frozen/testland/localisation/en/national.ftl",
+      "bytes": 226,
+      "sha256": "e109c2e8097418bef7c251904497fae23b21f0a85abe6ed8a8dc208445c84407"
+    },
+    {
+      "path": "native-server/m0-invalid-plain-frozen/testland/localisation/ko/map.ftl",
+      "bytes": 160,
+      "sha256": "b7ac3fb02aa96a16f8338bf81068aa378d7791e8be7306ddb2f0f42092bf700f"
+    },
+    {
+      "path": "native-server/m0-invalid-plain-frozen/testland/localisation/ko/national.ftl",
+      "bytes": 227,
+      "sha256": "7824bf87a61e5041644e3d62b09ebc4debc6f0769878e36bf1b662198986e312"
+    },
+    {
+      "path": "native-server/m0-invalid-plain-frozen/testland/maps/testland/adjacency_overrides.csv",
+      "bytes": 75,
+      "sha256": "251e1353688f511baf45b1b513a8a79ad3329ae21dfb1e6e29e9ba362572a525"
+    },
+    {
+      "path": "native-server/m0-invalid-plain-frozen/testland/maps/testland/provinces.csv",
+      "bytes": 218,
+      "sha256": "f04d94464fe95d7c25069529a34f782e060ba9cf5185618384a3ac5dd2846c89"
+    },
+    {
+      "path": "native-server/m0-invalid-plain-frozen/testland/maps/testland/provinces.png",
+      "bytes": 97,
+      "sha256": "05305d56dc90dfbfbd73fc1a5f3a480ec6e82551f60a93be7d8bc53ad3d73dab"
+    },
+    {
+      "path": "native-server/m0-invalid-plain-frozen/testland/maps/testland/regions.toml",
+      "bytes": 67,
+      "sha256": "1b9eadcb639cef1b6e7b88451e1e7134a88d8b5cb108e4066ee70cc137f79485"
+    },
+    {
+      "path": "native-server/m0-invalid-plain-frozen/testland/maps/testland/states.toml",
+      "bytes": 540,
+      "sha256": "d63380dfe0240f8fe50feabe8e253278a03020d24ad46e65cd69f5a3e0512f2b"
+    },
+    {
+      "path": "native-server/m0-invalid-plain-frozen/testland/maps/testland/visuals.toml",
+      "bytes": 246,
+      "sha256": "df2b1566fabd3c1a263d543b425a52842584a6ca5bf33827290a1d4fa2f303b1"
+    },
+    {
+      "path": "native-server/m0-invalid-plain-frozen/testland/scenarios/m1/defines.toml",
+      "bytes": 811,
+      "sha256": "91ac0d4669188dd911622bdbdba5efb43c5d242f195d6f1478f07afc91f45411"
+    },
+    {
+      "path": "native-server/m0-invalid-plain-frozen/testland/scenarios/m1/scenario.toml",
+      "bytes": 205,
+      "sha256": "01258b9b99424f3855394d410ba369b407357239006e04d1d914265d36151dd5"
+    },
+    {
+      "path": "native-server/m0-invalid-plain-frozen/testland/scenarios/m1/nations/NTH.toml",
+      "bytes": 211,
+      "sha256": "04f0a06c29a74b41e7effe94a3e131da359f213ef35da849e70c59fbd3f8c29a"
+    },
+    {
+      "path": "native-server/m0-invalid-plain-frozen/testland/scenarios/m1/nations/STH.toml",
+      "bytes": 209,
+      "sha256": "522a1ab15df094a0c15012e2c8c3b362dba7fb766ff0d2b6eea48b0f1bde0b2b"
+    },
+    {
+      "path": "native-server/missing-network/start.ohsave",
+      "bytes": 307,
+      "sha256": "fb84f0bc0d129b567355c7f976bc4f3c2a7180e042e0a8f2ab8128daa29ea0b0"
+    },
+    {
+      "path": "native-server/missing-network/testland/defines.toml",
+      "bytes": 206,
+      "sha256": "76d46941adae2f693574dc5551b4afcb9f1999cf5e513fd863de1d2d923587df"
+    },
+    {
+      "path": "native-server/missing-network/testland/manifest.toml",
+      "bytes": 186,
+      "sha256": "92656dc53031c8bf5d1e8af8b5a15e4448b3eb2eee498f56010811b78528dbcc"
+    },
+    {
+      "path": "native-server/missing-network/testland/common/buildings.toml",
+      "bytes": 29,
+      "sha256": "23826071aeb8a2bc7a1f032ec2adcc23424e5f60ac579ca9ee18be5bd52816b8"
+    },
+    {
+      "path": "native-server/missing-network/testland/common/resources.toml",
+      "bytes": 26,
+      "sha256": "514eee6a8dbc6835c6833c38dadbe5da7dae3d70d185aaecea73ba8dd62b61fc"
+    },
+    {
+      "path": "native-server/missing-network/testland/common/terrain.toml",
+      "bytes": 173,
+      "sha256": "db903c3403dded0c36b38ae28ab2b6f61a1c66efdc7c16a4c5240dceb475d289"
+    },
+    {
+      "path": "native-server/missing-network/testland/localisation/en/map.ftl",
+      "bytes": 164,
+      "sha256": "ae6442ef5fd0912ae5d7cdbf0541edd417c83dfeb505d6f749b2b6687ddb9b4b"
+    },
+    {
+      "path": "native-server/missing-network/testland/localisation/en/national.ftl",
+      "bytes": 226,
+      "sha256": "e109c2e8097418bef7c251904497fae23b21f0a85abe6ed8a8dc208445c84407"
+    },
+    {
+      "path": "native-server/missing-network/testland/localisation/en/pack.ftl",
+      "bytes": 65,
+      "sha256": "8d4e03d4a95283d7b6083005fb1f2906817c1a8c77780cf229415c4717454a0c"
+    },
+    {
+      "path": "native-server/missing-network/testland/localisation/ko/map.ftl",
+      "bytes": 160,
+      "sha256": "b7ac3fb02aa96a16f8338bf81068aa378d7791e8be7306ddb2f0f42092bf700f"
+    },
+    {
+      "path": "native-server/missing-network/testland/localisation/ko/national.ftl",
+      "bytes": 227,
+      "sha256": "7824bf87a61e5041644e3d62b09ebc4debc6f0769878e36bf1b662198986e312"
+    },
+    {
+      "path": "native-server/missing-network/testland/localisation/ko/pack.ftl",
+      "bytes": 72,
+      "sha256": "7b1d7f95e23d2e8ab4244a124ec6baae7324d9d75b373121c74bd027962d5b42"
+    },
+    {
+      "path": "native-server/missing-network/testland/maps/testland/adjacency_overrides.csv",
+      "bytes": 75,
+      "sha256": "251e1353688f511baf45b1b513a8a79ad3329ae21dfb1e6e29e9ba362572a525"
+    },
+    {
+      "path": "native-server/missing-network/testland/maps/testland/provinces.csv",
+      "bytes": 218,
+      "sha256": "f04d94464fe95d7c25069529a34f782e060ba9cf5185618384a3ac5dd2846c89"
+    },
+    {
+      "path": "native-server/missing-network/testland/maps/testland/provinces.png",
+      "bytes": 97,
+      "sha256": "05305d56dc90dfbfbd73fc1a5f3a480ec6e82551f60a93be7d8bc53ad3d73dab"
+    },
+    {
+      "path": "native-server/missing-network/testland/maps/testland/regions.toml",
+      "bytes": 67,
+      "sha256": "1b9eadcb639cef1b6e7b88451e1e7134a88d8b5cb108e4066ee70cc137f79485"
+    },
+    {
+      "path": "native-server/missing-network/testland/maps/testland/states.toml",
+      "bytes": 540,
+      "sha256": "d63380dfe0240f8fe50feabe8e253278a03020d24ad46e65cd69f5a3e0512f2b"
+    },
+    {
+      "path": "native-server/missing-network/testland/maps/testland/visuals.toml",
+      "bytes": 246,
+      "sha256": "df2b1566fabd3c1a263d543b425a52842584a6ca5bf33827290a1d4fa2f303b1"
+    },
+    {
+      "path": "native-server/missing-network/testland/scenarios/m1/defines.toml",
+      "bytes": 786,
+      "sha256": "7926b96c668cee0e3f3da499524330e2efcb630b87e6574e5b78a385e5c507e1"
+    },
+    {
+      "path": "native-server/missing-network/testland/scenarios/m1/scenario.toml",
+      "bytes": 205,
+      "sha256": "01258b9b99424f3855394d410ba369b407357239006e04d1d914265d36151dd5"
+    },
+    {
+      "path": "native-server/missing-network/testland/scenarios/m1/nations/NTH.toml",
+      "bytes": 211,
+      "sha256": "04f0a06c29a74b41e7effe94a3e131da359f213ef35da849e70c59fbd3f8c29a"
+    },
+    {
+      "path": "native-server/missing-network/testland/scenarios/m1/nations/STH.toml",
+      "bytes": 209,
+      "sha256": "522a1ab15df094a0c15012e2c8c3b362dba7fb766ff0d2b6eea48b0f1bde0b2b"
+    },
+    {
+      "path": "native-server/normal/start.ohsave",
+      "bytes": 307,
+      "sha256": "13baa8dd3439b4aec7d4881ea19fc56aba2ada7b3dde837bae21e1fc9e7db6be"
+    },
+    {
+      "path": "native-server/normal/testland/defines.toml",
+      "bytes": 206,
+      "sha256": "76d46941adae2f693574dc5551b4afcb9f1999cf5e513fd863de1d2d923587df"
+    },
+    {
+      "path": "native-server/normal/testland/manifest.toml",
+      "bytes": 186,
+      "sha256": "92656dc53031c8bf5d1e8af8b5a15e4448b3eb2eee498f56010811b78528dbcc"
+    },
+    {
+      "path": "native-server/normal/testland/common/buildings.toml",
+      "bytes": 29,
+      "sha256": "23826071aeb8a2bc7a1f032ec2adcc23424e5f60ac579ca9ee18be5bd52816b8"
+    },
+    {
+      "path": "native-server/normal/testland/common/resources.toml",
+      "bytes": 26,
+      "sha256": "514eee6a8dbc6835c6833c38dadbe5da7dae3d70d185aaecea73ba8dd62b61fc"
+    },
+    {
+      "path": "native-server/normal/testland/common/terrain.toml",
+      "bytes": 173,
+      "sha256": "db903c3403dded0c36b38ae28ab2b6f61a1c66efdc7c16a4c5240dceb475d289"
+    },
+    {
+      "path": "native-server/normal/testland/localisation/en/map.ftl",
+      "bytes": 164,
+      "sha256": "ae6442ef5fd0912ae5d7cdbf0541edd417c83dfeb505d6f749b2b6687ddb9b4b"
+    },
+    {
+      "path": "native-server/normal/testland/localisation/en/national.ftl",
+      "bytes": 226,
+      "sha256": "e109c2e8097418bef7c251904497fae23b21f0a85abe6ed8a8dc208445c84407"
+    },
+    {
+      "path": "native-server/normal/testland/localisation/en/pack.ftl",
+      "bytes": 65,
+      "sha256": "8d4e03d4a95283d7b6083005fb1f2906817c1a8c77780cf229415c4717454a0c"
+    },
+    {
+      "path": "native-server/normal/testland/localisation/ko/map.ftl",
+      "bytes": 160,
+      "sha256": "b7ac3fb02aa96a16f8338bf81068aa378d7791e8be7306ddb2f0f42092bf700f"
+    },
+    {
+      "path": "native-server/normal/testland/localisation/ko/national.ftl",
+      "bytes": 227,
+      "sha256": "7824bf87a61e5041644e3d62b09ebc4debc6f0769878e36bf1b662198986e312"
+    },
+    {
+      "path": "native-server/normal/testland/localisation/ko/pack.ftl",
+      "bytes": 72,
+      "sha256": "7b1d7f95e23d2e8ab4244a124ec6baae7324d9d75b373121c74bd027962d5b42"
+    },
+    {
+      "path": "native-server/normal/testland/maps/testland/adjacency_overrides.csv",
+      "bytes": 75,
+      "sha256": "251e1353688f511baf45b1b513a8a79ad3329ae21dfb1e6e29e9ba362572a525"
+    },
+    {
+      "path": "native-server/normal/testland/maps/testland/provinces.csv",
+      "bytes": 218,
+      "sha256": "f04d94464fe95d7c25069529a34f782e060ba9cf5185618384a3ac5dd2846c89"
+    },
+    {
+      "path": "native-server/normal/testland/maps/testland/provinces.png",
+      "bytes": 97,
+      "sha256": "05305d56dc90dfbfbd73fc1a5f3a480ec6e82551f60a93be7d8bc53ad3d73dab"
+    },
+    {
+      "path": "native-server/normal/testland/maps/testland/regions.toml",
+      "bytes": 67,
+      "sha256": "1b9eadcb639cef1b6e7b88451e1e7134a88d8b5cb108e4066ee70cc137f79485"
+    },
+    {
+      "path": "native-server/normal/testland/maps/testland/states.toml",
+      "bytes": 540,
+      "sha256": "d63380dfe0240f8fe50feabe8e253278a03020d24ad46e65cd69f5a3e0512f2b"
+    },
+    {
+      "path": "native-server/normal/testland/maps/testland/visuals.toml",
+      "bytes": 246,
+      "sha256": "df2b1566fabd3c1a263d543b425a52842584a6ca5bf33827290a1d4fa2f303b1"
+    },
+    {
+      "path": "native-server/normal/testland/scenarios/m1/defines.toml",
+      "bytes": 811,
+      "sha256": "91ac0d4669188dd911622bdbdba5efb43c5d242f195d6f1478f07afc91f45411"
+    },
+    {
+      "path": "native-server/normal/testland/scenarios/m1/scenario.toml",
+      "bytes": 205,
+      "sha256": "01258b9b99424f3855394d410ba369b407357239006e04d1d914265d36151dd5"
+    },
+    {
+      "path": "native-server/normal/testland/scenarios/m1/nations/NTH.toml",
+      "bytes": 211,
+      "sha256": "04f0a06c29a74b41e7effe94a3e131da359f213ef35da849e70c59fbd3f8c29a"
+    },
+    {
+      "path": "native-server/normal/testland/scenarios/m1/nations/STH.toml",
+      "bytes": 209,
+      "sha256": "522a1ab15df094a0c15012e2c8c3b362dba7fb766ff0d2b6eea48b0f1bde0b2b"
+    },
+    {
+      "path": "native-server/reference/start.ohsave",
+      "bytes": 307,
+      "sha256": "d1753a3b0b9acd881bef8889166c0cd321a995e102be56853caf2fa8509d46d0"
+    },
+    {
+      "path": "native-server/reference/testland/defines.toml",
+      "bytes": 206,
+      "sha256": "76d46941adae2f693574dc5551b4afcb9f1999cf5e513fd863de1d2d923587df"
+    },
+    {
+      "path": "native-server/reference/testland/manifest.toml",
+      "bytes": 186,
+      "sha256": "92656dc53031c8bf5d1e8af8b5a15e4448b3eb2eee498f56010811b78528dbcc"
+    },
+    {
+      "path": "native-server/reference/testland/common/buildings.toml",
+      "bytes": 29,
+      "sha256": "23826071aeb8a2bc7a1f032ec2adcc23424e5f60ac579ca9ee18be5bd52816b8"
+    },
+    {
+      "path": "native-server/reference/testland/common/resources.toml",
+      "bytes": 26,
+      "sha256": "514eee6a8dbc6835c6833c38dadbe5da7dae3d70d185aaecea73ba8dd62b61fc"
+    },
+    {
+      "path": "native-server/reference/testland/common/terrain.toml",
+      "bytes": 173,
+      "sha256": "db903c3403dded0c36b38ae28ab2b6f61a1c66efdc7c16a4c5240dceb475d289"
+    },
+    {
+      "path": "native-server/reference/testland/localisation/en/map.ftl",
+      "bytes": 164,
+      "sha256": "ae6442ef5fd0912ae5d7cdbf0541edd417c83dfeb505d6f749b2b6687ddb9b4b"
+    },
+    {
+      "path": "native-server/reference/testland/localisation/en/national.ftl",
+      "bytes": 226,
+      "sha256": "e109c2e8097418bef7c251904497fae23b21f0a85abe6ed8a8dc208445c84407"
+    },
+    {
+      "path": "native-server/reference/testland/localisation/en/pack.ftl",
+      "bytes": 65,
+      "sha256": "8d4e03d4a95283d7b6083005fb1f2906817c1a8c77780cf229415c4717454a0c"
+    },
+    {
+      "path": "native-server/reference/testland/localisation/ko/map.ftl",
+      "bytes": 160,
+      "sha256": "b7ac3fb02aa96a16f8338bf81068aa378d7791e8be7306ddb2f0f42092bf700f"
+    },
+    {
+      "path": "native-server/reference/testland/localisation/ko/national.ftl",
+      "bytes": 227,
+      "sha256": "7824bf87a61e5041644e3d62b09ebc4debc6f0769878e36bf1b662198986e312"
+    },
+    {
+      "path": "native-server/reference/testland/localisation/ko/pack.ftl",
+      "bytes": 72,
+      "sha256": "7b1d7f95e23d2e8ab4244a124ec6baae7324d9d75b373121c74bd027962d5b42"
+    },
+    {
+      "path": "native-server/reference/testland/maps/testland/adjacency_overrides.csv",
+      "bytes": 75,
+      "sha256": "251e1353688f511baf45b1b513a8a79ad3329ae21dfb1e6e29e9ba362572a525"
+    },
+    {
+      "path": "native-server/reference/testland/maps/testland/provinces.csv",
+      "bytes": 218,
+      "sha256": "f04d94464fe95d7c25069529a34f782e060ba9cf5185618384a3ac5dd2846c89"
+    },
+    {
+      "path": "native-server/reference/testland/maps/testland/provinces.png",
+      "bytes": 97,
+      "sha256": "05305d56dc90dfbfbd73fc1a5f3a480ec6e82551f60a93be7d8bc53ad3d73dab"
+    },
+    {
+      "path": "native-server/reference/testland/maps/testland/regions.toml",
+      "bytes": 67,
+      "sha256": "1b9eadcb639cef1b6e7b88451e1e7134a88d8b5cb108e4066ee70cc137f79485"
+    },
+    {
+      "path": "native-server/reference/testland/maps/testland/states.toml",
+      "bytes": 540,
+      "sha256": "d63380dfe0240f8fe50feabe8e253278a03020d24ad46e65cd69f5a3e0512f2b"
+    },
+    {
+      "path": "native-server/reference/testland/maps/testland/visuals.toml",
+      "bytes": 246,
+      "sha256": "df2b1566fabd3c1a263d543b425a52842584a6ca5bf33827290a1d4fa2f303b1"
+    },
+    {
+      "path": "native-server/reference/testland/scenarios/m1/defines.toml",
+      "bytes": 811,
+      "sha256": "91ac0d4669188dd911622bdbdba5efb43c5d242f195d6f1478f07afc91f45411"
+    },
+    {
+      "path": "native-server/reference/testland/scenarios/m1/scenario.toml",
+      "bytes": 205,
+      "sha256": "01258b9b99424f3855394d410ba369b407357239006e04d1d914265d36151dd5"
+    },
+    {
+      "path": "native-server/reference/testland/scenarios/m1/nations/NTH.toml",
+      "bytes": 214,
+      "sha256": "42837753b8bf263e513ff47e6688b482cebfae4f2922f280665173918c315bc4"
+    },
+    {
+      "path": "native-server/reference/testland/scenarios/m1/nations/STH.toml",
+      "bytes": 209,
+      "sha256": "522a1ab15df094a0c15012e2c8c3b362dba7fb766ff0d2b6eea48b0f1bde0b2b"
+    },
+    {
+      "path": "native-server/schema/start.ohsave",
+      "bytes": 307,
+      "sha256": "af3ca3bb744c66684991b160f9dd69ca7b0386a5430cfc4f178b26fc047d3db5"
+    },
+    {
+      "path": "native-server/schema/testland/defines.toml",
+      "bytes": 206,
+      "sha256": "76d46941adae2f693574dc5551b4afcb9f1999cf5e513fd863de1d2d923587df"
+    },
+    {
+      "path": "native-server/schema/testland/manifest.toml",
+      "bytes": 186,
+      "sha256": "92656dc53031c8bf5d1e8af8b5a15e4448b3eb2eee498f56010811b78528dbcc"
+    },
+    {
+      "path": "native-server/schema/testland/common/buildings.toml",
+      "bytes": 29,
+      "sha256": "23826071aeb8a2bc7a1f032ec2adcc23424e5f60ac579ca9ee18be5bd52816b8"
+    },
+    {
+      "path": "native-server/schema/testland/common/resources.toml",
+      "bytes": 26,
+      "sha256": "514eee6a8dbc6835c6833c38dadbe5da7dae3d70d185aaecea73ba8dd62b61fc"
+    },
+    {
+      "path": "native-server/schema/testland/common/terrain.toml",
+      "bytes": 173,
+      "sha256": "db903c3403dded0c36b38ae28ab2b6f61a1c66efdc7c16a4c5240dceb475d289"
+    },
+    {
+      "path": "native-server/schema/testland/localisation/en/map.ftl",
+      "bytes": 164,
+      "sha256": "ae6442ef5fd0912ae5d7cdbf0541edd417c83dfeb505d6f749b2b6687ddb9b4b"
+    },
+    {
+      "path": "native-server/schema/testland/localisation/en/national.ftl",
+      "bytes": 226,
+      "sha256": "e109c2e8097418bef7c251904497fae23b21f0a85abe6ed8a8dc208445c84407"
+    },
+    {
+      "path": "native-server/schema/testland/localisation/en/pack.ftl",
+      "bytes": 65,
+      "sha256": "8d4e03d4a95283d7b6083005fb1f2906817c1a8c77780cf229415c4717454a0c"
+    },
+    {
+      "path": "native-server/schema/testland/localisation/ko/map.ftl",
+      "bytes": 160,
+      "sha256": "b7ac3fb02aa96a16f8338bf81068aa378d7791e8be7306ddb2f0f42092bf700f"
+    },
+    {
+      "path": "native-server/schema/testland/localisation/ko/national.ftl",
+      "bytes": 227,
+      "sha256": "7824bf87a61e5041644e3d62b09ebc4debc6f0769878e36bf1b662198986e312"
+    },
+    {
+      "path": "native-server/schema/testland/localisation/ko/pack.ftl",
+      "bytes": 72,
+      "sha256": "7b1d7f95e23d2e8ab4244a124ec6baae7324d9d75b373121c74bd027962d5b42"
+    },
+    {
+      "path": "native-server/schema/testland/maps/testland/adjacency_overrides.csv",
+      "bytes": 75,
+      "sha256": "251e1353688f511baf45b1b513a8a79ad3329ae21dfb1e6e29e9ba362572a525"
+    },
+    {
+      "path": "native-server/schema/testland/maps/testland/provinces.csv",
+      "bytes": 218,
+      "sha256": "f04d94464fe95d7c25069529a34f782e060ba9cf5185618384a3ac5dd2846c89"
+    },
+    {
+      "path": "native-server/schema/testland/maps/testland/provinces.png",
+      "bytes": 97,
+      "sha256": "05305d56dc90dfbfbd73fc1a5f3a480ec6e82551f60a93be7d8bc53ad3d73dab"
+    },
+    {
+      "path": "native-server/schema/testland/maps/testland/regions.toml",
+      "bytes": 67,
+      "sha256": "1b9eadcb639cef1b6e7b88451e1e7134a88d8b5cb108e4066ee70cc137f79485"
+    },
+    {
+      "path": "native-server/schema/testland/maps/testland/states.toml",
+      "bytes": 540,
+      "sha256": "d63380dfe0240f8fe50feabe8e253278a03020d24ad46e65cd69f5a3e0512f2b"
+    },
+    {
+      "path": "native-server/schema/testland/maps/testland/visuals.toml",
+      "bytes": 246,
+      "sha256": "df2b1566fabd3c1a263d543b425a52842584a6ca5bf33827290a1d4fa2f303b1"
+    },
+    {
+      "path": "native-server/schema/testland/scenarios/m1/defines.toml",
+      "bytes": 811,
+      "sha256": "91ac0d4669188dd911622bdbdba5efb43c5d242f195d6f1478f07afc91f45411"
+    },
+    {
+      "path": "native-server/schema/testland/scenarios/m1/scenario.toml",
+      "bytes": 209,
+      "sha256": "62c6ceb1cce60f541a7271582af4e8caaa79e764829ad3723ca743eb6d2b7311"
+    },
+    {
+      "path": "native-server/schema/testland/scenarios/m1/nations/NTH.toml",
+      "bytes": 211,
+      "sha256": "04f0a06c29a74b41e7effe94a3e131da359f213ef35da849e70c59fbd3f8c29a"
+    },
+    {
+      "path": "native-server/schema/testland/scenarios/m1/nations/STH.toml",
+      "bytes": 209,
+      "sha256": "522a1ab15df094a0c15012e2c8c3b362dba7fb766ff0d2b6eea48b0f1bde0b2b"
+    },
+    {
+      "path": "native-server/version/start.ohsave",
+      "bytes": 307,
+      "sha256": "dac8752d8ea7aeb032cef7ae2f1dcc454b08bf8525de583186963d18cf12fae8"
+    },
+    {
+      "path": "native-server/version/testland/defines.toml",
+      "bytes": 206,
+      "sha256": "76d46941adae2f693574dc5551b4afcb9f1999cf5e513fd863de1d2d923587df"
+    },
+    {
+      "path": "native-server/version/testland/manifest.toml",
+      "bytes": 188,
+      "sha256": "4812ba0d7af35ecc5e594b470a8122d39f0d09ba04a7694b7516cdaa8dee7eaf"
+    },
+    {
+      "path": "native-server/version/testland/common/buildings.toml",
+      "bytes": 29,
+      "sha256": "23826071aeb8a2bc7a1f032ec2adcc23424e5f60ac579ca9ee18be5bd52816b8"
+    },
+    {
+      "path": "native-server/version/testland/common/resources.toml",
+      "bytes": 26,
+      "sha256": "514eee6a8dbc6835c6833c38dadbe5da7dae3d70d185aaecea73ba8dd62b61fc"
+    },
+    {
+      "path": "native-server/version/testland/common/terrain.toml",
+      "bytes": 173,
+      "sha256": "db903c3403dded0c36b38ae28ab2b6f61a1c66efdc7c16a4c5240dceb475d289"
+    },
+    {
+      "path": "native-server/version/testland/localisation/en/map.ftl",
+      "bytes": 164,
+      "sha256": "ae6442ef5fd0912ae5d7cdbf0541edd417c83dfeb505d6f749b2b6687ddb9b4b"
+    },
+    {
+      "path": "native-server/version/testland/localisation/en/national.ftl",
+      "bytes": 226,
+      "sha256": "e109c2e8097418bef7c251904497fae23b21f0a85abe6ed8a8dc208445c84407"
+    },
+    {
+      "path": "native-server/version/testland/localisation/en/pack.ftl",
+      "bytes": 65,
+      "sha256": "8d4e03d4a95283d7b6083005fb1f2906817c1a8c77780cf229415c4717454a0c"
+    },
+    {
+      "path": "native-server/version/testland/localisation/ko/map.ftl",
+      "bytes": 160,
+      "sha256": "b7ac3fb02aa96a16f8338bf81068aa378d7791e8be7306ddb2f0f42092bf700f"
+    },
+    {
+      "path": "native-server/version/testland/localisation/ko/national.ftl",
+      "bytes": 227,
+      "sha256": "7824bf87a61e5041644e3d62b09ebc4debc6f0769878e36bf1b662198986e312"
+    },
+    {
+      "path": "native-server/version/testland/localisation/ko/pack.ftl",
+      "bytes": 72,
+      "sha256": "7b1d7f95e23d2e8ab4244a124ec6baae7324d9d75b373121c74bd027962d5b42"
+    },
+    {
+      "path": "native-server/version/testland/maps/testland/adjacency_overrides.csv",
+      "bytes": 75,
+      "sha256": "251e1353688f511baf45b1b513a8a79ad3329ae21dfb1e6e29e9ba362572a525"
+    },
+    {
+      "path": "native-server/version/testland/maps/testland/provinces.csv",
+      "bytes": 218,
+      "sha256": "f04d94464fe95d7c25069529a34f782e060ba9cf5185618384a3ac5dd2846c89"
+    },
+    {
+      "path": "native-server/version/testland/maps/testland/provinces.png",
+      "bytes": 97,
+      "sha256": "05305d56dc90dfbfbd73fc1a5f3a480ec6e82551f60a93be7d8bc53ad3d73dab"
+    },
+    {
+      "path": "native-server/version/testland/maps/testland/regions.toml",
+      "bytes": 67,
+      "sha256": "1b9eadcb639cef1b6e7b88451e1e7134a88d8b5cb108e4066ee70cc137f79485"
+    },
+    {
+      "path": "native-server/version/testland/maps/testland/states.toml",
+      "bytes": 540,
+      "sha256": "d63380dfe0240f8fe50feabe8e253278a03020d24ad46e65cd69f5a3e0512f2b"
+    },
+    {
+      "path": "native-server/version/testland/maps/testland/visuals.toml",
+      "bytes": 246,
+      "sha256": "df2b1566fabd3c1a263d543b425a52842584a6ca5bf33827290a1d4fa2f303b1"
+    },
+    {
+      "path": "native-server/version/testland/scenarios/m1/defines.toml",
+      "bytes": 811,
+      "sha256": "91ac0d4669188dd911622bdbdba5efb43c5d242f195d6f1478f07afc91f45411"
+    },
+    {
+      "path": "native-server/version/testland/scenarios/m1/scenario.toml",
+      "bytes": 205,
+      "sha256": "01258b9b99424f3855394d410ba369b407357239006e04d1d914265d36151dd5"
+    },
+    {
+      "path": "native-server/version/testland/scenarios/m1/nations/NTH.toml",
+      "bytes": 211,
+      "sha256": "04f0a06c29a74b41e7effe94a3e131da359f213ef35da849e70c59fbd3f8c29a"
+    },
+    {
+      "path": "native-server/version/testland/scenarios/m1/nations/STH.toml",
+      "bytes": 209,
+      "sha256": "522a1ab15df094a0c15012e2c8c3b362dba7fb766ff0d2b6eea48b0f1bde0b2b"
+    },
+    {
+      "path": "v1/build-cli.command.json",
+      "bytes": 70,
+      "sha256": "36225dc706b523e517b5371bf8e0bf50cb1100f73193dfd81e71cc367798f445"
+    },
+    {
+      "path": "v1/build-cli.stderr",
+      "bytes": 128,
+      "sha256": "1b6c9485d90ac7721282b5f1d6276efbb164f664cc54e4c76175368aea67e8fa"
+    },
+    {
+      "path": "v1/build-cli.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "v1/build-helper.command.json",
+      "bytes": 100,
+      "sha256": "f84fc158877a292f92f54878a42d97bc39448b446997ba1dc62982cbfff5e4c4"
+    },
+    {
+      "path": "v1/build-helper.stderr",
+      "bytes": 130,
+      "sha256": "0cf5794c4263ec54abf8197ef0a08def9c15b1edc8a00d75336d24934e74a60c"
+    },
+    {
+      "path": "v1/build-helper.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "v1/capture-1.command.json",
+      "bytes": 159,
+      "sha256": "032b204a10221ad42ff8c8ad6ffd46847b752c2795fb0c216f056f93e7632945"
+    },
+    {
+      "path": "v1/capture-1.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "v1/capture-1.stdout",
+      "bytes": 5339,
+      "sha256": "75fbce68e5a80ac8a1548da852ce2aa91f64f15169e854acfde537dc28abe46a"
+    },
+    {
+      "path": "v1/capture-2.command.json",
+      "bytes": 159,
+      "sha256": "795e210828421d8fa32e5c5cf2e797be2c0a5ed2ad7bba433b63ec3bc3770685"
+    },
+    {
+      "path": "v1/capture-2.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "v1/capture-2.stdout",
+      "bytes": 5339,
+      "sha256": "a785f54391e29adaea818c263ec340ab16c80b974f2baa79566a5407aacbdfa8"
+    },
+    {
+      "path": "v1/cli-resume-1.command.json",
+      "bytes": 277,
+      "sha256": "17b0b7ac23f35852589ac0140b4c6a622a8d512efed5267ae5e93d9ea6cacc0e"
+    },
+    {
+      "path": "v1/cli-resume-1.stderr",
+      "bytes": 390,
+      "sha256": "55055cee5eb6b7ccb81288f133608f9a1fca9b73e01ea5aa919719ff6e3f3d17"
+    },
+    {
+      "path": "v1/cli-resume-1.stdout",
+      "bytes": 18,
+      "sha256": "54ef91e8a224222f2be567a3a0cd3570c462b9953d561faa8d110c0e91e7ff3b"
+    },
+    {
+      "path": "v1/cli-resume-2.command.json",
+      "bytes": 277,
+      "sha256": "2024c8042b09121ea5731a7ee3a32638672d5e75c0e29132a049c3f7ac9e37e3"
+    },
+    {
+      "path": "v1/cli-resume-2.stderr",
+      "bytes": 390,
+      "sha256": "d6d92f3073f1a48641be23be7a012d890d5498a319daeb9d91ae4351df5aa064"
+    },
+    {
+      "path": "v1/cli-resume-2.stdout",
+      "bytes": 18,
+      "sha256": "54ef91e8a224222f2be567a3a0cd3570c462b9953d561faa8d110c0e91e7ff3b"
+    },
+    {
+      "path": "v1/restart-1.command.json",
+      "bytes": 244,
+      "sha256": "277f8c81edee8c14679b54270df3f8eb37d65995af3d1098c39df124fbc106ca"
+    },
+    {
+      "path": "v1/restart-1.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "v1/restart-1.stdout",
+      "bytes": 4202,
+      "sha256": "941f35fafab42e136d1dfeadf2b99e10fea9b95cc70eaa56012d322d964db3c5"
+    },
+    {
+      "path": "v1/restart-2.command.json",
+      "bytes": 244,
+      "sha256": "43957b5112909adabb99ab09e990ef0eaefc37017dd338fd75212497dc6d8386"
+    },
+    {
+      "path": "v1/restart-2.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "v1/restart-2.stdout",
+      "bytes": 4202,
+      "sha256": "e60fe371cf051d5cbd94023cd5f6bc77b441a20baa8ed8b0abd58d9088c05a73"
+    },
+    {
+      "path": "v1/result.json",
+      "bytes": 745,
+      "sha256": "651f37d6ef6f7a2804412435a87346b36edd44865c6b4f3c16ad2e229564ad00"
+    },
+    {
+      "path": "v1/run-1/capture.json",
+      "bytes": 11497,
+      "sha256": "119ca02980d6946c1b22dd8de4e2c98d0cf62b6f090b4c625eb6d5944e9a8dfd"
+    },
+    {
+      "path": "v1/run-1/paused.ohsave",
+      "bytes": 374,
+      "sha256": "dd0bacad5f4f4a439f22a2e000377765c5f0723a8087a23d2850101266afb712"
+    },
+    {
+      "path": "v1/run-1/saved.ohsave",
+      "bytes": 397,
+      "sha256": "57b13c62ef1a6f88ade1851d0b3ae398157f95ca5bc246068eac3b2a964322fa"
+    },
+    {
+      "path": "v1/run-1/pack/defines.toml",
+      "bytes": 206,
+      "sha256": "76d46941adae2f693574dc5551b4afcb9f1999cf5e513fd863de1d2d923587df"
+    },
+    {
+      "path": "v1/run-1/pack/manifest.toml",
+      "bytes": 186,
+      "sha256": "92656dc53031c8bf5d1e8af8b5a15e4448b3eb2eee498f56010811b78528dbcc"
+    },
+    {
+      "path": "v1/run-1/pack/common/buildings.toml",
+      "bytes": 29,
+      "sha256": "23826071aeb8a2bc7a1f032ec2adcc23424e5f60ac579ca9ee18be5bd52816b8"
+    },
+    {
+      "path": "v1/run-1/pack/common/resources.toml",
+      "bytes": 26,
+      "sha256": "514eee6a8dbc6835c6833c38dadbe5da7dae3d70d185aaecea73ba8dd62b61fc"
+    },
+    {
+      "path": "v1/run-1/pack/common/terrain.toml",
+      "bytes": 173,
+      "sha256": "db903c3403dded0c36b38ae28ab2b6f61a1c66efdc7c16a4c5240dceb475d289"
+    },
+    {
+      "path": "v1/run-1/pack/localisation/en/map.ftl",
+      "bytes": 164,
+      "sha256": "ae6442ef5fd0912ae5d7cdbf0541edd417c83dfeb505d6f749b2b6687ddb9b4b"
+    },
+    {
+      "path": "v1/run-1/pack/localisation/en/national.ftl",
+      "bytes": 226,
+      "sha256": "e109c2e8097418bef7c251904497fae23b21f0a85abe6ed8a8dc208445c84407"
+    },
+    {
+      "path": "v1/run-1/pack/localisation/ko/map.ftl",
+      "bytes": 160,
+      "sha256": "b7ac3fb02aa96a16f8338bf81068aa378d7791e8be7306ddb2f0f42092bf700f"
+    },
+    {
+      "path": "v1/run-1/pack/localisation/ko/national.ftl",
+      "bytes": 227,
+      "sha256": "7824bf87a61e5041644e3d62b09ebc4debc6f0769878e36bf1b662198986e312"
+    },
+    {
+      "path": "v1/run-1/pack/maps/testland/adjacency_overrides.csv",
+      "bytes": 75,
+      "sha256": "251e1353688f511baf45b1b513a8a79ad3329ae21dfb1e6e29e9ba362572a525"
+    },
+    {
+      "path": "v1/run-1/pack/maps/testland/provinces.csv",
+      "bytes": 218,
+      "sha256": "f04d94464fe95d7c25069529a34f782e060ba9cf5185618384a3ac5dd2846c89"
+    },
+    {
+      "path": "v1/run-1/pack/maps/testland/provinces.png",
+      "bytes": 97,
+      "sha256": "05305d56dc90dfbfbd73fc1a5f3a480ec6e82551f60a93be7d8bc53ad3d73dab"
+    },
+    {
+      "path": "v1/run-1/pack/maps/testland/regions.toml",
+      "bytes": 67,
+      "sha256": "1b9eadcb639cef1b6e7b88451e1e7134a88d8b5cb108e4066ee70cc137f79485"
+    },
+    {
+      "path": "v1/run-1/pack/maps/testland/states.toml",
+      "bytes": 540,
+      "sha256": "d63380dfe0240f8fe50feabe8e253278a03020d24ad46e65cd69f5a3e0512f2b"
+    },
+    {
+      "path": "v1/run-1/pack/maps/testland/visuals.toml",
+      "bytes": 246,
+      "sha256": "df2b1566fabd3c1a263d543b425a52842584a6ca5bf33827290a1d4fa2f303b1"
+    },
+    {
+      "path": "v1/run-1/pack/scenarios/m1/defines.toml",
+      "bytes": 811,
+      "sha256": "91ac0d4669188dd911622bdbdba5efb43c5d242f195d6f1478f07afc91f45411"
+    },
+    {
+      "path": "v1/run-1/pack/scenarios/m1/scenario.toml",
+      "bytes": 538,
+      "sha256": "ce56ff2d9259ed60be06163fe57d6dba452d9e5075b56525f920c3dc23354481"
+    },
+    {
+      "path": "v1/run-1/pack/scenarios/m1/nations/NTH.toml",
+      "bytes": 211,
+      "sha256": "04f0a06c29a74b41e7effe94a3e131da359f213ef35da849e70c59fbd3f8c29a"
+    },
+    {
+      "path": "v1/run-1/pack/scenarios/m1/nations/STH.toml",
+      "bytes": 209,
+      "sha256": "522a1ab15df094a0c15012e2c8c3b362dba7fb766ff0d2b6eea48b0f1bde0b2b"
+    },
+    {
+      "path": "v1/run-2/capture.json",
+      "bytes": 11497,
+      "sha256": "086c1046e508ff75384da90ea60134d4848defc1cb5128e96052b04c72ccfdc2"
+    },
+    {
+      "path": "v1/run-2/paused.ohsave",
+      "bytes": 374,
+      "sha256": "dd0bacad5f4f4a439f22a2e000377765c5f0723a8087a23d2850101266afb712"
+    },
+    {
+      "path": "v1/run-2/saved.ohsave",
+      "bytes": 397,
+      "sha256": "57b13c62ef1a6f88ade1851d0b3ae398157f95ca5bc246068eac3b2a964322fa"
+    },
+    {
+      "path": "v1/run-2/pack/defines.toml",
+      "bytes": 206,
+      "sha256": "76d46941adae2f693574dc5551b4afcb9f1999cf5e513fd863de1d2d923587df"
+    },
+    {
+      "path": "v1/run-2/pack/manifest.toml",
+      "bytes": 186,
+      "sha256": "92656dc53031c8bf5d1e8af8b5a15e4448b3eb2eee498f56010811b78528dbcc"
+    },
+    {
+      "path": "v1/run-2/pack/common/buildings.toml",
+      "bytes": 29,
+      "sha256": "23826071aeb8a2bc7a1f032ec2adcc23424e5f60ac579ca9ee18be5bd52816b8"
+    },
+    {
+      "path": "v1/run-2/pack/common/resources.toml",
+      "bytes": 26,
+      "sha256": "514eee6a8dbc6835c6833c38dadbe5da7dae3d70d185aaecea73ba8dd62b61fc"
+    },
+    {
+      "path": "v1/run-2/pack/common/terrain.toml",
+      "bytes": 173,
+      "sha256": "db903c3403dded0c36b38ae28ab2b6f61a1c66efdc7c16a4c5240dceb475d289"
+    },
+    {
+      "path": "v1/run-2/pack/localisation/en/map.ftl",
+      "bytes": 164,
+      "sha256": "ae6442ef5fd0912ae5d7cdbf0541edd417c83dfeb505d6f749b2b6687ddb9b4b"
+    },
+    {
+      "path": "v1/run-2/pack/localisation/en/national.ftl",
+      "bytes": 226,
+      "sha256": "e109c2e8097418bef7c251904497fae23b21f0a85abe6ed8a8dc208445c84407"
+    },
+    {
+      "path": "v1/run-2/pack/localisation/ko/map.ftl",
+      "bytes": 160,
+      "sha256": "b7ac3fb02aa96a16f8338bf81068aa378d7791e8be7306ddb2f0f42092bf700f"
+    },
+    {
+      "path": "v1/run-2/pack/localisation/ko/national.ftl",
+      "bytes": 227,
+      "sha256": "7824bf87a61e5041644e3d62b09ebc4debc6f0769878e36bf1b662198986e312"
+    },
+    {
+      "path": "v1/run-2/pack/maps/testland/adjacency_overrides.csv",
+      "bytes": 75,
+      "sha256": "251e1353688f511baf45b1b513a8a79ad3329ae21dfb1e6e29e9ba362572a525"
+    },
+    {
+      "path": "v1/run-2/pack/maps/testland/provinces.csv",
+      "bytes": 218,
+      "sha256": "f04d94464fe95d7c25069529a34f782e060ba9cf5185618384a3ac5dd2846c89"
+    },
+    {
+      "path": "v1/run-2/pack/maps/testland/provinces.png",
+      "bytes": 97,
+      "sha256": "05305d56dc90dfbfbd73fc1a5f3a480ec6e82551f60a93be7d8bc53ad3d73dab"
+    },
+    {
+      "path": "v1/run-2/pack/maps/testland/regions.toml",
+      "bytes": 67,
+      "sha256": "1b9eadcb639cef1b6e7b88451e1e7134a88d8b5cb108e4066ee70cc137f79485"
+    },
+    {
+      "path": "v1/run-2/pack/maps/testland/states.toml",
+      "bytes": 540,
+      "sha256": "d63380dfe0240f8fe50feabe8e253278a03020d24ad46e65cd69f5a3e0512f2b"
+    },
+    {
+      "path": "v1/run-2/pack/maps/testland/visuals.toml",
+      "bytes": 246,
+      "sha256": "df2b1566fabd3c1a263d543b425a52842584a6ca5bf33827290a1d4fa2f303b1"
+    },
+    {
+      "path": "v1/run-2/pack/scenarios/m1/defines.toml",
+      "bytes": 811,
+      "sha256": "91ac0d4669188dd911622bdbdba5efb43c5d242f195d6f1478f07afc91f45411"
+    },
+    {
+      "path": "v1/run-2/pack/scenarios/m1/scenario.toml",
+      "bytes": 538,
+      "sha256": "ce56ff2d9259ed60be06163fe57d6dba452d9e5075b56525f920c3dc23354481"
+    },
+    {
+      "path": "v1/run-2/pack/scenarios/m1/nations/NTH.toml",
+      "bytes": 211,
+      "sha256": "04f0a06c29a74b41e7effe94a3e131da359f213ef35da849e70c59fbd3f8c29a"
+    },
+    {
+      "path": "v1/run-2/pack/scenarios/m1/nations/STH.toml",
+      "bytes": 209,
+      "sha256": "522a1ab15df094a0c15012e2c8c3b362dba7fb766ff0d2b6eea48b0f1bde0b2b"
+    },
+    {
+      "path": "parent-reparse-metadata.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    }
+  ],
+  "reparse_metadata": [],
+  "mismatches": 0,
+  "ZIP_sha256": "c96e6016964e2afdb8323695eeccc0230159f9d3757b2618b31650262c24bff7",
+  "ZIP_bytes": 217939
+}
