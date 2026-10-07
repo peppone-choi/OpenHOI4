@@ -617,10 +617,12 @@ name = "oh_cli"
 version = "0.1.0"
 dependencies = [
  "oh_ai",
+ "oh_core",
  "oh_data",
  "oh_save",
  "oh_sim",
  "serde",
+ "serde_json",
  "toml",
 ]
 

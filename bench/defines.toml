@@ -1,0 +1,11 @@
+# Fixed prior integrated product commit. Never infer current as its own baseline.
+baseline_sha = "81deb803944cf6297f13b3f14ca454774cea141b"
+scenario = "m1"
+pack = "data/packs/testland"
+seed = 1000
+steps = 240000
+warmup_steps = 2400
+pairs = 2
+threshold_percent = 15
+native_timeout_seconds = 240
+build_timeout_seconds = 1200

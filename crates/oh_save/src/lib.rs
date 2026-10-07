@@ -2,6 +2,8 @@
 mod bounds;
 mod context;
 mod file;
+pub mod repro;
+pub mod repro_zip;
 pub use context::{SaveContext, effective_defines_hash, pack_hash};
 pub use file::{SaveOutcome, read_file, write_atomic};
 use oh_sim::{
