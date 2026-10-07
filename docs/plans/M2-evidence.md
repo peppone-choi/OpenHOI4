@@ -1,6 +1,6 @@
 # M2-r1 / M2-r2 증거와 실제 통합 상태
 
-현재 M2-r2: WP-24/17 담당 범위는 source164f 독립 PASS·부모 P-07·정확 mainf44 5CI/21job·원/current 실제3OS artifact 대조로 통합됨이다. 고유WP14, 원W1전체0/W2전체0/M2게이트없음. WP-13은 정확 f44에서 구현한 clean ff78 제출·새 독립 P-05 진행 중이며 WP-25와 W2는 선행 인수 대기다. 아래 M2-r1 기록은 원 실패/소스별 역사로 보존한다.
+현재 M2-r2: WP-24/17 담당 범위는 source164f 독립 PASS·부모 P-07·정확 mainf44 5CI/21job·원/current 실제3OS artifact 대조로 통합됨이다. 고유WP14, 원W1전체0/W2전체0/M2게이트없음. WP-13은 clean ff78의 새 독립 유효 FAIL 두 건을 보존한 뒤 P-06-1 수정 중이며 WP-25와 W2는 선행 인수 대기다. 아래 M2-r1 기록은 원 실패/소스별 역사로 보존한다.
 
 2026-10-07, 원 W1-a P-07 수정 단계. WP-24 merge `0c58e4f8c78c1485cfee4ad9c7c4fe1c83b82898` 뒤 WP-17 merge `9a2302540cbe29610d052ad9286e3b8f74939933`를 만들었다. ASSETS 기존30행 원 bytes를 유지하고 서로 다른21+21행만 합집합으로 병합했다. 제품 코드 판단 충돌은 없었다. exact `500ba0f91cc53ed10660fca14294d4deb5a146d4` 통합 검사에서 npm ci/test/build·fmt·clippy는0, workspace는101이었다. 변경 팩 시험이 en에만 새 키를 추가하여 새 presentFTL parity 검사가 ko 누락을 거부했다. [원 P-07 실패](evidence/M2-r1-W1a-P07-500/README.md)의15파일 bytes를 보존했고 남은24명령은 미실행이다. WP-17에 같은 ko 키를 추가하는 유효 시험 입력 보완만 인계했으며 모든 원 단언·codec·validator·frozen fixture를 유지한다. 새 exact P-05/P-07/같은 main CI 전에는 통합 완료로 기록하지 않는다. W1 전체 통합 0개, W2 전체 통합 0개, M2 게이트 판정 없음. 소묶음 W1-a를 C-02의 별도 묶음으로 세지 않는다.
 
@@ -13,7 +13,7 @@
 | WP-17 통합 입력 보완 `c28f90425905774c23b1d90a5d900c596ade2745` | [188파일 원 봉인](../worklog/evidence/WP-17-M2-r1-P06-integration/README.md), 같은 ko 시험키5줄과 기록만 변경 | [FAIL·불변성 무효](../verify/WP-17.M2-r1.attempt2.md). 필수 Save CI가 역사 CLI-only 팩을 서버 정상 입력으로 사용. tracked TS generator가 같은bytes를 재작성했고 raw entry mtime가 달라짐. index 갱신 주체는 미확인, 최초/최종 원raw 보존. manifest1597/ZIP1598 전수bytes 불일치0 | 유효 PASS 아님. WP-24가 current capture/서버 CI 연결을 좁은 P-06으로 보완한 뒤 새 source 독립 검증 필요 |
 | WP-24 CI 입력 P-06 `3d5636192c75a48020fff31a6acc721e31db81a8` | [1017파일 원 봉인](../worklog/evidence/WP-24-M2-r1-P06-current-CI/README.md), 원 manifest 포함 ZIP1018·전수 불일치0. 원 frozen checker·fixture·policy 보존, 별도 current checker/17회귀·server positive·historical negative 추가 | [시도3 유효 FAIL](../verify/WP-24.M2-r1.attempt3.md), actual final12035chars와 원 ZIP3221/manifest3220 전수0 보존. 최초/최종9878·HEAD·전체SHA·semantic/raw index·diff/status 동일. legacy nation TOML 누락과 current comparer의 원장 tick 변조 수용 재현 | 미통합. 좁은 P-06 후 새 source P-05/P-07 및 같은 main HEAD 5 workflow/필수 job·실제3OS 필요 |
 | WP-24 등록·조회 증거 P-06 `164f04e6378b959e54da67cbca19b1ff03b6fe9f` | [3795파일 원 봉인](../worklog/evidence/WP-24-M2-r1-P06-current-comparer/README.md), ZIP3796/6240862bytes·전수 불일치0. 기존 국가 내재 검사 단계 재사용·선택 오류 순서 보존, paused DTO/정수 원장 기반 조회 증거 대조 | [시도4 재개 유효 PASS](../verify/WP-24.M2-r1.attempt4.md), 원 interrupted와 재개 final 구분·최초/최종9880/raw `3e5d17f2339d464034ba0b211b42621abeeeea93260a3a618ce92b2c865e6161` 및 원 prompt를 앱 생성 전 보존 | 담당 범위 통합됨. [같은 mainf44 CI](evidence/M2-r2-f44-CI-final/README.md)·원/current 실제3OS 대조 완료. 원 FAIL/무효·CI 실패는 보존 |
-| WP-13 | clean ff78a7501bace6fac1741d6cc596be524f887451 / codex/wp13-trigger-engine-m2r2, [producer 원 봉인](../worklog/evidence/WP-13-M2-r2-first/README.md) | 새 독립 앱01a11513-bd4e-7bc3-8008-89e97ff0244d, detached exact ff78 / WP-13-M2-r2-verify1, 최초9951/rawdf3bb6c3 불변성 직접 확인 | P-05 진행, P-07/기존5+신규Trigger CI·actual3OS 대기 |
+| WP-13 최초 ff78 | [clean producer 원 봉인](../worklog/evidence/WP-13-M2-r2-first/README.md) | [새 독립 유효 FAIL](../verify/WP-13.M2-r2.attempt1.md), runtime 구조/순서/범위와 comparer 현재 HEAD 대조 누락. 최초/최종9951/rawdf3bb 동일, 원MF2186/ZIP2187 불일치0 | 같은 구현앱 P-06-1 수정 중. 새 exact 독립 P-05/P-07/기존5+신규Trigger CI·actual3OS 필요 |
 | WP-25 | WP-13 실제 종료/flags/save producer 통합 인수 대기 | 미착수 | 미통합 |
 | WP-14 / WP-23 | W1 전체 후 W2 producer 인수 | 미착수 | 미통합 |
 
@@ -40,3 +40,17 @@ REQUEST-0009 A의CEO한정잠정은원요청/독립검토봉인과01/02/03/prefl
 actual 구현앱completed15의 final·38소유파일·cleanff78·원None/v1v2v3/Cargo/data/골든·부모문서 보호 및ASSETS기존prefix+새fixture1행을 확인했다. 부모 MF2154파일/ZIP2155와 producer 원ZIP자체6892323bytes/SHA851bbde074c5636d913a3cd19ba14bbfa098b8947045eb6bfcebb0c0f8b1b89a의 원member bytes/SHA 전수0을 대조했다. 원 app final/prompt/createpayload·manifest/custody는별도봉인했다. 구현자 Windows6종state/repeatfreshrestore/native/단위·hash 관측은독립PASS/actual3OS/main통합이아니다.
 
 새P05는app생성전exactdetachedff78/최초9951·HEAD/각SHA·semantic/rawdf3bb6c3ab0ec15d4bc35117f8d096b5bd27543bcea980cee03218691c4319d7·diff/status를완성했고ready현재도동일이다. 실제6639chars/9919bytes prompt/SHA7aa73bcc4ee7cddf0bf91b108133506e187d1ffbd675da7e546c1859c585070f 전달과첫active/self-before동일을확인했다. None/Some/force·초기평가1회/복원재평가없음·empty정의/6savedstate·nativeCLI/server종료/query·typedwire/runtime 및actual3OSchecker/새TriggerCI를직접검사한다. 준비중장기exec후속prompt조회가완료전FileNotFound/JSONparse였던첫시도는app생성전오류로보존했고원최초baseline을교체하지않았다. 새actualfinal·전후불변성·봉인전통합하지않는다. 고유WP14/원W1전체0/W2전체0/M2게이트없음이다.
+
+## WP-13 P-05 유효 FAIL와 P-06 인수
+
+독립 actual turn `01a11513-bf86-7471-b0f0-bfdb727562fc`가 completed15로 종료했다. [권위 final 전문](../verify/WP-13.M2-r2.attempt1.md)은 API 원markdown10037chars와 동일하며 wait의8636chars 표시 요약·target fullreport는 별도 원문이다. 부모는 최초/최종9951 tracked path/각SHA/HEAD/semantic/raw index·diff/status와 MF2186/ZIP2187/15896709bytes/SHAcf3f62b8794506a0a9ce9efcc56055e889960bac4ecd2f95d21b49fd7929a337 원 source/ZIP member를 전수 대조해 차이0을 확인했다. 원 기준선/index를 복구하거나 바꾸지 않았다. [검증 원 봉인](../verify/evidence/WP-13-M2-r2-P05-1/README.md)은 유효 FAIL이며 제품 통합이 아니다.
+
+F1은 실제 connect()가 중복/역순/빈 종료 원인, nation/flag 중복·순서·ID, u64 초과, 잘못된 필드를 callback으로 넘기고 연결·추가 send를 유지한 것이다. F2는 현재ff78 대신 모든 합성 artifact가 과거f44를 주장해도 새 public comparer native0인 것이다. 실제 Windows capture/6상태·기존None/v1v2v3·CLI/서버query/end/native0/불변성 통과와 이 두 FAIL을 구별한다. 합성 Linux/macOS labels를 실제3OS로 세지 않는다.
+
+원 final/증거 보존 후 같은 구현앱 `01a114e4-115e-7823-ba09-966b6efb7594`의 새 turn `01a11528-9fd1-7ea2-9ff2-d7cd09ba2b58`에 P-06-1을 전달했다. actual prompt19362bytes/SHAf214aca1d084b5ee1887430bd7868d779d6c25229cd318721360216a32b86292와 실제payload를 보존했다. 소유는 network.ts·triggerValidation 회귀, 새 Trigger checker/회귀와 own schema/ADR/worklog다. 원 source/protocol/sim/save/fixtures/expected/Cargo/기존 workflows와 부모문서는 보호한다. 수정 source는 새 독립 P-05가 필요하며 고유WP14·원W1전체0/W2전체0을 유지한다.
+
+## 문서 HEAD 43fd CI와 첫 실패 보존
+
+exact `43fd961b97e98c8b42006e36d676a1bc99e2c571`의 [Save attempt1 원 FAIL](evidence/M2-r2-43fd-CI-attempt1/README.md)은 macOS zstd-sys build-script 실행126/cargo101·원인미확정이다. run/job API·전체 원로그를 재실행 전에 보존했고 제품은 변경하지 않았다. 같은 HEAD의 실제 attempt2는 SUCCESS이며 [5CI/21job·6 Save 실제3OS 원문](evidence/M2-r2-43fd-CI-final/README.md)을 별도로 보존했다. 부모 original/current comparer native0·API digest/ZIP member bytes/상태/canonical/hash/resume 전수 불일치0이다. 원 FAIL을 소급 PASS로 바꾸지 않는다.
+
+부모 준비조회 중 없는 runtime 로그 경로를 조회한 오류는 실제 command 폴더 목록/runtime-observations.json을 읽어 정정했다. read_thread maxOutputCharsPerItem30000 요청은20000 상한 거부였으며 그 원 API 오류를 보존하고20000으로 실제 final을 다시 얻었다. 두 오류 모두 제품 검사/검증 판정으로 집계하지 않는다. inherited registry의500 P-07 실패 필드는 explicit history에 보존하고 current2244의 성공24+14/38unique와 f44의 실제 통합/CI를 분리해 표시했다.

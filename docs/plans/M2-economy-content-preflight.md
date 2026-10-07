@@ -27,3 +27,24 @@ REQ-CNT-01은 6개국·프로빈스 100~200, REQ-GEN-03은 날짜 범위·이념
 팩 전체 content_hash 변화와 frozen 원팩 identity는 별도로 기록한다. 같은 pack 내 새 map/common/locale가 원 M1 동작에 영향을 주는지 직접 검증하고, 원 historical fixture는 정확 원천으로 검사한다. 미래 미등록 파일을 warning으로 두고 `--deny-warnings` 성공이라고 선언하지 않는다. WP-23의 실제 validate·6국/100~200·참조/원천·engine-agnostic domains와 전체 평시→전쟁→항복 플레이 증거는 구분한다. 전체 플레이는 후속 WP-15/16/18/19/20/21/22·M2 게이트가 필요하다.
 
 W2가 통합됐다는 기록은 WP-14/23의 실제 구현·새 독립 PASS·같은 main CI에 한정한다. M2 전체 AC/REQ를 이 두 WP로 완료했다고 기록하지 않는다. 차량 v2의 M4 한정 잠정은 WP-15 실제 재고/상한·WP-19 공급 C 단위 인수를 위한 후속 검사 항목이며 W2의 보급 차량 소모 구현 권한이 아니다.
+
+## M2-r2 실제 producer 인수 전 확인
+
+2026-10-07. WP-13 제출 source `ff78a7501bace6fac1741d6cc596be524f887451`은 독립 P-05에서 runtime guard·현재 HEAD comparer 누락이 재현되어 수정 대상이다. 아래는 제출 타입을 읽은 계획이며 그 source의 통합·독립 PASS를 뜻하지 않는다. W2 착수 전 최종 수정 source의 유효 PASS·P-07·같은 main 필수 CI와 실제 타입을 다시 인수한다.
+
+- 기존 World의 StateState는 인구·자원·건물 i64와 인프라 Fx/원장, NationState는 ID·정부·이념 지지율만 갖는다. 건물 키를 임의 산업 시설로 해석하거나 기존 주 자원 산출을 비축으로 다시 쓰지 않는다. WP-14의 새로운 immutable 정의·초기 입력·mutable 소비/예약/원장·derived 집계를 각각 구분한다.
+- WP-13의 새 TriggerState/SaveV4는 optional trigger 정의 신원·국가 flags·종료 checkpoint와 전체 pending queue, movement/strait presence를 보존한다. WP-14는 flags/초기평가/종료/과거 queue를 다시 초기화하지 않는다. 일일 경제 phase가 성공한 뒤 종료 조건을 평가하고 phase 오류는 전체 상태·큐·clock을 commit하지 않는 기존 순서를 유지한다.
+- stability/mobilization/political_capital/has_law 및 해당 효과는 현재 실제 producer가 없어 capability 오류다. WP-14가 실제 private mutable 타입·bounds·단위·조건 참조와 effect 원자성을 제공할 때만 이 adapter를 연결한다. 산업 종료 점수는 실제 국가 IC Fx·원장·시점 계약을 인수하며 비슷한 기존 건물/인프라를 대용 값으로 쓰지 않는다. 나머지 점수 축·항복/진영은 후속 WP-20 범위다.
+- 새로운 경제 상태의 canonical/hash/save/wire는 raw 정수 bits·정렬·nullable/presence·정의 identity·future queue를 모두 포함한다. 원 None/v1/v2/v3 및 WP-13 v4 fixture/expected/hash는 보존한다. 필요하면 별도 additive 버전으로 만들며 과거 저장 자동 migration·기존 입력 덮어쓰기·force의 mode identity 면제는 승인하지 않았다.
+- WP-23은 원 m1 scenario/국가/map/정의·locale bytes를 유지하고 새 m2 전용 원천을 쓴다. 같은 pack에 파일이 추가되면 팩 전체 hash가 달라지므로 기존 fixture를 현재 팩으로 다시 만들지 않는다. 현지화 key 집합과 pack-level strict validator가 원 m1과 새 m2 각각을 검사하는 경계를 실제 producer schema와 대조한다.
+
+실제 결과를 바꾸는 미정 행동은 WP-14 schema 작성 중 구체 입력/결과/추천안으로 먼저 P-10 요청한다. 최소 대조 목록은 다음과 같다. 이 표는 추천안의 채택이나 새 게임 규칙을 뜻하지 않는다.
+
+| 미정 의미 | 구현 전 필요한 구체 후보·독립 예제 |
+|---|---|
+| 국가 산출의 주 집합 | 소유와 통제가 다른 주의 IC·자원·인구 기여, 점령 후속과 구별 |
+| 소비재 하한 | 경제 법령/안정도 결합 공식과 범위, 하한 미달 배분 거부 또는 보정, 합계·raw 잔여 |
+| 건설 | 프로젝트별 IC 상한·순차 배분, 당일 완료 잔여의 다음 프로젝트 전달, 슬롯/단계 상한·취소/비용 수명 |
+| 가용 인력 | 법령 변경 전후 총량과 이미 소비/예약한 인력, 초기 pool·추가/반환의 수명·음수/상한 |
+| 정치 | PC 일일 지급 시점/상한, 법령 변경 비용·조건·단계 및 효과 delta의 경계 처리 |
+| 후속 미지원 | 안정도의 생산 효율/항복 보정, 동원도의 조직력/피로 등 아직 없는 consumer를 지원 성공으로 숨기지 않기 |
