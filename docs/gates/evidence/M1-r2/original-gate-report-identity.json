@@ -1,0 +1,8 @@
+{
+  "raw_original_worktree_bytes": 21022,
+  "raw_original_sha256": "4b3721959b866b11b817c13d08ed1b467d2e50a2b6a784a394983cf949ec848e",
+  "c316_Git_blob_bytes": 20835,
+  "c316_Git_blob_sha256": "7acb46e6c8fc020169b493d74b9982b74fe5662f8fb7909327bbeeb5eb6f41f9",
+  "same_text_after_CRLF_to_LF": true,
+  "note": "Markdown is Git text eol=lf; ZIP preserves original worktree bytes as well as canonical Git blob, without changing the historical FAIL body"
+}

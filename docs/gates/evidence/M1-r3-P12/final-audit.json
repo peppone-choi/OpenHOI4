@@ -1,0 +1,51 @@
+{
+  "head": "89964f4400c1affbfc484a60f486af51788c7298",
+  "local_main": "89964f4400c1affbfc484a60f486af51788c7298",
+  "remote_main": "89964f4400c1affbfc484a60f486af51788c7298",
+  "finished_kst": "2026-10-07T09:25:08.179356+09:00",
+  "raw_index_sha256": "6077990c30eac37851cab7b8c4bad07a8cb4c12df30069a137755fdc23b76d92",
+  "baseline_json_sha256": "4f8adc4db6d3477220911766358907e1b302653c92dd6803df1e0ceb6b68541b",
+  "baseline_raw_sha256": "6077990c30eac37851cab7b8c4bad07a8cb4c12df30069a137755fdc23b76d92",
+  "tracked_files": 9722,
+  "product_blobs_equal": 248,
+  "judgement": "PASS",
+  "AC": {
+    "AC-M1-01": "PASS",
+    "AC-M1-02": "PASS",
+    "AC-M1-03": "PASS",
+    "AC-M1-04": "PASS",
+    "AC-M1-05": "PASS",
+    "AC-M1-06": "PASS",
+    "AC-M1-07": "PASS"
+  },
+  "REQ": {
+    "REQ-TIME-01": "PASS",
+    "REQ-TIME-02": "PASS",
+    "REQ-MAP-01": "PASS",
+    "REQ-MAP-02": "PASS",
+    "REQ-MAP-03": "PASS",
+    "REQ-MAP-04": "PASS",
+    "REQ-MAP-05": "PASS",
+    "REQ-NAT-01": "PASS",
+    "REQ-SAV-01": "PASS",
+    "REQ-SAV-02": "PASS",
+    "REQ-PLAT-03": "PASS",
+    "REQ-NET-02": "PASS",
+    "REQ-LOC-01": "PASS",
+    "REQ-LOC-02": "PASS"
+  },
+  "own_native_exit": {
+    "own_pid": 40524,
+    "native_exit": 0,
+    "listener_gone": true,
+    "normal_stop_log": true
+  },
+  "known_limitations": [
+    "Historical Edge root cause unresolved",
+    "One green CI run does not prove all DPR intermittency resolved",
+    "P05 native PTY wrapper1 not nativeexit0 proof; current own manager separately collects nativeexit0",
+    "Original policy31PASS/1envFAIL and isolated outerworkspace envFAIL retained; original single test system-temp once exit0",
+    "Artifact read-only parser initial7 rather than4 matches retained; original product tests not repeated",
+    "No M2 work,save UI/autosave,real-world map,Safari hardware,public hosting/account/cost/deployment,AIbench proof"
+  ]
+}
