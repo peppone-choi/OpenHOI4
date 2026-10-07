@@ -1,5 +1,14 @@
 # 인수인계
 
+## 진행 중 M2-r2 WP25 유효 독립 PASS·P07 — 2026-10-08
+
+새P05-2 actualidle/completed16/원formal10523chars·최초11741/rawa33c…·MF5644/ZIP5646/45,901,757B/SHA555e22… 전수0를 인수했다. [검증 리포트](docs/verify/WP-25.M2-r2.attempt2.md)/[원인수](docs/verify/evidence/WP-25-M2-r2-P05-2/README.md)를참조한다. rootmain93fd8의408non-doc/HANDOFF Gitentry는source d443와exact이며parent P07의46고유검사/총47실행을완료했다. 첫native-repro출력경로오류/native1과원guard는보존하고허용target/evidence에서별도continuation5개0를확인했다. M0/M1각2·repeat/freshSave·전체DTO/canonical/hash·client243·native15·성능경계/metadata·CLIbench2가통과했다.
+
+source7CI26SUCCESS/actual9artifact·fresh3comparers0 및원Linux11502491607/1,735,129,645B/SHA55d8f5…751member/고정prior11721Gitblob 대조를인수했다. prior116009995/119549620ns·current112963334/115600787ns/전체state/hash동일이다. e85 FAIL·d443첫clienttimeout/진단attempt2·불완전다운로드/Range206복구는분리보존했다. same-main7CI는아직없으며원격마지막검증main2da71과구분한다.
+
+REQUEST-0010 수정A-CEO-r1 CEO한정잠정·원후보/검토를01/02·WP14계약에반영했고사용자D/OPEN확정은없다. 후속WP23 pack추가에맞춰WP14에는고정prior입력/현재라이브러리분리bench기술소유를추가인계하며원기준/15%/한도를유지한다. 새mainpush/7CI·실Linux/3OS뒤WP25/W1전체를인수하고W2 WP14/23을시작한다. 현재고유WP15·원W1W2전체0/0·M2게이트없음이다. RUN 종료P08이아니다.
+
+
 ## 진행 중 M2-r2 WP25 P06 인수·새 독립 검증 — 2026-10-08 03:16 KST
 
 사용자가 E: 공간을 확보해 현재 약370GB 여유가 있다. 원증거·작업트리는 보존했고 삭제 차단을 우회하지 않았다.

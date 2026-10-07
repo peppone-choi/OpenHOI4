@@ -41,3 +41,7 @@ REQ별 RED→구현→통과 원명령/native 출력, 법령/하한 transaction�
 WP-14가 먼저 실제 schema·지원 파일 경로/필드·ID/조건 범주·locale 요구·loader/validate·새 저장/호스트 계약을 커밋 단위로 제공한다. WP-23는 그 전에 기존 map/nation/locale 계약으로 신규 기하·6개국만 준비할 수 있으며 경제 입력을 추측해 성공 로드하지 않는다. producer 통합 뒤 최신 기준을 콘텐츠 브랜치에 반영하고 새 m2 경제 입력과 실제 strict validate·native load/query/save/repro를 검사한다. 원 m1 파일 bytes와 frozen pack identity를 보존하고 팩 전체 hash 변경을 별도로 기록한다.
 
 WP-14→WP-23 각 유효 독립 PASS·부모 P07·같은 main 7개 workflow/전 필수 job·실제 3OS 저장/trigger 및 고정 prior Linux 성능을 인수한 뒤 W2 통합을 기록한다. 평시→전쟁→항복·전체 M2 게이트는 후속 WP들의 실제 증거가 필요하다.
+
+## 고정 성능 입력의 후속 콘텐츠 경계
+
+WP-23의 새m2 파일은 같은 testland 전체 content_hash를 바꾼다. WP-14에 bench/run.py·관련독립입력/metadata검사·README·기술ADR 소유를 추가 인계한다. baseline81deb와240000/warm2400/m1/seed1000/two pairs15%/native240s/build1200s를 유지하고, 양쪽 별도 실제라이브러리에 **고정prior81deb에서 추출한 동일immutablepack**을 입력한다. 새 current source는 현재 실제라이브러리이며 입력만 고정한다. 원driver/profile/lock/registry·입력provenance/list/bytes/SHA와완료fullDTO/canonical/hash를대조하고검사삭제/가짜packhash/기준교체로통과시키지않는다. 신규콘텐츠는자체strictvalidate/native/save/repro로검증한다. 현재WP25코드는변경하지않고다음담당이실제입력분리schema/ADR·회귀부터작성한다. 부모가defaultmain에존재하는performanceworkflow의exactsourceRef를한번dispatch해실Linux를검사하며구현자는CI브랜치조건/설정을바꾸지않는다.
