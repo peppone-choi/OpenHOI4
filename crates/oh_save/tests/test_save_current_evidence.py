@@ -69,6 +69,31 @@ class CurrentEvidenceFailures(unittest.TestCase):
                     snapshot=dict(state=dict(date='2000-03-01', hour=0, tick='48', paused=True, speed=5)),
                     query=dict(supported=True, world=dict(tick='48', nations=[{}, {}], provinces=[{}]*6)),
                     command=dict(accepted=True), state=dict(state=dict(tick='48', paused=True, speed=2)))
+                query['welcome']['type']='Welcome'
+                query['snapshot']['type']='Snapshot'
+                query['state']=dict(type='Snapshot',state=dict(date='2000-03-01',hour=0,tick='48',paused=True,speed=2))
+                query['command'].update(type='CommandResult',sequence='1')
+                query['query'].update(type='WorldResult',request='saved-world')
+                world=query['query']['world']
+                world['nations']=[dict(id=1,tag='NTH',government_key='government-test-republic',
+                    support=[dict(name_key='ideology-test-civic',value='0.75'),dict(name_key='ideology-test-local',value='0.25')]),
+                    dict(id=2,tag='STH',government_key='government-test-council',
+                    support=[dict(name_key='ideology-test-civic',value='0.75'),dict(name_key='ideology-test-local',value='0.25')])]
+                world['provinces']=[dict(id=10,state=1,owner=1,controller=1),dict(id=20,state=1,owner=1,controller=2),
+                    dict(id=30,state=2,owner=2,controller=2),dict(id=40,state=2,owner=2,controller=2),
+                    dict(id=50,state=None,owner=None,controller=None),dict(id=60,state=None,owner=None,controller=None)]
+                def row(i,source,op,value,accumulated):
+                    return dict(id=str(i),source_key=source,label_key=source or 'infrastructure',
+                        operation_key=op,value=value,accumulated=accumulated)
+                world['states']=[dict(id=1,owner=1,population='1000',resources=[dict(name_key='resource-steel',value='2')],
+                    buildings=[dict(name_key='building-industry',value='1')],infrastructure=dict(base='1',tick='48',final_value='3.0000000005',
+                    entries=[row(0,None,'ledger-base','1','1'),row(1,'a.raw','ledger-add','0.0000000002','1.0000000002'),
+                             row(2,'b.add','ledger-add','0.5','1.5000000002'),row(3,'c.mul','ledger-multiply','2','3.0000000005')])),
+                    dict(id=2,owner=2,population='2000',resources=[dict(name_key='resource-steel',value='0')],
+                    buildings=[dict(name_key='building-industry',value='0')],infrastructure=dict(base='0',tick='48',final_value='0',
+                    entries=[row(0,None,'ledger-base','0','0')]))]
+                query['messages']=[query['welcome'],dict(type='Notice',key='unsupported-create'),query['snapshot'],
+                                   query['query'],query['command'],query['state']]
                 receipt = dict(head=record['head'], capture_head=record['head'], capture_mode=self.gate.MODE,
                     dirty=False, force=force, server_cwd=record['checkout_root'], http_status=200,
                     server_exit=0, query_exit=0, save_preserved=True, source_preserved=True,
@@ -120,6 +145,65 @@ class CurrentEvidenceFailures(unittest.TestCase):
         root = self.artifacts()
         self.mutate(root, 'result.json', lambda r: r.update(evidence_schema=2))
         self.fails(root)
+
+    def test_query_and_receipt_simultaneous_ledger_tick_tamper(self):
+        root = self.artifacts()
+        directory = root / 'current-save-windows-latest/server'
+        raw = json.loads((directory / 'query.stdout').read_text())
+        # Exact independent P05-3 mutant: both serialized copies agree on a wrong tick.
+        raw['query']['world']['states'][0]['infrastructure']['tick'] = '49'
+        (directory / 'query.stdout').write_text(json.dumps(raw))
+        self.mutate(root, 'server/result.json', lambda r: r.update(query=raw))
+        self.fails(root)
+
+    def test_wire_ledger_mutants_raw_receipt_and_messages_cannot_self_certify(self):
+        changes=[lambda q:q['query']['world']['states'][0]['infrastructure']['entries'].pop(),
+                 lambda q:q['query']['world']['states'][0]['infrastructure']['entries'][1].update(source_key='other'),
+                 lambda q:q['query']['world']['states'][0]['infrastructure']['entries'][1].update(id='0'),
+                 lambda q:q['query']['world']['states'][0]['infrastructure']['entries'][1].update(operation_key='ledger-multiply'),
+                 lambda q:q['query']['world']['states'][0]['infrastructure']['entries'][1].update(value='0'),
+                 lambda q:q['query']['world']['states'][0]['infrastructure']['entries'][2].update(accumulated='1'),
+                 lambda q:q['query']['world']['states'][0]['infrastructure'].update(final_value='3'),
+                 lambda q:q['query']['world']['states'][0]['infrastructure'].update(base=None),
+                 lambda q:q['query']['world']['states'][0]['infrastructure'].update(tick=48),
+                 lambda q:q['query']['world']['states'][0]['infrastructure'].pop('entries'),
+                 lambda q:q['query']['world']['states'].append(q['query']['world']['states'][0]),
+                 lambda q:q['query']['world']['states'][0].update(id=True),
+                 lambda q:q['query']['world']['states'][0]['infrastructure'].update(final_value='Infinity'),
+                 lambda q:q['query']['world']['states'][0]['infrastructure'].update(final_value='2147483648'),
+                 lambda q:q['query']['world']['states'][1]['infrastructure'].update(tick='49'),
+                 lambda q:q['messages'][1].update(key='other-notice'),
+                 lambda q:q['command'].update(sequence='2'),
+                 lambda q:q['snapshot']['state'].update(hour=False),
+                 lambda q:q['state']['state'].update(date='2000-03-02')]
+        for i,change in enumerate(changes):
+            with self.subTest(mutant=i):
+                root=self.artifacts();directory=root/'current-save-windows-latest/server'
+                raw=json.loads((directory/'query.stdout').read_text());change(raw)
+                # Keep selected message copies consistent too; source authority must reject the content.
+                raw['messages']=[raw['welcome'],raw['messages'][1],raw['snapshot'],raw['query'],raw['command'],raw['state']]
+                (directory/'query.stdout').write_text(json.dumps(raw))
+                self.mutate(root,'server/result.json',lambda r:r.update(query=raw))
+                self.fails(root)
+
+    def test_wire_raw_only_receipt_only_and_duplicate_json_fields(self):
+        for raw_only in (True,False):
+            root=self.artifacts();directory=root/'current-save-windows-latest/server'
+            raw=json.loads((directory/'query.stdout').read_text());raw['query']['world']['states'][0]['infrastructure']['tick']='49'
+            if raw_only:(directory/'query.stdout').write_text(json.dumps(raw))
+            else:self.mutate(root,'server/result.json',lambda r:r.update(query=raw))
+            self.fails(root)
+        root=self.artifacts();path=root/'current-save-windows-latest/server/query.stdout'
+        path.write_text(path.read_text().replace('"tick": "48"','"tick": "49", "tick": "48"',1))
+        self.fails(root)
+
+    def test_independent_fixed_decimal_roundtrip_and_bounds(self):
+        for value,bits in [('0.0000000002',1),('-0.0000000002',-1),('3.0000000005',12884901890),
+                          ('0.000000000116415321826934814453125',0),('0.000000000349245965480804443359375',2)]:
+            self.gate.wire_fx(value,bits)
+        for value in (True,1,None,'NaN','1e3','2147483648','--1','00.5'):
+            with self.assertRaises((AssertionError,TypeError,ValueError)):
+                self.gate.wire_fx(value,1)
 
     def test_failed_or_missing_native_exit(self):
         for value in (1, None):

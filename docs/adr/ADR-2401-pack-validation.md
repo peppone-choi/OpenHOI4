@@ -1,5 +1,13 @@
 # ADR-2401 팩 선택 순서·Fluent·고정 v1 입력
 
+## P-06 P05-3 후 등록 경로·query 원장 인수 (2026-10-07, 구현 전)
+
+actual P05-3의 유효 FAIL2를 보존한다. map 없는 empty legacy가 nation 파일을 읽지 않지만 registered로 분류하던 간극은 기존 NationDefinition TOML/type/내재 제약 검사 후 unselected/map-context 오류로 거부한다. legacy world/국가 게임규칙·임의 map 선택·caller 예외는 추가하지 않는다. structured 선택 nation 참조는 기존 read_scenario가 검사하며 valid extra도 지원한 것처럼 반환하지 않는다. 오류는 원 source 위치/원인을 보존한다.
+
+current comparer는 raw query==receipt 외에 검증한 paused source DTO와 독립 integer ledger reference를 기준으로 tick/count/source/op/value/accumulated/final 및 전체 state ID 관계를 검사한다. 기존 save_query.cjs의 모든 selectors/asserts를 문서에 대응하고 직접 다시 검사하며 malformed/동시변조도 거부한다. wire Fx decimal은 정수/Fraction 최근접 even rawbit 대조로 확인해 float 계산이나 새 수치를 도입하지 않는다. 원 정책/loader/save codec/fixture/expected/golden/원 query script/workflow는 바꾸지 않는다.
+
+부모가 national.rs의 private document/내재 검사 추출만 추가 인계했다. pub(crate) 공통 read_nation/validate_nation_names/validate_nation_ideology를 재사용해 타입/범위 의미가 두 validator에서 갈라지지 않게 하며 selected 오류 순서 tag→duplicateID→name/government→capital→ideology를 유지한다. 기존 world/map/선택/FTL/public DTO/API는 동일하다. 복수 오류 회귀6행과 기존 workspace 검사를 실행한다. [fixed1.31.0 decimal parser](https://docs.rs/fixed/1.31.0/fixed/struct.FixedI64.html#method.from_str)의 최근접 even 의미는 2026-10-07 공식 원문에서 확인했다.
+
 ## P-06 필수 저장 CI 입력 연결 결정 (2026-10-07, 구현 전)
 
 CEO DIRECTIVES 2026-10-07T12:21:27과 WP17 attempt2 actual FAIL에 따라 frozen capture를 서버 positive에 전달하던 CI 연결을 보완한다. REQUEST-0008의 역사 mutable-v1 CLI-only 계약과 원 save codec/fixture/expected/비교/단언은 바꾸지 않는다. 기존 check_save_determinism.py capture/compare는 원 frozen 3OS producer/consumer로 그대로 두고, 새 check_save_current.py가 이미 존재하는 capture-current를 별도 출력에 두 회 생산하고 fresh native/CLI 재개·전체 DTO/원장/canonical/hash/팩·header·save/source 불변성과 같은 clean HEAD의3OS를 비교한다. save_native.py의 기존 HTTP/WS/query/served JS/exclusive PID/Ctrl+C0 검사는 current paused 저장으로 실행하며 역사 서버거부는 별도 native negative 도구로 force 양쪽 확인한다. 원/current artifact names·mode/schema를 구별하고 필수 workflow에서 original/current 비교가 모두 성공해야 한다. synthetic OS label 시험은 실제3OS 성공으로 기록하지 않는다. raw index FAIL은 원인 미확정 무효이며 baseline/index를 복구하지 않는다.

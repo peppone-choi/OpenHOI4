@@ -116,6 +116,62 @@ fn field_error(path: &Path, field: &str, message: &str) -> DataError {
     }
     fail(path, message)
 }
+pub(crate) fn read_nation(path: &Path, tag: &str) -> Result<NationDefinition, DataError> {
+    let nation: NationDefinition = document(path)?;
+    if nation.tag != tag
+        || tag.is_empty()
+        || !tag
+            .bytes()
+            .all(|b| b.is_ascii_uppercase() || b.is_ascii_digit())
+    {
+        return Err(field_error(
+            path,
+            "tag",
+            "nation tag does not match scenario reference",
+        ));
+    }
+    Ok(nation)
+}
+pub(crate) fn validate_nation_names(
+    path: &Path,
+    nation: &NationDefinition,
+) -> Result<(), DataError> {
+    if nation.name_key.is_empty() {
+        return Err(field_error(path, "name_key", "empty nation name_key"));
+    }
+    if nation.government_key.is_empty() {
+        return Err(field_error(
+            path,
+            "government_key",
+            "empty nation government_key",
+        ));
+    }
+    Ok(())
+}
+pub(crate) fn validate_nation_ideology(
+    path: &Path,
+    nation: &NationDefinition,
+) -> Result<(), DataError> {
+    let mut total = Fixed::ZERO;
+    if nation.ideology_support.is_empty() {
+        return Err(fail(path, "empty ideology support"));
+    }
+    for (key, value) in &nation.ideology_support {
+        let ratio = value
+            .parse::<Fixed>()
+            .map_err(|_| fail(path, "invalid ideology ratio"))?;
+        if key.is_empty() || !(Fixed::ZERO..=Fixed::ONE).contains(&ratio) {
+            return Err(fail(path, "ideology outside 0..1"));
+        }
+        total = total
+            .checked_add(ratio)
+            .ok_or_else(|| fail(path, "ideology sum overflow"))?;
+    }
+    if total != Fixed::ONE {
+        return Err(fail(path, "ideology sum must be one in Fx"));
+    }
+    Ok(())
+}
 pub fn load_scenario(root: &Path, id: &str) -> Result<LoadedNational, DataError> {
     let loaded = read_scenario(root, id)?;
     crate::check_present_catalogs(root)?;
@@ -167,48 +223,15 @@ pub(crate) fn read_scenario(root: &Path, id: &str) -> Result<LoadedNational, Dat
             .join(id)
             .join("nations")
             .join(format!("{tag}.toml"));
-        let nation: NationDefinition = document(&np)?;
-        if &nation.tag != tag {
-            return Err(field_error(
-                &np,
-                "tag",
-                "nation tag does not match scenario reference",
-            ));
-        }
+        let nation = read_nation(&np, tag)?;
         if !ids.insert(nation.id) {
             return Err(field_error(&np, "id", "duplicate nation ID"));
         }
-        if nation.name_key.is_empty() {
-            return Err(field_error(&np, "name_key", "empty nation name_key"));
-        }
-        if nation.government_key.is_empty() {
-            return Err(field_error(
-                &np,
-                "government_key",
-                "empty nation government_key",
-            ));
-        }
+        validate_nation_names(&np, &nation)?;
         if map.state_for_province(nation.capital).is_none() {
             return Err(fail(&np, "capital must reference land"));
         }
-        let mut total = Fixed::ZERO;
-        if nation.ideology_support.is_empty() {
-            return Err(fail(&np, "empty ideology support"));
-        }
-        for (key, value) in &nation.ideology_support {
-            let ratio = value
-                .parse::<Fixed>()
-                .map_err(|_| fail(&np, "invalid ideology ratio"))?;
-            if key.is_empty() || !(Fixed::ZERO..=Fixed::ONE).contains(&ratio) {
-                return Err(fail(&np, "ideology outside 0..1"));
-            }
-            total = total
-                .checked_add(ratio)
-                .ok_or_else(|| fail(&np, "ideology sum overflow"))?;
-        }
-        if total != Fixed::ONE {
-            return Err(fail(&np, "ideology sum must be one in Fx"));
-        }
+        validate_nation_ideology(&np, &nation)?;
         nations.push(nation);
     }
     if nations.is_empty() {

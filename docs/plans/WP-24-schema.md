@@ -1,5 +1,36 @@
 # WP-24 팩 해석·검증 스키마
 
+## P-06 P05-3 등록 nation·query 원장 정합 기획 (2026-10-07, 구현 전)
+
+base3d56361의 P05-3 actual 최종은 유효 FAIL2이며 원9878/HEAD/raw96cf4bdd/ZIP3221·manifest3220 불변이다. 원 verify3 worktree/리포트/mutant/index를 읽기만 한다. 이번 소유는 pack_validation의 등록 nation 분기와 additive data/native 회귀, current checker/tests 및 own 문서다. 다른 loader/host policy/codec/원 checker/helper/fixture/query script/workflow는 보호한다.
+
+| 입력·관계 | 기존 계약/실제 검사 | 실패 및 지원 경계 |
+|---|---|---|
+| scenarios/<id>/nations/*.toml | 등록 NationDefinition deny_unknown_fields의 syntax/type/u16/RGB/필수필드 및 기존 tag/name/government/ideology Fx 범위·합 검사 | map 있는 선택된 국가는 기존 read_scenario의 map/capital/ownership/control 참조 검사. map 없는 empty legacy는 선택 nation/map 관계가 없어 국가 world를 지원하지 않으며 유효 extra조차 unselected/context 오류. malformed를 unsupported 경고로 숨기지 않음 |
+| malformed/type/unknown/국가tag·이념 오류 또는 미선택·map 참조 없는 입력 | TOML 원 path/Unicode line/column/원인 | validate/--pack headless run/save-out, server startup/restore/force의 full guard 모두 오류, 새save 미생성·기존save/source 불변. 정상 legacy date/defines와 정상 structured M1은 유지 |
+| query world.tick·state infrastructure.tick | 실제 paused source DTO tick/header와 각 ledger.tick이 같아야 함 | raw query와 receipt를 같이 변조해도 독립 source 기준으로 거부 |
+| query ledger count/source/op/value/accumulated/base/final | source DTO의 독립 integer verify_ledger로 재계산한 ordered rows, 각 state ID/owner/population/resource/building/province 관계 | missing/type/null/duplicate/time/count/source/final·accumulator 오류를 모두 거부; raw==receipt 일치만으로 성공 판정하지 않음 |
+| Fx wire 표시 | 기존 I32F32 raw bits의 decimal String 표시 | 정수/Fraction으로 최근접 even quantization해 원 bits와 대조, finite·범위·정규 decimal 형 확인. Float/임의 게임수치 추가 없음 |
+| 원 save_query.cjs selectors/asserts | Welcome accepted, unsupported-create Notice, paused 첫 Snapshot, saved-world supported/시간/2국가6province·첫ledger tick/count/a.raw/final/lastaccumulator, CommandResult sequence1 accepted, speed2 paused/tick48 Snapshot | 각 assertion을 checker에서 실제 다시 검사하고 messages의 원 selector가 선택한 응답과 output 필드 관계도 대조. source config/queue/state/ledger/canonical은 current evidence에서 검증하고 wire time/ledger와 연결 |
+
+원/current capture·원8/current17 및 새동시변조 회귀를 유지한다. 새 증거 경로는 target/evidence/WP-24-P06-current-comparer/뿐이다. 로컬 synthetic 비교는 실제3OS로 판정하지 않는다. 원 current/head/dirty/rawindex/executable/PID/nativeexit/stdout/pack/header/save 검사는 그대로 필수이며 새로운 clean commit에서 actual native normal/force·historical rejection과 SHA 봉인을 재실행한다.
+
+부모 추가 소유 인계로 national.rs의 private document/내재 검사를 pub(crate) read_nation/validate_nation_names/validate_nation_ideology 단계로만 추출했다. selected 경로의 syntax/type/tag→duplicateID→name/government→capital→ideology 순서를 유지하고 복수 오류 회귀6행으로 검사한다. map 없는 legacy와 unselected structured extra는 같은 공통 단계를 검사한 뒤 capital 원 위치에 명시 selection/context 오류를 반환한다. reference를 검사한 것처럼 성공 처리하거나 임의 map을 선택하지 않는다.
+
+| 원 save_query.cjs 행/selector | comparer의 필수 대응 |
+|---|---|
+| 23 Welcome accepted / 25 unsupported-create | type·accepted 및 header pack/engine, messages 첫 Welcome·첫 Notice와 key 대응 |
+| 28 paused Snapshot deepEqual | verified paused DTO의 date/hour/tick/paused/speed와 엄격한 type/field 집합, messages 첫 Snapshot |
+| 30 saved-world WorldResult supported | type/request/supported 및 첫 matching WorldResult, world.tick을 source와 대조 |
+| 31 world tick·국가2/province6 | source ordered nation/state/province IDs 및 mutable owner/controller/population/resources/buildings/support도 대조, 누락/중복/type/null 거부 |
+| 33 ledger tick/count4 | 각 state의 독립 integer ledger.tick/ordered rows 개수와 wire 대조 |
+| 34 source a.raw / final !=3 | source/label/op/value·accumulated의 원 DTO rawbit와 Decimal/Fraction 재양자화, 원 Node의 추가 assertion도 유지 |
+| 35 final==last accumulator | wire 원문 문자열도 서로 같아야 함, source final/infrastructure/last row rawbits와 각각 대조 |
+| 37 CommandResult sequence1 accepted | type/sequence/accepted 및 첫 matching command 메시지 |
+| 39 speed2/tick48/paused state | 원 SetSpeed2 이후 date/hour/tick/paused를 source와 대조, matching speed2 Snapshot과 output 객체 일치 |
+
+행 번호는 base3d의 변경하지 않은 원 script에서 직접 읽어 대조했다. raw query와 receipt는 duplicate JSON field를 거부하고 type-strict 비교한 뒤 독립 source 기준을 검사한다. `True == 1` 같은 Python equality로 wire type 오류를 허용하지 않는다. 메시지의 비선택 추가 Snapshot은 원 Node selector와 동일하게 허용하며 원장 row의 source/id/op/order/count는 source 기준으로 엄격히 검사한다. fixed1.31.0의 decimal [from_str](https://docs.rs/fixed/1.31.0/fixed/struct.FixedI64.html#method.from_str) 최근접 even 의미를 2026-10-07 공식 문서에서 확인했다. 새로운 의존성과 게임 수치는 없다.
+
 ## P-06 필수 Save CI producer/consumer 보완 기획 (2026-10-07, 구현 전)
 
 인수 base는 c28f90425905774c23b1d90a5d900c596ade2745다. 4aecc22 clean에서 ff-only 인수했다. 실제 WP17 attempt2는 필수 Save CI의 frozen→server 연결 FAIL과 raw index FAIL로 무효이며 원 baseline/index/증거를 복구하지 않는다. REQUEST-0008 A caller와 원 codec/fixture/expected는 유지한다.

@@ -3,6 +3,7 @@
 import argparse
 import copy
 import hashlib
+from fractions import Fraction
 import json
 from pathlib import Path
 import platform
@@ -280,11 +281,114 @@ def verify_folder(folder, require_clean=True):
     return result
 
 
+def same(actual, expected):
+    """Python bool/int equality must not hide a malformed wire type."""
+    assert type(actual) is type(expected)
+    if isinstance(expected, dict):
+        assert actual.keys() == expected.keys()
+        for key in expected:
+            same(actual[key], expected[key])
+    elif isinstance(expected, list):
+        assert len(actual) == len(expected)
+        for a, e in zip(actual, expected):
+            same(a, e)
+    else:
+        assert actual == expected
+
+
+def fields(actual, expected):
+    assert type(actual) is dict
+    for key, value in expected.items():
+        same(actual[key], value)
+
+
+def wire_fx(value, expected_bits):
+    assert type(expected_bits) is int and -(1 << 63) <= expected_bits < 1 << 63
+    assert type(value) is str and len(value) <= 128
+    assert re.fullmatch(r'-?(?:0|[1-9][0-9]*)(?:\.[0-9]+)?', value)
+    scaled = Fraction(value) * (1 << 32)
+    quotient, remainder = divmod(scaled.numerator, scaled.denominator)
+    bits = quotient + int(2 * remainder > scaled.denominator or
+                          (2 * remainder == scaled.denominator and quotient % 2 != 0))
+    assert -(1 << 63) <= bits < 1 << 63 and bits == expected_bits
+
+
+def load_wire(path):
+    def unique(pairs):
+        result = {}
+        for key, value in pairs:
+            assert key not in result, 'duplicate JSON field'
+            result[key] = value
+        return result
+    return json.loads(path.read_text(encoding='utf-8'), object_pairs_hook=unique)
+
+
+def verify_native_query(query, record):
+    """Every original Node assertion, plus state/ledger relations from saved authority."""
+    assert type(query) is dict and set(query) == {'pid','welcome','snapshot','query','command','state','messages'}
+    paused = paused_dto(record)
+    verify_ledger(paused)  # Independent integer arithmetic, not values copied from the receipt.
+    state = paused['state']; inputs = paused['world']['inputs']
+    time = dict(date=f'{state["date"]["year"]:04}-{state["date"]["month"]:02}-{state["date"]["day"]:02}',
+                hour=state['hour'], tick=str(state['tick']), paused=state['paused'], speed=state['speed'])
+    fields(query['welcome'], dict(type='Welcome', accepted=True, engine_version=record['paused_header']['engine_version'],
+        packs=[dict(id=record['pack']['id'], version=record['pack']['version'], hash=f'{record["pack"]["content_hash"]:016x}')]))
+    fields(query['snapshot'], dict(type='Snapshot', state=time))
+    fields(query['query'], dict(type='WorldResult', request='saved-world', supported=True))
+    world = query['query']['world']; assert type(world) is dict
+    same(world['tick'], str(state['tick']))
+    for key in ('nations','states','provinces'):
+        assert type(world[key]) is list
+        same([item['id'] for item in world[key]], [item['id'] for item in inputs[key]])
+    for nation, expected in zip(world['nations'], inputs['nations']):
+        fields(nation, dict(id=expected['id'], tag=expected['tag'], government_key=expected['government']))
+        support = nation['support']; assert type(support) is list
+        same([s['name_key'] for s in support], [s[0] for s in expected['support']])
+        for row, (_, bits) in zip(support, expected['support']):
+            wire_fx(row['value'], bits)
+    for province, expected in zip(world['provinces'], inputs['provinces']):
+        fields(province, expected)
+    for actual, expected in zip(world['states'], inputs['states']):
+        fields(actual, dict(id=expected['id'], owner=expected['owner'], population=str(expected['population']),
+            resources=[dict(name_key='resource-'+k, value=str(v)) for k,v in expected['resources']],
+            buildings=[dict(name_key='building-'+k, value=str(v)) for k,v in expected['buildings']]))
+        ledger = actual['infrastructure']; reference = expected['ledger']
+        assert type(ledger) is dict and set(ledger) == {'base','final_value','tick','entries'}
+        same(ledger['tick'], str(reference['tick']))
+        wire_fx(ledger['base'], expected['base']); wire_fx(ledger['final_value'], expected['infrastructure'])
+        rows = ledger['entries']; assert type(rows) is list and len(rows) == len(reference['entries'])
+        for index, (row, ref) in enumerate(zip(rows, reference['entries'])):
+            assert type(row) is dict and set(row) == {'id','label_key','operation_key','value','accumulated','source_key'}
+            fields(row, dict(id=str(index), label_key=ref['source'] or reference['target_stat'], source_key=ref['source'],
+                operation_key={'Base':'ledger-base','Add':'ledger-add','Mul':'ledger-multiply'}[ref['op']]))
+            wire_fx(row['value'], ref['value']); wire_fx(row['accumulated'], ref['accumulated'])
+        same(ledger['final_value'], rows[-1]['accumulated'])
+    # The fixture's explicit Node assertions remain additional conformance requirements.
+    first = world['states'][0]['infrastructure']
+    assert len(world['nations']) == 2 and len(world['provinces']) == 6
+    assert first['tick'] == '48' and len(first['entries']) == 4
+    assert first['entries'][1]['source_key'] == 'a.raw' and first['final_value'] != '3'
+    fields(query['command'], dict(type='CommandResult', sequence='1', accepted=True))
+    fields(query['state'], dict(type='Snapshot', state=dict(time, speed=2)))
+    messages = query['messages']; assert type(messages) is list and all(type(m) is dict for m in messages)
+    for key, select in [('welcome',lambda m:m.get('type')=='Welcome'),
+                        ('snapshot',lambda m:m.get('type')=='Snapshot'),
+                        ('query',lambda m:m.get('type')=='WorldResult' and m.get('request')=='saved-world'),
+                        ('command',lambda m:m.get('type')=='CommandResult' and m.get('sequence')=='1'),
+                        ('state',lambda m:m.get('type')=='Snapshot' and type(m.get('state')) is dict and m['state'].get('speed')==2)]:
+        selected = next((m for m in messages if select(m)), None)
+        same(selected, query[key])
+    notice = next((m for m in messages if m.get('type')=='Notice'), None)
+    fields(notice, dict(type='Notice',key='unsupported-create'))
+
+
 def verify_servers(folder, result):
+    verified = verify_folder(folder)
+    same(result, verified)
     pids = []
     for force, name in ((False, 'server'), (True, 'server-force')):
         directory = folder / name
-        receipt = json.loads((directory / 'result.json').read_text(encoding='utf-8'))
+        receipt = load_wire(directory / 'result.json')
         record = result['runs'][0]
         assert receipt['head'] == receipt['capture_head'] == result['head']
         assert receipt['capture_mode'] == MODE and receipt['dirty'] is False
@@ -311,8 +415,9 @@ def verify_servers(folder, result):
             (directory / file).read_bytes()
         startup = (directory / 'server.stdout').read_text(encoding='utf-8')
         assert receipt['url'] in startup and receipt['pack_hash'] in startup
-        query = json.loads((directory / 'query.stdout').read_text(encoding='utf-8'))
-        assert query == receipt['query'] and query['welcome']['accepted'] is True
+        query = load_wire(directory / 'query.stdout')
+        same(query, receipt['query'])
+        verify_native_query(query, record)
         assert query['welcome']['engine_version'] == record['paused_header']['engine_version']
         assert query['welcome']['packs'] == [dict(id=record['pack']['id'], version=record['pack']['version'], hash=receipt['pack_hash'])]
         assert query['welcome']['packs'][0]['hash'] == receipt['pack_hash']
