@@ -197,3 +197,11 @@ CDP socket-probe native0: actual Vite HMR1(protocolvite-hmr), game/ws0, unclassi
 자체회귀 Python33/native0(기존27+새6), Rustfmt/clippy/workspace와 M0b039d35666b77fc2×2/M1b595dc2a1e5b4f8c×2/native0; build/typecheck/103dependencylicense/docs/assets/Fluent0. pair 후 병행 Rust/Python/client/전수검사 중 원client palette test가5170ms/5000ms 제한으로1FAIL·139PASS/native1이었다. 원로그·native를 보존하고 원테스트/설정/timeout 변경 없이 별도 단일 전체 실행client140PASS/native0(client-isolated-full)를 직접 얻었다. 이 병행 부하의 범위 밖 관측은 부모에 전달하며 palette/client코드를 바꾸지 않는다. 초기 SHA/config-copy inline helper의 quoting parse 오류2건도 native1을 기록하고 실제 성공 receipt와 구별한다.
 
 이 체크포인트 이후 원M1 최소 Chrome 단일전체41과 same-source fresh입력 world/Ireland/도시/sea/지역/3D/원446 동일카메라 비교·socket/원생산자ZIP identity/critical/artifact ZIP 봉인을 직접 남긴다. 클라이언트·data4를 새생성으로 덮지 않으며 exactbytes와 page inputDir로 직접 대조한다. 기존게임 미연결/globalDEM/원수로·Caspian/현대2002–03 일반화·tiny 한계 유지. 결정필요 없음; 범위밖관측은 병행clientpalette timeout 위1건(미수정). 독립 PASS/mainCI·WP/M5/완료를 선언하지 않는다.
+
+### P06-4 clean source 회귀와 인수 기준
+
+clean제품 e7a6858f7246c219c8533dae8f730ea72a018852에서 원M1 Chrome 단일전체41expected/0skip·flaky·unexpected/native0를 직접 실행했다(원로그49.9s, reporter의정확duration은JSON). 지정client cwd·기존config/testMatch/worker·fixture/assert/timeout/retry를 유지했다. 실제 최소Chrome argv는 headless/hide-scrollbars/ownprofile/pipe/no-startup-window만이고 security/GPU override없다. 원3browser독립 검수 결과를 새구현 검수로 대신하지 않는다. 이번 허용범위에서 ownChrome만 사용했고 Firefox/WebKit을 새로 실행하지 않았다.
+
+fresh1에서 원 urban polygon∩land 연결영역의 구면면적>=100km²를 직접 재계산하고 모든33554432pixel의 eligibleflag를 대조했다. observed57247pixel/11967components/eligible1846, lookup일치 native0(eligible-class-validation.json). Ireland17 중13>=9/4tiny=[1,2,2,8], 전체onepixel6610/sourcekind6125, 도시4fraction1.0을 직접 재확인했다. fragment record 전수 대조 native0. raw/targetdebug1based와 source threshold/target의미는 기존대로다.
+
+이후 변경은 이 작업 로그의 append-only 기록뿐이며 생성기·새테스트·클라이언트·네 출력 bytes는 e7a6858와 같다. 최종 clean HEAD의 실제 page는 fresh1의 metadata/index/provinces exactbytes를 inputDir route로 사용하며 비교page는 별도 git446 historical 복사본을 같은 scale로 사용한다. historical은 fresh로 세지 않고 원 전체source446 재실행 화면으로 부르지 않는다. 실제frames/adapter/최소argv/native/HTTP·console·page·unknownfail/실제signal-abort/socket/3D·tiny PNG 및 두fresh resource/원ZIP·원FAIL의 SHA와critical/artifact manifest는 새 final 봉인에 기록한다. 최종 identity/ZIP은 자기증거이며 다음 새source/worktree의 독립 P05와 기본브랜치CI 판정은 부모 몫이다.
