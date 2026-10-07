@@ -1,0 +1,127 @@
+{
+  "source_commit": "5794505abb2b0cfeaace8005183cb6606fc68301",
+  "scope": "Implementation producer evidence; independentP05-4/P07/same-mainCI pending",
+  "critical_git_blobs_checked": 326,
+  "critical_source_and_snapshot_raw_exact": 326,
+  "critical_git_raw_exact": 323,
+  "critical_git_utf8_eol_only": [
+    {
+      "path": "data/preview/world/source-manifest.json",
+      "git_bytes": 5175,
+      "git_sha256": "c0eb1738f8e4ada8e37348467ad4a3bbed03f5d38fed3a659ecb40b6b4fd189b",
+      "snapshot_bytes": 5291,
+      "snapshot_sha256": "bcac8c3a922d6f48b031b654832eb004ac7736ca0a4f1465248ce7b0296cc934",
+      "UTF8_CRLF_LF_content_equal": true
+    },
+    {
+      "path": "docs/adr/ADR-3201-world-preview.md",
+      "git_bytes": 9540,
+      "git_sha256": "586501d33503670107a1bae485b868338a4824428bdc2717236a7a8a940c420b",
+      "snapshot_bytes": 9602,
+      "snapshot_sha256": "6f9fe5c8a43fad1991c0460e3e9d010bf9d8fe87e3e0a0ad6288bdc3b45ec661",
+      "UTF8_CRLF_LF_content_equal": true
+    },
+    {
+      "path": "docs/plans/WORLD-PREVIEW-schema.md",
+      "git_bytes": 10837,
+      "git_sha256": "3645c37c7722a53303ce94358e303ad49abe110b06f51cc410f86e317392a58a",
+      "snapshot_bytes": 10885,
+      "snapshot_sha256": "3c33a39d263dcb7254938b69cb763423d67de2b953d519b9fbe9a5a14e8893ae",
+      "UTF8_CRLF_LF_content_equal": true
+    }
+  ],
+  "artifact_files_checked": 554,
+  "original_ZIP_members_checked": 556,
+  "ZIP_crc_ok": true,
+  "mismatches": 0,
+  "actual_final_chars": 823,
+  "actual_final_equal": true,
+  "original_ZIP_sha256": "348727bdbe6637f375ef51d62e0dc96745c178eed6d6b77b901f7e18a8d6f036",
+  "original_ZIP_bytes": 50409960,
+  "producer_identity_sha256": "8353dab9aed240cae7e7df753b610f0418c747fafd4953f25e63c5a7c23b00c7",
+  "historical446_shipped_data_equal": [
+    {
+      "path": "client/public/preview/world/index.bin",
+      "bytes": 67108864,
+      "sha256": "3aafdad84138670ea627535952b987d16e79519fe33fe617a6c7321917358706",
+      "historical446_equal": true
+    },
+    {
+      "path": "client/public/preview/world/provinces.json",
+      "bytes": 7116532,
+      "sha256": "f0f8efca5086d51580b7ffeeee862f39f3edef19ae3fac0a75091b6cdc1c3c91",
+      "historical446_equal": true
+    },
+    {
+      "path": "client/public/preview/world/adjacency.json",
+      "bytes": 617874,
+      "sha256": "2a44a5e0132840f86e37d2df9c08087fdac2d5fc0ab2d38921106af44d7247fa",
+      "historical446_equal": true
+    },
+    {
+      "path": "client/public/preview/world/metadata.json",
+      "bytes": 622581,
+      "sha256": "0498d827389750a32e37dca196e54bb5f15c8104a2a342611b1f8c135c648dbf",
+      "historical446_equal": true
+    }
+  ],
+  "changed_paths": [
+    "docs/adr/ADR-3202-component-allocation-cost.md",
+    "docs/worklog/WORLD-PREVIEW.md",
+    "tools/maps/test_component_cost.py",
+    "tools/maps/world_preview.py"
+  ],
+  "storage": {
+    "mode": "ordered_exact_original_parts",
+    "original_bytes": 50409960,
+    "original_sha256": "348727bdbe6637f375ef51d62e0dc96745c178eed6d6b77b901f7e18a8d6f036",
+    "parts": [
+      {
+        "path": "evidence.zip.part001",
+        "bytes": 48000000,
+        "sha256": "5430d6a491edcbe09be2b0bb2fba07d9d7da0aa8e66211d01b61c8dd9d009f23"
+      },
+      {
+        "path": "evidence.zip.part002",
+        "bytes": 2409960,
+        "sha256": "6252af9c2a8edc6f82ded78e80c92959561e39ae53dec088aa618991c1e50ae2"
+      }
+    ],
+    "source_original_preserved": "E:\\openhoi\\.orchestrator\\wt\\WORLD-PREVIEW-M2-r2\\target\\evidence\\WORLD-PREVIEW-performance-P06-4\\final\\seal-2\\P06-4-5794505-evidence-2.zip",
+    "concatenated_SHA256_equal": true
+  },
+  "parent_originals": [
+    {
+      "path": "actual-final-api.json",
+      "bytes": 38913,
+      "sha256": "38e71e0ca38d346e29706555587f4be2f549ba6720d00aa3e4900074ecc36ced"
+    },
+    {
+      "path": "producer-identity.json",
+      "bytes": 318757,
+      "sha256": "8353dab9aed240cae7e7df753b610f0418c747fafd4953f25e63c5a7c23b00c7"
+    },
+    {
+      "path": "producer-archive-receipt.json",
+      "bytes": 655,
+      "sha256": "69cc0520c18e3b7253da42003383d98e260aa22aceee360d3a8e597f82bf807a"
+    },
+    {
+      "path": "original-performance-prompt.md",
+      "bytes": 6960,
+      "sha256": "dcdd3811e8ec3de824434567352df3abc6adde73df75098fef02fa7b9e9b59eb"
+    },
+    {
+      "path": "space-preparation-failures.md",
+      "bytes": 1571,
+      "sha256": "f8c9910ed7c7befb0eeb708e65668e6c3d5566b41fdfc5e0fc9df7cc76eed710"
+    },
+    {
+      "path": "space-recovery.json",
+      "bytes": 352,
+      "sha256": "1ea3ad47d5018230b2515098bbab1cf63e119b25724ac83f472a624af61c8561"
+    }
+  ],
+  "parent_archive_sha256": "a482549238a1973b8f55268ab5af7c516f30a4b1d48feae419f8df5cd4a2393a",
+  "checked_utc": "2026-10-07T13:43:02.083076+00:00"
+}

@@ -2,6 +2,14 @@
 
 ## 현재 체크포인트와 다음 표시 품질 개선
 
+### 2026-10-07 P06-4 성능 보완 인수와 새 P05-4
+
+같은 WORLD 담당은 clean5794505/actual completed88/final823자로 성능 보완을 제출했다. 원446 대비 생성기 계산·할당 개선과 새6개 비용 테스트/ADR-3202/append 로그의4파일만 바뀌었고, 원 source7/defines/감독180초·3GiB·64MiB/해상도/데이터4·기하·ID/도시·sea·GLB/client/기존tests·골든/게임·의존성·CI는 그대로다. 자체 fresh72.438/71.594초와 원446/shipped/fresh 두 번의4파일 exactbytes는 구현 관측이며 새 독립 성능 PASS가 아니다. 원 P05-3 F05는 유지한다. 병행 client palette5초 timeout/native1·139PASS는 원로그로 보존하고 설정 변경 없는 별도 전체140PASS와 구분한다.
+
+[새 원본 인수](../worklog/evidence/WORLD-PREVIEW-M2-r2-P06-4/README.md)는 critical326 raw source/snapshot·artifact554·ZIP556의 원bytes/SHA/CRC 불일치0, Git323rawexact/3UTF8 EOL내용동등 구분, actualfinal823자를 보존했다. 원50,409,960B ZIP348727bd…와48MB parts2 실제 재조립/전체SHA·556CRC 확인도 별도다. 화면21쌍은 지도 중심부RGB 동일/전체20쌍 동일이며 더블린 선택 화면은 하단 버튼80×32영역 차이다. 과거DOM hover/focus가 미기록이라 정확 원시각 원인을 확인했다고 쓰지 않는다. 실제3D·도시/해상 선택·각 source 일반화/작은 조각/게임 미연결 한계는 유지한다.
+
+E: 공간 부족 준비 쓰기 실패와0바이트 파일/삭제 도구 정책 거부는 보존했다. 사용자 공간 확보 후 실제 약441.7GB를 확인해 새 이름의 봉인을 인수했고 새 독립 P05-4를 배정했다. 앱01a1169b-dac7-7fb0-b9b1-ea51a36716ba, exact5794505/새verify4/최초10017 tracked·rawd30e2af9… 기준선을 앱 전 봉인, prompt18687B/SHA56703152… actualpayload동등이다. 두 timed fresh bake에는 검증자 ownheavy 작업을 병행하지 않되 다른 사용자/앱 프로세스는 조작하지 않는다. 원 제한과 모든 정확성·기존3browser 단일41 및 화면 검사를 직접 실행한다. 새 PASS 뒤 원ASSETS/ko/en 양쪽 append 보존 union·P07·같은 최종main CI를 수행한다. 고유통합15/W1W2 전체0/0/M2게이트없음/외관우선/새게임기능후속은 그대로다. 아래 소스·활성 상태는 이전 시점 기록이다.
+
 ### 2026-10-07 P06-3 실제 최종 후보와 새 독립검수
 
 후속실제판정: 새P05-3 actualcompleted15는[유효FAIL F05](../verify/WORLD-PREVIEW.M2-r2.attempt3.md)다. 전체source33554432pixel/24889ID4connected/urban1846/adjacency47554/3D/원3browser각단일41·회귀는통과했으나freshbake2/3이180.078/180.188s로원180sguard초과/native1였다. 최초whole10015/rawb6dfe05f… 불변/MF861·ZIP862 전수0·actualfinal9662chars/원155621367bytes ZIP7790c6b6…과orderedparts4를보존했다. 원FAIL은재시도성공/0.078초반올림으로면제하지않는다. sameWORLD 성능전용P06-4가原한도·source7/defs·해상도·기하ID·도시/해상·원tests골든/renderer를유지한계산비용개선으로진행중이며새source/새worktree/독립freshpair 검수가필요하다. 현재원W1/W2·전체WP/M5 또는preview통합PASS는아니다.

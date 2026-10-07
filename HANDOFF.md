@@ -1,5 +1,25 @@
 # 인수인계
 
+## 진행 중 M2-r2 새 독립 검증 착수 — 2026-10-07 22:45 KST
+
+WORLD P06-4는 actual idle/completed88/turn `01a1166e-d443-7c01-9ea1-49d6b574b5f9`, 실제 final823자로 종료했다. 최종 source5794505와 [부모 원본 인수](docs/worklog/evidence/WORLD-PREVIEW-M2-r2-P06-4/README.md)는 critical326/source snapshot·artifact554·ZIP556 member bytes/SHA/CRC 전수 불일치0이다. Git323 rawexact와 원래3개 UTF8 CRLF/LF내용동등은 따로 기록했고 원 bytes를 보존했다. 원ZIP50,409,960B/SHA348727bdbe6637f375ef51d62e0dc96745c178eed6d6b77b901f7e18a8d6f036는 생산자 경로에 유지하고 48MB orderedparts2개를 실제 재조립해 전체SHA/556CRC를 확인했다. 원446 네 산출물은 bytes까지 동일하며 원F05·초기client timeout·공간 부족 실패와 회복도 보존했다.
+
+새 P05-4 앱 `01a1169b-dac7-7fb0-b9b1-ea51a36716ba`/turn `01a1169b-dde2-7091-bae0-edc31d1393d2`은 actualactive다. 새 detached `.orchestrator/wt/WORLD-PREVIEW-M2-r2-verify4`, exact5794505, 최초 tracked10,017/전체 SHA·HEAD·semantic/rawindex·diff/status와 rawSHA `d30e2af98022fa3b6f70c5a0add1e3ba484c3676aa8a5fd47f4fc03c498bc6db`를 앱 생성 전에 기록했다. 실제 prompt18,687B/SHA56703152af29fef54dd9d3faa6d079ac053ef442fc24baf84866d7800c903226와 전송 payload bytes가 같다. 기존 앱/기준선을 재사용하지 않고 원180s/3GiB 및 전체 회귀·실화면을 새로 검사한다. 아직 독립 판정이 없다. 고유통합15/W1W2 전체0/0/M2 게이트 없음/지도 외관 우선은 그대로다.
+
+main028d의 과거 같은 HEAD 6CI/25job SUCCESS는 유지하되 이 진행 기록과 새 custody는 현재 커밋 전이다. 새 문서 커밋도 별도 같은 HEAD CI를 확인한다. 이번 공간 복구와 검증 착수는 RUN 종료나 P-08이 아니다.
+
+## 진행 중 M2-r2 관측 — 2026-10-07 22:40 KST
+
+동일 RUN이며 종료 P-08이 아니다. main `028d7349d57280e74a5290d47da8443bc50e6a78`의 실제 동일 HEAD 6개 워크플로/25개 작업이 모두 SUCCESS다. 원격0/0·clean을 확인했고 registry에 기록했다. 고유 통합15, 원W1/W2 전체0/0, M2 게이트 없음은 그대로다. 아래 과거 main/활성 상태는 해당 시점의 관측이다.
+
+WORLD 단일 구현 앱의 성능 수정 소스는 clean `5794505abb2b0cfeaace8005183cb6606fc68301`이다. 원446 대비 생성기 계산·할당 개선, 새 비용 테스트, ADR-3202, 작업 로그의 4파일만 바뀌었다. 자체 fresh72.438/71.594초와 원446 네 산출물 exactbytes 보존, Python33/Rust 회귀·별도client140·원M1 Chrome 단일41 및 화면 캡처를 기록했다. 병행 client139PASS+기존5초 palette timeout1/native1은 그대로 보존하고 별도140PASS와 구분한다. 원 독립 P05-3 F05는 유효 FAIL로 유지한다. seal-2 원 receipt는 ZIP50,409,960B/SHA348727bdbe6637f375ef51d62e0dc96745c178eed6d6b77b901f7e18a8d6f036, critical326/artifact554/member556이다. 아직 actual completed final 인수 및 부모 전수 custody가 끝나지 않아 새 P05-4를 시작하지 않았다.
+
+E: Free0으로 부모 준비 JSON3개와 구현 선택적 비교 helper 쓰기가 실패했다. 원 0바이트 파일과 native 오류를 보존했다. 부모 재생성 incremental 캐시 삭제는 도구 정책에 의해 실행 전 차단됐으며 우회·삭제하지 않았다. 사용자 직접 공간 확보 후 Free약441.7GB를 확인해 봉인 준비를 재개했다. 원 ZIP/증거/브랜치/작업 트리는 보존되어 있다. 실패·회복 기록은 `.orchestrator/evidence/M2-r2-resume/space-exhaustion-preparation-failures.md`와 `space-recovery-complete.json`이다.
+
+새 P05-4 초안과 setup/custody helper는 ignored 경로에 준비되어 있고 syntax만 확인했다. 실제 final·원 source/artifact/member bytes/SHA/CRC 인수 후 새 detached verify4 worktree와 최초 whole/raw 기준선을 만들고 새 앱을 배정한다. 원180초/3GiB/64MiB와 지도/ID·도시/해상 품질을 유지하며 두 timed bake 사이에는 검증자 자신의 heavy 작업을 병행하지 않는다. 사용자/다른 프로세스는 조작하지 않는다. 성능 관측·같은 카메라 지도 RGB 보존은 독립 PASS나 사용자 외관 승인을 대신하지 않는다.
+
+현재 소스의 읽기 전용 merge-tree 사전점검은 ASSETS·ko·en의 append 충돌3개뿐이다. merge-tree native1과 HEAD/status/cached before/after 동등을 기록했으며 raw index bytes까지 대조한 것은 아니다. 실제 병합/P07은 새 독립 PASS 뒤에만 한다. 원 base prefix와 양쪽 append를 읽기 전용으로 대조했고 번역 키161개 중복없음/TOML parse를 확인했다. 이후 실제 union에서도 원문/중복ID·키를 검사하고 통합 상태 회귀와 같은 최종 main CI를 확인한다.
+
 ## 진행 중 M2-r2 최신 관측 — 2026-10-07 21:56 KST
 
 새WORLD P05-3는 actual idle/completed15/turn `01a1164e-c360-79e0-935e-15ddcffab85c`의 **유효 FAIL F05**다. exact446540f/원10015파일·HEAD·semantic/rawindex·diff/status 전체동일,actualfinal9662chars·[공식전문](docs/verify/WORLD-PREVIEW.M2-r2.attempt3.md)과MF861/ZIP862 전수0를보존했다. 첫freshbake174.156s/native0/4파일shipped동일,second180.078s/native1 및extra180.188s/native1로원180s/3GiB/64MiBguard를넘었다. 원ZIP155621367bytes/SHA7790c6b6043de851602e3d737f8e0d8d265935572cb981faa36d8cdd7276ac7e와정확ordered48MB parts4를보존하고실제재조립전체SHA를확인했다. 데이터전체33554432sourcepixel/24889ID4connected/47,554adjacency/majorurban1846·3D·기존3browser각단일41·client140/Rust179 PASS는전체성능PASS를대신하지않는다. 원skip1은고정DEM별도독립전수검사와구분한다.
