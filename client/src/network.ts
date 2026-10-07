@@ -36,9 +36,19 @@ const scalar = shape<ScalarView>({ name_key: string, value: string });
 const stateView = shape<StateView>({ id: u16, name_key: string, provinces: array(u16), owner: u16, population: string, resources: array(scalar), buildings: array(scalar), infrastructure: ledger });
 const province = shape<ProvinceView>({ id: u16, state: nullable(u16), owner: nullable(u16), controller: nullable(u16), owner_color: nullable(color), controller_color: nullable(color), terrain_key: string, terrain_color: color, state_color: nullable(color) });
 const world = shape<WorldView>({ tick: string, map_id: string, width: u32, height: u32, province_ids: array(u16), neutral_color: color, mode_keys: array(string), nations: array(nation), states: array(stateView), provinces: array(province) });
+type Trigger = Extract<ServerMessage,{type:'TriggerResult'}>['trigger'];
+const cause:Guard<import('./proto/protocol').EndCauseView> = (v):v is import('./proto/protocol').EndCauseView => {
+  if(typeof v!=='object'||v===null||Array.isArray(v))return false;
+  const o=v as Record<string,unknown>;
+  return (o.type==='Date'||o.type==='Condition') ? Object.keys(o).length===1 : o.type==='Explicit'&&Object.keys(o).length===2&&string(o.source);
+};
+const flags=shape<import('./proto/protocol').NationFlagsView>({nation:u16,keys:array(string)});
+const end=shape<import('./proto/protocol').EndView>({tick:decimal,date:string,hour:u8,causes:array(cause)});
+const trigger=shape<NonNullable<Trigger>>({definitions_hash:hash,flags:array(flags),ended:nullable(end)});
 // Mapped from the generated Rust union: adding a variant/field or changing a
 // field type breaks typecheck until its runtime validator is updated.
 const serverFields = {
+  TriggerResult: {type:literal('TriggerResult'),request:string,supported:boolean,reason_key:nullable(string),trigger:nullable(trigger)},
   Welcome: { type: literal('Welcome'), engine_version: string, protocol_version: string, accepted: boolean, reason_key: nullable(string), packs: array(packInfo), sessions: array(string) },
   CommandResult: { type: literal('CommandResult'), sequence: string, accepted: boolean, reason_key: nullable(string) },
   Snapshot: { type: literal('Snapshot'), state: timeState },
@@ -49,6 +59,10 @@ const serverFields = {
 } satisfies { [K in ServerMessage['type']]: Shape<Extract<ServerMessage, { type: K }>> };
 const serverGuards = Object.values(serverFields).map(fields => shape<Record<string, unknown>>(fields));
 export function isServerMessage(value: unknown): value is ServerMessage {
+  if(typeof value==='object'&&value!==null&&(value as Record<string,unknown>).type==='TriggerResult'){
+    const v=value as Record<string,unknown>;
+    if(v.supported!==(v.trigger!==null)||(v.supported===true&&v.reason_key!==null))return false;
+  }
   return serverGuards.some(guard => guard(value));
 }
 export function applyServerMessage(current: TimeState | null, message: ServerMessage): TimeState | null {

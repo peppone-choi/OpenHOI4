@@ -82,3 +82,4 @@ hills = Hills
 ocean = Ocean
 inland_water = Inland water
 map-no-state = This province has no state or country.
+scenario-ended = The scenario has ended. Its checkpoint is available for review and saving.

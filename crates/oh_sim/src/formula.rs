@@ -139,3 +139,26 @@ pub fn strait_hours(
     }
     Ok(value)
 }
+
+/// Standalone arithmetic awaits real four-axis producers; missing nonzero input fails.
+pub fn weighted_score(
+    weights: [Fx; 4],
+    inputs: [Option<Fx>; 4],
+) -> Result<([Option<Fx>; 4], Fx), crate::trigger::TriggerError> {
+    let mut terms = [None; 4];
+    let mut total = Fx::ZERO;
+    for i in 0..4 {
+        if weights[i] == Fx::ZERO {
+            continue;
+        }
+        let input = inputs[i].ok_or(crate::trigger::TriggerError::MissingContext)?;
+        let term = weights[i]
+            .checked_mul(input)
+            .ok_or(crate::trigger::TriggerError::InvalidArgument)?;
+        total = total
+            .checked_add(term)
+            .ok_or(crate::trigger::TriggerError::InvalidArgument)?;
+        terms[i] = Some(term);
+    }
+    Ok((terms, total))
+}

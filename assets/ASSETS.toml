@@ -647,3 +647,12 @@ license = "CC-BY-SA-4.0"
 modified = false
 ai_generated = false
 notes = "Unmodified source97f688718dabed46bc477fa249798ac09e999581 Testland file for historical v2 compatibility only; SHA256 01258b9b99424f3855394d410ba369b407357239006e04d1d914265d36151dd5. Original synthetic pack; current pack tests are separate; no migration or replacement."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/trigger/scenario.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original synthetic WP13 scenario assembled from REQUEST-0009 A and existing OpenHOI Testland nation/map references; no original-game files/text/values. Not a replacement for M0/M1 or frozen save fixtures. SHA256 68617e11f7bfc4785015cb4f2cbe9478e5bf01234806aca1e7e94bd30c582338."

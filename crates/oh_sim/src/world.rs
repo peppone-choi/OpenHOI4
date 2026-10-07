@@ -8,12 +8,16 @@ use serde::Serialize;
 use std::{collections::BTreeMap, sync::Arc};
 #[derive(Clone, Debug)]
 pub struct Defs {
+    trigger: Option<oh_data::trigger::Definition>,
     nations: Vec<oh_data::national::NationDefinition>,
     map: oh_data::map::MapData,
     visuals: oh_data::national::VisualPalette,
     map_id: String,
 }
 impl Defs {
+    pub fn trigger(&self) -> Option<&oh_data::trigger::Definition> {
+        self.trigger.as_ref()
+    }
     pub fn visuals(&self) -> &oh_data::national::VisualPalette {
         &self.visuals
     }
@@ -532,6 +536,7 @@ impl World {
         .map_err(|e| e.to_string())?;
         Ok(Self {
             defs: Arc::new(Defs {
+                trigger: oh_data::trigger::definition(loaded)?,
                 nations: loaded.nations.clone(),
                 map: loaded.map.clone(),
                 visuals: loaded.visuals.clone(),

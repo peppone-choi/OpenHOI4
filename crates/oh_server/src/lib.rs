@@ -500,6 +500,17 @@ async fn connection(mut socket: WebSocket, mut host: Host) {
                         }
                     }
                     ClientMessage::Query { request, kind } => {
+                        if kind=="trigger" {
+                            let mut reason=Some("not-joined");let mut trigger=None;
+                            if let Some(session)=active.as_ref(){
+                                let(reply,received)=oneshot::channel();
+                                if session.commands.try_send(session::Request::Trigger{reply}).is_ok(){
+                                    trigger=tokio::select!{value=received=>value.ok().flatten(),_=host.shutdown.changed()=>break};
+                                    reason=if trigger.is_some(){None}else{Some("unsupported-query")};
+                                }else{reason=Some("session-closed");}
+                            }
+                            if !send(&mut socket,ServerMessage::TriggerResult{request,supported:trigger.is_some(),reason_key:reason.map(str::to_owned),trigger}).await{break;}continue;
+                        }
                         if kind=="world" || kind.starts_with("nation:") || kind.starts_with("state:") {
                             let mut reason=Some("not-joined"); let mut world=None;
                             if let Some(session)=active.as_ref(){

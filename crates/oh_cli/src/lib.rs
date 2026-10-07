@@ -253,6 +253,9 @@ pub fn run_national(root: &Path, options: &RunOptions) -> Result<Simulation, Str
     )
     .map_err(|e| e.to_string())?;
     for _ in 0..options.ticks {
+        if sim.is_ended() {
+            break;
+        }
         sim.step().map_err(|e| e.to_string())?;
     }
     Ok(sim)
@@ -428,6 +431,9 @@ pub fn execute_invocation(args: &[String]) -> Result<(Simulation, bool), String>
 pub fn advance(sim: &mut Simulation, ticks: u64) -> Result<(), String> {
     let mut candidate = sim.clone();
     for _ in 0..ticks {
+        if candidate.is_ended() {
+            break;
+        }
         if !candidate.step().map_err(|e| e.to_string())?.advanced {
             return Err("PausedCannotAdvance: no current-tick resume".into());
         }

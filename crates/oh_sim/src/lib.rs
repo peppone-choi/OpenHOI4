@@ -11,11 +11,15 @@ pub mod ledger;
 pub mod movement;
 pub mod save_state;
 mod time;
+pub mod trigger;
+pub mod trigger_save;
 pub mod world;
 pub use time::{Date, TimeConfig};
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum Error {
+    ScenarioEnded,
+    Trigger(trigger::TriggerError),
     InvalidWorld,
     Movement(movement::MovementError),
     InvalidDate,
@@ -32,6 +36,8 @@ impl std::fmt::Display for Error {
             return error.fmt(f);
         }
         f.write_str(match self {
+            Self::ScenarioEnded => "scenario-ended",
+            Self::Trigger(_) => "trigger execution failed",
             Self::Movement(_) => "movement command or phase failed",
             Self::InvalidWorld => "invalid world or ledger calculation",
             Self::InvalidDate => "invalid Gregorian date",
@@ -55,6 +61,9 @@ pub enum Command {
     },
     Stop {
         unit: DivisionId,
+    },
+    Effects {
+        program: String,
     },
 }
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -140,6 +149,8 @@ pub struct Simulation {
     world: Option<world::World>,
     #[serde(skip_serializing_if = "Option::is_none")]
     movement: Option<movement::Movement>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    trigger: Option<trigger::TriggerState>,
 }
 impl Simulation {
     pub fn new(scenario: String, date: Date, seed: u64, config: TimeConfig) -> Result<Self, Error> {
@@ -160,6 +171,7 @@ impl Simulation {
             queue: BTreeMap::new(),
             world: None,
             movement: None,
+            trigger: None,
         })
     }
     pub fn with_world(
@@ -171,6 +183,15 @@ impl Simulation {
     ) -> Result<Self, Error> {
         let mut sim = Self::new(scenario, date, seed, config)?;
         sim.world = Some(world);
+        if let Some(world) = sim.world.as_ref()
+            && let Some(defs) = world.defs().trigger()
+        {
+            let mut trigger =
+                trigger::TriggerState::initial(defs, world).map_err(Error::Trigger)?;
+            trigger::checkpoint(world, &sim.state, &mut trigger, Default::default(), true)
+                .map_err(Error::Trigger)?;
+            sim.trigger = Some(trigger);
+        }
         Ok(sim)
     }
     /// Trusted host initialization only. No client supplies speed or context.
@@ -189,6 +210,48 @@ impl Simulation {
     }
     pub fn movement(&self) -> Option<&movement::Movement> {
         self.movement.as_ref()
+    }
+    pub fn trigger_state(&self) -> Option<&trigger::TriggerState> {
+        self.trigger.as_ref()
+    }
+    pub fn is_ended(&self) -> bool {
+        self.trigger.as_ref().is_some_and(|t| t.ended.is_some())
+    }
+    fn apply_effects(
+        command: &Command,
+        nation: NationId,
+        world: Option<&world::World>,
+        state: &State,
+        trigger: Option<&mut trigger::TriggerState>,
+    ) -> Result<std::collections::BTreeSet<String>, Error> {
+        let Command::Effects { program } = command else {
+            return Ok(Default::default());
+        };
+        let world = world.ok_or(Error::InvalidWorld)?;
+        let defs = world
+            .defs()
+            .trigger()
+            .ok_or(Error::Trigger(trigger::TriggerError::MissingContext))?;
+        let p = defs
+            .effect_programs
+            .as_ref()
+            .and_then(|ps| ps.get(program))
+            .ok_or(Error::Trigger(trigger::TriggerError::InvalidReference))?;
+        if world.nation(nation).is_none() {
+            return Err(Error::Trigger(trigger::TriggerError::InvalidReference));
+        }
+        let scope = trigger::root(world, p.root.as_deref()).map_err(Error::Trigger)?;
+        if let trigger::Scope::Nation(id) = scope
+            && id != nation
+        {
+            return Err(Error::Trigger(trigger::TriggerError::InvalidReference));
+        }
+        let trigger = trigger.ok_or(Error::Trigger(trigger::TriggerError::MissingContext))?;
+        let mut host = trigger::SimHost::new(world, state, trigger);
+        trigger::execute(&mut host, &p.effects, scope).map_err(Error::Trigger)?;
+        let sources = host.sources.clone();
+        host.commit(trigger);
+        Ok(sources)
     }
     fn apply_movement(
         command: &Command,
@@ -234,6 +297,9 @@ impl Simulation {
         sequence: u64,
         command: Command,
     ) -> Result<(), Error> {
+        if self.is_ended() {
+            return Err(Error::ScenarioEnded);
+        }
         if tick < self.state.tick {
             return Err(Error::PastCommand);
         }
@@ -245,15 +311,30 @@ impl Simulation {
             let mut preview = self.movement.clone();
             Self::apply_movement(&command, nation, self.world.as_ref(), preview.as_mut())?;
         }
+        if matches!(command, Command::Effects { .. }) {
+            let mut preview = self.trigger.clone();
+            Self::apply_effects(
+                &command,
+                nation,
+                self.world.as_ref(),
+                &self.state,
+                preview.as_mut(),
+            )?;
+        }
         self.queue.insert(key, command);
         Ok(())
     }
     /// Pump commands even when paused. A running step advances exactly one hour.
     /// Clock failure is atomic: neither state nor pending commands are lost.
     pub fn step(&mut self) -> Result<Step, Error> {
+        if self.is_ended() {
+            return Err(Error::ScenarioEnded);
+        }
         let mut next = self.state.clone();
         let mut next_world = self.world.clone();
         let mut next_movement = self.movement.clone();
+        let mut next_trigger = self.trigger.clone();
+        let mut end_sources = std::collections::BTreeSet::new();
         let keys: Vec<_> = self
             .queue
             .keys()
@@ -263,6 +344,14 @@ impl Simulation {
         let mut commands = Vec::new();
         for key @ (_, nation, sequence) in &keys {
             let result = match &self.queue[key] {
+                c @ Command::Effects { .. } => Self::apply_effects(
+                    c,
+                    *nation,
+                    next_world.as_ref(),
+                    &next,
+                    next_trigger.as_mut(),
+                )
+                .map(|sources| end_sources.extend(sources)),
                 Command::Pause(paused) => {
                     next.paused = *paused;
                     Ok(())
@@ -321,6 +410,16 @@ impl Simulation {
         if let Some(world) = next_world.as_mut() {
             world.evaluate(next.tick).map_err(|_| Error::InvalidWorld)?;
         }
+        if let Some(trigger) = next_trigger.as_mut() {
+            trigger::checkpoint(
+                next_world.as_ref().ok_or(Error::InvalidWorld)?,
+                &next,
+                trigger,
+                end_sources,
+                advanced,
+            )
+            .map_err(Error::Trigger)?;
+        }
         phases.push(Phase::Snapshot);
         for key in keys {
             self.queue.remove(&key);
@@ -328,6 +427,7 @@ impl Simulation {
         self.state = next;
         self.world = next_world;
         self.movement = next_movement;
+        self.trigger = next_trigger;
         Ok(Step {
             advanced,
             commands,
