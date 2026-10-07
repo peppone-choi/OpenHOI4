@@ -23,6 +23,14 @@
 
 현재 원 committed m1-v1 save는 helper의 live testland copy와 비교되므로 새 pack.ftl 추가만으로 identity가 바뀐다. WP-24가 b6516ed 원 Testland 19파일의 frozen v1 fixture를 추가하고 `copy_v1_pack/mutable_v1_pack` 별도 경로를 save_fixture capture에만 연결한다. 기존 current generic helper/테스트와 원 assertion/expected/save 파일은 유지한다. WP-24 소유는 support/copy.rs·mod.rs, examples/save_fixture.rs, 신규 fixture directory이며 WP-17은 이 경로를 수정하지 않는다. 독립 검증은 Git 원 source의 각 bytes와 frozen copy, 원 v1 fresh capture의 byte/SHA 일치, current pack save 왕복, 변경팩 old save 명시 거부를 직접 각각 확인한다.
 
+## WP-24 첫 FAIL과 새 P-05 경계
+
+exact `c2c2f638fe5179d11ce5a318f6d991b4b2a0cd4d`의 첫 독립 P-05는 유효 FAIL이다. 등록 legacy scenario defines의 문법 오류를 CLI가 수용했고, native 서버 startup은 잘못된 dependency와 깨진 FTL에도 HTTP 200을 열었다. 실제 앱 마지막 전문은 `docs/verify/WP-24.M2-r1.attempt1.md`, 원 명령·별도 fullreport·최초 9771개 추적 파일과 raw index·최종 불변성·전수 ZIP 봉인은 `docs/verify/evidence/WP-24-M2-r1-P05-1/`에 있다. 수정 구현 결과로 이 기록을 대체하지 않는다.
+
+새 source는 새 detached worktree와 최초 기준선, 새 검증 앱으로 검사한다. 서버 startup와 실제 save restore, CLI validate의 등록 defines를 직접 확인한다. 잘못된 dependency/version/engine/conflict/schema/reference/FTL/defines는 거부되고 HTTP/WS가 열리지 않아야 한다. 정상 startup의 HTTP/WS와 정상 종료 코드 0은 검증자의 강제종료 결과와 분리한다.
+
+REQUEST-0008 A는 한정 CEO 잠정 채택이다. 팩 밖 engine-owned 정책의 허용 caller·실제 v1 header/context와 원 3·19파일의 전체 경로 집합, 각 길이·SHA256, FNV·팩 ID/버전·시나리오·kind·원천을 모두 대조한다. 원천은 `docs/decisions/evidence/historical-load-policy/source-originals.zip`의 22개 원 bytes다. 파일 추가·삭제·한 바이트 변경·symlink/reparse·검증 중 변경, 다른 caller/scenario/key/lang/format, plain frozen 19파일, current pack, `--force`의 면제 시도를 직접 검사한다. 정확한 `manifest.name_key=testland_name`의 ko/en `missing_message_value` 두 진단만 `warning_unavailable`로 보존하며 진단 위치·키·언어·원인을 유지한다. 일반 LOC-03 성공과 구분한다. strict standalone 원 M0 거부, 기존 headless M0 run 계약, 원 v1 fresh resume 전체 상태·hash와 codec의 모든 거부 검사, 실패 후 원 저장·팩 bytes 보존을 각각 확인한다. 원 fixture/expected/golden 및 reader/writer를 바꾸거나 강제 migration으로 통과시키지 않는다.
+
 ## 원본 보존
 
 앱 read_thread의 실제 final 전문을 저장한다. 요약된 wait text를 원 리포트 전문으로 대신하지 않는다. command receipts/manifest·ZIP member 전수 bytes/SHA를 부모가 대조하고 source/commit/최초·최종 snapshot·app status/cursor/원 prompt를 기록한다. 최초 FAIL/환경 준비 오류와 수정 새 exact PASS를 구분한다. 예상 CI/명령은 실행 증거가 아니다.
