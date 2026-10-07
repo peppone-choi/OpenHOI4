@@ -1,5 +1,9 @@
 # ADR-2401 팩 선택 순서·Fluent·고정 v1 입력
 
+## P-06 필수 저장 CI 입력 연결 결정 (2026-10-07, 구현 전)
+
+CEO DIRECTIVES 2026-10-07T12:21:27과 WP17 attempt2 actual FAIL에 따라 frozen capture를 서버 positive에 전달하던 CI 연결을 보완한다. REQUEST-0008의 역사 mutable-v1 CLI-only 계약과 원 save codec/fixture/expected/비교/단언은 바꾸지 않는다. 기존 check_save_determinism.py capture/compare는 원 frozen 3OS producer/consumer로 그대로 두고, 새 check_save_current.py가 이미 존재하는 capture-current를 별도 출력에 두 회 생산하고 fresh native/CLI 재개·전체 DTO/원장/canonical/hash/팩·header·save/source 불변성과 같은 clean HEAD의3OS를 비교한다. save_native.py의 기존 HTTP/WS/query/served JS/exclusive PID/Ctrl+C0 검사는 current paused 저장으로 실행하며 역사 서버거부는 별도 native negative 도구로 force 양쪽 확인한다. 원/current artifact names·mode/schema를 구별하고 필수 workflow에서 original/current 비교가 모두 성공해야 한다. synthetic OS label 시험은 실제3OS 성공으로 기록하지 않는다. raw index FAIL은 원인 미확정 무효이며 baseline/index를 복구하지 않는다.
+
 ## P-06 정정 기획
 
 REQUEST-0008 A는 CEO DIRECTIVES 2026-10-07T10:57:22의 원 SHA2477248184afc83d1ae5102a4ed12f11c4957c939d13b0c391724216b4b30ddc 한정 잠정 채택을 적용한다. 앞서 임시 FNV-only 후보를 제거한 기록은 유지한다. 최종 구현은 engine-owned 정책 TOML/전체원파일 path·bytes·SHA256와 typed 진단, 명시 caller3종 및 실제 bounded v1 header→pack/scenario/context 관계를 함께 검사한다. 형/맥락/force로 범위를 넓히지 않는다. SHA256은 공식 [sha2 0.11.0 manifest](https://docs.rs/crate/sha2/latest/source/Cargo.toml.orig)의 MIT OR Apache-2.0/MSRV1.85와 [Digest/Sha256 API](https://docs.rs/sha2/latest/sha2/index.html)를 2026-10-07 확인했고 부모의 oh_data Cargo/lock 소유 인계로 default-features=false를 추가한다. backend/settings/workspaceCargo는 바꾸지 않는다. 원3/19 source metadata는 부모 봉인 ZIP/identity와 runtime에서 전수대조하며 정책은 팩 밖에 두어 원pack/save identity를 오염시키지 않는다.

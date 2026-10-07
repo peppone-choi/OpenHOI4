@@ -1,5 +1,21 @@
 # WP-24 팩 해석·검증 스키마
 
+## P-06 필수 Save CI producer/consumer 보완 기획 (2026-10-07, 구현 전)
+
+인수 base는 c28f90425905774c23b1d90a5d900c596ade2745다. 4aecc22 clean에서 ff-only 인수했다. 실제 WP17 attempt2는 필수 Save CI의 frozen→server 연결 FAIL과 raw index FAIL로 무효이며 원 baseline/index/증거를 복구하지 않는다. REQUEST-0008 A caller와 원 codec/fixture/expected는 유지한다.
+
+| 경로/producer | consumer·독립 기대 | 증거 계약·실패 |
+|---|---|---|
+| 기존 check_save_determinism.py capture → original 디렉터리, frozen mutable-v1 두 회 | 기존 compare/3OS와 원 CLI resume | 기존 메서드·test_save_evidence·원 SHA57b13/expected/state/canonical/ledger/해시 단언 불변 |
+| 새 check_save_current.py capture → 별도 current 디렉터리, save_fixture capture-current 두 회 | fresh helper resume/CLI resume→전체 상태·canonical/ledger/hash 검증 | original/current mode를 혼용하지 않음; helper capture.json의 기존 fixture 라벨은 상태 시험 이름이며 wrapper evidence_mode=current-m1-v1로 입력 구분 |
+| current run-1/pack + paused.ohsave | save_native.py positive, force 양쪽 | 기존 exclusive PID/HTTP200/WS Welcome/query/served JS/정상 Ctrl+C0 단언 전부 유지; 전체 source/save 불변, 입력은 current marker/header/pack 신원으로 연결 |
+| original run-1/pack + paused.ohsave | 새 save_historical_native.py negative, force 양쪽 | 실제 server_restore native1/무HTTP·WS/종료 signal 없음, ko/en 원 이름 누락 진단; 원 CLI resume는 정상 |
+| 각 OS current artifact/current-save-{ubuntu,windows,macos}-latest | 새 comparer | 같은 exact clean HEAD/platform/mode/schema/pack path·bytes·SHA256·FNV/save·paused SHA/header/defines/scenario/seed/tick/config/queue/전체 DTO/canonical/원장/hash·반복bytes와 새 native PID/command/cwd/exit/executable SHA/stdout/stderr 비교. OS 누락/혼합HEAD/dirty/같은PID/증거누락·변조·wrongmode 거부; server/force result와 원 query·HTTP·nativeexit·paused 입력까지 필수 |
+
+current evidence schema는 engine/test 도구 파생값이며 save/wire/시뮬레이션에 넣지 않는다. 헤더는 기존 bounded OHSV/format1/length/Postcard 필드 순서를 Python 정수로 읽어 native report의 pack/scenario/date/tick/seed/state_hash/definitions_hash/effective_defines_hash와 대조한다. paused 입력은 split의 due48 명령 실행 후 paused=true/speed5/tick48/잔여 tick49 queue를 독립 canonical reference로 확인한다. snapshot full DTO와 current source의 실제 numeric effective defines를 비교한다. 현재 입력은 integer-only이므로 tagged scalar/array/i64 Postcard/FNV reference로 effective defines hash도 계산한다. 미래 Fx define 입력은 이 reference를 먼저 확장해야 하며 float 임의 변환으로 숨기지 않는다. capture 후 before/after 파일 path·bytes·SHA와 saved/paused bytes를 재검사하고 source HEAD/status/semantic index hash/raw index hash 경계도 기록한다. 모든 native 실행은 raw stdout/stderr와 자체 process PID/exit/cwd/argv/executable SHA를 남긴다.
+
+세 OS의 canonical/state/pack/source/save/paused/defines는 같아야 하고 PID/executable SHA/절대 cwd는 OS별 증거라 서로 같을 필요가 없다. synthetic comparer negative tests는 predicate 검증이며 실제3OS 실행 증거가 아니다. workflow는 original capture/compare와 기존 검사를 보존하고 current capture/compare·positive/historical negative를 추가해 양쪽 성공을 필수화한다. deps/ASSETS/다른 CI/codec/helper/client 생성물을 수정하지 않는다. TS 동등성은 기존 contract의 read-only 검사만 실행한다.
+
 ## P-06 실제 로드 입구 보완 기획 (2026-10-07, 코드 수정 전)
 
 권위 첫 FAIL은 `E:/openhoi/docs/verify/WP-24.M2-r1.attempt1.md`의 앱 마지막 전문이다. 더 긴 target fullreport는 별도 증거이고 동일 문서로 취급하지 않는다. 원 c2c2/원 evidence는 보존한다.

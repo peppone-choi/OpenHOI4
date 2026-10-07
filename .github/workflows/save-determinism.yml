@@ -24,8 +24,12 @@ jobs:
       - run: cargo test -p oh_save -p oh_cli -p oh_sim -p oh_data --locked
       - name: Test evidence gate failures
         run: python -m unittest discover -s crates/oh_save/tests -p test_save_evidence.py -v
+      - name: Test separate current evidence and required input gate failures
+        run: python -m unittest discover -s crates/oh_save/tests -p test_save_current_evidence.py -v
       - name: Capture two actual M1 native saves and fresh process resumes
         run: python crates/oh_save/tools/check_save_determinism.py capture --out target/save-determinism
+      - name: Capture two current M1 saves, full state and fresh native CLI resumes
+        run: python crates/oh_save/tools/check_save_current.py capture --out target/save-current
       - uses: actions/setup-node@v7.0.0
         with:
           node-version: '24.4.0'
@@ -35,11 +39,21 @@ jobs:
           npm --prefix client run build
           cargo build -p oh_server --locked
       - name: Actual exclusive saved server and authoritative wire query
-        run: python crates/oh_server/tests/save_native.py --capture target/save-determinism --out target/save-determinism/server
+        run: python crates/oh_server/tests/save_native.py --capture target/save-current --out target/save-current/server
+      - name: Current force restore retains full host validation and wire assertions
+        run: python crates/oh_server/tests/save_native.py --capture target/save-current --out target/save-current/server-force --force
+      - name: Historical mutable v1 remains CLI-only and is refused by the server
+        run: python crates/oh_server/tests/save_historical_native.py --capture target/save-determinism --out target/save-determinism/server-rejected
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: save-${{ matrix.os }}
           path: target/save-determinism/
+          if-no-files-found: error
+          archive: true
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: current-save-${{ matrix.os }}
+          path: target/save-current/
           if-no-files-found: error
           archive: true
   compare:
@@ -58,3 +72,10 @@ jobs:
           merge-multiple: false
       - name: Require same HEAD, bytes SHA and independent canonical hash from every OS
         run: python crates/oh_save/tools/check_save_determinism.py compare --root save-evidence
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          pattern: current-save-*
+          path: save-current-evidence
+          merge-multiple: false
+      - name: Require separate current same HEAD, native exits, full state and identities from every OS
+        run: python crates/oh_save/tools/check_save_current.py compare --root save-current-evidence

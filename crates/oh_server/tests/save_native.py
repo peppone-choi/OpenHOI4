@@ -17,6 +17,7 @@ from lifecycle import ctrl_c
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0,str(ROOT / 'crates/oh_save/tools'))
 from save_reference import pack_hash
+from check_save_current import files, header, verify_folder
 
 def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -25,17 +26,23 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--capture', type=Path, required=True)
     parser.add_argument('--out', type=Path, required=True)
+    parser.add_argument('--force', action='store_true')
     args = parser.parse_args()
     out, source = args.out.resolve(), args.capture.resolve()
+    capture = verify_folder(source, require_clean=False)
     out.mkdir(parents=True, exist_ok=True)
     packs = out / 'packs'
     shutil.copytree(source / 'run-1/pack', packs / 'testland', dirs_exist_ok=True)
     save = source / 'run-1/paused.ohsave'
+    before = files(packs / 'testland')
+    save_before = sha(save)
     binary = ROOT / ('target/debug/oh_server.exe' if sys.platform == 'win32' else 'target/debug/oh_server')
     with socket.socket() as probe:
         probe.bind(('127.0.0.1', 0))
         port = probe.getsockname()[1]
     command = [str(binary), '--port', str(port), '--pack-root', str(packs), '--load-save', str(save)]
+    if args.force:
+        command.append('--force')
     options = {}
     if sys.platform == 'win32':
         startup = subprocess.STARTUPINFO()
@@ -50,7 +57,9 @@ def main():
         deadline = time.monotonic() + 15
         while True:
             try:
-                html = urllib.request.urlopen(url, timeout=1).read()
+                with urllib.request.urlopen(url, timeout=1) as response:
+                    assert response.status == 200
+                    html = response.read()
                 break
             except OSError:
                 assert process.poll() is None, 'own server exited during startup'
@@ -75,6 +84,14 @@ def main():
                   'js_path':script,'served_js_sha256':hashlib.sha256(js).hexdigest(),
                   'save_sha256':sha(save),'pack_hash':response['welcome']['packs'][0]['hash'],
                   'query_command':query_cmd,'query_exit':query.returncode,'query':response}
+        result.update(capture_mode=capture['evidence_mode'], capture_head=capture['head'],
+                      server_cwd=str(ROOT),
+                      dirty=bool(subprocess.check_output(['git','--no-optional-locks','status','--porcelain'],cwd=ROOT,text=True)),
+                      force=args.force, http_status=200, input_header=header(save), input_files=before,
+                      built_js_sha256=sha(dist), save_preserved=sha(save)==save_before,
+                      source_preserved=files(packs / 'testland')==before)
+        assert result['head'] == capture['head']
+        assert result['save_preserved'] and result['source_preserved']
     finally:
         if process.poll() is None:
             ctrl_c(process)
@@ -84,6 +101,7 @@ def main():
         if result is not None:
             result['server_exit'] = code
             assert code == 0
+            assert files(packs / 'testland') == before and sha(save) == save_before
             (out / 'result.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
             print(json.dumps({key:result[key] for key in ('head','url','server_pid','server_exit','exe_sha256','served_js_sha256','pack_hash')}))
 
