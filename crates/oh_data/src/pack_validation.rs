@@ -497,10 +497,7 @@ fn validate_content(
                     .and_then(|s| s.to_str())
                     .is_some_and(|s| national.scenario.nations.iter().any(|tag| tag == s))
                 {
-                    return Err(io(
-                        &file,
-                        "unregistered nation file: not selected by this scenario",
-                    ));
+                    reject_unselected_nation(&file)?;
                 }
                 keys.extend(crate::localisation::keys_in_toml(&file)?);
             }
@@ -519,6 +516,11 @@ fn validate_content(
             })?;
             validate_date(&source, &legacy.start_date)?;
             crate::scenario_defines::load(root, id, &pack.data.defines, false)?;
+            for file in children(&p.join("nations"))? {
+                if file.extension().is_some_and(|e| e == "toml") {
+                    reject_unselected_nation(&file)?;
+                }
+            }
         }
         report.scenarios += 1;
     }
@@ -528,6 +530,23 @@ fn validate_content(
     crate::host_policy::apply(pack, purpose, &mut diagnostics)?;
     report.diagnostics.extend(diagnostics);
     Ok(())
+}
+fn reject_unselected_nation(path: &Path) -> Result<(), DataError> {
+    let tag = path
+        .file_stem()
+        .and_then(|s| s.to_str())
+        .ok_or_else(|| io(path, "invalid nation filename"))?;
+    let nation = crate::national::read_nation(path, tag)?;
+    crate::national::validate_nation_names(path, &nation)?;
+    crate::national::validate_nation_ideology(path, &nation)?;
+    let source = read(path)?;
+    Err(at(
+        &source,
+        "capital",
+        None,
+        None,
+        "unregistered nation file: not selected by this scenario; explicit map/nations context required for references",
+    ))
 }
 fn unsupported_files(
     root: &Path,
