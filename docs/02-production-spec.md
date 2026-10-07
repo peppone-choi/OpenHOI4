@@ -362,6 +362,10 @@ ai_weight = { base = 10, modifiers = [{ when = { stability = { lte = 0.4 } }, mu
 - `factions`, `wars`(시작 시 진행 중인 전쟁)
 - `end_conditions`(조건 문법)과 `score_weights`
 
+WP-13은 [REQUEST-0009 A](decisions/REQUEST-0009.md)의 CEO 한정 잠정을 인수한다. 단일 AST와 필요한 명시 root·허용 nation flag 정의/초기값·종료 날짜/typed 원인/실제 결과 입력을 필드 표에 분리한다. 로드·초기 평가·성공 시간전진 뒤 평가·효과 transaction·종료후 step/enqueue 거부·query/save 및 future queue 보존을 실제 Simulation/host 입구에 연결한다. 중첩 깊이·primitive 실행수·scope 복귀·복수 명시효과 ID/원인 안정순서·오류 우선순서·host pump 종료 응답을 schema/ADR로 구체화한다. 조건의 RNG/state/queue 불변과 효과 실패 전체 rollback, 기존 예정 명령 거부 소비/phase 오류 rollback을 독립 예제로 검사한다.
+
+새 종료/flags 정의가 있고 값이 empty인 상태도 정의 신원과 함께 hash/save에 보존한다. 원 v1/v2/v3 DTO/binary/fixture/expected/helper·None canonical 및 정책/force를 그대로 두는 additive 형식을 설계한다. root/tag/flag ID·중복/null/type/ref/bounds/order는 로드와 bounded 저장복원 양쪽에서 검사한다. 날짜 경계·초기 tick0·종료후 queue·fresh process 재개·원 bytes를 직접 검증한다. VP/IC의 실제 accessor/단위·후속 생존/진영·항복관전 consumer와 UI는 담당 WP에 추적하며 부분지원/합성 host/0weight로 전체 M2 점수를 완료 표시하지 않는다. 새 normalization·콘텐츠값·호환파괴/migration 승인은 없다.
+
 국가별 초기 상태는 `nations/<TAG>.toml`, 부대 배치는 `oob/<TAG>.toml`에 둔다. 새 시나리오를 추가할 때 코드를 고치지 않는다(REQ-MOD-06).
 
 ### 5.8 현지화

@@ -212,6 +212,7 @@ AGENTS.md §2(절대 규칙)와 §4(구현 세션 규칙)를 따른다.
 - WP-17 중간 edge Stop/reroute는 01 §4.7·REQUEST-0006 A의 CEO 한정 잠정 범위만 적용한다. elapsed0 즉시 전환, 진행 edge/elapsed 보존·끝점부터 새 path 사전 검증·도착후 정지/진행, 실패 enqueue/예정 의미오류/phase 오류의 상태·큐·clock 경계, Stop 잔여 budget 버림과 계속 경로의 잔여시간을 독립 예제로 검사한다. 기존 v1 지원과 모든 새/정지 unit·context·예약 명령의 v2/hash 보존을 함께 대조한다. 사용자 결정 상태·새 보급/통행/전투 효과·저장호환 파괴/migration 승인이 아니다.
 - WP-17 육지 간 Strait는 01 §4.7·REQUEST-0007 A의 CEO 한정 잠정 범위다. 실제 MapData kind·서버 allowed 양끝점·방향별 양수 명시 strait 계수, 하천과 분리된 슬롯/순서/raw bit·hash/save, 누락/0/음수/overflow/underflow/잘못된 kind·ref/권한/비육지·9/10틱·대체/동점·새 process 재개를 직접 검사한다. 함대/봉쇄/해역 통제·해상 수송·진행 중 allowed 변경/통행권 정책·기존 저장 거부/migration을 추가하지 않는다.
 - WP-44 차량은 01 보급 규칙·DETAIL-DRAFT-0002-transport-v2의 CEO 잠정 채택 범위만 사용한다. WP-15 실제 재고형/상한·장비/Hub ID·C 단위·phase/명령/서버 오류 계약을 먼저 대조하고 차이는 구현 전에 기록·재검토한다. 합성 k/r을 콘텐츠 기본값으로 쓰지 않으며 생산 규칙 변경·기존 저장 거부/호환 파괴/migration은 이 채택으로 승인되지 않았다. 독립 검증에는 shared W/A 보존·0필요량·floor/손실이월·L수명·유효반환과 입력거부/예정오류/phaseErr·저장재개 경계 예제를 전달한다.
+- WP-13은 REQUEST-0009 A의 CEO 한정 잠정을 schema/ADR에 먼저 대응한다. inclusive end_date/다음날00:00·단일AST/명시root·초기1회/시간전진뒤평가·typed 원인·nation flags/idempotence·전효과rollback·종료후step/enqueue거부와futurequeue/querysave보존을 실제 host에서 검증한다. 기존 예정명령 의미오류 소비/phase 오류 전체rollback을 구분하고 empty신규정의도 additive hash/save에 보존하며 원None/v1/v2/v3/fixture/expected를 유지한다. 독립 P-05에 윤일·세기/연도·tick0·원인순서·scope복귀·예산/실패·freshprocess전체상태와 실제 score/항복관전 후속 경계를 전달한다. 사용자 D/OPEN 확정·미지원no-op·호환파괴/migration 승인으로 쓰지 않는다.
 - 범위 밖의 수정이 필요하면 하지 말고 작업 로그의 "범위 밖 발견"에 적는다.
 
 [금지]

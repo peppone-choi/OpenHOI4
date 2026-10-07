@@ -72,4 +72,4 @@ A는 기존 시나리오 범위에서 명시된 입력만 실행하며 후속 �
 
 ## 사용자 답 (사용자 또는 사용자 답을 옮긴 메인 에이전트가 기록)
 
-사용자 추가 확정 답 없음. CEO의 구체 권한 검토와 한정 잠정 채택 대기. 채택 결과는 이 절과 01/02/03·WP-13 schema/ADR에 대응한 뒤 구현한다.
+사용자 추가 확정 답 없음. CEO는 2026-10-07T14:22:38+09:00 원9390bytes/SHA256 `fe24a13132fff1717b284af42e36ed6f836ea919a0203733d9ba1ce52d1caf8d` 전문과 실제 Simulation/calendar·기존 명세를 검토해 docs/04 §2로 A를 WP-13에 한정 잠정 채택했다. [원 요청/CEO 독립 검토](evidence/scenario-end-policy/README.md)를 보존한다. 기존 예정 명령 의미오류 소비/phase 오류 전체 rollback을 구분하고 effect transaction 실패의 flags/end/RNG/queue 원자성을 유지한다. 원 None/v1/v2/v3·empty신규정의 identity·additive 저장형과 실제 점수/항복관전 후속 인수를 보호한다. root/null/ID·원인순서·host pump·예산·오류와 독립 예제는 담당 schema/ADR에 구체화한다. 선행 source164f 유효 독립 final/봉인→P-07→같은 main5CI 뒤만 구현 착수한다. D/OPEN 상태를 바꾸지 않는다.

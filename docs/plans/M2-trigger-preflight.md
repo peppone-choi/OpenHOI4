@@ -2,6 +2,8 @@
 
 2026-10-07. W1-a 검증 중 오케스트레이터가 작성한 준비 문서다. 이 문서는 새 게임 행동을 채택하거나 구현 완료를 판정하지 않는다. WP-13 담당자가 실제 통합 HEAD와 producer 타입을 읽은 후 자기 schema/ADR에 답을 기록한다.
 
+M2-r2 후속: 아래 최초 미정 선택 중 날짜/AST root·초기/step 평가·typed 원인·nation 플래그·종료후 checkpoint/queue 행동은 [REQUEST-0009 A](../decisions/REQUEST-0009.md)의 CEO 한정 잠정으로 구체화했다. 01 §3.3과 02 §5.7·P-03에 대응했다. 원 요청/CEO 독립 검토는 [원 bytes 봉인](../decisions/evidence/scenario-end-policy/README.md)에 보존한다. 사용자 추가 확정이 아니다. 담당자가 실제 schema/ADR에서 host pump·오류순서·깊이/효과 예산·저장형·후속 score/항복관전 consumer를 대조하며 다른 게임 행동은 먼저 P-10으로 보고한다. 구현은 source164f 유효 P-05/P-07·같은 main5CI 뒤 시작한다.
+
 ## 현재 확인한 경계
 
 01 §3.3은 데이터 종료 조건, 플레이어 항복 시 종료와 관전 선택, 종료일의 네 축 가중합 점수를 정했다. 02 §5.6은 단일 키 조건 AST, all/any/not, scope/if 효과, 깊이 16·원시 효과 1000 상한, 미지원 키·인자·ID의 로드 거부를 정했다. 02 §5.7은 start_date/end_date/end_conditions/score_weights를 선언한다. 종료일의 시각, 복수 조건의 최상위 결합, 동시 원인 표시와 이후 명령·관전의 상세 행동은 아직 적혀 있지 않다.

@@ -144,6 +144,10 @@ ChatGPT 질문 1~11에 대한 잠정 답과, 기획 중 추가로 드러난 결�
 - 플레이어 국가가 항복하면 게임이 끝난다. 계속 관전할지는 선택이다.
 - 종료일에 도달하면 결과 화면에 점수를 보여준다. 점수는 보유 승점, 산업 역량, 생존 여부, 진영 승리 여부의 가중합이고 가중치는 데이터 값이다.
 
+WP-13의 [REQUEST-0009 A](decisions/REQUEST-0009.md)는 2026-10-07 CEO 한정 잠정 채택이다. `end_date`는 마지막 플레이 가능 날짜이며 다음날 00:00에 도달하는 성공 step에서 종료한다. start=end는 하루, end<start는 로드 오류다. 종료 조건은 명시 단일 AST/all·any·not이며 국가 조건의 root를 명시한다. 초기 권위 생성 뒤 한 번, 이후 성공 시간전진 step의 시스템·원장 뒤 평가한다. 초기 참은 tick0 종료이고 조건은 부작용이 없다. 날짜·조건·명시 종료 효과의 typed 원인은 안정 순서로 함께 보존하며 효과 목록 전체 성공 후만 commit한다.
+
+종료 checkpoint 이후 step·새 gameplay/Pause/Speed enqueue는 거부하고 기존 future queue·state·clock을 보존한다. 조회·결과 확인·저장은 허용한다. nation-scope 허용 ID 플래그는 명시 root/국가 scope로 분리하며 실행 수명 동안 set/clear로만 바뀐다. 중복 set/없는 키 clear는 idempotent이고 전체 효과 실패는 flags·종료 후보·RNG·queue까지 rollback한다. 기존 예정 명령 의미오류 소비와 phase 오류 전체 rollback은 구분해 유지한다. 이 잠정은 사용자 D/OPEN 확정이 아니다. unsupported scope·primitive·nonzero 점수축 사용은 실제 host capability 로드 오류이며 가짜 0/false/no-op으로 성공시키지 않는다. 네 점수축·결과화면 및 항복 뒤 관전 선택 요구는 후속 실제 producer까지 유지한다. 원 M0/M1 None 모드와 v1/v2/v3 bytes·hash·fixture를 보존하고 새 정의가 empty 값이어도 additive 상태/저장형에 정의 신원을 남긴다.
+
 ---
 
 ## 4. 시스템 규칙
