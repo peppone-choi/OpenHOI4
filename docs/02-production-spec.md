@@ -399,6 +399,8 @@ ai_weight = { base = 10, modifiers = [{ when = { stability = { lte = 0.4 } }, mu
 
 ### 5.11 구현 전 스키마 기획
 
+WP-17/REQ-MIL-04의 중간 edge Stop/reroute는 [REQUEST-0006 A](decisions/REQUEST-0006.md)의 CEO 2026-10-07 한정 잠정과 01 §4.7을 따른다. 실제 schema/ADR·ordered queue/Movement phase·raw Fx 시간·실패 원자성·v1/v2 선택/호환·모든 신규 상태 및 예약 명령의 hash/save를 독립 P-05에서 대조한다. elapsed=0/>0, 잘못된 enqueue/예정 의미 오류/phase 오류, Stop 도착 후 elapsed0·남은 budget 버림과 계속 경로의 잔여시간을 각각 검사한다. 기존 v1 거부·재작성·migration과 미정 보급/통행 효과는 이 채택으로 승인되지 않았다.
+
 M4 차량 OPEN-03/REQ-SUP-05의 [v2 운용·손실 설계](decisions/DETAIL-DRAFT-0002-transport-v2.md)는 CEO 2026-10-07 잠정 채택이다. 01 보급 규칙의 채택 범위와 유보사항을 따른다. WP-15 실제 장비/재고형·총계 상한·C 단위·phase/명령/서버 오류 대조 및 필드→hash/save/wire/runtime/UI를 WP-44 설계/독립 검증에 연결한다. §6.2 보급→경제→생산 순서를 유지한다. 합성 k/r은 콘텐츠 기본값이 아니며 실제 모델/호환안 검토 전 생산규칙 변경·기존 저장 거부/호환파괴/migration을 실행하지 않는다.
 
 사용자 2026-10-06 지시에 따라 신규 시스템·스키마 변경 전에 [시스템별 스키마 기획](plans/schema-planning.md)을 작성한다. 필드 의미·단위·범위·null/default·참조·수명·권위·REQ/WP와 정의/초기값/가변/파생 계층을 명시하고, 관계·실패 원자성·해시/저장·버전/wire/runtime/UI 및 독립 경계 예제를 대조한다. 담당 WP 설계 문서를 P-03/P-05에 연결한다. 현재 M1 기초 모델을 최종 전체 모델로 기록하지 않으며 미승인 게임 규칙을 위키에서 가져와 구현하지 않는다. 전역 하네스·자동 반복이나 추가 강제 리뷰를 활성화하지 않는다.

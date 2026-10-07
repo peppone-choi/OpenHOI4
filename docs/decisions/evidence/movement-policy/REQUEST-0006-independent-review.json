@@ -1,0 +1,75 @@
+{
+  "checked_at": "2026-10-07T09:54:34+09:00",
+  "request_sha256": "0b9e2ba3756fa1022a876f11369dc8b4e4909fc49e84ea35bfbf9b7d75734b07",
+  "source_copy": "E:\\openhoi\\.orchestrator\\ceo\\REQUEST-0006-0b9e2ba3756f.raw.md",
+  "scope": "CEO independent integer arithmetic and specification review; not product/implementation verification",
+  "duration_raw": 32212254720,
+  "Q": 4294967296,
+  "cases": [
+    {
+      "case": "two edges 7.5h each",
+      "tick": 7,
+      "province": 0,
+      "elapsed_raw": 30064771072
+    },
+    {
+      "case": "two edges 7.5h each",
+      "tick": 8,
+      "province": 10,
+      "elapsed_raw": 2147483648
+    },
+    {
+      "case": "two edges 7.5h each",
+      "tick": 15,
+      "province": 30,
+      "elapsed_raw": 0
+    },
+    {
+      "case": "Stop on active first edge",
+      "at_tick": 1,
+      "kept_edge": [
+        0,
+        10
+      ],
+      "kept_elapsed_raw": 4294967296,
+      "arrival_tick": 8,
+      "final_province": 10,
+      "empty_route_elapsed_raw": 0,
+      "unused_tick_budget_discarded": true
+    },
+    {
+      "case": "Stop on active first edge",
+      "at_tick": 7,
+      "kept_edge": [
+        0,
+        10
+      ],
+      "kept_elapsed_raw": 30064771072,
+      "arrival_tick": 8,
+      "final_province": 10,
+      "empty_route_elapsed_raw": 0,
+      "unused_tick_budget_discarded": true
+    },
+    {
+      "case": "reroute tick7 via current edge end to new5h edge",
+      "keep_current_elapsed_raw": 30064771072,
+      "tick8_province": 10,
+      "tick8_next_elapsed_raw": 2147483648,
+      "finish_tick": 13
+    },
+    {
+      "case": "reroute to departure through first endpoint and return edge",
+      "at_tick": 1,
+      "finish_tick": 15,
+      "no_teleport": true
+    },
+    {
+      "case": "reroute to departure through first endpoint and return edge",
+      "at_tick": 7,
+      "finish_tick": 15,
+      "no_teleport": true
+    }
+  ],
+  "source_unchanged": true,
+  "authorization_review": "reversible detail within approved direct movement; no D/OPEN confirmation, no migration or new combat/access/supply rule"
+}
