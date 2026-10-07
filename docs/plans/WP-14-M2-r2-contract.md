@@ -36,6 +36,8 @@
 
 ## 독립 검증과 WP-23 전달
 
+새 v5의 실제 세 OS 증거가 기존 capture 경로에 없다면 WP-14는 새 경제 native fixture/helper와 `crates/oh_save/tools/check_save_current.py` 및 관련 evidence rejection tests를 additive 범위로 연결한다. 기존 M1/v1/current·server/force/historical 명령과 필수 거부 조건은 보존하며, 새 v5 하위 namespace의 반복 저장·새 프로세스 복원·전체 DTO/canonical/hash·queue·파일/정의/팩 identity를 실제 current-save artifact에서 수집·비교한다. 기존 일곱 workflow의 bytes/조건/한도는 바꾸지 않는다. 원 v1/v4 세 OS 증거를 새 경제 세 OS 증거로 대신하지 않는다. 부모의 exact source CI 원 ZIP 인수와 새 독립 검증이 필요하다.
+
 REQ별 RED→구현→통과 원명령/native 출력, 법령/하한 transaction·cap0/보정0 skip·단계 중복/슬롯·소유권 상실/회복/목표충돌·원IC 올림/초과폐기·인력 과예약/감소·정치 날짜 경계/PC 상한·wholephase rollback을 실제 입구와 전체 상태로 검사한다. source exact 새 독립 앱은 자체 입력·수량 산술로 검사하고 구현자 설명을 판정 근거로 쓰지 않는다.
 
 WP-14가 먼저 실제 schema·지원 파일 경로/필드·ID/조건 범주·locale 요구·loader/validate·새 저장/호스트 계약을 커밋 단위로 제공한다. WP-23는 그 전에 기존 map/nation/locale 계약으로 신규 기하·6개국만 준비할 수 있으며 경제 입력을 추측해 성공 로드하지 않는다. producer 통합 뒤 최신 기준을 콘텐츠 브랜치에 반영하고 새 m2 경제 입력과 실제 strict validate·native load/query/save/repro를 검사한다. 원 m1 파일 bytes와 frozen pack identity를 보존하고 팩 전체 hash 변경을 별도로 기록한다.

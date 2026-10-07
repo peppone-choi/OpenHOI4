@@ -1,0 +1,82 @@
+[
+  {
+    "path": "ASSETS-entry-draft.toml",
+    "bytes": 4111,
+    "sha256": "427bf2fb761625644760f8d2c46dae1f8ad76fc3e19d8ea7480e86217cdb492a"
+  },
+  {
+    "path": "data/packs/testland/localisation/en/m2.ftl",
+    "bytes": 626,
+    "sha256": "af2bda18da8911b77aea75fd038305252fd6d9e9a22a6ba3aac94efadaad519d"
+  },
+  {
+    "path": "data/packs/testland/localisation/ko/m2.ftl",
+    "bytes": 672,
+    "sha256": "ef963ec01d0adae6485394ebc814c86ff568ae205dcd41ef1b026af6ad2145aa"
+  },
+  {
+    "path": "data/packs/testland/maps/m2/adjacency_overrides.csv",
+    "bytes": 9,
+    "sha256": "1a9f3c22f7bbafe49784b2a58ca9a3daca8f717cd90afa9d259381c41216ffd6"
+  },
+  {
+    "path": "data/packs/testland/maps/m2/provinces.csv",
+    "bytes": 4878,
+    "sha256": "b17b2824177ad5d53235e3e57a7f75d26f76a8911dcf4576309518de9797515c"
+  },
+  {
+    "path": "data/packs/testland/maps/m2/provinces.png",
+    "bytes": 2146,
+    "sha256": "c810d7d4641acfe478404d16230c283eb21173b189257117b22d38a01e3a413f"
+  },
+  {
+    "path": "data/packs/testland/maps/m2/regions.toml",
+    "bytes": 63,
+    "sha256": "6a53fb140b4b61ad42cb17a1edfc9c9fa026d26e2e6ba960581d4047d0d537a6"
+  },
+  {
+    "path": "data/packs/testland/maps/m2/visuals.toml",
+    "bytes": 368,
+    "sha256": "e0a77efd13f3c7d0f1d06724b3423a555fdb0d2baefd7fbc6908ac7085f9ad35"
+  },
+  {
+    "path": "data/packs/testland/scenarios/m2/nations/ARA.toml",
+    "bytes": 208,
+    "sha256": "5bde0465c7f3bc239cfc84ec1a4c24c580169550aec984d1ddf994c76c9f687b"
+  },
+  {
+    "path": "data/packs/testland/scenarios/m2/nations/BEL.toml",
+    "bytes": 208,
+    "sha256": "d6c2bcaa55e96a109e9423104c5c07be6b2f6eacc62dc574ad6c791cfd533cbf"
+  },
+  {
+    "path": "data/packs/testland/scenarios/m2/nations/CER.toml",
+    "bytes": 208,
+    "sha256": "87383dc9d8c75c09c2b544f362f0f22f25f852b7bd076e687c6b524a15a492ce"
+  },
+  {
+    "path": "data/packs/testland/scenarios/m2/nations/DOR.toml",
+    "bytes": 209,
+    "sha256": "d7f15e3024895888a8543cea7d4a76879b15c320a56e8ba882b68f32c24fa574"
+  },
+  {
+    "path": "data/packs/testland/scenarios/m2/nations/ELA.toml",
+    "bytes": 208,
+    "sha256": "8a6257e490546527fb824db45761091c711aa5c0a24bfe060788a37c73dad906"
+  },
+  {
+    "path": "data/packs/testland/scenarios/m2/nations/FAR.toml",
+    "bytes": 208,
+    "sha256": "f96786341fda1bef5dd00b1430669023e276f0d2b5ec7e41913d0f855415f112"
+  },
+  {
+    "path": "data/packs/testland/SOURCES.md",
+    "bytes": 1542,
+    "sha256": "46d8c5586b39adddaf616c842344ae6fe2e83a63f7d13437410a211c50ba64e4"
+  },
+  {
+    "path": "membership-plan.json",
+    "bytes": 3445,
+    "sha256": "327f7ca7cfdba4f8c86eeba1ac81ee9eae09d6fb13e0c900c56c03b31610434c"
+  }
+]

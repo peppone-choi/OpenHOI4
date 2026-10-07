@@ -1,5 +1,13 @@
 # 인수인계
 
+## 진행 중 W2 후보 봉인 — RUN 종료 아님
+
+WP14 앱01a117ee…는 첫5577 schema/kernel 전달 뒤 v5/host/wire/repro 및 실제 세 OS v5 capture 연결을 구현 중이다. 기존 일곱 workflow bytes/조건/한도를 유지하고 current-save 경로의 별도 v5 namespace로 새 저장 증거를 수집한다. 아직 최종 source·독립 PASS·통합은 없다.
+
+WP23 같은 앱01a117f0…의 후속 turn01a1180f…는 completed이며 문서 전용 checkpoint05cb857에 도달했다. 첫 경제 후보39파일/ZIP54members 및 registry append 후보41파일/ZIP60members를 별도로 준비했다. 두 원 ZIP·114members/각 physical bytes/SHA/CRC·원70파일·두 registry 원 Git/raw/prefix와 actual final609chars를 [후보 증거](docs/worklog/evidence/WP-23-M2-r2-candidate-05cb/custody-recovery.json)에서 대조했다. 첫 부모 봉인 스크립트의 반복 저장 native1과 별도 복구0를 함께 보존한다. 준비4983 ZIP과 첫5577 후보를 덮지 않았으며 제품 팩 변경·actual m2 native·독립 PASS·WP23 통합은 아니다. 최종 WP14 검증·main 통합 후 같은 WP23 브랜치에 producer를 인수하고 명시한 두 registry의 최소 append와 actual native를 진행한다.
+
+현재 원 W1/W2 전체 통합1/0·고유WP16·M2 게이트 없음이다. 검증된 main2b5ca와 현재 doc-only HEAD의 CI를 구분한다. 이 절은 진행 기록이며 C02 종료 경계/P08이 아니다. noM3·원 frozen/expected·미완료 소비자·noCUA/focus·원 실패 보존을 유지한다.
+
 ## 진행 중 M2-r2 W2 실제 배정 — 2026-10-08
 
 W1전체1/고유WP16·exactmain2b5ca7CI26SUCCESS/원Linux·9artifact 인수후WP14 앱01a117ee…와WP23 앱01a117f0…를같은검증base의명시nativeWT/branch에배정했다. WP14P03 prompt9099B/SHAd3ff8e…·최초11805/raw96bfaf…, WP23P11 prompt4933B/SHA739c50…·최초11805/raw7ef2c2…·각payloadUTF8bytes exact다. WP14는경제정치schema/RED부터, WP23는기존map/nation/locale 계약의가상기하·6국부터진행하며경제입력은실제producer인수뒤만작성한다. 서로파일을고치지않고mainmerge/push/새세션생성은부모담당이다.

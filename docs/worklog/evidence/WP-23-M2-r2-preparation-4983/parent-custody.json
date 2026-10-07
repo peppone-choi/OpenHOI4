@@ -1,0 +1,179 @@
+{
+  "source": "4983a8e341faaf5a56bc71a14ab7b0b8161ff9d9",
+  "changed_only_docs": [
+    "docs/adr/ADR-2301-testland-m2-preparation.md",
+    "docs/worklog/WP-23.md"
+  ],
+  "actual_completed_turn": "01a117f0-860f-7153-a9ea-6af970a7ac88",
+  "actual_final_chars": 478,
+  "prepared_files": 16,
+  "archive_bytes": 50627,
+  "archive_sha256": "51c7fc654573ebbeab2e7def0cd322eaeadf8c14f0943d1913df4543712e37f6",
+  "archive_members": 26,
+  "members": [
+    {
+      "path": "candidate-strict-rejection.log",
+      "bytes": 630,
+      "sha256": "c9a71514dccc47b49ef03fc87f17b49538e5e37694ba8cd25556daba9cffc3b2",
+      "physical_path": "E:/openhoi/.orchestrator/wt/WP-23-M2-r2/target/evidence/WP-23-M2-r2/candidate-strict-rejection.log"
+    },
+    {
+      "path": "geometry-observation.json",
+      "bytes": 147,
+      "sha256": "740ce0b5efa5d0ca5cad6d675ff862339bcbdfdad5bae6e35a0ac21e4faa49df",
+      "physical_path": "E:/openhoi/.orchestrator/wt/WP-23-M2-r2/target/evidence/WP-23-M2-r2/geometry-observation.json"
+    },
+    {
+      "path": "preparation-first-attempt-failure.log",
+      "bytes": 3451,
+      "sha256": "42947740808f9e91383469f93dfd6a036cea64e562544cc09c39228dc42654fd",
+      "physical_path": "E:/openhoi/.orchestrator/wt/WP-23-M2-r2/target/evidence/WP-23-M2-r2/preparation-first-attempt-failure.log"
+    },
+    {
+      "path": "preparation-green.log",
+      "bytes": 502,
+      "sha256": "3ccead564a9256bf992611ed5fb6da585aa5ba7d56e79e15dea73bac2042457e",
+      "physical_path": "E:/openhoi/.orchestrator/wt/WP-23-M2-r2/target/evidence/WP-23-M2-r2/preparation-green.log"
+    },
+    {
+      "path": "preparation-red.log",
+      "bytes": 3451,
+      "sha256": "42947740808f9e91383469f93dfd6a036cea64e562544cc09c39228dc42654fd",
+      "physical_path": "E:/openhoi/.orchestrator/wt/WP-23-M2-r2/target/evidence/WP-23-M2-r2/preparation-red.log"
+    },
+    {
+      "path": "prepare.log",
+      "bytes": 91,
+      "sha256": "47a52dceab559343b847d898f94a4096c02faab4a417870d33cdb03dde7aeb80",
+      "physical_path": "E:/openhoi/.orchestrator/wt/WP-23-M2-r2/target/evidence/WP-23-M2-r2/prepare.log"
+    },
+    {
+      "path": "prepare.py",
+      "bytes": 6903,
+      "sha256": "7e9adc9de0ec0b4dd81e645b6cb5869321c794843b4dbbbfecb9409b1c554477",
+      "physical_path": "E:/openhoi/.orchestrator/wt/WP-23-M2-r2/target/evidence/WP-23-M2-r2/prepare.py"
+    },
+    {
+      "path": "prepared/ASSETS-entry-draft.toml",
+      "bytes": 4111,
+      "sha256": "427bf2fb761625644760f8d2c46dae1f8ad76fc3e19d8ea7480e86217cdb492a",
+      "physical_path": "E:/openhoi/.orchestrator/wt/WP-23-M2-r2/target/evidence/WP-23-M2-r2/prepared/ASSETS-entry-draft.toml"
+    },
+    {
+      "path": "prepared/data/packs/testland/localisation/en/m2.ftl",
+      "bytes": 626,
+      "sha256": "af2bda18da8911b77aea75fd038305252fd6d9e9a22a6ba3aac94efadaad519d",
+      "physical_path": "E:/openhoi/.orchestrator/wt/WP-23-M2-r2/target/evidence/WP-23-M2-r2/prepared/data/packs/testland/localisation/en/m2.ftl"
+    },
+    {
+      "path": "prepared/data/packs/testland/localisation/ko/m2.ftl",
+      "bytes": 672,
+      "sha256": "ef963ec01d0adae6485394ebc814c86ff568ae205dcd41ef1b026af6ad2145aa",
+      "physical_path": "E:/openhoi/.orchestrator/wt/WP-23-M2-r2/target/evidence/WP-23-M2-r2/prepared/data/packs/testland/localisation/ko/m2.ftl"
+    },
+    {
+      "path": "prepared/data/packs/testland/maps/m2/adjacency_overrides.csv",
+      "bytes": 9,
+      "sha256": "1a9f3c22f7bbafe49784b2a58ca9a3daca8f717cd90afa9d259381c41216ffd6",
+      "physical_path": "E:/openhoi/.orchestrator/wt/WP-23-M2-r2/target/evidence/WP-23-M2-r2/prepared/data/packs/testland/maps/m2/adjacency_overrides.csv"
+    },
+    {
+      "path": "prepared/data/packs/testland/maps/m2/provinces.csv",
+      "bytes": 4878,
+      "sha256": "b17b2824177ad5d53235e3e57a7f75d26f76a8911dcf4576309518de9797515c",
+      "physical_path": "E:/openhoi/.orchestrator/wt/WP-23-M2-r2/target/evidence/WP-23-M2-r2/prepared/data/packs/testland/maps/m2/provinces.csv"
+    },
+    {
+      "path": "prepared/data/packs/testland/maps/m2/provinces.png",
+      "bytes": 2146,
+      "sha256": "c810d7d4641acfe478404d16230c283eb21173b189257117b22d38a01e3a413f",
+      "physical_path": "E:/openhoi/.orchestrator/wt/WP-23-M2-r2/target/evidence/WP-23-M2-r2/prepared/data/packs/testland/maps/m2/provinces.png"
+    },
+    {
+      "path": "prepared/data/packs/testland/maps/m2/regions.toml",
+      "bytes": 63,
+      "sha256": "6a53fb140b4b61ad42cb17a1edfc9c9fa026d26e2e6ba960581d4047d0d537a6",
+      "physical_path": "E:/openhoi/.orchestrator/wt/WP-23-M2-r2/target/evidence/WP-23-M2-r2/prepared/data/packs/testland/maps/m2/regions.toml"
+    },
+    {
+      "path": "prepared/data/packs/testland/maps/m2/visuals.toml",
+      "bytes": 368,
+      "sha256": "e0a77efd13f3c7d0f1d06724b3423a555fdb0d2baefd7fbc6908ac7085f9ad35",
+      "physical_path": "E:/openhoi/.orchestrator/wt/WP-23-M2-r2/target/evidence/WP-23-M2-r2/prepared/data/packs/testland/maps/m2/visuals.toml"
+    },
+    {
+      "path": "prepared/data/packs/testland/scenarios/m2/nations/ARA.toml",
+      "bytes": 208,
+      "sha256": "5bde0465c7f3bc239cfc84ec1a4c24c580169550aec984d1ddf994c76c9f687b",
+      "physical_path": "E:/openhoi/.orchestrator/wt/WP-23-M2-r2/target/evidence/WP-23-M2-r2/prepared/data/packs/testland/scenarios/m2/nations/ARA.toml"
+    },
+    {
+      "path": "prepared/data/packs/testland/scenarios/m2/nations/BEL.toml",
+      "bytes": 208,
+      "sha256": "d6c2bcaa55e96a109e9423104c5c07be6b2f6eacc62dc574ad6c791cfd533cbf",
+      "physical_path": "E:/openhoi/.orchestrator/wt/WP-23-M2-r2/target/evidence/WP-23-M2-r2/prepared/data/packs/testland/scenarios/m2/nations/BEL.toml"
+    },
+    {
+      "path": "prepared/data/packs/testland/scenarios/m2/nations/CER.toml",
+      "bytes": 208,
+      "sha256": "87383dc9d8c75c09c2b544f362f0f22f25f852b7bd076e687c6b524a15a492ce",
+      "physical_path": "E:/openhoi/.orchestrator/wt/WP-23-M2-r2/target/evidence/WP-23-M2-r2/prepared/data/packs/testland/scenarios/m2/nations/CER.toml"
+    },
+    {
+      "path": "prepared/data/packs/testland/scenarios/m2/nations/DOR.toml",
+      "bytes": 209,
+      "sha256": "d7f15e3024895888a8543cea7d4a76879b15c320a56e8ba882b68f32c24fa574",
+      "physical_path": "E:/openhoi/.orchestrator/wt/WP-23-M2-r2/target/evidence/WP-23-M2-r2/prepared/data/packs/testland/scenarios/m2/nations/DOR.toml"
+    },
+    {
+      "path": "prepared/data/packs/testland/scenarios/m2/nations/ELA.toml",
+      "bytes": 208,
+      "sha256": "8a6257e490546527fb824db45761091c711aa5c0a24bfe060788a37c73dad906",
+      "physical_path": "E:/openhoi/.orchestrator/wt/WP-23-M2-r2/target/evidence/WP-23-M2-r2/prepared/data/packs/testland/scenarios/m2/nations/ELA.toml"
+    },
+    {
+      "path": "prepared/data/packs/testland/scenarios/m2/nations/FAR.toml",
+      "bytes": 208,
+      "sha256": "f96786341fda1bef5dd00b1430669023e276f0d2b5ec7e41913d0f855415f112",
+      "physical_path": "E:/openhoi/.orchestrator/wt/WP-23-M2-r2/target/evidence/WP-23-M2-r2/prepared/data/packs/testland/scenarios/m2/nations/FAR.toml"
+    },
+    {
+      "path": "prepared/data/packs/testland/SOURCES.md",
+      "bytes": 1542,
+      "sha256": "46d8c5586b39adddaf616c842344ae6fe2e83a63f7d13437410a211c50ba64e4",
+      "physical_path": "E:/openhoi/.orchestrator/wt/WP-23-M2-r2/target/evidence/WP-23-M2-r2/prepared/data/packs/testland/SOURCES.md"
+    },
+    {
+      "path": "prepared/membership-plan.json",
+      "bytes": 3445,
+      "sha256": "327f7ca7cfdba4f8c86eeba1ac81ee9eae09d6fb13e0c900c56c03b31610434c",
+      "physical_path": "E:/openhoi/.orchestrator/wt/WP-23-M2-r2/target/evidence/WP-23-M2-r2/prepared/membership-plan.json"
+    },
+    {
+      "path": "prepared-inventory.json",
+      "bytes": 2735,
+      "sha256": "4339f114cb214781ad4218f93c778bfa3d3a49ab5bc570bd891f96d45d91450b",
+      "physical_path": "E:/openhoi/.orchestrator/wt/WP-23-M2-r2/target/evidence/WP-23-M2-r2/prepared-inventory.json"
+    },
+    {
+      "path": "run_checks.py",
+      "bytes": 2940,
+      "sha256": "c1916570bd81ce74c1118df67f0e4fb64ab494fe3d7e4051167bd27e28e8fd22",
+      "physical_path": "E:/openhoi/.orchestrator/wt/WP-23-M2-r2/target/evidence/WP-23-M2-r2/run_checks.py"
+    },
+    {
+      "path": "test_preparation.py",
+      "bytes": 6638,
+      "sha256": "ed6f7f8f0d92ee25656e1bb6f0518015b3bc81c0781bbbe52f442ee46586595c",
+      "physical_path": "E:/openhoi/.orchestrator/wt/WP-23-M2-r2/target/evidence/WP-23-M2-r2/test_preparation.py"
+    }
+  ],
+  "mismatches": 0,
+  "partial_preparation_only": true,
+  "product_pack_unchanged": true,
+  "economy_loader_not_yet_received": true,
+  "actual_m2_load_save_repro_not_verified": true,
+  "independent_PASS": false,
+  "WP23_integrated": false,
+  "utc": "2026-10-07T20:17:26.086865+00:00"
+}
