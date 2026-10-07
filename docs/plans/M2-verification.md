@@ -31,6 +31,12 @@ exact `c2c2f638fe5179d11ce5a318f6d991b4b2a0cd4d`의 첫 독립 P-05는 유효 FA
 
 REQUEST-0008 A는 한정 CEO 잠정 채택이다. 팩 밖 engine-owned 정책의 허용 caller·실제 v1 header/context와 원 3·19파일의 전체 경로 집합, 각 길이·SHA256, FNV·팩 ID/버전·시나리오·kind·원천을 모두 대조한다. 원천은 `docs/decisions/evidence/historical-load-policy/source-originals.zip`의 22개 원 bytes다. 파일 추가·삭제·한 바이트 변경·symlink/reparse·검증 중 변경, 다른 caller/scenario/key/lang/format, plain frozen 19파일, current pack, `--force`의 면제 시도를 직접 검사한다. 정확한 `manifest.name_key=testland_name`의 ko/en `missing_message_value` 두 진단만 `warning_unavailable`로 보존하며 진단 위치·키·언어·원인을 유지한다. 일반 LOC-03 성공과 구분한다. strict standalone 원 M0 거부, 기존 headless M0 run 계약, 원 v1 fresh resume 전체 상태·hash와 codec의 모든 거부 검사, 실패 후 원 저장·팩 bytes 보존을 각각 확인한다. 원 fixture/expected/golden 및 reader/writer를 바꾸거나 강제 migration으로 통과시키지 않는다.
 
+## 저장 CI의 actual producer/consumer와 무효 검증
+
+통합 c28의 새 WP-17 P-05는 필수 Save workflow가 원 frozen mutable-v1 capture를 서버 positive 입력으로 소비하는 실패를 직접 확인했다. REQUEST-0008은 그 원천의 CLI 재개만 허용하므로 현재 정책의 서버 거부는 그대로 유지한다. 원 frozen 두 capture/fixture/expected/CLI/3OS comparer를 보존하고 별도 current 두 capture·fresh native 전체 DTO/canonical/hash·원장·신원·3OS 비교를 기존 server positive에 연결하는 좁은 WP-24 P-06을 수행한다. HTTP/WS/query/servedJS/정상 종료 단언을 유지하고 역사 서버 native1·무HTTPWS는 별도 negative로 검사한다. 기존 checker의 단언을 줄이거나 server policy entry·codec/header/golden을 바꾸지 않는다.
+
+같은 P-05는 tracked TS generator가 동일 bytes를 다시 쓴 뒤 protocol.ts 한 entry의 mtime cache가 달라져 raw index 불변성 FAIL이었다. 실제 generator 호출·mtime 구간은 확인됐고 index 갱신 주체는 미확인이다. read-only req_net_04 equality test 자체는 쓰기를 하지 않는다. 원 최초/최종 raw와 report·ZIP을 보존하며 source/semantic 동일성을 근거로 면제하지 않는다. 다음 새 exact P-05는 tracked examples/generate를 실행하지 않고 read-only equality 또는 actual typescript()의 ignored 출력 bytes와 기존 tracked TS를 비교한다. 원 index·mtime·baseline을 복구하거나 기존 시도를 PASS로 바꾸지 않는다.
+
 ## 원본 보존
 
 앱 read_thread의 실제 final 전문을 저장한다. 요약된 wait text를 원 리포트 전문으로 대신하지 않는다. command receipts/manifest·ZIP member 전수 bytes/SHA를 부모가 대조하고 source/commit/최초·최종 snapshot·app status/cursor/원 prompt를 기록한다. 최초 FAIL/환경 준비 오류와 수정 새 exact PASS를 구분한다. 예상 CI/명령은 실행 증거가 아니다.
