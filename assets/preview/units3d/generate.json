@@ -1,0 +1,48 @@
+{
+  "schema": "openhoi4.preview.units3d.recipe.v1",
+  "units": "meter",
+  "purpose": "Self-authored synthetic art dimensions only; no game statistics or real equipment claims.",
+  "axes": {"up": "+Y", "forward": "+Z", "right": "+X", "pivot": "ground center [0,0,0]"},
+  "materials": [
+    {"name":"pewter-body", "baseColorFactor":[0.48,0.53,0.52,1], "metallicFactor":0.35, "roughnessFactor":0.72},
+    {"name":"charcoal-running", "baseColorFactor":[0.12,0.16,0.17,1], "metallicFactor":0.18, "roughnessFactor":0.8},
+    {"name":"light-steel", "baseColorFactor":[0.66,0.69,0.64,1], "metallicFactor":0.3, "roughnessFactor":0.64},
+    {"name":"canopy", "baseColorFactor":[0.14,0.28,0.31,1], "metallicFactor":0.2, "roughnessFactor":0.42}
+  ],
+  "samples": {
+    "army":{"position":[-8,0,0],"rotation_y_radians":0.45,"scale":[1,1,1]},
+    "air":{"position":[0,3,0],"rotation_y_radians":-0.4,"scale":[1,1,1]},
+    "navy":{"position":[10,0,0],"rotation_y_radians":0.25,"scale":[1,1,1]},
+    "note":"Preview display transforms only, not actual deployments. Yaw is around +Y, positive by right-hand rule."
+  },
+  "models": {
+    "army": [
+      {"name":"track-left","material":1,"shape":"layers","axis":"x","low":-1.7,"high":-1.1,"polygon":[[-2.4,0],[-2.7,0.4],[-2.7,0.9],[-2.35,1.15],[2.35,1.15],[2.7,0.9],[2.7,0.4],[2.4,0]]},
+      {"name":"track-right","material":1,"shape":"layers","axis":"x","low":1.1,"high":1.7,"polygon":[[-2.4,0],[-2.7,0.4],[-2.7,0.9],[-2.35,1.15],[2.35,1.15],[2.7,0.9],[2.7,0.4],[2.4,0]]},
+      {"name":"hull","material":0,"shape":"layers","axis":"y","low":0.55,"high":1.45,"upper_scale":[0.86,0.86],"polygon":[[-1.38,-2.4],[1.38,-2.4],[1.38,2.1],[0.9,2.5],[-0.9,2.5],[-1.38,2.1]]},
+      {"name":"turret","material":2,"shape":"cylinder","axis":"y","center":[0,1.75,-0.2],"radius":0.95,"radius_end":0.77,"length":0.7,"segments":8},
+      {"name":"barrel","material":0,"shape":"cylinder","axis":"z","center":[0,1.78,1.65],"radius":0.15,"radius_end":0.15,"length":2.6,"segments":8},
+      {"name":"hatch","material":1,"shape":"cylinder","axis":"y","center":[0,2.17,-0.2],"radius":0.32,"radius_end":0.32,"length":0.14,"segments":8}
+    ],
+    "air": [
+      {"name":"fuselage","material":0,"shape":"cylinder","axis":"z","center":[0,0.68,0.05],"radius":0.58,"radius_end":0.45,"length":4.8,"segments":8},
+      {"name":"nose","material":2,"shape":"cylinder","axis":"z","center":[0,0.68,2.72],"radius":0.45,"radius_end":0.12,"length":0.54,"segments":8},
+      {"name":"main-wing","material":2,"shape":"layers","axis":"y","low":0.48,"high":0.68,"polygon":[[-4,-0.2],[-4,0.85],[-0.8,1.25],[0.8,1.25],[4,0.85],[4,-0.2],[0,-0.7]]},
+      {"name":"tailplane","material":2,"shape":"layers","axis":"y","low":0.65,"high":0.8,"polygon":[[-1.7,-2.5],[-1.7,-1.65],[0,-1.4],[1.7,-1.65],[1.7,-2.5]]},
+      {"name":"tail-fin","material":0,"shape":"layers","axis":"x","low":-0.08,"high":0.08,"polygon":[[-2.55,0.75],[-2.5,1.65],[-1.9,1.65],[-1.35,0.75]]},
+      {"name":"canopy","material":3,"shape":"box","center":[0,1.18,0.35],"size":[0.55,0.4,1.05]},
+      {"name":"propeller","material":1,"shape":"box","center":[0,0.68,3.04],"size":[2.1,0.12,0.1]},
+      {"name":"landing-pad","material":1,"shape":"box","center":[0,0.055,0.15],"size":[0.6,0.11,1.4]}
+    ],
+    "navy": [
+      {"name":"hull","material":0,"shape":"layers","axis":"y","low":0,"high":1.45,"upper_scale":[1.25,1.06],"polygon":[[-0.9,-4.1],[0.9,-4.1],[1.25,-3.3],[1.25,2.8],[0,4.7],[-1.25,2.8],[-1.25,-3.3]]},
+      {"name":"deck","material":2,"shape":"layers","axis":"y","low":1.45,"high":1.62,"polygon":[[-1,-4.15],[1,-4.15],[1.48,-3.3],[1.48,2.8],[0,4.9],[-1.48,2.8],[-1.48,-3.3]]},
+      {"name":"superstructure","material":0,"shape":"box","center":[0,2.05,0.15],"size":[1.55,0.9,3.4]},
+      {"name":"bridge","material":2,"shape":"box","center":[0,2.78,1.1],"size":[1.35,0.6,1.3]},
+      {"name":"funnel-aft","material":1,"shape":"cylinder","axis":"y","center":[0,2.9,-0.85],"radius":0.35,"radius_end":0.3,"length":0.9,"segments":8},
+      {"name":"funnel-mid","material":1,"shape":"cylinder","axis":"y","center":[0,2.9,0.05],"radius":0.35,"radius_end":0.3,"length":0.9,"segments":8},
+      {"name":"mast","material":1,"shape":"box","center":[0,3.62,1.15],"size":[0.13,1.1,0.13]},
+      {"name":"foredeck-block","material":0,"shape":"box","center":[0,1.84,3.1],"size":[0.95,0.45,0.85]}
+    ]
+  }
+}

@@ -8,6 +8,22 @@ import world_preview as wp
 
 
 class PreviewTests(unittest.TestCase):
+    def test_fixed_world_known_coordinates_and_full_connectivity(self):
+        root=Path(__file__).resolve().parents[2]/'client/public/preview/world'
+        meta=json.loads((root/'metadata.json').read_text())
+        rows=json.loads((root/'provinces.json').read_text())
+        index=np.frombuffer((root/'index.bin').read_bytes(),dtype='<u2').reshape(meta['height'],meta['width'])
+        for lon,lat,kind in [(127,37,'land'),(85,29,'land'),(-100,40,'land'),(-140,0,'sea'),(25,-75,'land'),(33,-1,'lake'),(-150,65,'land'),(0,0,'sea')]:
+            x=int((lon+180)*meta['width']/360);y=int((90-lat)*meta['height']/180)
+            self.assertEqual(rows[int(index[y,x])]['kind'],kind,(lon,lat))
+        from scipy import ndimage
+        for dense,box in enumerate(ndimage.find_objects(index.astype(np.int32)+1)):
+            self.assertIsNotNone(box)
+            _,count=ndimage.label(index[box]==dense)
+            self.assertEqual(count,1,dense+1)
+        self.assertTrue(np.all(index< len(rows)))
+        self.assertEqual(sum(p['pixels'] for p in rows),index.size)
+
     def test_missing_source_fails_without_network(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

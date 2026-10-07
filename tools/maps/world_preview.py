@@ -13,6 +13,69 @@ from scipy import ndimage
 from scipy.spatial import cKDTree
 
 
+def tiff_lzw(data,expected):
+    """TIFF MSB LZW with early code-width change, bounded output."""
+    table=[bytes([i]) for i in range(256)]+[b'',b''];bits=9;position=0;previous=None;output=bytearray()
+    def read(width):
+        nonlocal position
+        if position+width>len(data)*8:
+            raise ValueError('truncated LZW')
+        code=0
+        for _ in range(width):
+            code=(code<<1)|((data[position//8]>>(7-position%8))&1);position+=1
+        return code
+    while True:
+        code=read(bits)
+        if code==256:
+            table=[bytes([i]) for i in range(256)]+[b'',b''];bits=9;previous=None;continue
+        if code==257:
+            break
+        if code<len(table):entry=table[code]
+        elif code==len(table) and previous is not None:entry=previous+previous[:1]
+        else:raise ValueError('invalid LZW code')
+        output.extend(entry)
+        if len(output)>expected:raise ValueError('LZW output overflow')
+        if previous is not None and len(table)<4096:
+            table.append(previous+entry[:1])
+            if len(table)==(1<<bits)-1 and bits<12:bits+=1
+        previous=entry
+    if len(output)!=expected:raise ValueError('LZW byte length mismatch')
+    return bytes(output)
+
+
+def read_dem(data):
+    """Strict classic tiled F32 GeoTIFF reader for fixed NOAA subset only."""
+    if len(data)<8 or data[:4]!=b'II*\x00':raise ValueError('expected little-endian classic GeoTIFF')
+    offset=struct.unpack_from('<I',data,4)[0]
+    if offset+2>len(data):raise ValueError('TIFF IFD out of range')
+    count=struct.unpack_from('<H',data,offset)[0];tags={};sizes={1:1,2:1,3:2,4:4,12:8};formats={3:'H',4:'I',12:'d'}
+    for i in range(count):
+        entry=offset+2+i*12
+        if entry+12>len(data):raise ValueError('TIFF entry out of range')
+        tag,kind,n,value=struct.unpack_from('<HHII',data,entry)
+        if kind not in sizes:raise ValueError('unsupported TIFF field')
+        size=n*sizes[kind];start=entry+8 if size<=4 else value
+        if start+size>len(data):raise ValueError('TIFF field out of range')
+        tags[tag]=struct.unpack_from('<'+formats[kind]*n,data,start) if kind in formats else data[start:start+size]
+    get=lambda tag:tags[tag][0]
+    if get(258)!=32 or get(339)!=3 or get(277)!=1 or get(317)!=1 or get(259)!=5:raise ValueError('unsupported DEM pixel encoding')
+    if get(256)*get(257)>8*1024*1024:raise ValueError('DEM pixel budget exceeded')
+    keys=tags[34735]
+    if not any(keys[i]==2048 and keys[i+3]==4326 for i in range(4,len(keys),4)):raise ValueError('DEM CRS mismatch')
+    if not any(keys[i]==1025 and keys[i+3]==1 for i in range(4,len(keys),4)):raise ValueError('DEM must use PixelIsArea')
+    w,h=get(256),get(257);tw,th=get(322),get(323);raster=np.zeros((h,w),dtype=np.float32)
+    columns=(w+tw-1)//tw;rows=(h+th-1)//th
+    if len(tags[324])!=columns*rows or len(tags[325])!=columns*rows:raise ValueError('DEM tile count mismatch')
+    for i,(start,size) in enumerate(zip(tags[324],tags[325])):
+        if start+size>len(data):raise ValueError('DEM tile out of range')
+        tile=np.frombuffer(tiff_lzw(data[start:start+size],tw*th*4),dtype='<f4').reshape(th,tw)
+        y=(i//columns)*th;x=(i%columns)*tw;dy=min(th,h-y);dx=min(tw,w-x);raster[y:y+dy,x:x+dx]=tile[:dy,:dx]
+    sx,sy,_=tags[33550];tie=tags[33922];west=tie[3]-tie[0]*sx;north=tie[4]+tie[1]*sy
+    extent=[west,north-h*sy,west+w*sx,north]
+    if not np.isfinite(raster).all() or (np.abs(raster)>20000).any():raise ValueError('DEM NoData/nonfinite/out-of-range cells')
+    return raster,extent
+
+
 def sha(data):
     return hashlib.sha256(data).hexdigest()
 

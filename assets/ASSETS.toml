@@ -667,7 +667,7 @@ source = "original"
 license = "CC-BY-SA-4.0"
 modified = true
 ai_generated = false
-sha256 = "82e487abbbb98f84e9238bb537b35af610444d81c7c4ecfd31e28f0d023ec449"
+sha256 = "0835274a92f8fa4e7c18d16b2eeacadb9e74948e9d7dc386f5efd7be948f8591"
 notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
 
 [[asset]]
@@ -739,3 +739,135 @@ modified = false
 ai_generated = false
 sha256 = "7d0e4ed14e1a482f0774cdee9a6134f9c46c964ec68b2733cbdd614bbabaea9f"
 notes = "Source/provenance for isolated world preview. No simulation authority."
+
+# Exact procedural 3D leaves from producer 19cf3cf; no AI PNG adoption.
+
+[[asset]]
+path = "assets/preview/units3d/air.glb"
+author = "OpenHOI4 contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Self-authored preview-art/data record; actual GLBs are synthetic geometry, not deployments. Master registration/integration and independent review pending."
+sha256 = "70724713e93c1338e930f99e1313d5049c85bc5936b39534f87ae83eaee5bf1f"
+
+[[asset]]
+path = "assets/preview/units3d/army.glb"
+author = "OpenHOI4 contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Self-authored preview-art/data record; actual GLBs are synthetic geometry, not deployments. Master registration/integration and independent review pending."
+sha256 = "d630d499b5d44480ff4f9a081e671348a4bc9163dc19b210a1f0ba17c9268006"
+
+[[asset]]
+path = "assets/preview/units3d/generate.json"
+author = "OpenHOI4 contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Self-authored preview-art/data record; actual GLBs are synthetic geometry, not deployments. Master registration/integration and independent review pending."
+sha256 = "ff041ca461dd218e7199911d72fc191a463d370095b3e3019b316556cf47473a"
+
+[[asset]]
+path = "assets/preview/units3d/generate.mjs"
+author = "OpenHOI4 contributors"
+source = "original"
+license = "original"
+modified = false
+ai_generated = false
+notes = "Self-authored procedural source code; GPL-3.0-or-later under D-10. original is source provenance, not a change of code license."
+sha256 = "b951a88e6857c9bfab6566c975a121c886cea04845ddf49736d446652442bba7"
+
+[[asset]]
+path = "assets/preview/units3d/metadata.json"
+author = "OpenHOI4 contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Self-authored preview-art/data record; actual GLBs are synthetic geometry, not deployments. Master registration/integration and independent review pending."
+sha256 = "332b275b189e12cdaad9ee9b10f2b30979cf7d8b5e24480535c0b0117c3f7c07"
+
+[[asset]]
+path = "assets/preview/units3d/navy.glb"
+author = "OpenHOI4 contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Self-authored preview-art/data record; actual GLBs are synthetic geometry, not deployments. Master registration/integration and independent review pending."
+sha256 = "d1e5474298ca6f2e4686adbeb10dd38936fccabf36ea823949cf495e8602d128"
+
+[[asset]]
+path = "assets/preview/units3d/ASSETS-entry-draft.toml"
+author = "OpenHOI4 contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Self-authored preview-art/data record; actual GLBs are synthetic geometry, not deployments. Master registration/integration and independent review pending."
+sha256 = "a01e8ee7538ac5ef7b9233c83237d2706476bed205fc6927db431eeea8421e4a"
+
+[[asset]]
+path = "client/public/preview/units3d/army.glb"
+author = "OpenHOI4 contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Self-authored preview-art/data record; actual GLBs are synthetic geometry, not deployments. Master registration/integration and independent review pending."
+sha256 = "d630d499b5d44480ff4f9a081e671348a4bc9163dc19b210a1f0ba17c9268006"
+
+[[asset]]
+path = "client/public/preview/units3d/air.glb"
+author = "OpenHOI4 contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Self-authored preview-art/data record; actual GLBs are synthetic geometry, not deployments. Master registration/integration and independent review pending."
+sha256 = "70724713e93c1338e930f99e1313d5049c85bc5936b39534f87ae83eaee5bf1f"
+
+[[asset]]
+path = "client/public/preview/units3d/navy.glb"
+author = "OpenHOI4 contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Self-authored preview-art/data record; actual GLBs are synthetic geometry, not deployments. Master registration/integration and independent review pending."
+sha256 = "d1e5474298ca6f2e4686adbeb10dd38936fccabf36ea823949cf495e8602d128"
+
+[[asset]]
+path = "client/public/preview/world/favicon.svg"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+sha256 = "b6bee86c11beadd6e1308f89e76e2fd8e6886aeb110d2c4c1b287db5a3b9c54e"
+notes = "Preview-only original display art/config. Synthetic sample positions and art scales are not actual units. Rebuild units.json: python tools/maps/bake_unit_display.py."
+
+[[asset]]
+path = "client/public/preview/world/units.json"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+sha256 = "da2e8fb8305e4647c7d86b1f6335560ee8015468a4fd30998e6cc49754e639dd"
+notes = "Preview-only original display art/config. Synthetic sample positions and art scales are not actual units. Rebuild units.json: python tools/maps/bake_unit_display.py."
+
+[[asset]]
+path = "data/preview/world/units/defines.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+sha256 = "417f3572de9cac48d14f891b35485a6223a882daa438b604009cdec197254f68"
+notes = "Preview-only original display art/config. Synthetic sample positions and art scales are not actual units. Rebuild units.json: python tools/maps/bake_unit_display.py."

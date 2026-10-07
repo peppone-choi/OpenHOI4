@@ -68,6 +68,16 @@
 
 Vite root/cargo PATH/preview CSS 문제 원실패 보존 후 수정.
 
+### 첫 실제 3D 샘플 후속
+
+부모가 exact producer19cf3cf6dab7efbcaf1f3abf0f2b53d14496324a를 인계한 뒤 procedural units3d leaf10개만 복사·SHA 검증·master append. 원AI PNG는 인수하지 않았다. army/air/navy는 embedded geometry/opaque PBR, texture/image0. 육군160/공군144/해군152 triangles를 2개 지역샘플씩 배치하여 총6샘플912 triangles. 위치/heading/artscale/lighting은 units/defines.toml이고 미래군대 state가 아니다. 실제 Three sceneExtension hook, depth-tested mesh, orthographic camera z1000, ambient/directional lighting. 기본 renderer의 hook없는 App/Testland 경로 그대로. shader/pipeline assert/fallback/input/resize 보존. source hashes·recipe/generator·metadata·copy identity는 asset metadata 및 ASSETS에 기록.
+
+units3d.test.ts는 remote buffer/sprite/empty/nonGLB rejection RED(modulemissing exit1)→PASS. 이후 실제 GLB shape/bounds 검사와 조작/회귀 검사를 계속한다. npm typecheck exit0. capture-3d-first.log exit0: world/europe WebGPU NVIDIA Turing, samples6/triangles912. first404 원출력은 e209 봉인에서 그대로 보존. 새 diagnostic은 console location으로 /favicon.ico 404 확인. preview-only own favicon 추가 후 실제 새페이지 consoleErrors=[]/badresponses=[]; devStrictMode 첫 effect cleanup으로 metadata/units fetch net::ERR_ABORTED는 개발환경 의도 취소이며 오류와 분리한다. 첫 e209 화면은 pageerrors=[]였지만 resource4041이 있었고 전체console0 주장은 하지 않는다.
+
+Rust fmt/clippy/workspace-test/365dayshash×2/validateTestland exit0. hash b039d35666b77fc2×2. bake repeat의 index/provinces/adjacency/metadata 4파일 exact SHA 모두 일치. known coordinates 및14510 ID 전수4connected 검사 PASS(추가 post-bake 검사, RED 선행으로 기록하지 않음).
+
+NOAA 공식 GridExtract datasets.json template로 30s/4MiB 예산의 Himalaya [74,25,95,35], F32 TIFF1008×480/75arcsec(원60arcsec) 취득: 1979963bytes/3.72s/SHA14e07b92aa2e8f4bcc09de6c8ead73a5b098fc6ff74a0ce6971ba78261141452. GeoTIFF local strict LZW reader를 RED(functionmissing)→2 PASS로 시험. EGM2008metres/EPSG4326/PixelIsArea/finite/noNoData범위 확인. 자료는 아직 target/evidence에 있으며 현 checkpoint 지도에 미적용. global DEM/능선/하천/도시 밀도 구현을 뜻하지 않는다.
+
 ## 통합 기록 (P-07)
 
 구현 브랜치 commit까지만. main merge/push/tag/public hosting 없음.

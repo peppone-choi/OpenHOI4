@@ -10,7 +10,7 @@ function dataTexture(bytes:Uint8Array,width:number,height:number,format:PixelFor
  t.minFilter=t.magFilter=NearestFilter;t.generateMipmaps=false;t.flipY=false;t.colorSpace=NoColorSpace;t.needsUpdate=true;return t;
 }
 export type MapCamera={x:number;y:number;zoom:number};
-export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8Array,index:Uint16Array,initial:WorldView,onHover:(id:number|null)=>void,onPick:(id:number|null)=>void,onFailure:()=>void,onResize:(camera:MapCamera)=>void,forceWebGL=false,presentation?:{camera?:MapCamera;mode:string;selected:number|null;signal?:AbortSignal}){
+export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8Array,index:Uint16Array,initial:WorldView,onHover:(id:number|null)=>void,onPick:(id:number|null)=>void,onFailure:()=>void,onResize:(camera:MapCamera)=>void,forceWebGL=false,presentation?:{camera?:MapCamera;mode:string;selected:number|null;signal?:AbortSignal;sceneExtension?:(scene:Scene,camera:OrthographicCamera)=>Promise<()=>void>}){
  const {width,height,style}=meta;
  const renderer=new WebGPURenderer({forceWebGL,antialias:false,alpha:false});
  let disposed=false;
@@ -95,13 +95,15 @@ export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8
  const leave=()=>{hovered.value=-1;host.dataset.hover='';onHover(null);};
  const cancel=()=>{drag=null;leave();};
  const wheel=(e:WheelEvent)=>{e.preventDefault();const before=coordinates(e);zoom=Math.min(style.zoom_max_milli/1000,Math.max(style.zoom_min_milli/1000,zoom*Math.exp(-e.deltaY*style.wheel_milli/100000)));camera.zoom=zoom;camera.updateProjectionMatrix();const after=coordinates(e);camera.position.x+=before.x-after.x;camera.position.y-=before.y-after.y;publishCamera();};
+ let disposeSceneExtension=()=>{};
  try{
+  if(presentation?.sceneExtension)disposeSceneExtension=await presentation.sceneExtension(scene,camera);
   await renderer.compileAsync(scene,camera);assertPipelines();
   const shader=await renderer.debug.getShaderAsync(scene,camera,scene.children[0]);
   if(presentation?.signal?.aborted)throw new Error('map-aborted');assertPipelines();
   resize();renderer.render(scene,camera);presented=true;publishCamera();
   host.dataset.shaderLanguage=shader.fragmentShader?.includes('@fragment')?'wgsl':'glsl';host.dataset.shaderLength=String(shader.fragmentShader?.length??0);
- }catch(e){disposed=true;observer.disconnect();await renderer.dispose();geometry.dispose();material.dispose();for(const t of [indexTexture,colors,nations,states])t.dispose();clearCanvas();throw e;}
+ }catch(e){disposed=true;observer.disconnect();disposeSceneExtension();await renderer.dispose();geometry.dispose();material.dispose();for(const t of [indexTexture,colors,nations,states])t.dispose();clearCanvas();throw e;}
  host.addEventListener('pointerdown',down);host.addEventListener('pointermove',move);host.addEventListener('pointerup',up);host.addEventListener('pointercancel',cancel);host.addEventListener('pointerleave',leave);host.addEventListener('wheel',wheel,{passive:false});
  host.dataset.frames='1';
  let raf=0;
@@ -123,6 +125,6 @@ export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8
    if(ranges.length){host.dataset.lastChangedBytes=host.dataset.updatedBytes;host.dataset.lastUpdateMs=host.dataset.updateMs;host.dataset.totalChangedBytes=String(Number(host.dataset.totalChangedBytes??0)+Number(host.dataset.updatedBytes));}
   },
   reset(){zoom=1;camera.position.x=camera.position.y=0;resize();},
-  dispose(){disposed=true;cancelAnimationFrame(raf);cancelAnimationFrame(recreateRaf);observer.disconnect();host.removeEventListener('pointerdown',down);host.removeEventListener('pointermove',move);host.removeEventListener('pointerup',up);host.removeEventListener('pointercancel',cancel);host.removeEventListener('pointerleave',leave);host.removeEventListener('wheel',wheel);renderer.dispose();geometry.dispose();material.dispose();for(const t of [indexTexture,colors,nations,states])t.dispose();clearCanvas();},
+  dispose(){disposed=true;cancelAnimationFrame(raf);cancelAnimationFrame(recreateRaf);observer.disconnect();host.removeEventListener('pointerdown',down);host.removeEventListener('pointermove',move);host.removeEventListener('pointerup',up);host.removeEventListener('pointercancel',cancel);host.removeEventListener('pointerleave',leave);host.removeEventListener('wheel',wheel);disposeSceneExtension();renderer.dispose();geometry.dispose();material.dispose();for(const t of [indexTexture,colors,nations,states])t.dispose();clearCanvas();},
  };
 }

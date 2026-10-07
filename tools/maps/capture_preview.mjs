@@ -9,9 +9,11 @@ const processInfo={pid:server.process().pid,argv:server.process().spawnargs,cwd:
 await writeFile(resolve(evidence,'browser-process.json'),JSON.stringify(processInfo,null,2));
 const browser=await chromium.connect(server.wsEndpoint());
 const context=await browser.newContext({viewport:{width:1600,height:1000},deviceScaleFactor:1});
-const page=await context.newPage();const consoleMessages=[],requests=[],errors=[];
-page.on('console',m=>consoleMessages.push({type:m.type(),text:m.text()}));page.on('pageerror',e=>errors.push(e.message));
+const page=await context.newPage();const consoleMessages=[],requests=[],errors=[],badResponses=[],failedRequests=[];
+page.on('console',m=>consoleMessages.push({type:m.type(),text:m.text(),location:m.location()}));page.on('pageerror',e=>errors.push(e.message));
 page.on('request',r=>requests.push({url:r.url(),type:r.resourceType()}));
+page.on('response',r=>{if(r.status()>=400)badResponses.push({url:r.url(),status:r.status()});});
+page.on('requestfailed',r=>failedRequests.push({url:r.url(),failure:r.failure()}));
 const snapshots=[];
 const ready=()=>page.waitForFunction(()=>{const h=document.querySelector('[data-testid="world-map"]');return Number(h?.getAttribute('data-frames'))>3&&!document.querySelector('[role="status"]');},{},{timeout:90000});
 async function capture(name){await ready();await page.screenshot({path:resolve(evidence,`${name}.png`)});snapshots.push({name,host:await page.locator('[data-testid="world-map"]').evaluate(el=>({...el.dataset})),viewport:page.viewportSize()});}
@@ -20,6 +22,6 @@ try{
  await page.goto(url);await capture('world');
  await page.getByRole('button',{name:'유럽',exact:true}).click();await capture('europe');
 }catch(e){exit=1;errors.push(String(e));await page.screenshot({path:resolve(evidence,'failure.png')});}
-await writeFile(resolve(evidence,'browser-capture.json'),JSON.stringify({processInfo,consoleMessages,requests,errors,snapshots,exit},null,2));
+await writeFile(resolve(evidence,'browser-capture.json'),JSON.stringify({processInfo,consoleMessages,requests,badResponses,failedRequests,errors,snapshots,exit},null,2));
 await context.close();await browser.close();await server.close();
 console.log(JSON.stringify({exit,errors,snapshots}));process.exitCode=exit;
