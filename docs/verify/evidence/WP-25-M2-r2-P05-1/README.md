@@ -1,0 +1,5 @@
+# WP25 첫 독립 검증 원본
+
+exact `e85ec5b7191604e7fb1903d2cea5fb6e49060a5b`의 새독립 앱actual completed11의유효FAIL이다. actual API의formal report1개와같은turn의후속final addendum1개를각원문으로분리하고전체API를보존했다. report본문은first formal판정메시지와exact이며추가메시지를삭제하거나flattened wait로대체하지않았다.
+
+최초11,739개fulltrackedSHA·HEAD·semantic/raw57ada·diff/status/cached와부모끝의원raw전체동등0, MF3117/ZIP3118 원bytes/SHA/CRC 전수0. 원ZIP36,966,337B/SHA6b59ce3aaa066e194446031911cb4d3d3c2d946f18ebaa639ea1672e8218f78b를그대로보존한다. 원localCLI/ZIP/None-v1v2v3v4/243client/41singleE2E·실제Core/Sim9artifact비교통과와Linuxno-measurement/Macpartialtest/원missingcomparersFAIL을구분한다. 범위는WP25며W1/main통합이나M2게이트완료가아니다. 원검증자준비오류·초기소실fixture·부모collector TypeError/native1 및별도복구확인은그대로유지한다. 새P06source/새독립검증은이원e85FAIL을바꾸지않는다.

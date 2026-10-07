@@ -415,6 +415,10 @@ M4 차량 OPEN-03/REQ-SUP-05의 [v2 운용·손실 설계](decisions/DETAIL-DRAF
 
 사용자 2026-10-06 지시에 따라 신규 시스템·스키마 변경 전에 [시스템별 스키마 기획](plans/schema-planning.md)을 작성한다. 필드 의미·단위·범위·null/default·참조·수명·권위·REQ/WP와 정의/초기값/가변/파생 계층을 명시하고, 관계·실패 원자성·해시/저장·버전/wire/runtime/UI 및 독립 경계 예제를 대조한다. 담당 WP 설계 문서를 P-03/P-05에 연결한다. 현재 M1 기초 모델을 최종 전체 모델로 기록하지 않으며 미승인 게임 규칙을 위키에서 가져와 구현하지 않는다. 전역 하네스·자동 반복이나 추가 강제 리뷰를 활성화하지 않는다.
 
+WP-14/W2는 [REQUEST-0010 A-CEO-r1](decisions/REQUEST-0010.md)의 CEO 한정 잠정 수정판과 01 §4.3을 인수한다. 원후보의 PC 선지급은 채택하지 않으며 §6.2/실제 Phase의 경제→생산→건설→인력→연구→정치 순서를 유지한다. 명령은 직전 권위 PC로 검사하고 Politics에서 정상 날짜 경계 지급을 한 번 수행한다. phase 오류의 state/queue/clock/RNG 전체 rollback과 예정 명령 의미 오류 소비를 구분한다.
+
+담당 schema/ADR은 비율·계수 Fx, 누적량 Qty, 인력 i64의 원 bits·단위·범위·checked 변환/곱셈 순서를 필드별로 고정한다. Qty를 기존 Fx 원장에 조용히 좁히지 않으며 필요하면 수량 원장을 분리해 실제 적용 raw bits와 대조한다. 계산 tick/주별 기여·배분 잔여·건설 원IC 올림/초과폐기·현재/휴면 예약·인력 committed/reserved·법령/PC·정의 identity를 canonical/hash/save/wire/query/repro와 동일 수명으로 보존한다. 새 additive 저장형은 기존 None/v1~v4·fixture·bytes/hash를 유지한다. 후속 consumer 없는 효과는 값0도 capability 오류이며 생산·항복·군사·훈련·시장 전체 완료를 가장하지 않는다. WP-23 신규 콘텐츠는 실제 producer schema·커밋 인수 뒤에만 작성한다.
+
 ## 6. 시스템 간 연결
 
 ### 6.1 시스템 표

@@ -1,0 +1,68 @@
+{
+  "source_commit": "e85ec5b7191604e7fb1903d2cea5fb6e49060a5b",
+  "actual_final_equal": true,
+  "actual_final_characters": 660,
+  "mismatches": 0,
+  "manifest_files": 3387,
+  "full_tracked_files": 11739,
+  "changed_source_raw_exact": 24,
+  "Git_raw_exact": [
+    ".github/workflows/performance.yml",
+    "Cargo.lock",
+    "bench/README.md",
+    "bench/compare.py",
+    "bench/defines.toml",
+    "bench/driver.rs",
+    "bench/run.py",
+    "crates/oh_cli/Cargo.toml",
+    "crates/oh_cli/src/bench.rs",
+    "crates/oh_cli/src/lib.rs",
+    "crates/oh_cli/src/main.rs",
+    "crates/oh_cli/src/repro.rs",
+    "crates/oh_save/Cargo.toml",
+    "crates/oh_save/examples/repro_clock.rs",
+    "crates/oh_save/repro-defines.toml",
+    "crates/oh_save/src/lib.rs",
+    "crates/oh_save/src/repro.rs",
+    "crates/oh_save/src/repro_zip.rs",
+    "crates/oh_save/tests/repro.rs",
+    "tools/wp25_evidence.py"
+  ],
+  "Git_UTF8_EOL_only": [
+    "bench/test_compare.py",
+    "crates/oh_cli/tests/repro_native.py",
+    "docs/adr/ADR-2501-repro-host-and-bench.md",
+    "docs/worklog/WP-25.md"
+  ],
+  "full_and_review_proofs": [
+    {
+      "path": "E:\\openhoi\\.orchestrator\\wt\\WP-25-M2-r2\\target\\evidence\\WP-25-M2-r2\\evidence.zip",
+      "bytes": 6943733007,
+      "sha256": "1eec0fbf0556a2f98567981723e93ee726bf5824d9417ed651b921ee352e982e",
+      "members": 3388,
+      "mismatches": 0
+    },
+    {
+      "path": "E:\\openhoi\\.orchestrator\\wt\\WP-25-M2-r2\\target\\evidence\\WP-25-M2-r2\\evidence-review.zip",
+      "bytes": 4315941,
+      "sha256": "b923278259e22925fc09a81a0a06115d2b3946a65f4dd8d9742b1ebbaeb7a73b",
+      "members": 3386,
+      "mismatches": 0
+    }
+  ],
+  "full_original_parent_copy": "E:\\openhoi\\.orchestrator\\evidence\\WP-25-M2-r2-P03-e85\\original-evidence.zip",
+  "full_original_copy_sha256": "1eec0fbf0556a2f98567981723e93ee726bf5824d9417ed651b921ee352e982e",
+  "full_original_local_only": true,
+  "review_excluded_only_source_tar_stdout": [
+    "bench-committed/baseline-archive.stdout",
+    "prior/bench-local-1/baseline-archive.stdout",
+    "prior/bench-local-2/baseline-archive.stdout",
+    "prior/bench-local-3/baseline-archive.stdout"
+  ],
+  "initial_temporary_fixture_gap": "Some initial temporary per-case inputs were cleaned before preservation; wrapper stdout/stderr/native remain. Not reconstructed or declared available.",
+  "raw_original_ZIP_byte_payload_inventory": 558,
+  "inner_hostile_ZIPs_not_claimed_valid": true,
+  "source_before_after_full_raw_identical": true,
+  "independent_PASS": false,
+  "Linux_benchmark_executed": false
+}

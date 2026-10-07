@@ -1,5 +1,33 @@
 # 인수인계
 
+## 진행 중 M2-r2 WP25 P06 인수·새 독립 검증 — 2026-10-08 03:16 KST
+
+사용자가 E: 공간을 확보해 현재 약370GB 여유가 있다. 원증거·작업트리는 보존했고 삭제 차단을 우회하지 않았다.
+
+P06-1 actual completed43/final662chars의 source `d4433414870845f4e9013bf7114a628b2d3330ab`은 clean이다. [부모 원본 인수](docs/worklog/evidence/WP-25-M2-r2-P06-1-d443/README.md)는 tracked11741·변경26raw·Git22rawexact/4UTF8 EOL동등·MF1049/fullZIP1050/review1051 전수0 및 source before/after full/raw동일이다. 원full1,736,541,336B/SHA25e022…은 owner와 부모 ignored 두 원본을 보존하고 Gitreview1,700,168B/SHAcd49d9…는 baseline tar stdout 한 개만 제외했다. 부모의 PRESERVATION 파일명 가정 오류/native1과 원helper를 보존하고 새 별도 recovery/native0로 실제 P06-PRESERVATION/P03-PRESERVED-LINKS를 인수했다.
+
+원e85에서7파일의 narrow 변경은 locked fetch 선행·source lock불변/원offline metadata와 checksum검사 및 test-only canonical regular IO fixture·partial writer 도달/17byte 출력·alias거부 진단이다. 기존partialwrite 단언/production guard/benchmark defines/원6workflow·codec·팩·골든은 그대로다. 같은 remote sourcebranch를 e85→d443 fast-forward/native0로 공개해 새7CI를 시작했고 mainmerge/force/PR는 없다. 첫7workflow는 대기/진행 중이며 Linuxrun37664886026의 실제측정 PASS는 아직 없다.
+
+새 독립 P05-2 앱 `01a11793-a863-7e50-923f-98eb960f8929`는 새 detached `WP-25-M2-r2-verify2`/exactd443·최초11741/rawa33c7738…에서 시작했다. prompt9325B/SHAb03528…와 실제payloadbytes가 같다. 독립로컬·실Linux/Mac 원CI·원예산/호환/재현을 검사 중이다. 원P05-1 유효FAIL/e85 CI실패/원검증WT와 before57ada는 바꾸지 않는다.
+
+기본main2da71·세계 프리뷰 한정 통합·고유WP15·원W1/W2 전체0/0·M2게이트없음은 유지한다. 새 독립PASS·P07·같은main7CI 후 WP25/W1을 인수하고 W2 WP14/23으로 진행한다. 이 기록은 RUN 종료 P08이 아니다.
+
+
+## 진행 중 M2-r2 WP25 첫 독립 FAIL·좁은 보완 — 2026-10-08 02:48 KST
+
+기본 브랜치 `2da71f5f11a1c6511e46463122e5731db384effd`는 clean 원격0/0·같은6CI/25필수job SUCCESS다. 제품391개 non-doc/HANDOFF Gitentry와 선택387 blob은 앞선81deb와 같고 세계 프리뷰 한정 통합 증거를 인수했다. 현재 새 WP25 원본과 FAIL 증거·이 인계는 문서 커밋 전이다.
+
+WP25 source `e85ec5b7191604e7fb1903d2cea5fb6e49060a5b`의 [구현 원본](docs/worklog/evidence/WP-25-M2-r2-P03-e85/README.md)은 actual completed33/final660 chars·전체11739/변경24raw·Git20rawexact/4UTF8 EOL 동등·MF3387/full3388/review3386 전수0다. 원6,943,733,007B/1eec0f… ZIP은 owner와 부모 ignored 복사본에 보존하고 Git용 원review4,315,941B/b92327…는 baseline Git tar stdout4개만 제외한다. 초기 임시fixture 일부 미보존과 wrapper 원출력은 원한계로 남긴다. 새exact e85 branch만 첫 push했고 mainmerge/force/PR는 없다. source7CI는6FAIL/Locale1SUCCESS다.
+
+[새 독립 P05-1](docs/verify/WP-25.M2-r2.attempt1.md)은 actualidle/completed11·formal8393chars+동일turn 뒤final addendum418chars의 유효FAIL이다. [원검증 인수](docs/verify/evidence/WP-25-M2-r2-P05-1/README.md)는11739/full/raw57ada·원before와 parent 끝/추적SHA/HEAD/index/diff/status 동등0, MF3117/ZIP3118/36,966,337B/SHA6b59ce… 전수 bytes/SHA/CRC0다. 원두final을 각각 보존하고 addon을 formal로 대체하지 않았다. 로컬CLI15·v1/v2/v3/v4·243client·41singleE2E·coherent log 위조·기본ZIP 예산·정수15% 경계·실제Core/Simulation9 artifact 비교는통과했다. valid Active 합성 M0/None의 시작저장 record/replay·전체DTO/canonical/hash/pending1회/future보존도 통과해 원M0 Active locale거부와 구분했다.
+
+Linux performance run37654381217/attempt1/job112905653439은 baseline metadata101/전체native2·측정미실행이다. crunchy0.2.4 미캐시 다운로드를 offline이 거부했다. 원artifact11498363427 1,735,030,870B/SHAf56e08…·713member·freshAPI digest/CRC·preview3 exact를 부모와 독립 검증자가 확인했다. 마지막 collector st_size() TypeError/native1과 별도복구0는 준비이력이며 원artifact/no-measurementFAIL을 바꾸지 않는다. Mac 신규partialwrite error 문자열 단언FAIL 및Trigger3OS누락, Core/Simulation/Save의 GitHub internal error·correlation/missingcompare는 각각 원인별로 보존한다.
+
+같은 owner 앱01a1170c…/turn01a1175d…는 P06-1 actualactive다. 새namespace에서 source oldlock cargo fetch --locked 선행·원offline metadata와 checksum 감사, Mac regular/canonical 경로의 실제부분쓰기 주입/파일·authority 보존과 symlink/reparse 전단거부를 진단한다. 원partialwrite 단언/거부·15% 두회/work240000/warm2400/native240s/build1200s·기존6workflow·codec/팩/골든/게임룰은 유지한다. 새source/실Linux·Mac/새독립P05 전에는 WP25나W1을 통합하지 않는다. 원e85 detachedverify1과 raw57ada·원FAIL을 새source로 교체하지 않는다.
+
+고유WP15·M0/M1 PASS·원W1/W2 전체0/0·M2게이트없음을 유지한다. 이후 원 WP25→W1 전체→W2 WP14/23이며 M3는 이번 RUN 범위가 아니다. 이 기록은 RUN 종료 P08이 아니다.
+
+
 ## 진행 중 M2-r2 세계 프리뷰 통합 증거 인수 — 2026-10-08 00:47 KST
 
 통합 커밋 `81deb803944cf6297f13b3f14ca454774cea141b`에서6CI/25필수job SUCCESS, 실제9 Save/Trigger artifact의 digest/ZIP·fresh native3 comparer0을 인수했다. 새독립 P05-4/source5794505·P07/ea355와 제품387 blob 동등·원실패 보존을 함께 확인해 세계/HUD/실제3D 한정 통합 조건을 충족했다. [원CI·원본 산출물](docs/plans/evidence/M2-r2-81deb-CI-final/README.md)과 [판정·attempt 구분](docs/plans/WORLD-PREVIEW-P07.md)을 참조한다.

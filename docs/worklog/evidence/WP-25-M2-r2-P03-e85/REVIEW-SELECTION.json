@@ -1,0 +1,33 @@
+{
+  "source_commit": "e85ec5b7191604e7fb1903d2cea5fb6e49060a5b",
+  "full_zip_sha256": "1eec0fbf0556a2f98567981723e93ee726bf5824d9417ed651b921ee352e982e",
+  "full_zip_bytes": 6943733007,
+  "full_zip_preserved": true,
+  "excluded_only_full_baseline_source_archive_stdout": [
+    {
+      "path": "bench-committed/baseline-archive.stdout",
+      "bytes": 2006323200,
+      "sha256": "8ee7e2265bd41fbba2ffa76f8e25d112fd17fef4059428bc858957464dd756e1",
+      "crc32": "3bc00880"
+    },
+    {
+      "path": "prior/bench-local-1/baseline-archive.stdout",
+      "bytes": 2006323200,
+      "sha256": "8ee7e2265bd41fbba2ffa76f8e25d112fd17fef4059428bc858957464dd756e1",
+      "crc32": "3bc00880"
+    },
+    {
+      "path": "prior/bench-local-2/baseline-archive.stdout",
+      "bytes": 2006323200,
+      "sha256": "8ee7e2265bd41fbba2ffa76f8e25d112fd17fef4059428bc858957464dd756e1",
+      "crc32": "3bc00880"
+    },
+    {
+      "path": "prior/bench-local-3/baseline-archive.stdout",
+      "bytes": 2006323200,
+      "sha256": "8ee7e2265bd41fbba2ffa76f8e25d112fd17fef4059428bc858957464dd756e1",
+      "crc32": "3bc00880"
+    }
+  ],
+  "reason": "Full source-export stdout bytes remain in the original evidence.zip and raw files; native inputs/results, driver/build/metadata/lock/environment, exact changed-source snapshots and inventories are retained."
+}
