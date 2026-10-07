@@ -5,12 +5,14 @@
 //! registries and pack merging belong to later WPs. `pack_validation` resolves
 //! pack order and validates the currently registered content and Fluent catalogs.
 //! Numeric defines have no defaults. I/O stays outside the simulation layer.
+pub mod host_policy;
 pub mod localisation;
 pub mod m0;
 pub mod map;
 pub mod national;
 pub mod pack_validation;
 mod raw;
+pub mod scenario_defines;
 
 use raw::Source;
 use schemars::{JsonSchema, Schema, SchemaGenerator};
@@ -134,6 +136,19 @@ pub fn load_pack(root: impl AsRef<Path>) -> Result<DataPack, DataError> {
     let defines = read(&root.join("defines.toml"))?;
     let defines = parse_defines(&defines)?;
     Ok(DataPack { manifest, defines })
+}
+// Definition/codec readers do not render manifest names, but any present FTL
+// still has to have valid syntax, parity and static references. Active callers
+// use the full validation entry point to require their actual display keys.
+pub(crate) fn check_present_catalogs(root: &Path) -> Result<(), DataError> {
+    let diagnostics = localisation::validate_directory(&root.join("localisation"), &[])?;
+    if let Some(d) = diagnostics
+        .into_iter()
+        .find(|d| d.severity == pack_validation::Severity::Error)
+    {
+        return Err(d.error);
+    }
+    Ok(())
 }
 
 /// Generate the JSON structural schema from the loader's public types.

@@ -6,13 +6,16 @@ use std::{
 };
 fn root() -> PathBuf {
     static N: AtomicU64 = AtomicU64::new(0);
-    let p = Path::new(env!("CARGO_MANIFEST_DIR"))
-        .join("../../target/evidence/WP-24/data-fixtures")
-        .join(format!(
-            "{}-{}",
-            std::process::id(),
-            N.fetch_add(1, Ordering::Relaxed)
-        ));
+    let base = std::env::var_os("OH_WP24_EVIDENCE_ROOT")
+        .map(PathBuf::from)
+        .unwrap_or_else(|| {
+            Path::new(env!("CARGO_MANIFEST_DIR")).join("../../target/evidence/WP-24")
+        });
+    let p = base.join("data-fixtures").join(format!(
+        "{}-{}",
+        std::process::id(),
+        N.fetch_add(1, Ordering::Relaxed)
+    ));
     fs::create_dir_all(&p).unwrap();
     p
 }

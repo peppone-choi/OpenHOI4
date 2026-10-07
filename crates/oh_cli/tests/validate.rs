@@ -6,13 +6,16 @@ use std::{
 };
 fn fixture() -> PathBuf {
     static NEXT: AtomicU64 = AtomicU64::new(0);
-    let p = Path::new(env!("CARGO_MANIFEST_DIR"))
-        .join("../../target/evidence/WP-24/fixtures")
-        .join(format!(
-            "{}-{}",
-            std::process::id(),
-            NEXT.fetch_add(1, Ordering::Relaxed)
-        ));
+    let base = std::env::var_os("OH_WP24_EVIDENCE_ROOT")
+        .map(PathBuf::from)
+        .unwrap_or_else(|| {
+            Path::new(env!("CARGO_MANIFEST_DIR")).join("../../target/evidence/WP-24")
+        });
+    let p = base.join("fixtures").join(format!(
+        "{}-{}",
+        std::process::id(),
+        NEXT.fetch_add(1, Ordering::Relaxed)
+    ));
     fs::create_dir_all(&p).unwrap();
     p
 }
@@ -211,4 +214,71 @@ fn req_mod_04_run_rejects_invalid_pack_before_simulation_or_save_creation() {
         .unwrap();
     assert_eq!(out.status.code(), Some(1));
     assert!(stderr(&out).contains("testland_name"));
+}
+
+#[test]
+fn p06_legacy_overlay_reaches_actual_cli_time_config_without_defaults() {
+    let parent = fixture();
+    let p = pack(&parent, "empty", "");
+    fs::write(
+        p.join("defines.toml"),
+        "[time]\nspeed_ms_per_tick=[500,200,80,25,0]\ninitial_speed=1\n",
+    )
+    .unwrap();
+    fs::create_dir_all(p.join("scenarios/empty")).unwrap();
+    fs::write(
+        p.join("scenarios/empty/scenario.toml"),
+        "start_date='2000-01-01'\n",
+    )
+    .unwrap();
+    let overlay = p.join("scenarios/empty/defines.toml");
+    fs::write(
+        &overlay,
+        "[time]\nspeed_ms_per_tick=[100,90,80,70,60]\ninitial_speed=5\n",
+    )
+    .unwrap();
+    let loaded = oh_cli::load_scenario(&parent, "empty").unwrap();
+    let sim = loaded.simulation(1).unwrap();
+    assert_eq!(sim.snapshot().speed(), 5);
+    assert_eq!(sim.ms_per_tick(), 60);
+    fs::remove_file(overlay).unwrap();
+    let sim = oh_cli::load_scenario(&parent, "empty")
+        .unwrap()
+        .simulation(1)
+        .unwrap();
+    assert_eq!(sim.snapshot().speed(), 1);
+    assert_eq!(sim.ms_per_tick(), 500);
+}
+
+#[test]
+fn p06_cli_restore_force_rejects_invalid_active_fluent_before_decoding() {
+    let root = fixture();
+    copy(
+        &Path::new(env!("CARGO_MANIFEST_DIR")).join("../../data/packs/testland"),
+        &root,
+    );
+    let context = oh_save::SaveContext::national(&root, "m1").unwrap();
+    let bytes = oh_save::encode(&context.simulation(1).unwrap(), &context, 0, vec![]).unwrap();
+    let file = root.join("state.ohsave");
+    fs::write(&file, &bytes).unwrap();
+    fs::write(root.join("localisation/en/pack.ftl"), "broken = {\n").unwrap();
+    for force in [true, false] {
+        let mut c = Command::new(env!("CARGO_BIN_EXE_oh_cli"));
+        c.args([
+            "resume",
+            "--load",
+            file.to_str().unwrap(),
+            "--pack",
+            root.to_str().unwrap(),
+            "--ticks",
+            "0",
+        ]);
+        if force {
+            c.arg("--force");
+        }
+        let o = c.output().unwrap();
+        assert_eq!(o.status.code(), Some(1), "{}", stdout(&o));
+        assert!(stderr(&o).contains("invalid Fluent"), "{}", stderr(&o));
+        assert_eq!(fs::read(&file).unwrap(), bytes);
+    }
 }

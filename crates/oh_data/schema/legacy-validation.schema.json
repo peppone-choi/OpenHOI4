@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Policy",
+  "type": "object",
+  "properties": {
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Entry"
+      }
+    },
+    "policy_format": {
+      "type": "integer",
+      "format": "uint16",
+      "maximum": 1,
+      "minimum": 1
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PolicySource"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "policy_format",
+    "sources",
+    "entries"
+  ],
+  "$defs": {
+    "AllowedCode": {
+      "type": "string",
+      "enum": [
+        "missing_message_value"
+      ]
+    },
+    "Caller": {
+      "type": "string",
+      "enum": [
+        "server_startup",
+        "server_restore",
+        "cli_v1_resume"
+      ]
+    },
+    "Disposition": {
+      "type": "string",
+      "enum": [
+        "warning_unavailable"
+      ]
+    },
+    "Entry": {
+      "type": "object",
+      "properties": {
+        "caller": {
+          "$ref": "#/$defs/Caller"
+        },
+        "diagnostic_code": {
+          "$ref": "#/$defs/AllowedCode"
+        },
+        "disposition": {
+          "$ref": "#/$defs/Disposition"
+        },
+        "locales": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "name_key": {
+          "type": "string"
+        },
+        "pack_content_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{16}$"
+        },
+        "pack_id": {
+          "type": "string"
+        },
+        "pack_version": {
+          "type": "string"
+        },
+        "policy_id": {
+          "type": "string"
+        },
+        "save_format": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint16",
+          "maximum": 65535,
+          "minimum": 0
+        },
+        "scenario_id": {
+          "type": "string"
+        },
+        "scenario_kind": {
+          "$ref": "#/$defs/ScenarioKind"
+        },
+        "source_field": {
+          "type": "string"
+        },
+        "source_id": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "policy_id",
+        "source_id",
+        "caller",
+        "pack_id",
+        "pack_version",
+        "pack_content_hash",
+        "scenario_id",
+        "scenario_kind",
+        "source_field",
+        "name_key",
+        "diagnostic_code",
+        "locales",
+        "disposition"
+      ]
+    },
+    "FileFingerprint": {
+      "type": "object",
+      "properties": {
+        "bytes": {
+          "type": "integer",
+          "format": "uint64",
+          "minimum": 0
+        },
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ]
+    },
+    "PolicySource": {
+      "type": "object",
+      "properties": {
+        "files": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FileFingerprint"
+          }
+        },
+        "id": {
+          "type": "string"
+        },
+        "source_commit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "source_reference": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "source_commit",
+        "source_reference",
+        "files"
+      ]
+    },
+    "ScenarioKind": {
+      "type": "string",
+      "enum": [
+        "empty",
+        "national"
+      ]
+    }
+  }
+}

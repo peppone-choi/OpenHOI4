@@ -1,5 +1,15 @@
 # ADR-2401 팩 선택 순서·Fluent·고정 v1 입력
 
+## P-06 정정 기획
+
+REQUEST-0008 A는 CEO DIRECTIVES 2026-10-07T10:57:22의 원 SHA2477248184afc83d1ae5102a4ed12f11c4957c939d13b0c391724216b4b30ddc 한정 잠정 채택을 적용한다. 앞서 임시 FNV-only 후보를 제거한 기록은 유지한다. 최종 구현은 engine-owned 정책 TOML/전체원파일 path·bytes·SHA256와 typed 진단, 명시 caller3종 및 실제 bounded v1 header→pack/scenario/context 관계를 함께 검사한다. 형/맥락/force로 범위를 넓히지 않는다. SHA256은 공식 [sha2 0.11.0 manifest](https://docs.rs/crate/sha2/latest/source/Cargo.toml.orig)의 MIT OR Apache-2.0/MSRV1.85와 [Digest/Sha256 API](https://docs.rs/sha2/latest/sha2/index.html)를 2026-10-07 확인했고 부모의 oh_data Cargo/lock 소유 인계로 default-features=false를 추가한다. backend/settings/workspaceCargo는 바꾸지 않는다. 원3/19 source metadata는 부모 봉인 ZIP/identity와 runtime에서 전수대조하며 정책은 팩 밖에 두어 원pack/save identity를 오염시키지 않는다.
+
+첫 독립 검증 actual final은 registered legacy defines를 검사하지 않는 분기와 server의 직접 national reader 호출을 재현했다. legacy override를 root→scenario 실제 numeric overlay로 연결하고 runnable time/등록network 타입·범위·원 source 진단을 검사한다. Host의 load/load_with_save와 CLI resume에 full validation, typed load 이후 전체 파일 fingerprint 재대조를 연결한다. 기존 M0/frozen codec과 active localised팩의 계약은 WP-24-schema의 P-06 표로 분리한다.
+
+임시 FNV-only 후보는 승인 대기 지시로 제거했고 그 당시 green을 최종 증거로 사용하지 않는다. 승인 후 정책은 server_startup 원M0, server_restore 원M0+실제 bounded v1 header, cli_v1_resume 원M0 또는 immutable mutable-v1+실제 bounded v1 header 세 caller에만 연결한다. 각 entry의 전체 3/19파일 경로·길이·SHA256, FNV64, pack id/version, scenario id/kind, header format/scenario/world유무/단일 pack 목록이 모두 맞아야 한다. 두 typed MissingMessageValue 진단의 manifest.name_key/testland_name/ko·en만 warning_unavailable로 바꾸며 원 code/field/key/locale/cause/path/line/column을 보존한다. 다른 오류는 유지한다. Strict/Active/RestoreV1 일반 목적에는 entry가 없고 --force는 정책을 선택하지 않는다. standalone 원M0 validate는 여전히 exit1이다. plain frozen19 identity `13318001328374612931` 및 WP17 movement-pack-97f19는 예외 대상이 아니다.
+
+M0 headless CLI/library는 renderer 없는 empty-definition 계약을 유지한다. 저수준 m0/national 및 SaveContext/load_context용 정의 reader는 resolve/schema/ref/effective defines와 모든 present FTL syntax/parity/static reference를 검사하고, 사용하지 않는 manifest UI 이름의 필수성은 full host guard가 검사한다. cli_m0_run entry는 없다. 원 v1/v2/v3 codec, header/body/preflight, fixture/expected/helper는 변경하지 않는다. 새로운 validation DTO/정책은 save/wire/pack content identity에 포함하지 않는다.
+
 | 항목 | 값 |
 |---|---|
 | 상태 | 채택 |

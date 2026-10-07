@@ -23,6 +23,7 @@ fn main() -> Result<(), String> {
         .into_iter()
         .map(|u| KeyUse {
             key: u.key,
+            source_field: None,
             context: DataError {
                 path: u.path,
                 line: u.line,

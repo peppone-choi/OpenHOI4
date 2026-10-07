@@ -16,6 +16,7 @@ use std::{
 pub struct KeyUse {
     pub key: String,
     pub context: DataError,
+    pub source_field: Option<String>,
 }
 pub fn keys_in_toml(path: &Path) -> Result<Vec<KeyUse>, DataError> {
     fn walk(source: &Source, value: &toml::Spanned<toml::de::DeValue<'_>>, out: &mut Vec<KeyUse>) {
@@ -27,6 +28,7 @@ pub fn keys_in_toml(path: &Path) -> Result<Vec<KeyUse>, DataError> {
                     {
                         out.push(KeyUse {
                             key: s.to_string(),
+                            source_field: Some(k.get_ref().to_string()),
                             context: source.error(
                                 v.span().start,
                                 ErrorKind::Schema,
@@ -40,6 +42,7 @@ pub fn keys_in_toml(path: &Path) -> Result<Vec<KeyUse>, DataError> {
                         for key in t.keys() {
                             out.push(KeyUse {
                                 key: key.get_ref().to_string(),
+                                source_field: Some("ideology_support".into()),
                                 context: source.error(
                                     key.span().start,
                                     ErrorKind::Schema,
@@ -68,6 +71,11 @@ pub fn keys_in_toml(path: &Path) -> Result<Vec<KeyUse>, DataError> {
         {
             out.push(KeyUse {
                 key: s.to_string(),
+                source_field: Some(if path.file_name().is_some_and(|p| p == "manifest.toml") {
+                    format!("manifest.{}", k.get_ref())
+                } else {
+                    k.get_ref().to_string()
+                }),
                 context: source.error(v.span().start, ErrorKind::Schema, "localisation reference"),
             });
         }
@@ -77,6 +85,7 @@ pub fn keys_in_toml(path: &Path) -> Result<Vec<KeyUse>, DataError> {
             for key in t.keys() {
                 out.push(KeyUse {
                     key: key.get_ref().to_string(),
+                    source_field: Some("ideology_support".into()),
                     context: source.error(
                         key.span().start,
                         ErrorKind::Schema,
@@ -264,7 +273,12 @@ fn catalog(paths: &[PathBuf]) -> Result<Catalog, DataError> {
 }
 fn diagnostic(mut error: DataError, severity: Severity, message: impl Into<String>) -> Diagnostic {
     error.message = message.into();
-    Diagnostic { severity, error }
+    Diagnostic {
+        severity,
+        error,
+        code: crate::pack_validation::DiagnosticCode::Data,
+        applied_policy: None,
+    }
 }
 fn check_graph(c: &Catalog, out: &mut Vec<Diagnostic>) {
     for n in c.nodes.values() {
@@ -347,11 +361,17 @@ pub fn validate_catalogs(
         let mut todo = Vec::new();
         for usage in uses {
             if !c.messages.contains(&usage.key) {
-                out.push(diagnostic(
+                let mut d = diagnostic(
                     usage.context.clone(),
                     Severity::Error,
                     format!("missing {locale} message value {}", usage.key),
-                ));
+                );
+                d.code = crate::pack_validation::DiagnosticCode::MissingMessageValue {
+                    locale: locale.into(),
+                    key: usage.key.clone(),
+                    source_field: usage.source_field.clone(),
+                };
+                out.push(d);
             } else {
                 todo.push(usage.key.clone());
             }

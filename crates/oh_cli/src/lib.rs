@@ -185,8 +185,9 @@ pub fn load_national(
     root: &Path,
     id: &str,
 ) -> Result<(LoadedScenario, oh_sim::world::World), String> {
-    validate_for_run(root)?;
+    let validated_hash = validate_for_run(root)?;
     let loaded = oh_data::national::load_scenario(root, id).map_err(|e| e.to_string())?;
+    verify_validation_identity(root, validated_hash)?;
     let world = oh_sim::world::World::from_loaded(&loaded)?;
     let time = TimeConfig::from_defines(&loaded.pack.defines).map_err(|e| e.to_string())?;
     let start_date = parse_date(&loaded.scenario.start_date)?;
@@ -200,12 +201,31 @@ pub fn load_national(
         world,
     ))
 }
-fn validate_for_run(root: &Path) -> Result<(), String> {
+fn validate_for_run(root: &Path) -> Result<oh_data::host_policy::PackFingerprint, String> {
+    validate_host_pack(root, oh_data::pack_validation::ValidationPurpose::Active)
+}
+fn verify_validation_identity(
+    root: &Path,
+    expected: oh_data::host_policy::PackFingerprint,
+) -> Result<(), String> {
+    oh_data::pack_validation::verify_source(root, expected.content_hash, &expected.files)
+        .map_err(|e| e.to_string())
+}
+fn validate_host_pack(
+    root: &Path,
+    purpose: oh_data::pack_validation::ValidationPurpose,
+) -> Result<oh_data::host_policy::PackFingerprint, String> {
     use oh_data::pack_validation::Severity;
-    let report = oh_data::pack_validation::validate_packs(&[root.to_path_buf()]);
+    let report = oh_data::pack_validation::validate_for_purpose(&[root.to_path_buf()], purpose);
     for diagnostic in &report.diagnostics {
         if diagnostic.severity == Severity::Warning {
-            eprintln!("warning: {}", diagnostic.error);
+            eprintln!(
+                "warning: {}:{}:{} - {}",
+                diagnostic.error.path.display(),
+                diagnostic.error.line,
+                diagnostic.error.column,
+                diagnostic.error.message
+            );
         }
     }
     if report.failed(false) {
@@ -217,7 +237,10 @@ fn validate_for_run(root: &Path) -> Result<(), String> {
             .collect::<Vec<_>>()
             .join("\n"));
     }
-    Ok(())
+    Ok(oh_data::host_policy::PackFingerprint {
+        content_hash: report.packs[0].content_hash,
+        files: report.packs[0].source_files.clone(),
+    })
 }
 pub fn run_national(root: &Path, options: &RunOptions) -> Result<Simulation, String> {
     let (loaded, world) = load_national(root, &options.scenario)?;
@@ -304,11 +327,49 @@ pub fn execute_invocation(args: &[String]) -> Result<(Simulation, bool), String>
         let bytes = oh_save::read_file(Path::new(get("--load")?), &limits)?;
         let header = oh_save::inspect_header(&bytes, &limits)?;
         let root = Path::new(get("--pack")?);
+        let actual = if header.definitions_hash.is_some() {
+            root.to_owned()
+        } else {
+            root.join(&header.scenario_id)
+        };
+        let kind = if header.definitions_hash.is_some() {
+            oh_data::host_policy::ScenarioKind::National
+        } else {
+            oh_data::host_policy::ScenarioKind::Empty
+        };
+        let binding = oh_data::host_policy::HeaderBinding {
+            format_version: header.format_version,
+            scenario_id: header.scenario_id.clone(),
+            has_world: header.definitions_hash.is_some(),
+            packs: header
+                .packs
+                .iter()
+                .map(|p| oh_data::host_policy::BoundPack {
+                    id: p.id.clone(),
+                    version: p.version.clone(),
+                    content_hash: p.content_hash,
+                })
+                .collect(),
+        };
+        let validated_hash = validate_host_pack(
+            &actual,
+            oh_data::pack_validation::ValidationPurpose::CliV1Resume {
+                scenario_id: header.scenario_id.clone(),
+                kind,
+                header: binding,
+            },
+        )?;
         let context = if header.definitions_hash.is_some() {
             oh_save::SaveContext::national(root, &header.scenario_id)?
         } else {
             oh_save::SaveContext::m0(root, &header.scenario_id)?
         };
+        if context.pack().content_hash != validated_hash.content_hash {
+            return Err(
+                "PackChangedDuringLoad: restore context differs from validated pack".into(),
+            );
+        }
+        verify_validation_identity(&actual, validated_hash)?;
         let loaded = oh_save::decode(&bytes, &context, force)?;
         for warning in loaded.warnings {
             eprintln!("oh_cli: {warning}");
@@ -321,8 +382,16 @@ pub fn execute_invocation(args: &[String]) -> Result<(Simulation, bool), String>
         if save.is_some() {
             let context = match &pack {
                 Some(root) => {
-                    validate_for_run(root)?;
-                    oh_save::SaveContext::national(root, &options.scenario)?
+                    let validated_hash = validate_for_run(root)?;
+                    let context = oh_save::SaveContext::national(root, &options.scenario)?;
+                    if context.pack().content_hash != validated_hash.content_hash {
+                        return Err(
+                            "PackChangedDuringLoad: save context differs from validated pack"
+                                .into(),
+                        );
+                    }
+                    verify_validation_identity(root, validated_hash)?;
+                    context
                 }
                 None => oh_save::SaveContext::m0(Path::new(M0_PACK_ROOT), &options.scenario)?,
             };

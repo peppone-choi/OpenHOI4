@@ -94,6 +94,8 @@ pub struct Host {
     handshake_ms: u64,
     default_seed: u64,
     shutdown: watch::Receiver<bool>,
+    validated_hash: u64,
+    validated_files: Vec<oh_data::host_policy::FileFingerprint>,
 }
 fn positive(defines: &oh_data::Defines, key: &str) -> Result<u64, String> {
     match defines.get(key) {
@@ -108,16 +110,61 @@ impl Host {
         file: Option<&Path>,
         force: bool,
     ) -> Result<Self, String> {
-        let mut host = Self::load(root, shutdown)?;
-        if let Some(file) = file {
-            let limits = oh_save::Limits::default();
+        let limits = oh_save::Limits::default();
+        let prepared = if let Some(file) = file {
             let bytes = oh_save::read_file(file, &limits)?;
+            let header = oh_save::inspect_header(&bytes, &limits)?;
+            Some((bytes, header))
+        } else {
+            None
+        };
+        let mut host = if let Some((_, header)) = &prepared {
+            let (scenario_id, kind) = selected_scenario(root);
+            let binding = oh_data::host_policy::HeaderBinding {
+                format_version: header.format_version,
+                scenario_id: header.scenario_id.clone(),
+                has_world: header.definitions_hash.is_some(),
+                packs: header
+                    .packs
+                    .iter()
+                    .map(|p| oh_data::host_policy::BoundPack {
+                        id: p.id.clone(),
+                        version: p.version.clone(),
+                        content_hash: p.content_hash,
+                    })
+                    .collect(),
+            };
+            Self::load_for_purpose(
+                root,
+                shutdown,
+                oh_data::pack_validation::ValidationPurpose::ServerRestore {
+                    scenario_id: scenario_id.into(),
+                    kind,
+                    header: binding,
+                },
+            )?
+        } else {
+            Self::load(root, shutdown)?
+        };
+        if let Some((bytes, _)) = prepared {
             let context = if host.world.is_some() {
                 oh_save::SaveContext::national(&host.root, &host.loaded.scenario_id)?
             } else {
                 oh_save::SaveContext::m0(root, &host.loaded.scenario_id)?
             };
+            if context.pack().content_hash != host.validated_hash {
+                return Err(
+                    "PackChangedDuringLoad: restore context differs from validated active pack"
+                        .into(),
+                );
+            }
             let loaded = oh_save::decode(&bytes, &context, force)?;
+            oh_data::pack_validation::verify_source(
+                &host.root,
+                host.validated_hash,
+                &host.validated_files,
+            )
+            .map_err(|e| e.to_string())?;
             session::validate_resume(&loaded.simulation)?;
             for warning in loaded.warnings {
                 eprintln!("oh_server: {warning}");
@@ -127,6 +174,40 @@ impl Host {
         Ok(host)
     }
     pub fn load(root: &Path, shutdown: watch::Receiver<bool>) -> Result<Self, String> {
+        let (scenario_id, kind) = selected_scenario(root);
+        Self::load_for_purpose(
+            root,
+            shutdown,
+            oh_data::pack_validation::ValidationPurpose::ServerStartup {
+                scenario_id: scenario_id.into(),
+                kind,
+            },
+        )
+    }
+    fn load_for_purpose(
+        root: &Path,
+        shutdown: watch::Receiver<bool>,
+        purpose: oh_data::pack_validation::ValidationPurpose,
+    ) -> Result<Self, String> {
+        let active = root.join("testland");
+        let report =
+            oh_data::pack_validation::validate_for_purpose(std::slice::from_ref(&active), purpose);
+        for d in &report.diagnostics {
+            if d.severity == oh_data::pack_validation::Severity::Warning {
+                eprintln!("oh_server warning: {}", d.error);
+            }
+        }
+        if report.failed(false) {
+            return Err(report
+                .diagnostics
+                .iter()
+                .filter(|d| d.severity == oh_data::pack_validation::Severity::Error)
+                .map(|d| d.error.to_string())
+                .collect::<Vec<_>>()
+                .join("\n"));
+        }
+        let validated_hash = report.packs[0].content_hash;
+        let validated_files = report.packs[0].source_files.clone();
         let (loaded, world) = if root.join("testland/scenarios/m1/scenario.toml").exists() {
             let national = oh_data::national::load_scenario(&root.join("testland"), "m1")
                 .map_err(|e| e.to_string())?;
@@ -142,6 +223,8 @@ impl Host {
         } else {
             (oh_data::m0::load_m0_scenario(root, "testland")?, None)
         };
+        oh_data::pack_validation::verify_source(&active, validated_hash, &validated_files)
+            .map_err(|e| e.to_string())?;
         let fields = loaded.start_date.split('-').collect::<Vec<_>>();
         if fields.len() != 3
             || fields
@@ -157,6 +240,12 @@ impl Host {
         )
         .map_err(|e| e.to_string())?;
         let time = TimeConfig::from_defines(&loaded.pack.defines).map_err(|e| e.to_string())?;
+        oh_data::scenario_defines::require_network(
+            &active,
+            &loaded.scenario_id,
+            &loaded.pack.defines,
+        )
+        .map_err(|e| e.to_string())?;
         let delta_ms = positive(&loaded.pack.defines, "network.delta_ms")?;
         if delta_ms < 100 {
             return Err("network.delta_ms must be at least 100 (02 section 4.2)".into());
@@ -202,8 +291,16 @@ impl Host {
             handshake_ms,
             default_seed,
             shutdown,
+            validated_hash,
+            validated_files,
         };
         map::validate(&host)?;
+        oh_data::pack_validation::verify_source(
+            &host.root,
+            host.validated_hash,
+            &host.validated_files,
+        )
+        .map_err(|e| e.to_string())?;
         Ok(host)
     }
     fn simulation(&self, seed: u64) -> Result<Simulation, String> {
@@ -229,6 +326,13 @@ impl Host {
         }
         session::validate_resume(&sim)?;
         Ok(sim)
+    }
+}
+fn selected_scenario(root: &Path) -> (&'static str, oh_data::host_policy::ScenarioKind) {
+    if root.join("testland/scenarios/m1/scenario.toml").exists() {
+        ("m1", oh_data::host_policy::ScenarioKind::National)
+    } else {
+        ("testland", oh_data::host_policy::ScenarioKind::Empty)
     }
 }
 fn pack_hash(root: &Path) -> Result<u64, String> {
@@ -452,6 +556,45 @@ pub fn open_browser(url: &str) -> Result<(), String> {
 #[cfg(test)]
 mod national_tests {
     use super::*;
+    #[test]
+    fn original_m0_restore_policy_preserves_entire_state_and_pending_commands() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../data/packs/examples/m0");
+        let context = oh_save::SaveContext::m0(&root, "testland").unwrap();
+        let mut sim = context.simulation(7).unwrap();
+        sim.step().unwrap();
+        sim.enqueue(24, oh_core::NationId(0), 100, oh_sim::Command::SetSpeed(5))
+            .unwrap();
+        let directory =
+            Path::new(env!("CARGO_MANIFEST_DIR")).join("../../target/evidence/WP-24-P06/m0-host");
+        std::fs::create_dir_all(&directory).unwrap();
+        let file = directory.join(format!("{}.ohsave", std::process::id()));
+        let bytes = oh_save::encode(&sim, &context, 0, vec![]).unwrap();
+        oh_save::write_atomic(&file, &bytes, &context).unwrap();
+        for force in [false, true] {
+            let (_, shutdown) = watch::channel(false);
+            let host = Host::load_with_save(&root, shutdown, Some(&file), force).unwrap();
+            let mut restored = host.simulation(999).unwrap();
+            assert_eq!(
+                oh_core::canonical_bytes(&restored).unwrap(),
+                oh_core::canonical_bytes(&sim).unwrap()
+            );
+            assert_eq!(restored.state_hash().unwrap(), sim.state_hash().unwrap());
+            let mut continuous = sim.clone();
+            for _ in 0..48 {
+                restored.step().unwrap();
+                continuous.step().unwrap();
+            }
+            assert_eq!(
+                oh_core::canonical_bytes(&restored).unwrap(),
+                oh_core::canonical_bytes(&continuous).unwrap()
+            );
+            assert_eq!(
+                restored.state_hash().unwrap(),
+                continuous.state_hash().unwrap()
+            );
+            assert_eq!(std::fs::read(&file).unwrap(), bytes);
+        }
+    }
     #[test]
     fn default_host_loads_m1_and_m0_requires_its_explicit_path() {
         let (_, shutdown) = watch::channel(false);

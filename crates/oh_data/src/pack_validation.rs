@@ -11,16 +11,49 @@ pub enum Severity {
     Error,
     Warning,
 }
+/// Explicit host purpose, never selected by --force or inferred from directory names.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum ValidationPurpose {
+    Strict,
+    Active,
+    RestoreV1,
+    ServerStartup {
+        scenario_id: String,
+        kind: crate::host_policy::ScenarioKind,
+    },
+    ServerRestore {
+        scenario_id: String,
+        kind: crate::host_policy::ScenarioKind,
+        header: crate::host_policy::HeaderBinding,
+    },
+    CliV1Resume {
+        scenario_id: String,
+        kind: crate::host_policy::ScenarioKind,
+        header: crate::host_policy::HeaderBinding,
+    },
+}
 #[derive(Debug, Clone)]
 pub struct Diagnostic {
     pub severity: Severity,
     pub error: DataError,
+    pub code: DiagnosticCode,
+    pub applied_policy: Option<String>,
+}
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum DiagnosticCode {
+    Data,
+    MissingMessageValue {
+        locale: String,
+        key: String,
+        source_field: Option<String>,
+    },
 }
 #[derive(Debug, Clone)]
 pub struct ResolvedPack {
     pub root: PathBuf,
     pub data: DataPack,
     pub content_hash: u64,
+    pub source_files: Vec<crate::host_policy::FileFingerprint>,
 }
 #[derive(Debug, Default)]
 pub struct ValidationReport {
@@ -39,12 +72,16 @@ impl ValidationReport {
         self.diagnostics.push(Diagnostic {
             severity: Severity::Error,
             error: e,
+            code: DiagnosticCode::Data,
+            applied_policy: None,
         });
     }
     pub(crate) fn warning(&mut self, e: DataError) {
         self.diagnostics.push(Diagnostic {
             severity: Severity::Warning,
             error: e,
+            code: DiagnosticCode::Data,
+            applied_policy: None,
         });
     }
 }
@@ -75,7 +112,7 @@ fn regular(path: &Path) -> Result<fs::Metadata, DataError> {
     Ok(m)
 }
 /// Same sorted relative-path/byte postcard hash as the existing save pack identity.
-pub fn content_hash(root: &Path) -> Result<u64, DataError> {
+fn collect_files(root: &Path) -> Result<Vec<(String, Vec<u8>)>, DataError> {
     fn walk(root: &Path, dir: &Path, out: &mut Vec<(String, Vec<u8>)>) -> Result<(), DataError> {
         for entry in fs::read_dir(dir).map_err(|e| io(dir, e))? {
             let p = entry.map_err(|e| io(dir, e))?.path();
@@ -105,7 +142,44 @@ pub fn content_hash(root: &Path) -> Result<u64, DataError> {
     let mut files = Vec::new();
     walk(root, root, &mut files)?;
     files.sort_by(|a, b| a.0.cmp(&b.0));
-    oh_core::state_hash(&files).map_err(|e| io(root, e))
+    Ok(files)
+}
+pub fn content_hash(root: &Path) -> Result<u64, DataError> {
+    oh_core::state_hash(&collect_files(root)?).map_err(|e| io(root, e))
+}
+pub fn fingerprint(root: &Path) -> Result<crate::host_policy::PackFingerprint, DataError> {
+    use sha2::{Digest, Sha256};
+    let files = collect_files(root)?;
+    let content_hash = oh_core::state_hash(&files).map_err(|e| io(root, e))?;
+    let files = files
+        .into_iter()
+        .map(|(path, data)| crate::host_policy::FileFingerprint {
+            path,
+            bytes: data.len() as u64,
+            sha256: Sha256::digest(data)
+                .iter()
+                .map(|b| format!("{b:02x}"))
+                .collect(),
+        })
+        .collect();
+    Ok(crate::host_policy::PackFingerprint {
+        content_hash,
+        files,
+    })
+}
+pub fn verify_source(
+    root: &Path,
+    hash: u64,
+    files: &[crate::host_policy::FileFingerprint],
+) -> Result<(), DataError> {
+    let actual = fingerprint(root)?;
+    if actual.content_hash != hash || actual.files != files {
+        return Err(io(
+            root,
+            "pack changed after validation (full file/SHA256 identity)",
+        ));
+    }
+    Ok(())
 }
 fn at(
     source: &Source,
@@ -148,7 +222,7 @@ pub fn resolve_packs(roots: &[PathBuf]) -> Result<Vec<ResolvedPack>, DataError> 
     let engine = semver::Version::parse(env!("CARGO_PKG_VERSION"))
         .map_err(|e| io(Path::new("manifest.toml"), e))?;
     for root in roots {
-        let hash = content_hash(root)?;
+        let stamp = fingerprint(root)?;
         let data = load_pack(root)?;
         let source = read(&root.join("manifest.toml"))?;
         if !semver::VersionReq::parse(&data.manifest.engine)
@@ -182,7 +256,8 @@ pub fn resolve_packs(roots: &[PathBuf]) -> Result<Vec<ResolvedPack>, DataError> 
                 ResolvedPack {
                     root: root.clone(),
                     data,
-                    content_hash: hash,
+                    content_hash: stamp.content_hash,
+                    source_files: stamp.files,
                 },
                 source,
             ),
@@ -337,6 +412,9 @@ fn children(root: &Path) -> Result<Vec<PathBuf>, DataError> {
     Ok(result)
 }
 pub fn validate_packs(roots: &[PathBuf]) -> ValidationReport {
+    validate_for_purpose(roots, ValidationPurpose::Strict)
+}
+pub fn validate_for_purpose(roots: &[PathBuf], purpose: ValidationPurpose) -> ValidationReport {
     let mut report = ValidationReport::default();
     let packs = match resolve_packs(roots) {
         Ok(p) => p,
@@ -345,12 +423,16 @@ pub fn validate_packs(roots: &[PathBuf]) -> ValidationReport {
             return report;
         }
     };
+    validate_resolved(packs, purpose)
+}
+fn validate_resolved(packs: Vec<ResolvedPack>, purpose: ValidationPurpose) -> ValidationReport {
+    let mut report = ValidationReport::default();
     for pack in &packs {
-        if let Err(e) = validate_content(pack, &mut report) {
+        if let Err(e) = validate_content(pack, &mut report, &purpose) {
             report.error(e);
         }
-        match content_hash(&pack.root) {
-            Ok(h) if h == pack.content_hash => {}
+        match fingerprint(&pack.root) {
+            Ok(s) if s.content_hash == pack.content_hash && s.files == pack.source_files => {}
             Ok(_) => report.error(io(&pack.root, "pack changed during validation")),
             Err(e) => report.error(e),
         }
@@ -360,7 +442,11 @@ pub fn validate_packs(roots: &[PathBuf]) -> ValidationReport {
     }
     report
 }
-fn validate_content(pack: &ResolvedPack, report: &mut ValidationReport) -> Result<(), DataError> {
+fn validate_content(
+    pack: &ResolvedPack,
+    report: &mut ValidationReport,
+    purpose: &ValidationPurpose,
+) -> Result<(), DataError> {
     let root = &pack.root;
     let mut keys = crate::localisation::keys_in_toml(&root.join("manifest.toml"))?;
     for (file, kind) in [
@@ -403,7 +489,7 @@ fn validate_content(pack: &ResolvedPack, report: &mut ValidationReport) -> Resul
         let source = read(&p.join("scenario.toml"))?;
         let doc = source.document()?;
         if doc.contains_key("map") {
-            let national = crate::national::load_scenario(root, id)?;
+            let national = crate::national::read_scenario(root, id)?;
             validate_date(&source, &national.scenario.start_date)?;
             for file in children(&p.join("nations"))? {
                 if !file
@@ -432,16 +518,15 @@ fn validate_content(pack: &ResolvedPack, report: &mut ValidationReport) -> Resul
                 )
             })?;
             validate_date(&source, &legacy.start_date)?;
+            crate::scenario_defines::load(root, id, &pack.data.defines, false)?;
         }
         report.scenarios += 1;
     }
     unsupported_files(root, root, report)?;
-    report
-        .diagnostics
-        .extend(crate::localisation::validate_directory(
-            &root.join("localisation"),
-            &keys,
-        )?);
+    let mut diagnostics =
+        crate::localisation::validate_directory(&root.join("localisation"), &keys)?;
+    crate::host_policy::apply(pack, purpose, &mut diagnostics)?;
+    report.diagnostics.extend(diagnostics);
     Ok(())
 }
 fn unsupported_files(
@@ -545,5 +630,47 @@ fn validate_date(source: &Source, value: &str) -> Result<(), DataError> {
             None,
             "invalid Gregorian start_date",
         ))
+    }
+}
+
+#[cfg(test)]
+mod source_change_tests {
+    use super::*;
+    #[test]
+    fn source_changed_between_resolution_and_content_validation_returns_no_packs() {
+        fn copy(source: &Path, target: &Path) {
+            fs::create_dir_all(target).unwrap();
+            for entry in fs::read_dir(source).unwrap() {
+                let source = entry.unwrap().path();
+                let target = target.join(source.file_name().unwrap());
+                if source.is_dir() {
+                    copy(&source, &target);
+                } else {
+                    fs::copy(source, target).unwrap();
+                }
+            }
+        }
+        let base = Path::new(env!("CARGO_MANIFEST_DIR")).join("../..");
+        let root = base.join(format!(
+            "target/evidence/WP-24-P06/source-change-{}",
+            std::process::id()
+        ));
+        copy(&base.join("data/packs/testland"), &root);
+        let roots = std::slice::from_ref(&root);
+        assert!(!validate_packs(roots).failed(false));
+        let packs = resolve_packs(roots).unwrap();
+        let path = root.join("defines.toml");
+        let mut bytes = fs::read(&path).unwrap();
+        bytes
+            .extend_from_slice(b"\n# Changed after resolution; identical effective definitions.\n");
+        fs::write(path, bytes).unwrap();
+        let report = validate_resolved(packs, ValidationPurpose::Strict);
+        assert!(report.failed(false));
+        assert!(report.packs.is_empty());
+        assert!(report.diagnostics.iter().any(|d| {
+            d.severity == Severity::Error && d.error.message == "pack changed during validation"
+        }));
+        // The changed source is valid alone; its difference from the snapshot rejects it.
+        assert!(!validate_packs(roots).failed(false));
     }
 }

@@ -1,6 +1,6 @@
 //! Validated M1 data boundary. Exact decimal strings never pass through floats.
 use crate::{
-    DataError, DataPack, ErrorKind, Fixed, load_pack,
+    DataError, DataPack, ErrorKind, Fixed,
     map::{MapData, load_map},
     read, valid_id,
 };
@@ -117,18 +117,20 @@ fn field_error(path: &Path, field: &str, message: &str) -> DataError {
     fail(path, message)
 }
 pub fn load_scenario(root: &Path, id: &str) -> Result<LoadedNational, DataError> {
+    let loaded = read_scenario(root, id)?;
+    crate::check_present_catalogs(root)?;
+    Ok(loaded)
+}
+pub(crate) fn read_scenario(root: &Path, id: &str) -> Result<LoadedNational, DataError> {
     if !valid_id(id) {
         return Err(fail(root, "invalid scenario ID"));
     }
     let path = root.join("scenarios").join(id).join("scenario.toml");
-    let mut pack = load_pack(root)?;
+    let mut pack = crate::pack_validation::resolve_packs(&[root.to_owned()])?
+        .remove(0)
+        .data;
     // M1 scenario overlay preserves the shipped M0 skeleton and golden contract.
-    let defines = crate::parse_defines(&read(
-        &root.join("scenarios").join(id).join("defines.toml"),
-    )?)?;
-    for (system, items) in defines.0 {
-        pack.defines.0.entry(system).or_default().extend(items);
-    }
+    pack.defines = crate::scenario_defines::load(root, id, &pack.defines, true)?;
     let scenario: Scenario = document(&path)?;
     let map = load_map(root, &scenario.map)?;
     let visual_path = root.join("maps").join(&scenario.map).join("visuals.toml");
