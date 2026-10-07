@@ -1,0 +1,48 @@
+{
+  "product_source": "01119ae05013a1974e5ca096c705bf39846c9cff",
+  "archive": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r2-01119ae.zip",
+  "bytes": 37066865,
+  "sha256": "4d370a40e2bfd1972206f87861c5c96683ed9c0fa8a6a373cbefc5eed85b1a54",
+  "files": 6254,
+  "actual_platform": "Windows",
+  "native_linux_gate": false,
+  "actual_three_os": false,
+  "large_raw_locators": [
+    {
+      "path": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r2\\bench-01119ae\\baseline-archive.stdout",
+      "bytes": 2006323200,
+      "sha256": "8ee7e2265bd41fbba2ffa76f8e25d112fd17fef4059428bc858957464dd756e1",
+      "reason": "large original raw archive retained at exact locator"
+    },
+    {
+      "path": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r2\\bench-01119ae\\baseline-source.tar",
+      "bytes": 2006323200,
+      "sha256": "8ee7e2265bd41fbba2ffa76f8e25d112fd17fef4059428bc858957464dd756e1",
+      "reason": "large original raw archive retained at exact locator"
+    },
+    {
+      "path": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r2\\bench-cd5e25a\\baseline-archive.stdout",
+      "bytes": 2006323200,
+      "sha256": "8ee7e2265bd41fbba2ffa76f8e25d112fd17fef4059428bc858957464dd756e1",
+      "reason": "large original raw archive retained at exact locator"
+    },
+    {
+      "path": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r2\\bench-cd5e25a\\baseline-source.tar",
+      "bytes": 2006323200,
+      "sha256": "8ee7e2265bd41fbba2ffa76f8e25d112fd17fef4059428bc858957464dd756e1",
+      "reason": "large original raw archive retained at exact locator"
+    },
+    {
+      "path": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r2\\repro-01119ae\\native-ou9qndtd\\case-ur4kg26d\\alias",
+      "reason": "attack reparse metadata only; never followed"
+    },
+    {
+      "path": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r2\\repro-cd5e25a\\native-1x7rcfe2\\case-i1q6htlr\\alias",
+      "reason": "attack reparse metadata only; never followed"
+    }
+  ],
+  "raw_root": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r2",
+  "manifest": "BUNDLE_MANIFEST.json",
+  "contains": "original RED/GREEN and native stdout/stderr/receipts/saves/repro/full-state/pack/old-new-driver/source-audits/binaries",
+  "excludes": "build intermediates and expanded baseline source; complete original archives remain at listed raw locators"
+}
