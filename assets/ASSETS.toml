@@ -737,7 +737,7 @@ source = "original"
 license = "CC-BY-SA-4.0"
 modified = false
 ai_generated = false
-sha256 = "75d8919812cbb0d5da32f7fbce6ce296306782478f609e7893da987a4c9d260a"
+sha256 = "17e032d59a6f3767c07d02b9d12bc514afa53331de372095c0d3d1c720882cd4"
 notes = "Source/provenance for isolated world preview. No simulation authority."
 
 # Exact procedural 3D leaves from producer 19cf3cf; no AI PNG adoption.
@@ -920,4 +920,4 @@ license = "public-domain"
 modified = false
 ai_generated = false
 sha256 = "2c593114e954ce1adb297ddee5465f05d9e81fa0a26deb13f8500d58a00d7051"
-notes = "FixedNE4.1.0PolygonSHPgeometryonly; MODIS2002-2003/generalized1:10M. NoDBF/population/LandScan/adminboundary/gameauthority. Terms/date/version/PRJ/CRC/acquisition/limits: data/preview/world/source-manifest.json andSOURCES.md. Offlinepreview only."
+notes = "FixedNE4.1.0PolygonSHPgeometryonly; MODIS2002-2003/generalized1:10M. CRC reads all raw members includingDBF; noDBFattribute parsing/population/LandScan/adminboundary/gameauthority. Terms/date/version/PRJ/CRC/acquisition/limits: data/preview/world/source-manifest.json andSOURCES.md. Offlinepreview only."
