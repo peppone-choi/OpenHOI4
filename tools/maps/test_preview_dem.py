@@ -5,6 +5,17 @@ import numpy as np
 import world_preview as wp
 
 class DemTests(unittest.TestCase):
+    def test_relief_and_river_geodesic_allocation_changes_shape(self):
+        kind=np.ones((20,30),dtype=np.uint8);seeds=np.array([[5,5],[5,24]])
+        river=np.zeros_like(kind,dtype=bool);river[:,13]=True;river[10:,13]=False;river[10:,18]=True
+        elevation=np.zeros_like(kind,dtype=float);elevation[7:14,16:20]=4000
+        options={'river_crossing_penalty':20,'relief_meters':500,'ridge_penalty':2,'ridge_window':5}
+        plain=wp.geodesic_labels(kind,1,seeds,np.zeros_like(river),np.full_like(elevation,np.nan),options)
+        shaped=wp.geodesic_labels(kind,1,seeds,river,elevation,options)
+        self.assertGreater(np.count_nonzero(plain!=shaped),20)
+        self.assertEqual(shaped[5,5],0);self.assertEqual(shaped[5,24],1)
+        self.assertTrue(np.all(shaped>=0))
+
     def test_corrupt_tiff_rejected(self):
         with self.assertRaises(ValueError):
             wp.read_dem(b'not a TIFF')

@@ -8,6 +8,25 @@ sea_seeds = 1500
 lake_seeds = 1
 query_rows = 32
 
+# Offline art allocation costs, never simulation movement/combat coefficients.
+[partition]
+river_crossing_penalty = 12.0
+river_density = 1.4
+relief_meters = 500.0
+relief_density_cap = 3.0
+ridge_penalty = 0.7
+ridge_window = 5
+
+[terrain]
+bands = [
+ {minimum_m = -1000, color = [143, 157, 133]},
+ {minimum_m = 500, color = [139, 150, 122]},
+ {minimum_m = 1500, color = [151, 147, 119]},
+ {minimum_m = 3000, color = [168, 155, 130]},
+ {minimum_m = 4500, color = [187, 181, 157]},
+ {minimum_m = 6000, color = [221, 220, 202]},
+]
+
 [style]
 background = [13, 26, 34]
 nation_border = [13, 26, 34]

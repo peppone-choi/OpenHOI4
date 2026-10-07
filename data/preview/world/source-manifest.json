@@ -1,24 +1,61 @@
 {
   "sources": [
     {
-      "id": "land",
+      "acquired": "2026-10-07",
       "file": "sources/ne_10m_land.zip",
-      "url": "https://naturalearth.s3.amazonaws.com/10m_physical/ne_10m_land.zip",
-      "version": "5.1.1",
+      "id": "land",
       "license": "public-domain",
       "sha256": "e547d749445eaa0964aba76738090ec88f5e63c4585122170f98c67a7ea922dc",
-      "acquired": "2026-10-07",
-      "terms": "https://www.naturalearthdata.com/about/terms-of-use/"
+      "terms": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "url": "https://naturalearth.s3.amazonaws.com/10m_physical/ne_10m_land.zip",
+      "version": "5.1.1"
     },
     {
-      "id": "lakes",
+      "acquired": "2026-10-07",
       "file": "sources/ne_10m_lakes.zip",
-      "url": "https://naturalearth.s3.amazonaws.com/10m_physical/ne_10m_lakes.zip",
-      "version": "5.0.0",
+      "id": "lakes",
       "license": "public-domain",
       "sha256": "0803a06f9c3cb4671d89b68c48b142aad9366ba40f665245e12a913fbc61722a",
+      "terms": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "url": "https://naturalearth.s3.amazonaws.com/10m_physical/ne_10m_lakes.zip",
+      "version": "5.0.0"
+    },
+    {
       "acquired": "2026-10-07",
-      "terms": "https://www.naturalearthdata.com/about/terms-of-use/"
+      "extent": [
+        74,
+        25,
+        95,
+        35
+      ],
+      "file": "sources/ETOPO2022-himalaya.tif",
+      "horizontal_crs": "EPSG:4326",
+      "id": "himalaya_dem",
+      "license": "CC0-1.0",
+      "nodata": "no NoData tag; all subset cells finite and within [-20000,20000]",
+      "output_arcseconds": 75,
+      "output_size": [
+        1008,
+        480
+      ],
+      "pixel_registration": "PixelIsArea",
+      "sha256": "14e07b92aa2e8f4bcc09de6c8ead73a5b098fc6ff74a0ce6971ba78261141452",
+      "source_arcseconds": 60,
+      "terms": "https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.ngdc.mgg.dem%3Aetopo_2022",
+      "unit": "metre",
+      "url": "https://gis.ngdc.noaa.gov/arcgis/rest/services/DEM_mosaics/DEM_all/ImageServer/exportImage?bbox=74%2C25%2C95%2C35&bboxSR=4326&size=1008%2C480&imageSR=4326&format=tiff&pixelType=F32&interpolation=RSP_NearestNeighbor&compression=LZ77&renderingRule=%7B%22rasterFunction%22%3A+%22none%22%7D&mosaicRule=%7B%22where%22%3A+%22Name%3D%27ETOPO_2022_v1_60s_surface%27%22%7D&f=image",
+      "version": "ETOPO2022 v1 60s surface",
+      "vertical_datum": "EGM2008"
+    },
+    {
+      "acquired": "2026-10-07",
+      "file": "sources/ne_10m_rivers_lake_centerlines.zip",
+      "id": "rivers",
+      "license": "public-domain",
+      "sha256": "ded71b01870855ccfe19b51f2ec14c9bb48fae23c0e9f3c11974d426433b5c38",
+      "terms": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "url": "https://naturalearth.s3.amazonaws.com/10m_physical/ne_10m_rivers_lake_centerlines.zip",
+      "version": "5.0.0"
     }
   ]
 }

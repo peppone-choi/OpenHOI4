@@ -1,7 +1,7 @@
 import type { MapStyle,WorldView } from '../proto/protocol';
 import { decodeIndex,validateWorldDisplay } from '../map/model';
 
-export type PreviewProvince={id:number;kind:'land'|'sea'|'lake';pixels:number;bounds:[number,number,number,number];longitude:number;latitude:number;geography_color:[number,number,number];province_color:[number,number,number];elevation_m:number|null};
+export type PreviewProvince={id:number;kind:'land'|'sea'|'lake';pixels:number;bounds:[number,number,number,number];longitude:number;latitude:number;geography_color:[number,number,number];province_color:[number,number,number];terrain_color?:[number,number,number];elevation_m:number|null};
 export type PreviewMetadata={schema:'world-preview-v1';map_id:string;width:number;height:number;province_ids:number[];counts:Record<PreviewProvince['kind'],number>;style:MapStyle;regions:Record<string,{longitude:number;latitude:number;zoom:number}>;hashes:Record<string,string>;sources:{id:string;version:string;license:string;sha256:string}[];elevation:boolean;limitations:string[]};
 export type PreviewData={meta:PreviewMetadata;provinces:PreviewProvince[];bytes:Uint8Array;index:Uint16Array};
 export type PreviewMode='geography'|'provinces'|'terrain';
@@ -15,7 +15,7 @@ export function validatePreview(meta:PreviewMetadata,provinces:PreviewProvince[]
  if(meta?.schema!=='world-preview-v1'||!Number.isInteger(meta.width)||!Number.isInteger(meta.height)||meta.width<1||meta.height<1||meta.width*meta.height>64*1024*1024)fail();
  if(!Array.isArray(meta.province_ids)||meta.province_ids.length<1||meta.province_ids.length>65536||meta.province_ids.some((id,i)=>id!==i+1)||provinces.length!==meta.province_ids.length)fail();
  for(const file of ['index.bin','provinces.json','adjacency.json'])if(!/^[a-f0-9]{64}$/.test(meta.hashes?.[file]??''))fail();
- for(const [i,p] of provinces.entries())if(p.id!==i+1||!['land','sea','lake'].includes(p.kind)||!rgb(p.geography_color)||!rgb(p.province_color)||!Number.isInteger(p.pixels)||p.pixels<1||!Number.isFinite(p.longitude)||!Number.isFinite(p.latitude)||Math.abs(p.longitude)>180||Math.abs(p.latitude)>90||(!meta.elevation&&p.elevation_m!==null))fail();
+ for(const [i,p] of provinces.entries())if(p.id!==i+1||!['land','sea','lake'].includes(p.kind)||!rgb(p.geography_color)||!rgb(p.province_color)||(p.terrain_color!==undefined&&!rgb(p.terrain_color))||!Number.isInteger(p.pixels)||p.pixels<1||!Number.isFinite(p.longitude)||!Number.isFinite(p.latitude)||Math.abs(p.longitude)>180||Math.abs(p.latitude)>90||(p.elevation_m!==null&&(!meta.elevation||!Number.isFinite(p.elevation_m)||Math.abs(p.elevation_m)>20000)))fail();
  if(!meta.sources?.length||meta.sources.some(s=>!s.version||!s.license||!/^[a-f0-9]{64}$/.test(s.sha256)))fail();
  const colors=['background','nation_border','state_border','province_border','selected','hovered'] as const;
  if(!meta.style||colors.some(key=>!rgb(meta.style[key])))fail();
@@ -27,7 +27,7 @@ export function validatePreview(meta:PreviewMetadata,provinces:PreviewProvince[]
 }
 /** Display-only adaptation: ownership, nations, states and game rules absent. */
 export function previewWorld(meta:PreviewMetadata,provinces:PreviewProvince[],mode:PreviewMode):WorldView{
- const world:WorldView={tick:'0',map_id:meta.map_id,width:meta.width,height:meta.height,province_ids:meta.province_ids,neutral_color:meta.style.background,mode_keys:['map-mode-terrain'],nations:[],states:[],provinces:provinces.map(p=>({id:p.id,state:null,owner:null,controller:null,owner_color:null,controller_color:null,state_color:null,terrain_key:p.kind,terrain_color:mode==='provinces'?p.province_color:p.geography_color}))};
+ const world:WorldView={tick:'0',map_id:meta.map_id,width:meta.width,height:meta.height,province_ids:meta.province_ids,neutral_color:meta.style.background,mode_keys:['map-mode-terrain'],nations:[],states:[],provinces:provinces.map(p=>({id:p.id,state:null,owner:null,controller:null,owner_color:null,controller_color:null,state_color:null,terrain_key:p.kind,terrain_color:mode==='provinces'?p.province_color:mode==='terrain'?(p.terrain_color??p.geography_color):p.geography_color}))};
  validateWorldDisplay(world);return world;
 }
 export async function loadPreview(signal:AbortSignal):Promise<PreviewData>{

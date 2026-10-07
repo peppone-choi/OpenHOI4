@@ -10,7 +10,7 @@
 
 사용자가 실제 전세계 지도와 메인 HUD 외관을 기능 개발보다 먼저 보도록 직접 승인했다. 기존 Testland와 권위 서버를 변경하지 않고 독립 원천에서 생성한 시각 미리보기가 필요하다.
 
-## 결정
+## 초기 체크포인트 결정
 
 [최소 계약](../plans/WORLD-PREVIEW-schema.md)을 따른다. Natural Earth land/lakes ZIP를 SHA256 고정하고 오프라인 구면 nearest-seed 분할과 연결성 조각 분리로 굽는다. 기존 Three RG8 renderer/model을 display adapter에서 재사용한다. 4096×2048, 약 12,000 seed에서 시작하고 섬/호수 조각 수를 실제 기록한다. 주·국가·역사·게임 수치는 만들지 않는다. 첫 체크포인트에서는 고도 미적용을 명시한다.
 
@@ -30,3 +30,11 @@
 공식 확인(2026-10-07): [Natural Earth land v5.1.1](https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-land/), [lakes v5.0.0](https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-lakes/), [public domain 조건](https://www.naturalearthdata.com/about/terms-of-use/). NOAA [ETOPO2022](https://www.ncei.noaa.gov/products/etopo-global-relief-model)와 [Grid Extract](https://www.ncei.noaa.gov/maps/grid-extract/)는 subset/GeoTIFF를 제공하나 dateline 교차 및 ±89° 밖 요청이 제한된다. [메타데이터](https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.ngdc.mgg.dem%3Aetopo_2022)는 EPSG:4326/3855, CC0 조건을 안내한다.
 
 설치된 numpy 2.2.6/scipy 1.17.1은 공식 version tag LICENSE의 BSD-3-Clause 확인 후 사용. Pillow 12.1.1은 MIT-CMU 표기이며 02 허용목록의 정확 SPDX와 다르므로 생성기 의존성으로 채택하지 않는다. SHP/PNG는 Python stdlib reader/writer로 구현하고 새 Python/Cargo/JS dependency를 설치하지 않는다.
+
+## 후속 실제 지리 형상 입력
+
+첫 e209/a28 체크포인트 이후 fixed Natural Earth rivers5.0.0/NOAA ETOPO2022 Himalaya TIFF를 도입했다. 현재 pipeline은 구면 nearest seeds를 초기 fallback으로 두고,8neighbor same-kind multi-source graph 최단거리로 actualriver/validDEM relief를 반영한다. seed없음인 작은 섬/component는 fallback 후4connected 조각으로 나눈다. 모든 allocation weights는 preview defines이며 sim 이동/전투에 전달하지 않는다. ridge 항은 validlocal elevation과 localminimum 차이이고 정확능선추출/고개검증 완료를 뜻하지 않는다. DEM밖/footprint경계를NoData상태로 구분하며 양끝점valid일때만높이cost를쓴다. terrain모드는대표cell표본 색이며 continuousrelief나globalDEM이 아니다. metadata와 UI가subset범위를명시한다.
+
+source인수/strictTIFFparser/입력의형상효과/knowncoordinate/fullconnectivity/repeatSHA를직접검사했다. 공식 [SciPy dijkstra](https://docs.scipy.org/doc/scipy-1.17.0/reference/generated/scipy.sparse.csgraph.dijkstra.html)는 positive undirected weights/min_only/source mapping을지원한다. tie output은toolversion에영향받을수있어현재installed버전을고정·기록한다. [Natural Earth rivers](https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-rivers-lake-centerlines/) generalization/수로정렬·간헐하천누락과 sourceclass의Caspianlake미포함을한계로보존한다. 후속 detailedcity/DEM/riverpass검수 및게임주연결은미완료다.
+
+공개플레이화면의정성적shape관찰은 SOURCES의격리browser증거로만남기고geographicgenerator입력에포함하지않았다. 원경계coordinate/픽셀분석/tracing나원게임/UI/아이콘/수치표사용없음.

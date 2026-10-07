@@ -2,11 +2,13 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | 진행, 첫 시각 체크포인트 |
+| 상태 | 독립 검증 대기; 자체 실행 증거 제출 |
 | 담당 | 구현 세션 |
 | 브랜치 | codex/world-province-preview-m2r2 |
 | 대상 REQ | REQ-MAP-01/02/04/07/10 일부. REQ-MAP-03/11 및 WP-32/45 전체는 미완료 |
 | 선행 WP | 검증된 WP-07/08 renderer; base ea63081e0b79369227c99384922db80c6ef09fb1 |
+
+이 문서의 초기 테스트·누락 서술은 첫 e209/a28 체크포인트 역사이며, 현재 제출 상태는 마지막 최종 증거 항목을 따른다.
 
 ## 계획
 
@@ -81,3 +83,21 @@ NOAA 공식 GridExtract datasets.json template로 30s/4MiB 예산의 Himalaya [7
 ## 통합 기록 (P-07)
 
 구현 브랜치 commit까지만. main merge/push/tag/public hosting 없음.
+
+## 최종 제출 상태와 증거
+
+- 현 지도 source는 land5.1.1/lakes5.0.0/rivers5.0.0 + 고정 NOAA ETOPO2022 v1 60s surface Himalaya75arcsec subset이다. 4096×2048/PlateCarrée/8neighbor同kind geodesic allocation/4connected ID. 실제13,413=land7,103/sea3,641/lake2,669, valid대표고도147개. river거리/DEM interior slope 밀도, rivercrossing/실제높이차·localrelief 경계cost. noise굴곡 없음. 3Darmy/air/navy6샘플912triangles, ownmaterial/depth/light. 실제게임군대가아니다.
+- Source/version/terms/SHA는 source-manifest/ASSETS, recipe는 tools/maps 및 units3d generate files. 같은입력/options/toolversions의 final2bake에서 index/provinces/adjacency/metadata4SHA 전부일치. 3D3원GLB인수SHA exactproducer19cf3cf로고정. ASSETS의base ea63081 prefixbytes 보존; originalFluentko/en prefixbytes 보존하고preview-*만append. 기존game/network/proto/sim/checker/Testland/골든변경 없음.
+- 자체 검사는 Python11PASS, client135PASS, build/typecheck0, npm103deps licenses0, docs/assets0. 원Rustfmt/clippy/workspace0; M0hash365x2 b039d35666b77fc2, M1 `--pack data/packs/testland --scenario m1`365x2 b595dc2a1e5b4f8c. proto generator exit0/protocol.ts gitblob84d88d8a39a8b2d4ce804fe2ffdfb7ae834d84cd 전후동일. Rust/프로토콜코드는base동일이므로해당회귀logs 적용범위를구분한다.
+- 기존M1Playwright원3browser전체123PASS/2.8m(exit0), defaultscenehook없는renderer/backend/fallback/pipeline/resize/DPR/redirect/invalidmetadata/국가패널검사. 처음rootcwd의config.resolve('../target') 실패m1-chromium.log 보존 후 정확clientcwd에서같은원검사를실행했다. 원테스트/assert/fixture/baseline을수정하지않았다.
+- 새미리보기 headlessChrome ownpage15captures/fullactions exit0: world/europe/Korea/Himalaya terrain/Americas, actualhoverpick3923, wheel6→10.173/pan변화, borderoffcamera동일, provincepalette색변화, samplesoff0/on6,850×650/1600×1000/1280×800resize,ko/en, explicitWebGL2. actualWebGPU NVIDIA Turing, WebGL2 ANGLE NVIDIA GTX1660Ti Direct3D11. 페이지예외/consoleErrors/resource400+0, externalruntime요청0. ReactStrictMode원effect취소ERR_ABORTED는진짜오류와분리했다. fullrun의EN visibletext/aria-label언어selector timeout 원실패capture-full.log/browser-full-selector-failure.json/full-selector-failure.png 보존 후correctaccessible selector로재검사. 실사용자foreground브라우저/desktop성능벤치라고주장하지않는다.
+- 독립a28locale검수후 동일문제를 tools/check_localisation.py native1로 직접재현(localisation-red.log/uses). previewTSdict는rootFluentAST계약과불일치했다. checker나테스트를수정하지않고 기존ko/en.ftl에preview-*키만append 및 PreviewHud/WorldPreview의literal/dynamic/runtime 모두같은Fluenttranslator로정렬. 각키의ko/en실제번역회귀검사추가. localisation-green.log native0(기존미사용서버메시지 warnings는보존), client135PASS/build0/actual fullpage캡처로재검사. a28독립판정은새HEAD로전용하지않는다.
+- 형상전후비교는같은renderer/HUD로a28고정baked3파일을git show에서읽어격리page에제공하는comparison-a28-inputs와최종자료comparison-final을구분한다. 양쪽Europezoom6/Koreazoom23/Himalayazoom12 동일카메라·지리모드·viewport1600×1000. 과거inputs상태비교이며a28전체코드의재캡처라고표시하지않는다. 기존checkpoint-e209d0e/checkpoint-a28f49c 원exactHEAD/원PNG/원logs는그대로봉인보존.
+
+### 현재 미완료와 한계
+
+HUD의국가/날짜/경제/패널명령·실제unitstate미연결. 게임기능/정치경계/역사1936콘텐츠/주연결없음. GlobalDEM·도시density·정확능선/고개/강network검수없음. Himalaya terrain은대표cell고도색표본으로continuousDEMoverlay가아니다. 원천10m축척및4096 raster약0.0879°때문에coast/zoom계단·작은섬/호수/좁은통로누락이있고한국지역일부cells는거칠다. 기본NaturalEarthlakes에Caspianpolygon없어현재sea분류로남음을실제source전수조회로확인했다. lake-hole우선분류수정은실제원천에있는호수에만적용되며Caspian을복구했다는주장을철회·부모에정정했다. 원game경계tracing/파일추출/수치표/UI/국기/아이콘복사없음. Detailedterrain/editorimage포맷은의견질문에그쳐추가계약을만들지않았다.
+
+### 봉인과 인수
+
+최종cleancommit후 `target/evidence/WORLD-PREVIEW/final/`에actualpagePNGs, 실행argv/PID/cwd/nativeexit/rendereradapter/frames/console/network, source ZIP/TIFF·generatedfiles 및SHA,trackedlist/diff/status·identityJSON를봉인한다. 정확커밋/URL/실행법/미완료를부모에전송한다. ownVite127.0.0.1:4317/PID33284를사용자의로컬검토를위해유지한다. main병합/푸시/태그/공개서비스없음. 독립P05PASS/mainCI/WP-32·45/M5완료판정없음.

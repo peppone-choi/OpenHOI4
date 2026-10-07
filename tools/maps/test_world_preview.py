@@ -62,6 +62,11 @@ class PreviewTests(unittest.TestCase):
         self.assertTrue(mask[80,190])
         self.assertFalse(mask[20,20])
 
+    def test_source_lakes_preserved_even_in_land_polygon_holes(self):
+        land=np.array([[True,False,False]])
+        lake=np.array([[False,True,False]])
+        self.assertEqual(wp.classify_mask(land,lake).tolist(),[[1,2,0]])
+
     def test_little_endian_dense_ids(self):
         index=np.array([[0,256,65535]],dtype=np.uint16)
         self.assertEqual(wp.index_bytes(index), bytes([0,0,0,1,255,255]))

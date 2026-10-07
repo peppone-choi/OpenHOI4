@@ -657,7 +657,7 @@ source = "original"
 license = "CC-BY-SA-4.0"
 modified = true
 ai_generated = false
-sha256 = "753df0eb4dbdb7a271fdc91ca1d07fa44881147594ac11d0a44d12291b5ee114"
+sha256 = "9d8c3fd64fc53f4e11f478d84b034c99b5131fa7a9678f4a9b4653a0df7c196d"
 notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
 
 [[asset]]
@@ -667,7 +667,7 @@ source = "original"
 license = "CC-BY-SA-4.0"
 modified = true
 ai_generated = false
-sha256 = "0835274a92f8fa4e7c18d16b2eeacadb9e74948e9d7dc386f5efd7be948f8591"
+sha256 = "6332fc346840853df923846c49612b84d7791b8cf41dc139742d11020249222b"
 notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
 
 [[asset]]
@@ -693,41 +693,41 @@ notes = "Fixed local world preview only. No simulation/nation/history authority.
 [[asset]]
 path = "client/public/preview/world/adjacency.json"
 author = "OpenHOI contributors"
-source = "original; derived from Natural Earth land 5.1.1 and lakes 5.0.0"
+source = "independently derived from Natural Earth land5.1.1/lakes5.0.0/rivers5.0.0 and NOAA ETOPO2022 fixed Himalaya subset"
 license = "CC-BY-SA-4.0"
 modified = true
 ai_generated = false
-sha256 = "26389be0ae7006f5a94b2e08ec0cf0709d4b8fc6dd1b9a92eb4009d53f8b1ba2"
+sha256 = "0759fda185122d2b71ac337a5cc2fc48c8087c401b555a67a09e95374b059a9f"
 notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
 
 [[asset]]
 path = "client/public/preview/world/index.bin"
 author = "OpenHOI contributors"
-source = "original; derived from Natural Earth land 5.1.1 and lakes 5.0.0"
+source = "independently derived from Natural Earth land5.1.1/lakes5.0.0/rivers5.0.0 and NOAA ETOPO2022 fixed Himalaya subset"
 license = "CC-BY-SA-4.0"
 modified = true
 ai_generated = false
-sha256 = "977580f2f9cb0a78f67b38b1bcc2c8b29d2e791019e11876875148552b75e2e5"
+sha256 = "3d9a59f36e0684685e4169e0084e210f2c8fb0ebcc85dbe47975ae8440e0fd39"
 notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
 
 [[asset]]
 path = "client/public/preview/world/metadata.json"
 author = "OpenHOI contributors"
-source = "original; derived from Natural Earth land 5.1.1 and lakes 5.0.0"
+source = "independently derived from Natural Earth land5.1.1/lakes5.0.0/rivers5.0.0 and NOAA ETOPO2022 fixed Himalaya subset"
 license = "CC-BY-SA-4.0"
 modified = true
 ai_generated = false
-sha256 = "f0afe6abff9c177007bcaff054a885fc5bec9b83d52791e0d28f39176256233f"
+sha256 = "11261ea7cc350b1baa1a9a9f496924dee78516451c52e882a9122f0043bb6230"
 notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
 
 [[asset]]
 path = "client/public/preview/world/provinces.json"
 author = "OpenHOI contributors"
-source = "original; derived from Natural Earth land 5.1.1 and lakes 5.0.0"
+source = "independently derived from Natural Earth land5.1.1/lakes5.0.0/rivers5.0.0 and NOAA ETOPO2022 fixed Himalaya subset"
 license = "CC-BY-SA-4.0"
 modified = true
 ai_generated = false
-sha256 = "a6f4fed4bc72007b78ec88ef5e4a8c0ddff805504fbf72472fa1f4ccca5517cd"
+sha256 = "0e89b357a16b0c296c2ac42e8afafc6c97741f9a259a3ffafd7c46ef2c660753"
 notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
 
 [[asset]]
@@ -737,7 +737,7 @@ source = "original"
 license = "CC-BY-SA-4.0"
 modified = false
 ai_generated = false
-sha256 = "7d0e4ed14e1a482f0774cdee9a6134f9c46c964ec68b2733cbdd614bbabaea9f"
+sha256 = "cf8cf73847c3925b1242c3d80cc09dfbce02a03bd8835f1be9e2961f5279e02a"
 notes = "Source/provenance for isolated world preview. No simulation authority."
 
 # Exact procedural 3D leaves from producer 19cf3cf; no AI PNG adoption.
@@ -871,3 +871,23 @@ modified = false
 ai_generated = false
 sha256 = "417f3572de9cac48d14f891b35485a6223a882daa438b604009cdec197254f68"
 notes = "Preview-only original display art/config. Synthetic sample positions and art scales are not actual units. Rebuild units.json: python tools/maps/bake_unit_display.py."
+
+[[asset]]
+path = "data/preview/world/sources/ETOPO2022-himalaya.tif"
+author = "NOAA NCEI"
+source = "https://gis.ngdc.noaa.gov/arcgis/rest/services/DEM_mosaics/DEM_all/ImageServer/exportImage?bbox=74%2C25%2C95%2C35&bboxSR=4326&size=1008%2C480&imageSR=4326&format=tiff&pixelType=F32&interpolation=RSP_NearestNeighbor&compression=LZ77&renderingRule=%7B%22rasterFunction%22%3A+%22none%22%7D&mosaicRule=%7B%22where%22%3A+%22Name%3D%27ETOPO_2022_v1_60s_surface%27%22%7D&f=image"
+license = "CC0-1.0"
+modified = false
+ai_generated = false
+sha256 = "14e07b92aa2e8f4bcc09de6c8ead73a5b098fc6ff74a0ce6971ba78261141452"
+notes = "Fixed source only; original terms https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.ngdc.mgg.dem%3Aetopo_2022 . Exact acquisition/version/extent/provenance: data/preview/world/source-manifest.json. Offline bake: python tools/maps/world_preview.py --out client/public/preview/world . No runtime downloads."
+
+[[asset]]
+path = "data/preview/world/sources/ne_10m_rivers_lake_centerlines.zip"
+author = "Natural Earth contributors"
+source = "https://naturalearth.s3.amazonaws.com/10m_physical/ne_10m_rivers_lake_centerlines.zip"
+license = "public-domain"
+modified = false
+ai_generated = false
+sha256 = "ded71b01870855ccfe19b51f2ec14c9bb48fae23c0e9f3c11974d426433b5c38"
+notes = "Fixed source only; original terms https://www.naturalearthdata.com/about/terms-of-use/ . Exact acquisition/version/extent/provenance: data/preview/world/source-manifest.json. Offline bake: python tools/maps/world_preview.py --out client/public/preview/world . No runtime downloads."

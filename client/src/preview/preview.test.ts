@@ -2,8 +2,16 @@ import { describe,it,expect } from 'vitest';
 import { validatePreview,previewWorld,sha256,type PreviewMetadata } from './model';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { previewKeys,previewTranslator } from './locales';
+import { translatorFor } from '../i18n';
 
 describe('world preview baked input',()=>{
+ it('every preview display key resolves through real ko/en Fluent catalogs',()=>{
+  for(const language of ['ko','en'] as const){
+   const t=previewTranslator(language),unknown=translatorFor(language)('unknown-message');
+   for(const key of previewKeys){expect(t(key)).not.toEqual(unknown);expect(t(key)).not.toEqual(key);}
+  }
+ });
  const root=resolve('public/preview/world');
  it('rejects unknown schema/IDs/ref/hash declarations',()=>{
   expect(()=>validatePreview({schema:'other'} as unknown as PreviewMetadata,[])).toThrow();
