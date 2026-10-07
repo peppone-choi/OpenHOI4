@@ -1,0 +1,3 @@
+# 지리 기반 프로빈스·HUD·실제3D 새 체크포인트
+
+exact2d920ea86c6d8045adb7d3115007230e52c3ccf2의 실제 최소인자 격리 headless Chrome 페이지 캡처·원입력·명령로그·동일카메라 geometry비교를 보존한다. 13413개(land7103/sea3641/lake2669), NaturalEarth river5.0.0/NOAA Himalaya 일부 DEM, GLB 샘플6/912triangle. 기존 Fluent 현지화 원FAIL과 수정출력을 구분한다. 브라우저 sandbox/GPU/security defaults 유지, 자신의profile/PID만 사용하고 사용자focus/input을 조작하지 않았다. 전세계 DEM·도시밀도·정밀능선·1936주/국가 콘텐츠는 없고 4096해상도 coast pixelation/Caspian basiclake 누락 한계를 유지한다. a28 baked입력 비교는 같은최종renderer의 geometry비교이며 원a28source 자체의 재검수가 아니다. 95개 원파일+97 ZIPmember와 inputs exactGitblob 전수 불일치0. 독립 새P05/mainCI/WP32·45/M5완료는 별도다.

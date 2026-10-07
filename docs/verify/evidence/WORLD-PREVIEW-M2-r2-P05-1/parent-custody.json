@@ -1,0 +1,58 @@
+{
+  "head": "a28f49c03f572a637aa699ca292810c9c9117896",
+  "judgement": "FAIL",
+  "report": "E:\\openhoi\\docs\\verify\\WORLD-PREVIEW.M2-r2.attempt1.md",
+  "parent_full_raw_invariance": true,
+  "verification_invariance_valid": true,
+  "snapshot_differences": [],
+  "raw_index_bytes_identical": true,
+  "manifest_files_checked": 533,
+  "ZIP_members_checked": 534,
+  "mismatches": 0,
+  "ZIP_sha256": "db5f74efcd5e9d808e384cd97a4dedae741e8b5025c4df4963bf97e22a84ecba",
+  "ZIP_bytes": 57992677,
+  "actual_final_text_equal": true,
+  "parent_originals": [
+    {
+      "member": "actual-final-api.json",
+      "bytes": 14357,
+      "sha256": "c05590755ec475305768383830506654dff45fb0954e1158721435ac7a83cde2"
+    },
+    {
+      "member": "actual-prompt.md",
+      "bytes": 7754,
+      "sha256": "7f44036832e453251e85b9bad02c282473415a4696ebb57f8df0c27b58ba7f06"
+    },
+    {
+      "member": "parent-before.json",
+      "bytes": 3686774,
+      "sha256": "f8da5274a8dfbc73aafa76546d7e88d824352edc7733cca444f3c3f51bd8c5a2"
+    },
+    {
+      "member": "parent-before.index",
+      "bytes": 1368675,
+      "sha256": "af99860cc56909da1019bd6aa5ad01250efd821672d7ea471604d8589a32c0c1"
+    },
+    {
+      "member": "parent-after.json",
+      "bytes": 3686774,
+      "sha256": "f8da5274a8dfbc73aafa76546d7e88d824352edc7733cca444f3c3f51bd8c5a2"
+    },
+    {
+      "member": "parent-after.index",
+      "bytes": 1368675,
+      "sha256": "af99860cc56909da1019bd6aa5ad01250efd821672d7ea471604d8589a32c0c1"
+    },
+    {
+      "member": "producer-SHA256SUMS.json",
+      "bytes": 91223,
+      "sha256": "6b97827f4aeb3951113ca2ea853eb78ed6a3a6b156c7103fecbde76fbd6c0c5b"
+    },
+    {
+      "member": "producer-ZIP-IDENTITY.json",
+      "bytes": 890,
+      "sha256": "4e8e0bcfeba94e6fcbc2635d0b750442179a3b79a26f24377d1cc17ed8afcbd2"
+    }
+  ],
+  "parent_archive_sha256": "d834478fea55d4dcc0ff1470f93c674b8958fe73fd69ed5210e9cf53be9dbfe5"
+}
