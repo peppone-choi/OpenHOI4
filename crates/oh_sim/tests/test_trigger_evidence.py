@@ -7,6 +7,7 @@ import importlib.util
 import json
 import os
 from pathlib import Path
+import shlex
 import shutil
 import subprocess
 import sys
@@ -39,7 +40,9 @@ class TriggerPredicates(unittest.TestCase):
         cls.expected_head=gate.strict_json(cls.source/'result.json')['head']
 
     def setUp(self):
-        self.temp = tempfile.TemporaryDirectory()
+        scratch = Path(os.environ.get('TRIGGER_SCRATCH_ROOT', ROOT / 'target/trigger-predicate-scratch'))
+        scratch.mkdir(parents=True, exist_ok=True)
+        self.temp = tempfile.TemporaryDirectory(dir=scratch)
         self.root = Path(self.temp.name)
         for runner, system in gate.RUNNERS.items():
             folder = self.root / f'trigger-{runner}'
@@ -147,12 +150,12 @@ class TriggerPredicates(unittest.TestCase):
         reseal(self.folder)
         self.rejects()
 
-    def public_fixture(self):
+    def public_fixture(self, evidence_relative='target/artifacts'):
         # Actual Git reads in an isolated ignored fixture; no mock or tracked
         # checkout mutation. OS labels in its artifacts remain synthetic.
         repo = self.root / 'public-source'
         repo.mkdir()
-        (repo/'.gitignore').write_text('target/\n__pycache__/\n',encoding='utf-8')
+        shutil.copyfile(ROOT / '.gitignore', repo / '.gitignore')
         for relative in ('crates/oh_sim/tools/check_trigger_determinism.py',
                          'crates/oh_save/tools/save_reference.py',
                          'crates/oh_save/tools/check_save_current.py',
@@ -166,7 +169,7 @@ class TriggerPredicates(unittest.TestCase):
         git('-c', 'core.autocrlf=false', 'add', '.')
         git('-c', 'user.name=Predicate test', '-c', 'user.email=predicate@invalid', 'commit', '--quiet', '-m', 'Isolated public comparer input')
         current = git('rev-parse', 'HEAD')
-        evidence = repo / 'target/artifacts'
+        evidence = repo / evidence_relative
         evidence.mkdir(parents=True)
         for runner in gate.RUNNERS:
             folder = evidence / f'trigger-{runner}'
@@ -178,7 +181,71 @@ class TriggerPredicates(unittest.TestCase):
             reseal(folder)
         return repo, evidence, current
 
-    def run_public(self, repo, evidence):
+    def workflow_download_path(self):
+        workflow = (ROOT / '.github/workflows/trigger-determinism.yml').read_text(encoding='utf-8')
+        download = workflow.split('      - uses: actions/download-artifact@', 1)[1]
+        destination = next(line.strip()[6:] for line in download.splitlines() if line.strip().startswith('path: '))
+        command = next(line.strip()[5:] for line in download.splitlines() if line.strip().startswith('run: '))
+        arguments = shlex.split(command)
+        self.assertEqual(arguments[:4], ['python', 'crates/oh_sim/tools/check_trigger_determinism.py', 'compare', '--root'])
+        self.assertEqual(len(arguments), 5)
+        self.assertEqual(destination, arguments[4], 'download and public comparer must use the same path')
+        self.assertFalse(Path(destination).is_absolute())
+        self.assertNotIn('..', Path(destination).parts)
+        return destination
+
+    def fixture_git(self, repo, *args):
+        return subprocess.run(['git', '--no-optional-locks', '-C', str(repo), *args], capture_output=True, text=True, encoding='utf-8')
+
+    def test_public_workflow_download_keeps_source_clean(self):
+        destination = self.workflow_download_path()
+        repo, evidence, _ = self.public_fixture('trigger-evidence')
+        payload = gate.files(evidence)
+        self.assertEqual(self.fixture_git(repo, 'diff', '--exit-code').returncode, 0)
+        legacy = self.run_public(repo, evidence, receipt_suffix='legacy')
+        self.assertNotEqual(legacy.returncode, 0)
+        self.assertIn('current source checkout is dirty', legacy.stderr.decode(errors='replace'))
+        moved = repo / destination
+        self.assertTrue(evidence.resolve().is_relative_to(repo.resolve()))
+        self.assertTrue(moved.resolve().is_relative_to(repo.resolve()))
+        if moved != evidence:
+            moved.parent.mkdir(parents=True, exist_ok=True)
+            shutil.move(str(evidence), str(moved))
+        self.assertEqual(gate.files(moved), payload, 'download payload bytes must remain identical')
+        result = self.run_public(repo, moved, receipt_suffix='workflow')
+        self.assertEqual(result.returncode, 0, result.stderr.decode(errors='replace'))
+        self.assertEqual(self.fixture_git(repo, 'status', '--porcelain').stdout, '')
+        self.assertEqual(self.fixture_git(repo, 'check-ignore', '-q', str(moved / 'trigger-windows-latest/result.json')).returncode, 0)
+
+    def test_public_legacy_unignored_download_is_rejected(self):
+        repo, evidence, _ = self.public_fixture('trigger-evidence')
+        self.assertEqual(self.fixture_git(repo, 'diff', '--exit-code').returncode, 0)
+        self.assertIn('?? trigger-evidence/', self.fixture_git(repo, 'status', '--porcelain').stdout)
+        self.assertEqual(self.fixture_git(repo, 'check-ignore', '-q', str(evidence / 'trigger-windows-latest/result.json')).returncode, 1)
+        result = self.run_public(repo, evidence)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('current source checkout is dirty', result.stderr.decode(errors='replace'))
+
+    def test_public_workflow_path_missing_os_is_rejected(self):
+        repo, evidence, _ = self.public_fixture(self.workflow_download_path())
+        shutil.rmtree(evidence / 'trigger-macos-latest')
+        result = self.run_public(repo, evidence)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('exact three OS artifacts required', result.stderr.decode(errors='replace'))
+
+    def test_public_workflow_path_resigned_invalid_save_is_rejected(self):
+        repo, evidence, _ = self.public_fixture(self.workflow_download_path())
+        folder = evidence / 'trigger-windows-latest'
+        path = folder / 'run-1/ended.ohsave'
+        raw = bytearray(path.read_bytes())
+        raw[-1] ^= 1
+        path.write_bytes(raw)
+        reseal(folder)
+        result = self.run_public(repo, evidence)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertEqual(self.fixture_git(repo, 'status', '--porcelain').stdout, '')
+
+    def run_public(self, repo, evidence, receipt_suffix=None):
         cmd = [sys.executable, str(repo / 'crates/oh_sim/tools/check_trigger_determinism.py'), 'compare', '--root', str(evidence)]
         def source_identity():
             def git(*args):
@@ -193,6 +260,8 @@ class TriggerPredicates(unittest.TestCase):
         after = source_identity()
         self.assertEqual(before, after, 'public comparison must preserve source/index')
         destination = Path(os.environ.get('TRIGGER_PUBLIC_EVIDENCE', ROOT / 'target/trigger-public-predicates')) / self._testMethodName
+        if receipt_suffix is not None:
+            destination = destination / receipt_suffix
         destination.mkdir(parents=True, exist_ok=False)
         (destination / 'stdout').write_bytes(result.stdout)
         (destination / 'stderr').write_bytes(result.stderr)

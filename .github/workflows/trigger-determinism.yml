@@ -44,7 +44,7 @@ jobs:
       - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c
         with:
           pattern: trigger-*
-          path: trigger-evidence
+          path: target/trigger-evidence
           merge-multiple: false
       - name: Require same clean HEAD, original bytes, full state and actual native exits from three OS
-        run: python crates/oh_sim/tools/check_trigger_determinism.py compare --root trigger-evidence
+        run: python crates/oh_sim/tools/check_trigger_determinism.py compare --root target/trigger-evidence
