@@ -467,11 +467,21 @@ def connected_ids(raw):
         if box is None:
             continue
         parts,count=ndimage.label(raw[box]==seed)
-        for component in range(1,count+1):
-            if next_id>=65535:
-                raise ValueError('u16 ID overflow')
-            output[box][parts==component]=next_id;next_id+=1
+        if next_id+count>65535:
+            raise ValueError('u16 ID overflow')
+        # Label order remains unchanged. Background must retain other seeds
+        # already written inside this bbox; compare it only once per seed.
+        ordinal=np.zeros(count+1,dtype=np.uint16)
+        ordinal[1:]=np.arange(next_id,next_id+count,dtype=np.uint16)
+        np.copyto(output[box],ordinal[parts],where=parts!=0)
+        next_id+=count
     return output
+
+
+def first_component_cell(index,box,dense):
+    """First row-major cell of a guaranteed nonempty component bbox."""
+    y,x=divmod(int(np.argmax(index[box]==dense)),box[1].stop-box[1].start)
+    return y+box[0].start,x+box[1].start
 
 
 def repair_internal_fragments(raw,kind,urban,partitioned,maximum_pixels):
@@ -486,7 +496,7 @@ def repair_internal_fragments(raw,kind,urban,partitioned,maximum_pixels):
     for row in range(0,len(raw),64):sizes+=np.bincount(index[row:row+64].ravel(),minlength=len(sizes))
     boxes=ndimage.find_objects(index.astype(np.int32)+1);seed_pieces={};original_ids=[]
     for dense,box in enumerate(boxes):
-        y,x=np.argwhere(index[box]==dense)[0];y+=box[0].start;x+=box[1].start;seed=int(raw[y,x]);original_ids.append(seed);seed_pieces.setdefault(seed,[]).append(dense)
+        y,x=first_component_cell(index,box,dense);seed=int(raw[y,x]);original_ids.append(seed);seed_pieces.setdefault(seed,[]).append(dense)
     h,w=raw.shape
     for seed,pieces in seed_pieces.items():
         if len(pieces)<2:continue
