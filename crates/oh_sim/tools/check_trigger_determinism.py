@@ -342,12 +342,13 @@ def verify_folder(folder, require_clean=True):
     return result, captures[0]
 
 
-def compare_artifacts(root, emit=True):
+def _compare_for_head(root, expected_head, emit=True):
     expected = {f'trigger-{runner}' for runner in RUNNERS}
     assert {p.name for p in root.iterdir()} == expected, 'exact three OS artifacts required'
     heads, states = set(), []
     for runner, system in RUNNERS.items():
         result, cases = verify_folder(root / f'trigger-{runner}')
+        assert result['head']==expected_head, 'artifact HEAD differs from current source HEAD'
         assert result['platform'] == system, 'actual platform mismatch'
         heads.add(result['head'])
         states.append(cases)
@@ -358,6 +359,18 @@ def compare_artifacts(root, emit=True):
         assert saves[0] == saves[1] == saves[2], 'cross-OS save bytes mismatch'
     if emit:
         print(f'actual 3OS trigger state/bytes/fresh native resume: {next(iter(heads))}')
+
+
+def compare_artifacts(root, emit=True):
+    # Public consumers cannot substitute an artifact's own HEAD as authority.
+    # All Git calls are --no-optional-locks; original index bytes stay read-only.
+    before=identity()
+    if before['status'] or before['diff'] or before['cached']:
+        raise ValueError('current source checkout is dirty; clean exact HEAD required')
+    _compare_for_head(root, before['head'], emit=False)
+    assert identity()==before, 'current source/index changed during comparison'
+    if emit:
+        print(f'actual 3OS trigger state/bytes/fresh native resume: {before["head"]}')
 
 
 if __name__ == '__main__':

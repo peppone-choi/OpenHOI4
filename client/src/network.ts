@@ -37,14 +37,38 @@ const stateView = shape<StateView>({ id: u16, name_key: string, provinces: array
 const province = shape<ProvinceView>({ id: u16, state: nullable(u16), owner: nullable(u16), controller: nullable(u16), owner_color: nullable(color), controller_color: nullable(color), terrain_key: string, terrain_color: color, state_color: nullable(color) });
 const world = shape<WorldView>({ tick: string, map_id: string, width: u32, height: u32, province_ids: array(u16), neutral_color: color, mode_keys: array(string), nations: array(nation), states: array(stateView), provinces: array(province) });
 type Trigger = Extract<ServerMessage,{type:'TriggerResult'}>['trigger'];
+function exactShape<T>(fields:Shape<T>):Guard<T>{
+  const required=Object.keys(fields);
+  const typed=shape(fields);
+  return (value):value is T=>typed(value)&&Reflect.ownKeys(value as object).length===required.length
+    &&required.every(key=>Object.hasOwn(value as object,key));
+}
+// Transport integer bound and canonical ID/order checks; no game evaluation.
+const u64Decimal:Guard<string>=(value):value is string=>string(value)&&value.length<=20&&decimal(value)
+  &&(value.length<20||value<='18446744073709551615');
+const triggerId:Guard<string>=(value):value is string=>string(value)&&/^[a-z0-9_]+$/.test(value);
+function orderedArray<T>(item:Guard<T>,before:(a:T,b:T)=>boolean):Guard<T[]>{
+  return (value):value is T[]=>{
+    if(!Array.isArray(value))return false;
+    for(let index=0;index<value.length;index++){
+      if(!Object.hasOwn(value,index)||!item(value[index])||(index>0&&!before(value[index-1],value[index])))return false;
+    }
+    return true;
+  };
+}
+const dateCause=exactShape<Extract<import('./proto/protocol').EndCauseView,{type:'Date'}>>({type:literal('Date')});
+const conditionCause=exactShape<Extract<import('./proto/protocol').EndCauseView,{type:'Condition'}>>({type:literal('Condition')});
+const explicitCause=exactShape<Extract<import('./proto/protocol').EndCauseView,{type:'Explicit'}>>({type:literal('Explicit'),source:triggerId});
 const cause:Guard<import('./proto/protocol').EndCauseView> = (v):v is import('./proto/protocol').EndCauseView => {
-  if(typeof v!=='object'||v===null||Array.isArray(v))return false;
-  const o=v as Record<string,unknown>;
-  return (o.type==='Date'||o.type==='Condition') ? Object.keys(o).length===1 : o.type==='Explicit'&&Object.keys(o).length===2&&string(o.source);
+  return dateCause(v)||conditionCause(v)||explicitCause(v);
 };
-const flags=shape<import('./proto/protocol').NationFlagsView>({nation:u16,keys:array(string)});
-const end=shape<import('./proto/protocol').EndView>({tick:decimal,date:string,hour:u8,causes:array(cause)});
-const trigger=shape<NonNullable<Trigger>>({definitions_hash:hash,flags:array(flags),ended:nullable(end)});
+const causeRank=(value:import('./proto/protocol').EndCauseView)=>value.type==='Date'?0:value.type==='Condition'?1:2;
+const orderedCauses=orderedArray(cause,(a,b)=>causeRank(a)<causeRank(b)
+  ||(a.type==='Explicit'&&b.type==='Explicit'&&a.source<b.source));
+const causes:Guard<import('./proto/protocol').EndCauseView[]>=(value):value is import('./proto/protocol').EndCauseView[]=>orderedCauses(value)&&value.length>0;
+const flags=exactShape<import('./proto/protocol').NationFlagsView>({nation:u16,keys:orderedArray(triggerId,(a,b)=>a<b)});
+const end=exactShape<import('./proto/protocol').EndView>({tick:u64Decimal,date:string,hour:u8,causes});
+const trigger=exactShape<NonNullable<Trigger>>({definitions_hash:hash,flags:orderedArray(flags,(a,b)=>a.nation<b.nation),ended:nullable(end)});
 // Mapped from the generated Rust union: adding a variant/field or changing a
 // field type breaks typecheck until its runtime validator is updated.
 const serverFields = {
@@ -58,10 +82,10 @@ const serverFields = {
   Notice: { type: literal('Notice'), key: string },
 } satisfies { [K in ServerMessage['type']]: Shape<Extract<ServerMessage, { type: K }>> };
 const serverGuards = Object.values(serverFields).map(fields => shape<Record<string, unknown>>(fields));
+const triggerResult=exactShape<Extract<ServerMessage,{type:'TriggerResult'}>>(serverFields.TriggerResult);
 export function isServerMessage(value: unknown): value is ServerMessage {
   if(typeof value==='object'&&value!==null&&(value as Record<string,unknown>).type==='TriggerResult'){
-    const v=value as Record<string,unknown>;
-    if(v.supported!==(v.trigger!==null)||(v.supported===true&&v.reason_key!==null))return false;
+    return triggerResult(value)&&value.supported===(value.trigger!==null)&&(!value.supported||value.reason_key===null);
   }
   return serverGuards.some(guard => guard(value));
 }

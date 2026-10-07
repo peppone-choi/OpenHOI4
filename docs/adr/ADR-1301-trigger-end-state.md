@@ -29,3 +29,9 @@ AST는 single-key typed condition/effect enums, strict compound args, 명시 roo
 ## 결과와 영향
 
 정의/초기/가변/파생 상태를 구분하며 새로운 값을 포함한 replay/checkpoint는 v4를 사용한다. 별도 trigger actual3OS workflow/checker는 원CI와 별도로 필수 compare한다. actual3OS 실행/독립 P05/mainCI는 부모 소유이며 로컬 synthetic으로 대신하지 않는다. UI/네 축 실제 score/후속 host adapters는 표로 추적하고 이번 부분지원으로 M2 전체 완료를 선언하지 않는다.
+
+## P-06-1 보완
+
+P-05-1에서 신규 wire guard의 중복·순서·ID·u64 상한·unknown member 누락과 public comparer의 stale source 승인 문제가 확인됐다. 신규 trigger wire에만 exact 필드·타입·canonical 정렬·유일성 검사를 추가한다. 기존 연결의 invalid-server-message 처리 전에 공개 콜백이 호출되지 않아야 한다. 서버 권위 판정이나 게임 규칙을 추가하지 않는다.
+
+public comparer의 기준은 read-only로 관측한 현재 clean checkout HEAD다. artifact source-before/after/result/manifest가 이 HEAD에 묶이고 성공 출력 전 source/index가 그대로여야 한다. 내부 순수 비교 helper를 둬서 predicate 테스트를 실제 소스 권한과 분리하며 public CLI는 override 없이 현재 소스를 검사한다. 임시 Git·실제 subprocess 회귀의 합성 OS label을 actual3OS 성공으로 기록하지 않는다. 기존 checker의 canonical/native/save/source 검사와 보호된 workflow·v1/v2/v3/protocol/save 정책은 유지한다.
