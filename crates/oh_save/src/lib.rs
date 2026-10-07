@@ -6,12 +6,14 @@ pub use context::{SaveContext, effective_defines_hash, pack_hash};
 pub use file::{SaveOutcome, read_file, write_atomic};
 use oh_sim::{
     Simulation,
-    save_state::{DateV1, SimulationSaveV1},
+    save_state::{DateV1, SimulationSaveV1, SimulationSaveV2},
 };
 use serde::{Deserialize, Serialize};
 use std::io::{Read, Write};
 pub type Result<T> = std::result::Result<T, String>;
 pub const FORMAT_VERSION: u16 = 1;
+/// Additive format; legacy writers still produce version 1.
+pub const MOVEMENT_FORMAT_VERSION: u16 = 2;
 #[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
 pub struct PackV1 {
     pub id: String,
@@ -87,8 +89,24 @@ pub fn encode_with_limits(
     limits: &Limits,
 ) -> Result<Vec<u8>> {
     context.verify_unchanged()?;
-    let dto = sim.export_save()?;
-    let candidate = Simulation::from_save(dto.clone(), &context.restore)?;
+    let version = if sim.movement().is_some() {
+        MOVEMENT_FORMAT_VERSION
+    } else {
+        FORMAT_VERSION
+    };
+    let (body, candidate) = if version == MOVEMENT_FORMAT_VERSION {
+        let dto = sim.export_save_v2()?;
+        (
+            serialize(&dto)?,
+            Simulation::from_save_v2(dto, &context.restore)?,
+        )
+    } else {
+        let dto = sim.export_save()?;
+        (
+            serialize(&dto)?,
+            Simulation::from_save(dto, &context.restore)?,
+        )
+    };
     if candidate.state_hash().map_err(|e| e.to_string())?
         != sim.state_hash().map_err(|e| e.to_string())?
     {
@@ -97,7 +115,7 @@ pub fn encode_with_limits(
     let s = sim.snapshot();
     let header = HeaderV1 {
         engine_version: env!("CARGO_PKG_VERSION").into(),
-        format_version: FORMAT_VERSION,
+        format_version: version,
         scenario_id: s.scenario().into(),
         packs: vec![context.pack.clone()],
         game_date: s.date().into(),
@@ -112,9 +130,12 @@ pub fn encode_with_limits(
     check_header(&header, context, limits, false)?;
     check_players(&header, &candidate)?;
     let header_bytes = serialize(&header)?;
-    let body = serialize(&dto)?;
     bounds::header(&header_bytes, limits)?;
-    bounds::body(&body, limits)?;
+    if version == FORMAT_VERSION {
+        bounds::body(&body, limits)?;
+    } else {
+        bounds::body_version(&body, limits, version)?;
+    }
     let mut compressor = zstd::stream::write::Encoder::new(Vec::new(), limits.compression_level)
         .map_err(|e| format!("Compression: {e}"))?;
     compressor
@@ -132,7 +153,7 @@ pub fn encode_with_limits(
     let length = u32::try_from(header_bytes.len()).map_err(|_| "Limit: header u32")?;
     let mut bytes = Vec::new();
     bytes.extend_from_slice(b"OHSV");
-    bytes.extend_from_slice(&FORMAT_VERSION.to_le_bytes());
+    bytes.extend_from_slice(&version.to_le_bytes());
     bytes.extend_from_slice(&length.to_le_bytes());
     bytes.extend(header_bytes);
     bytes.extend(compressed);
@@ -153,9 +174,9 @@ pub fn inspect_header(bytes: &[u8], limits: &Limits) -> Result<HeaderV1> {
         return Err("BadMagic/Truncated: prefix".into());
     }
     let version = u16::from_le_bytes([bytes[4], bytes[5]]);
-    if version != FORMAT_VERSION {
+    if ![FORMAT_VERSION, MOVEMENT_FORMAT_VERSION].contains(&version) {
         return Err(format!(
-            "UnsupportedFormat: file v{version}, supported v{FORMAT_VERSION}"
+            "UnsupportedFormat: file v{version}, supported v{FORMAT_VERSION}/v{MOVEMENT_FORMAT_VERSION}"
         ));
     }
     let length =
@@ -168,7 +189,11 @@ pub fn inspect_header(bytes: &[u8], limits: &Limits) -> Result<HeaderV1> {
         .ok_or("Limit: offset")?;
     let h = bytes.get(10..end).ok_or("Truncated: header")?;
     bounds::header(h, limits)?;
-    deserialize(h)
+    let header: HeaderV1 = deserialize(h)?;
+    if header.format_version != version {
+        return Err("UnsupportedFormat: prefix/header version mismatch".into());
+    }
+    Ok(header)
 }
 pub fn decode_with_limits(
     bytes: &[u8],
@@ -186,9 +211,9 @@ pub fn decode_with_limits(
         return Err("BadMagic".into());
     }
     let version = u16::from_le_bytes([bytes[4], bytes[5]]);
-    if version != FORMAT_VERSION {
+    if ![FORMAT_VERSION, MOVEMENT_FORMAT_VERSION].contains(&version) {
         return Err(format!(
-            "UnsupportedFormat: file v{version}, supported v{FORMAT_VERSION}"
+            "UnsupportedFormat: file v{version}, supported v{FORMAT_VERSION}/v{MOVEMENT_FORMAT_VERSION}"
         ));
     }
     let length =
@@ -202,6 +227,9 @@ pub fn decode_with_limits(
     let h = bytes.get(10..end).ok_or("Truncated: header")?;
     bounds::header(h, limits)?;
     let header: HeaderV1 = deserialize(h)?;
+    if header.format_version != version {
+        return Err("UnsupportedFormat: prefix/header version mismatch".into());
+    }
     let warnings = check_header(&header, context, limits, force)?;
     let compressed = bytes.get(end..).ok_or("Truncated: body")?;
     if !compressed.starts_with(&[0x28, 0xb5, 0x2f, 0xfd]) {
@@ -233,18 +261,30 @@ pub fn decode_with_limits(
     if !decoder.finish().is_empty() {
         return Err("Trailing: compressed frame".into());
     }
-    bounds::body(&body, limits)?;
-    let dto: SimulationSaveV1 = deserialize(&body)?;
-    if header.scenario_id != dto.state.scenario
-        || header.game_date != dto.state.date
-        || header.tick != dto.state.tick
-        || header.seed != dto.state.seed
-        || header.definitions_hash != dto.world.as_ref().map(|w| w.definitions_hash)
+    if version == FORMAT_VERSION {
+        bounds::body(&body, limits)?;
+    } else {
+        bounds::body_version(&body, limits, version)?;
+    }
+    let (base, dto2) = if version == MOVEMENT_FORMAT_VERSION {
+        let dto: SimulationSaveV2 = deserialize(&body)?;
+        (dto.base.clone(), Some(dto))
+    } else {
+        (deserialize::<SimulationSaveV1>(&body)?, None)
+    };
+    if header.scenario_id != base.state.scenario
+        || header.game_date != base.state.date
+        || header.tick != base.state.tick
+        || header.seed != base.state.seed
+        || header.definitions_hash != base.world.as_ref().map(|w| w.definitions_hash)
     {
         return Err("MetadataMismatch: header/body".into());
     }
     context.verify_unchanged()?;
-    let simulation = Simulation::from_save(dto, &context.restore)?;
+    let simulation = match dto2 {
+        Some(dto) => Simulation::from_save_v2(dto, &context.restore)?,
+        None => Simulation::from_save(base, &context.restore)?,
+    };
     check_players(&header, &simulation)?;
     if simulation.state_hash().map_err(|e| e.to_string())? != header.state_hash {
         return Err("StateHashMismatch".into());
@@ -256,8 +296,8 @@ pub fn decode_with_limits(
     })
 }
 fn check_header(h: &HeaderV1, c: &SaveContext, l: &Limits, force: bool) -> Result<Vec<String>> {
-    if h.format_version != FORMAT_VERSION {
-        return Err("MetadataMismatch: format".into());
+    if ![FORMAT_VERSION, MOVEMENT_FORMAT_VERSION].contains(&h.format_version) {
+        return Err("UnsupportedFormat: prefix/header version mismatch".into());
     }
     semver::Version::parse(&h.engine_version).map_err(|_| "InvalidHeader: engine version")?;
     if h.engine_version != env!("CARGO_PKG_VERSION") {
