@@ -5,6 +5,22 @@ from compare import compare_samples
 
 ROOT=Path(__file__).resolve().parents[1]
 def sha(path): return hashlib.sha256(path.read_bytes()).hexdigest()
+def prepare_metadata(label,tree,driver,command,policy):
+    source_lock=(tree/'Cargo.lock').read_bytes()
+    # Metadata needs archives for all resolved platforms, including dependencies
+    # absent from a host-only build cache. Fill that cache using the immutable
+    # source workspace lock before normalizing the new external workspace lock.
+    command(label+'-fetch',['cargo','fetch','--locked','--manifest-path',str(tree/'Cargo.toml')],policy['build_timeout_seconds'])
+    if (tree/'Cargo.lock').read_bytes()!=source_lock:
+        raise ValueError('source lock changed during locked cache preparation')
+    command(label+'-metadata',['cargo','metadata','--offline','--format-version','1','--manifest-path',str(driver/'Cargo.toml')],policy['build_timeout_seconds'])
+    if (tree/'Cargo.lock').read_bytes()!=source_lock:
+        raise ValueError('source lock changed during external metadata preparation')
+    original={(p['name'],p['version'],p.get('source')):p.get('checksum') for p in tomllib.loads(source_lock.decode())['package'] if p.get('source')}
+    resolved=tomllib.loads((driver/'Cargo.lock').read_text(encoding='utf-8'))['package']
+    for package in resolved:
+        if package.get('source') and original.get((package['name'],package['version'],package['source'])) != package.get('checksum'):
+            raise ValueError('external driver changed source registry resolution: '+package['name'])
 def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('--out',type=Path,required=True)
@@ -76,12 +92,7 @@ def main():
         # unrelated source workspace packages. Seed all resolutions from source
         # and audit that no registry package/version/checksum changed.
         (driver/'source.lock').write_text(lock,encoding='utf-8')
-        command(label+'-metadata',['cargo','metadata','--offline','--format-version','1','--manifest-path',str(driver/'Cargo.toml')],policy['build_timeout_seconds'])
-        original={(p['name'],p['version'],p.get('source')):p.get('checksum') for p in tomllib.loads(lock)['package'] if p.get('source')}
-        resolved=tomllib.loads((driver/'Cargo.lock').read_text(encoding='utf-8'))['package']
-        for package in resolved:
-            if package.get('source') and original.get((package['name'],package['version'],package['source'])) != package.get('checksum'):
-                raise ValueError('external driver changed source registry resolution: '+package['name'])
+        prepare_metadata(label,tree,driver,command,policy)
         command(label+'-build',['cargo','build','--release','--locked','--manifest-path',str(driver/'Cargo.toml')],policy['build_timeout_seconds'])
         binary=driver/'target/release'/('oh_bench_driver.exe' if os.name=='nt' else 'oh_bench_driver')
         binaries[label]=binary

@@ -299,6 +299,94 @@ fn transaction(
 #[cfg(test)]
 mod tests {
     use super::*;
+    fn retained_fixture() -> std::path::PathBuf {
+        let base = std::env::var_os("OH_WP25_EVIDENCE_ROOT")
+            .map(std::path::PathBuf::from)
+            .unwrap_or_else(|| {
+                Path::new(env!("CARGO_MANIFEST_DIR")).join("../../target/evidence/WP-25-io")
+            });
+        fs::create_dir_all(&base).unwrap();
+        let directory = tempfile::Builder::new()
+            .prefix("partial-io-")
+            .tempdir_in(&base)
+            .unwrap()
+            .keep();
+        fs::create_dir(directory.join("regular")).unwrap();
+        directory
+    }
+    #[test]
+    fn req_sav_05_alias_guard_and_canonical_regular_partial_io_are_separate() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../data/packs/testland");
+        let context = crate::SaveContext::national(&root, "m1").unwrap();
+        let sim = context.simulation(7).unwrap();
+        let before = crate::repro::report(&sim).unwrap();
+        let bytes = crate::repro::Recorder::new(&sim, &context)
+            .unwrap()
+            .finish(&sim, &context)
+            .unwrap();
+        let retained = retained_fixture();
+        let regular = retained.join("regular").canonicalize().unwrap();
+        let target = regular.join("target.zip");
+        fs::write(&target, b"existing target").unwrap();
+        let alias = retained.join("alias");
+        #[cfg(unix)]
+        std::os::unix::fs::symlink(&regular, &alias).unwrap();
+        #[cfg(windows)]
+        {
+            let result = std::process::Command::new("powershell.exe")
+                .args([
+                    "-NoProfile",
+                    "-Command",
+                    "New-Item",
+                    "-ItemType",
+                    "Junction",
+                    "-Path",
+                ])
+                .arg(&alias)
+                .arg("-Target")
+                // PowerShell's junction target must use its normal path syntax;
+                // Rust canonical Windows paths use the extended-length prefix.
+                .arg(retained.join("regular"))
+                .current_dir(Path::new(env!("CARGO_MANIFEST_DIR")).join("../.."))
+                .output()
+                .unwrap();
+            fs::write(retained.join("junction.stdout"), &result.stdout).unwrap();
+            fs::write(retained.join("junction.stderr"), &result.stderr).unwrap();
+            assert!(
+                result.status.success(),
+                "junction setup: {:?}",
+                result.stderr
+            );
+        }
+        let alias_target = alias.join("target.zip");
+        let mut alias_write_reached = false;
+        let alias_error = transaction(&alias_target, &bytes, &context, |_, _| {
+            alias_write_reached = true;
+            Err(std::io::Error::other("must not reach alias writer"))
+        })
+        .unwrap_err();
+        assert!(alias_error.contains("symlink/reparse"), "{alias_error}");
+        assert!(!alias_write_reached);
+        assert_eq!(fs::read(&target).unwrap(), b"existing target");
+        let canonical_target = alias_target.canonicalize().unwrap();
+        assert_eq!(canonical_target, target);
+        let mut canonical_write_reached = false;
+        let error = transaction(&canonical_target, &bytes, &context, |file, bytes| {
+            canonical_write_reached = true;
+            file.write_all(&bytes[..17])?;
+            file.flush()?;
+            assert_eq!(file.metadata()?.len(), 17);
+            Err(std::io::Error::other("test partial write failure"))
+        })
+        .unwrap_err();
+        fs::write(retained.join("alias-guard.json"), serde_json::to_vec_pretty(&serde_json::json!({"alias_target":alias_target,"alias_error":alias_error,"alias_write_reached":alias_write_reached,"canonical_target":canonical_target,"canonical_error":error,"canonical_write_reached":canonical_write_reached})).unwrap()).unwrap();
+        assert!(canonical_write_reached);
+        assert!(error.contains("partial write failure"), "{error}");
+        assert_eq!(fs::read(&target).unwrap(), b"existing target");
+        assert_eq!(fs::read_dir(&regular).unwrap().count(), 1);
+        assert_eq!(crate::repro::report(&sim).unwrap(), before);
+        context.verify_unchanged().unwrap();
+    }
     #[test]
     fn req_sav_05_partial_native_temp_write_keeps_target_input_and_authority() {
         let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../data/packs/testland");
@@ -312,23 +400,49 @@ mod tests {
             .unwrap()
             .finish(&sim, &context)
             .unwrap();
-        let directory = tempfile::tempdir().unwrap();
-        let original = directory.path().join("input.ohsave");
+        let retained = retained_fixture();
+        let directory = retained.join("regular").canonicalize().unwrap();
+        let original = directory.join("input.ohsave");
         fs::write(&original, &input).unwrap();
-        let target = directory.path().join("target.zip");
+        let target = directory.join("target.zip");
         fs::write(&target, b"existing target").unwrap();
+        let mut injection_reached = false;
         let error = transaction(&target, &bytes, &context, |file, bytes| {
+            injection_reached = true;
             // Actual native filesystem prefix write, then an injected I/O failure.
             file.write_all(&bytes[..17])?;
             file.flush()?;
             assert_eq!(file.metadata()?.len(), 17);
+            use std::io::{Read, Seek};
+            let mut reader = file.try_clone()?;
+            reader.seek(std::io::SeekFrom::Start(0))?;
+            let mut prefix = Vec::new();
+            reader.read_to_end(&mut prefix)?;
+            assert_eq!(prefix, bytes[..17]);
+            fs::write(retained.join("native-prefix.bin"), prefix)?;
             Err(std::io::Error::other("test partial write failure"))
         })
         .unwrap_err();
-        assert!(error.contains("partial write failure"));
+        let proof = serde_json::json!({"lexical_fixture":retained,"canonical_fixture":directory,"error":error,"injection_reached":injection_reached,"prefix_bytes":17});
+        fs::write(
+            retained.join("partial-io.json"),
+            serde_json::to_vec_pretty(&proof).unwrap(),
+        )
+        .unwrap();
+        eprintln!("{proof}");
+        assert!(
+            injection_reached,
+            "partial write injection not reached: {error}; target={}",
+            target.display()
+        );
+        assert!(
+            error.contains("partial write failure"),
+            "{error}; target={}",
+            target.display()
+        );
         assert_eq!(fs::read(&target).unwrap(), b"existing target");
         assert_eq!(fs::read(&original).unwrap(), input);
-        assert_eq!(fs::read_dir(directory.path()).unwrap().count(), 2);
+        assert_eq!(fs::read_dir(&directory).unwrap().count(), 2);
         assert_eq!(crate::repro::report(&sim).unwrap(), before);
         context.verify_unchanged().unwrap();
     }

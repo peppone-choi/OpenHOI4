@@ -1,5 +1,5 @@
 """Package selected original WP-25 evidence and exact committed source bytes."""
-import hashlib, json, os, shutil, subprocess, sys, zipfile, zlib
+import argparse, hashlib, json, os, shutil, subprocess, sys, zipfile, zlib
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'target/evidence/WP-25-M2-r2'
@@ -26,6 +26,13 @@ def selected(tree):
             if p.is_symlink() or (getattr(p.lstat(),'st_file_attributes',0)&0x400): continue
             yield p
 def main():
+    global OUT
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--out',type=Path,default=OUT,help='fresh evidence namespace below this worktree target/evidence')
+    args=parser.parse_args()
+    original_out=OUT.resolve()
+    OUT=args.out.resolve()
+    if not OUT.is_relative_to(ROOT/'target/evidence'): raise ValueError('evidence namespace must be inside this worktree target/evidence')
     OUT.mkdir(parents=True,exist_ok=True)
     if (OUT/'evidence.zip').exists(): raise ValueError('do not replace an existing evidence archive')
     head=git('final-head',['rev-parse','HEAD']).decode().strip()
@@ -48,7 +55,7 @@ def main():
     (OUT/'changed-files.json').write_text(json.dumps({'source_commit':head,'files':inventory([ROOT/p for p in changed if p])},ensure_ascii=False,indent=2),encoding='utf-8')
     files=[]
     prior=ROOT/'target/evidence/WP-25'
-    if prior.exists(): files += [(p,'prior/'+p.relative_to(prior).as_posix()) for p in selected(prior)]
+    if OUT==original_out and prior.exists(): files += [(p,'prior/'+p.relative_to(prior).as_posix()) for p in selected(prior)]
     files += [(p,p.relative_to(OUT).as_posix()) for p in selected(OUT)]
     files.sort(key=lambda x:x[1])
     rows=[{'path':name,'bytes':p.stat().st_size,'sha256':digest(p)} for p,name in files]

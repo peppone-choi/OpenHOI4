@@ -1,9 +1,14 @@
 """Actual fresh native Host I/O. Generated fixtures are explicitly synthetic."""
-import copy, hashlib, io, json, os, shutil, struct, subprocess, tempfile, tomllib, unittest, warnings, zipfile
+import argparse, copy, hashlib, io, json, os, shutil, struct, subprocess, sys, tempfile, tomllib, unittest, warnings, zipfile
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 BIN = ROOT / ('target/debug/oh_cli.exe' if os.name == 'nt' else 'target/debug/oh_cli')
-RUNS = ROOT / 'target/evidence/WP-25-M2-r2'
+parser=argparse.ArgumentParser(add_help=False)
+parser.add_argument('--evidence-root',type=Path,default=ROOT/'target/evidence/WP-25-M2-r2')
+options,unittest_args=parser.parse_known_args()
+sys.argv=[sys.argv[0],*unittest_args]
+RUNS = options.evidence_root.resolve()
+if not RUNS.is_relative_to(ROOT/'target/evidence'): raise ValueError('native evidence must remain inside this worktree target/evidence')
 RUNS.mkdir(parents=True, exist_ok=True)
 EVIDENCE = Path(tempfile.mkdtemp(prefix='native-', dir=RUNS))
 NUMBER = 0
