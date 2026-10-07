@@ -1,12 +1,15 @@
 // Isolated headless page only. Never attaches to existing tabs or global input.
 import { chromium } from '../../client/node_modules/playwright-core/index.mjs';
-import { mkdir,writeFile } from 'node:fs/promises';
+import { mkdir,mkdtemp,writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 const evidence=resolve(process.argv.find(a=>a.startsWith('--out='))?.slice(6)??'target/evidence/WORLD-PREVIEW');await mkdir(evidence,{recursive:true});
 const url=process.argv[2]??'http://127.0.0.1:4317/?world-preview=1';
-const server=await chromium.launchServer({host:'127.0.0.1',headless:true,channel:'chrome'});
+const profile=await mkdtemp(resolve(evidence,'chrome-profile-'));
+// Preserve browser security/GPU defaults: no Playwright default feature switches
+// or --no-sandbox. Only isolated headless/profile/pipe/no-window launch arguments.
+const server=await chromium.launchServer({host:'127.0.0.1',channel:'chrome',chromiumSandbox:true,ignoreDefaultArgs:true,args:['--headless',`--user-data-dir=${profile}`,'--remote-debugging-pipe','--no-startup-window']});
 const processInfo={pid:server.process().pid,argv:server.process().spawnargs,cwd:process.cwd(),headless:true,started:new Date().toISOString(),url,rendererHead:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),rendererStatus:execFileSync('git',['status','--porcelain'],{encoding:'utf8'})};
 await writeFile(resolve(evidence,'browser-process.json'),JSON.stringify(processInfo,null,2));
 const browser=await chromium.connect(server.wsEndpoint());

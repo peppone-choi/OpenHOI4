@@ -101,3 +101,7 @@ HUD의국가/날짜/경제/패널명령·실제unitstate미연결. 게임기능/
 ### 봉인과 인수
 
 최종cleancommit후 `target/evidence/WORLD-PREVIEW/final/`에actualpagePNGs, 실행argv/PID/cwd/nativeexit/rendereradapter/frames/console/network, source ZIP/TIFF·generatedfiles 및SHA,trackedlist/diff/status·identityJSON를봉인한다. 정확커밋/URL/실행법/미완료를부모에전송한다. ownVite127.0.0.1:4317/PID33284를사용자의로컬검토를위해유지한다. main병합/푸시/태그/공개서비스없음. 독립P05PASS/mainCI/WP-32·45/M5완료판정없음.
+
+### 최종 인정 브라우저 실행 인자 정정
+
+부모의a28독립검수후속에따라최종페이지증거는Chromium sandbox/가속·보안 기본값을보존하는최소인자로재생성한다. capture_preview의초기Playwrightdefaultargs에는--no-sandbox 및feature switches가있어앞선시도와PNG/JSON은default-history에보존하고최종인정GPU증거에서제외한다. 최신helper는 ignoreDefaultArgs:true/chromiumSandbox:true, 별도ownprofile, exact --headless/--user-data-dir/--remote-debugging-pipe/--no-startup-window만지정하고BrowserServer도127.0.0.1에만bind한다. OS/브라우저전역설정·사용자기존profile/focus/input변경없음. 최소인자smoke의실제childargv4옵션/Chrome154/PID/profile/cwd/nativeexit0 및realWebGPU/console0을직접관측했다. 최종cleanHEAD에서full/전후geometry비교캡처를이방식으로다시얻으며각JSON에rendererHead/cleanstatus/비교mapSHA·nativeexit를기록한다. 기존M1Playwright123PASS는기능회귀기록이며최소인자최종제품GPU증거와구분한다.
