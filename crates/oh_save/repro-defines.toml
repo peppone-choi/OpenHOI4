@@ -1,0 +1,8 @@
+# Host-only limits; no simulation rules. ZIP32 stored members only.
+archive_max_bytes = 134217728
+member_max_bytes = 67108864
+total_max_bytes = 134217000
+members_max = 5
+events_max = 100000
+phases_per_event_max = 32
+input_line_max_bytes = 16384

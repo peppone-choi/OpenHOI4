@@ -20,6 +20,7 @@ zstd = { version = "=0.13.3", default-features = false, features = ["no_asm"] }
 zstd-safe = { version = "=7.2.2", default-features = false, features = ["std", "no_asm"] }
 zstd-sys = { version = "=2.0.16", default-features = false, features = ["no_asm"] }
 tempfile = "=3.27.0"
+serde_json = "=1.0.151"
 
 [dev-dependencies]
 serde_json = "=1.0.151"
