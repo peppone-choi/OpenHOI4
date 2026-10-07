@@ -1,5 +1,17 @@
 # 인수인계
 
+## 진행 중 M2-r2 최신 사용자 우선순위 — 2026-10-07 16:18 KST
+
+현재 오케스트레이터 `01a114ca-469a-73c0-a9c4-9df475c37769`는 실행 중이며 이 절은 RUN 종료 P-08이 아니다. 실제 main은 `ea63081e0b79369227c99384922db80c6ef09fb1`, 고유 통합WP14·M0/M1 PASS 유지·M2 게이트 없음·원W1/W2 전체 통합0이다. 아래 이전 M1 종료 기록은 역사다.
+
+사용자가 전세계·독립 프로빈스 렌더링과 메인 HUD 외관을 먼저 요청했다. 생성형 임시 마커를 병행하고 기능 연결은 후속이다. computer-use/CUA·사용자 화면/브라우저 포커스·키마우스 조작은 금지이며 Breaking Point UI 세션의 비간섭 검수 방법을 인수한다. [실제 배정·소유·검수 계획](docs/plans/world-preview-priority.md)을 따른다.
+
+후속 사용자 3D 요청으로 지도 위 샘플은 실제 procedural low-poly GLB 메시로 전환했다. 기존 marker 앱이 같은 branch에서 units3d leaf 모델/recipe를 소유하며 원 imagegen PNG는 별도 보존한다. world 앱은 승인된 실제 3D leaf만 인수해 scene/depth/light로 연결한다. 원 PNG를 3D라 쓰거나 미검토 raster branch 전체를 가져오지 않는다. HUD 권위 게임 기능은 추가하지 않는다.
+
+세계/HUD 구현 앱 `01a11536-8218-7c93-9082-70931a350875`, `.orchestrator/wt/WORLD-PREVIEW-M2-r2`, `codex/world-province-preview-m2r2`와 생성형 마커 앱 `01a11537-ccb8-7f80-938d-6b86803b1bf2`, `.orchestrator/wt/PREVIEW-MARKERS-M2-r2`, `codex/preview-marker-assets-m2r2`는 actual active다. 둘의 base는 ea63081이며 exact prompt/createpayload·cursor는 `.orchestrator/app-threads.json` 및 M2-r2-resume 증거에 있다. WP-13 P-06 앱 `01a114e4-115e-7823-ba09-966b6efb7594`도 별도 network/checker 소유로 계속한다. 원ff78 독립 유효 FAIL2와 9951/rawdf3bb 불변성·MF2186/ZIP2187은 docs/verify에 보존했다.
+
+같은 main43fd의 5CI/21job/Save 실제6개3OS artifact 성공과 macOS attempt1 원FAIL은 각각 docs/plans/evidence에 보존했다. 최신 ea63081의 관측 당시 Core/Simulation/Save/Localisation 성공·일반 client 진행 중이며 최종 상태는 registry와 실제CI를 다시 읽는다. 첫 actual world/HUD checkpoint 커밋·로컬URL·전체/확대 캡처를 마일스톤 완료 전에 CEO에 전달한다. 원Testland/golden/save/호환 정책·D/OPEN·기존 실패는 유지하고 공개 배포하지 않는다.
+
 | 항목 | 값 |
 |---|---|
 | 작성 시각 | 2026-10-07 09:33 KST, M1-r3 첫 독립 P-12 판정 경계 |

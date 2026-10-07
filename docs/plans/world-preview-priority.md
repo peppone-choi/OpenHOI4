@@ -1,0 +1,24 @@
+# 전세계 지도·프로빈스·메인 HUD 우선 미리보기
+
+2026-10-07. 사용자 직접 지시로 제작 순서를 변경했다. 첫 결과는 실제 전세계 윤곽과 독립 생성 프로빈스 경계, 메인 HUD 외관이다. HUD의 새 게임 기능은 이후 권위 데이터와 연결한다. 기존 WP-13 P-06 오류 수정은 계속하며 M2 전체 기능과 M5 전체 역사 콘텐츠 완료를 기다리지 않는다.
+
+라이선스를 확인한 버전 고정 지리 원천을 로컬 파일로 취득하고, 오프라인 생성기가 프로빈스 인덱스·메타데이터·출처 및 입력/산출 hash를 만든다. 기존 Three.js 지도 렌더러를 재사용한다. 런타임은 동봉 자료만 읽는다. 전세계와 확대 지역의 실제 브라우저 캡처, 카메라 보기 조작, HUD 미연결 범위, 정확한 checkpoint 커밋·로컬 URL·실행법을 첫 결과부터 보고한다. DEM·하천·도시의 실제 적용과 누락은 구분한다.
+
+최신 사용자 지시에 따라 computer-use/CUA·사용자 화면·브라우저 포커스·키마우스 조작은 금지다. Breaking Point UI 세션의 실제 방식을 읽기 전용으로 확인해, 사용자 작업을 방해하지 않는 별도 headless/background 렌더링과 캡처로 검수한다. 이미 읽은 skill보다 사용자 지시를 우선한다. 기존 사용자 탭·프로세스·가속/보안 설정을 바꾸지 않는다.
+
+CEO가 실제 Breaking Point의 별도 native desktop/PID·PrintWindow·전역 activation/input 없는 캡처를 확인했다. 그 프로젝트 helper/게임/자료/desktop/PID는 복사·재사용·실행하지 않는다. OpenHOI는 자기 localserver/profile/PID의 headless/background Chromium+Playwright/CDP page 캡처에 같은 분리 원칙을 적용한다. 검은 canvas는 실패이며 foreground fallback하지 않는다. 실제 backend/headless/PID·명령과 가능한 읽기 전용 foreground/cursor 전후 관측을 보존한다. 사용자 자체 입력으로 값이 변하면 임의 restore하지 않는다.
+
+임시 유닛 마커는 built-in imagegen으로 생성한 투명 PNG를 사용한다. 샘플 배치는 실제 군대나 게임 상태가 아니다. 원 생성 prompt·도구·제공 모델 정보·조건·일시·SHA와 교체 가능한 leaf 파일을 보존한다. 세계 지도나 HUD의 실제 렌더링을 생성 이미지로 대신하지 않는다. 공개 배포는 별도다.
+
+이후 사용자 직접 3D 요청으로 지도 위 마커는 자체 procedural low-poly 전차·항공기·함정 GLB 메시로 전환했다. 동일 에셋 앱이 assets/preview/units3d 및 client/public/preview/units3d의 GLB·생성 recipe·단위/pivot/방향·normal/indices/material·bbox/재생성 SHA·entry 초안을 소유한다. 이미 생성된 imagegen PNG와 실패/수정 원본은 그 branch와 증거에 보존하지만 3D 모델로 표시하지 않는다. 세계 지도 앱은 제출된 GLB leaf 원문을 인수하고 실제 scene/depth/light와 표시용 transform만 연결한다. 미검토 PNG branch 전체를 병합하거나 공개 배포 승인으로 해석하지 않는다. 실제 군대/배치/명령은 여전히 후속이다.
+
+| 작업 | 앱·전용 worktree·브랜치 | 단일 소유 |
+|---|---|---|
+| 세계 지도·HUD | `01a11536-8218-7c93-9082-70931a350875` / `.orchestrator/wt/WORLD-PREVIEW-M2-r2` / `codex/world-province-preview-m2r2` | 신규 tools/maps·data/preview/world·client preview/동봉 자료·작은 App route·preview 현지화, ASSETS master 신규 append |
+| 생성형 마커 | `01a11537-ccb8-7f80-938d-6b86803b1bf2` / `.orchestrator/wt/PREVIEW-MARKERS-M2-r2` / `codex/preview-marker-assets-m2r2` | client/public/preview/markers 3 PNG 및 assets/preview/markers 원문/manifest entry 초안. ASSETS master 수정 금지 |
+| 같은 에셋 앱의 최신 3D 소유 | 위 동일 앱·worktree·브랜치, 추가 앱 없음 | assets/preview/units3d 및 client/public/preview/units3d의 실제 GLB·recipe/metadata/entry 초안. 신규 raster 호출 중지, 원 PNG 보존 |
+| 진행 중 WP-13 P-06 | `01a114e4-115e-7823-ba09-966b6efb7594` / `.orchestrator/wt/WP-13-M2-r2` | 기존 인계 network/Trigger checker·회귀 및 자기 문서. 지도/HUD와 겹치지 않음 |
+
+preview 두 구현의 실제 base는 `ea63081e0b79369227c99384922db80c6ef09fb1`이다. 마커 PNG/원문은 부모가 세계 지도 담당에게 정확 leaf 경로·bytes/SHA로 인계한다. 세계 지도 담당이 ASSETS 등록과 화면 연결을 한다. 실제 사용자 원문·create payload/prompt/result·첫 active 관측은 `.orchestrator/evidence/M2-r2-resume/`에 보존했다. 고유 통합WP14·원W1/W2 전체 통합0·M2 게이트 미판정은 유지한다. preview 작업을 원 M2 병렬 묶음 통합으로 세지 않는다.
+
+원작 지도·아이콘·국기·상징·파일·스크립트·수치표 복사와 tracing은 금지다. 원Testland/M0/M1·골든·저장 fixture·기존 codec/워크플로·D/OPEN 상태를 보존한다. 새 역사 국가·소유권·경제·전쟁 규칙과 HUD 권위 명령은 범위 밖이다. 별도 정확 checkpoint의 새 독립 시각 검수와 source 불변성을 얻고 일반 M5 게이트 완료와 구별한다.
