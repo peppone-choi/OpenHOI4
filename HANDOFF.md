@@ -1,5 +1,15 @@
 # 인수인계
 
+## 진행 중 WP14 실제 소스 CI·Linux 인수 — RUN 종료 아님
+
+WP14 구현 앱은 실제 final을 낸 clean source `a9333419de89caf3ba95da5097ea2e3d0fa5f694`에 도달했다. 제품은 검사 source01119ae와 같은 430 non-doc Git entries이며, 원 구현 ZIP과 전체 물리 매핑은 [P03 인수 증거](docs/worklog/evidence/WP-14-M2-r2-P03-a933-recovery2/parent-custody.json)에 보존했다. 새 P05-1 앱01a11877…는 별도 detached WT에서 최초11833/raw4d77…를 기준으로 검사한다. 최종 독립 판정·부모 종료 불변성 인수는 아직 없다.
+
+실제 a933 소스 CI 7개/26필수 job은 모두 attempt1 SUCCESS다. [CI 원본](docs/plans/evidence/WP14-a933-source-CI-final-api-recovery/README.md)의 실제 Save6/Trigger3 artifact와 fresh3 comparer는 native0다. [Linux 소스 증거](docs/plans/evidence/WP14-a933-source-Linux-performance/README.md)는 run37695537881/artifact11514894569 원ZIP1,735,151,692B/SHAe83e3c…/754파일 CRC·SHA 전수0, 원 prior81 전체TAR·전체팩21파일·실제 pack hash3bde…·같은 새driver9995…·별도 현재 라이브러리·원 workload/한도를 대조했다. 두쌍 baseline195802551/193460349ns, current192623408/193688056ns는 strict15% 양쌍회귀 없음이며 DTO/canonical/hash3b8853…도 같다. 신규 경제 활성 부하나 기본 브랜치 CI의 증거는 아니다.
+
+검증 WT의 ignored planning/remote-final에 실제 CI·전체Linux ZIP·API·원자료·물리 copy/SHA0와 원 수집 실패/복구를 전달했다. GH CLI C: 로그 캐시 부족 native1과 API 원로그 ZIP 복구0는 [별도 원본](docs/plans/evidence/WP14-a933-source-CI-collector-recovery/README.md)에 남겼다. 부모 Linux 감사의 CRLF-vs-LF 비교 및 외부 driver root 누락 두 native1도 새 recovery2 native0와 분리 보존했다. 원 workflow가 업로드하지 않은 remote native 바이너리와 linked-source inventory를 물리 봉인했다고 주장하지 않는다.
+
+사용자가 확보한 E: 여유는 약288GB지만 C:는 0B이고, 검증 채팅 상태 읽기가 thread-store database disk I/O error(code1546)로 실패했다. C: 몇GB 확보 요청은 사용자에게 전달했으며 회복 답변·실제 final은 아직 미확인이다. 앱 DB·전역 환경·설정·캐시·원증거·작업트리를 수정/삭제하지 않고 가능한 증거 정리를 진행한다. C: 회복 후 같은 P05 실제 final·전후 whole/raw 불변성→WP14 P07/같은 main7CI→같은 WP23 생산/ASSETS/새 독립 검증/통합을 이어간다. 고유WP16·원 W1/W2 전체1/0·M2게이트 없음/noM3이며 C02 두묶음 종료 경계는 아직 아니다.
+
 ## 진행 중 W2 후보 봉인 — RUN 종료 아님
 
 WP14 앱01a117ee…는 첫5577 schema/kernel 전달 뒤 v5/host/wire/repro 및 실제 세 OS v5 capture 연결을 구현 중이다. 기존 일곱 workflow bytes/조건/한도를 유지하고 current-save 경로의 별도 v5 namespace로 새 저장 증거를 수집한다. 아직 최종 source·독립 PASS·통합은 없다.

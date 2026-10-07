@@ -1,0 +1,77 @@
+{
+  "head": "a9333419de89caf3ba95da5097ea2e3d0fa5f694",
+  "original_native_exit": 1,
+  "recovery_native_exit": 0,
+  "original_failure_preserved": true,
+  "settings_or_source_changed": false,
+  "rows": [
+    {
+      "path": "helpers/prepare_w2_source_ci_sealer.py",
+      "physical_original": "E:\\openhoi\\.orchestrator\\prepare_w2_source_ci_sealer.py",
+      "bytes": 2178,
+      "sha256": "64edcbb565d2995aa0d6ba42dfadda8032da6496f4c291b0725bc732bb003593"
+    },
+    {
+      "path": "helpers/seal_w2_source_ci.py",
+      "physical_original": "E:\\openhoi\\.orchestrator\\seal_w2_source_ci.py",
+      "bytes": 7375,
+      "sha256": "b485f8d0df78e2d448e2f1144092bb081499c77419393174125715ce8a2e017b"
+    },
+    {
+      "path": "helpers/seal_wp14_ci_api_logs_recovery.py",
+      "physical_original": "E:\\openhoi\\.orchestrator\\seal_wp14_ci_api_logs_recovery.py",
+      "bytes": 8415,
+      "sha256": "86f3299923ff7d10524d63c0199b2dc2ecb16ca1676a0b2a4f226dd41254c533"
+    },
+    {
+      "path": "native/WP14-a933-source-CI-api-recovery-native.log",
+      "physical_original": "E:\\openhoi\\.orchestrator\\evidence\\WP14-a933-source-CI-api-recovery-native.log",
+      "bytes": 263,
+      "sha256": "7e6cd59271deb3f59e4287e1d791feff79f959c1b2e22696c2622b96a5d8c9b1"
+    },
+    {
+      "path": "native/WP14-a933-source-CI-seal-native.log",
+      "physical_original": "E:\\openhoi\\.orchestrator\\evidence\\WP14-a933-source-CI-seal-native.log",
+      "bytes": 808,
+      "sha256": "87c03c69b6b6d5423359c23df990ca1dded39c718add6e3b7515d15f1fdc93e0"
+    },
+    {
+      "path": "original-failure/37695537881-logs.command.json",
+      "physical_original": "E:\\openhoi\\.orchestrator\\evidence\\WP14-a933-source-CI-final\\37695537881-logs.command.json",
+      "bytes": 139,
+      "sha256": "2e33f89ad4b805f932e570a8d1ea6b0ebba68630e3770a837bebe2ac1365eae5"
+    },
+    {
+      "path": "original-failure/37695537881-logs.stderr",
+      "physical_original": "E:\\openhoi\\.orchestrator\\evidence\\WP14-a933-source-CI-final\\37695537881-logs.stderr",
+      "bytes": 164,
+      "sha256": "12117d067bd8d5c2f75568a8b29092f6fc5f8704c8fc31eb5336af6257d61f9f"
+    },
+    {
+      "path": "original-failure/37695537881-logs.stdout",
+      "physical_original": "E:\\openhoi\\.orchestrator\\evidence\\WP14-a933-source-CI-final\\37695537881-logs.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "recovery/37695537881-logs.actual-api-command.json",
+      "physical_original": "E:\\openhoi\\.orchestrator\\evidence\\WP14-a933-source-CI-final-api-recovery\\37695537881-logs.actual-api-command.json",
+      "bytes": 272,
+      "sha256": "e7823a0da172ad536d9d5daa8d08b6e8d212b5b759519af062c4e7898fc14cde"
+    },
+    {
+      "path": "recovery/37695537881-logs.command.json",
+      "physical_original": "E:\\openhoi\\.orchestrator\\evidence\\WP14-a933-source-CI-final-api-recovery\\37695537881-logs.command.json",
+      "bytes": 139,
+      "sha256": "d627d7d265ad38b340e8a3184ca69ccb9039f844b0aeb78b2ca80af7df5d3875"
+    },
+    {
+      "path": "recovery/recovery-preparation.json",
+      "physical_original": "E:\\openhoi\\.orchestrator\\evidence\\WP14-a933-source-CI-final-api-recovery\\recovery-preparation.json",
+      "bytes": 477,
+      "sha256": "632bf1831fad029bf4a40d53fbad5e5c8f77db243f7241358617d7f302350168"
+    }
+  ],
+  "ZIP_sha256": "238c51db0f602afcfa29297b42f751e392a68305a94c98dbfee57c8cdc7e8a21",
+  "mismatches": 0
+}

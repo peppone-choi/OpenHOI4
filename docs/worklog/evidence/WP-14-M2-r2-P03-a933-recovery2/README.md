@@ -1,0 +1,3 @@
+# WP14 실제 종료·구현 원본
+
+a933 actual completed final465chars·clean11833/rawa94641…와 product01119 이후 docs3경로만 변경을 인수한다. 원 Windows 실행·CD5회귀/01119수정·원 준비 실패와 native/fullDTO/save/repro/normal-force/브라우저/벤치 결과는 implementation.zip에 있다. MF6254 원physical 파일 및 virtual packaging manifest1개를 합한 ZIP6255members의 bytes/SHA/CRC 전수0, 원37,066,865B/SHA4d370a…복사 동일이다. 네2,006,323,200B 원TAR/stream은 각 전체SHA8ee7…를 직접검사해 ignored원경로에 보존하고 두 reparse 공격 fixture는 metadata만 확인하고 따라읽지 않았다. parent-originals.zip은 actualAPI/final·전체source/rawindex/Git+raw변경·최종문서와원locator를 담는다. 전후전체/raw snapshot0, 보호Cargo.lock/7WF/data/assets/golden/policy 변경0이다. 원driverbytes 기술예외는 별도CEOreview에 있다. Windows local은 실제 Linux/세OS/독립PASS/통합을 대신하지 않는다. sourceCI/mainCI/docheadCI를 분리하며 새source의새독립검증을 배정한다.
