@@ -10,7 +10,7 @@ function dataTexture(bytes:Uint8Array,width:number,height:number,format:PixelFor
  t.minFilter=t.magFilter=NearestFilter;t.generateMipmaps=false;t.flipY=false;t.colorSpace=NoColorSpace;t.needsUpdate=true;return t;
 }
 export type MapCamera={x:number;y:number;zoom:number};
-export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8Array,index:Uint16Array,initial:WorldView,onHover:(id:number|null)=>void,onPick:(id:number|null)=>void,onFailure:()=>void,onResize:(camera:MapCamera)=>void,forceWebGL=false,presentation?:{camera?:MapCamera;mode:string;selected:number|null;signal?:AbortSignal}){
+export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8Array,index:Uint16Array,initial:WorldView,onHover:(id:number|null)=>void,onPick:(id:number|null)=>void,onFailure:()=>void,onResize:(camera:MapCamera)=>void,forceWebGL=false,presentation?:{camera?:MapCamera;mode:string;selected:number|null;signal?:AbortSignal;sceneExtension?:(scene:Scene,camera:OrthographicCamera)=>Promise<()=>void>;paletteAdapter?:{palettes:typeof palettes;updateColors:typeof updateColors};coastKinds?:Uint8Array;seaBorderColor?:[number,number,number]}){
  const {width,height,style}=meta;
  const renderer=new WebGPURenderer({forceWebGL,antialias:false,alpha:false});
  let disposed=false;
@@ -42,8 +42,11 @@ export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8
  }};
  renderer.outputColorSpace=LinearSRGBColorSpace;renderer.toneMapping=NoToneMapping;
  const rgb=(c:number[])=>vec3(c[0]/255,c[1]/255,c[2]/255);
- const arrays=palettes(initial,presentation?.mode??'map-mode-owner');
+ const paletteFor=presentation?.paletteAdapter?.palettes.bind(presentation.paletteAdapter)??palettes;
+ const updatePalette=presentation?.paletteAdapter?.updateColors.bind(presentation.paletteAdapter)??updateColors;
+ const arrays=paletteFor(initial,presentation?.mode??'map-mode-owner');
  const indexTexture=dataTexture(bytes,width,height,RGFormat),colors=dataTexture(arrays.colors,LOOKUP_SIZE,LOOKUP_SIZE),nations=dataTexture(arrays.nations,LOOKUP_SIZE,LOOKUP_SIZE),states=dataTexture(arrays.states,LOOKUP_SIZE,LOOKUP_SIZE);
+ const coastKinds=presentation?.coastKinds?dataTexture(presentation.coastKinds,LOOKUP_SIZE,LOOKUP_SIZE):null;
  const selected=uniform(presentation?.selected==null?-1:initial.province_ids.indexOf(presentation.selected)),hovered=uniform(-1),units=uniform(1);
  const texel=Fn(([point]:[Node<'vec2'>])=>{
   const p=point.floor().clamp(vec2(0),vec2(width-1,height-1));const rg=textureLoad(indexTexture,p).rg.mul(255).round();return rg.x.add(rg.y.mul(256));
@@ -53,15 +56,27 @@ export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8
  material.colorNode=Fn(()=>{
   const point=vec2(uv().x,uv().y.oneMinus()).mul(vec2(width,height));const id=texel(point);
   const address=lookup(id);const base=textureLoad(colors,address).rgb.toVar();
+  if(coastKinds){
+   // Colour interpolation only at source land/water transitions. IDs, picking
+   // and same-kind province borders always retain the exact integer index.
+   const cell=point.sub(vec2(.5)).floor(),fraction=point.sub(vec2(.5)).fract();
+   const samples=[cell,cell.add(vec2(1,0)),cell.add(vec2(0,1)),cell.add(vec2(1,1))];
+   const refs=samples.map(p=>lookup(texel(p))),kind=textureLoad(coastKinds,address).r;
+   let changed:Node<'float'>=float(0);for(const p of refs)changed=changed.max(textureLoad(coastKinds,p).r.sub(kind).abs().greaterThan(0).toFloat());
+   const north=mix(textureLoad(colors,refs[0]).rgb,textureLoad(colors,refs[1]).rgb,fraction.x);
+   const south=mix(textureLoad(colors,refs[2]).rgb,textureLoad(colors,refs[3]).rgb,fraction.x);
+   base.assign(mix(base,mix(north,south,fraction.y),changed));
+  }
   const boundary=(ref:DataTexture|null,thickness:number)=>{
    const step=units.mul(thickness/1000);
    const own=ref?textureLoad(ref,address).rgb:vec3(id,0,0);
    const offsets=[vec2(step,0),vec2(step.negate(),0),vec2(0,step),vec2(0,step.negate())];
    let edge:Node<'float'>=float(0);
-   for(const offset of offsets){const other=texel(point.add(offset));const value=ref?textureLoad(ref,lookup(other)).rgb:vec3(other,0,0);edge=edge.max(own.sub(value).abs().dot(vec3(1)).greaterThan(0).toFloat());}
+   for(const offset of offsets){const other=texel(point.add(offset));const value=ref?textureLoad(ref,lookup(other)).rgb:vec3(other,0,0);let different:Node<'float'>=own.sub(value).abs().dot(vec3(1)).greaterThan(0).toFloat();if(!ref&&coastKinds)different=different.mul(textureLoad(coastKinds,address).r.equal(textureLoad(coastKinds,lookup(other)).r).toFloat());edge=edge.max(different);}
    return edge;
   };
-  base.assign(mix(base,rgb(style.province_border),boundary(null,style.province_width_milli)));
+  const provinceLine=coastKinds&&presentation?.seaBorderColor?mix(rgb(style.province_border),rgb(presentation.seaBorderColor),textureLoad(coastKinds,address).r.equal(0).toFloat()):rgb(style.province_border);
+  base.assign(mix(base,provinceLine,boundary(null,style.province_width_milli)));
   base.assign(mix(base,rgb(style.state_border),boundary(states,style.state_width_milli)));
   base.assign(mix(base,rgb(style.nation_border),boundary(nations,style.nation_width_milli)));
   base.assign(mix(base,rgb(style.hovered),id.equal(hovered).toFloat().mul(style.highlight_milli/1000)));
@@ -95,13 +110,15 @@ export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8
  const leave=()=>{hovered.value=-1;host.dataset.hover='';onHover(null);};
  const cancel=()=>{drag=null;leave();};
  const wheel=(e:WheelEvent)=>{e.preventDefault();const before=coordinates(e);zoom=Math.min(style.zoom_max_milli/1000,Math.max(style.zoom_min_milli/1000,zoom*Math.exp(-e.deltaY*style.wheel_milli/100000)));camera.zoom=zoom;camera.updateProjectionMatrix();const after=coordinates(e);camera.position.x+=before.x-after.x;camera.position.y-=before.y-after.y;publishCamera();};
+ let disposeSceneExtension=()=>{};
  try{
+  if(presentation?.sceneExtension)disposeSceneExtension=await presentation.sceneExtension(scene,camera);
   await renderer.compileAsync(scene,camera);assertPipelines();
   const shader=await renderer.debug.getShaderAsync(scene,camera,scene.children[0]);
   if(presentation?.signal?.aborted)throw new Error('map-aborted');assertPipelines();
   resize();renderer.render(scene,camera);presented=true;publishCamera();
   host.dataset.shaderLanguage=shader.fragmentShader?.includes('@fragment')?'wgsl':'glsl';host.dataset.shaderLength=String(shader.fragmentShader?.length??0);
- }catch(e){disposed=true;observer.disconnect();await renderer.dispose();geometry.dispose();material.dispose();for(const t of [indexTexture,colors,nations,states])t.dispose();clearCanvas();throw e;}
+ }catch(e){disposed=true;observer.disconnect();disposeSceneExtension();await renderer.dispose();geometry.dispose();material.dispose();coastKinds?.dispose();for(const t of [indexTexture,colors,nations,states])t.dispose();clearCanvas();throw e;}
  host.addEventListener('pointerdown',down);host.addEventListener('pointermove',move);host.addEventListener('pointerup',up);host.addEventListener('pointercancel',cancel);host.addEventListener('pointerleave',leave);host.addEventListener('wheel',wheel,{passive:false});
  host.dataset.frames='1';
  let raf=0;
@@ -112,10 +129,14 @@ export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8
   update(next:WorldView,nextMode:string,id:number|null){
    validateWorldDisplay(next);
    world=next;mode=nextMode;selected.value=id===null?-1:world.province_ids.indexOf(id);host.dataset.selected=String(id??'');host.dataset.mode=mode;
-   const began=performance.now();const ranges=updateColors(arrays.colors,world,mode);
+   const began=performance.now();const ranges=updatePalette(arrays.colors,world,mode);
    // Upload only changed texels through Three's public cross-backend copy API.
-   for(const range of ranges){const dense=range.start/4;const patch=dataTexture(arrays.colors.slice(range.start,range.start+range.count),1,1);renderer.copyTextureToTexture(patch,colors,null,new Vector2(dense%256,Math.floor(dense/256)));patch.dispose();}
-   const refs=palettes(world,mode);
+   if(presentation?.paletteAdapter&&ranges.length>LOOKUP_SIZE){
+    // Preview has many simultaneous art-colour changes; upload one bounded
+    // lookup rather than creating thousands of one-texel GPU textures.
+    const patch=dataTexture(arrays.colors,LOOKUP_SIZE,LOOKUP_SIZE);renderer.copyTextureToTexture(patch,colors);patch.dispose();
+   }else for(const range of ranges){const dense=range.start/4;const patch=dataTexture(arrays.colors.slice(range.start,range.start+range.count),1,1);renderer.copyTextureToTexture(patch,colors,null,new Vector2(dense%256,Math.floor(dense/256)));patch.dispose();}
+   const refs=paletteFor(world,mode);
    for(const [data,next,texture] of [[arrays.nations,refs.nations,nations],[arrays.states,refs.states,states]] as const){
     world.province_ids.forEach((_,i)=>{const start=i*4;if(next.subarray(start,start+4).some((v,j)=>data[start+j]!==v)){data.set(next.subarray(start,start+4),start);const patch=dataTexture(data.slice(start,start+4),1,1);renderer.copyTextureToTexture(patch,texture,null,new Vector2(i%256,Math.floor(i/256)));patch.dispose();}});
    }
@@ -123,6 +144,6 @@ export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8
    if(ranges.length){host.dataset.lastChangedBytes=host.dataset.updatedBytes;host.dataset.lastUpdateMs=host.dataset.updateMs;host.dataset.totalChangedBytes=String(Number(host.dataset.totalChangedBytes??0)+Number(host.dataset.updatedBytes));}
   },
   reset(){zoom=1;camera.position.x=camera.position.y=0;resize();},
-  dispose(){disposed=true;cancelAnimationFrame(raf);cancelAnimationFrame(recreateRaf);observer.disconnect();host.removeEventListener('pointerdown',down);host.removeEventListener('pointermove',move);host.removeEventListener('pointerup',up);host.removeEventListener('pointercancel',cancel);host.removeEventListener('pointerleave',leave);host.removeEventListener('wheel',wheel);renderer.dispose();geometry.dispose();material.dispose();for(const t of [indexTexture,colors,nations,states])t.dispose();clearCanvas();},
+  dispose(){disposed=true;cancelAnimationFrame(raf);cancelAnimationFrame(recreateRaf);observer.disconnect();host.removeEventListener('pointerdown',down);host.removeEventListener('pointermove',move);host.removeEventListener('pointerup',up);host.removeEventListener('pointercancel',cancel);host.removeEventListener('pointerleave',leave);host.removeEventListener('wheel',wheel);disposeSceneExtension();renderer.dispose();geometry.dispose();material.dispose();coastKinds?.dispose();for(const t of [indexTexture,colors,nations,states])t.dispose();clearCanvas();},
  };
 }

@@ -1,0 +1,56 @@
+# Display sample art only; coordinates are illustrative, no army deployments.
+[lighting]
+ambient_intensity = 1.5
+sun_intensity = 3.0
+sun_position = [-200.0, 300.0, 800.0]
+camera_height = 1000.0
+camera_far = 3000.0
+
+[[samples]]
+asset = "army"
+longitude = 2.35
+latitude = 48.86
+heading_degrees = -35.0
+scale = 6.0
+height = 1.0
+tilt_degrees = 28.0
+[[samples]]
+asset = "air"
+longitude = 15.0
+latitude = 51.0
+heading_degrees = 25.0
+scale = 6.0
+height = 10.0
+tilt_degrees = 24.0
+[[samples]]
+asset = "navy"
+longitude = 7.0
+latitude = 38.0
+heading_degrees = 45.0
+scale = 5.0
+height = 1.0
+tilt_degrees = 20.0
+[[samples]]
+asset = "army"
+longitude = 127.0
+latitude = 37.0
+heading_degrees = 25.0
+scale = 2.0
+height = 1.0
+tilt_degrees = 28.0
+[[samples]]
+asset = "air"
+longitude = 129.0
+latitude = 39.0
+heading_degrees = -35.0
+scale = 2.0
+height = 8.0
+tilt_degrees = 24.0
+[[samples]]
+asset = "navy"
+longitude = 125.0
+latitude = 35.0
+heading_degrees = 25.0
+scale = 2.0
+height = 1.0
+tilt_degrees = 20.0

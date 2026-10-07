@@ -1,0 +1,116 @@
+{
+  "sources": [
+    {
+      "acquired": "2026-10-07",
+      "file": "sources/ne_10m_land.zip",
+      "id": "land",
+      "license": "public-domain",
+      "sha256": "e547d749445eaa0964aba76738090ec88f5e63c4585122170f98c67a7ea922dc",
+      "terms": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "url": "https://naturalearth.s3.amazonaws.com/10m_physical/ne_10m_land.zip",
+      "version": "5.1.1"
+    },
+    {
+      "acquired": "2026-10-07",
+      "file": "sources/ne_10m_lakes.zip",
+      "id": "lakes",
+      "license": "public-domain",
+      "sha256": "0803a06f9c3cb4671d89b68c48b142aad9366ba40f665245e12a913fbc61722a",
+      "terms": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "url": "https://naturalearth.s3.amazonaws.com/10m_physical/ne_10m_lakes.zip",
+      "version": "5.0.0"
+    },
+    {
+      "acquired": "2026-10-07",
+      "extent": [
+        74,
+        25,
+        95,
+        35
+      ],
+      "file": "sources/ETOPO2022-himalaya.tif",
+      "horizontal_crs": "EPSG:4326",
+      "id": "himalaya_dem",
+      "license": "CC0-1.0",
+      "nodata": "no NoData tag; all subset cells finite and within [-20000,20000]",
+      "output_arcseconds": 75,
+      "output_size": [
+        1008,
+        480
+      ],
+      "pixel_registration": "PixelIsArea",
+      "sha256": "14e07b92aa2e8f4bcc09de6c8ead73a5b098fc6ff74a0ce6971ba78261141452",
+      "source_arcseconds": 60,
+      "terms": "https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.ngdc.mgg.dem%3Aetopo_2022",
+      "unit": "metre",
+      "url": "https://gis.ngdc.noaa.gov/arcgis/rest/services/DEM_mosaics/DEM_all/ImageServer/exportImage?bbox=74%2C25%2C95%2C35&bboxSR=4326&size=1008%2C480&imageSR=4326&format=tiff&pixelType=F32&interpolation=RSP_NearestNeighbor&compression=LZ77&renderingRule=%7B%22rasterFunction%22%3A+%22none%22%7D&mosaicRule=%7B%22where%22%3A+%22Name%3D%27ETOPO_2022_v1_60s_surface%27%22%7D&f=image",
+      "version": "ETOPO2022 v1 60s surface",
+      "vertical_datum": "EGM2008"
+    },
+    {
+      "acquired": "2026-10-07",
+      "file": "sources/ne_10m_rivers_lake_centerlines.zip",
+      "id": "rivers",
+      "license": "public-domain",
+      "sha256": "ded71b01870855ccfe19b51f2ec14c9bb48fae23c0e9f3c11974d426433b5c38",
+      "terms": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "url": "https://naturalearth.s3.amazonaws.com/10m_physical/ne_10m_rivers_lake_centerlines.zip",
+      "version": "5.0.0"
+    },
+    {
+      "acquired": "2026-10-07",
+      "file": "sources/ne_10m_populated_places_simple.zip",
+      "id": "cities",
+      "license": "public-domain",
+      "sha256": "2963ee08f7743f13f37d5243acd77a2f7a510e26a36c7e04b920f1b381f2b251",
+      "terms": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "url": "https://naturalearth.s3.amazonaws.com/10m_cultural/ne_10m_populated_places_simple.zip",
+      "usage": "modern SHP coordinates only; DBF/population not read",
+      "version": "5.1.2"
+    },
+    {
+      "acquired": "2026-10-07",
+      "extent": [
+        122,
+        32,
+        132,
+        43
+      ],
+      "file": "sources/ETOPO2022-korea.tif",
+      "horizontal_crs": "EPSG:4326",
+      "id": "korea_dem",
+      "license": "CC0-1.0",
+      "nodata": "no NoData tag; finite subset range validated offline",
+      "output_arcseconds": 60,
+      "output_size": [
+        600,
+        660
+      ],
+      "pixel_registration": "PixelIsArea",
+      "sha256": "b5735d418e82f52b73c660052da77f189de85b67bc128169d9e666fa4ea12614",
+      "source_arcseconds": 60,
+      "terms": "https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.ngdc.mgg.dem%3Aetopo_2022",
+      "unit": "metre",
+      "url": "https://gis.ngdc.noaa.gov/arcgis/rest/services/DEM_mosaics/DEM_all/ImageServer/exportImage?bbox=122%2C32%2C132%2C43&bboxSR=4326&size=600%2C660&imageSR=4326&format=tiff&pixelType=F32&interpolation=RSP_NearestNeighbor&compression=LZ77&renderingRule=%7B%22rasterFunction%22%3A+%22none%22%7D&mosaicRule=%7B%22where%22%3A+%22Name%3D%27ETOPO_2022_v1_60s_surface%27%22%7D&f=image",
+      "version": "ETOPO2022 v1 60s surface",
+      "vertical_datum": "EGM2008"
+    },
+    {
+      "id": "urban",
+      "file": "sources/ne_10m_urban_areas.zip",
+      "version": "4.1.0",
+      "webpage_advertised_version": "4.0.0; fixed ZIP and official producer VERSION are4.1.0",
+      "observation_years": "2002-2003",
+      "source_resolution": "MODIS1km, generalized1:10million polygons",
+      "horizontal_crs": "EPSG:4326 WGS84",
+      "usage": "Polygon SHP geometry only; no DBF/population/LandScan/admin boundaries",
+      "acquired": "2026-10-07",
+      "sha256": "2c593114e954ce1adb297ddee5465f05d9e81fa0a26deb13f8500d58a00d7051",
+      "license": "public-domain",
+      "url": "https://naturalearth.s3.amazonaws.com/10m_cultural/ne_10m_urban_areas.zip",
+      "terms": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "description_url": "https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-urban-area/",
+      "version_url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/10m_cultural/ne_10m_urban_areas.VERSION.txt"
+    }
+  ]
+}

@@ -656,3 +656,277 @@ license = "CC-BY-SA-4.0"
 modified = false
 ai_generated = false
 notes = "Original synthetic WP13 scenario assembled from REQUEST-0009 A and existing OpenHOI Testland nation/map references; no original-game files/text/values. Not a replacement for M0/M1 or frozen save fixtures. SHA256 68617e11f7bfc4785015cb4f2cbe9478e5bf01234806aca1e7e94bd30c582338."
+
+# WORLD-PREVIEW checkpoint: fixed source and baked display data.
+
+[[asset]]
+path = "data/preview/world/defines.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+sha256 = "7cef595a00d8456bac5c5083978e15a81506b5cf951f6715a092affd9fc4fff1"
+notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
+
+[[asset]]
+path = "data/preview/world/source-manifest.json"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+sha256 = "bcac8c3a922d6f48b031b654832eb004ac7736ca0a4f1465248ce7b0296cc934"
+notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
+
+[[asset]]
+path = "data/preview/world/sources/ne_10m_lakes.zip"
+author = "Natural Earth contributors"
+source = "https://naturalearth.s3.amazonaws.com/10m_physical/ne_10m_lakes.zip"
+license = "public-domain"
+modified = false
+ai_generated = false
+sha256 = "0803a06f9c3cb4671d89b68c48b142aad9366ba40f665245e12a913fbc61722a"
+notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
+
+[[asset]]
+path = "data/preview/world/sources/ne_10m_land.zip"
+author = "Natural Earth contributors"
+source = "https://naturalearth.s3.amazonaws.com/10m_physical/ne_10m_land.zip"
+license = "public-domain"
+modified = false
+ai_generated = false
+sha256 = "e547d749445eaa0964aba76738090ec88f5e63c4585122170f98c67a7ea922dc"
+notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
+
+[[asset]]
+path = "client/public/preview/world/adjacency.json"
+author = "OpenHOI contributors"
+source = "independently derived from Natural Earth land5.1.1/lakes5.0.0/rivers5.0.0 and NOAA ETOPO2022 fixed Himalaya subset"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+sha256 = "2a44a5e0132840f86e37d2df9c08087fdac2d5fc0ab2d38921106af44d7247fa"
+notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
+
+[[asset]]
+path = "client/public/preview/world/index.bin"
+author = "OpenHOI contributors"
+source = "independently derived from Natural Earth land5.1.1/lakes5.0.0/rivers5.0.0 and NOAA ETOPO2022 fixed Himalaya subset"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+sha256 = "3aafdad84138670ea627535952b987d16e79519fe33fe617a6c7321917358706"
+notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
+
+[[asset]]
+path = "client/public/preview/world/metadata.json"
+author = "OpenHOI contributors"
+source = "independently derived from Natural Earth land5.1.1/lakes5.0.0/rivers5.0.0 and NOAA ETOPO2022 fixed Himalaya subset"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+sha256 = "0498d827389750a32e37dca196e54bb5f15c8104a2a342611b1f8c135c648dbf"
+notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
+
+[[asset]]
+path = "client/public/preview/world/provinces.json"
+author = "OpenHOI contributors"
+source = "independently derived from Natural Earth land5.1.1/lakes5.0.0/rivers5.0.0 and NOAA ETOPO2022 fixed Himalaya subset"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+sha256 = "f0f8efca5086d51580b7ffeeee862f39f3edef19ae3fac0a75091b6cdc1c3c91"
+notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
+
+[[asset]]
+path = "data/preview/world/SOURCES.md"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+sha256 = "17e032d59a6f3767c07d02b9d12bc514afa53331de372095c0d3d1c720882cd4"
+notes = "Source/provenance for isolated world preview. No simulation authority."
+
+# Exact procedural 3D leaves from producer 19cf3cf; no AI PNG adoption.
+
+[[asset]]
+path = "assets/preview/units3d/air.glb"
+author = "OpenHOI4 contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Self-authored preview-art/data record; actual GLBs are synthetic geometry, not deployments. Master registration/integration and independent review pending."
+sha256 = "70724713e93c1338e930f99e1313d5049c85bc5936b39534f87ae83eaee5bf1f"
+
+[[asset]]
+path = "assets/preview/units3d/army.glb"
+author = "OpenHOI4 contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Self-authored preview-art/data record; actual GLBs are synthetic geometry, not deployments. Master registration/integration and independent review pending."
+sha256 = "d630d499b5d44480ff4f9a081e671348a4bc9163dc19b210a1f0ba17c9268006"
+
+[[asset]]
+path = "assets/preview/units3d/generate.json"
+author = "OpenHOI4 contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Self-authored preview-art/data record; actual GLBs are synthetic geometry, not deployments. Master registration/integration and independent review pending."
+sha256 = "ff041ca461dd218e7199911d72fc191a463d370095b3e3019b316556cf47473a"
+
+[[asset]]
+path = "assets/preview/units3d/generate.mjs"
+author = "OpenHOI4 contributors"
+source = "original"
+license = "original"
+modified = false
+ai_generated = false
+notes = "Self-authored procedural source code; GPL-3.0-or-later under D-10. original is source provenance, not a change of code license."
+sha256 = "b951a88e6857c9bfab6566c975a121c886cea04845ddf49736d446652442bba7"
+
+[[asset]]
+path = "assets/preview/units3d/metadata.json"
+author = "OpenHOI4 contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Self-authored preview-art/data record; actual GLBs are synthetic geometry, not deployments. Master registration/integration and independent review pending."
+sha256 = "332b275b189e12cdaad9ee9b10f2b30979cf7d8b5e24480535c0b0117c3f7c07"
+
+[[asset]]
+path = "assets/preview/units3d/navy.glb"
+author = "OpenHOI4 contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Self-authored preview-art/data record; actual GLBs are synthetic geometry, not deployments. Master registration/integration and independent review pending."
+sha256 = "d1e5474298ca6f2e4686adbeb10dd38936fccabf36ea823949cf495e8602d128"
+
+[[asset]]
+path = "assets/preview/units3d/ASSETS-entry-draft.toml"
+author = "OpenHOI4 contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Self-authored preview-art/data record; actual GLBs are synthetic geometry, not deployments. Master registration/integration and independent review pending."
+sha256 = "a01e8ee7538ac5ef7b9233c83237d2706476bed205fc6927db431eeea8421e4a"
+
+[[asset]]
+path = "client/public/preview/units3d/army.glb"
+author = "OpenHOI4 contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Self-authored preview-art/data record; actual GLBs are synthetic geometry, not deployments. Master registration/integration and independent review pending."
+sha256 = "d630d499b5d44480ff4f9a081e671348a4bc9163dc19b210a1f0ba17c9268006"
+
+[[asset]]
+path = "client/public/preview/units3d/air.glb"
+author = "OpenHOI4 contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Self-authored preview-art/data record; actual GLBs are synthetic geometry, not deployments. Master registration/integration and independent review pending."
+sha256 = "70724713e93c1338e930f99e1313d5049c85bc5936b39534f87ae83eaee5bf1f"
+
+[[asset]]
+path = "client/public/preview/units3d/navy.glb"
+author = "OpenHOI4 contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Self-authored preview-art/data record; actual GLBs are synthetic geometry, not deployments. Master registration/integration and independent review pending."
+sha256 = "d1e5474298ca6f2e4686adbeb10dd38936fccabf36ea823949cf495e8602d128"
+
+[[asset]]
+path = "client/public/preview/world/favicon.svg"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+sha256 = "b6bee86c11beadd6e1308f89e76e2fd8e6886aeb110d2c4c1b287db5a3b9c54e"
+notes = "Preview-only original display art/config. Synthetic sample positions and art scales are not actual units. Rebuild units.json: python tools/maps/bake_unit_display.py."
+
+[[asset]]
+path = "client/public/preview/world/units.json"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+sha256 = "da2e8fb8305e4647c7d86b1f6335560ee8015468a4fd30998e6cc49754e639dd"
+notes = "Preview-only original display art/config. Synthetic sample positions and art scales are not actual units. Rebuild units.json: python tools/maps/bake_unit_display.py."
+
+[[asset]]
+path = "data/preview/world/units/defines.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+sha256 = "417f3572de9cac48d14f891b35485a6223a882daa438b604009cdec197254f68"
+notes = "Preview-only original display art/config. Synthetic sample positions and art scales are not actual units. Rebuild units.json: python tools/maps/bake_unit_display.py."
+
+[[asset]]
+path = "data/preview/world/sources/ETOPO2022-himalaya.tif"
+author = "NOAA NCEI"
+source = "https://gis.ngdc.noaa.gov/arcgis/rest/services/DEM_mosaics/DEM_all/ImageServer/exportImage?bbox=74%2C25%2C95%2C35&bboxSR=4326&size=1008%2C480&imageSR=4326&format=tiff&pixelType=F32&interpolation=RSP_NearestNeighbor&compression=LZ77&renderingRule=%7B%22rasterFunction%22%3A+%22none%22%7D&mosaicRule=%7B%22where%22%3A+%22Name%3D%27ETOPO_2022_v1_60s_surface%27%22%7D&f=image"
+license = "CC0-1.0"
+modified = false
+ai_generated = false
+sha256 = "14e07b92aa2e8f4bcc09de6c8ead73a5b098fc6ff74a0ce6971ba78261141452"
+notes = "Fixed source only; original terms https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.ngdc.mgg.dem%3Aetopo_2022 . Exact acquisition/version/extent/provenance: data/preview/world/source-manifest.json. Offline bake: python tools/maps/world_preview.py --out client/public/preview/world . No runtime downloads."
+
+[[asset]]
+path = "data/preview/world/sources/ne_10m_rivers_lake_centerlines.zip"
+author = "Natural Earth contributors"
+source = "https://naturalearth.s3.amazonaws.com/10m_physical/ne_10m_rivers_lake_centerlines.zip"
+license = "public-domain"
+modified = false
+ai_generated = false
+sha256 = "ded71b01870855ccfe19b51f2ec14c9bb48fae23c0e9f3c11974d426433b5c38"
+notes = "Fixed source only; original terms https://www.naturalearthdata.com/about/terms-of-use/ . Exact acquisition/version/extent/provenance: data/preview/world/source-manifest.json. Offline bake: python tools/maps/world_preview.py --out client/public/preview/world . No runtime downloads."
+
+[[asset]]
+path = "data/preview/world/sources/ne_10m_populated_places_simple.zip"
+author = "Natural Earth contributors"
+source = "https://naturalearth.s3.amazonaws.com/10m_cultural/ne_10m_populated_places_simple.zip"
+license = "public-domain"
+modified = false
+ai_generated = false
+sha256 = "2963ee08f7743f13f37d5243acd77a2f7a510e26a36c7e04b920f1b381f2b251"
+notes = "Fixed independent geographic input. Terms/version/extent/acquisition/SHA: data/preview/world/source-manifest.json. City source reads SHP point coordinates only; no DBF/population/game values. Offline preview bake only; no runtime download."
+
+[[asset]]
+path = "data/preview/world/sources/ETOPO2022-korea.tif"
+author = "NOAA NCEI"
+source = "https://gis.ngdc.noaa.gov/arcgis/rest/services/DEM_mosaics/DEM_all/ImageServer/exportImage?bbox=122%2C32%2C132%2C43&bboxSR=4326&size=600%2C660&imageSR=4326&format=tiff&pixelType=F32&interpolation=RSP_NearestNeighbor&compression=LZ77&renderingRule=%7B%22rasterFunction%22%3A+%22none%22%7D&mosaicRule=%7B%22where%22%3A+%22Name%3D%27ETOPO_2022_v1_60s_surface%27%22%7D&f=image"
+license = "CC0-1.0"
+modified = false
+ai_generated = false
+sha256 = "b5735d418e82f52b73c660052da77f189de85b67bc128169d9e666fa4ea12614"
+notes = "Fixed independent geographic input. Terms/version/extent/acquisition/SHA: data/preview/world/source-manifest.json. City source reads SHP point coordinates only; no DBF/population/game values. Offline preview bake only; no runtime download."
+
+[[asset]]
+path = "data/preview/world/sources/ne_10m_urban_areas.zip"
+author = "Natural Earth contributors; MODIS-derived urban geography"
+source = "https://naturalearth.s3.amazonaws.com/10m_cultural/ne_10m_urban_areas.zip"
+license = "public-domain"
+modified = false
+ai_generated = false
+sha256 = "2c593114e954ce1adb297ddee5465f05d9e81fa0a26deb13f8500d58a00d7051"
+notes = "FixedNE4.1.0PolygonSHPgeometryonly; MODIS2002-2003/generalized1:10M. CRC reads all raw members includingDBF; noDBFattribute parsing/population/LandScan/adminboundary/gameauthority. Terms/date/version/PRJ/CRC/acquisition/limits: data/preview/world/source-manifest.json andSOURCES.md. Offlinepreview only."

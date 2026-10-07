@@ -1,0 +1,172 @@
+# Display/generation constants only. No gameplay values.
+[generation]
+width = 8192
+height = 4096
+seed = 320145
+land_seeds = 6000
+sea_seeds = 2500
+lake_seeds = 1
+query_rows = 32
+
+[quality]
+graph_width = 4096
+graph_height = 2048
+coast_antialias = true
+max_texture_dimension = 8192
+max_province_id = 65535
+bake_seconds = 180
+bake_memory_bytes = 3221225472
+max_index_bytes = 67108864
+earth_radius_km = 6371.0088
+target_total_min = 20000
+target_total_preferred_upper = 30000
+sea_border_color = [96, 128, 143]
+
+[coverage]
+large_component_min_area_km2 = 10000.0
+large_component_min_seeds = 3
+max_seed_area_km2 = 65000.0
+seed_spacing_km = 12.0
+seed_oversample = 6
+coast_density = 4.0
+coast_radius_km = 120.0
+city_density = 3.0
+city_radius_km = 60.0
+
+[sea]
+coastal_seeds = 1950
+coastal_spacing_km = 150.0
+ocean_min_coast_distance_km = 250.0
+seed_oversample = 8
+
+[urban]
+minimum_area_km2 = 100.0
+target_area_km2 = 1500.0
+maximum_seeds = 32
+
+[fragment_repair]
+maximum_pixels = 8
+
+[[density_regions]]
+id = "korea"
+extent = [122.0, 32.0, 132.0, 43.0]
+additional_land_seeds = 160
+city_density = 8.0
+city_radius_km = 55.0
+[[density_regions]]
+id = "europe"
+extent = [-5.0, 42.0, 25.0, 56.0]
+additional_land_seeds = 80
+city_density = 6.0
+city_radius_km = 65.0
+[[density_regions]]
+id = "himalaya"
+extent = [74.0, 25.0, 95.0, 35.0]
+additional_land_seeds = 60
+city_density = 4.0
+city_radius_km = 65.0
+
+# Offline art allocation costs, never simulation movement/combat coefficients.
+[partition]
+river_crossing_penalty = 12.0
+river_density = 1.4
+relief_meters = 500.0
+relief_density_cap = 3.0
+ridge_penalty = 0.7
+ridge_window = 5
+
+[terrain]
+bands = [
+ {minimum_m = -1000, color = [143, 157, 133]},
+ {minimum_m = 500, color = [139, 150, 122]},
+ {minimum_m = 1500, color = [151, 147, 119]},
+ {minimum_m = 3000, color = [168, 155, 130]},
+ {minimum_m = 4500, color = [187, 181, 157]},
+ {minimum_m = 6000, color = [221, 220, 202]},
+]
+
+[style]
+background = [13, 26, 34]
+nation_border = [13, 26, 34]
+state_border = [13, 26, 34]
+province_border = [44, 64, 62]
+selected = [239, 193, 100]
+hovered = [226, 223, 187]
+nation_width_milli = 0
+state_width_milli = 0
+province_width_milli = 620
+highlight_milli = 520
+fit_milli = 940
+zoom_min_milli = 800
+zoom_max_milli = 60000
+wheel_milli = 160
+drag_threshold = 3
+
+[colors]
+land = [142, 157, 135]
+sea = [35, 69, 85]
+lake = [62, 101, 111]
+urban = [179, 168, 147]
+province_variation = 25
+
+[regions.world]
+longitude = 0
+latitude = 0
+zoom = 1
+[regions.europe]
+longitude = 15
+latitude = 50
+zoom = 6
+[regions.korea]
+longitude = 127.5
+latitude = 37
+zoom = 23
+[regions.himalaya]
+longitude = 85
+latitude = 29
+zoom = 12
+[regions.americas]
+longitude = -95
+latitude = 20
+zoom = 2.5
+
+[regions.ireland]
+longitude = -8
+latitude = 53
+zoom = 30
+[regions.great_britain]
+longitude = -2
+latitude = 54
+zoom = 20
+[regions.japan]
+longitude = 138
+latitude = 37
+zoom = 15
+[regions.dublin]
+longitude = -6.2569795173
+latitude = 53.3467312490
+zoom = 60
+[regions.london]
+longitude = -0.1186677
+latitude = 51.5019406
+zoom = 60
+[regions.seoul]
+longitude = 126.9977851
+latitude = 37.568295
+zoom = 60
+[regions.tokyo]
+longitude = 139.7494616
+latitude = 35.6869628
+zoom = 60
+[regions.irish_sea]
+longitude = -4.7
+latitude = 53.2
+zoom = 45
+[regions.english_channel]
+longitude = -1.7
+latitude = 49.8
+zoom = 45
+[regions.atlantic]
+longitude = -35
+latitude = 25
+zoom = 45

@@ -1,0 +1,214 @@
+{
+  "schema": "openhoi4.preview.units3d.metadata.v1",
+  "created_date": "2026-10-07",
+  "timezone": "Asia/Seoul",
+  "tool": "self-authored procedural Node.js generator; built-in fs/path/crypto only",
+  "node_version": "v24.4.0",
+  "ai_generated": false,
+  "authoring": "Codex authored explicit geometry recipe and deterministic generator; no generative image or 3D-model service creates these mesh bytes.",
+  "source": "original procedural geometry; no original-game files, reference images, downloaded meshes, textures or third-party art",
+  "model_or_service_version": "not applicable: local procedural geometry",
+  "purpose": "temporary local 3D map-preview art, synthetic samples only; no actual units, deployments, statistics or gameplay schema",
+  "replaceable": true,
+  "units": "meter (art dimensions only)",
+  "up": "+Y",
+  "forward": "+Z",
+  "right": "+X",
+  "pivot": [
+    0,
+    0,
+    0
+  ],
+  "pivot_note": "Ground plane y=0; nominal horizontal model origin, not center of mass or game deployment coordinate.",
+  "materials": "opaque PBR, single-sided, flat normals; no images/textures/raster planes/billboards",
+  "recipe_path": "assets/preview/units3d/generate.json",
+  "recipe_sha256": "ff041ca461dd218e7199911d72fc191a463d370095b3e3019b316556cf47473a",
+  "generator_path": "assets/preview/units3d/generate.mjs",
+  "generator_sha256": "b951a88e6857c9bfab6566c975a121c886cea04845ddf49736d446652442bba7",
+  "reproduction": "node assets/preview/units3d/generate.mjs <separate-output-dir>; producer second generation exact bytes for all 3",
+  "models": [
+    {
+      "name": "army",
+      "bytes": 17576,
+      "sha256": "d630d499b5d44480ff4f9a081e671348a4bc9163dc19b210a1f0ba17c9268006",
+      "parts": 6,
+      "vertices": 480,
+      "triangles": 160,
+      "bbox_min": [
+        -1.7000000476837158,
+        0.0,
+        -2.700000047683716
+      ],
+      "bbox_max": [
+        1.7000000476837158,
+        2.240000009536743,
+        2.950000047683716
+      ],
+      "bbox_extent": [
+        3.4000000953674316,
+        2.240000009536743,
+        5.650000095367432
+      ],
+      "units": "meter",
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "up": "+Y",
+      "forward": "+Z",
+      "textures": 0,
+      "checks": "binary decode/index bounds/finite vectors/unit normals/triangle area/outward CCW winding/materials/3D bounds/ground pivot/public exact-byte copy passed",
+      "asset_id": "preview.units3d.army",
+      "source_path": "assets/preview/units3d/army.glb",
+      "public_path": "client/public/preview/units3d/army.glb",
+      "license": "CC-BY-SA-4.0",
+      "ai_generated": false
+    },
+    {
+      "name": "air",
+      "bytes": 17540,
+      "sha256": "70724713e93c1338e930f99e1313d5049c85bc5936b39534f87ae83eaee5bf1f",
+      "parts": 8,
+      "vertices": 432,
+      "triangles": 144,
+      "bbox_min": [
+        -4.0,
+        0.0,
+        -2.549999952316284
+      ],
+      "bbox_max": [
+        4.0,
+        1.649999976158142,
+        3.0899999141693115
+      ],
+      "bbox_extent": [
+        8.0,
+        1.649999976158142,
+        5.639999866485596
+      ],
+      "units": "meter",
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "up": "+Y",
+      "forward": "+Z",
+      "textures": 0,
+      "checks": "binary decode/index bounds/finite vectors/unit normals/triangle area/outward CCW winding/materials/3D bounds/ground pivot/public exact-byte copy passed",
+      "asset_id": "preview.units3d.air",
+      "source_path": "assets/preview/units3d/air.glb",
+      "public_path": "client/public/preview/units3d/air.glb",
+      "license": "CC-BY-SA-4.0",
+      "ai_generated": false
+    },
+    {
+      "name": "navy",
+      "bytes": 18248,
+      "sha256": "d1e5474298ca6f2e4686adbeb10dd38936fccabf36ea823949cf495e8602d128",
+      "parts": 8,
+      "vertices": 456,
+      "triangles": 152,
+      "bbox_min": [
+        -1.5625,
+        0.0,
+        -4.3460001945495605
+      ],
+      "bbox_max": [
+        1.5625,
+        4.170000076293945,
+        4.98199987411499
+      ],
+      "bbox_extent": [
+        3.125,
+        4.170000076293945,
+        9.32800006866455
+      ],
+      "units": "meter",
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "up": "+Y",
+      "forward": "+Z",
+      "textures": 0,
+      "checks": "binary decode/index bounds/finite vectors/unit normals/triangle area/outward CCW winding/materials/3D bounds/ground pivot/public exact-byte copy passed",
+      "asset_id": "preview.units3d.navy",
+      "source_path": "assets/preview/units3d/navy.glb",
+      "public_path": "client/public/preview/units3d/navy.glb",
+      "license": "CC-BY-SA-4.0",
+      "ai_generated": false
+    }
+  ],
+  "sample_transforms": {
+    "army": {
+      "position": [
+        -8,
+        0,
+        0
+      ],
+      "rotation_y_radians": 0.45,
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    "air": {
+      "position": [
+        0,
+        3,
+        0
+      ],
+      "rotation_y_radians": -0.4,
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    "navy": {
+      "position": [
+        10,
+        0,
+        0
+      ],
+      "rotation_y_radians": 0.25,
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    "note": "Preview display transforms only, not actual deployments. Yaw is around +Y, positive by right-hand rule."
+  },
+  "producer_render": {
+    "three_revision": "186",
+    "browser_version": "154.0.8037.98",
+    "headless": true,
+    "user_browser_or_focus": false,
+    "camera_front": [
+      16,
+      17,
+      28
+    ],
+    "camera_back": [
+      -16,
+      18,
+      -28
+    ],
+    "depth": "real occluder front red [255,0,0,255], behind occluded by actual army metal [144,143,129,255]",
+    "lighting": "key intensity off changes render; restored render checksum exact",
+    "evidence": "target/evidence/PREVIEW-UNITS3D/render.json"
+  },
+  "asset_license": "CC-BY-SA-4.0 per D-10 for self-authored art/data, preserve attribution/share-alike to extent applicable",
+  "generator_code_license": "GPL-3.0-or-later per D-10; ASSETS original label for source-code provenance does not relicense generator code",
+  "independent_review": "pending",
+  "main_ci": "not run by producer",
+  "renderer_integration": "not implemented by producer; parent/map-HUD app owns",
+  "master_registration": "pending; parent/map-HUD app owns",
+  "public_distribution": "not approved",
+  "raster_distinction": "Existing client/public/preview/markers/*.png are HUD/icon reference only; never described or used as these 3D meshes."
+}

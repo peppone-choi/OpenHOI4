@@ -1,0 +1,101 @@
+# Append by master-ASSETS owner only. Draft includes provenance leaf files.
+# No public distribution approval; AI release review remains pending.
+
+[[asset]]
+path = "assets/preview/units3d/air.glb"
+author = "OpenHOI4 contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Self-authored preview-art/data record; actual GLBs are synthetic geometry, not deployments. Master registration/integration and independent review pending."
+sha256 = "70724713e93c1338e930f99e1313d5049c85bc5936b39534f87ae83eaee5bf1f"
+
+[[asset]]
+path = "assets/preview/units3d/army.glb"
+author = "OpenHOI4 contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Self-authored preview-art/data record; actual GLBs are synthetic geometry, not deployments. Master registration/integration and independent review pending."
+sha256 = "d630d499b5d44480ff4f9a081e671348a4bc9163dc19b210a1f0ba17c9268006"
+
+[[asset]]
+path = "assets/preview/units3d/generate.json"
+author = "OpenHOI4 contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Self-authored preview-art/data record; actual GLBs are synthetic geometry, not deployments. Master registration/integration and independent review pending."
+sha256 = "ff041ca461dd218e7199911d72fc191a463d370095b3e3019b316556cf47473a"
+
+[[asset]]
+path = "assets/preview/units3d/generate.mjs"
+author = "OpenHOI4 contributors"
+source = "original"
+license = "original"
+modified = false
+ai_generated = false
+notes = "Self-authored procedural source code; GPL-3.0-or-later under D-10. original is source provenance, not a change of code license."
+sha256 = "b951a88e6857c9bfab6566c975a121c886cea04845ddf49736d446652442bba7"
+
+[[asset]]
+path = "assets/preview/units3d/metadata.json"
+author = "OpenHOI4 contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Self-authored preview-art/data record; actual GLBs are synthetic geometry, not deployments. Master registration/integration and independent review pending."
+sha256 = "332b275b189e12cdaad9ee9b10f2b30979cf7d8b5e24480535c0b0117c3f7c07"
+
+[[asset]]
+path = "assets/preview/units3d/navy.glb"
+author = "OpenHOI4 contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Self-authored preview-art/data record; actual GLBs are synthetic geometry, not deployments. Master registration/integration and independent review pending."
+sha256 = "d1e5474298ca6f2e4686adbeb10dd38936fccabf36ea823949cf495e8602d128"
+
+[[asset]]
+path = "assets/preview/units3d/ASSETS-entry-draft.toml"
+author = "OpenHOI4 contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Self-authored preview-art/data record; actual GLBs are synthetic geometry, not deployments. Master registration/integration and independent review pending."
+
+[[asset]]
+path = "client/public/preview/units3d/army.glb"
+author = "OpenHOI4 contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Self-authored preview-art/data record; actual GLBs are synthetic geometry, not deployments. Master registration/integration and independent review pending."
+sha256 = "d630d499b5d44480ff4f9a081e671348a4bc9163dc19b210a1f0ba17c9268006"
+
+[[asset]]
+path = "client/public/preview/units3d/air.glb"
+author = "OpenHOI4 contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Self-authored preview-art/data record; actual GLBs are synthetic geometry, not deployments. Master registration/integration and independent review pending."
+sha256 = "70724713e93c1338e930f99e1313d5049c85bc5936b39534f87ae83eaee5bf1f"
+
+[[asset]]
+path = "client/public/preview/units3d/navy.glb"
+author = "OpenHOI4 contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Self-authored preview-art/data record; actual GLBs are synthetic geometry, not deployments. Master registration/integration and independent review pending."
+sha256 = "d1e5474298ca6f2e4686adbeb10dd38936fccabf36ea823949cf495e8602d128"
