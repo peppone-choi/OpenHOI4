@@ -1,0 +1,66 @@
+{
+  "head": "164f04e6378b959e54da67cbca19b1ff03b6fe9f",
+  "judgement": "PASS",
+  "report": "E:\\openhoi\\docs\\verify\\WP-24.M2-r1.attempt4.md",
+  "parent_full_raw_invariance": true,
+  "verification_invariance_valid": true,
+  "snapshot_differences": [],
+  "raw_index_bytes_identical": true,
+  "manifest_files_checked": 3664,
+  "ZIP_members_checked": 3665,
+  "mismatches": 0,
+  "ZIP_sha256": "ec1056e672989d5dc29e9aa986060adc92f93a23b940d9185409498dcb9c5a65",
+  "ZIP_bytes": 34165286,
+  "actual_final_text_equal": true,
+  "parent_originals": [
+    {
+      "member": "actual-final-api.json",
+      "bytes": 43646,
+      "sha256": "9b50dcaae8041900e8eccd9e8c21d1e8d846cfd17e6c189b7028050524443eaa"
+    },
+    {
+      "member": "actual-prompt.md",
+      "bytes": 13580,
+      "sha256": "4519bc4d48b280bee02357879a4afacc074a9b0ad31a031e3c52520cda57a27d"
+    },
+    {
+      "member": "parent-before.json",
+      "bytes": 3649792,
+      "sha256": "0d05af2890ce6efd70f505f5d562e00000316384944a535e923c23dda8245d70"
+    },
+    {
+      "member": "parent-before.index",
+      "bytes": 1353868,
+      "sha256": "3e5d17f2339d464034ba0b211b42621abeeeea93260a3a618ce92b2c865e6161"
+    },
+    {
+      "member": "parent-after.json",
+      "bytes": 3649792,
+      "sha256": "0d05af2890ce6efd70f505f5d562e00000316384944a535e923c23dda8245d70"
+    },
+    {
+      "member": "parent-after.index",
+      "bytes": 1353868,
+      "sha256": "3e5d17f2339d464034ba0b211b42621abeeeea93260a3a618ce92b2c865e6161"
+    },
+    {
+      "member": "producer-SHA256SUMS.json",
+      "bytes": 727405,
+      "sha256": "daafb42d21849ef476f7bf9ef0ce070a83ebe64770c9e5e8baabc9241f52c407"
+    },
+    {
+      "member": "producer-ZIP-IDENTITY.json",
+      "bytes": 3514,
+      "sha256": "32a945700a512f1f3852b012c8e547c870f7bc95eebacdb72134dd025f84ed56"
+    }
+  ],
+  "parent_archive_sha256": "d4cee6431abb083419424613ca1d3959795b7fc6567d57016674e59d0a84be19",
+  "resumed_in_run": "M2-r2",
+  "actual_final_turn": "01a114cb-7b42-7790-a841-b7dd0e5a880c",
+  "original_turn_status": "interrupted",
+  "actual_final_chars": 15669,
+  "actual_final_equal_target_authority": true,
+  "target_fullreport_separate": true,
+  "parent_resume_snapshot": ".orchestrator/evidence/M2-r2-P09-WP24-current.json",
+  "native_residue_count": 0
+}
