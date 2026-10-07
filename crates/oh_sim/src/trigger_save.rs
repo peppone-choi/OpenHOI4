@@ -27,6 +27,9 @@ pub struct SimulationSaveV4 {
 }
 impl Simulation {
     pub fn export_save_v4(&self) -> Result<SimulationSaveV4, String> {
+        if self.economy.is_some() {
+            return Err("EconomyRequiresV5".into());
+        }
         let trigger = self.trigger.clone().ok_or("V4RequiresTrigger")?;
         let mut legacy = self.clone();
         legacy.trigger = None;
@@ -61,6 +64,7 @@ impl Simulation {
                 nation: nation.0,
                 sequence,
                 command: match c {
+                    Command::Economy(_) => unreachable!("economy requires v5"),
                     Command::Pause(v) => CommandV4::Pause(*v),
                     Command::SetSpeed(v) => CommandV4::SetSpeed(*v),
                     Command::Move { unit, destination } => CommandV4::Move {

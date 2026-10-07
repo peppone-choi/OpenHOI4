@@ -158,6 +158,9 @@ fn ordinal(d: Date) -> u64 {
 
 impl Simulation {
     pub fn export_save(&self) -> Result<SimulationSaveV1, String> {
+        if self.economy.is_some() {
+            return Err("EconomyRequiresV5".into());
+        }
         if self.trigger.is_some() {
             return Err("TriggerRequiresV4".into());
         }
@@ -270,6 +273,7 @@ impl Simulation {
             world,
             movement: None,
             trigger: None,
+            economy: None,
         })
     }
 }
@@ -319,6 +323,9 @@ pub struct SimulationSaveV2 {
 }
 impl Simulation {
     pub fn export_save_v2(&self) -> Result<SimulationSaveV2, String> {
+        if self.economy.is_some() {
+            return Err("EconomyRequiresV5".into());
+        }
         if self.trigger.is_some() {
             return Err("TriggerRequiresV4".into());
         }
@@ -345,6 +352,7 @@ impl Simulation {
                         destination: destination.0,
                     },
                     Command::Stop { unit } => CommandV2::Stop { unit: unit.0 },
+                    Command::Economy(_) => unreachable!("economy requires v5"),
                     Command::Effects { .. } => unreachable!("trigger requires v4"),
                 },
             })
@@ -512,6 +520,9 @@ pub struct SimulationSaveV3 {
 }
 impl Simulation {
     pub fn export_save_v3(&self) -> Result<SimulationSaveV3, String> {
+        if self.economy.is_some() {
+            return Err("EconomyRequiresV5".into());
+        }
         if self.trigger.is_some() {
             return Err("TriggerRequiresV4".into());
         }

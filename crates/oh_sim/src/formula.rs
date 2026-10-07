@@ -162,3 +162,103 @@ pub fn weighted_score(
     }
     Ok((terms, total))
 }
+
+// Economy arithmetic uses wide integer intermediates; no Qty -> Fx narrowing.
+use oh_core::Qty;
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum EconomyArithmeticError {
+    InvalidValue,
+    Overflow,
+}
+fn qty_bits(bits: i128) -> Result<Qty, EconomyArithmeticError> {
+    Ok(Qty::from_bits(
+        i64::try_from(bits).map_err(|_| EconomyArithmeticError::Overflow)?,
+    ))
+}
+pub fn quantity_times_ratio(quantity: Qty, ratio: Fx) -> Result<Qty, EconomyArithmeticError> {
+    if quantity < Qty::ZERO || ratio < Fx::ZERO {
+        return Err(EconomyArithmeticError::InvalidValue);
+    }
+    qty_bits((i128::from(quantity.to_bits()) * i128::from(ratio.to_bits())) >> 32)
+}
+pub fn economy_minimum(base: Fx, slope: Fx, stability: Fx) -> Result<Fx, EconomyArithmeticError> {
+    if !(Fx::ZERO..=Fx::ONE).contains(&base)
+        || slope < Fx::ZERO
+        || !(Fx::ZERO..=Fx::ONE).contains(&stability)
+    {
+        return Err(EconomyArithmeticError::InvalidValue);
+    }
+    let product = slope
+        .checked_mul(Fx::ONE - stability)
+        .ok_or(EconomyArithmeticError::Overflow)?;
+    // Saturation at one is the specified consumer minimum clamp, not a generic value clamp.
+    let raw = i128::from(base.to_bits()) + i128::from(product.to_bits());
+    Ok(Fx::from_bits(raw.min(i128::from(Fx::ONE.to_bits())) as i64))
+}
+pub fn economy_allocate(
+    total: Qty,
+    ratios: [Fx; 4],
+    minimum: Fx,
+) -> Result<[Qty; 4], EconomyArithmeticError> {
+    if total < Qty::ZERO
+        || !(Fx::ZERO..=Fx::ONE).contains(&minimum)
+        || ratios.iter().any(|r| !(Fx::ZERO..=Fx::ONE).contains(r))
+        || ratios.iter().map(|r| i128::from(r.to_bits())).sum::<i128>()
+            != i128::from(Fx::ONE.to_bits())
+        || ratios[0] < minimum
+    {
+        return Err(EconomyArithmeticError::InvalidValue);
+    }
+    let mut values = [Qty::ZERO; 4];
+    let mut used = Qty::ZERO;
+    for i in 1..4 {
+        values[i] = quantity_times_ratio(total, ratios[i])?;
+        used = used
+            .checked_add(values[i])
+            .ok_or(EconomyArithmeticError::Overflow)?;
+    }
+    values[0] = total
+        .checked_sub(used)
+        .ok_or(EconomyArithmeticError::Overflow)?;
+    Ok(values)
+}
+/// (raw IC consumed, progress applied up to cost, effective rounding discard).
+pub fn economy_construction(
+    available: Qty,
+    remaining: Qty,
+    factor: Fx,
+) -> Result<(Qty, Qty, Qty), EconomyArithmeticError> {
+    if available < Qty::ZERO || remaining <= Qty::ZERO || factor < Fx::ZERO {
+        return Err(EconomyArithmeticError::InvalidValue);
+    }
+    if available == Qty::ZERO || factor == Fx::ZERO {
+        return Ok((Qty::ZERO, Qty::ZERO, Qty::ZERO));
+    }
+    let numerator = i128::from(remaining.to_bits()) << 32;
+    let denominator = i128::from(factor.to_bits());
+    let needed = (numerator + denominator - 1) / denominator;
+    let consumed = qty_bits(needed.min(i128::from(available.to_bits())))?;
+    let effective = quantity_times_ratio(consumed, factor)?;
+    let applied = effective.min(remaining);
+    Ok((consumed, applied, effective - applied))
+}
+pub fn economy_capacity(population: i64, ratio: Fx) -> Result<i64, EconomyArithmeticError> {
+    if population < 0 || !(Fx::ZERO..=Fx::ONE).contains(&ratio) {
+        return Err(EconomyArithmeticError::InvalidValue);
+    }
+    i64::try_from((i128::from(population) * i128::from(ratio.to_bits())) >> 32)
+        .map_err(|_| EconomyArithmeticError::Overflow)
+}
+pub fn economy_political_income(
+    current: Qty,
+    daily: Qty,
+    cap: Qty,
+) -> Result<Qty, EconomyArithmeticError> {
+    if current < Qty::ZERO || daily < Qty::ZERO || cap < Qty::ZERO || current > cap {
+        return Err(EconomyArithmeticError::InvalidValue);
+    }
+    qty_bits(
+        (i128::from(current.to_bits()) + i128::from(daily.to_bits()))
+            .min(i128::from(cap.to_bits())),
+    )
+}

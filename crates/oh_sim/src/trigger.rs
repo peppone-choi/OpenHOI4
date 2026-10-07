@@ -137,6 +137,18 @@ pub struct TriggerState {
     pub ended: Option<EndCheckpoint>,
 }
 impl TriggerState {
+    pub(crate) fn empty(world: &World) -> Self {
+        Self {
+            definitions_hash: 0,
+            flags: world
+                .inputs()
+                .nations()
+                .iter()
+                .map(|n| (n.id().0, Vec::new()))
+                .collect(),
+            ended: None,
+        }
+    }
     pub fn initial(defs: &Definition, world: &World) -> Result<Self, TriggerError> {
         let mut flags = Vec::new();
         for n in world.inputs().nations() {
@@ -255,6 +267,7 @@ pub struct SimHost<'a> {
     world: &'a World,
     state: &'a State,
     flags: BTreeMap<u16, BTreeSet<String>>,
+    economy: Option<crate::economy::Economy>,
     pub sources: BTreeSet<String>,
 }
 impl<'a> SimHost<'a> {
@@ -268,7 +281,15 @@ impl<'a> SimHost<'a> {
                 .map(|(id, fs)| (*id, fs.iter().cloned().collect()))
                 .collect(),
             sources: BTreeSet::new(),
+            economy: None,
         }
+    }
+    pub(crate) fn with_economy(mut self, economy: Option<&crate::economy::Economy>) -> Self {
+        self.economy = economy.cloned();
+        self
+    }
+    pub(crate) fn economy(&self) -> Option<&crate::economy::Economy> {
+        self.economy.as_ref()
     }
     pub fn commit(self, trigger: &mut TriggerState) {
         trigger.flags = self
@@ -292,6 +313,42 @@ impl Host for SimHost<'_> {
             .nation(id)
             .ok_or(TriggerError::InvalidReference)?;
         match c {
+            Condition::Stability(value)
+            | Condition::Mobilization(value)
+            | Condition::PoliticalCapital(value) => {
+                let economy = self.economy.as_ref().ok_or(TriggerError::MissingContext)?;
+                let e = economy.nation(id).ok_or(TriggerError::InvalidReference)?;
+                if matches!(c, Condition::PoliticalCapital(_)) {
+                    // Compare Qty directly with the exact decimal. Never narrow PC into Fx.
+                    let (oh_data::trigger::Compare::Gte(s)
+                    | oh_data::trigger::Compare::Lte(s)
+                    | oh_data::trigger::Compare::Eq(s)) = value;
+                    let v = s
+                        .parse::<oh_core::Qty>()
+                        .map_err(|_| TriggerError::InvalidArgument)?;
+                    return Ok(match value {
+                        oh_data::trigger::Compare::Gte(_) => e.political_capital() >= v,
+                        oh_data::trigger::Compare::Lte(_) => e.political_capital() <= v,
+                        oh_data::trigger::Compare::Eq(_) => e.political_capital() == v,
+                    });
+                }
+                value
+                    .test(if matches!(c, Condition::Stability(_)) {
+                        e.stability()
+                    } else {
+                        e.mobilization()
+                    })
+                    .map_err(|_| TriggerError::InvalidArgument)
+            }
+            Condition::HasLaw(law) => Ok(self
+                .economy
+                .as_ref()
+                .ok_or(TriggerError::MissingContext)?
+                .nation(id)
+                .ok_or(TriggerError::InvalidReference)?
+                .laws()
+                .values()
+                .any(|id| id == law)),
             Condition::NationIs(tag) => Ok(n.tag() == tag),
             Condition::ControlsProvince(p) => Ok(self
                 .world
@@ -390,6 +447,37 @@ impl Host for SimHost<'_> {
                 }
                 Ok(())
             }
+            Effect::AddStability(v)
+            | Effect::AddMobilization(v)
+            | Effect::AddPoliticalCapital(v)
+            | Effect::SetLaw(v) => {
+                let empty = TriggerState {
+                    definitions_hash: 0,
+                    flags: self
+                        .flags
+                        .iter()
+                        .map(|(id, fs)| (*id, fs.iter().cloned().collect()))
+                        .collect(),
+                    ended: None,
+                };
+                let allowed = if matches!(e, Effect::SetLaw(_)) {
+                    let d = self
+                        .world
+                        .defs()
+                        .economy()
+                        .ok_or(TriggerError::MissingContext)?;
+                    let l = d.laws.get(v).ok_or(TriggerError::InvalidReference)?;
+                    evaluate(self, &l.condition, scope)?
+                } else {
+                    true
+                };
+                let _ = empty;
+                self.economy
+                    .as_mut()
+                    .ok_or(TriggerError::MissingContext)?
+                    .political_effect(self.world, id, e, self.state.tick(), allowed)
+                    .map_err(|_| TriggerError::InvalidArgument)
+            }
             _ => Err(TriggerError::Unsupported),
         }
     }
@@ -401,6 +489,16 @@ pub fn checkpoint(
     sources: BTreeSet<String>,
     evaluate_condition: bool,
 ) -> Result<(), TriggerError> {
+    checkpoint_economy(world, state, trigger, sources, evaluate_condition, None)
+}
+pub(crate) fn checkpoint_economy(
+    world: &World,
+    state: &State,
+    trigger: &mut TriggerState,
+    sources: BTreeSet<String>,
+    evaluate_condition: bool,
+    economy: Option<&crate::economy::Economy>,
+) -> Result<(), TriggerError> {
     let defs = world.defs().trigger().ok_or(TriggerError::MissingContext)?;
     let mut causes = Vec::new();
     if let Some(end) = &defs.end_date
@@ -410,7 +508,7 @@ pub fn checkpoint(
         causes.push(EndCause::Date);
     }
     if evaluate_condition && let Some(c) = &defs.end_conditions {
-        let host = SimHost::new(world, state, trigger);
+        let host = SimHost::new(world, state, trigger).with_economy(economy);
         if evaluate(&host, c, root(world, defs.end_root.as_deref())?)? {
             causes.push(EndCause::Condition);
         }

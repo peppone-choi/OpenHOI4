@@ -6,6 +6,7 @@
 use oh_core::{DivisionId, NationId, ProvinceId, SerializationError};
 use serde::Serialize;
 use std::collections::BTreeMap;
+pub mod economy;
 pub mod formula;
 pub mod ledger;
 pub mod movement;
@@ -18,6 +19,7 @@ pub use time::{Date, TimeConfig};
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum Error {
+    Economy(economy::EconomyError),
     ScenarioEnded,
     Trigger(trigger::TriggerError),
     InvalidWorld,
@@ -36,6 +38,7 @@ impl std::fmt::Display for Error {
             return error.fmt(f);
         }
         f.write_str(match self {
+            Self::Economy(_) => "economy command or phase failed",
             Self::ScenarioEnded => "scenario-ended",
             Self::Trigger(_) => "trigger execution failed",
             Self::Movement(_) => "movement command or phase failed",
@@ -53,6 +56,7 @@ impl std::fmt::Display for Error {
 impl std::error::Error for Error {}
 #[derive(Clone, Debug, Eq, PartialEq, Serialize)]
 pub enum Command {
+    Economy(economy::Action),
     Pause(bool),
     SetSpeed(u8),
     Move {
@@ -151,6 +155,8 @@ pub struct Simulation {
     movement: Option<movement::Movement>,
     #[serde(skip_serializing_if = "Option::is_none")]
     trigger: Option<trigger::TriggerState>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    economy: Option<economy::Economy>,
 }
 impl Simulation {
     pub fn new(scenario: String, date: Date, seed: u64, config: TimeConfig) -> Result<Self, Error> {
@@ -172,6 +178,7 @@ impl Simulation {
             world: None,
             movement: None,
             trigger: None,
+            economy: None,
         })
     }
     pub fn with_world(
@@ -182,14 +189,24 @@ impl Simulation {
         world: world::World,
     ) -> Result<Self, Error> {
         let mut sim = Self::new(scenario, date, seed, config)?;
+        if world.defs().economy().is_some() {
+            sim.economy = Some(economy::Economy::initial(&world, 0).map_err(Error::Economy)?);
+        }
         sim.world = Some(world);
         if let Some(world) = sim.world.as_ref()
             && let Some(defs) = world.defs().trigger()
         {
             let mut trigger =
                 trigger::TriggerState::initial(defs, world).map_err(Error::Trigger)?;
-            trigger::checkpoint(world, &sim.state, &mut trigger, Default::default(), true)
-                .map_err(Error::Trigger)?;
+            trigger::checkpoint_economy(
+                world,
+                &sim.state,
+                &mut trigger,
+                Default::default(),
+                true,
+                sim.economy.as_ref(),
+            )
+            .map_err(Error::Trigger)?;
             sim.trigger = Some(trigger);
         }
         Ok(sim)
@@ -208,6 +225,43 @@ impl Simulation {
         sim.movement = Some(movement);
         Ok(sim)
     }
+    pub fn economy(&self) -> Option<&economy::Economy> {
+        self.economy.as_ref()
+    }
+    fn apply_economy(
+        command: &Command,
+        nation: NationId,
+        world: Option<&world::World>,
+        state: &State,
+        trigger: Option<&trigger::TriggerState>,
+        economy: Option<&mut economy::Economy>,
+    ) -> Result<(), Error> {
+        let Command::Economy(action) = command else {
+            return Ok(());
+        };
+        let world = world.ok_or(Error::InvalidWorld)?;
+        let mut condition_met = true;
+        if let economy::Action::ChangeLaw { law } = action {
+            let definition = world
+                .defs()
+                .economy()
+                .ok_or(Error::Economy(economy::EconomyError::MissingContext))?;
+            let law = definition
+                .laws
+                .get(law)
+                .ok_or(Error::Economy(economy::EconomyError::InvalidReference))?;
+            let empty = trigger::TriggerState::empty(world);
+            let host = trigger::SimHost::new(world, state, trigger.unwrap_or(&empty))
+                .with_economy(economy.as_deref());
+            condition_met =
+                trigger::evaluate(&host, &law.condition, trigger::Scope::Nation(nation))
+                    .map_err(Error::Trigger)?;
+        }
+        economy
+            .ok_or(Error::Economy(economy::EconomyError::MissingContext))?
+            .command(world, nation, action, state.tick(), condition_met)
+            .map_err(Error::Economy)
+    }
     pub fn movement(&self) -> Option<&movement::Movement> {
         self.movement.as_ref()
     }
@@ -223,6 +277,7 @@ impl Simulation {
         world: Option<&world::World>,
         state: &State,
         trigger: Option<&mut trigger::TriggerState>,
+        economy: Option<&mut economy::Economy>,
     ) -> Result<std::collections::BTreeSet<String>, Error> {
         let Command::Effects { program } = command else {
             return Ok(Default::default());
@@ -247,9 +302,13 @@ impl Simulation {
             return Err(Error::Trigger(trigger::TriggerError::InvalidReference));
         }
         let trigger = trigger.ok_or(Error::Trigger(trigger::TriggerError::MissingContext))?;
-        let mut host = trigger::SimHost::new(world, state, trigger);
+        let mut host =
+            trigger::SimHost::new(world, state, trigger).with_economy(economy.as_deref());
         trigger::execute(&mut host, &p.effects, scope).map_err(Error::Trigger)?;
         let sources = host.sources.clone();
+        if let (Some(target), Some(value)) = (economy, host.economy()) {
+            *target = value.clone();
+        }
         host.commit(trigger);
         Ok(sources)
     }
@@ -313,11 +372,24 @@ impl Simulation {
         }
         if matches!(command, Command::Effects { .. }) {
             let mut preview = self.trigger.clone();
+            let mut preview_economy = self.economy.clone();
             Self::apply_effects(
                 &command,
                 nation,
                 self.world.as_ref(),
                 &self.state,
+                preview.as_mut(),
+                preview_economy.as_mut(),
+            )?;
+        }
+        if matches!(command, Command::Economy(_)) {
+            let mut preview = self.economy.clone();
+            Self::apply_economy(
+                &command,
+                nation,
+                self.world.as_ref(),
+                &self.state,
+                self.trigger.as_ref(),
                 preview.as_mut(),
             )?;
         }
@@ -334,6 +406,7 @@ impl Simulation {
         let mut next_world = self.world.clone();
         let mut next_movement = self.movement.clone();
         let mut next_trigger = self.trigger.clone();
+        let mut next_economy = self.economy.clone();
         let mut end_sources = std::collections::BTreeSet::new();
         let keys: Vec<_> = self
             .queue
@@ -344,12 +417,21 @@ impl Simulation {
         let mut commands = Vec::new();
         for key @ (_, nation, sequence) in &keys {
             let result = match &self.queue[key] {
+                c @ Command::Economy(_) => Self::apply_economy(
+                    c,
+                    *nation,
+                    next_world.as_ref(),
+                    &next,
+                    next_trigger.as_ref(),
+                    next_economy.as_mut(),
+                ),
                 c @ Command::Effects { .. } => Self::apply_effects(
                     c,
                     *nation,
                     next_world.as_ref(),
                     &next,
                     next_trigger.as_mut(),
+                    next_economy.as_mut(),
                 )
                 .map(|sources| end_sources.extend(sources)),
                 Command::Pause(paused) => {
@@ -402,6 +484,17 @@ impl Simulation {
                     Phase::Ai,
                     Phase::Ledger,
                 ]);
+                if let Some(economy) = next_economy.as_mut() {
+                    let world = next_world.as_mut().ok_or(Error::InvalidWorld)?;
+                    // Each producer executes at its prescribed daily slot.
+                    economy
+                        .daily_economy(world, next.tick)
+                        .map_err(Error::Economy)?;
+                    economy
+                        .daily_construction(world, next.tick)
+                        .map_err(Error::Economy)?;
+                    economy.daily_politics(world).map_err(Error::Economy)?;
+                }
                 if date.day() == 1 {
                     phases.push(Phase::MonthlyStatistics);
                 }
@@ -411,12 +504,13 @@ impl Simulation {
             world.evaluate(next.tick).map_err(|_| Error::InvalidWorld)?;
         }
         if let Some(trigger) = next_trigger.as_mut() {
-            trigger::checkpoint(
+            trigger::checkpoint_economy(
                 next_world.as_ref().ok_or(Error::InvalidWorld)?,
                 &next,
                 trigger,
                 end_sources,
                 advanced,
+                next_economy.as_ref(),
             )
             .map_err(Error::Trigger)?;
         }
@@ -428,6 +522,7 @@ impl Simulation {
         self.world = next_world;
         self.movement = next_movement;
         self.trigger = next_trigger;
+        self.economy = next_economy;
         Ok(Step {
             advanced,
             commands,
