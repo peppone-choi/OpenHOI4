@@ -87,3 +87,55 @@ pub(crate) fn next_hour(date: Date, hour: u8) -> Result<(Date, u8), Error> {
     };
     Ok((date, 0))
 }
+
+/// REQ-MIL-04: time factors, in the exact ADR-1701 evaluation order.
+pub fn movement_hours(
+    distance: Fx,
+    speed: Fx,
+    factors: crate::movement::Factors,
+) -> Result<Fx, crate::movement::MovementError> {
+    use crate::movement::MovementError;
+    if distance <= Fx::ZERO || speed <= Fx::ZERO {
+        return Err(MovementError::InvalidValue);
+    }
+    factors.validate()?;
+    let mut value = distance.checked_div(speed).ok_or(MovementError::Overflow)?;
+    for factor in [
+        factors.terrain,
+        factors.infrastructure,
+        factors.supply,
+        factors.river,
+    ] {
+        value = value.checked_mul(factor).ok_or(MovementError::Overflow)?;
+    }
+    if value <= Fx::ZERO {
+        return Err(MovementError::InvalidValue);
+    }
+    Ok(value)
+}
+
+/// Strait uses its own final time slot. No river factor participates.
+pub fn strait_hours(
+    distance: Fx,
+    speed: Fx,
+    factors: crate::movement::StraitFactors,
+) -> Result<Fx, crate::movement::MovementError> {
+    use crate::movement::MovementError;
+    if distance <= Fx::ZERO || speed <= Fx::ZERO {
+        return Err(MovementError::InvalidValue);
+    }
+    factors.validate()?;
+    let mut value = distance.checked_div(speed).ok_or(MovementError::Overflow)?;
+    for factor in [
+        factors.terrain,
+        factors.infrastructure,
+        factors.supply,
+        factors.strait,
+    ] {
+        value = value.checked_mul(factor).ok_or(MovementError::Overflow)?;
+    }
+    if value <= Fx::ZERO {
+        return Err(MovementError::InvalidValue);
+    }
+    Ok(value)
+}

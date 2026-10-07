@@ -137,6 +137,9 @@ pub fn header(bytes: &[u8], limits: &Limits) -> Result<()> {
     r.end()
 }
 pub fn body(bytes: &[u8], limits: &Limits) -> Result<()> {
+    body_version(bytes, limits, 1)
+}
+pub fn body_version(bytes: &[u8], limits: &Limits, version: u16) -> Result<()> {
     if bytes.len() as u64 > limits.body_max_bytes {
         return Err("Limit: body".into());
     }
@@ -216,6 +219,66 @@ pub fn body(bytes: &[u8], limits: &Limits) -> Result<()> {
             r.optional_number(16)?;
             r.optional_number(16)?;
             r.optional_number(16)?;
+        }
+    }
+    if version >= 2 {
+        for _ in 0..r.entries(limits.queue_max_entries)? {
+            r.number(64)?;
+            r.number(16)?;
+            r.number(64)?;
+            match r.tag(3)? {
+                0 => {
+                    r.boolean()?;
+                }
+                1 => {
+                    r.byte()?;
+                }
+                2 => {
+                    r.number(32)?;
+                    r.number(16)?;
+                }
+                3 => {
+                    r.number(32)?;
+                }
+                _ => unreachable!(),
+            }
+        }
+        for _ in 0..r.entries(limits.map_entries_max)? {
+            r.number(32)?;
+            r.number(16)?;
+            r.number(16)?;
+            r.number(64)?;
+            for _ in 0..r.entries(65536)? {
+                r.number(16)?;
+            }
+            for _ in 0..r.entries(limits.map_entries_max)? {
+                r.number(16)?;
+                r.number(16)?;
+                for _ in 0..4 {
+                    r.number(64)?;
+                }
+            }
+            for _ in 0..r.entries(limits.map_entries_max)? {
+                r.number(16)?;
+                r.number(16)?;
+                r.number(64)?;
+            }
+            r.number(64)?;
+        }
+    }
+    if version == 3 {
+        for _ in 0..r.entries(limits.map_entries_max)? {
+            r.number(32)?;
+            for _ in 0..r.entries(limits.map_entries_max)? {
+                r.number(16)?;
+                r.number(16)?;
+                if r.byte()? != 3 {
+                    return Err("Postcard: strait crossing kind".into());
+                }
+                for _ in 0..4 {
+                    r.number(64)?;
+                }
+            }
         }
     }
     r.end()

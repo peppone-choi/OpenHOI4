@@ -158,6 +158,12 @@ fn ordinal(d: Date) -> u64 {
 
 impl Simulation {
     pub fn export_save(&self) -> Result<SimulationSaveV1, String> {
+        if self.movement.is_some() {
+            return Err("MovementRequiresV2".into());
+        }
+        self.export_legacy_base()
+    }
+    fn export_legacy_base(&self) -> Result<SimulationSaveV1, String> {
         let queue = self
             .queue
             .iter()
@@ -252,6 +258,311 @@ impl Simulation {
             config,
             queue,
             world,
+            movement: None,
         })
+    }
+}
+#[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
+pub enum CommandV2 {
+    Pause(bool),
+    SetSpeed(u8),
+    Move { unit: u32, destination: u16 },
+    Stop { unit: u32 },
+}
+#[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
+pub struct PendingV2 {
+    pub tick: u64,
+    pub nation: u16,
+    pub sequence: u64,
+    pub command: CommandV2,
+}
+#[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
+pub struct CorrectionV2 {
+    pub from: u16,
+    pub to: u16,
+    pub factors: [i64; 4],
+}
+#[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
+pub struct LegV2 {
+    pub from: u16,
+    pub to: u16,
+    pub hours: i64,
+}
+#[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
+pub struct UnitV2 {
+    pub id: u32,
+    pub nation: u16,
+    pub province: u16,
+    pub speed: i64,
+    pub allowed: Vec<u16>,
+    pub corrections: Vec<CorrectionV2>,
+    pub route: Vec<LegV2>,
+    pub elapsed: i64,
+}
+#[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
+pub struct SimulationSaveV2 {
+    /// Frozen legacy structure; its queue is empty (complete queue below).
+    pub base: SimulationSaveV1,
+    pub queue: Vec<PendingV2>,
+    pub units: Vec<UnitV2>,
+}
+impl Simulation {
+    pub fn export_save_v2(&self) -> Result<SimulationSaveV2, String> {
+        let movement = self.movement.as_ref().ok_or("V2RequiresMovement")?;
+        if movement.has_strait_context() {
+            return Err("StraitRequiresV3".into());
+        }
+        let mut legacy = self.clone();
+        legacy.movement = None;
+        legacy.queue.clear();
+        let base = legacy.export_save()?;
+        let queue = self
+            .queue
+            .iter()
+            .map(|(&(tick, nation, sequence), c)| PendingV2 {
+                tick,
+                nation: nation.0,
+                sequence,
+                command: match c {
+                    Command::Pause(v) => CommandV2::Pause(*v),
+                    Command::SetSpeed(v) => CommandV2::SetSpeed(*v),
+                    Command::Move { unit, destination } => CommandV2::Move {
+                        unit: unit.0,
+                        destination: destination.0,
+                    },
+                    Command::Stop { unit } => CommandV2::Stop { unit: unit.0 },
+                },
+            })
+            .collect();
+        let units = movement
+            .units
+            .iter()
+            .map(|u| UnitV2 {
+                id: u.id.0,
+                nation: u.nation.0,
+                province: u.province.0,
+                speed: u.speed.to_bits(),
+                allowed: u.allowed.iter().map(|id| id.0).collect(),
+                corrections: u
+                    .corrections
+                    .iter()
+                    .map(|(&(from, to), f)| CorrectionV2 {
+                        from: from.0,
+                        to: to.0,
+                        factors: [
+                            f.terrain.to_bits(),
+                            f.infrastructure.to_bits(),
+                            f.supply.to_bits(),
+                            f.river.to_bits(),
+                        ],
+                    })
+                    .collect(),
+                route: u
+                    .route
+                    .iter()
+                    .map(|l| LegV2 {
+                        from: l.from.0,
+                        to: l.to.0,
+                        hours: l.hours.to_bits(),
+                    })
+                    .collect(),
+                elapsed: u.elapsed.to_bits(),
+            })
+            .collect();
+        Ok(SimulationSaveV2 { base, queue, units })
+    }
+    pub fn from_save_v2(dto: SimulationSaveV2, context: &RestoreContext) -> Result<Self, String> {
+        Self::from_movement_save(dto, context, None)
+    }
+    fn from_movement_save(
+        dto: SimulationSaveV2,
+        context: &RestoreContext,
+        straits: Option<BTreeMap<oh_core::DivisionId, crate::movement::DirectedStraits>>,
+    ) -> Result<Self, String> {
+        use crate::movement::{Factors, Leg, Movement, Unit};
+        use oh_core::{DivisionId, Fx, ProvinceId};
+        if !dto.base.queue.is_empty() {
+            return Err("InvalidV2: legacy queue must be empty".into());
+        }
+        let mut sim = Self::from_save(dto.base, context)?;
+        let world = sim.world.as_ref().ok_or("V2RequiresWorld")?;
+        if !strictly_sorted(dto.units.iter().map(|u| u.id)) {
+            return Err("InvalidMovement: duplicate/unsorted units".into());
+        }
+        let mut units = Vec::new();
+        for u in dto.units {
+            if !strictly_sorted(u.allowed.iter().copied())
+                || !strictly_sorted(u.corrections.iter().map(|f| (f.from, f.to)))
+            {
+                return Err("InvalidMovement: duplicate/unsorted context".into());
+            }
+            units.push(Unit {
+                id: DivisionId(u.id),
+                nation: NationId(u.nation),
+                province: ProvinceId(u.province),
+                speed: Fx::from_bits(u.speed),
+                allowed: u.allowed.into_iter().map(ProvinceId).collect(),
+                corrections: u
+                    .corrections
+                    .into_iter()
+                    .map(|c| {
+                        (
+                            (ProvinceId(c.from), ProvinceId(c.to)),
+                            Factors {
+                                terrain: Fx::from_bits(c.factors[0]),
+                                infrastructure: Fx::from_bits(c.factors[1]),
+                                supply: Fx::from_bits(c.factors[2]),
+                                river: Fx::from_bits(c.factors[3]),
+                            },
+                        )
+                    })
+                    .collect(),
+                route: u
+                    .route
+                    .into_iter()
+                    .map(|l| Leg {
+                        from: ProvinceId(l.from),
+                        to: ProvinceId(l.to),
+                        hours: Fx::from_bits(l.hours),
+                    })
+                    .collect(),
+                elapsed: Fx::from_bits(u.elapsed),
+            });
+        }
+        let movement = Movement { units, straits };
+        movement.validate(world).map_err(|e| e.to_string())?;
+        if !strictly_sorted(dto.queue.iter().map(|q| (q.tick, q.nation, q.sequence))) {
+            return Err("InvalidQueue: duplicate/unsorted key".into());
+        }
+        for q in dto.queue {
+            if q.tick < sim.state.tick {
+                return Err("InvalidQueue: past tick".into());
+            }
+            let command = match q.command {
+                CommandV2::Pause(v) => Command::Pause(v),
+                CommandV2::SetSpeed(v) if (1..=5).contains(&v) => Command::SetSpeed(v),
+                CommandV2::Move { unit, destination } => {
+                    let u = movement
+                        .unit(DivisionId(unit))
+                        .ok_or("InvalidQueue: unit")?;
+                    if u.nation.0 != q.nation
+                        || !crate::movement::land(world.defs().map(), ProvinceId(destination))
+                    {
+                        return Err("InvalidQueue: owner/destination".into());
+                    }
+                    Command::Move {
+                        unit: DivisionId(unit),
+                        destination: ProvinceId(destination),
+                    }
+                }
+                CommandV2::Stop { unit } => {
+                    if movement
+                        .unit(DivisionId(unit))
+                        .is_none_or(|u| u.nation.0 != q.nation)
+                    {
+                        return Err("InvalidQueue: owner/unit".into());
+                    }
+                    Command::Stop {
+                        unit: DivisionId(unit),
+                    }
+                }
+                _ => return Err("InvalidQueue: speed".into()),
+            };
+            sim.queue
+                .insert((q.tick, NationId(q.nation), q.sequence), command);
+        }
+        sim.movement = Some(movement);
+        Ok(sim)
+    }
+}
+
+/// Frozen v2 body plus independently typed direction/kind/raw time context.
+#[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
+pub struct StraitCorrectionV3 {
+    pub from: u16,
+    pub to: u16,
+    pub kind: u8,
+    pub factors: [i64; 4],
+}
+#[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
+pub struct UnitStraitsV3 {
+    pub unit: u32,
+    pub corrections: Vec<StraitCorrectionV3>,
+}
+#[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
+pub struct SimulationSaveV3 {
+    pub base: SimulationSaveV2,
+    pub straits: Vec<UnitStraitsV3>,
+}
+impl Simulation {
+    pub fn export_save_v3(&self) -> Result<SimulationSaveV3, String> {
+        let contexts = self
+            .movement
+            .as_ref()
+            .and_then(|m| m.straits.as_ref())
+            .ok_or("V3RequiresStraitContext")?;
+        let straits = contexts
+            .iter()
+            .map(|(unit, corrections)| UnitStraitsV3 {
+                unit: unit.0,
+                corrections: corrections
+                    .iter()
+                    .map(|(&(from, to), c)| StraitCorrectionV3 {
+                        from: from.0,
+                        to: to.0,
+                        kind: c.kind as u8,
+                        factors: [
+                            c.factors.terrain.to_bits(),
+                            c.factors.infrastructure.to_bits(),
+                            c.factors.supply.to_bits(),
+                            c.factors.strait.to_bits(),
+                        ],
+                    })
+                    .collect(),
+            })
+            .collect();
+        let mut legacy = self.clone();
+        legacy
+            .movement
+            .as_mut()
+            .ok_or("V3RequiresMovement")?
+            .straits = None;
+        Ok(SimulationSaveV3 {
+            base: legacy.export_save_v2()?,
+            straits,
+        })
+    }
+    pub fn from_save_v3(dto: SimulationSaveV3, context: &RestoreContext) -> Result<Self, String> {
+        use crate::movement::{CrossingKind, StraitContext, StraitFactors};
+        use oh_core::{DivisionId, Fx, ProvinceId};
+        if !strictly_sorted(dto.straits.iter().map(|c| c.unit)) {
+            return Err("InvalidStrait: duplicate/unsorted units".into());
+        }
+        let mut straits = BTreeMap::new();
+        for c in dto.straits {
+            if !strictly_sorted(c.corrections.iter().map(|e| (e.from, e.to))) {
+                return Err("InvalidStrait: duplicate/unsorted directions".into());
+            }
+            let mut corrections = BTreeMap::new();
+            for e in c.corrections {
+                if e.kind != CrossingKind::Strait as u8 {
+                    return Err("InvalidStrait: crossing kind".into());
+                }
+                corrections.insert(
+                    (ProvinceId(e.from), ProvinceId(e.to)),
+                    StraitContext {
+                        kind: CrossingKind::Strait,
+                        factors: StraitFactors {
+                            terrain: Fx::from_bits(e.factors[0]),
+                            infrastructure: Fx::from_bits(e.factors[1]),
+                            supply: Fx::from_bits(e.factors[2]),
+                            strait: Fx::from_bits(e.factors[3]),
+                        },
+                    },
+                );
+            }
+            straits.insert(DivisionId(c.unit), corrections);
+        }
+        Self::from_movement_save(dto.base, context, Some(straits))
     }
 }

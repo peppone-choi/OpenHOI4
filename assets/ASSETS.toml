@@ -457,3 +457,193 @@ license = "CC-BY-SA-4.0"
 modified = false
 ai_generated = false
 notes = "Original manifest display name translation (WP-24); no third-party material."
+
+# Frozen source97f raw v2 movement producer output (WP-17 P06).
+[[asset]]
+path = "crates/oh_save/tests/fixtures/movement-v2-97f.ohsave"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Unmodified native movement_fixture output from 97f688718dabed46bc477fa249798ac09e999581; original synthetic Testland. SHA256 d3706ae77d226ad480ce24e018137de6898bd45b0bd6dbb203b1a4a4c6c9df0f; split hash18bff036731f4f26, resumed hash a145b72ad0ad25e6. New compatibility fixture, no existing v1 fixture/golden replacement."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/movement-v2-97f.expected.json"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Unmodified raw capture.json from original source97f688718dabed46bc477fa249798ac09e999581 native producer; full v2 DTO/canonical bytes and split18bff036731f4f26/resumed a145b72ad0ad25e6. Added to preserve original v2 expectations, not replace any existing expected value."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/movement-pack-97f/common/buildings.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Unmodified source97f688718dabed46bc477fa249798ac09e999581 Testland file for historical v2 compatibility only; SHA256 23826071aeb8a2bc7a1f032ec2adcc23424e5f60ac579ca9ee18be5bd52816b8. Original synthetic pack; current pack tests are separate; no migration or replacement."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/movement-pack-97f/common/resources.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Unmodified source97f688718dabed46bc477fa249798ac09e999581 Testland file for historical v2 compatibility only; SHA256 514eee6a8dbc6835c6833c38dadbe5da7dae3d70d185aaecea73ba8dd62b61fc. Original synthetic pack; current pack tests are separate; no migration or replacement."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/movement-pack-97f/common/terrain.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Unmodified source97f688718dabed46bc477fa249798ac09e999581 Testland file for historical v2 compatibility only; SHA256 db903c3403dded0c36b38ae28ab2b6f61a1c66efdc7c16a4c5240dceb475d289. Original synthetic pack; current pack tests are separate; no migration or replacement."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/movement-pack-97f/defines.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Unmodified source97f688718dabed46bc477fa249798ac09e999581 Testland file for historical v2 compatibility only; SHA256 76d46941adae2f693574dc5551b4afcb9f1999cf5e513fd863de1d2d923587df. Original synthetic pack; current pack tests are separate; no migration or replacement."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/movement-pack-97f/localisation/en/map.ftl"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Unmodified source97f688718dabed46bc477fa249798ac09e999581 Testland file for historical v2 compatibility only; SHA256 ae6442ef5fd0912ae5d7cdbf0541edd417c83dfeb505d6f749b2b6687ddb9b4b. Original synthetic pack; current pack tests are separate; no migration or replacement."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/movement-pack-97f/localisation/en/national.ftl"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Unmodified source97f688718dabed46bc477fa249798ac09e999581 Testland file for historical v2 compatibility only; SHA256 e109c2e8097418bef7c251904497fae23b21f0a85abe6ed8a8dc208445c84407. Original synthetic pack; current pack tests are separate; no migration or replacement."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/movement-pack-97f/localisation/ko/map.ftl"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Unmodified source97f688718dabed46bc477fa249798ac09e999581 Testland file for historical v2 compatibility only; SHA256 b7ac3fb02aa96a16f8338bf81068aa378d7791e8be7306ddb2f0f42092bf700f. Original synthetic pack; current pack tests are separate; no migration or replacement."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/movement-pack-97f/localisation/ko/national.ftl"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Unmodified source97f688718dabed46bc477fa249798ac09e999581 Testland file for historical v2 compatibility only; SHA256 7824bf87a61e5041644e3d62b09ebc4debc6f0769878e36bf1b662198986e312. Original synthetic pack; current pack tests are separate; no migration or replacement."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/movement-pack-97f/manifest.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Unmodified source97f688718dabed46bc477fa249798ac09e999581 Testland file for historical v2 compatibility only; SHA256 92656dc53031c8bf5d1e8af8b5a15e4448b3eb2eee498f56010811b78528dbcc. Original synthetic pack; current pack tests are separate; no migration or replacement."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/movement-pack-97f/maps/testland/adjacency_overrides.csv"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Unmodified source97f688718dabed46bc477fa249798ac09e999581 Testland file for historical v2 compatibility only; SHA256 251e1353688f511baf45b1b513a8a79ad3329ae21dfb1e6e29e9ba362572a525. Original synthetic pack; current pack tests are separate; no migration or replacement."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/movement-pack-97f/maps/testland/provinces.csv"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Unmodified source97f688718dabed46bc477fa249798ac09e999581 Testland file for historical v2 compatibility only; SHA256 f04d94464fe95d7c25069529a34f782e060ba9cf5185618384a3ac5dd2846c89. Original synthetic pack; current pack tests are separate; no migration or replacement."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/movement-pack-97f/maps/testland/provinces.png"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Unmodified source97f688718dabed46bc477fa249798ac09e999581 Testland file for historical v2 compatibility only; SHA256 05305d56dc90dfbfbd73fc1a5f3a480ec6e82551f60a93be7d8bc53ad3d73dab. Original synthetic pack; current pack tests are separate; no migration or replacement."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/movement-pack-97f/maps/testland/regions.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Unmodified source97f688718dabed46bc477fa249798ac09e999581 Testland file for historical v2 compatibility only; SHA256 1b9eadcb639cef1b6e7b88451e1e7134a88d8b5cb108e4066ee70cc137f79485. Original synthetic pack; current pack tests are separate; no migration or replacement."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/movement-pack-97f/maps/testland/states.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Unmodified source97f688718dabed46bc477fa249798ac09e999581 Testland file for historical v2 compatibility only; SHA256 d63380dfe0240f8fe50feabe8e253278a03020d24ad46e65cd69f5a3e0512f2b. Original synthetic pack; current pack tests are separate; no migration or replacement."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/movement-pack-97f/maps/testland/visuals.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Unmodified source97f688718dabed46bc477fa249798ac09e999581 Testland file for historical v2 compatibility only; SHA256 df2b1566fabd3c1a263d543b425a52842584a6ca5bf33827290a1d4fa2f303b1. Original synthetic pack; current pack tests are separate; no migration or replacement."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/movement-pack-97f/scenarios/m1/defines.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Unmodified source97f688718dabed46bc477fa249798ac09e999581 Testland file for historical v2 compatibility only; SHA256 91ac0d4669188dd911622bdbdba5efb43c5d242f195d6f1478f07afc91f45411. Original synthetic pack; current pack tests are separate; no migration or replacement."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/movement-pack-97f/scenarios/m1/nations/NTH.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Unmodified source97f688718dabed46bc477fa249798ac09e999581 Testland file for historical v2 compatibility only; SHA256 04f0a06c29a74b41e7effe94a3e131da359f213ef35da849e70c59fbd3f8c29a. Original synthetic pack; current pack tests are separate; no migration or replacement."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/movement-pack-97f/scenarios/m1/nations/STH.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Unmodified source97f688718dabed46bc477fa249798ac09e999581 Testland file for historical v2 compatibility only; SHA256 522a1ab15df094a0c15012e2c8c3b362dba7fb766ff0d2b6eea48b0f1bde0b2b. Original synthetic pack; current pack tests are separate; no migration or replacement."
+
+[[asset]]
+path = "crates/oh_save/tests/fixtures/movement-pack-97f/scenarios/m1/scenario.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Unmodified source97f688718dabed46bc477fa249798ac09e999581 Testland file for historical v2 compatibility only; SHA256 01258b9b99424f3855394d410ba369b407357239006e04d1d914265d36151dd5. Original synthetic pack; current pack tests are separate; no migration or replacement."

@@ -3,11 +3,12 @@
 //! The host validates authority and supplies a server arrival sequence. Both
 //! player and AI inputs use the same queue. Time commands assume single player;
 //! multiplayer authorization belongs to oh_server (02 §10).
-use oh_core::{NationId, SerializationError};
+use oh_core::{DivisionId, NationId, ProvinceId, SerializationError};
 use serde::Serialize;
 use std::collections::BTreeMap;
 pub mod formula;
 pub mod ledger;
+pub mod movement;
 pub mod save_state;
 mod time;
 pub mod world;
@@ -16,6 +17,7 @@ pub use time::{Date, TimeConfig};
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum Error {
     InvalidWorld,
+    Movement(movement::MovementError),
     InvalidDate,
     InvalidSpeed,
     InvalidTimeDefines,
@@ -26,7 +28,11 @@ pub enum Error {
 }
 impl std::fmt::Display for Error {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        if let Self::Movement(error) = self {
+            return error.fmt(f);
+        }
         f.write_str(match self {
+            Self::Movement(_) => "movement command or phase failed",
             Self::InvalidWorld => "invalid world or ledger calculation",
             Self::InvalidDate => "invalid Gregorian date",
             Self::InvalidSpeed => "speed must be in 1..=5",
@@ -43,6 +49,13 @@ impl std::error::Error for Error {}
 pub enum Command {
     Pause(bool),
     SetSpeed(u8),
+    Move {
+        unit: DivisionId,
+        destination: ProvinceId,
+    },
+    Stop {
+        unit: DivisionId,
+    },
 }
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum Phase {
@@ -125,6 +138,8 @@ pub struct Simulation {
     queue: BTreeMap<(u64, NationId, u64), Command>,
     #[serde(skip_serializing_if = "Option::is_none")]
     world: Option<world::World>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    movement: Option<movement::Movement>,
 }
 impl Simulation {
     pub fn new(scenario: String, date: Date, seed: u64, config: TimeConfig) -> Result<Self, Error> {
@@ -144,6 +159,7 @@ impl Simulation {
             config,
             queue: BTreeMap::new(),
             world: None,
+            movement: None,
         })
     }
     pub fn with_world(
@@ -156,6 +172,39 @@ impl Simulation {
         let mut sim = Self::new(scenario, date, seed, config)?;
         sim.world = Some(world);
         Ok(sim)
+    }
+    /// Trusted host initialization only. No client supplies speed or context.
+    pub fn with_movement(
+        scenario: String,
+        date: Date,
+        seed: u64,
+        config: TimeConfig,
+        world: world::World,
+        movement: movement::Movement,
+    ) -> Result<Self, Error> {
+        movement.validate(&world).map_err(Error::Movement)?;
+        let mut sim = Self::with_world(scenario, date, seed, config, world)?;
+        sim.movement = Some(movement);
+        Ok(sim)
+    }
+    pub fn movement(&self) -> Option<&movement::Movement> {
+        self.movement.as_ref()
+    }
+    fn apply_movement(
+        command: &Command,
+        nation: NationId,
+        world: Option<&world::World>,
+        movement: Option<&mut movement::Movement>,
+    ) -> Result<(), Error> {
+        let (unit, destination) = match command {
+            Command::Move { unit, destination } => (*unit, Some(*destination)),
+            Command::Stop { unit } => (*unit, None),
+            _ => return Ok(()),
+        };
+        movement
+            .ok_or(Error::Movement(movement::MovementError::MissingContext))?
+            .command(world.ok_or(Error::InvalidWorld)?, nation, unit, destination)
+            .map_err(Error::Movement)
     }
     /// Read-only resume boundary: WP-11 must preserve config and the complete queue.
     pub fn config(&self) -> &TimeConfig {
@@ -192,6 +241,10 @@ impl Simulation {
         if self.queue.contains_key(&key) {
             return Err(Error::DuplicateCommand);
         }
+        if matches!(command, Command::Move { .. } | Command::Stop { .. }) {
+            let mut preview = self.movement.clone();
+            Self::apply_movement(&command, nation, self.world.as_ref(), preview.as_mut())?;
+        }
         self.queue.insert(key, command);
         Ok(())
     }
@@ -200,6 +253,7 @@ impl Simulation {
     pub fn step(&mut self) -> Result<Step, Error> {
         let mut next = self.state.clone();
         let mut next_world = self.world.clone();
+        let mut next_movement = self.movement.clone();
         let keys: Vec<_> = self
             .queue
             .keys()
@@ -212,6 +266,9 @@ impl Simulation {
                 Command::Pause(paused) => {
                     next.paused = *paused;
                     Ok(())
+                }
+                c @ (Command::Move { .. } | Command::Stop { .. }) => {
+                    Self::apply_movement(c, *nation, next_world.as_ref(), next_movement.as_mut())
                 }
                 Command::SetSpeed(speed) => {
                     if self.config.valid_speed(*speed) {
@@ -238,6 +295,9 @@ impl Simulation {
             // Empty M0 slots in the prescribed order. Later WPs own their rules.
             // Calendar is advanced before midnight systems run.
             phases.extend([Phase::Movement, Phase::Combat, Phase::RetreatAndControl]);
+            if let Some(movement) = next_movement.as_mut() {
+                movement.advance().map_err(Error::Movement)?;
+            }
             if hour == 0 {
                 phases.extend([
                     Phase::Supply,
@@ -267,6 +327,7 @@ impl Simulation {
         }
         self.state = next;
         self.world = next_world;
+        self.movement = next_movement;
         Ok(Step {
             advanced,
             commands,
