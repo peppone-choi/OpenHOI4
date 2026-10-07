@@ -137,3 +137,7 @@ PNG원픽셀decode대조:province-colors8885changedpixels는toolbar579,113..887,
 현재scope내사용자결정필요없음. generalized8Kcoast확대계단/작은섬·통로누락가능/globalDEM/정확능선·고개·강network/역사도시·state·nation·economy·gameunit미연결.8Kunsupportedhardware는원capability실패를보고하고해상도fallback하지않는다. 공개hosting/mainmerge/push/tag/CUA/globalinput없음. ownVite127.0.0.1:4317PID33284유지.
 
 최종cleanHEAD실제fullPNG/동일카메라2d920baked입력before/finalafter와원실패/native로그/ZIP6입력(4ZIP·2TIFF)/outputs4/criticalfiles를newfinalidentity로봉인해부모에인계한다. oldtarget/evidence/WORLD-PREVIEW/final/identity봉인은변경하지않는다.
+
+### 작은 화면 유닛 설명과 지역 버튼 겹침 수정
+
+최종시도bf261a8의850×650실제PNG에서legend가worldbutton일부를덮었다. owncapture overlapassert추가후legend-overlap-rednative1실패보존. 1150px이하previewCSS에서legendbottom을114px로옮긴뒤legend-overlap-greennative0/전조작통과. 850regioncontrols와legendbounds가서로겹치지않고rail군버튼끝까지scroll접근가능. 기존App/CSS/원테스트/assert/timeout/retry변경없음. 데이터/GLB/renderer/productTSbytes는bf261a8와동일하며ownpreviewCSS와capturehelper만추가변경. 이전bf261a8final시도captures는이력으로보존하고최종selected-headcapture/identity와구별한다. 이최종cleanHEAD의원M1전체41suite를새ignoredconfig/같은최소인자로다시실행하고단일native결과를봉인한다.

@@ -82,6 +82,8 @@ try{
   const rail=await page.locator('.preview-rail').evaluate(el=>{el.scrollTop=el.scrollHeight;const box=el.getBoundingClientRect(),last=el.querySelector('button:last-of-type').getBoundingClientRect();return {top:box.top,bottom:box.bottom,height:box.height,scrollHeight:el.scrollHeight,scrollTop:el.scrollTop,lastTop:last.top,lastBottom:last.bottom,viewportHeight:innerHeight,documentWidth:document.documentElement.scrollWidth,viewportWidth:innerWidth};});
   if(rail.bottom>612||rail.lastTop<rail.top||rail.lastBottom>rail.bottom||rail.documentWidth>rail.viewportWidth)throw new Error('small viewport rail not fully reachable: '+JSON.stringify(rail));
   actions.push({action:'small-viewport-rail-reachability',...rail});await capture('resize-rail-scrolled');
+  const layout=await page.evaluate(()=>{const region=document.querySelector('.preview-regions').getBoundingClientRect(),legend=document.querySelector('.preview-units').getBoundingClientRect();return {region:{left:region.left,top:region.top,right:region.right,bottom:region.bottom},legend:{left:legend.left,top:legend.top,right:legend.right,bottom:legend.bottom},overlap:region.left<legend.right&&region.right>legend.left&&region.top<legend.bottom&&region.bottom>legend.top};});
+  actions.push({action:'small-viewport-regions-legend-layout',...layout});if(layout.overlap)throw new Error('sample legend covers region controls: '+JSON.stringify(layout));
   await page.setViewportSize({width:1280,height:720});await capture('resize-1280x720');
   await page.setViewportSize({width:1600,height:1000});await ready();
   await page.getByRole('button',{name:'언어',exact:true}).click();await capture('english');
