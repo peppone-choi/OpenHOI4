@@ -21,3 +21,11 @@ main `c5d7f8e9628aec8a52227863204e9fc7fc5ab409`에 단순 합류한 검수 커�
 상단 HUD가 누락됐다는 부모 최초 시각 판독은 잘못이었다. 원 PNG·F07 관찰 기록은 보존하고 별도 정정 증거를 추가했다. main/source 세계 PNG의 whole bytes/SHA/RGB가 모두 같으며, 새 headless DOM 관측에서도 상단96px·OpenHOI4·지표가 visible이었다. 제품 F07은 재현되지 않았고 제품 수정이나 재검증 앱을 만들지 않았다. 기존 native0를 실패로 바꾸지 않는다. ownVite의 명시적 PID 종료 native1은 정상 검사 Chrome native0와 별도다.
 
 현재는 로컬 P07이 통과한 상태다. 이 문서·증거의 새 최종 main 커밋을 푸시하고 같은 HEAD의6workflow/25필수job 및 Save/Trigger 실제3OS artifact를 확인해야 기본 브랜치 통합 판정을 마친다. 이전 ab0의 CI green을 새 HEAD로 대신하지 않는다. 총24,889/육해호수·source tiny·Ireland17/현대 MODIS2002–2003·전세계 DEM/정밀 수로·능선/미연결 권위게임 한계는 유지한다. 전체WP32/45·M2/M5·사용자 외관 승인이나 원W1/W2 묶음 완료로 세지 않는다.
+
+## 통합 커밋 CI·원본 산출물 인수 — 2026-10-08 00:47 KST
+
+통합 커밋 `81deb803944cf6297f13b3f14ca454774cea141b`의 실제6workflow/25필수job이 모두 SUCCESS다. [같은 커밋의 원본 증거](evidence/M2-r2-81deb-CI-final/README.md)는 실제9 Save/Trigger 산출물·API digest·ZIP bytes/SHA/CRC와 새 native comparer original/current/trigger 모두0을 보존한다. P07 checkpoint ea355와 제품387 Gitblob이 동일하다. 새 증거·인계만 추가하는 후속 문서 커밋의 CI는 별도 관측한다.
+
+초기4workflow/8job은 runner0/steps0의 GitHub runner 획득 실패였다. 부모는 각 실패 workflow에 `--failed`를 한 번씩 요청했고 원native0 receipt를 보존했다. 일반/Core/Simulation의 실제 최신 attempt3와 중간attempt2 queued·jobs0, Save attempt2, Trigger/Localisation attempt1은 구분한다. 추가attempt3의 요청 주체는 계정actor만으로 확인되지 않았다. Save Windows/macOS는 원attempt1 성공 capture/15:10·15:08 업로드를 이어받았고 Ubuntu는attempt2 새capture다. 전3OS를 새attempt2 실행으로 기록하지 않는다. 최초 FAIL·log-not-found·추가attempt metadata와 원 dispatch는 originals.zip의 prior-observations 및 attempt-attribution.json에 보존했다.
+
+세계/HUD/실제3D는 새 독립 P05-4의 한정 PASS·main P07·같은 통합 커밋 CI·실제3OS를 충족했다. 전체WP32/45나M2/M5, 사용자 외관 승인으로 확대하지 않는다. 고유WP15·원W1/W2 전체0/0·M2게이트없음은 유지하며 기존 W1-c WP25로 이어간다. 이 기록은 RUN 종료 P08이 아니다.

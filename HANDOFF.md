@@ -1,5 +1,14 @@
 # 인수인계
 
+## 진행 중 M2-r2 세계 프리뷰 통합 증거 인수 — 2026-10-08 00:47 KST
+
+통합 커밋 `81deb803944cf6297f13b3f14ca454774cea141b`에서6CI/25필수job SUCCESS, 실제9 Save/Trigger artifact의 digest/ZIP·fresh native3 comparer0을 인수했다. 새독립 P05-4/source5794505·P07/ea355와 제품387 blob 동등·원실패 보존을 함께 확인해 세계/HUD/실제3D 한정 통합 조건을 충족했다. [원CI·원본 산출물](docs/plans/evidence/M2-r2-81deb-CI-final/README.md)과 [판정·attempt 구분](docs/plans/WORLD-PREVIEW-P07.md)을 참조한다.
+
+원4workflow/8job runner 획득FAIL과 workflow당 부모1회 rerun, actual CI/Core/Sim attempt3·중간attempt2 queued/jobs0·추가요청 주체unknown, Save attempt2의 원Windows/macOS capture carry-forward를 구분한다. E: 공간은 사용자 직접 확보했으며 캐시 삭제 정책차단을 우회하지 않았다. 원증거/작업트리 보존과 지도 한계·미연결 게임 기능은 그대로다.
+
+고유WP15·M0/M1 PASS·원W1/W2 전체0/0·M2게이트없음을 유지한다. 기존 승인된 WP25를 고정prior81deb·전용worktree·단일 소유·원한도·새독립검증 계약으로 이어간다. 후속 문서 커밋은 제품이 같아도 같은HEAD CI를 별도로 확인한다. 이 절은 RUN 종료 P08이 아니다. 아래 관측은 각 시점의 역사다.
+
+
 ## 진행 중 M2-r2 WORLD 로컬 통합 검수 — 2026-10-07 23:55 KST
 
 [새 P05-4](docs/verify/WORLD-PREVIEW.M2-r2.attempt4.md)는 source5794505의 유효 한정 PASS다. actualidle/completed26/final15367chars와 원10017/full/rawd30e 불변, MF976/ZIP977 전수0 및 원174950491B/69c088…/48MBparts4 실제 재조립·CRC를 인수했다. 원 F05·첫 wrapper 경로 예외·qualifiedfresh2/3과 모든 원본은 보존한다.
