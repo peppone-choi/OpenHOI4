@@ -4,6 +4,8 @@
 
 ## 새 WP-13 PASS와 세계 화면 체크포인트
 
+독립 PASS source de0를 main `dcacc4d2c811046636ea9b8b8edd78233437d863`에 충돌 없이 병합했다. 제품336파일 Git blob이 exact source와 동일하다. [부모 P-07](evidence/M2-r2-WP13-P07-dcacc/README.md)의40/40 명령·driver native0와 의미 대조가 통과했다. M0 `b039d35666b77fc2`/M1 `b595dc2a1e5b4f8c` 각2회, 원/current 저장·native server·v2/v3 repeat/freshresume 전체 DTO/canonical/hash, 새 Trigger 실제 capture 및 evidence gates를 유지했다. legacy-strict native1은 원래 요구하는 negative다. 원 ZIP SHA `3a9d764e54b8952dbce125bc71d07b8d9024f2b2eb2f162495f564435a323d51`/2375197bytes 전수 불일치0이며 같은 main6CI·실제3OS는 다음 인수 단계다.
+
 WP-13 P-06-1 source `de0e53058c92d91a6a0b6c30805a6b2ea77dde9d`는 명시 소유7파일만 바꿨다. [원 producer](../worklog/evidence/WP-13-M2-r2-P06-1/README.md)와 [새 독립 P-05 전문](../verify/WP-13.M2-r2.attempt2.md)을 보존했다. 부모가 최초/최종9951 tracked 전체SHA·HEAD·semantic/raw index·diff/status 불변과 raw `884679ba36adea985dc1a3288bf281758912a91ebd0966aec112077b6abe8937` byte동일, MF5769/ZIP5770 전수 불일치0를 확인했다. 원 ZIP29877804bytes/SHA `000e9801325cda84f73590ad70cd3365c11edac64bfc2e298426afa426e06978`이며 실제 API final11897chars는 target fullreport와 구분한다. Linux/macOS synthetic predicate를 실제3OS로 세지 않는다. 원ff78 FAIL과 준비 오류를 보존한다.
 
 세계/HUD 첫 `e209d0e161ef836cd4fc97b3dc0038ad280e345f`와 실제3D를 연결한 `a28f49c03f572a637aa699ca292810c9c9117896`의 [세계 화면](evidence/world-preview-checkpoint-e209/README.md)·[실제3D 화면](evidence/world-preview-checkpoint-a28/README.md)을 사용자에게 전달했다. 각각 원본16파일/ZIP17 및15파일/ZIP16 byte/SHA 불일치0다. [임시 에셋 원 producer](../worklog/evidence/PREVIEW-MARKERS-M2-r2-first/README.md)는 imagegen PNG 원본과 procedural GLB 원본을 분리 보존한다. 지도에는 승인된 GLB leaf만 인수했고 raster branch 전체를 병합하지 않았다.
