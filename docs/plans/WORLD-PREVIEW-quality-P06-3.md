@@ -30,6 +30,8 @@ sea 고유ID·경계·인접·hover/pick/면적을 표시한다. lake와 sea 및
 
 ## 계약·검수
 
+첫 candidate1/2의 실제7139onepixel(sourcekind원1pixel6125)은 전체 숫자만으로 정리하지 않는다. 내부 fragment 후보는 **같은 raw 시드 ID의 여러 연결 조각 중 최대 조각보다 작은 ≤8pixel 조각**에 한한다. 원 sourcekind, 실제 urban mask, eligible urban class가 조각 전체에서 같고, 같은 class의 4-neighbour 이웃 연결 province가 **8pixel보다 큰 경우에만** 인접한 큰 조각에 재할당한다. 같은 rawID의 최대 조각/whole-seedprovince/원지리섬·waterhole/독립urban 또는 nonurban surface island는 보존한다. 도시 작은 조각을 모두 지우거나 단절 ID를 합치지 않는다. 픽셀이나 class는 삭제/변형하지 않고 seed-transfer가 만든 끊어진 작은 내부 조각만 정리한다. 선택 순서는 공유 edge수→인접 조각 크기→기존 ordinal이며 결정론적이다. dateline은 기존처럼 adjacency만 추가하며 떨어진 조각 ID를 합치지 않는다. 8pixel은 8K 표시 클릭 면적 후보이고 지리 km²/게임밸런스 값이 아니며 이동 조각의 실제 구면 면적도 보고한다. 20~30k 목표 수를 보고 trimming하지 않는다. 원 후보1/2·26,213/7139 통계와 첫 dirty/clean 실화면을 보존한다.
+
 8192×4096 RG8u16LE/dense1based/256lookup/8K texture capability/orthographic camera/CPU selection·shader assert·fallback·원 GLB bytes 유지. bake180초/3GiB/index64MiB 그대로 감독하고 초과면 실패를 보존한다. 늘릴 필요가 생기면 실제 측정과 ADR부터 작성한다. 새 기술 수치·색·카메라·density·area limits는 defines/metadata이며 게임 계수가 아니다.
 
 유효case별 RED→GREEN, source SHA/CRC/missing/coords/urban-vs-nonurban/large-component coverage/sea samples/knownCaspian미포함/F03edge0/F04u16overflow·noanchor, allpixelkind/urbanclass·everyID4connected/bbox/대표DEM/adjacency/seam/같은 source두bake4SHA. 같은최종renderer의ab64 oldbaked vsnewrealPNG는 과거 전체source재검수와 구별한다. firstIreland/UK/Dublin/sea proof를 clean 여부와 함께 즉시 부모 인계한다. 기본회귀/Rust hashes·원M1단일전체·license/Fluent/docs/assets를 끝까지 실행하고 cleanHEAD·native·실제adapter/frame·HTTP/pageerror·actualabort/unknownfailure·ViteHMR/gameWS별로 봉인한다. own 최소 headless Chrome/profile/PID/localhost만 사용한다. 독립P05/mainCI/전체WP·M5 판정은 부모 몫이다.

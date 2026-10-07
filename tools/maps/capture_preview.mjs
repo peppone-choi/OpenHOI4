@@ -108,10 +108,10 @@ try{
   if(await host.getAttribute('data-backend')!=='webgl2')throw new Error('explicit WebGL2 not presented');
   await page.getByRole('button',{name:'한반도',exact:true}).click();await capture('korea-webgl2');
   await page.setViewportSize({width:1280,height:800});await capture('resize-webgl2');
-  const bad=badResponses.filter(r=>r.status>=400),consoleErrors=consoleMessages.filter(m=>m.type==='error');
-  if(bad.length||consoleErrors.length||errors.length)throw new Error('browser errors present: '+JSON.stringify({bad,consoleErrors,errors}));
-  const foreign=requests.filter(r=>!r.url.startsWith(new URL(url).origin));if(foreign.length)throw new Error('external runtime requests');
  }
+ const bad=badResponses.filter(r=>r.status>=400),consoleErrors=consoleMessages.filter(m=>m.type==='error');
+ if(bad.length||consoleErrors.length||errors.length)throw new Error('browser errors present: '+JSON.stringify({bad,consoleErrors,errors}));
+ const foreign=requests.filter(r=>!r.url.startsWith(new URL(url).origin));if(foreign.length)throw new Error('external runtime requests');
 }catch(e){exit=1;errors.push(String(e));await page.screenshot({path:resolve(evidence,'failure.png')});}
 await context.close();await browser.close();await server.close();
 const browserNativeExit=server.process().exitCode;

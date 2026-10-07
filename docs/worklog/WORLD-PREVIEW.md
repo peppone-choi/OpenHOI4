@@ -157,3 +157,17 @@ Firstactual19PNG proof first-dirty-quality-proof native0/WebGPU NVIDIATuring8192
 Decisionneeded:nonewithinscope. Unfinished:generatedfragmentquality/fullregressions/finalsame-source2bakes/nativeartifactZIPseal/independentP05/mainCI;globalDEM/precisechannels/ridgepass/urbanhistoric/current2026classification/gamefunctions remainunconnected. Boundedcandidate2repeat started sameactualgenerator beforefuturequality edits. Finalbakepairs identifiedbyexactrecipe, notmergedacrossattempts.
 
 첫locale실행은cargoPATH미설정native1(FileNotFoundError)로원로그보존,기존C:/Users/user/.cargo/bin을해당프로세스PATH에만추가하여별도native결과확인한다. 전역설정/원checker변경없음. Candidate1/2 같은generator/options/tools 출력4SHA전부일치(candidate-1-2-repeat.json);107.297s반복native0/peakCommit2,639,507,456B. 원source가아닌fragmentquality추가후finalpair와구분한다.
+
+### P06-3 내부 조각 정리·최종 생성 소스
+
+동일 raw seed의 최대 연결 조각과 whole-seed를 보존한다. 나머지 ≤8pixel 조각 중 kind/실제 urban mask/eligible urban class가 균일하고 >8pixel 동일 class 4-neighbour 대상이 있는 조각만 공유 edge→대상 크기→ordinal 순으로 재할당한다. 원 지리 섬·물 구멍 삭제, 끊어진 ID 병합, dateline ID 병합, 숫자 맞추기 trimming 없음. 조각 RED missinghelper native1→GREEN8tests0, 통계 명명 RED missingkey native1→GREEN9tests0. ≤8pixel 이웃만 있는 fixture와 외부 같은 표면 이웃이 없는 fixture를 별도로 검사한다.
+
+후보3/4 native0/160.156·156.750s 및 원 metadata/반복4SHA는 이전 통계 명명 상태로 보존한다. preserved_surface_islands=11840라는 초기 이름은 실제 섬을 세지 않아 부정확했다. 최종 소스는 preserved_without_large_same_surface_target=11840를 only-small-neighbours427/no-external-same-surface-neighbour11413으로 나눈다. mixed38은 별도다. 정책과 좌표 변경 없이 진단만 정정했으며 원 기록을 덮어쓰지 않았다.
+
+최종 소스 후보5/6 native0/176.000·147.016s, peakCommit2,639,302,656·2,638,712,832B/WS1,638,617,088·1,638,264,832B. 180s/3GiB 제한 유지; 첫 실행 여유4초로 좁아 성능 보증이 아니다. 네 출력 SHA 모두 일치(candidate-5-6-repeat.json), 첫 세 기하 출력은 후보3과 정확히 같다. 선택 데이터24,889=land13,882/sea6,954/lake4,053, adjacency47,554, 대표DEM620. onepixel6610=land2769/sea2349/lake1492는 후보1보다529 감소했지만 ab64보다110 많다. 원 kind 1pixel6125는 보존된다. 재할당1278조각/3435픽셀, 구면 근사53,636.84km²; 전체 kind/eligible urban class 변경0/도시 observed pixels57,247 유지(candidate1-to3-repair-invariants.json). 최종 exhaustive candidate-5-validation native0/source7SHA/모든 픽셀 kind/4conn/면적/대표DEM/bbox/pixels/adjacency/seam 검사를 직접 실행했다.
+
+최종 coverage: Ireland 섬17IDs/5789px/최대17.1705%, GB68, Honshu+Kyushu173(원8K 좁은 수로 누락으로 연결되어 같은 component), Hokkaido16, Shikoku10. 국가 영토나 전부 유용한 크기의 프로빈스로 해석하지 않는다. 도시 actualpoint Dublin23023/342.17km²/24px, London23080/2392.75/161, Seoul23751/2566.56/136, Tokyo23828/1550.20/80는 원 시가지 비율1.0. 1500km²는 시드당 명목 평균으로 최대 면적 제한이 아니다. 기타 원 작은 시가지/전체 DEM·정확 해협·능선·고개·현대2026/역사1936 분류·게임 기능 미완료를 유지한다.
+
+CEO ProvGen README/Settings/review만 읽어 입력 역할을 docs/plans/WORLD-PREVIEW-ProvGen-comparison.md에 대조했다. ZIP 재조사/EXE 실행·디컴파일/포함 BMP·코드·팔레트·설정값 채택·새 importer/정식 포맷 없음. CRC는 DBF를 포함한 ZIP 모든 member의 raw bytes를 검사하지만 DBF 속성은 파싱/채택하지 않는다는 원천 설명을 명확히 했다.
+
+최종 소스 자체검사 client140/Python27/build/typecheck/103dependency licenses/docs/assets/Fluent0, Rustfmt/clippy/workspace0, M0b039d35666b77fc2×2/M1b595dc2a1e5b4f8c×2. 첫 Rust helper는 Windows executable 검색 경로 오류로 시작 전 native1이며 Cargo 절대 경로 재실행 결과와 구별한다. 원 회귀/기대값/체커/timeout/retry 변경 없음. 기존 bundle-size/unused locale 경고 유지. 원M1 최소 Chrome 단일 전체·최종 실화면/선택/통신·clean identity/ZIP은 이 체크포인트 이후 직접 실행하여 같은 새 증거 폴더에 기록한다. 독립P05/mainCI/WP32/45/M5 판정은 선언하지 않는다.

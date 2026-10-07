@@ -5,6 +5,33 @@ from scipy import ndimage
 import world_preview as wp
 
 class CoverageTests(unittest.TestCase):
+    def test_debug_counter_distinguishes_small_same_surface_neighbours_from_isolation(self):
+        raw=np.array([[0,0,0,1,1],[0,1,0,1,1],[0,0,0,2,2]],dtype=np.int32)
+        kind=np.ones(raw.shape,dtype=np.uint8);urban=np.zeros(raw.shape,dtype=bool)
+        _,report=wp.repair_internal_fragments(raw.copy(),kind,urban,urban,8)
+        self.assertEqual(report['preserved_without_large_same_surface_target'],1)
+        self.assertEqual(report['preserved_with_only_small_same_surface_neighbours'],1)
+        self.assertEqual(report['preserved_without_external_same_surface_neighbour'],0)
+        urban[1,1]=True
+        _,report=wp.repair_internal_fragments(raw.copy(),kind,urban,urban,8)
+        self.assertEqual(report['preserved_with_only_small_same_surface_neighbours'],0)
+        self.assertEqual(report['preserved_without_external_same_surface_neighbour'],1)
+    def test_disconnected_generated_fragment_joins_an_adjacent_same_surface_core(self):
+        raw=np.array([[0,0,0,1,1],[0,1,0,1,1],[0,0,0,2,2]],dtype=np.int32)
+        kind=np.ones(raw.shape,dtype=np.uint8);urban=np.zeros(raw.shape,dtype=bool)
+        repaired,report=wp.repair_internal_fragments(raw.copy(),kind,urban,urban,1)
+        self.assertEqual(repaired[1,1],0);self.assertTrue(np.all(repaired[:2,3:]==1));self.assertEqual(report['reassigned_pixels'],1)
+        self.assertTrue(np.array_equal(kind,np.ones(raw.shape,dtype=np.uint8)))
+
+    def test_fragment_repair_preserves_source_islands_and_urban_surface_islands(self):
+        raw=np.array([[0,0,0,1,1],[0,1,0,1,1],[0,0,0,2,2]],dtype=np.int32)
+        kind=np.ones(raw.shape,dtype=np.uint8);urban=np.zeros(raw.shape,dtype=bool);urban[1,1]=True
+        repaired,report=wp.repair_internal_fragments(raw.copy(),kind,urban,urban,1)
+        self.assertEqual(repaired[1,1],1);self.assertEqual(report['reassigned_pixels'],0)
+        islands=np.array([[4,9,4]],dtype=np.int32);source_kind=np.array([[1,0,1]],dtype=np.uint8)
+        result,_=wp.repair_internal_fragments(islands.copy(),source_kind,np.zeros_like(islands,bool),np.zeros_like(islands,bool),8)
+        self.assertTrue(np.array_equal(result,islands))
+
     def test_large_disconnected_land_is_guaranteed_seeds_despite_weight_bias(self):
         mask=np.zeros((10,22),bool);mask[2:7,2:7]=True;mask[2:7,15:20]=True
         weights=np.where(mask,np.where(np.indices(mask.shape)[1]<10,99.,1.),0)

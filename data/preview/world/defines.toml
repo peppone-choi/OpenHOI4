@@ -44,6 +44,9 @@ minimum_area_km2 = 100.0
 target_area_km2 = 1500.0
 maximum_seeds = 32
 
+[fragment_repair]
+maximum_pixels = 8
+
 [[density_regions]]
 id = "korea"
 extent = [122.0, 32.0, 132.0, 43.0]

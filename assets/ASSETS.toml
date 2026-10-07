@@ -657,7 +657,7 @@ source = "original"
 license = "CC-BY-SA-4.0"
 modified = true
 ai_generated = false
-sha256 = "ad2f08b8f02b4ea879bd14fbfa96b5f4c8359e06c368f05e57c81ba0f47e452d"
+sha256 = "7cef595a00d8456bac5c5083978e15a81506b5cf951f6715a092affd9fc4fff1"
 notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
 
 [[asset]]
@@ -697,7 +697,7 @@ source = "independently derived from Natural Earth land5.1.1/lakes5.0.0/rivers5.
 license = "CC-BY-SA-4.0"
 modified = true
 ai_generated = false
-sha256 = "188705ff83e221e37270dc915d438dc243d0538bf47aa33929321a54f7e093f2"
+sha256 = "2a44a5e0132840f86e37d2df9c08087fdac2d5fc0ab2d38921106af44d7247fa"
 notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
 
 [[asset]]
@@ -707,7 +707,7 @@ source = "independently derived from Natural Earth land5.1.1/lakes5.0.0/rivers5.
 license = "CC-BY-SA-4.0"
 modified = true
 ai_generated = false
-sha256 = "b682add5fa119a7e9890600aa3e2e4a5abcbcac239a9c3ae0c7030358f8c91ac"
+sha256 = "3aafdad84138670ea627535952b987d16e79519fe33fe617a6c7321917358706"
 notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
 
 [[asset]]
@@ -717,7 +717,7 @@ source = "independently derived from Natural Earth land5.1.1/lakes5.0.0/rivers5.
 license = "CC-BY-SA-4.0"
 modified = true
 ai_generated = false
-sha256 = "6f3d542c77af48831c6f513894ba2144c5287dba8f7b8f1056926aa503bad42f"
+sha256 = "0498d827389750a32e37dca196e54bb5f15c8104a2a342611b1f8c135c648dbf"
 notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
 
 [[asset]]
@@ -727,7 +727,7 @@ source = "independently derived from Natural Earth land5.1.1/lakes5.0.0/rivers5.
 license = "CC-BY-SA-4.0"
 modified = true
 ai_generated = false
-sha256 = "7486d52376063e8aed3e968ed9ba6dbf5e4c473126fe01c70f044845db3f2036"
+sha256 = "f0f8efca5086d51580b7ffeeee862f39f3edef19ae3fac0a75091b6cdc1c3c91"
 notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
 
 [[asset]]
@@ -737,7 +737,7 @@ source = "original"
 license = "CC-BY-SA-4.0"
 modified = false
 ai_generated = false
-sha256 = "7bc53e606d89c7c6cdeae176aee8f1f2ccf3257c7139176f06dcbe4f3390dba4"
+sha256 = "75d8919812cbb0d5da32f7fbce6ce296306782478f609e7893da987a4c9d260a"
 notes = "Source/provenance for isolated world preview. No simulation authority."
 
 # Exact procedural 3D leaves from producer 19cf3cf; no AI PNG adoption.

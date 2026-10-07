@@ -22,6 +22,7 @@ def validate(root,out,report,baseline='2d920ea86c6d8045adb7d3115007230e52c3ccf2'
     if 'urban' in paths:urban=wp.rasterize(wp.polygons(paths['urban']),w,h)&(expected_kind==1)
     del expected_kind
     measured_elevations=0;dems=[wp.read_dem(path.read_bytes()) for name,path in paths.items() if name.endswith('_dem')]
+    area_rows=wp.cell_row_areas(w,h,meta.get('quality',{}).get('earth_radius_km',6371.0088))
     for dense,box in enumerate(ndimage.find_objects(index.astype(np.int32)+1)):
         assert box is not None
         cells=index[box]==dense;_,count=ndimage.label(cells);assert count==1,dense+1
@@ -33,7 +34,7 @@ def validate(root,out,report,baseline='2d920ea86c6d8045adb7d3115007230e52c3ccf2'
         assert p['bounds']==[int(xx.min()),int(yy.min()),int(xx.max())+1,int(yy.max())+1]
         x=int((p['longitude']+180)*w/360);y=int((90-p['latitude'])*h/180);assert int(index[y,x])==dense
         assert p['elevation_m']==wp.elevation_at(dems,(x+.5)*360/w-180,90-(y+.5)*180/h)
-        if 'area_km2' in p:assert abs(p['area_km2']-float(wp.cell_row_areas(w,h,6371.0088)[yy].sum()))<=.00000051
+        if 'area_km2' in p:assert abs(p['area_km2']-float(area_rows[yy].sum()))<=.00000051
         measured_elevations+=p['elevation_m'] is not None
     pairs=wp.adjacency(index);assert json.loads((out/'adjacency.json').read_text())==[list(p) for p in pairs]
     for lon,lat,kind in [(127,37,'land'),(85,29,'land'),(-100,40,'land'),(-140,0,'sea'),(25,-75,'land'),(33,-1,'lake'),(-150,65,'land'),(0,0,'sea')]:

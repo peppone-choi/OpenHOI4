@@ -474,6 +474,50 @@ def connected_ids(raw):
     return output
 
 
+def repair_internal_fragments(raw,kind,urban,partitioned,maximum_pixels):
+    """Reassign only non-core disconnected seed fragments to adjacent same surface.
+
+    No cell/class is deleted. Stable targets exceed the limit and never move.
+    True geographic/surface islands and each seed's largest piece stay intact.
+    """
+    report={'policy':'non-largest disconnected raw-seed fragments only; 4-neighbour same kind/actual urban mask/partitioned urban class; stable larger target; no seam-ID merge/no pixel deletion/no target-count trimming','maximum_pixels':maximum_pixels,'reassigned_components':0,'reassigned_pixels':0,'preserved_without_large_same_surface_target':0,'preserved_with_only_small_same_surface_neighbours':0,'preserved_without_external_same_surface_neighbour':0,'preserved_mixed_surface_fragments':0,'records':[]}
+    if maximum_pixels<=0:return raw,report
+    index=connected_ids(raw);sizes=np.zeros(int(index.max())+1,dtype=np.int64)
+    for row in range(0,len(raw),64):sizes+=np.bincount(index[row:row+64].ravel(),minlength=len(sizes))
+    boxes=ndimage.find_objects(index.astype(np.int32)+1);seed_pieces={};original_ids=[]
+    for dense,box in enumerate(boxes):
+        y,x=np.argwhere(index[box]==dense)[0];y+=box[0].start;x+=box[1].start;seed=int(raw[y,x]);original_ids.append(seed);seed_pieces.setdefault(seed,[]).append(dense)
+    h,w=raw.shape
+    for seed,pieces in seed_pieces.items():
+        if len(pieces)<2:continue
+        largest=max(sizes[p] for p in pieces)
+        for dense in pieces:
+            size=int(sizes[dense])
+            if size>maximum_pixels or size>=largest:continue
+            box=boxes[dense];ys,xs=np.nonzero(index[box]==dense);ys+=box[0].start;xs+=box[1].start
+            surface=(int(kind[ys[0],xs[0]]),bool(urban[ys[0],xs[0]]),bool(partitioned[ys[0],xs[0]]))
+            if not (np.all(kind[ys,xs]==surface[0]) and np.all(urban[ys,xs]==surface[1]) and np.all(partitioned[ys,xs]==surface[2])):
+                report['preserved_mixed_surface_fragments']+=1;continue
+            neighbours={};has_same_surface=False
+            for y,x in zip(ys,xs):
+                for yy,xx in [(y-1,x),(y+1,x),(y,x-1),(y,x+1)]:
+                    if not(0<=yy<h and 0<=xx<w):continue
+                    other=int(index[yy,xx])
+                    if other==dense:continue
+                    if (int(kind[yy,xx]),bool(urban[yy,xx]),bool(partitioned[yy,xx]))!=surface:continue
+                    has_same_surface=True
+                    if sizes[other]<=maximum_pixels:continue
+                    neighbours[other]=neighbours.get(other,0)+1
+            if not neighbours:
+                report['preserved_without_large_same_surface_target']+=1
+                report['preserved_with_only_small_same_surface_neighbours' if has_same_surface else 'preserved_without_external_same_surface_neighbour']+=1
+                continue
+            target=min(neighbours,key=lambda p:(-neighbours[p],-sizes[p],p));raw[ys,xs]=original_ids[target]
+            report['reassigned_components']+=1;report['reassigned_pixels']+=size
+            report['records'].append({'old_dense_id':dense+1,'old_raw_seed':seed,'target_dense_id':target+1,'target_raw_seed':original_ids[target],'pixels':size,'shared_edges':neighbours[target],'kind':surface[0],'source_urban':surface[1],'partitioned_urban':surface[2],'cells':np.column_stack((ys,xs)).tolist()})
+    return raw,report
+
+
 def adjacency(index):
     pairs=[]
     for a,b in [(index[:,:-1],index[:,1:]),(index[:-1],index[1:]),(index[:,-1],index[:,0])]:
@@ -524,6 +568,9 @@ def build(root,out):
             print('partition measured urban footprints',flush=True);urban=rasterize(polygons(source['urban']),w,h)&(kind==1)
             raw,urban_report=partition_urban(raw,kind,urban,river,dems,cities,definitions,options['seed']);urban_partitioned=(raw>=urban_report['raw_id_start'])&(raw<urban_report['raw_id_end'])
         del river
+    repair_report=None
+    if definitions.get('fragment_repair'):
+        print('repair disconnected internal seed fragments',flush=True);raw,repair_report=repair_internal_fragments(raw,kind,urban if urban is not None else np.zeros_like(kind,bool),urban_partitioned if urban_partitioned is not None else np.zeros_like(kind,bool),definitions['fragment_repair']['maximum_pixels'])
     index=connected_ids(raw);del raw
     count=int(index.max())+1;rows=[];names=['sea','land','lake'];colors=definitions['colors'];row_areas=cell_row_areas(w,h,quality['earth_radius_km'] if quality else definitions['quality']['earth_radius_km'])
     for dense,box in enumerate(ndimage.find_objects(index.astype(np.int32)+1)):
@@ -543,7 +590,7 @@ def build(root,out):
     hashes={'index.bin':sha(raw),'provinces.json':write_json(out/'provinces.json',rows),'adjacency.json':write_json(out/'adjacency.json',adjacency(index))}
     limitations=['no-global-elevation','sparse-modern-city-samples','generalized-coast-river','subpixel-islands-lakes','no-game-state','no-ridge-pass-accuracy-guarantee'] if reports else ['no-global-elevation','no-city-density','generalized-coast-river','subpixel-islands-lakes','no-game-state','no-ridge-pass-accuracy-guarantee']
     if urban_report:limitations+=['urban-observations-2002-2003-generalized','small-urban-footprints-not-separated','nonurban-is-not-authoritative-rural-suburban-class']
-    metadata=dict(schema='world-preview-v1',map_id='world_preview',width=w,height=h,projection='EPSG:4326 Plate Carree',extent=[-180,-90,180,90],axis='x east / y south',cell_degrees=360/w,byte_order='u16-le',province_ids=list(range(1,count+1)),counts={name:sum(p['kind']==name for p in rows) for name in names},style=definitions['style'],regions=definitions['regions'],options=options,partition=definitions.get('partition'),tools={'python':platform.python_version(),'numpy':np.__version__,'scipy':scipy.__version__},sources=sources['sources'],hashes=hashes,definitions_sha256=sha((root/'defines.toml').read_bytes()),limitations=limitations,elevation=bool(dem_extent),elevation_extent=dem_extent,elevation_extents=[d[1] for d in dems],river_input='rivers' in source,quality=quality,density_regions=reports,city_input=bool(reports),allocation=allocation_reports,urban_input=urban_report,area_method='mean-radius sphere cell integration, raster approximation',target_total={'minimum':quality.get('target_total_min'),'preferred_upper':quality.get('target_total_preferred_upper'),'actual':count,'preferred_range':quality.get('target_total_min',0)<=count<=quality.get('target_total_preferred_upper',65535),'not_absolute_upper':True,'not_quality_completion':True},coast_antialias=bool(quality and quality.get('coast_antialias')))
+    metadata=dict(schema='world-preview-v1',map_id='world_preview',width=w,height=h,projection='EPSG:4326 Plate Carree',extent=[-180,-90,180,90],axis='x east / y south',cell_degrees=360/w,byte_order='u16-le',province_ids=list(range(1,count+1)),counts={name:sum(p['kind']==name for p in rows) for name in names},style=definitions['style'],regions=definitions['regions'],options=options,partition=definitions.get('partition'),tools={'python':platform.python_version(),'numpy':np.__version__,'scipy':scipy.__version__},sources=sources['sources'],hashes=hashes,definitions_sha256=sha((root/'defines.toml').read_bytes()),limitations=limitations,elevation=bool(dem_extent),elevation_extent=dem_extent,elevation_extents=[d[1] for d in dems],river_input='rivers' in source,quality=quality,density_regions=reports,city_input=bool(reports),allocation=allocation_reports,urban_input=urban_report,fragment_repair=repair_report,area_method='mean-radius sphere cell integration, raster approximation',target_total={'minimum':quality.get('target_total_min'),'preferred_upper':quality.get('target_total_preferred_upper'),'actual':count,'preferred_range':quality.get('target_total_min',0)<=count<=quality.get('target_total_preferred_upper',65535),'not_absolute_upper':True,'not_quality_completion':True},coast_antialias=bool(quality and quality.get('coast_antialias')))
     write_json(out/'metadata.json',metadata)
     print(json.dumps(dict(count=count,counts=metadata['counts'],hashes=hashes)),flush=True)
 
