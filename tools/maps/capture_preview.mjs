@@ -4,7 +4,7 @@ import { mkdir,mkdtemp,readFile,writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-const evidence=resolve(process.argv.find(a=>a.startsWith('--out='))?.slice(6)??'target/evidence/WORLD-PREVIEW-quality-P06-2/capture');await mkdir(evidence,{recursive:true});
+const evidence=resolve(process.argv.find(a=>a.startsWith('--out='))?.slice(6)??'target/evidence/WORLD-PREVIEW-quality-P06-3/capture');await mkdir(evidence,{recursive:true});
 const url=process.argv[2]??'http://127.0.0.1:4317/?world-preview=1';
 const profile=await mkdtemp(resolve(evidence,'chrome-profile-'));
 // Preserve browser security/GPU defaults: no Playwright default feature switches
@@ -26,11 +26,17 @@ if(inputDir){
 }
 const baseline=process.argv.find(a=>a.startsWith('--baseline='))?.slice(11);
 const historicalInputs=[];
+const additionalHistoricalPresets=[];
 if(baseline){
  if(!/^[a-f0-9]{40}$/.test(baseline))throw new Error('exact baseline commit SHA required');
  for(const file of ['metadata.json','index.bin','provinces.json']){
-  const bytes=execFileSync('git',['show',`${baseline}:client/public/preview/world/${file}`],{maxBuffer:32*1024*1024});
+  let bytes=execFileSync('git',['show',`${baseline}:client/public/preview/world/${file}`],{maxBuffer:80*1024*1024});
   historicalInputs.push({file,commit:baseline,sha256:createHash('sha256').update(bytes).digest('hex')});
+  if(file==='metadata.json'&&process.argv.includes('--quality')){
+   const old=JSON.parse(bytes),current=JSON.parse(await readFile(resolve('client/public/preview/world/metadata.json')));
+   for(const [key,value] of Object.entries(current.regions)){if(!(key in old.regions)){old.regions[key]=value;additionalHistoricalPresets.push({key,...value});}}
+   bytes=Buffer.from(JSON.stringify(old));
+  }
   await page.route(`**/preview/world/${file}`,route=>route.fulfill({status:200,contentType:file.endsWith('.json')?'application/json':'application/octet-stream',body:bytes}));
  }
 }
@@ -50,6 +56,17 @@ try{
  if(process.argv.includes('--compare')){
   await page.getByRole('button',{name:'한반도',exact:true}).click();await capture('korea');
   await page.getByRole('button',{name:'히말라야',exact:true}).click();await capture('himalaya-geography');
+ }
+ if(process.argv.includes('--quality')){
+  const host=page.locator('[data-testid="world-map"]');
+  for(const key of ['ireland','great_britain','dublin','london','seoul','tokyo','japan','irish_sea','english_channel','atlantic']){
+   await page.getByRole('combobox').selectOption(key);await capture(key);
+   if(['dublin','london','seoul','tokyo','irish_sea','english_channel','atlantic'].includes(key)){
+    const rect=await host.boundingBox(),x=rect.x+rect.width/2,y=rect.y+rect.height/2;await page.mouse.move(x,y);await page.mouse.click(x,y);await ready();
+    const selected=await host.getAttribute('data-selected');if(!selected)throw new Error('sample not selectable: '+key);
+    actions.push({action:'geographic-sample-pick',key,selected,hover:await host.getAttribute('data-hover'),camera:JSON.parse(await host.getAttribute('data-camera')),screen:{x,y},host:rect});await capture(key+'-selected');
+   }
+  }
  }
  if(process.argv.includes('--full')){
   const host=page.locator('[data-testid="world-map"]');
@@ -102,5 +119,5 @@ if(browserNativeExit!==0){exit=1;errors.push(`browser native exit ${browserNativ
 const expectedCancellations=failedRequests.filter(r=>r.failure?.errorText==='net::ERR_ABORTED'&&resourceLifecycle.some(e=>e.phase==='cancel'&&e.signalAborted&&new URL(e.path,url).href===r.url));
 const unexplainedFailures=failedRequests.filter(r=>!expectedCancellations.includes(r));
 if(unexplainedFailures.length){exit=1;errors.push('unexplained request failures: '+JSON.stringify(unexplainedFailures));}
-await writeFile(resolve(evidence,'browser-capture.json'),JSON.stringify({processInfo,browserNativeExit,browserPeakWorkingSet,memoryNote:'Browser parent PID peak working set only; excludes renderer/GPU subprocesses. Not total browser/GPU/JS memory.',consoleMessages,requests,badResponses,failedRequests,resourceLifecycle,expectedCancellations,unexplainedFailures,errors,snapshots,actions,historicalInputs,inputDir,comparisonNote:baseline?'Historical baked map inputs only; current renderer/HUD. Not a capture of the complete old source tree.':undefined,exit},null,2));
+await writeFile(resolve(evidence,'browser-capture.json'),JSON.stringify({processInfo,browserNativeExit,browserPeakWorkingSet,memoryNote:'Browser parent PID peak working set only; excludes renderer/GPU subprocesses. Not total browser/GPU/JS memory.',consoleMessages,requests,badResponses,failedRequests,resourceLifecycle,expectedCancellations,unexplainedFailures,errors,snapshots,actions,historicalInputs,additionalHistoricalPresets,inputDir,comparisonNote:baseline?'Historical index/province bytes and source metadata; current renderer/HUD. Quality comparison adds current camera presets only and records them separately. Not a capture of complete old source tree.':undefined,exit},null,2));
 console.log(JSON.stringify({exit,errors,snapshots}));process.exitCode=exit;

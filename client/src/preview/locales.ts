@@ -64,7 +64,7 @@ export const previewKeys = [
  "preview-terrain-note",
  "preview-language-toggle-en",
  "preview-language-toggle-ko"
-,"preview-quality-terrain-note"] as const;
+,"preview-quality-terrain-note","preview-region-more","preview-region-ireland","preview-region-great_britain","preview-region-japan","preview-region-dublin","preview-region-london","preview-region-seoul","preview-region-tokyo","preview-region-irish_sea","preview-region-english_channel","preview-region-atlantic","preview-area","preview-urban-separated","preview-urban-unpartitioned","preview-nonurban-source","preview-urban-note"] as const;
 export type PreviewKey=typeof previewKeys[number];
 export type PreviewText=(key:PreviewKey)=>string;
 export function previewTranslator(language:Language):PreviewText{return translatorFor(language);}

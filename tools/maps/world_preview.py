@@ -207,6 +207,75 @@ def sphere(x,y,width,height):
     return np.column_stack((np.cos(lat)*np.cos(lon),np.cos(lat)*np.sin(lon),np.sin(lat)))
 
 
+def cell_row_areas(width,height,radius):
+    lat=np.radians(90-np.arange(height+1)*180/height)
+    return radius**2*np.radians(360/width)*(np.sin(lat[:-1])-np.sin(lat[1:]))
+
+
+def spaced_samples(candidates,width,height,radius,minimum_km,count,existing=None):
+    """Physical Poisson exclusion of seeds only, never rectangular provinces."""
+    candidates=np.asarray(candidates,dtype=np.int32)
+    if count<=0:return np.empty((0,2),dtype=np.int32)
+    if minimum_km<=0:return candidates[:count].copy()
+    distance=2*np.sin(minimum_km/(2*radius));buckets={};selected=[]
+    offsets=[(x,y,z) for x in (-1,0,1) for y in (-1,0,1) for z in (-1,0,1)]
+    def insert(point):
+        key=tuple(np.floor((point+1)/distance).astype(int));buckets.setdefault(key,[]).append(point)
+    if existing is not None and len(existing):
+        for point in sphere(existing[:,1],existing[:,0],width,height):insert(point)
+    points=sphere(candidates[:,1],candidates[:,0],width,height)
+    for cell,point in zip(candidates,points):
+        key=np.floor((point+1)/distance).astype(int);near=False
+        for offset in offsets:
+            for other in buckets.get(tuple(key+offset),[]):
+                if np.dot(point-other,point-other)<distance**2:near=True;break
+            if near:break
+        if not near:
+            selected.append(cell);insert(point)
+            if len(selected)>=count:break
+    return np.asarray(selected,dtype=np.int32).reshape(-1,2)
+
+
+def coverage_seeds(mask,weights,count,rng,row_areas,options):
+    """Constrained area/density allocation over every disconnected land mass."""
+    h,w=mask.shape;labels,n=ndimage.label(mask);flat=np.flatnonzero(mask);groups=labels.ravel()[flat]
+    weights=np.asarray(weights);weights=weights[mask] if weights.shape==mask.shape else weights
+    if len(weights)!=len(flat) or not np.isfinite(weights).all() or (weights<=0).any():raise ValueError('invalid coverage weights')
+    sizes=np.bincount(groups,minlength=n+1);areas=np.bincount(groups,weights=row_areas[flat//w],minlength=n+1);scores=np.bincount(groups,weights=weights,minlength=n+1)
+    minima=np.zeros(n+1,dtype=np.int32);large=areas>=options['large_component_min_area_km2']
+    minima[large]=np.maximum(options['large_component_min_seeds'],np.ceil(areas[large]/options['max_seed_area_km2']).astype(int));minima=np.minimum(minima,sizes)
+    if minima.sum()>count or count>len(flat):raise ValueError('coverage budget cannot preserve required large components')
+    fixed=scores==0;ideal=np.zeros(n+1)
+    while True:
+        budget=count-int(minima[fixed].sum());remaining=~fixed
+        ideal[fixed]=minima[fixed];ideal[remaining]=budget*scores[remaining]/scores[remaining].sum()
+        newly=remaining&(ideal<minima)
+        if not newly.any():break
+        fixed|=newly
+    quotas=np.floor(ideal).astype(int);extra=count-int(quotas.sum());order=np.argsort(-(ideal-quotas),kind='stable');quotas[order[:extra]]+=1
+    if (quotas>sizes).any():raise ValueError('coverage quota exceeds source cells')
+    grouped=np.argsort(groups,kind='stable');flat=flat[grouped];weights=weights[grouped];ends=np.cumsum(sizes);starts=np.r_[0,ends[:-1]];del labels,groups,grouped
+    seeds=[];records=[]
+    for component in np.flatnonzero(quotas):
+        quota=int(quotas[component]);cells=flat[starts[component]:ends[component]];density=weights[starts[component]:ends[component]];probability=density/density.sum()
+        take=rng.choice(len(cells),size=min(len(cells),quota*options['seed_oversample']),replace=False,p=probability);candidates=np.column_stack(np.divmod(cells[take],w))
+        chosen=spaced_samples(candidates,w,h,options['earth_radius_km'],options['seed_spacing_km'],quota)
+        if len(chosen)!=quota:raise ValueError('coverage seed spacing infeasible; preserve candidate failure')
+        seeds.append(chosen);records.append({'component':int(component),'area_km2':round(float(areas[component]),3),'source_pixels':int(sizes[component]),'allocated_seeds':quota,'minimum_seeds':int(minima[component])})
+    return np.concatenate(seeds),{'method':'source 4-connected constrained physical-area/density quotas','components':records,'unseeded_large_components':int(np.sum(large&(quotas==0))),'allocated_seeds':int(quotas.sum())}
+
+
+def physical_distance_grid(points,width,height,radius,query_rows):
+    output=np.full((height,width),np.inf,dtype=np.float32)
+    if not len(points):return output
+    tree=cKDTree(points)
+    for row in range(0,height,query_rows):
+        yy,xx=np.indices((min(query_rows,height-row),width));yy+=row
+        chord,_=tree.query(sphere(xx.ravel(),yy.ravel(),width,height),workers=1)
+        output[row:row+len(yy)]=(2*np.arcsin(np.minimum(1,chord/2))*radius).reshape(yy.shape)
+    return output
+
+
 def city_points(path):
     """Read point coordinates only; no city names, countries or DBF values."""
     with zipfile.ZipFile(path) as archive:
@@ -256,6 +325,42 @@ def elevation_at(dems,lon,lat):
     return value
 
 
+def partition_urban(raw,kind,urban,rivers,dems,cities,definitions,seed):
+    """Separate measured major footprints; points never create a footprint."""
+    h,w=kind.shape;urban=urban&(kind==1);labels,n=ndimage.label(urban);row_areas=cell_row_areas(w,h,definitions['quality']['earth_radius_km']);areas=np.zeros(n+1)
+    for row in range(0,h,64):
+        patch=labels[row:row+64];areas+=np.bincount(patch.ravel(),weights=np.repeat(row_areas[row:row+len(patch)],w),minlength=n+1)
+    options=definitions['urban'];eligible=areas>=options['minimum_area_km2'];eligible[0]=False;boxes=ndimage.find_objects(labels);next_id=int(raw.max())+1;start_id=next_id;records=[]
+    if len(cities):
+        city_x=np.clip(((cities[:,0]+180)*w/360).astype(int),0,w-1);city_y=np.clip(((90-cities[:,1])*h/180).astype(int),0,h-1);city_labels=labels[city_y,city_x]
+    for component in np.flatnonzero(eligible):
+        box=boxes[component-1];mask=labels[box]==component;ys,xs=np.nonzero(mask);ys+=box[0].start;xs+=box[1].start
+        count=min(len(ys),options['maximum_seeds'],max(1,int(np.ceil(areas[component]/options['target_area_km2']))))
+        if count==1:raw[box][mask]=next_id
+        else:
+            points=sphere(xs,ys,w,h);centroid=points.mean(axis=0);point_candidates=np.empty((0,2),dtype=int)
+            if len(cities):point_candidates=np.unique(np.column_stack((city_y[city_labels==component],city_x[city_labels==component])),axis=0)
+            picked=[]
+            if len(point_candidates):
+                possible=sphere(point_candidates[:,1],point_candidates[:,0],w,h);picked.append(point_candidates[np.argmin(np.linalg.norm(possible-centroid,axis=1))])
+            else:picked.append(np.array([ys[np.argmin(np.linalg.norm(points-centroid,axis=1))],xs[np.argmin(np.linalg.norm(points-centroid,axis=1))]]))
+            while len(picked)<count:
+                chosen=np.asarray(picked);tree=cKDTree(sphere(chosen[:,1],chosen[:,0],w,h))
+                if len(point_candidates)>len(picked):
+                    distance,_=tree.query(sphere(point_candidates[:,1],point_candidates[:,0],w,h),workers=1);candidate=point_candidates[int(np.argmax(distance))]
+                else:
+                    distance,_=tree.query(points,workers=1);offset=int(np.argmax(distance));candidate=np.array([ys[offset],xs[offset]])
+                if any(np.array_equal(candidate,p) for p in picked):raise ValueError('urban seed coverage exhausted')
+                picked.append(candidate)
+            extent=[box[1].start*360/w-180,90-box[0].stop*180/h,box[1].stop*360/w-180,90-box[0].start*180/h];local_kind=mask.astype(np.uint8)
+            seeds=np.asarray(picked)-np.array([box[0].start,box[1].start]);mapped=geodesic_labels(local_kind,1,seeds,rivers[box],dem_grid(dems,mask.shape[1],mask.shape[0],extent),definitions['partition'],extent)
+            if np.any(mapped[mask]<0):raise ValueError('urban footprint unreachable')
+            raw[box][mask]=mapped[mask]+next_id
+        records.append({'source_component':int(component),'area_km2':round(float(areas[component]),3),'pixels':len(ys),'subdivision_seeds':count,'source_city_points':int(np.sum(city_labels==component)) if len(cities) else 0});next_id+=count
+    sizes=np.bincount(labels.ravel(),minlength=n+1)
+    return raw,{'method':'MODIS-derived source footprint intersect land; area-filtered separate major footprints; large connected footprints subdivided geographically','source_components':n,'source_pixels':int(urban.sum()),'source_one_pixel_components':int(np.sum(sizes[1:]==1)),'partitioned_components':len(records),'unpartitioned_components':n-len(records),'raw_id_start':start_id,'raw_id_end':next_id,'records':records,'options':options}
+
+
 def regional_refine(raw,kind,rivers,cities,dems,definitions,seed):
     h,w=kind.shape;next_id=int(raw.max())+1;reports=[]
     for region in definitions.get('density_regions',[]):
@@ -289,10 +394,14 @@ def refine_coast(coarse,coarse_kind,fine_kind):
     if h%ch or w%cw:raise ValueError('fine coast must use integer scale')
     sy=h//ch;sx=w//cw;output=np.repeat(np.repeat(coarse,sy,0),sx,1)
     inherited=np.repeat(np.repeat(coarse_kind,sy,0),sx,1)
+    next_id=int(coarse.max())+1
     for k in (0,1,2):
         mismatch=(fine_kind==k)&(inherited!=k)
         if not mismatch.any():continue
-        if not np.any(inherited==k):raise ValueError('fine coast has missing coarse kind')
+        if not np.any(inherited==k):
+            # A sub-coarse source lake/island can first appear at fine resolution.
+            # Preserve its measured kind; final 4-connected split supplies IDs.
+            output[mismatch]=next_id;next_id+=1;continue
         y,x=np.nonzero(mismatch)
         # nearest cell assignment only for actual high-res source coast slivers.
         nearest=ndimage.distance_transform_edt(inherited!=k,return_distances=False,return_indices=True)
@@ -302,9 +411,13 @@ def refine_coast(coarse,coarse_kind,fine_kind):
     return output
 
 
-def partition(kind,options,river=None,elevation=None,geographic_options=None):
+def partition(kind,options,river=None,elevation=None,geographic_options=None,coverage=None,sea=None,cities=None,radius=None,report=None):
     height,width=kind.shape;rng=np.random.Generator(np.random.PCG64(options['seed']))
-    raw=np.zeros(kind.shape,dtype=np.int32);offset=0
+    raw=np.zeros(kind.shape,dtype=np.int32);offset=0;reports={}
+    coast_distance=None
+    if coverage or sea:
+        coast=(kind==0)&ndimage.binary_dilation(kind==1);cy,cx=np.nonzero(coast)
+        coast_distance=physical_distance_grid(sphere(cx,cy,width,height),width,height,radius,options['query_rows'])
     for k,name in enumerate(['sea','land','lake']):
         ys,xs=np.nonzero(kind==k)
         count=min(options[name+'_seeds'],len(ys))
@@ -318,8 +431,21 @@ def partition(kind,options,river=None,elevation=None,geographic_options=None):
             interior=ndimage.binary_erosion(np.isfinite(elevation))
             weights*=1+np.minimum(geographic_options['relief_density_cap'],slope[ys,xs]/geographic_options['relief_meters'])*interior[ys,xs]
         weights/=weights.sum()
-        chosen=rng.choice(len(ys),size=count,replace=False,p=weights)
-        tree=cKDTree(sphere(xs[chosen],ys[chosen],width,height))
+        if k==1 and coverage:
+            weights*=1+coverage['coast_density']*np.exp(-(coast_distance[ys,xs]/coverage['coast_radius_km'])**2)
+            if cities is not None and len(cities):
+                city_distance=physical_distance_grid(lonlat_sphere(cities[:,0],cities[:,1]),width,height,radius,options['query_rows']);weights*=1+coverage['city_density']*np.exp(-(city_distance[ys,xs]/coverage['city_radius_km'])**2);del city_distance
+            weights/=weights.sum();seeds,reports['land']=coverage_seeds(kind==1,weights,count,rng,cell_row_areas(width,height,radius),{**coverage,'earth_radius_km':radius})
+        elif k==0 and sea:
+            order=rng.permutation(len(cy));candidates=np.column_stack((cy[order],cx[order]));coastal=spaced_samples(candidates,width,height,radius,sea['coastal_spacing_km'],min(count,sea['coastal_seeds']))
+            ocean=(kind==0)&(coast_distance>=sea['ocean_min_coast_distance_km']);oy,ox=np.nonzero(ocean);needed=count-len(coastal);ocean_weights=np.cos(np.radians(90-(oy+.5)*180/height));ocean_weights/=ocean_weights.sum()
+            take=rng.choice(len(oy),size=min(len(oy),needed*sea['seed_oversample']),replace=False,p=ocean_weights);interior=spaced_samples(np.column_stack((oy[take],ox[take])),width,height,radius,sea['coastal_spacing_km'],needed,coastal)
+            if len(interior)!=needed:raise ValueError('sea seed spacing/coverage infeasible')
+            seeds=np.concatenate((coastal,interior));reports['sea']={'coastal_seeds':len(coastal),'ocean_seeds':len(interior),'options':sea};del oy,ox,ocean,ocean_weights,candidates,order
+        else:
+            chosen=rng.choice(len(ys),size=count,replace=False,p=weights);seeds=np.column_stack((ys[chosen],xs[chosen]))
+        del weights
+        tree=cKDTree(sphere(seeds[:,1],seeds[:,0],width,height))
         for row in range(0,height,options['query_rows']):
             y,x=np.nonzero(kind[row:row+options['query_rows']]==k);y+=row
             if len(y):
@@ -327,9 +453,10 @@ def partition(kind,options,river=None,elevation=None,geographic_options=None):
                 raw[y,x]=nearest+offset
         if geographic_options and k in (0,1):
             print('geodesic '+name,flush=True)
-            mapped=geodesic_labels(kind,k,np.column_stack((ys[chosen],xs[chosen])),river,elevation,geographic_options)
+            mapped=geodesic_labels(kind,k,seeds,river,elevation,geographic_options)
             reached=mapped>=0;raw[reached]=mapped[reached]+offset
         offset+=count
+    if report is not None:report.update(reports)
     return raw
 
 
@@ -383,32 +510,40 @@ def build(root,out):
     kind=classify_mask(land,lake)
     river=raster_lines(shapes(source['rivers'],3),gw,gh) if 'rivers' in source else np.zeros((gh,gw),dtype=bool)
     elevation=dem_grid(dems,gw,gh);dem_extent=dems[0][1] if dems else None
-    print('partition coarse',flush=True);raw=partition(kind,options,river,elevation,definitions.get('partition'))
-    reports=[];cities=city_points(source['cities']) if 'cities' in source else np.empty((0,2))
+    cities=city_points(source['cities']) if 'cities' in source else np.empty((0,2));allocation_reports={}
+    print('partition coarse',flush=True);raw=partition(kind,options,river,elevation,definitions.get('partition'),definitions.get('coverage'),definitions.get('sea'),cities,quality['earth_radius_km'] if quality else None,allocation_reports)
+    reports=[];urban_report=None;urban=None;urban_partitioned=None
     del land,lake,river,elevation
     if (gw,gh)!=(w,h):
         print('raster fine coast',flush=True)
         fine_kind=classify_mask(rasterize(polygons(source['land']),w,h),rasterize(polygons(source['lakes']),w,h))
         raw=refine_coast(raw,kind,fine_kind);kind=fine_kind
         river=raster_lines(shapes(source['rivers'],3),w,h)
-        raw,reports=regional_refine(raw,kind,river,cities,dems,definitions,options['seed']);del river
+        raw,reports=regional_refine(raw,kind,river,cities,dems,definitions,options['seed'])
+        if 'urban' in source:
+            print('partition measured urban footprints',flush=True);urban=rasterize(polygons(source['urban']),w,h)&(kind==1)
+            raw,urban_report=partition_urban(raw,kind,urban,river,dems,cities,definitions,options['seed']);urban_partitioned=(raw>=urban_report['raw_id_start'])&(raw<urban_report['raw_id_end'])
+        del river
     index=connected_ids(raw);del raw
-    count=int(index.max())+1;rows=[];names=['sea','land','lake'];colors=definitions['colors']
+    count=int(index.max())+1;rows=[];names=['sea','land','lake'];colors=definitions['colors'];row_areas=cell_row_areas(w,h,quality['earth_radius_km'] if quality else definitions['quality']['earth_radius_km'])
     for dense,box in enumerate(ndimage.find_objects(index.astype(np.int32)+1)):
         cells=index[box]==dense;y,x=np.nonzero(cells);y+=box[0].start;x+=box[1].start
         # Actual representative cell, rather than an offshore polygon centroid.
         mid=len(x)//2;px=int(x[mid]);py=int(y[mid]);name=names[int(kind[py,px])]
-        base=colors[name];variation=((dense*73)% (colors['province_variation']*2+1))-colors['province_variation']
+        is_urban=bool(urban_partitioned[py,px]) if urban_partitioned is not None else False
+        urban_pixels=int(np.sum(urban[box][cells])) if urban is not None else 0
+        base=colors['urban'] if is_urban else colors[name];variation=((dense*73)% (colors['province_variation']*2+1))-colors['province_variation']
         height_value=elevation_at(dems,(px+.5)*360/w-180,90-(py+.5)*180/h)
         terrain_color=base
         if height_value is not None and name=='land':
             for band in definitions['terrain']['bands']:
                 if height_value>=band['minimum_m']:terrain_color=band['color']
-        rows.append(dict(id=dense+1,kind=name,pixels=len(x),bounds=[int(x.min()),int(y.min()),int(x.max())+1,int(y.max())+1],longitude=round((px+.5)*360/w-180,6),latitude=round(90-(py+.5)*180/h,6),geography_color=base,province_color=[max(0,min(255,c+variation)) for c in base],terrain_color=terrain_color,elevation_m=height_value))
+        rows.append(dict(id=dense+1,kind=name,pixels=len(x),bounds=[int(x.min()),int(y.min()),int(x.max())+1,int(y.max())+1],longitude=round((px+.5)*360/w-180,6),latitude=round(90-(py+.5)*180/h,6),geography_color=base,province_color=[max(0,min(255,c+variation)) for c in base],terrain_color=terrain_color,elevation_m=height_value,area_km2=round(float(row_areas[y].sum()),6),urban_pixels=urban_pixels,urban_partitioned=is_urban))
     out.mkdir(parents=True,exist_ok=True);raw=index_bytes(index);(out/'index.bin').write_bytes(raw)
     hashes={'index.bin':sha(raw),'provinces.json':write_json(out/'provinces.json',rows),'adjacency.json':write_json(out/'adjacency.json',adjacency(index))}
     limitations=['no-global-elevation','sparse-modern-city-samples','generalized-coast-river','subpixel-islands-lakes','no-game-state','no-ridge-pass-accuracy-guarantee'] if reports else ['no-global-elevation','no-city-density','generalized-coast-river','subpixel-islands-lakes','no-game-state','no-ridge-pass-accuracy-guarantee']
-    metadata=dict(schema='world-preview-v1',map_id='world_preview',width=w,height=h,projection='EPSG:4326 Plate Carree',extent=[-180,-90,180,90],axis='x east / y south',cell_degrees=360/w,byte_order='u16-le',province_ids=list(range(1,count+1)),counts={name:sum(p['kind']==name for p in rows) for name in names},style=definitions['style'],regions=definitions['regions'],options=options,partition=definitions.get('partition'),tools={'python':platform.python_version(),'numpy':np.__version__,'scipy':scipy.__version__},sources=sources['sources'],hashes=hashes,definitions_sha256=sha((root/'defines.toml').read_bytes()),limitations=limitations,elevation=bool(dem_extent),elevation_extent=dem_extent,elevation_extents=[d[1] for d in dems],river_input='rivers' in source,quality=quality,density_regions=reports,city_input=bool(reports),coast_antialias=bool(quality and quality.get('coast_antialias')))
+    if urban_report:limitations+=['urban-observations-2002-2003-generalized','small-urban-footprints-not-separated','nonurban-is-not-authoritative-rural-suburban-class']
+    metadata=dict(schema='world-preview-v1',map_id='world_preview',width=w,height=h,projection='EPSG:4326 Plate Carree',extent=[-180,-90,180,90],axis='x east / y south',cell_degrees=360/w,byte_order='u16-le',province_ids=list(range(1,count+1)),counts={name:sum(p['kind']==name for p in rows) for name in names},style=definitions['style'],regions=definitions['regions'],options=options,partition=definitions.get('partition'),tools={'python':platform.python_version(),'numpy':np.__version__,'scipy':scipy.__version__},sources=sources['sources'],hashes=hashes,definitions_sha256=sha((root/'defines.toml').read_bytes()),limitations=limitations,elevation=bool(dem_extent),elevation_extent=dem_extent,elevation_extents=[d[1] for d in dems],river_input='rivers' in source,quality=quality,density_regions=reports,city_input=bool(reports),allocation=allocation_reports,urban_input=urban_report,area_method='mean-radius sphere cell integration, raster approximation',target_total={'minimum':quality.get('target_total_min'),'preferred_upper':quality.get('target_total_preferred_upper'),'actual':count,'preferred_range':quality.get('target_total_min',0)<=count<=quality.get('target_total_preferred_upper',65535),'not_absolute_upper':True,'not_quality_completion':True},coast_antialias=bool(quality and quality.get('coast_antialias')))
     write_json(out/'metadata.json',metadata)
     print(json.dumps(dict(count=count,counts=metadata['counts'],hashes=hashes)),flush=True)
 

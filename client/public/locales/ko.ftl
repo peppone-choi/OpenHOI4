@@ -148,3 +148,20 @@ preview-language-toggle-en = EN
 preview-language-toggle-ko = 한국어
 
 preview-quality-terrain-note = 한반도·히말라야 고도와 현대 도시 위치 표본을 지역 분할에 반영했습니다. 전세계 상세 고도·고개 정확도는 미완료이며 게임 데이터는 미연결입니다.
+
+preview-region-more = 지역·시가지·바다
+preview-region-ireland = 아일랜드 섬
+preview-region-great_britain = 그레이트브리튼
+preview-region-japan = 일본 열도
+preview-region-dublin = 더블린 시가지
+preview-region-london = 런던 시가지
+preview-region-seoul = 서울 시가지
+preview-region-tokyo = 도쿄 시가지
+preview-region-irish_sea = 아이리시해
+preview-region-english_channel = 영국해협
+preview-region-atlantic = 대서양
+preview-area = 지리 근사 면적
+preview-urban-separated = 원천 시가지 · 별도 구획
+preview-urban-unpartitioned = 시가지 표본 포함 · 미분리
+preview-nonurban-source = 시가지 원천 밖 · 교외/농촌 분류 미연결
+preview-urban-note = 시가지는 MODIS 2002–2003년 관측의 일반화 원천입니다. 작은 시가지는 미분리이며 역사 도시·인구·게임 값은 미연결입니다.

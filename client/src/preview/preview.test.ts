@@ -36,6 +36,12 @@ describe('world preview baked input',()=>{
  it('hashes a view using its byte offset without copying the entire backing store',async()=>{
   expect(await sha256(new Uint8Array([0,97,98,99,0]).subarray(1,4))).toBe('ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad');
  });
+ it('rejects invalid geographic areas and urban claims that include nonurban cells',()=>{
+  const meta=JSON.parse(readFileSync(resolve(root,'metadata.json'),'utf8'));
+  const provinces=JSON.parse(readFileSync(resolve(root,'provinces.json'),'utf8'));
+  expect(()=>validatePreview(meta,[{...provinces[0],area_km2:-1},...provinces.slice(1)])).toThrow();
+  expect(()=>validatePreview(meta,[{...provinces[0],urban_pixels:0,urban_partitioned:true},...provinces.slice(1)])).toThrow();
+ });
  it('baked SHA is exact and display has no authority or invented ownership',async()=>{
   const meta=JSON.parse(readFileSync(resolve(root,'metadata.json'),'utf8'));
   const bytes=readFileSync(resolve(root,'index.bin'));

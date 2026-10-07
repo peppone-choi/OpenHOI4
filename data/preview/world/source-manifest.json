@@ -94,6 +94,23 @@
       "url": "https://gis.ngdc.noaa.gov/arcgis/rest/services/DEM_mosaics/DEM_all/ImageServer/exportImage?bbox=122%2C32%2C132%2C43&bboxSR=4326&size=600%2C660&imageSR=4326&format=tiff&pixelType=F32&interpolation=RSP_NearestNeighbor&compression=LZ77&renderingRule=%7B%22rasterFunction%22%3A+%22none%22%7D&mosaicRule=%7B%22where%22%3A+%22Name%3D%27ETOPO_2022_v1_60s_surface%27%22%7D&f=image",
       "version": "ETOPO2022 v1 60s surface",
       "vertical_datum": "EGM2008"
+    },
+    {
+      "id": "urban",
+      "file": "sources/ne_10m_urban_areas.zip",
+      "version": "4.1.0",
+      "webpage_advertised_version": "4.0.0; fixed ZIP and official producer VERSION are4.1.0",
+      "observation_years": "2002-2003",
+      "source_resolution": "MODIS1km, generalized1:10million polygons",
+      "horizontal_crs": "EPSG:4326 WGS84",
+      "usage": "Polygon SHP geometry only; no DBF/population/LandScan/admin boundaries",
+      "acquired": "2026-10-07",
+      "sha256": "2c593114e954ce1adb297ddee5465f05d9e81fa0a26deb13f8500d58a00d7051",
+      "license": "public-domain",
+      "url": "https://naturalearth.s3.amazonaws.com/10m_cultural/ne_10m_urban_areas.zip",
+      "terms": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "description_url": "https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-urban-area/",
+      "version_url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/10m_cultural/ne_10m_urban_areas.VERSION.txt"
     }
   ]
 }

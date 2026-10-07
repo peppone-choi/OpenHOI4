@@ -657,7 +657,7 @@ source = "original"
 license = "CC-BY-SA-4.0"
 modified = true
 ai_generated = false
-sha256 = "8815caf44a27ff66e7f009e72bbc504c5864da48e335210d83235ab527f77c0e"
+sha256 = "ad2f08b8f02b4ea879bd14fbfa96b5f4c8359e06c368f05e57c81ba0f47e452d"
 notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
 
 [[asset]]
@@ -667,7 +667,7 @@ source = "original"
 license = "CC-BY-SA-4.0"
 modified = true
 ai_generated = false
-sha256 = "d2ead54718d143f9e25f7c034b6e302d4f7d84e9efaa3465b85c21e3b08f69a3"
+sha256 = "bcac8c3a922d6f48b031b654832eb004ac7736ca0a4f1465248ce7b0296cc934"
 notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
 
 [[asset]]
@@ -697,7 +697,7 @@ source = "independently derived from Natural Earth land5.1.1/lakes5.0.0/rivers5.
 license = "CC-BY-SA-4.0"
 modified = true
 ai_generated = false
-sha256 = "7909f7fe0a52e011d0f2d4faac0190a66d239f30b972a54fca38f1e76f57bfbe"
+sha256 = "188705ff83e221e37270dc915d438dc243d0538bf47aa33929321a54f7e093f2"
 notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
 
 [[asset]]
@@ -707,7 +707,7 @@ source = "independently derived from Natural Earth land5.1.1/lakes5.0.0/rivers5.
 license = "CC-BY-SA-4.0"
 modified = true
 ai_generated = false
-sha256 = "cb35897724820813cd66a8f4d13fc4e682e84b21e4cb544686e1f04f7d07628b"
+sha256 = "b682add5fa119a7e9890600aa3e2e4a5abcbcac239a9c3ae0c7030358f8c91ac"
 notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
 
 [[asset]]
@@ -717,7 +717,7 @@ source = "independently derived from Natural Earth land5.1.1/lakes5.0.0/rivers5.
 license = "CC-BY-SA-4.0"
 modified = true
 ai_generated = false
-sha256 = "932a11dc90b9dff2c8e64395c25dcc6d93db12fe607df3dc5464768a5925498b"
+sha256 = "6f3d542c77af48831c6f513894ba2144c5287dba8f7b8f1056926aa503bad42f"
 notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
 
 [[asset]]
@@ -727,7 +727,7 @@ source = "independently derived from Natural Earth land5.1.1/lakes5.0.0/rivers5.
 license = "CC-BY-SA-4.0"
 modified = true
 ai_generated = false
-sha256 = "c5708e0070b10e74397ff3c0fa1a60eccf3d7e090bf8dee3ad6d3548b3b66c7d"
+sha256 = "7486d52376063e8aed3e968ed9ba6dbf5e4c473126fe01c70f044845db3f2036"
 notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
 
 [[asset]]
@@ -737,7 +737,7 @@ source = "original"
 license = "CC-BY-SA-4.0"
 modified = false
 ai_generated = false
-sha256 = "b6983172f2c56bd2763c7e866bc81efecb48d246d9d14d930ce6c3034932f64a"
+sha256 = "7bc53e606d89c7c6cdeae176aee8f1f2ccf3257c7139176f06dcbe4f3390dba4"
 notes = "Source/provenance for isolated world preview. No simulation authority."
 
 # Exact procedural 3D leaves from producer 19cf3cf; no AI PNG adoption.
@@ -911,3 +911,13 @@ modified = false
 ai_generated = false
 sha256 = "b5735d418e82f52b73c660052da77f189de85b67bc128169d9e666fa4ea12614"
 notes = "Fixed independent geographic input. Terms/version/extent/acquisition/SHA: data/preview/world/source-manifest.json. City source reads SHP point coordinates only; no DBF/population/game values. Offline preview bake only; no runtime download."
+
+[[asset]]
+path = "data/preview/world/sources/ne_10m_urban_areas.zip"
+author = "Natural Earth contributors; MODIS-derived urban geography"
+source = "https://naturalearth.s3.amazonaws.com/10m_cultural/ne_10m_urban_areas.zip"
+license = "public-domain"
+modified = false
+ai_generated = false
+sha256 = "2c593114e954ce1adb297ddee5465f05d9e81fa0a26deb13f8500d58a00d7051"
+notes = "FixedNE4.1.0PolygonSHPgeometryonly; MODIS2002-2003/generalized1:10M. NoDBF/population/LandScan/adminboundary/gameauthority. Terms/date/version/PRJ/CRC/acquisition/limits: data/preview/world/source-manifest.json andSOURCES.md. Offlinepreview only."

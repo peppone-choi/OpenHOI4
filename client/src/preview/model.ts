@@ -1,8 +1,8 @@
 import type { MapStyle,WorldView } from '../proto/protocol';
 import { decodeIndex,validateWorldDisplay } from '../map/model';
 
-export type PreviewProvince={id:number;kind:'land'|'sea'|'lake';pixels:number;bounds:[number,number,number,number];longitude:number;latitude:number;geography_color:[number,number,number];province_color:[number,number,number];terrain_color?:[number,number,number];elevation_m:number|null};
-export type PreviewMetadata={schema:'world-preview-v1';map_id:string;width:number;height:number;province_ids:number[];counts:Record<PreviewProvince['kind'],number>;style:MapStyle;regions:Record<string,{longitude:number;latitude:number;zoom:number}>;hashes:Record<string,string>;sources:{id:string;version:string;license:string;sha256:string}[];elevation:boolean;limitations:string[];coast_antialias?:boolean;city_input?:boolean};
+export type PreviewProvince={id:number;kind:'land'|'sea'|'lake';pixels:number;bounds:[number,number,number,number];longitude:number;latitude:number;geography_color:[number,number,number];province_color:[number,number,number];terrain_color?:[number,number,number];elevation_m:number|null;area_km2?:number;urban_pixels?:number;urban_partitioned?:boolean};
+export type PreviewMetadata={schema:'world-preview-v1';map_id:string;width:number;height:number;province_ids:number[];counts:Record<PreviewProvince['kind'],number>;style:MapStyle;regions:Record<string,{longitude:number;latitude:number;zoom:number}>;hashes:Record<string,string>;sources:{id:string;version:string;license:string;sha256:string}[];elevation:boolean;limitations:string[];coast_antialias?:boolean;city_input?:boolean;quality?:{sea_border_color?:[number,number,number]};urban_input?:{partitioned_components:number;unpartitioned_components:number}|null};
 export type PreviewData={meta:PreviewMetadata;provinces:PreviewProvince[];bytes:Uint8Array;index:Uint16Array};
 export type PreviewMode='geography'|'provinces'|'terrain';
 let requestSerial=0;
@@ -23,9 +23,15 @@ export function validatePreview(meta:PreviewMetadata,provinces:PreviewProvince[]
  const fail=()=>{throw new Error('preview-data-error');};
  if(meta?.schema!=='world-preview-v1'||!Number.isInteger(meta.width)||!Number.isInteger(meta.height)||meta.width<1||meta.height<1||meta.width>8192||meta.height>8192||meta.width*meta.height>32*1024*1024)fail();
  for(const flag of ['coast_antialias','city_input'] as const)if(meta[flag]!==undefined&&typeof meta[flag]!=='boolean')fail();
+ if(meta.quality?.sea_border_color!==undefined&&!rgb(meta.quality.sea_border_color))fail();
  if(!Array.isArray(meta.province_ids)||meta.province_ids.length<1||meta.province_ids.length>65535||meta.province_ids.some((id,i)=>id!==i+1)||provinces.length!==meta.province_ids.length)fail();
  for(const file of ['index.bin','provinces.json','adjacency.json'])if(!/^[a-f0-9]{64}$/.test(meta.hashes?.[file]??''))fail();
  for(const [i,p] of provinces.entries())if(p.id!==i+1||!['land','sea','lake'].includes(p.kind)||!rgb(p.geography_color)||!rgb(p.province_color)||(p.terrain_color!==undefined&&!rgb(p.terrain_color))||!Number.isInteger(p.pixels)||p.pixels<1||!Number.isFinite(p.longitude)||!Number.isFinite(p.latitude)||Math.abs(p.longitude)>180||Math.abs(p.latitude)>90||(p.elevation_m!==null&&(!meta.elevation||!Number.isFinite(p.elevation_m)||Math.abs(p.elevation_m)>20000)))fail();
+ for(const p of provinces){
+  if(p.area_km2!==undefined&&(!Number.isFinite(p.area_km2)||p.area_km2<=0))fail();
+  if(p.urban_pixels!==undefined&&(!Number.isInteger(p.urban_pixels)||p.urban_pixels<0||p.urban_pixels>p.pixels))fail();
+  if(p.urban_partitioned!==undefined&&(typeof p.urban_partitioned!=='boolean'||(p.urban_partitioned&&(p.kind!=='land'||p.urban_pixels!==p.pixels))))fail();
+ }
  if(!meta.sources?.length||meta.sources.some(s=>!s.version||!s.license||!/^[a-f0-9]{64}$/.test(s.sha256)))fail();
  const colors=['background','nation_border','state_border','province_border','selected','hovered'] as const;
  if(!meta.style||colors.some(key=>!rgb(meta.style[key])))fail();

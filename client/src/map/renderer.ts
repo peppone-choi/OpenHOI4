@@ -10,7 +10,7 @@ function dataTexture(bytes:Uint8Array,width:number,height:number,format:PixelFor
  t.minFilter=t.magFilter=NearestFilter;t.generateMipmaps=false;t.flipY=false;t.colorSpace=NoColorSpace;t.needsUpdate=true;return t;
 }
 export type MapCamera={x:number;y:number;zoom:number};
-export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8Array,index:Uint16Array,initial:WorldView,onHover:(id:number|null)=>void,onPick:(id:number|null)=>void,onFailure:()=>void,onResize:(camera:MapCamera)=>void,forceWebGL=false,presentation?:{camera?:MapCamera;mode:string;selected:number|null;signal?:AbortSignal;sceneExtension?:(scene:Scene,camera:OrthographicCamera)=>Promise<()=>void>;paletteAdapter?:{palettes:typeof palettes;updateColors:typeof updateColors};coastKinds?:Uint8Array}){
+export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8Array,index:Uint16Array,initial:WorldView,onHover:(id:number|null)=>void,onPick:(id:number|null)=>void,onFailure:()=>void,onResize:(camera:MapCamera)=>void,forceWebGL=false,presentation?:{camera?:MapCamera;mode:string;selected:number|null;signal?:AbortSignal;sceneExtension?:(scene:Scene,camera:OrthographicCamera)=>Promise<()=>void>;paletteAdapter?:{palettes:typeof palettes;updateColors:typeof updateColors};coastKinds?:Uint8Array;seaBorderColor?:[number,number,number]}){
  const {width,height,style}=meta;
  const renderer=new WebGPURenderer({forceWebGL,antialias:false,alpha:false});
  let disposed=false;
@@ -75,7 +75,8 @@ export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8
    for(const offset of offsets){const other=texel(point.add(offset));const value=ref?textureLoad(ref,lookup(other)).rgb:vec3(other,0,0);let different:Node<'float'>=own.sub(value).abs().dot(vec3(1)).greaterThan(0).toFloat();if(!ref&&coastKinds)different=different.mul(textureLoad(coastKinds,address).r.equal(textureLoad(coastKinds,lookup(other)).r).toFloat());edge=edge.max(different);}
    return edge;
   };
-  base.assign(mix(base,rgb(style.province_border),boundary(null,style.province_width_milli)));
+  const provinceLine=coastKinds&&presentation?.seaBorderColor?mix(rgb(style.province_border),rgb(presentation.seaBorderColor),textureLoad(coastKinds,address).r.equal(0).toFloat()):rgb(style.province_border);
+  base.assign(mix(base,provinceLine,boundary(null,style.province_width_milli)));
   base.assign(mix(base,rgb(style.state_border),boundary(states,style.state_width_milli)));
   base.assign(mix(base,rgb(style.nation_border),boundary(nations,style.nation_width_milli)));
   base.assign(mix(base,rgb(style.hovered),id.equal(hovered).toFloat().mul(style.highlight_milli/1000)));

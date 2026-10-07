@@ -148,3 +148,20 @@ preview-language-toggle-en = EN
 preview-language-toggle-ko = 한국어
 
 preview-quality-terrain-note = Korea and Himalaya elevation and modern city locations inform regional allocation. Global detailed elevation and pass accuracy remain incomplete; game data is not connected.
+
+preview-region-more = Regions, urban areas, seas
+preview-region-ireland = Island of Ireland
+preview-region-great_britain = Great Britain
+preview-region-japan = Japanese islands
+preview-region-dublin = Dublin urban footprint
+preview-region-london = London urban footprint
+preview-region-seoul = Seoul urban footprint
+preview-region-tokyo = Tokyo urban footprint
+preview-region-irish_sea = Irish Sea
+preview-region-english_channel = English Channel
+preview-region-atlantic = Atlantic Ocean
+preview-area = Approximate geographic area
+preview-urban-separated = Source urban footprint · separate parcel
+preview-urban-unpartitioned = Includes urban samples · unseparated
+preview-nonurban-source = Outside source urban mask · suburban/rural classification unconnected
+preview-urban-note = Urban areas use generalized MODIS observations from 2002–2003. Small footprints remain unseparated; historical cities, population and game values are not connected.
