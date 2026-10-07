@@ -1,0 +1,10 @@
+{
+  "source_commit": "0ab691d958a96e79f5f421004801a72173870d58",
+  "manifest_files_checked": 500,
+  "manifest_mismatches": 0,
+  "zip_members_checked": 501,
+  "ZIP_bytes": 6253324,
+  "ZIP_sha256": "965cd8dec926a9627d3d95c76b836202038b5daed189ef0d8e0d3c9cfec2b67d",
+  "committed_file_sha_checked": 6,
+  "scope": "parent byte/source custody only; independent P05 and gate still pending"
+}

@@ -1,0 +1,38 @@
+{
+  "head": "eb87ae974601e397ad638d2eaf4ea5b84fde8865",
+  "run": 37547131178,
+  "files": [
+    {
+      "member": "run.json",
+      "bytes": 14646,
+      "sha256": "6b74da30acec1f12654b0f02564fcf7b0b3bf6204112211cfbed37ce0c8d4842"
+    },
+    {
+      "member": "jobs.json",
+      "bytes": 34489,
+      "sha256": "b895f1b4304458857b826206501774b116f64e572d97bf2d7b43fe5a1d8ab359"
+    },
+    {
+      "member": "artifact.json",
+      "bytes": 804,
+      "sha256": "29399a570cd1634e91a0f49dcaf6d2b86c93e14ff94cdc6b9e27c5f06616d620"
+    },
+    {
+      "member": "identity.json",
+      "bytes": 495,
+      "sha256": "fff82e71f39e5bdf68ca2aa008eb91bbcb2b3780d09180c33a60e89d1aaf1960"
+    },
+    {
+      "member": "client.log",
+      "bytes": 279301,
+      "sha256": "79a8b30c645a183f008566ff68f958d9c31c76ae3f49fa9ec9343558214fbc98"
+    },
+    {
+      "member": "original-artifact.zip",
+      "bytes": 2783545,
+      "sha256": "7b75da81c17a83c9ac0a738fde2a99480d9088292872a7ff61a030bd28979119"
+    }
+  ],
+  "wrapper_sha256": "bd26434406bae7152f0ed436e0cbd9a4d0e872ec85fd603bbff8575b308f4dde",
+  "scope": "exact main eb87 original fixture failure before source0ab correction; no retry or later success replacement"
+}
