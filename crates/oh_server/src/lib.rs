@@ -573,7 +573,7 @@ async fn connection(mut socket: WebSocket, mut host: Host) {
                         }
                     }
                     ClientMessage::Query { request, kind } => {
-                        if kind=="economy"{
+                        if kind=="economy" && host.world.as_ref().is_some_and(|w|w.defs().economy().is_some()){
                             let mut reason=Some("not-joined");let mut economy=None;
                             if let Some(session)=active.as_ref(){let(reply,received)=oneshot::channel();if session.commands.try_send(session::Request::Economy{reply}).is_ok(){economy=tokio::select!{value=received=>value.ok().flatten(),_=host.shutdown.changed()=>break};reason=if economy.is_some(){None}else{Some("unsupported-query")};}else{reason=Some("session-closed");}}
                             if !send(&mut socket,ServerMessage::EconomyResult{request,supported:economy.is_some(),reason_key:reason.map(str::to_owned),economy}).await{break;}continue;

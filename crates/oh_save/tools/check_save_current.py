@@ -11,7 +11,6 @@ import re
 import subprocess
 import sys
 import tomllib
-import economy_current
 from save_reference import canonical, fnv, pack_hash, signed, string, varint, verify_capture, verify_ledger
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -155,6 +154,8 @@ def run(args, folder, name, native=False):
 
 
 def capture(folder):
+    global economy_current
+    import economy_current
     folder = folder.resolve(); folder.mkdir(parents=True, exist_ok=False)
     before = source_identity()
     save_source_boundary(folder, 'before', before)
@@ -221,6 +222,7 @@ def command(folder, result, stage, index):
 
 
 def verify_folder(folder, require_clean=True):
+    import economy_current
     result = json.loads((folder / 'result.json').read_text(encoding='utf-8'))
     assert result['evidence_schema'] == 1 and result['evidence_mode'] == MODE
     assert re.fullmatch('[0-9a-f]{40}', result['head']) and result['head'] == git('rev-parse', 'HEAD')
@@ -388,6 +390,7 @@ def verify_native_query(query, record):
 
 
 def verify_servers(folder, result):
+    import economy_current
     verified = verify_folder(folder)
     same(result, verified)
     pids = []
@@ -441,6 +444,7 @@ def verify_servers(folder, result):
 
 
 def compare(root):
+    import economy_current
     expected = {f'current-save-{runner}' for runner in RUNNERS}
     assert {p.name for p in root.iterdir()} == expected, 'exactly all three current OS artifacts required'
     results = []
