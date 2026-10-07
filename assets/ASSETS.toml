@@ -647,3 +647,95 @@ license = "CC-BY-SA-4.0"
 modified = false
 ai_generated = false
 notes = "Unmodified source97f688718dabed46bc477fa249798ac09e999581 Testland file for historical v2 compatibility only; SHA256 01258b9b99424f3855394d410ba369b407357239006e04d1d914265d36151dd5. Original synthetic pack; current pack tests are separate; no migration or replacement."
+
+# WORLD-PREVIEW checkpoint: fixed source and baked display data.
+
+[[asset]]
+path = "data/preview/world/defines.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+sha256 = "753df0eb4dbdb7a271fdc91ca1d07fa44881147594ac11d0a44d12291b5ee114"
+notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
+
+[[asset]]
+path = "data/preview/world/source-manifest.json"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+sha256 = "82e487abbbb98f84e9238bb537b35af610444d81c7c4ecfd31e28f0d023ec449"
+notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
+
+[[asset]]
+path = "data/preview/world/sources/ne_10m_lakes.zip"
+author = "Natural Earth contributors"
+source = "https://naturalearth.s3.amazonaws.com/10m_physical/ne_10m_lakes.zip"
+license = "public-domain"
+modified = false
+ai_generated = false
+sha256 = "0803a06f9c3cb4671d89b68c48b142aad9366ba40f665245e12a913fbc61722a"
+notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
+
+[[asset]]
+path = "data/preview/world/sources/ne_10m_land.zip"
+author = "Natural Earth contributors"
+source = "https://naturalearth.s3.amazonaws.com/10m_physical/ne_10m_land.zip"
+license = "public-domain"
+modified = false
+ai_generated = false
+sha256 = "e547d749445eaa0964aba76738090ec88f5e63c4585122170f98c67a7ea922dc"
+notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
+
+[[asset]]
+path = "client/public/preview/world/adjacency.json"
+author = "OpenHOI contributors"
+source = "original; derived from Natural Earth land 5.1.1 and lakes 5.0.0"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+sha256 = "26389be0ae7006f5a94b2e08ec0cf0709d4b8fc6dd1b9a92eb4009d53f8b1ba2"
+notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
+
+[[asset]]
+path = "client/public/preview/world/index.bin"
+author = "OpenHOI contributors"
+source = "original; derived from Natural Earth land 5.1.1 and lakes 5.0.0"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+sha256 = "977580f2f9cb0a78f67b38b1bcc2c8b29d2e791019e11876875148552b75e2e5"
+notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
+
+[[asset]]
+path = "client/public/preview/world/metadata.json"
+author = "OpenHOI contributors"
+source = "original; derived from Natural Earth land 5.1.1 and lakes 5.0.0"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+sha256 = "f0afe6abff9c177007bcaff054a885fc5bec9b83d52791e0d28f39176256233f"
+notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
+
+[[asset]]
+path = "client/public/preview/world/provinces.json"
+author = "OpenHOI contributors"
+source = "original; derived from Natural Earth land 5.1.1 and lakes 5.0.0"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+sha256 = "a6f4fed4bc72007b78ec88ef5e4a8c0ddff805504fbf72472fa1f4ccca5517cd"
+notes = "Fixed local world preview only. No simulation/nation/history authority. Regenerate: python tools/maps/world_preview.py --out client/public/preview/world; source and options: data/preview/world. Terms: https://www.naturalearthdata.com/about/terms-of-use/"
+
+[[asset]]
+path = "data/preview/world/SOURCES.md"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+sha256 = "7d0e4ed14e1a482f0774cdee9a6134f9c46c964ec68b2733cbdd614bbabaea9f"
+notes = "Source/provenance for isolated world preview. No simulation authority."

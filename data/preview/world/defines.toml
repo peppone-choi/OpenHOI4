@@ -1,0 +1,53 @@
+# Display/generation constants only. No gameplay values.
+[generation]
+width = 4096
+height = 2048
+seed = 320145
+land_seeds = 4200
+sea_seeds = 1500
+lake_seeds = 1
+query_rows = 32
+
+[style]
+background = [13, 26, 34]
+nation_border = [13, 26, 34]
+state_border = [13, 26, 34]
+province_border = [44, 64, 62]
+selected = [239, 193, 100]
+hovered = [226, 223, 187]
+nation_width_milli = 0
+state_width_milli = 0
+province_width_milli = 620
+highlight_milli = 520
+fit_milli = 940
+zoom_min_milli = 800
+zoom_max_milli = 60000
+wheel_milli = 160
+drag_threshold = 3
+
+[colors]
+land = [142, 157, 135]
+sea = [35, 69, 85]
+lake = [62, 101, 111]
+province_variation = 25
+
+[regions.world]
+longitude = 0
+latitude = 0
+zoom = 1
+[regions.europe]
+longitude = 15
+latitude = 50
+zoom = 6
+[regions.korea]
+longitude = 127.5
+latitude = 37
+zoom = 23
+[regions.himalaya]
+longitude = 85
+latitude = 29
+zoom = 12
+[regions.americas]
+longitude = -95
+latitude = 20
+zoom = 2.5

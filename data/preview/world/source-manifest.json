@@ -1,0 +1,24 @@
+{
+  "sources": [
+    {
+      "id": "land",
+      "file": "sources/ne_10m_land.zip",
+      "url": "https://naturalearth.s3.amazonaws.com/10m_physical/ne_10m_land.zip",
+      "version": "5.1.1",
+      "license": "public-domain",
+      "sha256": "e547d749445eaa0964aba76738090ec88f5e63c4585122170f98c67a7ea922dc",
+      "acquired": "2026-10-07",
+      "terms": "https://www.naturalearthdata.com/about/terms-of-use/"
+    },
+    {
+      "id": "lakes",
+      "file": "sources/ne_10m_lakes.zip",
+      "url": "https://naturalearth.s3.amazonaws.com/10m_physical/ne_10m_lakes.zip",
+      "version": "5.0.0",
+      "license": "public-domain",
+      "sha256": "0803a06f9c3cb4671d89b68c48b142aad9366ba40f665245e12a913fbc61722a",
+      "acquired": "2026-10-07",
+      "terms": "https://www.naturalearthdata.com/about/terms-of-use/"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+# Existing offline build tools, not runtime/browser dependencies.
+# Official version LICENSE: BSD-3-Clause. No new install/global setting change.
+numpy==2.2.6
+scipy==1.17.1

@@ -1,0 +1,32 @@
+# ADR-3201 오프라인 세계 지도 시각 미리보기
+
+| 항목 | 값 |
+|---|---|
+| 상태 | 채택 |
+| 날짜 | 2026-10-07 |
+| 관련 WP·REQ | WP-32, WP-45; REQ-MAP-01/02/04/07/10/11 일부 |
+
+## 맥락
+
+사용자가 실제 전세계 지도와 메인 HUD 외관을 기능 개발보다 먼저 보도록 직접 승인했다. 기존 Testland와 권위 서버를 변경하지 않고 독립 원천에서 생성한 시각 미리보기가 필요하다.
+
+## 결정
+
+[최소 계약](../plans/WORLD-PREVIEW-schema.md)을 따른다. Natural Earth land/lakes ZIP를 SHA256 고정하고 오프라인 구면 nearest-seed 분할과 연결성 조각 분리로 굽는다. 기존 Three RG8 renderer/model을 display adapter에서 재사용한다. 4096×2048, 약 12,000 seed에서 시작하고 섬/호수 조각 수를 실제 기록한다. 주·국가·역사·게임 수치는 만들지 않는다. 첫 체크포인트에서는 고도 미적용을 명시한다.
+
+## 검토한 대안
+
+| 대안 | 장점 | 버린 이유 |
+|---|---|---|
+| 원작 지도 | 즉시 표시 | 클린룸 금지 |
+| 직사각 격자 | 간단 | 사용자 비격자 요구 |
+| 외부 실시간 타일 | 상세 지리 | 오프라인 원천 계약 위반 |
+| DEM 전체 60 arc-second 파일 선행 | 전세계 높이 | 큰 다운로드가 첫 화면을 막음; 공식 subset을 후속 시도 |
+
+## 결과와 영향
+
+지리 제작 float는 오프라인 시각 데이터에 한정되며 sim DR을 변경하지 않는다. EPSG:4326 구면 거리 사용으로 높은 위도와 dateline 거리 왜곡을 줄이고, 표현은 Plate Carrée여서 극지 면적은 확대된다. raster 해상도 이하 섬/호수, 일반화 해안, near-coast aliasing, 게임 주 연결 미구현은 알려진 한계다. 저장/프로토콜/게임 모드 규격 변경 없음.
+
+공식 확인(2026-10-07): [Natural Earth land v5.1.1](https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-land/), [lakes v5.0.0](https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-lakes/), [public domain 조건](https://www.naturalearthdata.com/about/terms-of-use/). NOAA [ETOPO2022](https://www.ncei.noaa.gov/products/etopo-global-relief-model)와 [Grid Extract](https://www.ncei.noaa.gov/maps/grid-extract/)는 subset/GeoTIFF를 제공하나 dateline 교차 및 ±89° 밖 요청이 제한된다. [메타데이터](https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.ngdc.mgg.dem%3Aetopo_2022)는 EPSG:4326/3855, CC0 조건을 안내한다.
+
+설치된 numpy 2.2.6/scipy 1.17.1은 공식 version tag LICENSE의 BSD-3-Clause 확인 후 사용. Pillow 12.1.1은 MIT-CMU 표기이며 02 허용목록의 정확 SPDX와 다르므로 생성기 의존성으로 채택하지 않는다. SHP/PNG는 Python stdlib reader/writer로 구현하고 새 Python/Cargo/JS dependency를 설치하지 않는다.
