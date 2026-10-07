@@ -1,16 +1,19 @@
 {
-  "scope": "CEO independent specification/integer arithmetic review only, not independent product PASS",
-  "request_source_sha256": "0b9e2ba3756fa1022a876f11369dc8b4e4909fc49e84ea35bfbf9b7d75734b07",
-  "files": [
+  "scope": "CEO independent specification/integer arithmetic review only; not product verification",
+  "authoritative_originals": "originals.zip",
+  "original_members": [
     {
-      "path": "REQUEST-0006-0b9e2ba3756f.raw.md",
+      "member": "REQUEST-0006-0b9e2ba3756f.raw.md",
       "bytes": 3384,
       "sha256": "0b9e2ba3756fa1022a876f11369dc8b4e4909fc49e84ea35bfbf9b7d75734b07"
     },
     {
-      "path": "REQUEST-0006-independent-review.json",
+      "member": "REQUEST-0006-independent-review.json",
       "bytes": 2153,
       "sha256": "589553d68c834d2749205bea0f82ff9e7d43b9459c1ee44438c69151b190b429"
     }
-  ]
+  ],
+  "ZIP_bytes": 2776,
+  "ZIP_sha256": "50b71361b753f55d27ff4e29109a36f0d0db635aec30a15b57532df4cfda5cc7",
+  "presentation_files_note": "Adjacent raw.md/JSON are readable copies. Git text normalization changes CRLF JSON bytes on checkout; the binary archive preserves immutable source bytes exactly. Previous pre-seal identity is retained in Git history."
 }

@@ -403,6 +403,8 @@ WP-17/REQ-MIL-04의 중간 edge Stop/reroute는 [REQUEST-0006 A](decisions/REQUE
 
 육지 간 해협 edge는 [REQUEST-0007 A](decisions/REQUEST-0007.md)의 같은 날짜 CEO 한정 잠정을 적용한다. MapData의 실제 Strait kind·서버 allowed 양끝점·방향별 명시 양수 strait 계수만 사용하며 하천/해협의 적용 슬롯·raw bit/순서를 분리한다. 9/10틱·대체 경로·동점·누락/0/음수/overflow/underflow/잘못된 kind·ref/비육지/권한의 원자성과 kind/계수 hash·v2 저장/새 process 재개·기존 v1 호환을 독립 검사한다. 미래 함대 통제/통행권/해상 수송 행동을 이 기술 인접 계약으로 구현하지 않는다.
 
+WP-17의 원 source `97f6887`이 만든 v2 표현도 보존한다. typed strait context의 추가 저장은 원 v1/v2 DTO·reader/writer/canonical/hash를 동결한 별도 v3 확장으로 설계할 수 있다. 실제 v1/v2/v3 선택은 새/정지 unit·빈 경로·예약 명령·explicit strait context의 존재를 대조해 손실을 막는다. 원 v2 bytes의 읽기·쓰기/새 process 재개와 v3의 별도 bounded preflight·raw kind/계수·큐·진행 상태를 각각 검증한다. 문서의 v2 저장 검사는 기존 이동 body의 보존 요구이며 새 context를 구 v2 구조에 덧붙여 호환을 깨라는 뜻이 아니다. 기존 저장 거부·migration은 승인하지 않았다.
+
 M4 차량 OPEN-03/REQ-SUP-05의 [v2 운용·손실 설계](decisions/DETAIL-DRAFT-0002-transport-v2.md)는 CEO 2026-10-07 잠정 채택이다. 01 보급 규칙의 채택 범위와 유보사항을 따른다. WP-15 실제 장비/재고형·총계 상한·C 단위·phase/명령/서버 오류 대조 및 필드→hash/save/wire/runtime/UI를 WP-44 설계/독립 검증에 연결한다. §6.2 보급→경제→생산 순서를 유지한다. 합성 k/r은 콘텐츠 기본값이 아니며 실제 모델/호환안 검토 전 생산규칙 변경·기존 저장 거부/호환파괴/migration을 실행하지 않는다.
 
 사용자 2026-10-06 지시에 따라 신규 시스템·스키마 변경 전에 [시스템별 스키마 기획](plans/schema-planning.md)을 작성한다. 필드 의미·단위·범위·null/default·참조·수명·권위·REQ/WP와 정의/초기값/가변/파생 계층을 명시하고, 관계·실패 원자성·해시/저장·버전/wire/runtime/UI 및 독립 경계 예제를 대조한다. 담당 WP 설계 문서를 P-03/P-05에 연결한다. 현재 M1 기초 모델을 최종 전체 모델로 기록하지 않으며 미승인 게임 규칙을 위키에서 가져와 구현하지 않는다. 전역 하네스·자동 반복이나 추가 강제 리뷰를 활성화하지 않는다.
