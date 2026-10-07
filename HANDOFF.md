@@ -8,6 +8,8 @@
 
 ## 실제 상태와 이전 인수인계의 차이 (재개 시 기록)
 
+2026-10-07 M2-r2 P-09 확인: 아래 M1-r3 종료 인계는 과거 기록이다. 실제 현재 마일스톤은 M2이며 M2-r1 부모와 WP-24 P-05-4 원·후속 turn은 interrupted로 중단됐다. 시작 main `1cf57fee1860dd3611088dd751c30251035775c4`는 clean, 실제 origin `82db68f67827cb0b4e6317fae29d1514a94b64f0`보다 ahead7/behind0이고 현재 HEAD CI는 없다. 원82의 CI/Save FAIL을 보존한다. 기존 검증 source `164f04e6378b959e54da67cbca19b1ff03b6fe9f`의 추적9880/각SHA/HEAD/semantic·raw index/diff/status가 최초와 같고 전용 native PID0임을 확인한 뒤 같은 독립 앱 `01a114b2-8a3d-7c91-9ba0-37959a8fbb11`에서 미완료 리포트·ZIP 봉인을 재개했다. actual final/PASS·P-07·같은 main5CI 전에는 통합 완료가 아니다. 실제 최신 상태는 [M2 증거](docs/plans/M2-evidence.md)와 `.orchestrator/app-threads.json`에 기록한다. 이번 RUN 종료에 아래 전체 인계를 실제 상태로 갱신한다.
+
 이번 RUN은 M1-r3-W4(WP-08 수정) 한 묶음을 통합했다. 총 통합WP12는 그대로이며 새WP로 중복 계산하지 않는다. WP11을 다시 구현하지 않았다. 새 독립 [M1 게이트](docs/gates/M1.md)는 exact89964f4에서 AC-M1-07/REQ-PLAT-03의 이전 FAIL을 현재 PASS로 판정했다. AC6→7의 실제 진전이다. [이전 FAIL](docs/gates/evidence/M1-r2/original-gate-report.md)·[원 bytes](docs/gates/evidence/M1-r2/original-gate-report-identity.json)·[eb87 CI FAIL](docs/verify/evidence/WP-08-main-eb87-CI-FAIL/README.md)을 보존한다.
 
 수정source0ab691d958a96e79f5f421004801a72173870d58→병합02cca1f→증거c316650→P12대상89964f4의 docs/HANDOFF 제외 제품248 Git blob이 동일하다. DPR 같은canvas/epoch 관측을 묶고 negative를 추가했다. renderer/App/network·Rust·wire/save·defines/현지화·의존성/에셋·workflow/config 변경없음. 원30초/expect5초/retry0/skip0·브라우저/GPU·DOM expects·PNG±1/rawGL·권위·camera/buffer·old-context/cleanup을 유지한다.
