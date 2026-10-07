@@ -246,7 +246,7 @@ pub fn load_map(pack: impl AsRef<Path>, map_id: &str) -> Result<MapData, DataErr
 
 /// Common definition files may carry later-system fields. This boundary reads
 /// only validated, unique IDs and never invents economics or terrain modifiers.
-fn registry(path: &Path, kind: &str) -> Result<BTreeSet<String>, DataError> {
+pub(crate) fn registry(path: &Path, kind: &str) -> Result<BTreeSet<String>, DataError> {
     let source = read(path)?;
     let doc = source.document()?;
     let mut result = BTreeSet::new();
@@ -273,6 +273,13 @@ fn registry(path: &Path, kind: &str) -> Result<BTreeSet<String>, DataError> {
                     "registry entry must be a table",
                 ));
             };
+            if let Some(key) = fields.keys().find(|k| k.get_ref() != "id") {
+                return Err(source.error(
+                    key.span().start,
+                    ErrorKind::Schema,
+                    "unknown registry field (only id is currently registered)",
+                ));
+            }
             let Some(id) = fields.get("id") else {
                 return Err(source.error(
                     entry.span().start,

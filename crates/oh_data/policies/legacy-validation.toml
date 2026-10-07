@@ -1,0 +1,163 @@
+# Engine-owned REQUEST-0008 A; never loaded from an input pack.
+policy_format = 1
+
+[[sources]]
+id = "original-m0"
+source_commit = "b6516ed4e571a0359e1da2ee69e9b68e3356339f"
+source_reference = "docs/decisions/evidence/historical-load-policy/source-originals.zip"
+[[sources.files]]
+path = "defines.toml"
+bytes = 383
+sha256 = "ce61b20ea14151f6e69da48ef0fc3d6493c80e6d85245aee406d10f0b8c09341"
+[[sources.files]]
+path = "manifest.toml"
+bytes = 189
+sha256 = "4919babdf6d5d44bf48126f783ca020881c2b0d427fb995c8974d7e3041286c3"
+[[sources.files]]
+path = "scenarios/testland/scenario.toml"
+bytes = 180
+sha256 = "01d3cb6192a40792a512beeeb66b45b6ee602c8f54f77e8870d7b41b9b40a2ef"
+
+[[sources]]
+id = "mutable-v1"
+source_commit = "c2c2f638fe5179d11ce5a318f6d991b4b2a0cd4d"
+source_reference = "docs/decisions/evidence/historical-load-policy/source-originals.zip"
+[[sources.files]]
+path = "common/buildings.toml"
+bytes = 29
+sha256 = "23826071aeb8a2bc7a1f032ec2adcc23424e5f60ac579ca9ee18be5bd52816b8"
+[[sources.files]]
+path = "common/resources.toml"
+bytes = 26
+sha256 = "514eee6a8dbc6835c6833c38dadbe5da7dae3d70d185aaecea73ba8dd62b61fc"
+[[sources.files]]
+path = "common/terrain.toml"
+bytes = 173
+sha256 = "db903c3403dded0c36b38ae28ab2b6f61a1c66efdc7c16a4c5240dceb475d289"
+[[sources.files]]
+path = "defines.toml"
+bytes = 206
+sha256 = "76d46941adae2f693574dc5551b4afcb9f1999cf5e513fd863de1d2d923587df"
+[[sources.files]]
+path = "localisation/en/map.ftl"
+bytes = 164
+sha256 = "ae6442ef5fd0912ae5d7cdbf0541edd417c83dfeb505d6f749b2b6687ddb9b4b"
+[[sources.files]]
+path = "localisation/en/national.ftl"
+bytes = 226
+sha256 = "e109c2e8097418bef7c251904497fae23b21f0a85abe6ed8a8dc208445c84407"
+[[sources.files]]
+path = "localisation/ko/map.ftl"
+bytes = 160
+sha256 = "b7ac3fb02aa96a16f8338bf81068aa378d7791e8be7306ddb2f0f42092bf700f"
+[[sources.files]]
+path = "localisation/ko/national.ftl"
+bytes = 227
+sha256 = "7824bf87a61e5041644e3d62b09ebc4debc6f0769878e36bf1b662198986e312"
+[[sources.files]]
+path = "manifest.toml"
+bytes = 186
+sha256 = "92656dc53031c8bf5d1e8af8b5a15e4448b3eb2eee498f56010811b78528dbcc"
+[[sources.files]]
+path = "maps/testland/adjacency_overrides.csv"
+bytes = 75
+sha256 = "251e1353688f511baf45b1b513a8a79ad3329ae21dfb1e6e29e9ba362572a525"
+[[sources.files]]
+path = "maps/testland/provinces.csv"
+bytes = 218
+sha256 = "f04d94464fe95d7c25069529a34f782e060ba9cf5185618384a3ac5dd2846c89"
+[[sources.files]]
+path = "maps/testland/provinces.png"
+bytes = 97
+sha256 = "05305d56dc90dfbfbd73fc1a5f3a480ec6e82551f60a93be7d8bc53ad3d73dab"
+[[sources.files]]
+path = "maps/testland/regions.toml"
+bytes = 67
+sha256 = "1b9eadcb639cef1b6e7b88451e1e7134a88d8b5cb108e4066ee70cc137f79485"
+[[sources.files]]
+path = "maps/testland/states.toml"
+bytes = 540
+sha256 = "d63380dfe0240f8fe50feabe8e253278a03020d24ad46e65cd69f5a3e0512f2b"
+[[sources.files]]
+path = "maps/testland/visuals.toml"
+bytes = 246
+sha256 = "df2b1566fabd3c1a263d543b425a52842584a6ca5bf33827290a1d4fa2f303b1"
+[[sources.files]]
+path = "scenarios/m1/defines.toml"
+bytes = 811
+sha256 = "91ac0d4669188dd911622bdbdba5efb43c5d242f195d6f1478f07afc91f45411"
+[[sources.files]]
+path = "scenarios/m1/nations/NTH.toml"
+bytes = 211
+sha256 = "04f0a06c29a74b41e7effe94a3e131da359f213ef35da849e70c59fbd3f8c29a"
+[[sources.files]]
+path = "scenarios/m1/nations/STH.toml"
+bytes = 209
+sha256 = "522a1ab15df094a0c15012e2c8c3b362dba7fb766ff0d2b6eea48b0f1bde0b2b"
+[[sources.files]]
+path = "scenarios/m1/scenario.toml"
+bytes = 538
+sha256 = "ce56ff2d9259ed60be06163fe57d6dba452d9e5075b56525f920c3dc23354481"
+
+[[entries]]
+policy_id = "original-m0-server_startup"
+source_id = "original-m0"
+caller = "server_startup"
+pack_id = "m0_testland"
+pack_version = "0.1.0"
+pack_content_hash = "7963e17f6bd07c84"
+scenario_id = "testland"
+scenario_kind = "empty"
+source_field = "manifest.name_key"
+name_key = "testland_name"
+diagnostic_code = "missing_message_value"
+locales = ["ko", "en"]
+disposition = "warning_unavailable"
+
+[[entries]]
+policy_id = "original-m0-server_restore"
+source_id = "original-m0"
+caller = "server_restore"
+pack_id = "m0_testland"
+pack_version = "0.1.0"
+pack_content_hash = "7963e17f6bd07c84"
+scenario_id = "testland"
+scenario_kind = "empty"
+source_field = "manifest.name_key"
+name_key = "testland_name"
+diagnostic_code = "missing_message_value"
+locales = ["ko", "en"]
+disposition = "warning_unavailable"
+save_format = 1
+
+[[entries]]
+policy_id = "original-m0-cli_v1_resume"
+source_id = "original-m0"
+caller = "cli_v1_resume"
+pack_id = "m0_testland"
+pack_version = "0.1.0"
+pack_content_hash = "7963e17f6bd07c84"
+scenario_id = "testland"
+scenario_kind = "empty"
+source_field = "manifest.name_key"
+name_key = "testland_name"
+diagnostic_code = "missing_message_value"
+locales = ["ko", "en"]
+disposition = "warning_unavailable"
+save_format = 1
+
+[[entries]]
+policy_id = "mutable-v1-cli_v1_resume"
+source_id = "mutable-v1"
+caller = "cli_v1_resume"
+pack_id = "testland"
+pack_version = "0.1.0"
+pack_content_hash = "b27b821484f4c43b"
+scenario_id = "m1"
+scenario_kind = "national"
+source_field = "manifest.name_key"
+name_key = "testland_name"
+diagnostic_code = "missing_message_value"
+locales = ["ko", "en"]
+disposition = "warning_unavailable"
+save_format = 1

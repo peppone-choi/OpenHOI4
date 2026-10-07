@@ -3,9 +3,17 @@ use oh_save::SaveContext;
 use oh_sim::{Command, Simulation};
 use std::path::Path;
 mod copy;
-pub use copy::copy_pack;
+pub use copy::{copy_pack, copy_v1_pack};
 pub fn mutable_pack(target: &Path) {
     copy_pack(target);
+    add_mutable_inputs(target);
+}
+#[allow(dead_code)] // save_fixture's committed capture; generic tests keep mutable_pack.
+pub fn mutable_v1_pack(target: &Path) {
+    copy_v1_pack(target);
+    add_mutable_inputs(target);
+}
+fn add_mutable_inputs(target: &Path) {
     let path = target.join("scenarios/m1/scenario.toml");
     let mut source = std::fs::read_to_string(&path)
         .unwrap()
