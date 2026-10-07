@@ -1,18 +1,20 @@
 # 인수인계
 
-## 진행 중 M2-r2 최신 사용자 우선순위 — 2026-10-07 16:18 KST
+## 진행 중 M2-r2 최신 사용자 우선순위 — 2026-10-07 17:32 KST
 
-현재 오케스트레이터 `01a114ca-469a-73c0-a9c4-9df475c37769`는 실행 중이며 이 절은 RUN 종료 P-08이 아니다. 갱신 전 main `a9b6a4bfd9a3507ba806a20bb0acb39a6be01259`의 같은HEAD5CI/21job은 모두 SUCCESS였다. 고유 통합WP14·M0/M1 PASS 유지·M2 게이트 없음·원W1/W2 전체 통합0이다. 아래 이전 M1 종료 기록은 역사다.
+현재 오케스트레이터 `01a114ca-469a-73c0-a9c4-9df475c37769`는 실행 중이며 이 절은 RUN 종료 P-08이 아니다. 관측 main `79c9f7d63228748de6121e976c2adcb292ce8bd5`는 원CI/지도 검수 FAIL 보존 문서로 origin a652보다 ahead1였다. 고유 통합WP14·M0/M1 PASS 유지·M2 게이트 없음·원W1/W2 전체 통합0이다. 아래 이전 M1 종료 기록은 역사다.
 
-WP-13 P-06 source de0의 새 독립 P-05-2는 유효 담당 범위 PASS다. 부모 최초/최종9951·raw884679 동일, MF5769/ZIP5770 전수 불일치0다. P-07/동일main6CI·실제3OS 전에는 통합으로 세지 않는다. 세계/HUD e209 및 실제3D a28 원 체크포인트는 사용자에게 전달하고 보존했다. a28 독립 검수는 현지화 키 catalog 누락을 발견한 상태로 봉인 중이며, 원 담당은 지리 자료에 따른 형상 개선을 계속한다. marker 앱은 clean19cf에서 completed이며 source23파일과 실제GLB/PNG 원출력 전수 대조를 마쳤다. 현재 활동/종료 상태는 registry가 권위다.
+WP-13 de0의 새 독립 P-05-2는 유효 담당 범위 PASS(9951/raw884679/MF5769/ZIP5770 불변·전수0)이며 main dcacc P-07 40/40이 통과했다. 같은 main a652의 기존5CI/21job은 성공했으나 새 Trigger compare는 다운로드 경로가 ignored target 밖이라 native1 FAIL이었다. 원3OS producer는 성공했고 같은 cleanHEAD의 부모 ignored-path 비교는0이며 원CI FAIL을 소급하지 않는다. 수정080e source5파일·원producer849/850 전수0를 보존했고 새독립 P05-3 `01a11576-f042-7013-8cab-9e6ebb73e8ce`/verify3/9951/raw70ea29f가 진행 중이다. P07/새main6CI·actual3OS 전에는 WP13을 통합으로 세지 않는다.
+
+세계/HUD e209·실3D a28·지리자료/Fluent 정합2d920 원체크포인트는 사용자에게 전달하고 보존했다. a28 독립 유효FAIL F01현지화68누락/F02단일전체E2E녹색없음과 9999/rawaf9986/MF533/ZIP534 전수0를 유지한다. 새2d920 원95파일/97ZIP·inputs24Gitblob 전수0를 보존한 뒤 새독립 P05-2 `01a1157c-d10d-7613-a85e-85c1f52ea5a4`/verify2/10001/raw0f41b665를 배정했다. 같은지도담당은 별도 후속turn01a1157b에서 한반도해안/지역밀도·8k이내 후보의 실제시간/메모리/texture/선택/인접/반복SHA를 먼저 조사한다. 표시PASS와 최종지역품질을 구별한다. marker 앱은 clean19cf completed이며 source23파일과 실제GLB/PNG 원출력 전수 대조를 마쳤다. 현재 실제 활동/종료는 registry가 권위다.
 
 사용자가 전세계·독립 프로빈스 렌더링과 메인 HUD 외관을 먼저 요청했다. 생성형 임시 마커를 병행하고 기능 연결은 후속이다. computer-use/CUA·사용자 화면/브라우저 포커스·키마우스 조작은 금지이며 Breaking Point UI 세션의 비간섭 검수 방법을 인수한다. [실제 배정·소유·검수 계획](docs/plans/world-preview-priority.md)을 따른다.
 
 후속 사용자 3D 요청으로 지도 위 샘플은 실제 procedural low-poly GLB 메시로 전환했다. 기존 marker 앱이 같은 branch에서 units3d leaf 모델/recipe를 소유하며 원 imagegen PNG는 별도 보존한다. world 앱은 승인된 실제 3D leaf만 인수해 scene/depth/light로 연결한다. 원 PNG를 3D라 쓰거나 미검토 raster branch 전체를 가져오지 않는다. HUD 권위 게임 기능은 추가하지 않는다.
 
-세계/HUD 구현 앱 `01a11536-8218-7c93-9082-70931a350875`, `.orchestrator/wt/WORLD-PREVIEW-M2-r2`, `codex/world-province-preview-m2r2`와 생성형 마커 앱 `01a11537-ccb8-7f80-938d-6b86803b1bf2`, `.orchestrator/wt/PREVIEW-MARKERS-M2-r2`, `codex/preview-marker-assets-m2r2`는 actual active다. 둘의 base는 ea63081이며 exact prompt/createpayload·cursor는 `.orchestrator/app-threads.json` 및 M2-r2-resume 증거에 있다. WP-13 P-06 앱 `01a114e4-115e-7823-ba09-966b6efb7594`도 별도 network/checker 소유로 계속한다. 원ff78 독립 유효 FAIL2와 9951/rawdf3bb 불변성·MF2186/ZIP2187은 docs/verify에 보존했다.
+세계/HUD 구현 앱 `01a11536-8218-7c93-9082-70931a350875`, `.orchestrator/wt/WORLD-PREVIEW-M2-r2`, `codex/world-province-preview-m2r2`는2d920원turn completed23 뒤 quality후속 actualactive다. 생성형 마커 앱 `01a11537-ccb8-7f80-938d-6b86803b1bf2`/PREVIEW-MARKERS-M2-r2/codex/preview-marker-assets-m2r2는 completed다. 둘의 최초base는 ea63081이며 exactprompt/payload/cursor는 registry/증거에 있다. WP13 구현앱 `01a114e4-115e-7823-ba09-966b6efb7594`의 P06-2는completed32이며새검증을기다린다. 원ff78 유효FAIL2와rawdf3bb/MF2186/ZIP2187도보존했다.
 
-같은 main43fd의 5CI/21job/Save 실제6개3OS artifact 성공과 macOS attempt1 원FAIL은 각각 docs/plans/evidence에 보존했다. 최신 ea63081의 관측 당시 Core/Simulation/Save/Localisation 성공·일반 client 진행 중이며 최종 상태는 registry와 실제CI를 다시 읽는다. 첫 actual world/HUD checkpoint 커밋·로컬URL·전체/확대 캡처를 마일스톤 완료 전에 CEO에 전달한다. 원Testland/golden/save/호환 정책·D/OPEN·기존 실패는 유지하고 공개 배포하지 않는다.
+같은 main43fd의 5CI/21job/Save 실제6개3OS artifact 성공과 macOS attempt1 원FAIL은 보존했다. 이후a9b6도같은5CI21성공이며 새a652는총6CI25job 중Trigger compare만FAIL인원자료를보존한다. 세계미리보기URL `http://127.0.0.1:4317/?world-preview=1`은자기VitePID33284의계속수정중인화면이다. 고정PNG는각checkpoint증거이며전세계/지역/실3D를CEO·사용자에게이미전달했다. 더좋은지역proof를다음에제공하며새기능연결은후속이다. 원Testland/golden/save호환·D/OPEN·기존실패와noCUA/focus금지유지·공개배포없음.
 
 | 항목 | 값 |
 |---|---|

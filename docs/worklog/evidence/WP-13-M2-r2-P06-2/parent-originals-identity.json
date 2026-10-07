@@ -1,0 +1,33 @@
+{
+  "source": "080e4b54bee775f49915e703fc521ba1742f156b",
+  "actual_final_turn": "01a11569-f48b-7892-addc-d528a967cb04",
+  "actual_final_chars": 507,
+  "originalZIP_bytes": 4844057,
+  "originalZIP_SHA256": "3a4e270dce6db151809f4d57d33c2cffa83f2e79982999c91715b78119c87459",
+  "originalZIP_members_checked": 850,
+  "mismatches": 0,
+  "parent_originals": [
+    {
+      "path": "actual-final-api.json",
+      "bytes": 1650,
+      "sha256": "7a46cdf916bea25ba65c4271724d86e482a45a9e3dae6027205a3705245e3a7b"
+    },
+    {
+      "path": "actual-prompt.md",
+      "bytes": 4365,
+      "sha256": "f5002a53144623d9129e8d612bfe6d19a175281b4a2ad89cf054bb74557b8094"
+    },
+    {
+      "path": "actual-send-payload.json",
+      "bytes": 4487,
+      "sha256": "59684d5c0c84310dbc84ec3c14b901dc4a18674897896f2316b002ef4a23e6ea"
+    },
+    {
+      "path": "producer-custody.json",
+      "bytes": 1341,
+      "sha256": "f26a593e645e19637595cba47a2099d61eb2981d396efd08148152fc83dd7834"
+    }
+  ],
+  "parent_originals_SHA256": "d763ef2398e86ce63c47b2cb2beb0a4d07106a640d944f97b471a8f5f557b1e8",
+  "scope": "Original producer final and evidence only, independent P05/integration/CI separate"
+}
