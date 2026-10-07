@@ -1,0 +1,17 @@
+{
+  "head": "2d920ea86c6d8045adb7d3115007230e52c3ccf2",
+  "decision": "FAIL",
+  "zip": "E:\\openhoi\\.orchestrator\\wt\\WORLD-PREVIEW-M2-r2-verify2\\target\\evidence\\WORLD-PREVIEW-M2-r2-P05-2\\evidence.zip",
+  "zip_bytes": 207498377,
+  "zip_sha256": "6f24339f4c197653a92fd91ff1c1b92c85a0f8a0af9dc324c74e26c3b144df87",
+  "manifest_sha256": "e089c9a03b0fdf975c2370bc0a0d09fbae433002c1e200f5f3c0d05d22c04f8d",
+  "payload_files": 1121,
+  "zip_members": 1122,
+  "all_member_hashes_verified": true,
+  "seal_pid": 12956,
+  "seal_cwd": "E:\\openhoi\\.orchestrator\\wt\\WORLD-PREVIEW-M2-r2-verify2",
+  "GIT_OPTIONAL_LOCKS": "0",
+  "created_utc": "2026-10-07T08:54:46.415755+00:00",
+  "excluded": "Isolated browser cache profiles only; argv/PID/profile/process metadata retained. Postseal comparison companions outside payload.",
+  "session_final": "App actual final captured and saved by parent; this script native0 is only seal verification."
+}

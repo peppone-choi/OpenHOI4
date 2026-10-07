@@ -1,0 +1,94 @@
+{
+  "head": "2d920ea86c6d8045adb7d3115007230e52c3ccf2",
+  "judgement": "FAIL",
+  "report": "E:\\openhoi\\docs\\verify\\WORLD-PREVIEW.M2-r2.attempt2.md",
+  "parent_full_raw_invariance": true,
+  "verification_invariance_valid": true,
+  "snapshot_differences": [],
+  "raw_index_bytes_identical": true,
+  "manifest_files_checked": 1121,
+  "ZIP_members_checked": 1122,
+  "mismatches": 0,
+  "ZIP_sha256": "6f24339f4c197653a92fd91ff1c1b92c85a0f8a0af9dc324c74e26c3b144df87",
+  "ZIP_bytes": 207498377,
+  "actual_final_text_equal": true,
+  "parent_originals": [
+    {
+      "member": "actual-final-api.json",
+      "bytes": 13028,
+      "sha256": "86d1b2f450e9ac668538504107cc74668239733a79966e2533f9ed43fb4189b2"
+    },
+    {
+      "member": "actual-prompt.md",
+      "bytes": 7503,
+      "sha256": "ee7719602de07678538203c7aec1e09d0dc1e1d29548326ba2f8ae7254867dda"
+    },
+    {
+      "member": "parent-before.json",
+      "bytes": 3687436,
+      "sha256": "01a72314f4b1cb2d0948a29c6b33e4a976f0940e37fde5d3d1808d7a69200c66"
+    },
+    {
+      "member": "parent-before.index",
+      "bytes": 1368916,
+      "sha256": "0f41b665fefbbe2354ba46ea443b7549a502ce2009d8dd1d385b10f397786127"
+    },
+    {
+      "member": "parent-after.json",
+      "bytes": 3687436,
+      "sha256": "01a72314f4b1cb2d0948a29c6b33e4a976f0940e37fde5d3d1808d7a69200c66"
+    },
+    {
+      "member": "parent-after.index",
+      "bytes": 1368916,
+      "sha256": "0f41b665fefbbe2354ba46ea443b7549a502ce2009d8dd1d385b10f397786127"
+    },
+    {
+      "member": "producer-SHA256SUMS.json",
+      "bytes": 211365,
+      "sha256": "e089c9a03b0fdf975c2370bc0a0d09fbae433002c1e200f5f3c0d05d22c04f8d"
+    },
+    {
+      "member": "producer-ZIP-IDENTITY.json",
+      "bytes": 955,
+      "sha256": "e7705b8d9329de7399705177f2b6e1b3e75f20c57777ad5792d3cb06820719e4"
+    }
+  ],
+  "parent_archive_sha256": "1648bf4d38aace5097af3098cd8db0e63ac6160dbe698d95346d580fdca5de95",
+  "evidence_storage": {
+    "mode": "ordered_exact_original_parts",
+    "original_bytes": 207498377,
+    "original_sha256": "6f24339f4c197653a92fd91ff1c1b92c85a0f8a0af9dc324c74e26c3b144df87",
+    "parts": [
+      {
+        "path": "evidence.zip.part001",
+        "bytes": 48000000,
+        "sha256": "6771204e5d4d281dc364f68b796bf1181a3b0a490921782f565edb41e8a4299f"
+      },
+      {
+        "path": "evidence.zip.part002",
+        "bytes": 48000000,
+        "sha256": "f26a5d8c165ec7d4add73e22a38febbd32eff6bfbbb3a71ad29b7ed60bb1c02d"
+      },
+      {
+        "path": "evidence.zip.part003",
+        "bytes": 48000000,
+        "sha256": "18501945268f94ba236c6496da1113caa2f41c926a8402df3618bc26cd286dfa"
+      },
+      {
+        "path": "evidence.zip.part004",
+        "bytes": 48000000,
+        "sha256": "c800c72aafdb6204bcc1d7247d02c2218eff6e79857ef4424a36dc1aa45d2386"
+      },
+      {
+        "path": "evidence.zip.part005",
+        "bytes": 15498377,
+        "sha256": "2675b140b6dc751ca7d1bd0176532183e5281487640b4cff408ea43ed402b592"
+      }
+    ],
+    "concatenated_SHA256_equal": true,
+    "source_original_preserved": "E:\\openhoi\\.orchestrator\\wt\\WORLD-PREVIEW-M2-r2-verify2\\target\\evidence\\WORLD-PREVIEW-M2-r2-P05-2\\evidence.zip",
+    "official_GitHub_size_source": "https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github",
+    "source_access_date": "2026-10-07"
+  }
+}

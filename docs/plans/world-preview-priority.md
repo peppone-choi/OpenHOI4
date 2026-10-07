@@ -2,6 +2,16 @@
 
 ## 현재 체크포인트와 다음 표시 품질 개선
 
+### 최신 사용자 제작 목표 — 아일랜드·도시·해상 밀도
+
+사용자는 아일랜드가 한 프로빈스인 화면을 지적했고, 전세계 목표를 "적어도 20000~30000개", 필요 도시 시가지를 별도 프로빈스로 분리, 바다도 고유 프로빈스 단위로 구획하라고 명시했다. 전체 land+sea+lake의20k~30k(최소20k)로 인수하며 육지만의수로 확대하거나30k를새절대상한으로확정하지않는다. 기존기술u16 max65535는유지한다. 도시/해상전투·경제·항만·상위전략해역게임규칙은이번외관생성요청이아니다.
+
+부모의ab64 data직접4connected계수에서 (-8,53)의아일랜드본섬은5789pixels/ID6809 하나·largestshare1.0/cropedge불접촉이었다. 북아일랜드를포함하는지리적연결육지이며국가소유경계가아니다. sourceSHA와[원ab64 봉인](../worklog/evidence/WORLD-PREVIEW-M2-r2-ab64/README.md)을보존한다. 전체20366=land10233/sea6080/lake4053 중1pixel2639/2369/1492=6500을따로집계한다. 숫자만으로적정밀도나품질을선언하지않으며모든singlepixel삭제·단절섬merge·의도미세조각으로총계채우기는하지않는다.
+
+같은지도담당P06-3에서 Ireland/UK/Japan/Europe와대륙별큰육지component의ID수·면적/장축분포/seedcoverage를먼저계수하고공통지리분할로개선한다. 도시point추가만으로도시분리했다고쓰지않고독립built-up footprint·강/해안/지형을검사한다. 도시행정경계전체를시가지로자동취급하거나현대좌표를1936인구/VP/경제로인수하지않는다. 모든도시1개/전도시내부분할은사용자확정규칙이아니다. sea는고유ID/경계/영역/인접/hover/select, lake는별도kind로유지하고연안/해협/섬주변세분·대양의상대넓은구획/수로연결을검사한다. 상위전략해역group은새규격확정으로확대하지않는다.
+
+공개본편/모드의aggregate province수 조사는 최신사용자의한정예외다. 출처·버전·land/sea포함범위/역사·community/port값을구분해기록하고원CSV/지도/경계/ID색/게임수치표를다운로드·재사용하지않는다. 숫자를그대로생성규칙에복사하지않고독립지리·도시footprint와지역별실질세분/클릭가독성을기준으로한다. 조사원문은CEO province-count-public-research-20261007.json과DIRECTIVES에보존한다. 새같은축척 Ireland/Dublin/EnglishChannel/IrishSea/Japan근해·대양 실제beforeafter를먼저보여주며원ab64를교체하지않는다. 최신새source는독립검수가필요하고새게임기능은계속후속이다.
+
 실제 세계/HUD e209·실3D a28와 지리 자료/Fluent 정합 `2d920ea86c6d8045adb7d3115007230e52c3ccf2`를 각각 고정 증거로 보존했다. 최신 [원 화면·입력·95파일 봉인](evidence/world-preview-checkpoint-2d920/README.md)은 최소인자 전용 headless Chrome의 실제 WebGPU/WebGL2 페이지다. 13413개 독립 프로빈스, NaturalEarth 하천 및 히말라야 일부 NOAA DEM, 실제3D 샘플6개/912triangle과 미연결 HUD를 표시한다. 원 `ERR_ABORTED`4개는 cleanup/navigation 취소 여부를 독립 대조하고 HTTP/page 실패와 합쳐0으로 쓰지 않는다.
 
 원a28 독립 [유효 FAIL](../verify/WORLD-PREVIEW.M2-r2.attempt1.md)은 F01 Fluent68누락 및 F02 단일전체 E2E 녹색 미충족이다. 첫검증9999/full/rawaf9986 불변·MF533/ZIP534 전수0, 원ZIP db5f74...을 보존했다. 새2d920 현지화 수정·캡처를 그 원판정에 섞지 않으며 새 source는 새 독립검수 대상이다. a28 baked입력과 최신 입력의 전후 비교는 같은최종renderer/카메라의 지오메트리 비교이며 원a28source 자체를 다시 검증한 것은 아니다.

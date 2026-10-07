@@ -2,11 +2,11 @@
 
 ## 진행 중 M2-r2 최신 사용자 우선순위 — 2026-10-07 17:32 KST
 
-현재 오케스트레이터 `01a114ca-469a-73c0-a9c4-9df475c37769`는 실행 중이며 이 절은 RUN 종료 P-08이 아니다. 관측 main `79c9f7d63228748de6121e976c2adcb292ce8bd5`는 원CI/지도 검수 FAIL 보존 문서로 origin a652보다 ahead1였다. 고유 통합WP14·M0/M1 PASS 유지·M2 게이트 없음·원W1/W2 전체 통합0이다. 아래 이전 M1 종료 기록은 역사다.
+현재 오케스트레이터 `01a114ca-469a-73c0-a9c4-9df475c37769`는 실행 중이며 이 절은 RUN 종료 P-08이 아니다. WP13 통합 관측 main `a15978321b5e73ccbc8b43eebd63ba3e68d0eb5e`는 origin과0/0·같은6CI/25job 모두SUCCESS다. 부모가 실제9 Save/Trigger3OS artifact/API digest/member/fullstate/canonical/hash/freshresume와 public comparer3종 native0를 직접대조했다. 고유 통합WP15·M0/M1 PASS 유지·M2 게이트 없음·원W1/W2 전체 통합0이다. 아래 이전 M1 종료 기록은 역사다.
 
-WP-13 de0의 새 독립 P-05-2는 유효 담당 범위 PASS(9951/raw884679/MF5769/ZIP5770 불변·전수0)이며 main dcacc P-07 40/40이 통과했다. 같은 main a652의 기존5CI/21job은 성공했으나 새 Trigger compare는 다운로드 경로가 ignored target 밖이라 native1 FAIL이었다. 원3OS producer는 성공했고 같은 cleanHEAD의 부모 ignored-path 비교는0이며 원CI FAIL을 소급하지 않는다. 수정080e source5파일·원producer849/850 전수0를 보존했고 새독립 P05-3 `01a11576-f042-7013-8cab-9e6ebb73e8ce`/verify3/9951/raw70ea29f가 진행 중이다. P07/새main6CI·actual3OS 전에는 WP13을 통합으로 세지 않는다.
+WP13 source080e는 새독립 P05-3 `01a11576-f042-7013-8cab-9e6ebb73e8ce` completed10의 유효 담당범위PASS(9951/raw70ea29f/MF2174/ZIP2175 전수0)·sameDBB P07 고유40검사·samea1596CI/실제3OS로 통합됐다. 원de0 P05-2 PASS와 원a652 Trigger pathFAIL·부모P07 freshreceipt누락/CLI timestampprobe원FAIL을 각각보존한다. 원39검사PASS+fresh출력의마지막16gate native0와 M0M1각2/v2v3의미대조를 인수했으며 원assert/source를고쳐통과시키지않았다. 전체4점수축·항복관전·결과UI는후속producer/consumer에남는다.
 
-세계/HUD e209·실3D a28·지리자료/Fluent 정합2d920 원체크포인트는 사용자에게 전달하고 보존했다. a28 독립 유효FAIL F01현지화68누락/F02단일전체E2E녹색없음과 9999/rawaf9986/MF533/ZIP534 전수0를 유지한다. 새2d920 원95파일/97ZIP·inputs24Gitblob 전수0를 보존한 뒤 새독립 P05-2 `01a1157c-d10d-7613-a85e-85c1f52ea5a4`/verify2/10001/raw0f41b665를 배정했다. 같은지도담당은 별도 후속turn01a1157b에서 한반도해안/지역밀도·8k이내 후보의 실제시간/메모리/texture/선택/인접/반복SHA를 먼저 조사한다. 표시PASS와 최종지역품질을 구별한다. marker 앱은 clean19cf completed이며 source23파일과 실제GLB/PNG 원출력 전수 대조를 마쳤다. 현재 실제 활동/종료는 registry가 권위다.
+세계/HUD e209·실3D a28·지리자료/Fluent 정합2d920 원체크포인트는 사용자에게 전달하고 보존했다. a28 원F01/F02와9999/rawaf9986/MF533/ZIP534 전수0를 유지하며, 새2d920 P05-2는 completed9 유효FAIL(F01/F02通과·새F03edge0/F04u16상한). 전문8566chars·10001/raw0f41b665/MF1121/ZIP1122 전수0와 원207498377bytes ZIP의 무손실5부분·부분/전체SHA를보존했다. 같은지도담당 새qualityturn01a1157b는8k해안/4k전역+지역세분·현대도시좌표/실제KoreaDEM·F03/F04회귀를구현중이다. 후보2/3/4의해안kind오류/첫수정실패를보존하고동일최종source 후보5/6의전체kind/연결/bbox/대표DEM/adjacency/4SHA일치를확인했다. 새clean76f7104의20366(land10233/sea6080/lake4053) 실제Korea화면을확인했으며최종후속renderer/봉인·새독립검증 전이다. 표시PASS와최종지역품질을구별한다. marker19cf 원producer도보존했다. 실제활동/종료는registry가권위다.
 
 사용자가 전세계·독립 프로빈스 렌더링과 메인 HUD 외관을 먼저 요청했다. 생성형 임시 마커를 병행하고 기능 연결은 후속이다. computer-use/CUA·사용자 화면/브라우저 포커스·키마우스 조작은 금지이며 Breaking Point UI 세션의 비간섭 검수 방법을 인수한다. [실제 배정·소유·검수 계획](docs/plans/world-preview-priority.md)을 따른다.
 
