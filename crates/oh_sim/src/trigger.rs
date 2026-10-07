@@ -451,15 +451,6 @@ impl Host for SimHost<'_> {
             | Effect::AddMobilization(v)
             | Effect::AddPoliticalCapital(v)
             | Effect::SetLaw(v) => {
-                let empty = TriggerState {
-                    definitions_hash: 0,
-                    flags: self
-                        .flags
-                        .iter()
-                        .map(|(id, fs)| (*id, fs.iter().cloned().collect()))
-                        .collect(),
-                    ended: None,
-                };
                 let allowed = if matches!(e, Effect::SetLaw(_)) {
                     let d = self
                         .world
@@ -471,7 +462,6 @@ impl Host for SimHost<'_> {
                 } else {
                     true
                 };
-                let _ = empty;
                 self.economy
                     .as_mut()
                     .ok_or(TriggerError::MissingContext)?

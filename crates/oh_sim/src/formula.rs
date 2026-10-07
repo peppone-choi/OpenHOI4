@@ -191,9 +191,10 @@ pub fn economy_minimum(base: Fx, slope: Fx, stability: Fx) -> Result<Fx, Economy
     let product = slope
         .checked_mul(Fx::ONE - stability)
         .ok_or(EconomyArithmeticError::Overflow)?;
-    // Saturation at one is the specified consumer minimum clamp, not a generic value clamp.
-    let raw = i128::from(base.to_bits()) + i128::from(product.to_bits());
-    Ok(Fx::from_bits(raw.min(i128::from(Fx::ONE.to_bits())) as i64))
+    let minimum = base
+        .checked_add(product)
+        .ok_or(EconomyArithmeticError::Overflow)?;
+    Ok(minimum.min(Fx::ONE))
 }
 pub fn economy_allocate(
     total: Qty,
@@ -261,4 +262,12 @@ pub fn economy_political_income(
         (i128::from(current.to_bits()) + i128::from(daily.to_bits()))
             .min(i128::from(cap.to_bits())),
     )
+}
+
+/// A score term can be signed; its actual IC input is a nonnegative Qty.
+pub fn economy_weighted_quantity(quantity: Qty, weight: Fx) -> Result<Qty, EconomyArithmeticError> {
+    if quantity < Qty::ZERO {
+        return Err(EconomyArithmeticError::InvalidValue);
+    }
+    qty_bits((i128::from(quantity.to_bits()) * i128::from(weight.to_bits())) >> 32)
 }

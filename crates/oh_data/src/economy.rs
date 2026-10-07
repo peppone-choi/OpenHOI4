@@ -94,7 +94,19 @@ pub fn quantity(s: &str) -> Result<Qty, String> {
     Ok(value)
 }
 impl Definition {
+    /// Exact empty declaration preserves presence; it does not create zero-valued nation producers.
+    pub fn is_empty(&self) -> bool {
+        self.buildings.is_empty()
+            && self.laws.is_empty()
+            && self.economy_category.is_empty()
+            && self.conscription_category.is_empty()
+            && self.nations.is_empty()
+            && self.state_slots.is_empty()
+    }
     pub fn validate(&self, loaded: &LoadedNational) -> Result<(), String> {
+        if self.is_empty() {
+            return Ok(());
+        }
         let mut categories = BTreeSet::new();
         let mut steps = BTreeSet::new();
         for (id, b) in &self.buildings {
@@ -226,6 +238,66 @@ impl Definition {
             if occupied > self.state_slots[&s.id] {
                 return Err("initial slot cap exceeded".into());
             }
+        }
+        // Static initial-state arithmetic validation. Runtime authority uses oh_sim::formula.
+        for (id, n) in &self.nations {
+            let nation = loaded
+                .nations
+                .iter()
+                .find(|v| v.id == *id)
+                .ok_or("missing initial nation")?;
+            let mut population = 0i64;
+            let mut resources = BTreeMap::new();
+            let mut ic = 0i64;
+            for state in loaded
+                .map
+                .states
+                .iter()
+                .filter(|s| loaded.scenario.ownership.get(&s.id) == Some(&nation.tag))
+            {
+                population = population
+                    .checked_add(state.population)
+                    .ok_or("initial population sum overflow")?;
+                for (key, value) in &state.resources {
+                    let entry = resources.entry(key).or_insert(0i64);
+                    *entry = entry
+                        .checked_add(*value)
+                        .ok_or("initial resource sum overflow")?;
+                }
+                for (key, levels) in &state.buildings {
+                    let unit = quantity(&self.buildings[key].ic_per_level)?;
+                    let raw = i128::from(unit.to_bits()) * i128::from(*levels);
+                    ic = ic
+                        .checked_add(
+                            i64::try_from(raw).map_err(|_| "initial building IC overflow")?,
+                        )
+                        .ok_or("initial IC sum overflow")?;
+                }
+            }
+            for factor in std::iter::once(&n.ic_multiplier)
+                .chain(n.laws.values().map(|id| &self.laws[id].ic_multiplier))
+            {
+                let raw = (i128::from(ic) * i128::from(ratio(factor)?.to_bits())) >> 32;
+                ic = i64::try_from(raw).map_err(|_| "initial IC multiplier overflow")?;
+            }
+            let law = &self.laws[&n.laws[&self.economy_category]];
+            let product = ratio(&law.instability_slope)?
+                .checked_mul(Fx::ONE - unit_ratio(&n.stability)?)
+                .ok_or("initial consumer slope overflow")?;
+            let minimum = unit_ratio(&law.consumer_base)?
+                .checked_add(product)
+                .ok_or("initial consumer minimum overflow")?
+                .min(Fx::ONE);
+            if unit_ratio(&n.allocation[0])? < minimum {
+                return Err("initial allocation below consumer minimum".into());
+            }
+            let conscription = &self.laws[&n.laws[&self.conscription_category]];
+            i64::try_from(
+                (i128::from(population)
+                    * i128::from(unit_ratio(&conscription.conscription_ratio)?.to_bits()))
+                    >> 32,
+            )
+            .map_err(|_| "initial manpower capacity overflow")?;
         }
         crate::trigger::economy_conditions(loaded)?;
         Ok(())

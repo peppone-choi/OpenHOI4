@@ -13,10 +13,11 @@ async fn main() {
 async fn run(args: Vec<String>) -> Result<(), String> {
     let options = oh_server::Options::parse(&args)?;
     let (shutdown, stopped) = tokio::sync::watch::channel(false);
-    let prepared = if options.load_save.is_some() {
-        Some(oh_server::Host::load_with_save(
+    let prepared = if options.load_save.is_some() || options.scenario.is_some() {
+        Some(oh_server::Host::load_selected(
             &options.pack_root,
             stopped.clone(),
+            options.scenario.as_deref(),
             options.load_save.as_deref(),
             options.force,
         )?)

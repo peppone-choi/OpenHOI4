@@ -7,6 +7,7 @@ use oh_core::{DivisionId, NationId, ProvinceId, SerializationError};
 use serde::Serialize;
 use std::collections::BTreeMap;
 pub mod economy;
+pub mod economy_save;
 pub mod formula;
 pub mod ledger;
 pub mod movement;
@@ -56,7 +57,6 @@ impl std::fmt::Display for Error {
 impl std::error::Error for Error {}
 #[derive(Clone, Debug, Eq, PartialEq, Serialize)]
 pub enum Command {
-    Economy(economy::Action),
     Pause(bool),
     SetSpeed(u8),
     Move {
@@ -69,6 +69,7 @@ pub enum Command {
     Effects {
         program: String,
     },
+    Economy(economy::Action),
 }
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum Phase {
@@ -208,6 +209,13 @@ impl Simulation {
             )
             .map_err(Error::Trigger)?;
             sim.trigger = Some(trigger);
+            if sim.is_ended()
+                && let Some(economy) = sim.economy.as_mut()
+            {
+                economy
+                    .checkpoint_scores(sim.world.as_ref().ok_or(Error::InvalidWorld)?, 0)
+                    .map_err(Error::Economy)?;
+            }
         }
         Ok(sim)
     }
@@ -513,6 +521,13 @@ impl Simulation {
                 next_economy.as_ref(),
             )
             .map_err(Error::Trigger)?;
+        }
+        if next_trigger.as_ref().is_some_and(|t| t.ended.is_some())
+            && let Some(economy) = next_economy.as_mut()
+        {
+            economy
+                .checkpoint_scores(next_world.as_ref().ok_or(Error::InvalidWorld)?, next.tick())
+                .map_err(Error::Economy)?;
         }
         phases.push(Phase::Snapshot);
         for key in keys {

@@ -166,3 +166,9 @@ preview-urban-separated = Source urban footprint · separate parcel
 preview-urban-unpartitioned = Includes urban samples · unseparated
 preview-nonurban-source = Outside source urban mask · suburban/rural classification unconnected
 preview-urban-note = Urban areas use generalized MODIS observations from 2002–2003. Small footprints remain unseparated; historical cities, population and game values are not connected.
+
+economy-no-ownership = No ownership
+economy-target-conflict = Construction target conflict
+economy-slot-cap = Construction slot cap
+economy-zero-cap = Zero project capacity
+economy-zero-factor = Zero infrastructure factor

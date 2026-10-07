@@ -607,6 +607,13 @@ fn legacy_trigger_mode(context: &RestoreContext) -> Result<(), String> {
     if context
         .world
         .as_ref()
+        .is_some_and(|w| w.defs().economy().is_some())
+    {
+        return Err("EconomyModeMismatch: legacy None save/local Some definitions".into());
+    }
+    if context
+        .world
+        .as_ref()
         .is_some_and(|w| w.defs().trigger().is_some())
     {
         return Err("TriggerModeMismatch: legacy None save/local Some definitions".into());

@@ -80,8 +80,9 @@ fn req_nat_03_stability_and_mobilization_are_bounded_not_clamped() {
 fn req_nat_04_law_coefficient_and_consumer_minimum_validation() {
     assert!(economy_minimum(Fx::from_num(-1), Fx::ZERO, Fx::ONE).is_err());
     assert!(economy_minimum(Fx::ZERO, Fx::from_num(-1), Fx::ONE).is_err());
+    assert!(economy_minimum(Fx::ONE, Fx::MAX, Fx::ZERO).is_err());
     assert_eq!(
-        economy_minimum(Fx::ONE, Fx::MAX, Fx::ZERO).unwrap(),
+        economy_minimum(Fx::ONE, Fx::from_num(10), Fx::ZERO).unwrap(),
         Fx::ONE
     );
 }

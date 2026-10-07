@@ -7,6 +7,7 @@ from pathlib import Path
 import shutil
 import sys
 import tempfile
+import tomllib
 import unittest
 
 TOOLS = Path(__file__).resolve().parents[1] / 'tools'
@@ -58,6 +59,9 @@ class CurrentEvidenceFailures(unittest.TestCase):
                 record['source'][boundary]['status'] = ''
                 (folder / f'source-{boundary}.json').write_text(json.dumps(record['source'][boundary]))
             (folder / 'result.json').write_text(json.dumps(record))
+            economy_path=folder/'economy-v5/result.json'
+            economy=json.loads(economy_path.read_text());economy['platform']=self.gate.PLATFORMS[runner];economy['dirty']=False
+            economy_path.write_text(json.dumps(economy))
             # Explicit synthetic wire/native receipts for comparer predicates only.
             for force, name in ((False, 'server'), (True, 'server-force')):
                 server = folder / name; server.mkdir()
@@ -107,6 +111,18 @@ class CurrentEvidenceFailures(unittest.TestCase):
                 for file in ('server.stdout','server.stderr','query.stderr'):
                     (server / file).write_text('')
                 (server / 'server.stdout').write_text(receipt['url']+' '+pack_hash)
+                # Explicit synthetic economic wire controls, not actual OS server evidence.
+                from economy_wire_reference import expected_view,filled
+                eco=server/'economy-v5';eco.mkdir();economic_run=economy['runs'][0]
+                shutil.copytree(folder/'economy-v5/run-1/pack',eco/'packs/testland')
+                definitions=tomllib.loads((eco/'packs/testland/common/economy/wp14_native.toml').read_text())
+                view=filled(expected_view(economic_run['paused'],definitions));state=economic_run['paused']['dto']['base']['base']['base']['state']
+                economic_pack=f"{economic_run['pack']['content_hash']:016x}"
+                economic_query=dict(pid=9010+int(force),welcome=dict(type='Welcome',accepted=True,engine_version=run['paused_header']['engine_version'],packs=[dict(id=economic_run['pack']['id'],version=economic_run['pack']['version'],hash=economic_pack)]),snapshot=dict(type='Snapshot',state=dict(date=f"{state['date']['year']:04}-{state['date']['month']:02}-{state['date']['day']:02}",tick=str(state['tick']),hour=state['hour'],paused=True,speed=state['speed'])),before=dict(type='EconomyResult',request='before',supported=True,reason_key=None,economy=view),after=dict(type='EconomyResult',request='after',supported=True,reason_key=None,economy=view),accepted=dict(type='CommandResult',sequence='1',accepted=True,reason_key=None),rejected=[dict(type='CommandResult',sequence=str(i),accepted=False,reason_key='invalid-message') for i in (2,3,4)])
+                economic_query['messages']=[economic_query['welcome'],economic_query['snapshot'],economic_query['before'],economic_query['accepted'],*economic_query['rejected'],economic_query['after']]
+                economic_receipt=dict(head=record['head'],capture_head=record['head'],capture_mode='economy-native-v5',dirty=False,force=force,server_pid=9012+int(force),server_cwd=record['checkout_root'],server_command=['oh_server','--port','34567','--pack-root',f'/{name}/economy-v5/packs','--scenario','wp14_native','--load-save','/economy-v5/run-1/paused.ohsave']+(['--force'] if force else []),url=receipt['url'],exe_sha256='1'*64,served_js_sha256='2'*64,built_js_sha256='2'*64,http_status=200,server_exit=0,query_exit=0,query_command=['node','crates/oh_server/tests/economy_query.cjs',receipt['url']],query=economic_query,save_sha256=economic_run['files']['paused.ohsave']['sha256'],input_header=self.gate.economy_current.header(folder/'economy-v5/run-1/paused.ohsave'),input_files=economic_run['source_files'],pack_hash=economic_pack,source_preserved=True,save_preserved=True)
+                (eco/'result.json').write_text(json.dumps(economic_receipt));(eco/'query.stdout').write_text(json.dumps(economic_query));(eco/'query.stderr').write_text('');(eco/'server.stdout').write_text(receipt['url']+' '+economic_pack);(eco/'server.stderr').write_text('')
+
         return root
 
     def mutate(self, root, file, change):
@@ -295,6 +311,35 @@ class CurrentEvidenceFailures(unittest.TestCase):
             root = self.artifacts()
             self.mutate(root, 'server/result.json', change)
             self.fails(root)
+
+    def test_required_additive_v5_namespace_and_every_native_stage(self):
+        for name in ('economy-v5/result.json','economy-v5/restart-1.stdout','economy-v5/cli-full-2.command.json','economy-v5/run-1/journal.zip','economy-v5/run-2/repeat.ohsave'):
+            root=self.artifacts();(root/'current-save-windows-latest'/name).unlink();self.fails(root)
+        for stage in ('capture','restart','paused','cli-resume','cli-full','replay','cli-replay'):
+            root=self.artifacts();self.mutate(root,f'economy-v5/{stage}-1.command.json',lambda r:r.update(exit=1));self.fails(root)
+
+    def test_v5_full_dto_canonical_hash_pack_and_queue_corruption(self):
+        for change in (
+            lambda r:r['split'].update(canonical_hex='00'),
+            lambda r:r['split'].update(hash='0'*16),
+            lambda r:r['split']['dto']['queue'].pop(),
+            lambda r:r['split']['dto']['economy']['nations']['1'].update(reserved=-1),
+            lambda r:r['split']['dto']['economy'].update(definitions_hash=0),
+            lambda r:r['pack'].update(content_hash=0)):
+            root=self.artifacts();self.mutate(root,'economy-v5/capture-1.stdout',change);self.fails(root)
+        for name in ('common/economy/wp14_native.toml','scenarios/wp14_native/scenario.toml'):
+            root=self.artifacts();p=root/'current-save-windows-latest/economy-v5/run-1/pack'/name;p.write_bytes(p.read_bytes()+b'\n# mutation');self.fails(root)
+
+    def test_v5_wrong_source_binary_pid_platform_or_repeat_identity(self):
+        for change in (lambda r:r.update(head='0'*40),lambda r:r.update(helper_sha256='0'*64),lambda r:r.update(platform='Darwin'),lambda r:r['runs'][1]['files']['repeat.ohsave'].update(sha256='0'*64)):
+            root=self.artifacts();self.mutate(root,'economy-v5/result.json',change);self.fails(root)
+        root=self.artifacts();self.mutate(root,'economy-v5/cli-replay-2.command.json',lambda r:r.update(pid=0));self.fails(root)
+
+    def test_required_v5_host_native_wire_and_pending_queue_mutants(self):
+        for name in ('server/economy-v5/result.json','server-force/economy-v5/query.stdout'):
+            root=self.artifacts();(root/'current-save-windows-latest'/name).unlink();self.fails(root)
+        for change in (lambda r:r.update(server_exit=1),lambda r:r.update(force=True),lambda r:r['query']['before']['economy']['pending'].pop(),lambda r:r['query']['before']['economy'].update(state_hash='0'*16),lambda r:r['query']['after']['economy']['nations'][0]['political_capital'].update(value='4')):
+            root=self.artifacts();self.mutate(root,'server/economy-v5/result.json',change);self.fails(root)
 
 
 if __name__ == '__main__':

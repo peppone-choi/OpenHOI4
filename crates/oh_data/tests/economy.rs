@@ -81,3 +81,19 @@ fn req_eco_01_02_04_06_07_nat_02_03_bad_values_references_and_presence_reject() 
         );
     }
 }
+
+#[test]
+fn req_eco_nat_strict_loader_rejects_initial_derived_overflow_and_consumer_minimum() {
+    for text in [
+        VALID.replace(r#"consumer_base = "0""#, r#"consumer_base = "0.5""#),
+        VALID
+            .replace(
+                r#"ic_per_level = "10""#,
+                r#"ic_per_level = "140737488355327""#,
+            )
+            .replace(r#"ic_multiplier = "1""#, r#"ic_multiplier = "2""#),
+    ] {
+        let root = fixture(&text);
+        assert!(oh_data::national::load_scenario(&root, "m1").is_err());
+    }
+}

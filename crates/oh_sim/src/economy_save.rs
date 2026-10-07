@@ -1,37 +1,42 @@
-//! Additive format. None and the frozen v1/v2/v3 DTOs are unchanged.
-use crate::{Command, Simulation, save_state::*, trigger::TriggerState};
+//! V5 preserves economy presence independently of trigger/movement presence.
+use crate::{
+    Command, Simulation,
+    economy::{Action, Economy},
+    save_state::*,
+    trigger::TriggerState,
+};
 use oh_core::{DivisionId, NationId, ProvinceId};
 use serde::{Deserialize, Serialize};
 #[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
-pub enum CommandV4 {
+pub enum CommandV5 {
     Pause(bool),
     SetSpeed(u8),
     Move { unit: u32, destination: u16 },
     Stop { unit: u32 },
     Effects { program: String },
+    Economy(Action),
 }
 #[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
-pub struct PendingV4 {
+pub struct PendingV5 {
     pub tick: u64,
     pub nation: u16,
     pub sequence: u64,
-    pub command: CommandV4,
+    pub command: CommandV5,
 }
 #[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
-pub struct SimulationSaveV4 {
+pub struct SimulationSaveV5 {
     pub base: SimulationSaveV3,
     pub movement_present: bool,
     pub strait_present: bool,
-    pub queue: Vec<PendingV4>,
-    pub trigger: TriggerState,
+    pub trigger: Option<TriggerState>,
+    pub queue: Vec<PendingV5>,
+    pub economy: Economy,
 }
 impl Simulation {
-    pub fn export_save_v4(&self) -> Result<SimulationSaveV4, String> {
-        if self.economy.is_some() {
-            return Err("EconomyRequiresV5".into());
-        }
-        let trigger = self.trigger.clone().ok_or("V4RequiresTrigger")?;
+    pub fn export_save_v5(&self) -> Result<SimulationSaveV5, String> {
+        let economy = self.economy.clone().ok_or("V5RequiresEconomy")?;
         let mut legacy = self.clone();
+        legacy.economy = None;
         legacy.trigger = None;
         legacy.queue.clear();
         let movement_present = legacy.movement.is_some();
@@ -44,63 +49,64 @@ impl Simulation {
         } else if movement_present {
             SimulationSaveV3 {
                 base: legacy.export_save_v2()?,
-                straits: Vec::new(),
+                straits: vec![],
             }
         } else {
             SimulationSaveV3 {
                 base: SimulationSaveV2 {
                     base: legacy.export_save()?,
-                    queue: Vec::new(),
-                    units: Vec::new(),
+                    queue: vec![],
+                    units: vec![],
                 },
-                straits: Vec::new(),
+                straits: vec![],
             }
         };
         let queue = self
             .queue
             .iter()
-            .map(|(&(tick, nation, sequence), c)| PendingV4 {
+            .map(|(&(tick, nation, sequence), c)| PendingV5 {
                 tick,
                 nation: nation.0,
                 sequence,
                 command: match c {
-                    Command::Economy(_) => unreachable!("economy requires v5"),
-                    Command::Pause(v) => CommandV4::Pause(*v),
-                    Command::SetSpeed(v) => CommandV4::SetSpeed(*v),
-                    Command::Move { unit, destination } => CommandV4::Move {
+                    Command::Pause(v) => CommandV5::Pause(*v),
+                    Command::SetSpeed(v) => CommandV5::SetSpeed(*v),
+                    Command::Move { unit, destination } => CommandV5::Move {
                         unit: unit.0,
                         destination: destination.0,
                     },
-                    Command::Stop { unit } => CommandV4::Stop { unit: unit.0 },
-                    Command::Effects { program } => CommandV4::Effects {
+                    Command::Stop { unit } => CommandV5::Stop { unit: unit.0 },
+                    Command::Effects { program } => CommandV5::Effects {
                         program: program.clone(),
                     },
+                    Command::Economy(action) => CommandV5::Economy(action.clone()),
                 },
             })
             .collect();
-        Ok(SimulationSaveV4 {
+        Ok(SimulationSaveV5 {
             base,
             movement_present,
             strait_present,
+            trigger: self.trigger.clone(),
             queue,
-            trigger,
+            economy,
         })
     }
-    pub fn from_save_v4(dto: SimulationSaveV4, context: &RestoreContext) -> Result<Self, String> {
-        if context
-            .world
-            .as_ref()
-            .is_some_and(|w| w.defs().economy().is_some())
-        {
-            return Err("EconomyModeMismatch".into());
-        }
+    pub fn from_save_v5(dto: SimulationSaveV5, context: &RestoreContext) -> Result<Self, String> {
         if !dto.base.base.base.queue.is_empty() || !dto.base.base.queue.is_empty() {
-            return Err("InvalidV4: nested queue must be empty".into());
+            return Err("InvalidV5: nested queue".into());
         }
         if (!dto.movement_present && (!dto.base.base.units.is_empty() || dto.strait_present))
             || (!dto.strait_present && !dto.base.straits.is_empty())
         {
-            return Err("InvalidV4: movement presence".into());
+            return Err("InvalidV5: movement presence".into());
+        }
+        if context
+            .world
+            .as_ref()
+            .is_none_or(|w| w.defs().economy().is_none())
+        {
+            return Err("EconomyModeMismatch".into());
         }
         let mut sim = if dto.strait_present {
             Self::from_strait_save(dto.base, context)?
@@ -109,37 +115,33 @@ impl Simulation {
         } else {
             Self::from_save_base(dto.base.base.base, context)?
         };
-        let world = sim.world.as_ref().ok_or("V4RequiresWorld")?;
-        let defs = world.defs().trigger().ok_or("V4RequiresLocalDefinitions")?;
-        dto.trigger.validate(defs, world, &sim.state)?;
+        let world = sim.world.as_ref().ok_or("V5RequiresWorld")?;
+        match (&dto.trigger, world.defs().trigger()) {
+            (Some(t), Some(d)) => t.validate(d, world, &sim.state)?,
+            (None, None) => {}
+            _ => return Err("TriggerModeMismatch".into()),
+        }
+        dto.economy
+            .validate(world, sim.state.tick())
+            .map_err(|e| e.to_string())?;
+        dto.economy
+            .validate_scores(
+                world,
+                sim.state.tick(),
+                dto.trigger.as_ref().is_some_and(|t| t.ended.is_some()),
+            )
+            .map_err(|e| e.to_string())?;
         if !strictly_sorted(dto.queue.iter().map(|q| (q.tick, q.nation, q.sequence))) {
             return Err("InvalidQueue: duplicate/order".into());
         }
         for q in dto.queue {
-            if q.tick < sim.state.tick {
+            if q.tick < sim.state.tick() {
                 return Err("InvalidQueue: past tick".into());
             }
             let command = match q.command {
-                CommandV4::Pause(v) => Command::Pause(v),
-                CommandV4::SetSpeed(v) if (1..=5).contains(&v) => Command::SetSpeed(v),
-                CommandV4::Effects { program } => {
-                    let p = defs
-                        .effect_programs
-                        .as_ref()
-                        .and_then(|ps| ps.get(&program))
-                        .ok_or("InvalidQueue: program ID")?;
-                    if world.nation(NationId(q.nation)).is_none()
-                        || p.root.as_ref().is_some_and(|tag| {
-                            world
-                                .nation(NationId(q.nation))
-                                .is_none_or(|n| n.tag() != tag)
-                        })
-                    {
-                        return Err("InvalidQueue: program authority".into());
-                    }
-                    Command::Effects { program }
-                }
-                CommandV4::Move { unit, destination } => {
+                CommandV5::Pause(v) => Command::Pause(v),
+                CommandV5::SetSpeed(v) if (1..=5).contains(&v) => Command::SetSpeed(v),
+                CommandV5::Move { unit, destination } => {
                     let u = sim
                         .movement
                         .as_ref()
@@ -155,7 +157,7 @@ impl Simulation {
                         destination: ProvinceId(destination),
                     }
                 }
-                CommandV4::Stop { unit } => {
+                CommandV5::Stop { unit } => {
                     if sim
                         .movement
                         .as_ref()
@@ -168,12 +170,37 @@ impl Simulation {
                         unit: DivisionId(unit),
                     }
                 }
+                CommandV5::Effects { program } => {
+                    let p = world
+                        .defs()
+                        .trigger()
+                        .and_then(|d| d.effect_programs.as_ref())
+                        .and_then(|ps| ps.get(&program))
+                        .ok_or("InvalidQueue: program")?;
+                    if world.nation(NationId(q.nation)).is_none()
+                        || p.root.as_ref().is_some_and(|tag| {
+                            world
+                                .nation(NationId(q.nation))
+                                .is_none_or(|n| n.tag() != tag)
+                        })
+                    {
+                        return Err("InvalidQueue: program authority".into());
+                    }
+                    Command::Effects { program }
+                }
+                CommandV5::Economy(action) => {
+                    dto.economy
+                        .validate_action(world, NationId(q.nation), &action)
+                        .map_err(|e| e.to_string())?;
+                    Command::Economy(action)
+                }
                 _ => return Err("InvalidQueue: speed".into()),
             };
             sim.queue
                 .insert((q.tick, NationId(q.nation), q.sequence), command);
         }
-        sim.trigger = Some(dto.trigger);
+        sim.trigger = dto.trigger;
+        sim.economy = Some(dto.economy);
         Ok(sim)
     }
 }

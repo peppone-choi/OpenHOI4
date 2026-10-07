@@ -11,6 +11,7 @@ import re
 import subprocess
 import sys
 import tomllib
+import economy_current
 from save_reference import canonical, fnv, pack_hash, signed, string, varint, verify_capture, verify_ledger
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -179,6 +180,7 @@ def capture(folder):
                          canonical_hex=canonical(report['split']).hex(),
                          continuous_canonical_hex=canonical(report['continuous']).hex(),
                          canonical_sha256=hashlib.sha256(canonical(report['split'])).hexdigest()))
+    economy_current.capture(folder/'economy-v5',before,run,files)
     after = source_identity(); assert before == after, 'source/index changed during current capture'
     save_source_boundary(folder, 'after', after)
     result = dict(evidence_schema=1, evidence_mode=MODE, head=before['head'], dirty=bool(before['status']),
@@ -278,6 +280,9 @@ def verify_folder(folder, require_clean=True):
     assert len(set(pids)) == 6, 'six separate native processes required'
     assert result['runs'][0] == result['runs'][1], 'repeated save/paused/source/header identity required'
     assert reports[0]['split'] == reports[1]['split'] and reports[0]['continuous'] == reports[1]['continuous']
+    economic=json.loads((folder/'economy-v5/result.json').read_text())
+    assert economic['platform']==result['platform'] and economic['checkout_root']==result['checkout_root']
+    economy_current.verify(folder/'economy-v5',result['head'],result['dirty'],files)
     return result
 
 
@@ -430,6 +435,8 @@ def verify_servers(folder, result):
         assert type(query['pid']) is int and query['pid'] > 0
         assert receipt['server_pid'] != query['pid']
         pids.append(receipt['server_pid'])
+        economic=economy_current.load(folder/'economy-v5/result.json')
+        economy_current.verify_server(directory/'economy-v5',economic,force,files)
     assert len(set(pids)) == 2
 
 
@@ -443,6 +450,8 @@ def compare(root):
         verify_servers(folder, result)
         assert result['platform'] == PLATFORMS[runner]
         results.append(result)
+    economic=[economy_current.verify(root/f'current-save-{runner}'/'economy-v5',result['head'],result['dirty'],files) for runner,result in zip(RUNNERS,results)]
+    assert all(value==economic[0] for value in economic), 'actual v5 full state/bytes/identity differs across OS'
     assert all(r['runs'] == results[0]['runs'] for r in results), 'current state/save/pack/header identity differs across OS'
     print(json.dumps(dict(head=results[0]['head'], evidence_mode=MODE, artifact_count=3, runs=results[0]['runs'])))
 

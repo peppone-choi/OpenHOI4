@@ -462,10 +462,8 @@ fn condition_refs(
                         return Err(format!("missing ideology:{}", a.ideology));
                     }
                 }
-                HasLaw(s) => {
-                    if !l.economy.as_ref().is_some_and(|d| d.laws.contains_key(s)) {
-                        return Err(format!("missing law registry:{s}"));
-                    }
+                HasLaw(s) if !l.economy.as_ref().is_some_and(|d| d.laws.contains_key(s)) => {
+                    return Err(format!("missing law registry:{s}"));
                 }
                 _ => {}
             }
@@ -673,16 +671,22 @@ pub fn definition(l: &LoadedNational) -> Result<Option<Definition>, String> {
         }
     }
     if let Some(c) = &d.end_conditions {
-        condition_capability(c, l.economy.is_some()).map_err(|e| format!("end_conditions: {e}"))?;
+        condition_capability(c, l.economy.as_ref().is_some_and(|e| !e.is_empty()))
+            .map_err(|e| format!("end_conditions: {e}"))?;
     }
     if let Some(ps) = &d.effect_programs {
         for (id, p) in ps {
-            effects_capability(&p.effects, l.economy.is_some())
-                .map_err(|e| format!("effect_programs.{id}: {e}"))?;
+            effects_capability(
+                &p.effects,
+                l.economy.as_ref().is_some_and(|e| !e.is_empty()),
+            )
+            .map_err(|e| format!("effect_programs.{id}: {e}"))?;
         }
     }
     if let Some(w) = &d.score_weights
-        && w.values()?.iter().any(|v| *v != Fixed::ZERO)
+        && w.values()?.iter().enumerate().any(|(i, v)| {
+            *v != Fixed::ZERO && (i != 1 || l.economy.as_ref().is_none_or(|e| e.is_empty()))
+        })
     {
         return Err("score_weights: host capability: score input producer unavailable".into());
     }
@@ -755,10 +759,16 @@ pub fn registry() -> Vec<RegistryItem> {
                 "at_war_with" => {
                     "Compare war relation with referenced nation (future war producer)"
                 }
-                "stability" => "Compare nation stability ratio (future politics producer)",
-                "mobilization" => "Compare nation mobilization ratio (future politics producer)",
-                "political_capital" => "Compare political capital (future politics producer)",
-                "has_law" => "Read active law ID (future politics producer)",
+                "stability" => {
+                    "Compare nation stability ratio (actual nonempty economy producer required)"
+                }
+                "mobilization" => {
+                    "Compare nation mobilization ratio (actual nonempty economy producer required)"
+                }
+                "political_capital" => {
+                    "Compare political capital (actual nonempty economy producer required)"
+                }
+                "has_law" => "Read active law ID (actual nonempty economy producer required)",
                 "chance" => {
                     "Event activation probability; requires separate simulation RNG adapter"
                 }
@@ -774,6 +784,10 @@ pub fn registry() -> Vec<RegistryItem> {
                     | "controls_province"
                     | "owns_state"
                     | "ideology_support"
+                    | "stability"
+                    | "mobilization"
+                    | "political_capital"
+                    | "has_law"
             ),
         })
         .chain(effects.into_iter().map(|(key, example)| RegistryItem {
@@ -783,14 +797,16 @@ pub fn registry() -> Vec<RegistryItem> {
                 "set_flag" => "Idempotently insert nation flag",
                 "clear_flag" => "Idempotently remove nation flag",
                 "end_scenario" => "Stage explicit end source until transaction succeeds",
-                "add_stability" => "Apply signed stability delta through future politics adapter",
+                "add_stability" => {
+                    "Apply signed stability delta through the atomic economy adapter"
+                }
                 "add_mobilization" => {
-                    "Apply signed mobilization delta through future politics adapter"
+                    "Apply signed mobilization delta through the atomic economy adapter"
                 }
                 "add_political_capital" => {
-                    "Apply signed political capital delta through future politics adapter"
+                    "Apply signed political capital delta through the atomic economy adapter"
                 }
-                "set_law" => "Set referenced active law through future politics adapter",
+                "set_law" => "Set referenced active law through the atomic economy adapter",
                 "add_building" => {
                     "Add levels to referenced state building through future construction adapter"
                 }
@@ -806,7 +822,16 @@ pub fn registry() -> Vec<RegistryItem> {
             },
             example,
             argument_schema: argument_schema(&es, key),
-            simulation_supported: matches!(key, "set_flag" | "clear_flag" | "end_scenario"),
+            simulation_supported: matches!(
+                key,
+                "set_flag"
+                    | "clear_flag"
+                    | "end_scenario"
+                    | "add_stability"
+                    | "add_mobilization"
+                    | "add_political_capital"
+                    | "set_law"
+            ),
         }))
         .collect()
 }

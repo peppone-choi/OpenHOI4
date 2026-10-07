@@ -1,6 +1,6 @@
 # WP-14 경제·정치 및 고정 측정 입력 스키마
 
-2026-10-08. 구현 기준은 REQUEST-0010 A-CEO-r1 수정판이다. 사용자 확정이 아니다. 이 문서는 구현 전 설계이며 아래 경로는 새 구현 계약이다.
+2026-10-08. 구현 기준은 REQUEST-0010 A-CEO-r1 수정판이다. 사용자 확정이 아니다. 구현 전 작성한 설계와 현재 실제 producer 계약을 기록한다. 독립 PASS/통합 판정은 부모 소유다.
 
 ## 계층·필드·참조
 
@@ -15,7 +15,7 @@
 | project | nation queue의 stable ID·주/건물·target=current+1·progress Qty·휴면 사유 | 중복 target/slot 거부, owner loss 보존, 회복 target conflict skip | 전체 queue/예약/진행 저장 |
 | manpower | capacity/committed/reserved/available/overcommitted i64 | checked 합계·floor(pop*Fx), consumer 내부 API | 원장·저장 |
 | commands | 비율/한단계건설/취소/순서/법령 | enqueue preview 및 execution atomic, 조건은 명령 직전 상태 | pending/journal/replay |
-| host/wire | 새 상태 presence/DTO/raw bits | old None/v1~v4 불변; additive v5 계획, runtime 검사 | 새 native/save/repro tests |
+| host/wire | 새 상태 presence/DTO/raw bits | old None/v1~v4 경로 보존; 실제 additive v5 및 typed runtime 검사 | 새 native/save/repro tests |
 
 새 상태 생성은 초기 계산을 하되 PC를 지급하지 않는다. 정상 날짜 경계 Economy→Construction→Manpower→Politics→Ledger→종료 평가를 유지한다. Pause/query/restore 지급 없음. phase Err는 clone commit 전 전체 rollback, 의미 command Err는 성공 step에서 queue 소비. 실제 후속 생산/자원부족/군사/항복/훈련/시장 consumer는 WP15/16/20/29이며 해당 REQ 전체 완료가 아니다.
 
@@ -41,4 +41,22 @@ scenario.toml 루트 `economy = "synthetic"`는 `common/economy/synthetic.toml`�
 
 새 scalar는 TOML exact decimal 문자열이며 float/NaN/overflow를 거부한다. committed/reserved/state_slots/slots는 TOML i64 비음수다. PC cap/daily는 각 국가 명시값이며 상한보다 큰 PC를 거부한다. 기본값을 추가하지 않았다. 새 gameplay defines key는 사용하지 않으며 모든 수치는 경제 정의에 명시한다.
 
-현재 인수 커밋은 data schema/strict loader와 초기 권위·명령·일phase kernel까지만 증명한다. 새 저장/host wire/repro의 최종 구현·native 검사는 계속 진행 중이며 schema 설명의 v5는 아직 완료 증거가 아니다. WP-23은 이 실제 데이터 계약으로 신규 입력을 작성할 수 있으나 전체 경제 producer/저장 통합 PASS로 취급하지 않는다.
+첫 인수 커밋5577ee0은 data schema/strict loader와 초기 kernel이다. 이후 실제 v5·host/wire·repro 및 전용 native 증거 수집을 연결했다. 최종 source와 실행 결과는 WP-14 worklog를 따른다. WP-23의 실제 m2 팩·독립 검증·원격 3OS 통합 판정은 별도다.
+
+## 현재 권위·실적 snapshot·저장 계약
+
+`oh_sim::Economy`는 private mutable이며 Simulation의 read-only getter로 읽는다. 배분/건설/취소/재정렬/법령 명령과 지원 정치 효과는 clone 검증 후 commit한다. 다른 국가 state, 중복 project/target, 슬롯·하한·비용·condition 불충족을 거부한다. 기존 command variant 뒤에 Economy를 추가하여 원 canonical tag를 보존한다. 현재 비율/법령/인력 capacity와 마지막 일일 적용 ledger는 구분한다. quantity ledger는 tick·법령·stability·capacity snapshot, 주별 인구/자원/건물수준×단가, source별 IC multiplier와 적용 Qty, min/ratios/allocation/residual을 보존한다. construction ledger는 당시 owner/state/building/target/start progress/cost/cap/infrastructure/factor와 factor_evaluated, consumed/applied/discarded/completed/dormancy를 보존한다. skip 값은 reason과 evaluated=false로 표시하며 실제 보정을 주장하지 않는다. construction의 당일 infrastructure는 해당 tick의 modifier 적용값을 시작 시 고정하고 완료된 infrastructure base는 다음 날짜 계산부터 쓴다.
+
+내부 manpower API는 Reserve/Commit/Consume/Cancel/Return을 checked transaction으로 적용한다. 플레이어 wire/command로 노출하지 않는다. WP-16이 실제 예약·훈련 객체 권한/수명 및 exactly-once consumer를 인수해야 한다. 공장 생산/효율/자원 부족/WP-15, 군사 안정·동원/항복/WP-20, 시장/WP-29를 만들지 않았다. 지원 조건은 stability/mobilization/정치자본/law, 효과는 정치자본/안정도/동원도/law이며 효과 0도 미지원 capability는 거부한다. 산업 score는 종료 시 실제 Qty IC 입력×Fx weight의 Qty term·tick/input_tick만 제공하고 미지원 점수 축을 0으로 채우지 않는다.
+
+Scenario의 economy 부재는 None이며 legacy canonical/save 경로를 유지한다. 명시 빈 정의는 buildings/laws/nations/state_slots 네 map 모두 빈 값과 두 category 빈 문자열을 요구하는 별도 presence sentinel이다. Some(empty)의 경제 국가·점수는 생성하지 않으며 command/정치 capability도 없고 v5만 허용한다. 부분 빈 정의는 오류다.
+
+`SimulationSaveV5`는 기존 v3 base/movement/strait/optional trigger, typed pending command 전체와 Economy 정의 hash/권위/실적 원장을 저장한다. v1~v4 export는 economic presence를 거부하고 legacy restore는 economic context를 거부한다. v5 bounded preflight와 restore는 mode·정의 identity·국가/주/건물/법령 참조·비율/인력/queue/progress·실적 산술을 검사한다. force는 이 검사를 우회하지 않는다. 의미상 오래된 future command는 restore 시 미리 실행하지 않고 성공 step에서 기존 command 규칙으로 소비한다.
+
+Host는 `--scenario ID`로 실제 national 입력을 선택하고 saved server도 같은 명시 context로 복원한다. Economic wire command의 nation은 Join의 실제 선택국에 묶이며 wire가 임의 nation을 지정하지 않는다. Query::Economy의 typed view는 definitions_hash·actual state_hash·현재 nation권위·실적 ledger/project·실제 pending 전체·optional 산업 score를 반환한다. 각 FixedValue는 exact decimal string/value, signed raw bits string, fractional_bits16/32를 함께 내보낸다. client는 shape/필수 field·ID 정렬·범위·십진↔bits 일치만 검증하며 게임 규칙을 계산하지 않는다. ko/en dormancy 문자열은 현지화 키다. UI 화면은 후속 WP 범위다.
+
+기존 current-save capture 아래 새 `economy-v5` namespace는 실제 native repeat save·fresh/paused resume·CLI save-out endpoint·journal/replay와 full DTO/canonical/hash/queue를 보존한다. 기존 원 v1/M1/server/force/historical 경로·workflow는 유지한다. 새 native server 정상/force restore는 실제 경제 query/명령 거부와 futurequeue를 독립 Python encoding/ledger 기준으로 대조한다. 누락·tamper·native exit·source/binary/PID/플랫폼·3OS mismatch 거부 tests는 synthetic control이며 실제 추가 OS 증거가 아니다.
+
+## 벤치 추가 소유 인수
+
+driver/compare/test_compare의 팩 hash 계측은 초기 좁은 소유 밖에서 관측되어 부모가 보류하고 원 diff를 보존했다. CEO 구체 검토 후 추가 범위로 인수했다(ADR-1401, planning/bench-driver-additive-CEO). 원 driver bytes와 동일하지 않으며 과거 실측에 두 필드를 소급 추가하지 않는다. 새 두 실제 library는 같은 새 driver bytes/SHA를 쓰고 timer 이전/elapsed·완료 검사 이후 actual pack_hash를 출력한다. warmup prior-native hash 바인딩 및 모든 표본 before-after/양측/두 쌍 동일성과 원 DTO/canonical/hash/15%·정책을 유지한다. 기술 검토는 실측/독립 PASS가 아니다.

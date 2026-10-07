@@ -31,6 +31,7 @@ impl From<formula::EconomyArithmeticError> for EconomyError {
     }
 }
 #[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
 pub enum Action {
     Allocate {
         ratios: [Fx; 4],
@@ -58,6 +59,16 @@ pub enum Dormancy {
     ZeroCap,
     ZeroFactor,
 }
+
+/// Trusted future consumer API. No player command maps to these operations.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum ManpowerOperation {
+    Reserve,
+    CommitReservation,
+    Consume,
+    CancelReservation,
+    ReturnCommitted,
+}
 #[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
 pub struct Project {
     pub id: u64,
@@ -84,6 +95,9 @@ pub struct Multiplier {
 #[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
 pub struct QuantityLedger {
     pub tick: u64,
+    pub laws: BTreeMap<String, String>,
+    pub stability: Fx,
+    pub capacity: i64,
     pub contributions: Vec<Contribution>,
     pub population_by_state: BTreeMap<u16, i64>,
     pub resources_by_state: BTreeMap<u16, BTreeMap<String, i64>>,
@@ -105,6 +119,15 @@ pub struct ConstructionEntry {
     pub discarded: Qty,
     pub completed: bool,
     pub dormancy: Option<Dormancy>,
+    pub state: u16,
+    pub building: String,
+    pub target: i64,
+    pub starting_progress: Qty,
+    pub cost: Qty,
+    pub daily_cap: Qty,
+    pub infrastructure: Fx,
+    pub owner: u16,
+    pub factor_evaluated: bool,
 }
 #[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
 pub struct ConstructionLedger {
@@ -172,6 +195,15 @@ impl NationEconomy {
 pub struct Economy {
     definitions_hash: u64,
     nations: BTreeMap<u16, NationEconomy>,
+    scores: Option<BTreeMap<u16, IndustrialScore>>,
+}
+#[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
+pub struct IndustrialScore {
+    pub tick: u64,
+    pub input_tick: u64,
+    pub weight: Fx,
+    pub input: Qty,
+    pub term: Qty,
 }
 fn fx(s: &str) -> Result<Fx, EconomyError> {
     ratio(s).map_err(|_| EconomyError::InvalidValue)
@@ -215,6 +247,59 @@ fn slots(world: &World, definition: &Definition, state: u16) -> Result<i64, Econ
     Ok(occupied)
 }
 impl Economy {
+    pub fn industrial_scores(&self) -> Option<&BTreeMap<u16, IndustrialScore>> {
+        self.scores.as_ref()
+    }
+    pub(crate) fn checkpoint_scores(
+        &mut self,
+        world: &World,
+        tick: u64,
+    ) -> Result<(), EconomyError> {
+        let Some(weights) = world
+            .defs()
+            .trigger()
+            .and_then(|d| d.score_weights.as_ref())
+        else {
+            self.scores = None;
+            return Ok(());
+        };
+        let values = weights.values().map_err(|_| EconomyError::InvalidValue)?;
+        if [0, 2, 3].iter().any(|i| values[*i] != Fx::ZERO) {
+            return Err(EconomyError::MissingContext);
+        }
+        let mut scores = BTreeMap::new();
+        for (id, n) in &self.nations {
+            scores.insert(
+                *id,
+                IndustrialScore {
+                    tick,
+                    input_tick: n.ledger.tick,
+                    weight: values[1],
+                    input: n.ledger.total_ic,
+                    term: formula::economy_weighted_quantity(n.ledger.total_ic, values[1])?,
+                },
+            );
+        }
+        self.scores = Some(scores);
+        Ok(())
+    }
+    pub(crate) fn validate_scores(
+        &self,
+        world: &World,
+        tick: u64,
+        ended: bool,
+    ) -> Result<(), EconomyError> {
+        let mut expected = self.clone();
+        if ended {
+            expected.checkpoint_scores(world, tick)?;
+        } else {
+            expected.scores = None;
+        }
+        if self.scores != expected.scores {
+            return Err(EconomyError::InvalidValue);
+        }
+        Ok(())
+    }
     pub fn nation(&self, id: NationId) -> Option<&NationEconomy> {
         self.nations.get(&id.0)
     }
@@ -223,6 +308,322 @@ impl Economy {
     }
     pub fn nations(&self) -> &BTreeMap<u16, NationEconomy> {
         &self.nations
+    }
+    /// A caller needs exclusive private authority; Simulation exposes only &Economy.
+    /// WP16 must bind actual reservation/project IDs and exactly-once ownership before using this API.
+    pub fn manpower(
+        &mut self,
+        nation: NationId,
+        operation: ManpowerOperation,
+        amount: i64,
+    ) -> Result<(), EconomyError> {
+        if amount < 0 {
+            return Err(EconomyError::InvalidValue);
+        }
+        let mut next = self
+            .nations
+            .get(&nation.0)
+            .ok_or(EconomyError::InvalidReference)?
+            .clone();
+        match operation {
+            ManpowerOperation::Reserve | ManpowerOperation::Consume => {
+                if amount > next.available() {
+                    return Err(EconomyError::InvalidValue);
+                }
+                if operation == ManpowerOperation::Reserve {
+                    next.reserved = next
+                        .reserved
+                        .checked_add(amount)
+                        .ok_or(EconomyError::Overflow)?;
+                } else {
+                    next.committed = next
+                        .committed
+                        .checked_add(amount)
+                        .ok_or(EconomyError::Overflow)?;
+                }
+            }
+            ManpowerOperation::CommitReservation => {
+                if amount > next.reserved {
+                    return Err(EconomyError::InvalidValue);
+                }
+                next.reserved -= amount;
+                next.committed = next
+                    .committed
+                    .checked_add(amount)
+                    .ok_or(EconomyError::Overflow)?;
+            }
+            ManpowerOperation::CancelReservation => {
+                if amount > next.reserved {
+                    return Err(EconomyError::InvalidValue);
+                }
+                next.reserved -= amount;
+            }
+            ManpowerOperation::ReturnCommitted => {
+                if amount > next.committed {
+                    return Err(EconomyError::InvalidValue);
+                }
+                next.committed -= amount;
+            }
+        }
+        next.committed
+            .checked_add(next.reserved)
+            .ok_or(EconomyError::Overflow)?;
+        self.nations.insert(nation.0, next);
+        Ok(())
+    }
+    pub(crate) fn validate_action(
+        &self,
+        world: &World,
+        nation: NationId,
+        action: &Action,
+    ) -> Result<(), EconomyError> {
+        let d = defs(world)?;
+        if self.nation(nation).is_none() {
+            return Err(EconomyError::InvalidReference);
+        }
+        match action {
+            Action::Allocate { ratios } => {
+                formula::economy_allocate(Qty::ZERO, *ratios, Fx::ZERO)?;
+            }
+            Action::Construct {
+                state, building, ..
+            } => {
+                if world.state(StateId(*state)).is_none() || !d.buildings.contains_key(building) {
+                    return Err(EconomyError::InvalidReference);
+                }
+            }
+            Action::ChangeLaw { law } => {
+                if !d.laws.contains_key(law) {
+                    return Err(EconomyError::InvalidReference);
+                }
+            }
+            Action::Reorder { projects } => {
+                if projects.iter().collect::<BTreeSet<_>>().len() != projects.len() {
+                    return Err(EconomyError::InvalidValue);
+                }
+            }
+            Action::Cancel { .. } => {}
+        }
+        Ok(())
+    }
+    pub(crate) fn validate(&self, world: &World, tick: u64) -> Result<(), EconomyError> {
+        let d = defs(world)?;
+        if self.definitions_hash
+            != oh_core::state_hash(d).map_err(|_| EconomyError::InvalidValue)?
+            || self.nations.keys().ne(d.nations.keys())
+        {
+            return Err(EconomyError::InvalidReference);
+        }
+        for (id, n) in &self.nations {
+            let (_, capacity) = Self::derive(world, *id, n, tick)?;
+            if n.capacity != capacity {
+                return Err(EconomyError::InvalidValue);
+            }
+            let mut ids = BTreeSet::new();
+            let mut targets = BTreeSet::new();
+            for p in &n.projects {
+                let b = d
+                    .buildings
+                    .get(&p.building)
+                    .ok_or(EconomyError::InvalidReference)?;
+                let stage =
+                    usize::try_from(p.target - 1).map_err(|_| EconomyError::InvalidValue)?;
+                let cost = qty(b.costs.get(stage).ok_or(EconomyError::InvalidReference)?)?;
+                if world.state(StateId(p.state)).is_none()
+                    || p.progress < Qty::ZERO
+                    || p.progress >= cost
+                    || !ids.insert(p.id)
+                    || !targets.insert((p.state, &p.building))
+                {
+                    return Err(EconomyError::InvalidValue);
+                }
+            }
+            let l = &n.ledger;
+            if l.laws.keys().ne(n.laws.keys()) || l.stability < Fx::ZERO || l.stability > Fx::ONE {
+                return Err(EconomyError::InvalidValue);
+            }
+            for (category, id) in &l.laws {
+                if d.laws.get(id).is_none_or(|law| &law.category != category) {
+                    return Err(EconomyError::InvalidReference);
+                }
+            }
+            let law = &d.laws[&l.laws[&d.economy_category]];
+            if l.minimum
+                != formula::economy_minimum(
+                    fx(&law.consumer_base)?,
+                    fx(&law.instability_slope)?,
+                    l.stability,
+                )?
+            {
+                return Err(EconomyError::InvalidValue);
+            }
+            let conscription = &d.laws[&l.laws[&d.conscription_category]];
+            if l.capacity
+                != formula::economy_capacity(l.population, fx(&conscription.conscription_ratio)?)?
+            {
+                return Err(EconomyError::InvalidValue);
+            }
+            if l.multipliers
+                .iter()
+                .map(|v| v.source.as_str())
+                .ne(std::iter::once(format!("nation:{id}"))
+                    .chain(l.laws.values().map(|id| format!("law:{id}")))
+                    .collect::<Vec<_>>()
+                    .iter()
+                    .map(|v| v.as_str()))
+            {
+                return Err(EconomyError::InvalidReference);
+            }
+
+            if l.tick > tick || (l.tick != 0 && !l.tick.is_multiple_of(formula::HOURS_PER_DAY)) {
+                return Err(EconomyError::InvalidValue);
+            }
+            let mut total = Qty::ZERO;
+            let mut contributions = BTreeSet::new();
+            for c in &l.contributions {
+                let b = d
+                    .buildings
+                    .get(&c.building)
+                    .ok_or(EconomyError::InvalidReference)?;
+                if !l.population_by_state.contains_key(&c.state)
+                    || world.state(StateId(c.state)).is_none()
+                    || c.unit_ic != qty(&b.ic_per_level)?
+                    || c.levels < 0
+                    || usize::try_from(c.levels).map_err(|_| EconomyError::InvalidValue)?
+                        > b.costs.len()
+                    || !contributions.insert((c.state, &c.building))
+                    || c.value != units(c.unit_ic, c.levels)?
+                {
+                    return Err(EconomyError::InvalidValue);
+                }
+                total = sum(total, c.value)?;
+            }
+            if !crate::save_state::strictly_sorted(
+                l.contributions.iter().map(|c| (c.state, &c.building)),
+            ) {
+                return Err(EconomyError::InvalidValue);
+            }
+            if l.population_by_state.keys().ne(l.resources_by_state.keys()) {
+                return Err(EconomyError::InvalidValue);
+            }
+            let mut population = 0i64;
+            let mut resources = BTreeMap::new();
+            for (state, value) in &l.population_by_state {
+                if *value < 0 || world.state(StateId(*state)).is_none() {
+                    return Err(EconomyError::InvalidValue);
+                }
+                population = population
+                    .checked_add(*value)
+                    .ok_or(EconomyError::Overflow)?;
+            }
+            for values in l.resources_by_state.values() {
+                for (key, value) in values {
+                    if *value < 0 || !world.defs().map().resource_ids().contains(key) {
+                        return Err(EconomyError::InvalidReference);
+                    }
+                    let entry = resources.entry(key.clone()).or_insert(0i64);
+                    *entry = entry.checked_add(*value).ok_or(EconomyError::Overflow)?;
+                }
+            }
+            if population != l.population || resources != l.resources {
+                return Err(EconomyError::InvalidValue);
+            }
+            for (index, m) in l.multipliers.iter().enumerate() {
+                let expected = if index == 0 {
+                    if m.source != format!("nation:{id}") {
+                        return Err(EconomyError::InvalidReference);
+                    }
+                    fx(&d.nations[id].ic_multiplier)?
+                } else {
+                    let law = m
+                        .source
+                        .strip_prefix("law:")
+                        .and_then(|id| d.laws.get(id))
+                        .ok_or(EconomyError::InvalidReference)?;
+                    fx(&law.ic_multiplier)?
+                };
+                if m.factor != expected {
+                    return Err(EconomyError::InvalidValue);
+                }
+                total = formula::quantity_times_ratio(total, m.factor)?;
+                if m.applied != total {
+                    return Err(EconomyError::InvalidValue);
+                }
+            }
+            if l.multipliers.len() != n.laws.len() + 1
+                || total != l.total_ic
+                || formula::economy_allocate(total, l.ratios, l.minimum)? != l.allocation
+                || l.consumer_residual
+                    != l.allocation[0] - formula::quantity_times_ratio(total, l.ratios[0])?
+            {
+                return Err(EconomyError::InvalidValue);
+            }
+            let c = &n.construction;
+            if c.tick != l.tick || c.budget != l.allocation[1] || c.unused < Qty::ZERO {
+                return Err(EconomyError::InvalidValue);
+            }
+            let mut consumed = Qty::ZERO;
+            let mut project_ids = BTreeSet::new();
+            for e in &c.entries {
+                let b = d
+                    .buildings
+                    .get(&e.building)
+                    .ok_or(EconomyError::InvalidReference)?;
+                let stage =
+                    usize::try_from(e.target - 1).map_err(|_| EconomyError::InvalidValue)?;
+                if world.state(StateId(e.state)).is_none()
+                    || world.nation(NationId(e.owner)).is_none()
+                    || e.cost != qty(b.costs.get(stage).ok_or(EconomyError::InvalidReference)?)?
+                    || e.daily_cap != qty(&b.daily_cap)?
+                    || e.starting_progress < Qty::ZERO
+                    || e.starting_progress >= e.cost
+                    || e.consumed > e.daily_cap
+                {
+                    return Err(EconomyError::InvalidValue);
+                }
+                if e.factor_evaluated {
+                    let factor = b
+                        .infrastructure_factors
+                        .iter()
+                        .find(|v| fx(&v.infrastructure).ok() == Some(e.infrastructure))
+                        .ok_or(EconomyError::InvalidReference)?;
+                    if e.factor != fx(&factor.factor)? {
+                        return Err(EconomyError::InvalidValue);
+                    }
+                } else if e.factor != Fx::ZERO || e.dormancy.is_none() {
+                    return Err(EconomyError::InvalidValue);
+                }
+                if e.completed
+                    != (e
+                        .starting_progress
+                        .checked_add(e.applied)
+                        .ok_or(EconomyError::Overflow)?
+                        == e.cost)
+                    || e.starting_progress
+                        .checked_add(e.applied)
+                        .ok_or(EconomyError::Overflow)?
+                        > e.cost
+                {
+                    return Err(EconomyError::InvalidValue);
+                }
+                if e.factor < Fx::ZERO
+                    || e.consumed < Qty::ZERO
+                    || e.applied < Qty::ZERO
+                    || e.discarded < Qty::ZERO
+                    || !project_ids.insert(e.project)
+                    || sum(e.applied, e.discarded)?
+                        != formula::quantity_times_ratio(e.consumed, e.factor)?
+                    || e.dormancy.is_some() && (e.consumed != Qty::ZERO || e.completed)
+                {
+                    return Err(EconomyError::InvalidValue);
+                }
+                consumed = sum(consumed, e.consumed)?;
+            }
+            if sum(consumed, c.unused)? != c.budget {
+                return Err(EconomyError::InvalidValue);
+            }
+        }
+        Ok(())
     }
     pub(crate) fn initial(world: &World, tick: u64) -> Result<Self, EconomyError> {
         let d = defs(world)?;
@@ -233,10 +634,10 @@ impl Economy {
                 .each_ref()
                 .map(|s| unit_ratio(s).map_err(|_| EconomyError::InvalidValue));
             let allocation = [
-                allocation[0].clone()?,
-                allocation[1].clone()?,
-                allocation[2].clone()?,
-                allocation[3].clone()?,
+                allocation[0]?,
+                allocation[1]?,
+                allocation[2]?,
+                allocation[3]?,
             ];
             let mut n = NationEconomy {
                 laws: input.laws.clone(),
@@ -250,6 +651,9 @@ impl Economy {
                 projects: vec![],
                 ledger: QuantityLedger {
                     tick,
+                    laws: input.laws.clone(),
+                    stability: fx(&input.stability)?,
+                    capacity: 0,
                     contributions: vec![],
                     population_by_state: BTreeMap::new(),
                     resources_by_state: BTreeMap::new(),
@@ -279,6 +683,7 @@ impl Economy {
         Ok(Self {
             definitions_hash: oh_core::state_hash(d).map_err(|_| EconomyError::InvalidValue)?,
             nations,
+            scores: None,
         })
     }
     fn derive(
@@ -306,6 +711,9 @@ impl Economy {
         }
         let mut ledger = QuantityLedger {
             tick,
+            laws: n.laws.clone(),
+            stability: n.stability,
+            capacity: 0,
             contributions: vec![],
             population_by_state: BTreeMap::new(),
             resources_by_state: BTreeMap::new(),
@@ -395,6 +803,7 @@ impl Economy {
             .ok_or(EconomyError::InvalidReference)?;
         let capacity =
             formula::economy_capacity(ledger.population, fx(&conscription.conscription_ratio)?)?;
+        ledger.capacity = capacity;
         Ok((ledger, capacity))
     }
     pub(crate) fn command(
@@ -454,7 +863,15 @@ impl Economy {
                 let index = usize::try_from(level).map_err(|_| EconomyError::InvalidValue)?;
                 let increase = *b.slots.get(index).ok_or(EconomyError::TargetConflict)?;
                 let mut occupied = slots(world, d, *state)?;
-                for p in next.projects.iter().filter(|p| p.state == *state) {
+                for p in next.projects.iter().filter(|p| {
+                    p.state == *state
+                        && s.buildings()
+                            .get(&p.building)
+                            .copied()
+                            .unwrap_or(0)
+                            .checked_add(1)
+                            == Some(p.target)
+                }) {
                     let b = d
                         .buildings
                         .get(&p.building)
@@ -593,8 +1010,14 @@ impl Economy {
             .inputs()
             .states()
             .iter()
-            .map(|s| (s.id().0, s.infrastructure()))
-            .collect();
+            .map(|s| {
+                Ok((
+                    s.id().0,
+                    formula::stat_value(s.base(), "infrastructure", s.modifiers(), tick)
+                        .map_err(|_| EconomyError::InvalidValue)?,
+                ))
+            })
+            .collect::<Result<_, EconomyError>>()?;
         for (id, n) in &mut self.nations {
             let budget = n.ledger.allocation[1];
             let mut ledger = ConstructionLedger {
@@ -625,7 +1048,19 @@ impl Economy {
                 };
                 if reason.is_none() {
                     let mut occupied = slots(world, &d, p.state)?;
-                    for other in n.projects.iter().filter(|p| p.state == s.id().0) {
+                    for other in n.projects.iter().filter(|p| {
+                        p.state == s.id().0
+                            && s.buildings()
+                                .get(&p.building)
+                                .copied()
+                                .unwrap_or(0)
+                                .checked_add(1)
+                                == Some(p.target)
+                            && !ledger
+                                .entries
+                                .iter()
+                                .any(|e| e.project == p.id && e.completed)
+                    }) {
                         let b = d
                             .buildings
                             .get(&other.building)
@@ -644,7 +1079,9 @@ impl Economy {
                         reason = Some(Dormancy::SlotCap);
                     }
                 }
+                let owner = s.owner().0;
                 let mut factor = Fx::ZERO;
+                let factor_evaluated = reason.is_none();
                 let cap = qty(&b.daily_cap)?;
                 if reason.is_none() {
                     let infra = infrastructure[&p.state];
@@ -702,6 +1139,15 @@ impl Economy {
                     discarded,
                     completed,
                     dormancy: reason,
+                    state: p.state,
+                    building: p.building.clone(),
+                    target: p.target,
+                    starting_progress: p.progress,
+                    cost,
+                    daily_cap: cap,
+                    infrastructure: infrastructure[&p.state],
+                    owner,
+                    factor_evaluated,
                 });
             }
             let completed: BTreeSet<_> = ledger
@@ -714,5 +1160,178 @@ impl Economy {
             n.construction = ledger;
         }
         Ok(())
+    }
+}
+
+#[cfg(test)]
+#[path = "../tests/support/economy_fixture.rs"]
+mod test_fixture;
+#[cfg(test)]
+mod tests {
+    use super::*;
+    fn transfer(world: &World, state: u16, owner: u16) -> World {
+        let mut dto = world.export_save();
+        dto.inputs
+            .states
+            .iter_mut()
+            .find(|s| s.id == state)
+            .unwrap()
+            .owner = owner;
+        for p in &mut dto.inputs.provinces {
+            if p.state == Some(state) {
+                p.owner = Some(owner);
+            }
+        }
+        World::from_save(dto, world, 0).unwrap()
+    }
+    #[test]
+    fn req_eco_06_ownership_loss_recovery_and_new_owner_target_conflict() {
+        let l = test_fixture::loaded();
+        let mut world = World::from_loaded(&l).unwrap();
+        let mut e = Economy::initial(&world, 0).unwrap();
+        e.command(
+            &world,
+            NationId(1),
+            &Action::Construct {
+                project: 7,
+                state: 1,
+                building: "industry".into(),
+            },
+            0,
+            true,
+        )
+        .unwrap();
+        e.nations.get_mut(&1).unwrap().projects[0].progress = Qty::from_num(2);
+        world = transfer(&world, 1, 2);
+        e.daily_economy(&world, 24).unwrap();
+        e.daily_construction(&mut world, 24).unwrap();
+        assert_eq!(
+            e.nation(NationId(1)).unwrap().projects[0].dormancy,
+            Some(Dormancy::NoOwnership)
+        );
+        assert_eq!(
+            e.nation(NationId(1)).unwrap().projects[0].progress,
+            Qty::from_num(2)
+        );
+        let mut valid_world = transfer(&world, 1, 1);
+        let mut valid = e.clone();
+        valid.daily_economy(&valid_world, 48).unwrap();
+        valid.daily_construction(&mut valid_world, 48).unwrap();
+        assert_eq!(
+            valid.nation(NationId(1)).unwrap().projects[0].progress,
+            Qty::from_num(4.5)
+        );
+        assert_eq!(
+            valid.nation(NationId(1)).unwrap().projects[0].dormancy,
+            None
+        );
+        e.command(
+            &world,
+            NationId(2),
+            &Action::Construct {
+                project: 8,
+                state: 1,
+                building: "industry".into(),
+            },
+            24,
+            true,
+        )
+        .unwrap();
+        e.nations.get_mut(&2).unwrap().projects[0].progress = Qty::from_num(19);
+        e.daily_economy(&world, 48).unwrap();
+        e.daily_construction(&mut world, 48).unwrap();
+        assert_eq!(world.state(StateId(1)).unwrap().buildings()["industry"], 2);
+        world = transfer(&world, 1, 1);
+        world = transfer(&world, 2, 1);
+        e.command(
+            &world,
+            NationId(1),
+            &Action::Construct {
+                project: 9,
+                state: 2,
+                building: "industry".into(),
+            },
+            48,
+            true,
+        )
+        .unwrap();
+        e.daily_economy(&world, 72).unwrap();
+        e.daily_construction(&mut world, 72).unwrap();
+        let n = e.nation(NationId(1)).unwrap();
+        assert_eq!(n.projects.len(), 1);
+        assert_eq!(n.projects[0].id, 7);
+        assert_eq!(n.projects[0].progress, Qty::from_num(2));
+        assert_eq!(n.projects[0].dormancy, Some(Dormancy::TargetConflict));
+        assert_eq!(world.state(StateId(1)).unwrap().buildings()["industry"], 2);
+        assert_eq!(world.state(StateId(2)).unwrap().buildings()["industry"], 1);
+        assert!(
+            n.construction
+                .entries
+                .iter()
+                .find(|v| v.project == 9)
+                .unwrap()
+                .completed
+        );
+    }
+    #[test]
+    fn req_eco_06_zero_factor_skip_and_slot_limit_do_not_consume() {
+        let mut l = test_fixture::loaded();
+        l.scenario.ownership.insert(2, "NTH".into());
+        l.economy
+            .as_mut()
+            .unwrap()
+            .buildings
+            .get_mut("industry")
+            .unwrap()
+            .infrastructure_factors
+            .iter_mut()
+            .for_each(|f| {
+                if f.infrastructure != "0" {
+                    f.factor = "0".into();
+                }
+            });
+        let mut world = World::from_loaded(&l).unwrap();
+        let mut e = Economy::initial(&world, 0).unwrap();
+        for (id, state) in [(1, 1), (2, 2)] {
+            e.command(
+                &world,
+                NationId(1),
+                &Action::Construct {
+                    project: id,
+                    state,
+                    building: "industry".into(),
+                },
+                0,
+                true,
+            )
+            .unwrap();
+        }
+        e.daily_economy(&world, 24).unwrap();
+        e.daily_construction(&mut world, 24).unwrap();
+        let n = e.nation(NationId(1)).unwrap();
+        assert_eq!(n.projects[0].dormancy, Some(Dormancy::ZeroFactor));
+        assert_eq!(n.projects[0].progress, Qty::ZERO);
+        assert_eq!(n.projects[1].progress, Qty::from_num(2.5));
+        assert_eq!(n.construction.entries[0].consumed, Qty::ZERO);
+        let mut l = test_fixture::loaded();
+        l.economy.as_mut().unwrap().state_slots.insert(1, 1);
+        let world = World::from_loaded(&l).unwrap();
+        let mut e = Economy::initial(&world, 0).unwrap();
+        let before = e.clone();
+        assert_eq!(
+            e.command(
+                &world,
+                NationId(1),
+                &Action::Construct {
+                    project: 3,
+                    state: 1,
+                    building: "industry".into()
+                },
+                0,
+                true
+            ),
+            Err(EconomyError::SlotCap)
+        );
+        assert_eq!(e, before);
     }
 }

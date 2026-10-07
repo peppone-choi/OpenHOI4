@@ -154,4 +154,52 @@ fn main() {
         serde_json::to_vec_pretty(&fixtures).unwrap(),
     )
     .unwrap();
+    let mut economic = loaded.clone();
+    economic.scenario.economy = Some("synthetic".into());
+    economic.economy = Some(
+        serde_json::from_str(include_str!(
+            "../../oh_data/tests/fixtures/economy/valid.json"
+        ))
+        .unwrap(),
+    );
+    let mut sim = oh_sim::Simulation::with_world(
+        "m1".into(),
+        oh_sim::Date::new(2000, 1, 1).unwrap(),
+        1000,
+        oh_sim::TimeConfig::from_defines(&economic.pack.defines).unwrap(),
+        oh_sim::world::World::from_loaded(&economic).unwrap(),
+    )
+    .unwrap();
+    sim.enqueue(
+        0,
+        oh_core::NationId(1),
+        1,
+        oh_sim::Command::Economy(oh_sim::economy::Action::Construct {
+            project: 7,
+            state: 1,
+            building: "industry".into(),
+        }),
+    )
+    .unwrap();
+    for _ in 0..24 {
+        sim.step().unwrap();
+    }
+    let mut economic_wire = Vec::new();
+    add(
+        &mut economic_wire,
+        "EconomyResult",
+        ServerMessage::EconomyResult {
+            request: "economy".into(),
+            supported: true,
+            reason_key: None,
+            economy: EconomyView::from_sim(&sim),
+        },
+    );
+    let path = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../target/wp14");
+    std::fs::create_dir_all(&path).unwrap();
+    std::fs::write(
+        path.join("economy-wire-fixtures.json"),
+        serde_json::to_vec_pretty(&economic_wire).unwrap(),
+    )
+    .unwrap();
 }

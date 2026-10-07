@@ -1,5 +1,5 @@
 """Actual filesystem attacks against immutable full-pack measurements."""
-import os, tempfile, unittest
+import os, tempfile, unittest, hashlib, subprocess
 from pathlib import Path
 from run import pack_inventory, verify_pack, native_sample
 
@@ -45,4 +45,16 @@ class ImmutableInput(unittest.TestCase):
         try: alias.symlink_to(pack,target_is_directory=True)
         except OSError as error: self.skipTest('OS denies symlink fixture: '+str(error))
         with self.assertRaisesRegex(ValueError,'nonregular'): pack_inventory(alias)
+
+    def test_binary_changed_after_linkage_is_rejected_before_native(self):
+        pack,binary=self.fixture();expected=pack_inventory(pack);digest=hashlib.sha256(binary.read_bytes()).hexdigest();binary.write_bytes(b'changed after real binary linkage');calls=[]
+        with self.assertRaisesRegex(ValueError,'binary identity changed'):
+            native_sample('current',binary,pack,expected,{'scenario':'m1','seed':1000},2400,lambda *args:calls.append(args),digest)
+        self.assertFalse(calls)
+    @unittest.skipUnless(os.name=='nt','Windows reparse-point fixture')
+    def test_actual_windows_junction_root_is_rejected(self):
+        pack,_=self.fixture();alias=pack.parent/'junction'
+        result=subprocess.run(['cmd','/c','mklink','/J',str(alias),str(pack)],capture_output=True)
+        self.assertEqual(result.returncode,0,result.stderr.decode(errors='replace'))
+        with self.assertRaisesRegex(ValueError,'nonregular'):pack_inventory(alias)
 if __name__=='__main__': unittest.main(verbosity=2)

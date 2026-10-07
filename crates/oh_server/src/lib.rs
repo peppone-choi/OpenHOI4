@@ -23,13 +23,14 @@ use tokio::sync::{oneshot, watch};
 mod embedded {
     include!(concat!(env!("OUT_DIR"), "/assets.rs"));
 }
-pub const USAGE: &str = "OpenHOI4 local server\nUsage: oh_server [--open] [--port <1..65535>] [--pack-root <directory>] [--load-save <file>] [--force]\nDefault: http://127.0.0.1:8080/ (loopback only)\nDefault pack-root: data/packs (M1 testland scenario m1); explicit data/packs/examples/m0 preserves M0\nBuild first: npm --prefix client ci; npm --prefix client run build; cargo build -p oh_server\nThe executable serves the built client; no Node/Vite server is needed to play.\n--open opens the address in your default browser. Ctrl+C shuts down normally.\n--help prints this help.";
+pub const USAGE: &str = "OpenHOI4 local server\nUsage: oh_server [--open] [--port <1..65535>] [--pack-root <directory>] [--scenario <national-ID>] [--load-save <file>] [--force]\nDefault: http://127.0.0.1:8080/ (loopback only)\nDefault pack-root: data/packs (M1 testland scenario m1); explicit data/packs/examples/m0 preserves M0\nBuild first: npm --prefix client ci; npm --prefix client run build; cargo build -p oh_server\nThe executable serves the built client; no Node/Vite server is needed to play.\n--open opens the address in your default browser. Ctrl+C shuts down normally.\n--help prints this help.";
 #[derive(Debug)]
 pub struct Options {
     pub port: u16,
     pub open: bool,
     pub pack_root: PathBuf,
     pub load_save: Option<PathBuf>,
+    pub scenario: Option<String>,
     pub force: bool,
 }
 impl Options {
@@ -39,6 +40,7 @@ impl Options {
             open: false,
             pack_root: "data/packs".into(),
             load_save: None,
+            scenario: None,
             force: false,
         };
         let mut seen = std::collections::BTreeSet::new();
@@ -51,7 +53,7 @@ impl Options {
             match key {
                 "--open" => options.open = true,
                 "--force" => options.force = true,
-                "--port" | "--pack-root" | "--load-save" => {
+                "--port" | "--pack-root" | "--load-save" | "--scenario" => {
                     i += 1;
                     let value = args
                         .get(i)
@@ -63,6 +65,11 @@ impl Options {
                             .ok()
                             .filter(|p| *p != 0)
                             .ok_or("--port must be an integer in 1..65535")?;
+                    } else if key == "--scenario" {
+                        if !oh_data::valid_id(value) {
+                            return Err("invalid scenario ID".into());
+                        }
+                        options.scenario = Some(value.into());
                     } else if key == "--load-save" {
                         options.load_save = Some(value.into());
                     } else {
@@ -110,6 +117,15 @@ impl Host {
         file: Option<&Path>,
         force: bool,
     ) -> Result<Self, String> {
+        Self::load_selected(root, shutdown, None, file, force)
+    }
+    pub fn load_selected(
+        root: &Path,
+        shutdown: watch::Receiver<bool>,
+        scenario: Option<&str>,
+        file: Option<&Path>,
+        force: bool,
+    ) -> Result<Self, String> {
         let limits = oh_save::Limits::default();
         let prepared = if let Some(file) = file {
             let bytes = oh_save::read_file(file, &limits)?;
@@ -119,7 +135,7 @@ impl Host {
             None
         };
         let mut host = if let Some((_, header)) = &prepared {
-            let (scenario_id, kind) = selected_scenario(root);
+            let (scenario_id, kind) = selected_input(root, scenario)?;
             let binding = oh_data::host_policy::HeaderBinding {
                 format_version: header.format_version,
                 scenario_id: header.scenario_id.clone(),
@@ -138,13 +154,18 @@ impl Host {
                 root,
                 shutdown,
                 oh_data::pack_validation::ValidationPurpose::ServerRestore {
-                    scenario_id: scenario_id.into(),
+                    scenario_id,
                     kind,
                     header: binding,
                 },
             )?
         } else {
-            Self::load(root, shutdown)?
+            let (scenario_id, kind) = selected_input(root, scenario)?;
+            Self::load_for_purpose(
+                root,
+                shutdown,
+                oh_data::pack_validation::ValidationPurpose::ServerStartup { scenario_id, kind },
+            )?
         };
         if let Some((bytes, _)) = prepared {
             let context = if host.world.is_some() {
@@ -189,6 +210,13 @@ impl Host {
         shutdown: watch::Receiver<bool>,
         purpose: oh_data::pack_validation::ValidationPurpose,
     ) -> Result<Self, String> {
+        let selected = match &purpose {
+            oh_data::pack_validation::ValidationPurpose::ServerStartup { scenario_id, .. }
+            | oh_data::pack_validation::ValidationPurpose::ServerRestore { scenario_id, .. } => {
+                scenario_id.clone()
+            }
+            _ => return Err("InvalidHostPurpose".into()),
+        };
         let active = root.join("testland");
         let report =
             oh_data::pack_validation::validate_for_purpose(std::slice::from_ref(&active), purpose);
@@ -208,14 +236,21 @@ impl Host {
         }
         let validated_hash = report.packs[0].content_hash;
         let validated_files = report.packs[0].source_files.clone();
-        let (loaded, world) = if root.join("testland/scenarios/m1/scenario.toml").exists() {
-            let national = oh_data::national::load_scenario(&root.join("testland"), "m1")
+        let (loaded, world) = if root
+            .join("testland")
+            .join("scenarios")
+            .join(&selected)
+            .join("scenario.toml")
+            .exists()
+            && selected != "testland"
+        {
+            let national = oh_data::national::load_scenario(&root.join("testland"), &selected)
                 .map_err(|e| e.to_string())?;
             let world = oh_sim::world::World::from_loaded(&national)?;
             (
                 oh_data::m0::LoadedM0 {
                     pack: national.pack,
-                    scenario_id: "m1".into(),
+                    scenario_id: selected.clone(),
                     start_date: national.scenario.start_date,
                 },
                 Some(world),
@@ -259,11 +294,11 @@ impl Host {
         let handshake_ms = positive(&loaded.pack.defines, "network.handshake_timeout_ms")?;
         let path = root.join("testland");
         let scenario_file = if world.is_some() {
-            "scenarios/m1/scenario.toml"
+            format!("scenarios/{selected}/scenario.toml")
         } else {
-            "scenarios/testland/scenario.toml"
+            "scenarios/testland/scenario.toml".to_string()
         };
-        let files = ["manifest.toml", "defines.toml", scenario_file]
+        let files = ["manifest.toml", "defines.toml", &scenario_file]
             .into_iter()
             .map(|p| std::fs::read(path.join(p)).map_err(|e| e.to_string()))
             .collect::<Result<Vec<_>, _>>()?;
@@ -326,6 +361,29 @@ impl Host {
         }
         session::validate_resume(&sim)?;
         Ok(sim)
+    }
+}
+fn selected_input(
+    root: &Path,
+    scenario: Option<&str>,
+) -> Result<(String, oh_data::host_policy::ScenarioKind), String> {
+    match scenario {
+        None => {
+            let (id, kind) = selected_scenario(root);
+            Ok((id.into(), kind))
+        }
+        Some(id) => {
+            if !oh_data::valid_id(id)
+                || !root
+                    .join("testland/scenarios")
+                    .join(id)
+                    .join("scenario.toml")
+                    .is_file()
+            {
+                return Err("InvalidSelectedScenario".into());
+            }
+            Ok((id.into(), oh_data::host_policy::ScenarioKind::National))
+        }
     }
 }
 fn selected_scenario(root: &Path) -> (&'static str, oh_data::host_policy::ScenarioKind) {
@@ -429,6 +487,7 @@ async fn connection(mut socket: WebSocket, mut host: Host) {
         return;
     }
     let mut active: Option<session::Session> = None;
+    let mut player_nation: Option<oh_core::NationId> = None;
     let mut client_sequence = 0u64;
     let mut delta_sequence = 0u64;
     let mut current_state: Option<TimeState> = None;
@@ -475,11 +534,25 @@ async fn connection(mut socket: WebSocket, mut host: Host) {
                     }
                     ClientMessage::Join { session, nation } => {
                         if active.is_some() { notice(&mut socket, "already-joined").await; continue; }
-                        if session != "local" || nation.is_some() { notice(&mut socket, "unsupported-session").await; continue; }
+                        if session != "local" { notice(&mut socket, "unsupported-session").await; continue; }
+                        let selection=if let Some(tag)=nation.as_ref() {host.world.as_ref().filter(|w|w.defs().economy().is_some()).and_then(|w|w.inputs().nations().iter().find(|n|n.tag()==tag)).map(|n|n.id())}else{None};
+                        if nation.is_some()&&selection.is_none(){notice(&mut socket,"unsupported-session").await;continue;}
+                        player_nation=selection;
                         let Ok(sim) = host.simulation(host.default_seed) else { notice(&mut socket, "simulation-error").await; break; };
                         let state = TimeState::from(&sim.snapshot()); current_state = Some(state.clone()); active = Some(session::Session::start(sim, host.capacity, host.delta_ms));
                         if !send(&mut socket, ServerMessage::Snapshot { state }).await { break; }
                     }
+                    ClientMessage::EconomyCommand{sequence,command}=>{
+                        let parsed=sequence.parse::<u64>();
+                        let reason=if !parsed.as_ref().is_ok_and(|s|*s>client_sequence){Some("invalid-sequence")}else if active.is_none(){Some("not-joined")}else if player_nation.is_none(){Some("unsupported-session")}else{None};
+                        if let Some(reason)=reason{if !send(&mut socket,ServerMessage::CommandResult{sequence,accepted:false,reason_key:Some(reason.into())}).await{break;}continue;}
+                        client_sequence=parsed.unwrap();let(reply,received)=oneshot::channel();
+                        if active.as_ref().unwrap().commands.try_send(session::Request::EconomyCommand{nation:player_nation.unwrap(),command,reply}).is_err(){notice(&mut socket,"session-closed").await;break;}
+                        let result=tokio::select!{result=received=>result.unwrap_or(Err("session-closed")),_=host.shutdown.changed()=>break};
+                        let reason_key=result.as_ref().err().map(|r|(*r).into());
+                        if !send(&mut socket,ServerMessage::CommandResult{sequence,accepted:result.is_ok(),reason_key}).await{break;}
+                        if let Ok(state)=result{active.as_mut().unwrap().states.borrow_and_update();current_state=Some(state.clone());if !send(&mut socket,ServerMessage::Snapshot{state}).await{break;}}
+                    },
                     ClientMessage::Command { sequence, command } => {
                         let parsed = sequence.parse::<u64>();
                         let reason = if !parsed.as_ref().is_ok_and(|s| *s > client_sequence) { Some("invalid-sequence") } else if active.is_none() { Some("not-joined") } else { None };
@@ -500,6 +573,11 @@ async fn connection(mut socket: WebSocket, mut host: Host) {
                         }
                     }
                     ClientMessage::Query { request, kind } => {
+                        if kind=="economy"{
+                            let mut reason=Some("not-joined");let mut economy=None;
+                            if let Some(session)=active.as_ref(){let(reply,received)=oneshot::channel();if session.commands.try_send(session::Request::Economy{reply}).is_ok(){economy=tokio::select!{value=received=>value.ok().flatten(),_=host.shutdown.changed()=>break};reason=if economy.is_some(){None}else{Some("unsupported-query")};}else{reason=Some("session-closed");}}
+                            if !send(&mut socket,ServerMessage::EconomyResult{request,supported:economy.is_some(),reason_key:reason.map(str::to_owned),economy}).await{break;}continue;
+                        }
                         if kind=="trigger" {
                             let mut reason=Some("not-joined");let mut trigger=None;
                             if let Some(session)=active.as_ref(){
