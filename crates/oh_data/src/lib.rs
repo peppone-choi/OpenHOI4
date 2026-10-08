@@ -15,6 +15,7 @@ pub mod pack_validation;
 pub mod production;
 mod raw;
 pub mod scenario_defines;
+pub mod supply_network;
 pub mod trigger;
 
 use raw::Source;

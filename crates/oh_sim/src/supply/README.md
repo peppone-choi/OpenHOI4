@@ -48,3 +48,40 @@ None versus ID0, actual World/Map terrain/river/modified infrastructure, exact
 coefficient expiry, real control cuts, refs/static levels/coastal unsupported
 placements, overflow/rounded-zero costs and fresh-process network metadata.
 `defines.toml` remains provisional test tuning, not an authoritative pack loader.
+
+## External config and initial World diagnostics
+
+The later bounded data/CLI unit adds `oh_data::supply_network::{parse, read_file}`
+and `config_adapter::prepare`. It reads a caller-selected external TOML file;
+there is still no supply pack registration, daily authority or saved presence.
+See [ADR1903](../../../../docs/adr/ADR-1903-external-network-diagnostics.md).
+
+```sh
+CARGO_TARGET_DIR=<existing-approved-target> cargo run -p oh_cli --locked -- \
+  supply-network inspect --pack <national-pack> --scenario <id> --nation <u16> \
+  --config <external-network.toml>
+```
+
+All four options are required. `--load` and step options reject. The command uses
+actual initial World/modifiers and required movement defines. Original M1 lacks
+movement coefficients and therefore returns MissingContext; the command never
+adds coefficients to its pack. Native tests copy the independent minimal pack and
+explicitly add synthetic movement inputs outside Git for positive controls.
+
+The standalone format example is
+`crates/oh_data/tests/fixtures/supply_network/capital.toml`. Copy it outside pack
+registration and provide explicit tuning for the intended map. Decimal values are
+strings parsed into checked Fx/Qty. Infrastructure entries are exact current level
+mappings; each actual initial state needs a positive factor, even if isolated.
+No global curve or default1 is implied. Duplicate normalized levels, IDs,
+placements and canonical rail edges reject before sorting. Source IDs are local
+to each nation's Network. Empty explicit sources/rails are diagnostic metadata;
+missing config is an error. Valid hub/coastal-port refs remain unsupported until
+actual building instances exist. All rails are explicit static metadata.
+
+JSON output labels `scope=initial_world_network` and normalized config identity as
+diagnostic provenance only. It exposes actual controls/land/capital/current infra,
+both directional reference costs, raw Fx/Qty units, static capacities/levels and
+source feeder connectivity. It has no Division demand, delivered amount, ratio,
+applied effects, state_hash or saved-world/live-server query. Equivalent ordering
+and decimal encodings yield the same config identity and diagnostic output.

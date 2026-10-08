@@ -1,0 +1,10 @@
+version = 1
+[tuning]
+reference_speed_kmh = "4"
+decay_per_reference_hour = "0.0078125"
+infrastructure = [{ level = "0", factor = "2" }, { level = "1", factor = "1.5" }]
+rail_capacity = [{ level = 1, capacity = "10" }, { level = 2, capacity = "20" }]
+[[nations]]
+id = 1
+sources = [{ id = 0, kind = "capital", province = 10, capacity = "20" }]
+rails = [{ a = 10, b = 20, level = 2 }]
