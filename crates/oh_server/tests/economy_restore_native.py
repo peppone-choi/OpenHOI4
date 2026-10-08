@@ -10,12 +10,12 @@ def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def files(root):return {p.relative_to(root).as_posix():sha(p) for p in sorted(root.rglob('*')) if p.is_file()}
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--out',type=Path,required=True)
-    out=parser.parse_args().out.resolve();assert out.is_relative_to(ROOT/'target/evidence/WP-14-M2-r3-P06');out.mkdir(parents=True,exist_ok=False)
+    out=parser.parse_args().out.resolve();assert out.is_relative_to(ROOT/'target/evidence/WP-14-M2-r3-P06-2');out.mkdir(parents=True,exist_ok=False)
     source=ROOT/'tests/repro/WP-14-M2-r3-restore-stage';shutil.copytree(source/'packs',out/'packs');shutil.copyfile(source/'industry-level4.ohsave',out/'industry-level4.ohsave')
     save=out/'industry-level4.ohsave';before=files(out/'packs');digest=sha(save)
     assert save.stat().st_size==458 and digest=='c67f5cefbba865be78643b920536678f789b8375b418b9034ddd2cd2b4db1e53'
     expected=json.loads((source/'INPUT_MANIFEST.json').read_text())['files']
-    assert before=={row['path']:row['sha256'] for row in expected}
+    assert files(out/'packs/testland')=={row['path']:row['sha256'] for row in expected}
     assert all((out/'packs/testland'/row['path']).stat().st_size==row['bytes'] for row in expected)
     assert header(save)['packs'][0]['content_hash']==pack_hash(out/'packs/testland')
     cli=ROOT/('target/debug/oh_cli.exe' if sys.platform=='win32' else 'target/debug/oh_cli');results=[]
