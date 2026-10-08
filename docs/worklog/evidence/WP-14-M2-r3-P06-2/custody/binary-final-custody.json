@@ -1,0 +1,40 @@
+{
+  "head": "5c56a4e2ccd1d79bc943695d269d9a22a816777e",
+  "objects": [
+    {
+      "source": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\debug\\oh_cli.exe",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\oh_cli.exe",
+      "sha256": "b58b4d1b802cde51d11fbc67247f521a7fdddc7c2b48e6db004ed7ec0fa53e34",
+      "bytes": 10078720,
+      "copied_before_final_native": true
+    },
+    {
+      "source": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\debug\\oh_server.exe",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\oh_server.exe",
+      "sha256": "9600417f786f7bb86a18f7911da74cc09ab69b5dc3c87deb8c1d655aeee50144",
+      "bytes": 100472832,
+      "copied_before_final_native": true
+    },
+    {
+      "source": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\debug\\examples\\economy_fixture.exe",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\examples\\economy_fixture.exe",
+      "sha256": "936d390ef323f475b312cb4eb16059d5df8ae8d1a74eae494e5252f42b977b1e",
+      "bytes": 9283584,
+      "copied_before_final_native": true
+    },
+    {
+      "source": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\debug\\examples\\save_fixture.exe",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\examples\\save_fixture.exe",
+      "sha256": "e7c49fb6ab53b17139fc96fee42b49dfadaba780e90a6906d098c6754f093f37",
+      "bytes": 8486912,
+      "copied_before_final_native": true
+    },
+    {
+      "source": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\debug\\examples\\trigger_fixture.exe",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\examples\\trigger_fixture.exe",
+      "sha256": "98093324e906472d243f9f7346831a30e8d457afd24b611ba817b658f47b76e4",
+      "bytes": 8477696,
+      "copied_before_final_native": true
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "compared_receipts": [
+    {
+      "receipt": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\current-source5c\\capture-1.command.json",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\examples\\save_fixture.exe",
+      "sha256": "e7c49fb6ab53b17139fc96fee42b49dfadaba780e90a6906d098c6754f093f37"
+    },
+    {
+      "receipt": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\current-source5c\\capture-2.command.json",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\examples\\save_fixture.exe",
+      "sha256": "e7c49fb6ab53b17139fc96fee42b49dfadaba780e90a6906d098c6754f093f37"
+    },
+    {
+      "receipt": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\current-source5c\\cli-resume-1.command.json",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\oh_cli.exe",
+      "sha256": "b58b4d1b802cde51d11fbc67247f521a7fdddc7c2b48e6db004ed7ec0fa53e34"
+    },
+    {
+      "receipt": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\current-source5c\\cli-resume-2.command.json",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\oh_cli.exe",
+      "sha256": "b58b4d1b802cde51d11fbc67247f521a7fdddc7c2b48e6db004ed7ec0fa53e34"
+    },
+    {
+      "receipt": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\current-source5c\\restart-1.command.json",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\examples\\save_fixture.exe",
+      "sha256": "e7c49fb6ab53b17139fc96fee42b49dfadaba780e90a6906d098c6754f093f37"
+    },
+    {
+      "receipt": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\current-source5c\\restart-2.command.json",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\examples\\save_fixture.exe",
+      "sha256": "e7c49fb6ab53b17139fc96fee42b49dfadaba780e90a6906d098c6754f093f37"
+    },
+    {
+      "receipt": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\current-source5c\\economy-v5\\capture-1.command.json",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\examples\\economy_fixture.exe",
+      "sha256": "936d390ef323f475b312cb4eb16059d5df8ae8d1a74eae494e5252f42b977b1e"
+    },
+    {
+      "receipt": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\current-source5c\\economy-v5\\capture-2.command.json",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\examples\\economy_fixture.exe",
+      "sha256": "936d390ef323f475b312cb4eb16059d5df8ae8d1a74eae494e5252f42b977b1e"
+    },
+    {
+      "receipt": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\current-source5c\\economy-v5\\cli-full-1.command.json",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\examples\\economy_fixture.exe",
+      "sha256": "936d390ef323f475b312cb4eb16059d5df8ae8d1a74eae494e5252f42b977b1e"
+    },
+    {
+      "receipt": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\current-source5c\\economy-v5\\cli-full-2.command.json",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\examples\\economy_fixture.exe",
+      "sha256": "936d390ef323f475b312cb4eb16059d5df8ae8d1a74eae494e5252f42b977b1e"
+    },
+    {
+      "receipt": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\current-source5c\\economy-v5\\cli-replay-1.command.json",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\oh_cli.exe",
+      "sha256": "b58b4d1b802cde51d11fbc67247f521a7fdddc7c2b48e6db004ed7ec0fa53e34"
+    },
+    {
+      "receipt": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\current-source5c\\economy-v5\\cli-replay-2.command.json",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\oh_cli.exe",
+      "sha256": "b58b4d1b802cde51d11fbc67247f521a7fdddc7c2b48e6db004ed7ec0fa53e34"
+    },
+    {
+      "receipt": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\current-source5c\\economy-v5\\cli-resume-1.command.json",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\oh_cli.exe",
+      "sha256": "b58b4d1b802cde51d11fbc67247f521a7fdddc7c2b48e6db004ed7ec0fa53e34"
+    },
+    {
+      "receipt": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\current-source5c\\economy-v5\\cli-resume-2.command.json",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\oh_cli.exe",
+      "sha256": "b58b4d1b802cde51d11fbc67247f521a7fdddc7c2b48e6db004ed7ec0fa53e34"
+    },
+    {
+      "receipt": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\current-source5c\\economy-v5\\paused-1.command.json",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\examples\\economy_fixture.exe",
+      "sha256": "936d390ef323f475b312cb4eb16059d5df8ae8d1a74eae494e5252f42b977b1e"
+    },
+    {
+      "receipt": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\current-source5c\\economy-v5\\paused-2.command.json",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\examples\\economy_fixture.exe",
+      "sha256": "936d390ef323f475b312cb4eb16059d5df8ae8d1a74eae494e5252f42b977b1e"
+    },
+    {
+      "receipt": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\current-source5c\\economy-v5\\replay-1.command.json",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\examples\\economy_fixture.exe",
+      "sha256": "936d390ef323f475b312cb4eb16059d5df8ae8d1a74eae494e5252f42b977b1e"
+    },
+    {
+      "receipt": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\current-source5c\\economy-v5\\replay-2.command.json",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\examples\\economy_fixture.exe",
+      "sha256": "936d390ef323f475b312cb4eb16059d5df8ae8d1a74eae494e5252f42b977b1e"
+    },
+    {
+      "receipt": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\current-source5c\\economy-v5\\restart-1.command.json",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\examples\\economy_fixture.exe",
+      "sha256": "936d390ef323f475b312cb4eb16059d5df8ae8d1a74eae494e5252f42b977b1e"
+    },
+    {
+      "receipt": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\current-source5c\\economy-v5\\restart-2.command.json",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\examples\\economy_fixture.exe",
+      "sha256": "936d390ef323f475b312cb4eb16059d5df8ae8d1a74eae494e5252f42b977b1e"
+    },
+    {
+      "receipt": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\trigger-negative-source5c\\cli-capability.receipt.json",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\oh_cli.exe",
+      "sha256": "b58b4d1b802cde51d11fbc67247f521a7fdddc7c2b48e6db004ed7ec0fa53e34"
+    },
+    {
+      "receipt": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\trigger-negative-source5c\\cli-mode-force.receipt.json",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\oh_cli.exe",
+      "sha256": "b58b4d1b802cde51d11fbc67247f521a7fdddc7c2b48e6db004ed7ec0fa53e34"
+    },
+    {
+      "receipt": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\trigger-negative-source5c\\cli-mode-normal.receipt.json",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\oh_cli.exe",
+      "sha256": "b58b4d1b802cde51d11fbc67247f521a7fdddc7c2b48e6db004ed7ec0fa53e34"
+    },
+    {
+      "receipt": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\trigger-negative-source5c\\cli-runtime-capability.receipt.json",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\oh_cli.exe",
+      "sha256": "b58b4d1b802cde51d11fbc67247f521a7fdddc7c2b48e6db004ed7ec0fa53e34"
+    },
+    {
+      "receipt": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\trigger-negative-source5c\\make-v1.receipt.json",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\oh_cli.exe",
+      "sha256": "b58b4d1b802cde51d11fbc67247f521a7fdddc7c2b48e6db004ed7ec0fa53e34"
+    },
+    {
+      "receipt": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\legacy-f01-final\\cli-force.receipt.json",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\oh_cli.exe",
+      "sha256": "b58b4d1b802cde51d11fbc67247f521a7fdddc7c2b48e6db004ed7ec0fa53e34"
+    },
+    {
+      "receipt": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\legacy-f01-final\\cli-normal.receipt.json",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\binary-final\\oh_cli.exe",
+      "sha256": "b58b4d1b802cde51d11fbc67247f521a7fdddc7c2b48e6db004ed7ec0fa53e34"
+    }
+  ],
+  "compared_count": 27,
+  "current_v5_helper_cli_and_servers_matched": true,
+  "claim": "Only listed native receipt fields compared; original red objects separately preserved."
+}

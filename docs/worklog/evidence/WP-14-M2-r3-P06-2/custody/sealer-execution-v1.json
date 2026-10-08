@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "-X",
+    "utf8",
+    "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\seal-original-v1.py"
+  ],
+  "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2",
+  "pid": 10032,
+  "exit": 0,
+  "script_sha256": "3d37d1465fecc0e54f44142c6631b31dcd1f01a85b28de4268dde208fa9541bf",
+  "exe_sha256": "bf1b03022cadfc18049a7f0ecf1f3134c7676fcb6ff6c6941ae7f77e21285c73",
+  "started_unix_utc": 1791434660.4651191,
+  "elapsed_seconds": 10.807292699813843,
+  "output_outside_zip_to_avoid_self_reference": true
+}

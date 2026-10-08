@@ -1,0 +1,12 @@
+{
+  "OH_E2E_EVIDENCE": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\browser-source5c\\e2e",
+  "OH_MALFORMED_EVIDENCE": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\browser-source5c\\malformed",
+  "OH_MAP_EVIDENCE": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\browser-source5c\\map",
+  "OH_MAP_REDIRECT_EVIDENCE": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\browser-source5c\\redirect",
+  "OH_MAP_DPR_EVIDENCE": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\browser-source5c\\dpr",
+  "OH_MAP_CAPABILITY_EVIDENCE": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\browser-source5c\\capability",
+  "OH_MAP_PIPELINE_EVIDENCE": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\browser-source5c\\pipeline",
+  "OH_MAP_RESIZE_EVIDENCE": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-2\\browser-source5c\\resize",
+  "M0_OH_TEST_PORT": "19916",
+  "M1_OH_TEST_PORT": "19917"
+}
