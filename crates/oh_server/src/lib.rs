@@ -461,6 +461,10 @@ async fn connection(mut socket: WebSocket, mut host: Host) {
                 return;
             }
         },
+        Some(Ok(Message::Close(_))) => {
+            let _ = socket.recv().await;
+            return;
+        }
         _ => {
             let _ = socket.send(Message::Close(None)).await;
             return;
@@ -519,6 +523,13 @@ async fn connection(mut socket: WebSocket, mut host: Host) {
                     Some(Ok(Message::Ping(bytes))) => { if socket.send(Message::Pong(bytes)).await.is_err() { break; } continue; },
                     Some(Ok(Message::Pong(_))) => continue,
                     Some(Ok(Message::Text(_))) => { notice(&mut socket, "invalid-message").await; continue; },
+                    Some(Ok(Message::Close(_))) => {
+                        // Receiving Close queues tungstenite's acknowledgement.
+                        // The next read flushes it and terminates the server stream;
+                        // sending another message is already forbidden in this state.
+                        let _ = socket.recv().await;
+                        break;
+                    },
                     _ => break,
                 };
                 match message {
