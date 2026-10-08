@@ -1,0 +1,19 @@
+# Provisional tunables approved for agent choice, not active pack defaults.
+# Raw Fx uses 32 fractional bits; Qty uses 16. No vehicle k or strength units inferred.
+# Graph costs are already-authoritative reference travel-hours (adapter pending).
+[supply]
+reference_speed_kmh_fx_bits = 17179869184 # 4 km/h; adapter sensitivity baseline only
+# Linear attenuation reaches zero at 128 reference travel-hours (512km at ideal speed).
+decay_per_reference_hour_fx_bits = 33554432 # 1/128
+capital_capacity_qty_bits = 1310720 # 20 supply units/day
+hub_capacity_qty_bits = 655360 # 10 supply units/day
+port_capacity_qty_bits = 524288 # 8 supply units/day
+rail_level_1_capacity_qty_bits = 655360 # 10 supply units/day
+rail_level_2_capacity_qty_bits = 1310720 # 20 supply units/day
+rail_level_3_capacity_qty_bits = 2621440 # 40 supply units/day
+organization_floor_fx_bits = 1073741824 # 1/4
+attack_floor_fx_bits = 2147483648 # 1/2
+speed_floor_fx_bits = 2147483648 # 1/2; zero forbidden
+starvation_threshold_fx_bits = 1288490188 # floor(0.3 * 2^32), preserves 01 section4.9
+starvation_grace_days = 5 # loss starts on sixth consecutive day strictly below threshold
+attrition_at_zero_fx_bits = 268435456 # 1/16/day; scalar rate, no strength consumer claimed

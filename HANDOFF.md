@@ -10,7 +10,9 @@
 - 새 검증 담당은 별도 worktree에서 실행하며 추적 소스를 수정하지 않는다. 두 fixture manifest·save hash, 문서·release 에셋·fmt·clippy, Rust 250개 검사, 클라이언트 typecheck/build와 시스템 Chromium을 사용한 M0 브라우저 12개 검사는 통과했다. full client 검사는 최초 palette timeout을 남긴 뒤 조용한 환경에서 같은 timeout으로 246개 모두 통과했다. target2 유효 server control에서는 정상 경제 응답 뒤 WebSocket close 오류가 남았다. P07은 FAIL이며 P06 수정·새 독립 검증이 필요하다. 도구/CDN 차단과 테스트 실패를 구분하고 전체 PASS로 기록하지 않는다.
 - 위 초기 FAIL 뒤 Close 응답을 flush하는 서버 수정과 전체 값 비교를 보존한 palette 검사 변경을 별도 구현 담당이 작성했다. 수정 소스 `4ae0446a01487e9d6d1415e7191a78407a8e0b6f`에 새 독립 검증이 지정한 WP-14 producer·P07 repair 범위에서 PASS를 판정했다. Rust 251개, 기본 client 246개, unchanged native target 12개·restore 4개, 저장/재개·legacy·별도 서버 lifecycle, 시스템 Chromium M0 12개·M1 3개가 통과했다. 검증 전후 HEAD·505개 추적 파일 SHA·diff/status는 동일했다. [공개 검증 요약](docs/verify/WP-14-P07-cloud-repair.md)을 따른다. 초기 FAIL은 이 후속 결과와 구분하여 보존한다.
 - 수정과 재개 문서는 [PR #2](https://github.com/peppone-choi/OpenHOI4/pull/2)로 정상 병합됐다. main `0776e6b5a67951821860490964c402e518310ca5`의 CI 7개가 모두 success이며 검증한 제품 tree와 같다. 지정한 WP-14 producer·P07 repair 통합 게이트를 충족했다. 후속 production/훈련/항복 consumer와 M2 전체 완료는 아니다. Firefox/WebKit·추가 M1 지도 suites·대규모 성능은 이번 검증 범위가 아니다.
-- WP-23 초기 합성 팩 구현 `b7c5b6898855a136456f7b558724f18cafa0656b`는 6개국·120개 육지 프로빈스·12개 주의 별도 `testland_m2` 입력이다. 기존 2개국·6프로빈스 M1·golden은 보존했다. [작업 로그](docs/worklog/WP-23-initial.md)와 [독립 검증](docs/verify/WP-23-initial-cloud.md)을 따른다. 한 번의 새 독립 검증은 지정한 초기 범위 PASS이며 전후535개 추적 파일 bytes·HEAD·diff/status가 동일했다. 이 문서 작성 시 WP-23 후보 병합·같은 main CI는 후속 확인 대상이다. WP-15·19는 구체 게임 정책 결정 대기이며 착수나 완료를 주장하지 않는다. WP-23 최종 플레이 입력·M2는 미완료다.
+- WP-23 초기 합성 팩 구현 `b7c5b6898855a136456f7b558724f18cafa0656b`는 6개국·120개 육지 프로빈스·12개 주의 별도 `testland_m2` 입력이다. 기존 2개국·6프로빈스 M1·golden은 보존했다. [작업 로그](docs/worklog/WP-23-initial.md)와 [독립 검증](docs/verify/WP-23-initial-cloud.md)을 따른다. 한 번의 새 독립 검증은 지정한 초기 범위 PASS이며 전후535개 추적 파일 bytes·HEAD·diff/status가 동일했다. [PR #3](https://github.com/peppone-choi/OpenHOI4/pull/3)는 main `b112291c11822ffbf6da33b42670ff5cdb226fae`로 정상 병합됐고 같은 main의 CI 7개가 모두 success다. 지정한 초기 팩 통합 게이트를 충족했으며 WP-23 최종 플레이 입력·M2는 미완료다.
+- 사용자는 생산 소수 이월·실제 생산 때만 효율 성장·다른 모델 전환 시 미완성량 폐기·부족 자원 비례 배분과, 보급 공유 철도 용량·거리 손실·첫 버전 고정 경로를 승인했다. 초기 수치는 조절 가능한 provisional 데이터로 선택·검증하도록 위임했다. WP-15는 별도 구현 담당이 생산/schema/save/query/client 계약을 작성 중이며 독립 인수 전이다.
+- WP-19 첫 standalone 계산 단위 `74bc16bb4278479d2742786a6e2513c251934317`는 한 번의 새 독립 검증에서 지정 범위 PASS다. [검증 요약](docs/verify/WP-19-standalone-cloud.md)을 따른다. 22개 소스 검사와 9개 독립 검사, 전후545개 추적 파일 동일·기존536개 파일 bytes 보존을 확인했다. 모듈은 아직 등록되지 않았으며 실제 사단/이동 consumer·schema/save/wire/server/browser는 미구현이다. 이 문서 작성 시 후보 통합과 같은 main CI는 대기 중이다. 공유 변경은 WP-15 인수 뒤 WP-19 순으로 진행한다.
 
 아래는 이전 선별 인계의 상태와 재현 한계를 보존한 내용이다. 이전의 STOPPED 문구는 이번 사용자 재개 지시로 대체됐으며, 과거 미실행 검사를 이번에 실행한 것으로 바꾸지 않는다.
 
@@ -58,8 +60,8 @@ npx --prefix client playwright test
 ## 다음 작업
 
 1. 이 WIP와 01/02의 잠정·미결정 규칙, 실제 schema·저장 호환 경계를 확인한다.
-2. WP-23 초기 합성 팩의 새 독립 검증·같은 main CI를 확보하고 지정한 초기 범위만 판정한다. 과거 P07 기록을 이번 실행으로 바꾸지 않는다.
-3. WP-15 생산·WP-19 보급의 구체 정책과 공식 결정을 사용자에게 요청하고 WP-15 → WP-19 → WP-23 최종 콘텐츠의 공유 schema/save/protocol 통합 순서를 따른다. WP-16은 WP-15 뒤다. 새 수치·현지화·에셋은 기존 defines·ko/en·출처 매니페스트 규칙을 따른다.
+2. WP-23 초기 합성 팩은 독립 PASS와 같은 main CI를 확보했다. WP-15 구현·새 독립 인수와 WP-19 standalone 단위 통합을 진행하며 각 판정 범위를 유지한다. 과거 P07 기록을 이번 실행으로 바꾸지 않는다.
+3. 승인된 생산·보급 정책과 위임된 provisional 수치는 각 ADR에 단위·반올림·민감도를 기록하고 WP-15 → WP-19 → WP-23 최종 콘텐츠의 공유 schema/save/protocol 통합 순서를 따른다. 미인수 사단/이동 계약이나 승인과 충돌하는 새 규칙은 별도로 보고한다. WP-16은 WP-15 뒤다. 새 수치·현지화·에셋은 기존 defines·ko/en·출처 매니페스트 규칙을 따른다.
 
 ## 공개 범위
 
