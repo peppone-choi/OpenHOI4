@@ -1,0 +1,487 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Definition",
+  "type": "object",
+  "properties": {
+    "buildings": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/Building"
+      }
+    },
+    "conscription_category": {
+      "type": "string"
+    },
+    "economy_category": {
+      "type": "string"
+    },
+    "laws": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/Law"
+      }
+    },
+    "nations": {
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^\\d+$": {
+          "$ref": "#/$defs/NationInput"
+        }
+      }
+    },
+    "state_slots": {
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^\\d+$": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "buildings",
+    "laws",
+    "economy_category",
+    "conscription_category",
+    "nations",
+    "state_slots"
+  ],
+  "$defs": {
+    "Building": {
+      "type": "object",
+      "properties": {
+        "costs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "daily_cap": {
+          "type": "string"
+        },
+        "ic_per_level": {
+          "type": "string"
+        },
+        "infrastructure_factors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/InfrastructureFactor"
+          }
+        },
+        "infrastructure_levels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "name_key": {
+          "type": "string"
+        },
+        "slots": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name_key",
+        "costs",
+        "slots",
+        "daily_cap",
+        "ic_per_level",
+        "infrastructure_factors"
+      ]
+    },
+    "Compare": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "gte": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "gte"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "lte": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "lte"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "eq": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "eq"
+          ]
+        }
+      ]
+    },
+    "Condition": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "all": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Condition"
+              }
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "all"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "any": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Condition"
+              }
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "any"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "not": {
+              "$ref": "#/$defs/Condition"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "not"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "date_gte": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "date_gte"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "at_war": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "at_war"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "at_war_with": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "at_war_with"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "nation_is": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "nation_is"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "stability": {
+              "$ref": "#/$defs/Compare"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "stability"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "mobilization": {
+              "$ref": "#/$defs/Compare"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "mobilization"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "political_capital": {
+              "$ref": "#/$defs/Compare"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "political_capital"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "has_law": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "has_law"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "controls_province": {
+              "type": "integer",
+              "format": "uint16",
+              "maximum": 65535,
+              "minimum": 0
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "controls_province"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "owns_state": {
+              "type": "integer",
+              "format": "uint16",
+              "maximum": 65535,
+              "minimum": 0
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "owns_state"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "has_flag": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "has_flag"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "ideology_support": {
+              "$ref": "#/$defs/IdeologyArg"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "ideology_support"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "chance": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "chance"
+          ]
+        }
+      ]
+    },
+    "IdeologyArg": {
+      "type": "object",
+      "properties": {
+        "ideology": {
+          "type": "string"
+        },
+        "value": {
+          "$ref": "#/$defs/Compare"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "ideology",
+        "value"
+      ]
+    },
+    "InfrastructureFactor": {
+      "type": "object",
+      "properties": {
+        "factor": {
+          "type": "string"
+        },
+        "infrastructure": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "infrastructure",
+        "factor"
+      ]
+    },
+    "Law": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "type": "string"
+        },
+        "condition": {
+          "$ref": "#/$defs/Condition"
+        },
+        "conscription_ratio": {
+          "type": "string"
+        },
+        "consumer_base": {
+          "type": "string"
+        },
+        "cost": {
+          "type": "string"
+        },
+        "ic_multiplier": {
+          "type": "string"
+        },
+        "instability_slope": {
+          "type": "string"
+        },
+        "name_key": {
+          "type": "string"
+        },
+        "step": {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name_key",
+        "category",
+        "step",
+        "cost",
+        "condition",
+        "ic_multiplier",
+        "conscription_ratio",
+        "consumer_base",
+        "instability_slope"
+      ]
+    },
+    "NationInput": {
+      "type": "object",
+      "properties": {
+        "allocation": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 4,
+          "minItems": 4
+        },
+        "committed": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "ic_multiplier": {
+          "type": "string"
+        },
+        "laws": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "mobilization": {
+          "type": "string"
+        },
+        "political_capital": {
+          "type": "string"
+        },
+        "political_capital_cap": {
+          "type": "string"
+        },
+        "political_capital_daily": {
+          "type": "string"
+        },
+        "reserved": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "stability": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "laws",
+        "political_capital",
+        "political_capital_cap",
+        "political_capital_daily",
+        "stability",
+        "mobilization",
+        "allocation",
+        "ic_multiplier",
+        "committed",
+        "reserved"
+      ]
+    }
+  }
+}

@@ -27,6 +27,9 @@ pub struct SimulationSaveV4 {
 }
 impl Simulation {
     pub fn export_save_v4(&self) -> Result<SimulationSaveV4, String> {
+        if self.economy.is_some() {
+            return Err("EconomyRequiresV5".into());
+        }
         let trigger = self.trigger.clone().ok_or("V4RequiresTrigger")?;
         let mut legacy = self.clone();
         legacy.trigger = None;
@@ -61,6 +64,7 @@ impl Simulation {
                 nation: nation.0,
                 sequence,
                 command: match c {
+                    Command::Economy(_) => unreachable!("economy requires v5"),
                     Command::Pause(v) => CommandV4::Pause(*v),
                     Command::SetSpeed(v) => CommandV4::SetSpeed(*v),
                     Command::Move { unit, destination } => CommandV4::Move {
@@ -83,6 +87,13 @@ impl Simulation {
         })
     }
     pub fn from_save_v4(dto: SimulationSaveV4, context: &RestoreContext) -> Result<Self, String> {
+        if context
+            .world
+            .as_ref()
+            .is_some_and(|w| w.defs().economy().is_some())
+        {
+            return Err("EconomyModeMismatch".into());
+        }
         if !dto.base.base.base.queue.is_empty() || !dto.base.base.queue.is_empty() {
             return Err("InvalidV4: nested queue must be empty".into());
         }

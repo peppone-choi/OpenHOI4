@@ -1,4 +1,0 @@
-{"argv": ["C:/Users/user/.cargo/bin/rustc.exe", "--version"], "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify2", "environment": {"OH_BROWSER_PRODUCTS": "1", "OH_TEST_PORT": "19414", "OH_E2E_EVIDENCE": "../target/wp08-verify2/e2e", "OH_MALFORMED_EVIDENCE": "../target/wp08-verify2/malformed", "OH_MAP_EVIDENCE": "../target/wp08-verify2/map", "OH_MAP_REDIRECT_EVIDENCE": "../target/wp08-verify2/redirect"}}
-rustc 1.99.0 (b940084d7 2026-09-28)
-
-exit=0

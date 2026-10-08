@@ -1,4 +1,0 @@
-$ python tools/check_assets.py --release
-assets: 0 error(s)
-
-EXIT=0

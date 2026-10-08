@@ -1,8 +1,0 @@
-{
-  "source": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\crates\\oh_proto\\examples\\generate.rs",
-  "sourceSHA256": "210bdd4b3f2ff564d264d454d50abea7de62759ee231c5d61f9a62ff2a7f63e5",
-  "executedSource": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify6\\target\\wp08-verify6\\generate.rs",
-  "adjustment": "output destination only; same original oh_proto::typescript(), no tracked rewrite",
-  "equal_text": true,
-  "generatedSHA256": "9fa5962cbeac3996615ab60b997200ec267d4e6be4684b6a0265cc54bfbc2675"
-}

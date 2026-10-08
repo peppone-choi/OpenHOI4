@@ -144,7 +144,7 @@ ChatGPT 질문 1~11에 대한 잠정 답과, 기획 중 추가로 드러난 결�
 - 플레이어 국가가 항복하면 게임이 끝난다. 계속 관전할지는 선택이다.
 - 종료일에 도달하면 결과 화면에 점수를 보여준다. 점수는 보유 승점, 산업 역량, 생존 여부, 진영 승리 여부의 가중합이고 가중치는 데이터 값이다.
 
-WP-13의 [REQUEST-0009 A](decisions/REQUEST-0009.md)는 2026-10-07 CEO 한정 잠정 채택이다. `end_date`는 마지막 플레이 가능 날짜이며 다음날 00:00에 도달하는 성공 step에서 종료한다. start=end는 하루, end<start는 로드 오류다. 종료 조건은 명시 단일 AST/all·any·not이며 국가 조건의 root를 명시한다. 초기 권위 생성 뒤 한 번, 이후 성공 시간전진 step의 시스템·원장 뒤 평가한다. 초기 참은 tick0 종료이고 조건은 부작용이 없다. 날짜·조건·명시 종료 효과의 typed 원인은 안정 순서로 함께 보존하며 효과 목록 전체 성공 후만 commit한다.
+WP-13의 REQUEST-0009 A (기술 범위: [공개 인계 기술 메모](technical-notes.md))는 2026-10-07 CEO 한정 잠정 채택이다. `end_date`는 마지막 플레이 가능 날짜이며 다음날 00:00에 도달하는 성공 step에서 종료한다. start=end는 하루, end<start는 로드 오류다. 종료 조건은 명시 단일 AST/all·any·not이며 국가 조건의 root를 명시한다. 초기 권위 생성 뒤 한 번, 이후 성공 시간전진 step의 시스템·원장 뒤 평가한다. 초기 참은 tick0 종료이고 조건은 부작용이 없다. 날짜·조건·명시 종료 효과의 typed 원인은 안정 순서로 함께 보존하며 효과 목록 전체 성공 후만 commit한다.
 
 종료 checkpoint 이후 step·새 gameplay/Pause/Speed enqueue는 거부하고 기존 future queue·state·clock을 보존한다. 조회·결과 확인·저장은 허용한다. nation-scope 허용 ID 플래그는 명시 root/국가 scope로 분리하며 실행 수명 동안 set/clear로만 바뀐다. 중복 set/없는 키 clear는 idempotent이고 전체 효과 실패는 flags·종료 후보·RNG·queue까지 rollback한다. 기존 예정 명령 의미오류 소비와 phase 오류 전체 rollback은 구분해 유지한다. 이 잠정은 사용자 D/OPEN 확정이 아니다. unsupported scope·primitive·nonzero 점수축 사용은 실제 host capability 로드 오류이며 가짜 0/false/no-op으로 성공시키지 않는다. 네 점수축·결과화면 및 항복 뒤 관전 선택 요구는 후속 실제 producer까지 유지한다. 원 M0/M1 None 모드와 v1/v2/v3 bytes·hash·fixture를 보존하고 새 정의가 empty 값이어도 additive 상태/저장형에 정의 신원을 남긴다.
 
@@ -203,7 +203,7 @@ WP-13의 [REQUEST-0009 A](decisions/REQUEST-0009.md)는 2026-10-07 CEO 한정 �
    - 인프라 수준이 건설 속도를 보정한다.
 7. **인력**: 주 인구 × 징병 법령 비율로 가용 인력이 생긴다. 사단 훈련과 보충에 쓴다.
 
-**WP-14/W2 한정 CEO 잠정 — 2026-10-08.** [REQUEST-0010 A-CEO-r1](decisions/REQUEST-0010.md)의 수정판을 docs/04 §2로 채택했다. 사용자 추가 확정 답은 없으며 D·OPEN 상태는 바꾸지 않는다. 새 경제 정의가 있는 실행에만 적용한다. 원 M0/M1과 None/v1~v4 저장·해시·fixture는 유지하고 W1 전체 통합 뒤 실제 schema와 독립 검증으로 인수한다.
+**WP-14/W2 한정 CEO 잠정 — 2026-10-08.** REQUEST-0010 A-CEO-r1 (기술 범위: [공개 인계 기술 메모](technical-notes.md))의 수정판을 기술 잠정으로 채택했다. 사용자 추가 확정 답은 없으며 D·OPEN 상태는 바꾸지 않는다. 새 경제 정의가 있는 실행에만 적용한다. 원 M0/M1과 None/v1~v4 저장·해시·fixture는 유지하고 W1 전체 통합 뒤 실제 schema와 독립 검증으로 인수한다.
 
 - 국가 IC·자원 산출·징병 대상 인구는 소유 주에서 집계한다. W2는 통제 비율에 따른 점령 수익을 추정하지 않는다. 소비재 하한은 경제 법령의 데이터 `clamp(base + instability_slope × (1 - stability), 0, 1)`이다. 네 비율은 각각0~1/정확합1이며 하한 미달은 transaction 전체 거부다. 고정소수점 배분 잔여는 소비재에 귀속한다. 자원은 일일 흐름이며 비축/생산 부족 효과/시장 거래는 실제 후속 consumer가 인수한다.
 - 건설은 소유 주의 현재 수준+1 한 단계만 예약하며 같은 대상 건물 중복 예약과 슬롯/단계 초과를 거부한다. 원 IC 잔여를 같은 날 뒤 프로젝트에 넘기고 완료에 필요한 원 IC는 올림한다. 최소 단위 초과 유효 진행도는 폐기·원장 기록하며 일일 미사용 IC는 이월하지 않는다. cap0/인프라 보정0이면 배정·소비0으로 skip한다. 취소는 예약 해제·진행 폐기이며 환불하지 않는다. 완료 건물의 산출은 다음 일일 계산부터 반영한다.
@@ -260,9 +260,9 @@ WP-13의 [REQUEST-0009 A](decisions/REQUEST-0009.md)는 2026-10-07 CEO 한정 �
 
 - **이동 시간**: 프로빈스 간 거리(km) ÷ 사단 속도(km/h)에 지형·인프라·보급·하천 보정을 적용한다.
 
-- **CEO 잠정 채택(2026-10-07, REQUEST-0007 A):** 이미 MapData에 정의된 육지 간 해협 인접은 서버 내부 allowed context에 양 끝점이 있고 방향별 명시 양수 해협 시간계수가 있을 때 시간 합 최단 경로에 포함한다. 하천과 해협의 종류·적용 슬롯을 구분하고 중복해서 곱하지 않는다. 계수 누락을 1로 대체하거나 계산 오류를 NoPath로 숨기지 않는다. 비육지 끝점·통행 불가·잘못된 참조는 지원 경로가 아니다. 클라이언트는 속도·계수·allowed를 지정하지 않는다. 실제 적용 종류/계수·예약/진행 상태는 hash/저장/새 process 재개와 대조한다. 함대 봉쇄·해역 통제·항구 간 수송·통행권 정책·진행 중 allowed 변경 행동, 콘텐츠 기본계수, 기존 저장 거부·migration 또는 D/OPEN 추가 확정을 승인한 것이 아니다. [REQUEST-0007](decisions/REQUEST-0007.md)의 독립 경계를 따른다.
+- **CEO 잠정 채택(2026-10-07, REQUEST-0007 A):** 이미 MapData에 정의된 육지 간 해협 인접은 서버 내부 allowed context에 양 끝점이 있고 방향별 명시 양수 해협 시간계수가 있을 때 시간 합 최단 경로에 포함한다. 하천과 해협의 종류·적용 슬롯을 구분하고 중복해서 곱하지 않는다. 계수 누락을 1로 대체하거나 계산 오류를 NoPath로 숨기지 않는다. 비육지 끝점·통행 불가·잘못된 참조는 지원 경로가 아니다. 클라이언트는 속도·계수·allowed를 지정하지 않는다. 실제 적용 종류/계수·예약/진행 상태는 hash/저장/새 process 재개와 대조한다. 함대 봉쇄·해역 통제·항구 간 수송·통행권 정책·진행 중 allowed 변경 행동, 콘텐츠 기본계수, 기존 저장 거부·migration 또는 D/OPEN 추가 확정을 승인한 것이 아니다. REQUEST-0007 (기술 범위: [공개 인계 기술 메모](technical-notes.md))의 독립 경계를 따른다.
 
-- **CEO 잠정 채택(2026-10-07, REQUEST-0006 A):** 직접 이동의 진행 edge에서 elapsed=0이면 즉시 정지하거나 경로를 바꾼다. elapsed>0이면 현재 edge와 진행 시간을 보존하고 끝점부터 새 목적지까지의 경로를 먼저 검증한 뒤, 끝점 도착 후 정지하거나 새 경로를 진행한다. 잘못된 enqueue는 상태·큐를 보존한다. 예정 명령 의미 오류는 해당 명령 거부·소비와 성공 step의 clock 진행을 구분하며, 전체 phase 오류는 상태·큐·clock을 commit하지 않는다. 정지 도착 시 빈 경로의 elapsed는 0이고 남은 tick 시간은 버린다. 계속되는 경로는 남은 시간을 다음 edge에 쓴다. 일시정지는 즉시 시간을 멈춘다. D-05·OPEN의 사용자 확정 상태 변경이나 새 전투·통행·보급 효과, 콘텐츠 수치, 기존 저장 거부·migration 승인이 아니다. 구체 자체 후보와 독립 경계는 [REQUEST-0006](decisions/REQUEST-0006.md)에 있다.
+- **CEO 잠정 채택(2026-10-07, REQUEST-0006 A):** 직접 이동의 진행 edge에서 elapsed=0이면 즉시 정지하거나 경로를 바꾼다. elapsed>0이면 현재 edge와 진행 시간을 보존하고 끝점부터 새 목적지까지의 경로를 먼저 검증한 뒤, 끝점 도착 후 정지하거나 새 경로를 진행한다. 잘못된 enqueue는 상태·큐를 보존한다. 예정 명령 의미 오류는 해당 명령 거부·소비와 성공 step의 clock 진행을 구분하며, 전체 phase 오류는 상태·큐·clock을 commit하지 않는다. 정지 도착 시 빈 경로의 elapsed는 0이고 남은 tick 시간은 버린다. 계속되는 경로는 남은 시간을 다음 edge에 쓴다. 일시정지는 즉시 시간을 멈춘다. D-05·OPEN의 사용자 확정 상태 변경이나 새 전투·통행·보급 효과, 콘텐츠 수치, 기존 저장 거부·migration 승인이 아니다. 구체 자체 후보와 독립 경계는 REQUEST-0006 (기술 범위: [공개 인계 기술 메모](technical-notes.md))에 있다.
 
 ### 4.8 전투 (CMB)
 
@@ -289,7 +289,7 @@ WP-13의 [REQUEST-0009 A](decisions/REQUEST-0009.md)는 2026-10-07 CEO 한정 �
   - 일정 기간 이상 0.3 미만(데이터 값)이면 전력이 손실된다.
 - **포위**: 보급원과 연결이 끊기면 보급 비율이 0이 된다.
 - 사용자 2026-10-06 답변으로 보급 차량 소모를 포함하고 철도 궤간 변환은 제외한다(OPEN-03).
-  - **CEO 잠정 채택(2026-10-07, M4 적용 전 계약 대조 필요):** [차량 v2 구체 설계](decisions/DETAIL-DRAFT-0002-transport-v2.md)의 명시 예약/자동 보충 없음, 운용량 기반 두 단계 floor 공급 계산, 소수 손실 이월, 기존 보급→경제→생산 순서, 예약 소유국 반환과 L 수명 정책을 따른다. Q=2^32, 필요량 N=ceil(C_raw×k/Q), 운용량 O=min(A,N), F_raw=floor(O×Q/N), 공급 E_raw=floor(C_raw×F_raw/Q), 손실 D=floor((L+O×r_raw)/Q)와 소수 나머지 이월이다. N=0이면 운용/손실0·L 보존이다. 창고 W와 예약 A를 분리하고 유효 총계 상한 안에서 반환 가능성을 보장한다.
+  - **CEO 잠정 채택(2026-10-07, M4 적용 전 계약 대조 필요):** 차량 v2 구체 설계 (기술 범위: [공개 인계 기술 메모](technical-notes.md))의 명시 예약/자동 보충 없음, 운용량 기반 두 단계 floor 공급 계산, 소수 손실 이월, 기존 보급→경제→생산 순서, 예약 소유국 반환과 L 수명 정책을 따른다. Q=2^32, 필요량 N=ceil(C_raw×k/Q), 운용량 O=min(A,N), F_raw=floor(O×Q/N), 공급 E_raw=floor(C_raw×F_raw/Q), 손실 D=floor((L+O×r_raw)/Q)와 소수 나머지 이월이다. N=0이면 운용/손실0·L 보존이다. 창고 W와 예약 A를 분리하고 유효 총계 상한 안에서 반환 가능성을 보장한다.
   - 구현 전에 WP-15의 실제 장비/재고형·재고상한, 보급 C 단위, phase/명령/서버 오류 계약을 대조한다. 장비/Hub ID·형/상한 차이는 재검토한다. 합성 k/r 예제는 실제 콘텐츠 기본값을 정한 것이 아니다. 예정 의미오류의 W/A/L 보존과 성공 step의 큐소비/clock 진행을 구분하고, phase 오류는 전체 step 복제본을 commit하지 않는다.
   - 이 잠정 채택만으로 WP-15 생산 규칙·기존 저장 거부·호환 파괴·migration을 실행하지 않는다. 실제 모델/호환안을 먼저 검토한다. D·OPEN 확정 상태는 추가 변경하지 않는다.
 
@@ -755,15 +755,15 @@ REQ-LEG-05에 따라 유지한다. 시스템을 추가하거나 바꿀 때 행�
 | 산업 | 공장 종류별 정수 개수를 생산·건설에 배정 | 공업 시설 → 국가 IC → 4부문 비율 배분(HOI3 계열) + 생산 라인 효율 | 미세 조작 감소, 시리즈 내 다른 계보 결합 |
 | 사단 편제 | 격자형 대대 배치 | 슬롯 수 상한만 있는 목록형 편제 | 조작 단순화 |
 | 전투 피해 | 주사위 기반 명중 판정 | 기대값 + 제한된 시드 분산 | 결정론·테스트 용이성, 결과 예측 가능성 |
-| 수치 표시 | 일부 툴팁 | 기본값·Add·Mul 기여의 출처·누적값을 서버 Fx로 기록하고 실제 적용값과 raw-bit 일치 검사. ko/en Fluent 공용 툴팁은 서버 문자열을 그대로 표시 | 투명성(D-03). WP-10 [계산 기반 PASS](verify/WP-10.md), WP-12 [표시 기본형 PASS](verify/WP-12.md), WP-09 [실제 국가/주 원장 조회 PASS](verify/WP-09.md), WP-08 [지도 선택·패널 연결 PASS](verify/WP-08.md) |
+| 수치 표시 | 일부 툴팁 | 기본값·Add·Mul 기여의 출처·누적값을 서버 Fx로 기록하고 실제 적용값과 raw-bit 일치 검사. ko/en Fluent 공용 툴팁은 서버 문자열을 그대로 표시 | 투명성(D-03). WP-08·WP-09·WP-10·WP-12의 지도/국가·주/원장/표시 계층을 분리한다. 구현 범위와 인계 상태는 HANDOFF.md를 참조한다. |
 | 국민 지표 | 안정도·전쟁 지지도 | 안정도·동원도(동원 상한과 공세 조직력에 직접 연결) | 역할 재정의 |
 | 국가 노선 | 국가 중점 트리 | 국가 의제 그래프(선행 조건 전부/하나 이상, 배타, 범용 트리) | 데이터 문법을 자체 설계 |
-| 데이터 형식 | 자체 스크립트 형식 | TOML + JSON 스키마·등록된 실제 참조·SemVer 의존 DAG·Fluent AST 검증. WP-13의 단일 typed AST/registry·scope/argument/load capability 검사와 실제 nation flags·종료 checkpoint | 자체 팩 identity·원 파일 위치 진단·엄격한 서버 시작/복원. WP-24 [새 독립 PASS](verify/WP-24.M2-r1.attempt4.md)·[mainf44 5CI/원current 실제3OS](plans/evidence/M2-r2-f44-CI-final/README.md). WP-13 [새 독립 담당 범위 PASS](verify/WP-13.M2-r2.attempt3.md)·[maina159 6CI/실제3OS](plans/evidence/M2-r2-a159-CI-final/README.md). 미지원 future primitive/score는 가짜0·no-op 대신 실제 팩 사용 시 거부하며 소비자는 후속 WP |
-| 지도 | 공개 플레이 화면 분할 원칙·밀도만 비교, 원작 경계/파일/수치 사용 없음 | 자체 합성 Testland의 CSV 안정 ID/dense u16·인접·주/VP/거리, 서버 팔레트·참조를 표현하는 공통 TSL 지도와 독립 CPU 선택. 실제 유럽/세계는 고정 지리·DEM 원천으로 오프라인 생성할 계획 | 클린룸. WP-07 [데이터 PASS](verify/WP-07.md), WP-08 [실제 WebGPU/WebGL2·세 국경·선택·자체 HTTP PASS](verify/WP-08.md). 실제 세계 원천 생성은 후속 WP-32/45 |
+| 데이터 형식 | 자체 스크립트 형식 | TOML + JSON 스키마·등록된 실제 참조·SemVer 의존 DAG·Fluent AST 검증. WP-13의 단일 typed AST/registry·scope/argument/load capability 검사와 실제 nation flags·종료 checkpoint | 자체 팩 identity·원 파일 위치 진단·엄격한 서버 시작/복원. 미지원 future primitive/score는 가짜0·no-op 대신 실제 팩 사용 시 거부하며 소비자는 후속 WP다. |
+| 지도 | 공개 플레이 화면 분할 원칙·밀도만 비교, 원작 경계/파일/수치 사용 없음 | 자체 합성 Testland의 CSV 안정 ID/dense u16·인접·주/VP/거리, 서버 팔레트·참조를 표현하는 공통 TSL 지도와 독립 CPU 선택. 실제 유럽/세계는 고정 지리·DEM 원천으로 오프라인 생성할 계획 | 클린룸. WP-07 데이터와 WP-08 표시 계층을 분리한다. 실제 세계 원천 생성은 후속 WP-32/45다. |
 | AI | 비공개 구현 | 공개 벤치마크로 평가하는 목표 기반 AI | 개선 목표(D-03) |
-| 시간·실행 기반 | 원작 코드·파일·수치 비교 미실시 | 렌더링과 분리된 명령 큐·빈 시스템 슬롯·정규 상태 해시를 M0에서 구현 | 자체 빈 시나리오로 처리 순서와 세 OS 재현성 검증. WP-04, [독립 검증 PASS](verify/WP-04.md). 경제·전투·AI의 실제 동작은 후속 WP |
-| 선언형 종료·flags | 원작 코드·스크립트·수치 비교 미실시 | 초기 권위 뒤1회·성공 시간전진의 시스템/원장 뒤 종료 평가, stable typed 동시 원인과 전체effect transaction, nation flags 수명·scope 복귀, 종료 뒤 query/save 및 미래queue 보존 | 새로운 상태는 additive v4에 identity/DTO/canonical/hash와 함께 저장하고 원None/v1/v2/v3를 보존한다. malformed wire는 마지막 정상 표시를 유지하고 연결/입력을 차단한다. WP-13 source080e·[독립 PASS](verify/WP-13.M2-r2.attempt3.md)·[same-main a159 실제3OS](plans/evidence/M2-r2-a159-CI-final/README.md). 최종4점수축·항복 관전·결과UI는 WP-14/20/22 후속이며 전체REQ-TIME-04 완료로 확대하지 않는다 |
-| 육지 직접 이동 | 원작 코드·지도 경계·수치 비교 미실시 | Fx 시간합 최단경로·ID 동점 정렬, terrain/infra/supply/river와 별도 해협 슬롯·방향별 trusted context. 중간 Stop/경로 변경은 현재 구간 도착 뒤 적용하고 phase 오류는 상태·큐·clock commit 없음 | 원장·raw bit·예약 명령을 canonical/v1·v2·v3 저장과 새 process 재개로 공개 검사. WP-17 [이동·해협 독립 PASS](verify/WP-17.M2-r1.attempt1.md). 실제 unit 생성·동적 보급/접근·public wire/UI는 WP-16/19/20/22 후속. M2-r2는 source164f 새 독립 PASS·부모P07·같은 mainf44 5CI와 원/current 실제3OS를 인수했다. [현재 증거](plans/M2-evidence.md). |
+| 시간·실행 기반 | 원작 코드·파일·수치 비교 미실시 | 렌더링과 분리된 명령 큐·빈 시스템 슬롯·정규 상태 해시를 M0에서 구현 | 자체 빈 시나리오로 처리 순서와 세 OS 재현성을 검사하는 WP-04 기반. 경제·전투·AI의 실제 동작은 후속 WP다. |
+| 선언형 종료·flags | 원작 코드·스크립트·수치 비교 미실시 | 초기 권위 뒤1회·성공 시간전진의 시스템/원장 뒤 종료 평가, stable typed 동시 원인과 전체effect transaction, nation flags 수명·scope 복귀, 종료 뒤 query/save 및 미래queue 보존 | 새 상태는 additive v4에 identity/DTO/canonical/hash와 함께 저장하고 원None/v1/v2/v3를 보존한다. malformed wire는 마지막 정상 표시를 유지하고 연결/입력을 차단한다. 최종4점수축·항복 관전·결과UI는 WP-14/20/22 후속이며 전체REQ-TIME-04 완료로 확대하지 않는다. |
+| 육지 직접 이동 | 원작 코드·지도 경계·수치 비교 미실시 | Fx 시간합 최단경로·ID 동점 정렬, terrain/infra/supply/river와 별도 해협 슬롯·방향별 trusted context. 중간 Stop/경로 변경은 현재 구간 도착 뒤 적용하고 phase 오류는 상태·큐·clock commit 없음 | 원장·raw bit·예약 명령을 canonical/v1·v2·v3 저장과 새 process 재개로 검사하는 WP-17 내부 모델. 실제 unit 생성·동적 보급/접근·public wire/UI는 WP-16/19/20/22 후속이다. |
 
 ---
 

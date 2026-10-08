@@ -1,2 +1,0 @@
-assets: 0 error(s)
-exit=0

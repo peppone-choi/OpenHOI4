@@ -1,3 +1,0 @@
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.14s
-     Running `target\debug\oh_cli.exe run --scenario m1 --pack data/packs/testland --ticks 1000 --seed 1 --hash-out`
-60448355cecffa9d

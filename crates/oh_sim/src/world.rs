@@ -9,12 +9,16 @@ use std::{collections::BTreeMap, sync::Arc};
 #[derive(Clone, Debug)]
 pub struct Defs {
     trigger: Option<oh_data::trigger::Definition>,
+    economy: Option<oh_data::economy::Definition>,
     nations: Vec<oh_data::national::NationDefinition>,
     map: oh_data::map::MapData,
     visuals: oh_data::national::VisualPalette,
     map_id: String,
 }
 impl Defs {
+    pub fn economy(&self) -> Option<&oh_data::economy::Definition> {
+        self.economy.as_ref()
+    }
     pub fn trigger(&self) -> Option<&oh_data::trigger::Definition> {
         self.trigger.as_ref()
     }
@@ -364,6 +368,9 @@ impl World {
         canonical.map.states.sort_by_key(|s| s.id);
         canonical.map.provinces.sort_by_key(|p| p.id);
         let loaded = &canonical;
+        if let Some(e) = &loaded.economy {
+            e.validate(loaded)?;
+        }
         let nation_id = |tag: &str| {
             loaded
                 .nations
@@ -537,6 +544,7 @@ impl World {
         Ok(Self {
             defs: Arc::new(Defs {
                 trigger: oh_data::trigger::definition(loaded)?,
+                economy: loaded.economy.clone(),
                 nations: loaded.nations.clone(),
                 map: loaded.map.clone(),
                 visuals: loaded.visuals.clone(),
@@ -549,6 +557,25 @@ impl World {
                 provinces,
             },
         })
+    }
+    pub(crate) fn complete_building(
+        &mut self,
+        id: StateId,
+        building: &str,
+        level: i64,
+        infrastructure: Option<Fx>,
+    ) -> Result<(), String> {
+        let state = self
+            .inputs
+            .states
+            .iter_mut()
+            .find(|s| s.id == id)
+            .ok_or("missing state")?;
+        state.buildings.insert(building.into(), level);
+        if let Some(value) = infrastructure {
+            state.base = value;
+        }
+        Ok(())
     }
     pub fn definitions_hash(&self) -> u64 {
         self.definitions_hash

@@ -1,7 +1,0 @@
-{
-  "commit": "62a89ae0c332483d0198ab3b3fc0fc3db1231c68",
-  "format": "git archive zip exact committed tree",
-  "bytes": 43788295,
-  "sha256": "bd22164a9beec2b63bb9431eb525b60c5ec1df97e1956300d1a1d1fea0ac3ca6",
-  "scope": "prior unresolved product; fresh verifier rebuilds inside own ignored directory"
-}

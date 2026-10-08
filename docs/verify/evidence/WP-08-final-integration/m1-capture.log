@@ -1,5 +1,0 @@
-cwd: E:\openhoi
-command: C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe -X utf8 crates/oh_sim/tools/check_sim_determinism.py capture --m1 --out E:\openhoi\.orchestrator\evidence\M1-W2-WP08-final.integration\m1-capture
-actual simulation: 1000 ticks, seed 1, two runs: 60448355cecffa9d
-
-exit: 0

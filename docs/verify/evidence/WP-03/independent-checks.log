@@ -1,3 +1,0 @@
-manifest schema SHA256 34c67ae792a5f42f2f77c57211d4a7f5664a6f169bc0476c9805379460397b2f
-defines schema SHA256 9d082134776ee0d70706dc78e27d73e73c41f5b22f081c93fe61ed21638b46f4
-PASS 72 independent loads; rational rounding, range, mutation, CRLF/Unicode, structural schema and exact regeneration checked

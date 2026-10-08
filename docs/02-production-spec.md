@@ -55,7 +55,7 @@
 | Vitest | 5.0.3 | MIT | 단위 테스트 |
 | `@playwright/test` | 1.63.0 | Apache-2.0 | 브라우저 E2E·스크린샷 |
 
-2026-10-06 M0 착수 재확인: 서버 크레이트 13개와 클라이언트 패키지 8개를 공식 레지스트리 API에서 조회했다. 버전 번호는 기존 표와 같으며, `toml`의 빌드 메타데이터와 `zstd` 라이선스를 정확히 보완했다. 개별 조회 URL·결과는 [버전 재확인 기록](research/M0-versions.md)에 있다. Rust 1.99.0은 공식 릴리스 공지로 확인했다.
+버전 표는 고정된 개발 기준이다. 실제 의존성은 Cargo.lock과 client/package-lock.json을 사용하며, 이 인계에서 버전을 갱신하지 않는다.
 
 **사용 금지:** `bincode`. RUSTSEC-2025-0141에서 유지보수 중단으로 공지됐고, 3.0.0은 빌드되지 않는 은퇴 릴리스다. `cargo-deny`의 `bans`에 등록한다.
 
@@ -270,7 +270,7 @@ surrender_threshold = 0.8
 - **라이선스 선별**: OHM 기본 CC0 설명과 개별 license 태그·OSM 수입 해안/수역/하천 예외를 분리한다. 현재는 CC0로 검토된 OHM 요소만 사용하고, 허용되지 않은 원천 요소를 전체 CC0로 등록하지 않는다. Natural Earth는 공식 public-domain 파일의 버전을 고정한다. 1936/1939 역사 경계의 실제 자료 충족 범위는 WP-32/45에서 조사·기록한다.
 - **실행 경계**: 서버와 브라우저는 동봉 팩을 자체 HTTP로 제공/읽는다. 외부 지리 API·타일 서버·지도 CDN 요청은 없다. WP-08은 실제 브라우저 네트워크 캡처로 이 경계를 검증하고 외부 지도 없이 실행한다. OS 네트워크/샌드박스 설정을 바꾸지 않는다.
 - **고도·지형 생성(REQ-MAP-11)**: DEM snapshot의 해상도·파일 용량·NoData·좌표와 수직기준·단위·지역별 능선/고개 정확도를 ADR로 비교한다. 오프라인 능선·하천/도시 자료와 고도를 프로빈스 생성/검수 입력으로 쓰고 입력/산출 hash·도구 버전·옵션을 기록한다. NOAA ETOPO2022는 공식 전세계·CC0 후보이며 아직 취득/채택했다고 기록하지 않는다. 실제 생성 알고리즘은 독립 데이터에서 정하며 게임 이동/전투 수치를 추가하지 않는다.
-- **지형의 독립 검수(WP-32/45)**: 원천 좌표계·그리드를 정합한 뒤 고도·하천 선형·프로빈스 경계·인접을 지역 확대 overlay로 대조한다. 하천 연결·호수/해안 진입·주요 능선/고개·좁은 단절을 살피며 평균 고도만으로 대신하지 않는다. M3 표본 후보는 알프스/피레네/카르파티아 및 라인/다뉴브/비스와 일대다. M5는 해협·dateline·극지역도 추가 검수한다. 표본 추천은 새로운 게임 효과·경계를 확정한 것이 아니다. Natural Earth의 `10m`은 1:10 million 축척이며 10미터 격자가 아니다. 공식 평활·정렬·누락 한계를 기록하고 고정 원천의 정확성을 별도로 검토한다([조사 기록](research/M1-map-source-policy.md)).
+- **지형의 독립 검수(WP-32/45)**: 원천 좌표계·그리드를 정합한 뒤 고도·하천 선형·프로빈스 경계·인접을 지역 확대 overlay로 대조한다. 하천 연결·호수/해안 진입·주요 능선/고개·좁은 단절을 살피며 평균 고도만으로 대신하지 않는다. M3 표본 후보는 알프스/피레네/카르파티아 및 라인/다뉴브/비스와 일대다. M5는 해협·dateline·극지역도 추가 검수한다. 표본 추천은 새로운 게임 효과·경계를 확정한 것이 아니다. Natural Earth의 `10m`은 1:10 million 축척이며 10미터 격자가 아니다. 공식 평활·정렬·누락 한계를 기록하고 고정 원천의 정확성을 별도로 검토한다(조사 기록 (기술 범위: [공개 인계 기술 메모](technical-notes.md))).
 
 ### 5.5 정의 파일 예시
 
@@ -362,7 +362,7 @@ ai_weight = { base = 10, modifiers = [{ when = { stability = { lte = 0.4 } }, mu
 - `factions`, `wars`(시작 시 진행 중인 전쟁)
 - `end_conditions`(조건 문법)과 `score_weights`
 
-WP-13은 [REQUEST-0009 A](decisions/REQUEST-0009.md)의 CEO 한정 잠정을 인수한다. 단일 AST와 필요한 명시 root·허용 nation flag 정의/초기값·종료 날짜/typed 원인/실제 결과 입력을 필드 표에 분리한다. 로드·초기 평가·성공 시간전진 뒤 평가·효과 transaction·종료후 step/enqueue 거부·query/save 및 future queue 보존을 실제 Simulation/host 입구에 연결한다. 중첩 깊이·primitive 실행수·scope 복귀·복수 명시효과 ID/원인 안정순서·오류 우선순서·host pump 종료 응답을 schema/ADR로 구체화한다. 조건의 RNG/state/queue 불변과 효과 실패 전체 rollback, 기존 예정 명령 거부 소비/phase 오류 rollback을 독립 예제로 검사한다.
+WP-13은 REQUEST-0009 A (기술 범위: [공개 인계 기술 메모](technical-notes.md))의 CEO 한정 잠정을 인수한다. 단일 AST와 필요한 명시 root·허용 nation flag 정의/초기값·종료 날짜/typed 원인/실제 결과 입력을 필드 표에 분리한다. 로드·초기 평가·성공 시간전진 뒤 평가·효과 transaction·종료후 step/enqueue 거부·query/save 및 future queue 보존을 실제 Simulation/host 입구에 연결한다. 중첩 깊이·primitive 실행수·scope 복귀·복수 명시효과 ID/원인 안정순서·오류 우선순서·host pump 종료 응답을 schema/ADR로 구체화한다. 조건의 RNG/state/queue 불변과 효과 실패 전체 rollback, 기존 예정 명령 거부 소비/phase 오류 rollback을 독립 예제로 검사한다.
 
 새 종료/flags 정의가 있고 값이 empty인 상태도 정의 신원과 함께 hash/save에 보존한다. 원 v1/v2/v3 DTO/binary/fixture/expected/helper·None canonical 및 정책/force를 그대로 두는 additive 형식을 설계한다. root/tag/flag ID·중복/null/type/ref/bounds/order는 로드와 bounded 저장복원 양쪽에서 검사한다. 날짜 경계·초기 tick0·종료후 queue·fresh process 재개·원 bytes를 직접 검증한다. VP/IC의 실제 accessor/단위·후속 생존/진영·항복관전 consumer와 UI는 담당 WP에 추적하며 부분지원/합성 host/0weight로 전체 M2 점수를 완료 표시하지 않는다. 새 normalization·콘텐츠값·호환파괴/migration 승인은 없다.
 
@@ -403,19 +403,19 @@ WP-13은 [REQUEST-0009 A](decisions/REQUEST-0009.md)의 CEO 한정 잠정을 인
 
 ### 5.11 구현 전 스키마 기획
 
-WP-17/REQ-MIL-04의 중간 edge Stop/reroute는 [REQUEST-0006 A](decisions/REQUEST-0006.md)의 CEO 2026-10-07 한정 잠정과 01 §4.7을 따른다. 실제 schema/ADR·ordered queue/Movement phase·raw Fx 시간·실패 원자성·v1/v2 선택/호환·모든 신규 상태 및 예약 명령의 hash/save를 독립 P-05에서 대조한다. elapsed=0/>0, 잘못된 enqueue/예정 의미 오류/phase 오류, Stop 도착 후 elapsed0·남은 budget 버림과 계속 경로의 잔여시간을 각각 검사한다. 기존 v1 거부·재작성·migration과 미정 보급/통행 효과는 이 채택으로 승인되지 않았다.
+WP-17/REQ-MIL-04의 중간 edge Stop/reroute는 REQUEST-0006 A (기술 범위: [공개 인계 기술 메모](technical-notes.md))의 CEO 2026-10-07 한정 잠정과 01 §4.7을 따른다. 실제 schema/ADR·ordered queue/Movement phase·raw Fx 시간·실패 원자성·v1/v2 선택/호환·모든 신규 상태 및 예약 명령의 hash/save를 독립 P-05에서 대조한다. elapsed=0/>0, 잘못된 enqueue/예정 의미 오류/phase 오류, Stop 도착 후 elapsed0·남은 budget 버림과 계속 경로의 잔여시간을 각각 검사한다. 기존 v1 거부·재작성·migration과 미정 보급/통행 효과는 이 채택으로 승인되지 않았다.
 
-육지 간 해협 edge는 [REQUEST-0007 A](decisions/REQUEST-0007.md)의 같은 날짜 CEO 한정 잠정을 적용한다. MapData의 실제 Strait kind·서버 allowed 양끝점·방향별 명시 양수 strait 계수만 사용하며 하천/해협의 적용 슬롯·raw bit/순서를 분리한다. 9/10틱·대체 경로·동점·누락/0/음수/overflow/underflow/잘못된 kind·ref/비육지/권한의 원자성과 kind/계수 hash·v2 저장/새 process 재개·기존 v1 호환을 독립 검사한다. 미래 함대 통제/통행권/해상 수송 행동을 이 기술 인접 계약으로 구현하지 않는다.
+육지 간 해협 edge는 REQUEST-0007 A (기술 범위: [공개 인계 기술 메모](technical-notes.md))의 같은 날짜 CEO 한정 잠정을 적용한다. MapData의 실제 Strait kind·서버 allowed 양끝점·방향별 명시 양수 strait 계수만 사용하며 하천/해협의 적용 슬롯·raw bit/순서를 분리한다. 9/10틱·대체 경로·동점·누락/0/음수/overflow/underflow/잘못된 kind·ref/비육지/권한의 원자성과 kind/계수 hash·v2 저장/새 process 재개·기존 v1 호환을 독립 검사한다. 미래 함대 통제/통행권/해상 수송 행동을 이 기술 인접 계약으로 구현하지 않는다.
 
 WP-17의 원 source `97f6887`이 만든 v2 표현도 보존한다. typed strait context의 추가 저장은 원 v1/v2 DTO·reader/writer/canonical/hash를 동결한 별도 v3 확장으로 설계할 수 있다. 실제 v1/v2/v3 선택은 새/정지 unit·빈 경로·예약 명령·explicit strait context의 존재를 대조해 손실을 막는다. 원 v2 bytes의 읽기·쓰기/새 process 재개와 v3의 별도 bounded preflight·raw kind/계수·큐·진행 상태를 각각 검증한다. 문서의 v2 저장 검사는 기존 이동 body의 보존 요구이며 새 context를 구 v2 구조에 덧붙여 호환을 깨라는 뜻이 아니다. 기존 저장 거부·migration은 승인하지 않았다.
 
-WP-24 actual server/CLI restore의 검증 입구는 [REQUEST-0008 A](decisions/REQUEST-0008.md)의 CEO 한정 기술 호환 잠정을 따른다. engine-owned 원 M0 3파일 및 원 mutable-v1 fixture 19파일의 전체 상대 목록/길이/SHA256·FNV/id/version/scenario/kind와 내부 caller 및 실제 bounded v1 header/context가 일치할 때만 manifest.name_key=testland_name의 typed ko/en missing_message_value 두 진단을 warning_unavailable로 남긴다. 원 file/line/column/code/cause를 보존하며 모든 다른 FTL/사용키/dep/version/schema/ref/defines 오류·source 변경·다른 목적/형·force는 면제하지 않는다. 원 M0 standalone validate 실패, codec 원 bytes·전체state/hash/preflight·현재 active 팩 strict와 역사/현재 팩 차이를 독립 검사한다. headless M0 empty-definition 계약과 full active/server/restore 진입을 구분하고 blanket legacy 면제를 추가하지 않는다.
+WP-24 actual server/CLI restore의 검증 입구는 REQUEST-0008 A (기술 범위: [공개 인계 기술 메모](technical-notes.md))의 CEO 한정 기술 호환 잠정을 따른다. engine-owned 원 M0 3파일 및 원 mutable-v1 fixture 19파일의 전체 상대 목록/길이/SHA256·FNV/id/version/scenario/kind와 내부 caller 및 실제 bounded v1 header/context가 일치할 때만 manifest.name_key=testland_name의 typed ko/en missing_message_value 두 진단을 warning_unavailable로 남긴다. 원 file/line/column/code/cause를 보존하며 모든 다른 FTL/사용키/dep/version/schema/ref/defines 오류·source 변경·다른 목적/형·force는 면제하지 않는다. 원 M0 standalone validate 실패, codec 원 bytes·전체state/hash/preflight·현재 active 팩 strict와 역사/현재 팩 차이를 독립 검사한다. headless M0 empty-definition 계약과 full active/server/restore 진입을 구분하고 blanket legacy 면제를 추가하지 않는다.
 
-M4 차량 OPEN-03/REQ-SUP-05의 [v2 운용·손실 설계](decisions/DETAIL-DRAFT-0002-transport-v2.md)는 CEO 2026-10-07 잠정 채택이다. 01 보급 규칙의 채택 범위와 유보사항을 따른다. WP-15 실제 장비/재고형·총계 상한·C 단위·phase/명령/서버 오류 대조 및 필드→hash/save/wire/runtime/UI를 WP-44 설계/독립 검증에 연결한다. §6.2 보급→경제→생산 순서를 유지한다. 합성 k/r은 콘텐츠 기본값이 아니며 실제 모델/호환안 검토 전 생산규칙 변경·기존 저장 거부/호환파괴/migration을 실행하지 않는다.
+M4 차량 OPEN-03/REQ-SUP-05의 v2 운용·손실 설계 (기술 범위: [공개 인계 기술 메모](technical-notes.md))는 CEO 2026-10-07 잠정 채택이다. 01 보급 규칙의 채택 범위와 유보사항을 따른다. WP-15 실제 장비/재고형·총계 상한·C 단위·phase/명령/서버 오류 대조 및 필드→hash/save/wire/runtime/UI를 WP-44 설계/독립 검증에 연결한다. §6.2 보급→경제→생산 순서를 유지한다. 합성 k/r은 콘텐츠 기본값이 아니며 실제 모델/호환안 검토 전 생산규칙 변경·기존 저장 거부/호환파괴/migration을 실행하지 않는다.
 
-사용자 2026-10-06 지시에 따라 신규 시스템·스키마 변경 전에 [시스템별 스키마 기획](plans/schema-planning.md)을 작성한다. 필드 의미·단위·범위·null/default·참조·수명·권위·REQ/WP와 정의/초기값/가변/파생 계층을 명시하고, 관계·실패 원자성·해시/저장·버전/wire/runtime/UI 및 독립 경계 예제를 대조한다. 담당 WP 설계 문서를 P-03/P-05에 연결한다. 현재 M1 기초 모델을 최종 전체 모델로 기록하지 않으며 미승인 게임 규칙을 위키에서 가져와 구현하지 않는다. 전역 하네스·자동 반복이나 추가 강제 리뷰를 활성화하지 않는다.
+사용자 2026-10-06 지시에 따라 신규 시스템·스키마 변경 전에 시스템별 스키마 기획 (기술 범위: [공개 인계 기술 메모](technical-notes.md))을 작성한다. 필드 의미·단위·범위·null/default·참조·수명·권위·REQ/WP와 정의/초기값/가변/파생 계층을 명시하고, 관계·실패 원자성·해시/저장·버전/wire/runtime/UI 및 독립 경계 예제를 대조한다. 담당 WP 설계 문서를 P-03/P-05에 연결한다. 현재 M1 기초 모델을 최종 전체 모델로 기록하지 않으며 미승인 게임 규칙을 위키에서 가져와 구현하지 않는다. 전역 하네스·자동 반복이나 추가 강제 리뷰를 활성화하지 않는다.
 
-WP-14/W2는 [REQUEST-0010 A-CEO-r1](decisions/REQUEST-0010.md)의 CEO 한정 잠정 수정판과 01 §4.3을 인수한다. 원후보의 PC 선지급은 채택하지 않으며 §6.2/실제 Phase의 경제→생산→건설→인력→연구→정치 순서를 유지한다. 명령은 직전 권위 PC로 검사하고 Politics에서 정상 날짜 경계 지급을 한 번 수행한다. phase 오류의 state/queue/clock/RNG 전체 rollback과 예정 명령 의미 오류 소비를 구분한다.
+WP-14/W2는 REQUEST-0010 A-CEO-r1 (기술 범위: [공개 인계 기술 메모](technical-notes.md))의 CEO 한정 잠정 수정판과 01 §4.3을 인수한다. 원후보의 PC 선지급은 채택하지 않으며 §6.2/실제 Phase의 경제→생산→건설→인력→연구→정치 순서를 유지한다. 명령은 직전 권위 PC로 검사하고 Politics에서 정상 날짜 경계 지급을 한 번 수행한다. phase 오류의 state/queue/clock/RNG 전체 rollback과 예정 명령 의미 오류 소비를 구분한다.
 
 담당 schema/ADR은 비율·계수 Fx, 누적량 Qty, 인력 i64의 원 bits·단위·범위·checked 변환/곱셈 순서를 필드별로 고정한다. Qty를 기존 Fx 원장에 조용히 좁히지 않으며 필요하면 수량 원장을 분리해 실제 적용 raw bits와 대조한다. 계산 tick/주별 기여·배분 잔여·건설 원IC 올림/초과폐기·현재/휴면 예약·인력 committed/reserved·법령/PC·정의 identity를 canonical/hash/save/wire/query/repro와 동일 수명으로 보존한다. 새 additive 저장형은 기존 None/v1~v4·fixture·bytes/hash를 유지한다. 후속 consumer 없는 효과는 값0도 capability 오류이며 생산·항복·군사·훈련·시장 전체 완료를 가장하지 않는다. WP-23 신규 콘텐츠는 실제 producer schema·커밋 인수 뒤에만 작성한다.
 
@@ -724,11 +724,11 @@ D-15에 따른 역할이다. 모두 Codex다.
 
 ### 12.4 세션 생성과 병렬 실행 (D-15)
 
-**CEO 자동 진행의 사용자 지정 경로(2026-10-06).** 사용자가 CEO는 앱 채팅으로 오케스트레이터를 열고 오케스트레이터도 앱 채팅으로 구현·검증을 생성하며 서로 메시지를 교환하도록 지시했다. M1 이후 이 작업은 docs/04 §0의 앱 경로를 적용한다. CEO는 오케스트레이터 채팅만 만든다. WP별 전용 Git worktree·새 독립 검증·검증 전후 불변성 규칙은 아래 M0 대체 경로와 같다. CLI 실패를 앱 성공으로 대체 기록하지 않고 모델·인증·샌드박스 설정은 유지한다.
+**앱 채팅 실행 경로.** 오케스트레이터와 WP별 구현·독립 검증은 별도 채팅과 지정 Git worktree를 사용한다. 기본 cwd와 관계없이 지정 worktree에서 명령을 실행한다. 실제 권한과 사용자 지시 범위를 확인하며 자동 실행은 별도 승인 없이 재개하지 않는다.
 
 오케스트레이터 Codex 세션은 `tools/orch.sh`로 구현 세션과 검증 세션을 만든다.
 
-**이번 M0 실행의 사용자 승인 대체 경로(2026-10-06).** 실제 하위 CLI가 모델·ChatGPT 인증 조합의 HTTP 400으로 실패했고, 사용자는 현재 앱 설정의 별도 채팅 실행을 선택했다. 이에 Codex 앱 채팅과 WP별 명시적 Git worktree로 동일한 구현/독립 검증 분리를 유지한다. 기본 cwd가 프로젝트 루트인 앱 채팅은 모든 명령을 지정한 전용 worktree에서 실행한다. 검증 전후 HEAD·추적 파일 목록·diff/status를 오케스트레이터가 비교하며 변경되면 무효다. CLI 설정과 도구는 유지한다. 근거와 시험 결과는 환경 실행 ADR(`docs/adr/`에서 확인), 운영 계획은 [M0 계획](plans/M0.md)에 기록한다.
+**구현과 검증의 분리.** 검증 전후 HEAD·추적 파일 목록·diff/status가 같아야 유효하다. 앱 turn 종료와 CLI 종료 코드는 구분하며 미수신 종료 코드를 성공으로 추정하지 않는다. 실행 실패를 이유로 모델·인증·샌드박스 설정이나 검사를 우회하지 않는다.
 
 ```
 tools/orch.sh selftest                                   # 최초 1회: codex 호출·분리 실행 가능 여부
@@ -782,7 +782,7 @@ tools/orch.sh wait <WP>[:impl|:verify] ... [--timeout 초] # 대체 수단: 끝�
 2. 분리 실행(`start`)한 프로세스가 오케스트레이터 명령이 끝난 뒤에도 살아 있어야 한다.
    - `selftest`의 5단계로 확인한다.
    - 살아남지 못하는 환경이면 대체 수단을 쓴다: 한 묶음의 `start`를 연달아 실행한 직후 같은 명령에서 `wait`로 기다린다. 이 경우 구현 세션끼리는 병렬로 돌지만, 오케스트레이터는 그동안 다른 일을 하지 못한다. 그 사실을 계획에 적는다.
-3. 공식 설정 문서에서 `sandbox_workspace_write.network_access`는 workspace-write 외부 네트워크 허용 boolean 키다(2026-10-06 재확인). 이번 실행은 설정을 변경하지 않았다. CLI 모델 거절과 네트워크 차단을 구분하며, 하위 채팅의 실제 권한은 실행 문맥에서 확인한다. 결과는 환경 실행 ADR에 기록한다.
+3. 샌드박스·네트워크·인증은 현재 실행 문맥에서 확인한다. 설정 변경은 사용자 확인 사항이며, 도구 실패를 우회할 목적으로 바꾸지 않는다.
 4. 인증 방식(로그인 또는 `CODEX_API_KEY`)과 사용량 한도도 확인한다.
 
 ---

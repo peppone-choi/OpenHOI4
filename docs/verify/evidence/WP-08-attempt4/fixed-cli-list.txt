@@ -1,7 +1,0 @@
-
-> openhoi-client@0.1.0 test:e2e
-> playwright test --config playwright.m1.config.ts --project=firefox map-capability.spec.ts --list
-
-Listing tests:
-  [firefox] › map-capability.spec.ts:6:1 › REQ-PLAT-03 native backend capability renders pixels or preserves authority with localized notice
-Total: 1 test in 1 file

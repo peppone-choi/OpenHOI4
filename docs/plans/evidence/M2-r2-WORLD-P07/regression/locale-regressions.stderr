@@ -1,8 +1,0 @@
-test_frozen_pack_is_exact_original_tree (test_localisation.Localisation.test_frozen_pack_is_exact_original_tree) ... ok
-test_generated_dto_keys_require_registry_names (test_localisation.Localisation.test_generated_dto_keys_require_registry_names) ... ok
-test_static_call_missing_in_both_is_not_hidden (test_localisation.Localisation.test_static_call_missing_in_both_is_not_hidden) ... ok
-
-----------------------------------------------------------------------
-Ran 3 tests in 0.580s
-
-OK

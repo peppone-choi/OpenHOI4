@@ -3,6 +3,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let output = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("schema");
     std::fs::create_dir_all(&output)?;
     for (name, schema) in [
+        ("economy", oh_data::economy::schema()),
         ("manifest", oh_data::manifest_schema()),
         ("defines", oh_data::defines_schema()),
         ("states", oh_data::map::states_schema()),

@@ -1,8 +1,0 @@
-
-> openhoi-client@0.1.0 test:e2e
-> playwright test --config playwright.m1.config.ts --project firefox map-capability.spec.ts --list
-
-Error: Project(s) "map-capability.spec.ts" not found. Available projects: "chromium", "firefox", "webkit"
-    at Object.filterProjects (E:\openhoi\.orchestrator\wt\WP-08-verify4\client\node_modules\playwright\lib\runner\index.js:2170:11)
-    at runTests (E:\openhoi\.orchestrator\wt\WP-08-verify4\client\node_modules\playwright\lib\cli\testActions.js:61:30)
-    at _Command.<anonymous> (E:\openhoi\.orchestrator\wt\WP-08-verify4\client\node_modules\playwright\lib\program.js:55:7)

@@ -1,3 +1,0 @@
-$ git diff HEAD^ HEAD --check
-
-EXIT=0

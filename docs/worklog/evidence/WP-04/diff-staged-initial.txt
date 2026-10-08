@@ -1,6 +1,0 @@
-[failed whitespace diagnostic excerpt; padding trimmed]
-docs/worklog/evidence/WP-04/licenses.txt:33: trailing whitespace.
-+   │
-docs/worklog/evidence/WP-04/licenses.txt:37: trailing whitespace.
-+   │
-exit_code=2

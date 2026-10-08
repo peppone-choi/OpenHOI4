@@ -1,7 +1,0 @@
-{"argv": ["C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe", "target/wp08-verify2/audit.py"], "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify2", "environment": {"OH_BROWSER_PRODUCTS": "1", "OH_TEST_PORT": "19414", "OH_E2E_EVIDENCE": "../target/wp08-verify2/e2e", "OH_MALFORMED_EVIDENCE": "../target/wp08-verify2/malformed", "OH_MAP_EVIDENCE": "../target/wp08-verify2/map", "OH_MAP_REDIRECT_EVIDENCE": "../target/wp08-verify2/redirect"}}
-Traceback (most recent call last):
-  File "E:\openhoi\.orchestrator\wt\WP-08-verify2\target\wp08-verify2\audit.py", line 14, in <module>
-    assert not mismatch,(suffix,mismatch)
-AssertionError: ('/p06-redirect', ['independent-index-repro-original.cjs', 'independent-repro-original.cjs'])
-
-exit=1

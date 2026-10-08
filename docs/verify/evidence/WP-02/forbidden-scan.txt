@@ -1,4 +1,0 @@
-cwd: E:\openhoi\.orchestrator\wt\WP-02-verify
-command: rg -n \bf32\b|\bf64\b|HashMap|HashSet|thread_rng|SystemTime|Instant|std::(fs|net|time)|getrandom|OsRng|rayon crates/oh_core/src crates/oh_sim/src crates/oh_ai/src crates/oh_data/src crates/oh_save/src
-exit: 0
-crates/oh_core/src\canonical.rs:6://! `HashMap`/`HashSet`, floats, pointer-sized state integers, or custom serializers

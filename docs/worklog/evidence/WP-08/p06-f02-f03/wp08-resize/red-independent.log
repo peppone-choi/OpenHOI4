@@ -1,8 +1,0 @@
-AssertionError [ERR_ASSERTION]: webkit Ownership 10 32,41,56 expected 40,100,180
-    at E:\openhoi\.orchestrator\wt\WP-08\target\wp08-resize\repro-webkit.cjs:40:344 {
-  generatedMessage: false,
-  code: 'ERR_ASSERTION',
-  actual: false,
-  expected: true,
-  operator: '=='
-}

@@ -1,8 +1,0 @@
-workdir: E:\openhoi\.orchestrator\wt\WP-01-ai-policy
-command: git diff --check
-exit: 0
-stdout:
-
-stderr:
-warning: in the working copy of 'docs/worklog/evidence/WP-01-ai-policy-r1/docs.txt', CRLF will be replaced by LF the next time Git touches it
-warning: in the working copy of 'docs/worklog/evidence/WP-01-ai-policy-r1/results.json', CRLF will be replaced by LF the next time Git touches it

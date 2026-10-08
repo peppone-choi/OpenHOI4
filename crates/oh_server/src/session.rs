@@ -10,6 +10,14 @@ use std::{
 use tokio::sync::{oneshot, watch};
 #[derive(Debug)]
 pub enum Request {
+    Economy {
+        reply: oneshot::Sender<Option<oh_proto::EconomyView>>,
+    },
+    EconomyCommand {
+        nation: NationId,
+        command: oh_proto::EconomyCommand,
+        reply: oneshot::Sender<Result<TimeState, &'static str>>,
+    },
     Trigger {
         reply: oneshot::Sender<Option<oh_proto::TriggerView>>,
     },
@@ -67,6 +75,63 @@ impl Session {
                         deadline.saturating_duration_since(Instant::now())
                     };
                     match incoming.recv_timeout(wait) {
+                        Ok(Request::Economy { reply }) => {
+                            let _ = reply.send(oh_proto::EconomyView::from_sim(&sim));
+                            continue;
+                        }
+                        Ok(Request::EconomyCommand {
+                            nation,
+                            command,
+                            reply,
+                        }) => {
+                            if sim.is_ended() {
+                                let _ = reply.send(Err("scenario-ended"));
+                                continue;
+                            }
+                            let action = match command.into_action() {
+                                Ok(action) => action,
+                                Err(_) => {
+                                    let _ = reply.send(Err("invalid-message"));
+                                    continue;
+                                }
+                            };
+                            let Some(next_arrival) = arrival.checked_add(1) else {
+                                let _ = reply.send(Err("simulation-error"));
+                                break;
+                            };
+                            if sim
+                                .enqueue(
+                                    sim.snapshot().tick(),
+                                    nation,
+                                    next_arrival,
+                                    oh_sim::Command::Economy(action),
+                                )
+                                .is_err()
+                            {
+                                let _ = reply.send(Err("invalid-message"));
+                                continue;
+                            }
+                            arrival = next_arrival;
+                            match sim.step() {
+                                Ok(step) => {
+                                    let accepted = step
+                                        .commands
+                                        .iter()
+                                        .find(|c| c.sequence == arrival && c.nation == nation)
+                                        .is_some_and(|c| c.result.is_ok());
+                                    let _ = reply.send(if accepted {
+                                        Ok(TimeState::from(&step.snapshot))
+                                    } else {
+                                        Err("invalid-message")
+                                    });
+                                }
+                                Err(_) => {
+                                    let _ = reply.send(Err("simulation-error"));
+                                    continue;
+                                }
+                            }
+                            deadline = Instant::now() + Duration::from_millis(sim.ms_per_tick());
+                        }
                         Ok(Request::Trigger { reply }) => {
                             let _ = reply.send(oh_proto::TriggerView::from_sim(&sim));
                             continue;

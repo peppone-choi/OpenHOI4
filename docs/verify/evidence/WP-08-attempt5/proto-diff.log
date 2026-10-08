@@ -1,1 +1,0 @@
-{"args": ["git", "diff", "--exit-code", "--", "client/src/proto"], "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify5", "start": "2026-10-06T17:37:51.547312+00:00"}

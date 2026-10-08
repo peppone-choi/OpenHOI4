@@ -1,3 +1,0 @@
-   Compiling oh_cli v0.1.0 (E:\openhoi\crates\oh_cli)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.94s
-     Running `target\debug\oh_cli.exe validate --deny-warnings data/packs/testland`

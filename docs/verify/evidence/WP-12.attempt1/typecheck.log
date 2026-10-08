@@ -1,7 +1,0 @@
-["npm.cmd", "--prefix", "client", "run", "typecheck"]
-
-> openhoi-client@0.1.0 typecheck
-> tsc --noEmit
-
-
-EXIT=0

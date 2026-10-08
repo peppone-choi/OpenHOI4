@@ -1,3 +1,0 @@
-$ C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe tools/check_assets.py --release
-exit=0
-assets: 0 error(s)

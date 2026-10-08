@@ -1,4 +1,0 @@
-$ node tools/check_npm_licenses.cjs
-npm licenses: 94 dependencies; 0 error(s)
-
-EXIT=0

@@ -1,2 +1,0 @@
-{"field_checks": "all header/body bytes and independent canonical/hash/ledger verified", "dto_count": 68, "native_pids": [32480, 24376], "split_hash": "215ebf7cf6bda014", "end_hash": "eb269c5eb960ec4e"}
-{"stable_ids": "0/65535 nations and provinces, state0/901, null distinct, native container fields verified", "nativeforce_count": 13, "transaction_cases": 12, "file_digest": "3d735b17c00724123d99805e4af8a9dfbe7fecc8ac93237e085420b3d98d908a"}

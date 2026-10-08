@@ -1,7 +1,0 @@
-[package]
-name="wp12_verify_proto"
-version="0.0.0"
-edition="2024"
-[workspace]
-[dependencies]
-oh_proto={path="E:/openhoi/.orchestrator/wt/WP-12-verify2/crates/oh_proto"}

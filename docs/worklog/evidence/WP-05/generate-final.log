@@ -1,5 +1,0 @@
-   Compiling oh_proto v0.1.0 (E:\openhoi\.orchestrator\wt\WP-05\crates\oh_proto)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.39s
-     Running `target\debug\examples\generate.exe`
-
-sha256 before=ed2c622b704ba70ff8f6262c3712a58301b15ef78b3af82af681d490d6a25661 after=ed2c622b704ba70ff8f6262c3712a58301b15ef78b3af82af681d490d6a25661

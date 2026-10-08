@@ -1,8 +1,0 @@
-2026-10-06T17:34:41.8980839Z ##[group]Run npm --prefix client run typecheck
-2026-10-06T17:34:41.8981267Z [36;1mnpm --prefix client run typecheck[0m
-2026-10-06T17:34:41.9043470Z shell: /usr/bin/bash -e {0}
-2026-10-06T17:34:41.9043754Z ##[endgroup]
-2026-10-06T17:34:42.0027893Z
-2026-10-06T17:34:42.0029068Z > openhoi-client@0.1.0 typecheck
-2026-10-06T17:34:42.0029527Z > tsc --noEmit
-2026-10-06T17:34:42.0029834Z

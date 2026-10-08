@@ -1,2 +1,0 @@
-const {defineConfig}=require('../../../client/node_modules/@playwright/test');
-module.exports=defineConfig({testDir:'E:/openhoi/.orchestrator/wt/WP-08/client/e2e-m1',testMatch:'map-redirect.spec.ts',use:{baseURL:'http://127.0.0.1:19420',viewport:{width:1280,height:720},locale:'en-US'},projects:[{name:'chromium',use:{browserName:'chromium'}}],webServer:{command:'"E:/openhoi/.orchestrator/wt/WP-08/target/wp08/p06-redirect/before-server.exe" --port 19420 --pack-root E:/openhoi/.orchestrator/wt/WP-08/data/packs',url:'http://127.0.0.1:19420',reuseExistingServer:true}});

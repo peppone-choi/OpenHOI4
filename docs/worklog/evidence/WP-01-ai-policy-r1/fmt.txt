@@ -1,6 +1,0 @@
-workdir: E:\openhoi\.orchestrator\wt\WP-01-ai-policy
-command: C:\Users\user\.cargo\bin\cargo.EXE fmt --check
-exit: 0
-stdout:
-
-stderr:

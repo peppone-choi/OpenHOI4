@@ -1,2 +1,0 @@
-$ "C:\Program Files\Git\bin\bash.exe" -n tools/orch.sh
-exit=0

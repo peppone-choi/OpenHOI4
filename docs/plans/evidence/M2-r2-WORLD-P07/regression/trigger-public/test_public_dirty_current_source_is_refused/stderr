@@ -1,8 +1,0 @@
-warning: in the working copy of 'crates/oh_sim/tools/check_trigger_determinism.py', LF will be replaced by CRLF the next time Git touches it
-Traceback (most recent call last):
-  File "E:\openhoi\target\trigger-predicate-scratch\tmp94jleyfe\public-source\crates\oh_sim\tools\check_trigger_determinism.py", line 382, in <module>
-    capture(args.out) if args.command == 'capture' else compare_artifacts(args.root)
-                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "E:\openhoi\target\trigger-predicate-scratch\tmp94jleyfe\public-source\crates\oh_sim\tools\check_trigger_determinism.py", line 369, in compare_artifacts
-    raise ValueError('current source checkout is dirty; clean exact HEAD required')
-ValueError: current source checkout is dirty; clean exact HEAD required

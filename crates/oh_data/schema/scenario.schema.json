@@ -13,6 +13,9 @@
         }
       }
     },
+    "economy": {
+      "type": "string"
+    },
     "effect_programs": {
       "type": "object",
       "additionalProperties": {

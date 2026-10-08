@@ -1,3 +1,0 @@
-version = '0.19.1'
-license = 'Apache-2.0'
-repository.url = 'git+https://github.com/projectfluent/fluent.js.git'

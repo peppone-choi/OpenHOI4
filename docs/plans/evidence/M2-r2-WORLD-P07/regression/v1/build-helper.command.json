@@ -1,1 +1,0 @@
-{"command": ["cargo", "build", "-p", "oh_save", "--example", "save_fixture", "--locked"], "exit": 0}

@@ -1,8 +1,0 @@
-    Checking oh_data v0.1.0 (E:\openhoi\.orchestrator\wt\WP-09\crates\oh_data)
-   Compiling oh_server v0.1.0 (E:\openhoi\.orchestrator\wt\WP-09\crates\oh_server)
-    Checking oh_sim v0.1.0 (E:\openhoi\.orchestrator\wt\WP-09\crates\oh_sim)
-    Checking oh_save v0.1.0 (E:\openhoi\.orchestrator\wt\WP-09\crates\oh_save)
-    Checking oh_ai v0.1.0 (E:\openhoi\.orchestrator\wt\WP-09\crates\oh_ai)
-    Checking oh_proto v0.1.0 (E:\openhoi\.orchestrator\wt\WP-09\crates\oh_proto)
-    Checking oh_cli v0.1.0 (E:\openhoi\.orchestrator\wt\WP-09\crates\oh_cli)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.50s

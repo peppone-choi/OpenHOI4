@@ -232,7 +232,7 @@ pub fn date(s: &str) -> Result<(u32, u8, u8), String> {
     }
     Ok((y, m, d))
 }
-fn condition_shape(c: &Condition, depth: usize) -> Result<(), String> {
+pub(crate) fn condition_shape(c: &Condition, depth: usize) -> Result<(), String> {
     if depth > MAX_DEPTH {
         return Err("trigger depth exceeds 16".into());
     }
@@ -260,7 +260,8 @@ fn condition_shape(c: &Condition, depth: usize) -> Result<(), String> {
             }
         }
         Condition::PoliticalCapital(c) => {
-            c.value()?;
+            let (Compare::Gte(s) | Compare::Lte(s) | Compare::Eq(s)) = c;
+            crate::economy::quantity(s)?;
         }
         Condition::IdeologySupport(a) => {
             if a.ideology.is_empty() || !(Fixed::ZERO..=Fixed::ONE).contains(&a.value.value()?) {
@@ -295,9 +296,11 @@ fn effects_shape(es: &[Effect], depth: usize) -> Result<(), String> {
                 effects_shape(&a.then, depth + 1)?;
                 effects_shape(&a.r#else, depth + 1)?;
             }
-            Effect::AddStability(s)
-            | Effect::AddMobilization(s)
-            | Effect::AddPoliticalCapital(s) => {
+            Effect::AddPoliticalCapital(s) => {
+                s.parse::<oh_core::Qty>()
+                    .map_err(|_| "invalid exact effect Qty")?;
+            }
+            Effect::AddStability(s) | Effect::AddMobilization(s) => {
                 s.parse::<Fixed>().map_err(|_| "invalid exact effect Fx")?;
             }
             Effect::DeclareWar(s) => {
@@ -459,27 +462,34 @@ fn condition_refs(
                         return Err(format!("missing ideology:{}", a.ideology));
                     }
                 }
-                HasLaw(s) => return Err(format!("missing law registry:{s}")),
+                HasLaw(s) if !l.economy.as_ref().is_some_and(|d| d.laws.contains_key(s)) => {
+                    return Err(format!("missing law registry:{s}"));
+                }
                 _ => {}
             }
         }
     }
     Ok(())
 }
-fn condition_capability(c: &Condition) -> Result<(), String> {
+fn condition_capability(c: &Condition, economy: bool) -> Result<(), String> {
     match c {
         Condition::All(cs) | Condition::Any(cs) => {
             for c in cs {
-                condition_capability(c)?;
+                condition_capability(c, economy)?;
             }
         }
-        Condition::Not(c) => condition_capability(c)?,
+        Condition::Not(c) => condition_capability(c, economy)?,
         Condition::DateGte(_)
         | Condition::NationIs(_)
         | Condition::OwnsState(_)
         | Condition::ControlsProvince(_)
         | Condition::HasFlag(_)
         | Condition::IdeologySupport(_) => {}
+        Condition::Stability(_)
+        | Condition::Mobilization(_)
+        | Condition::PoliticalCapital(_)
+        | Condition::HasLaw(_)
+            if economy => {}
         _ => return Err("host capability: unsupported condition producer".into()),
     }
     Ok(())
@@ -535,6 +545,13 @@ fn effects_refs(
                 state_ref(l, a.state)?;
                 nation_ref(l, &a.nation)?;
             }
+            Effect::SetLaw(s) => {
+                if context != Context::Nation
+                    || !l.economy.as_ref().is_some_and(|d| d.laws.contains_key(s))
+                {
+                    return Err("missing law registry/context".into());
+                }
+            }
             Effect::DeclareWar(s) => nation_ref(l, s)?,
             _ => {
                 if context != Context::Nation {
@@ -545,16 +562,21 @@ fn effects_refs(
     }
     Ok(())
 }
-fn effects_capability(es: &[Effect]) -> Result<(), String> {
+fn effects_capability(es: &[Effect], economy: bool) -> Result<(), String> {
     for e in es {
         match e {
-            Effect::Scope(a) => effects_capability(&a.effects)?,
+            Effect::Scope(a) => effects_capability(&a.effects, economy)?,
             Effect::If(a) => {
-                condition_capability(&a.condition)?;
-                effects_capability(&a.then)?;
-                effects_capability(&a.r#else)?;
+                condition_capability(&a.condition, economy)?;
+                effects_capability(&a.then, economy)?;
+                effects_capability(&a.r#else, economy)?;
             }
             Effect::SetFlag(_) | Effect::ClearFlag(_) | Effect::EndScenario(_) => {}
+            Effect::AddStability(_)
+            | Effect::AddMobilization(_)
+            | Effect::AddPoliticalCapital(_)
+            | Effect::SetLaw(_)
+                if economy => {}
             _ => return Err("host capability: unsupported effect producer".into()),
         }
     }
@@ -649,15 +671,22 @@ pub fn definition(l: &LoadedNational) -> Result<Option<Definition>, String> {
         }
     }
     if let Some(c) = &d.end_conditions {
-        condition_capability(c).map_err(|e| format!("end_conditions: {e}"))?;
+        condition_capability(c, l.economy.as_ref().is_some_and(|e| !e.is_empty()))
+            .map_err(|e| format!("end_conditions: {e}"))?;
     }
     if let Some(ps) = &d.effect_programs {
         for (id, p) in ps {
-            effects_capability(&p.effects).map_err(|e| format!("effect_programs.{id}: {e}"))?;
+            effects_capability(
+                &p.effects,
+                l.economy.as_ref().is_some_and(|e| !e.is_empty()),
+            )
+            .map_err(|e| format!("effect_programs.{id}: {e}"))?;
         }
     }
     if let Some(w) = &d.score_weights
-        && w.values()?.iter().any(|v| *v != Fixed::ZERO)
+        && w.values()?.iter().enumerate().any(|(i, v)| {
+            *v != Fixed::ZERO && (i != 1 || l.economy.as_ref().is_none_or(|e| e.is_empty()))
+        })
     {
         return Err("score_weights: host capability: score input producer unavailable".into());
     }
@@ -730,10 +759,16 @@ pub fn registry() -> Vec<RegistryItem> {
                 "at_war_with" => {
                     "Compare war relation with referenced nation (future war producer)"
                 }
-                "stability" => "Compare nation stability ratio (future politics producer)",
-                "mobilization" => "Compare nation mobilization ratio (future politics producer)",
-                "political_capital" => "Compare political capital (future politics producer)",
-                "has_law" => "Read active law ID (future politics producer)",
+                "stability" => {
+                    "Compare nation stability ratio (actual nonempty economy producer required)"
+                }
+                "mobilization" => {
+                    "Compare nation mobilization ratio (actual nonempty economy producer required)"
+                }
+                "political_capital" => {
+                    "Compare political capital (actual nonempty economy producer required)"
+                }
+                "has_law" => "Read active law ID (actual nonempty economy producer required)",
                 "chance" => {
                     "Event activation probability; requires separate simulation RNG adapter"
                 }
@@ -749,6 +784,10 @@ pub fn registry() -> Vec<RegistryItem> {
                     | "controls_province"
                     | "owns_state"
                     | "ideology_support"
+                    | "stability"
+                    | "mobilization"
+                    | "political_capital"
+                    | "has_law"
             ),
         })
         .chain(effects.into_iter().map(|(key, example)| RegistryItem {
@@ -758,14 +797,16 @@ pub fn registry() -> Vec<RegistryItem> {
                 "set_flag" => "Idempotently insert nation flag",
                 "clear_flag" => "Idempotently remove nation flag",
                 "end_scenario" => "Stage explicit end source until transaction succeeds",
-                "add_stability" => "Apply signed stability delta through future politics adapter",
+                "add_stability" => {
+                    "Apply signed stability delta through the atomic economy adapter"
+                }
                 "add_mobilization" => {
-                    "Apply signed mobilization delta through future politics adapter"
+                    "Apply signed mobilization delta through the atomic economy adapter"
                 }
                 "add_political_capital" => {
-                    "Apply signed political capital delta through future politics adapter"
+                    "Apply signed political capital delta through the atomic economy adapter"
                 }
-                "set_law" => "Set referenced active law through future politics adapter",
+                "set_law" => "Set referenced active law through the atomic economy adapter",
                 "add_building" => {
                     "Add levels to referenced state building through future construction adapter"
                 }
@@ -781,7 +822,16 @@ pub fn registry() -> Vec<RegistryItem> {
             },
             example,
             argument_schema: argument_schema(&es, key),
-            simulation_supported: matches!(key, "set_flag" | "clear_flag" | "end_scenario"),
+            simulation_supported: matches!(
+                key,
+                "set_flag"
+                    | "clear_flag"
+                    | "end_scenario"
+                    | "add_stability"
+                    | "add_mobilization"
+                    | "add_political_capital"
+                    | "set_law"
+            ),
         }))
         .collect()
 }
@@ -823,4 +873,27 @@ fn argument_schema(root: &serde_json::Value, key: &str) -> serde_json::Value {
     }
     references(&mut argument);
     argument
+}
+
+pub(crate) fn economy_conditions(l: &LoadedNational) -> Result<(), String> {
+    let Some(e) = &l.economy else {
+        return Ok(());
+    };
+    let d = Definition {
+        end_date: None,
+        end_conditions: None,
+        end_root: None,
+        flag_keys: l.scenario.flag_keys.clone(),
+        initial_flags: l.scenario.initial_flags.clone(),
+        effect_programs: None,
+        score_weights: None,
+    };
+    for (id, law) in &e.laws {
+        for nation in &l.nations {
+            condition_refs(l, &d, &law.condition, Context::Nation, Some(&nation.tag))
+                .map_err(|error| format!("laws.{id}.condition: {error}"))?;
+        }
+        condition_capability(&law.condition, true)?;
+    }
+    Ok(())
 }

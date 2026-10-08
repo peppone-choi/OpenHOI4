@@ -1,2 +1,0 @@
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.09s
-     Running `target\debug\oh_cli.exe run --scenario testland --days 365 --seed 1 --hash-out`

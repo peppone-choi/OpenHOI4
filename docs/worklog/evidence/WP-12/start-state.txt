@@ -1,9 +1,0 @@
-First command observed (before edits):
-workdir E:/openhoi/.orchestrator/wt/WP-12
-Get-Location; git rev-parse HEAD; git branch --show-current; git status --short
-Path E:/openhoi/.orchestrator/wt/WP-12
-HEAD 1bfea48511c6b75efb0dd26ee6e980a90d77da04
-branch codex/wp12-localization
-status --short: no output (clean)
-
-Initial npm ci and npm run build passed. Initial npm test pretest exited 1 because cargo was absent from inherited PATH. A mistargeted npx Vitest invocation then found no tests (exit 1); neither was recorded as a requirement failure. C:/Users/user/.cargo/bin was added only to process PATH for subsequent commands. The proper npm test run failed two new REQ tests before implementation; see red-requirements.log. No environment configuration files changed.

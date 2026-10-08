@@ -1,5 +1,0 @@
-OpenHOI 문서 검사
-  D 16 · REQ 143 · OPEN 12 · AC 37 · WP 50 · DR 10 · P 12
-  마일스톤별 REQ: M0 14, M1 14, M2 48, M3 44, M4 11, M5 7, M6 5
-  사용 금지 표현 11개 · orch.sh 하위 명령 ['impl', 'selftest', 'start', 'status', 'verify', 'wait'] · 템플릿 5개
-결과: 오류 0 · 경고 0

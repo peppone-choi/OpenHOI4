@@ -13,6 +13,7 @@ import time
 import urllib.request
 import re
 from lifecycle import ctrl_c
+import economy_native
 
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0,str(ROOT / 'crates/oh_save/tools'))
@@ -104,6 +105,8 @@ def main():
             assert files(packs / 'testland') == before and sha(save) == save_before
             (out / 'result.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
             print(json.dumps({key:result[key] for key in ('head','url','server_pid','server_exit','exe_sha256','served_js_sha256','pack_hash')}))
+
+    economy_native.capture(source/'economy-v5',out/'economy-v5',args.force)
 
 if __name__ == '__main__':
     main()
