@@ -60,3 +60,11 @@ Host는 `--scenario ID`로 실제 national 입력을 선택하고 saved server�
 ## 벤치 추가 소유 인수
 
 driver/compare/test_compare의 팩 hash 계측은 초기 좁은 소유 밖에서 관측되어 부모가 보류하고 원 diff를 보존했다. CEO 구체 검토 후 추가 범위로 인수했다(ADR-1401, planning/bench-driver-additive-CEO). 원 driver bytes와 동일하지 않으며 과거 실측에 두 필드를 소급 추가하지 않는다. 새 두 실제 library는 같은 새 driver bytes/SHA를 쓰고 timer 이전/elapsed·완료 검사 이후 actual pack_hash를 출력한다. warmup prior-native hash 바인딩 및 모든 표본 before-after/양측/두 쌍 동일성과 원 DTO/canonical/hash/15%·정책을 유지한다. 기술 검토는 실측/독립 PASS가 아니다.
+
+## M2-r3 P-06 복원 불변식 (수정 전 기록)
+
+독립 P05 F-01은 a933의 costs/slots 3단계 정의에서 현재 industry level4를 v5 CLI normal/force와 서버가 수락하는 반례다. 초기 loader는 같은 level4를 거부했다. REQ-ECO-06의 단계·슬롯 계약과 REQ-SAV-02의 이어 실행 계약을 동일 권위 경계에서 검사한다. 정의/format/default/게임 규칙은 추가하지 않는다.
+
+v5의 **현재 World 건물**은 모든 주에서 known map building 및 해당 경제 building 참조, level>=0, level<=costs.len, 단계별 slots[0..level] checked 합계<=해당 주 state_slots를 만족해야 한다. 소유/통제나 현재 프로젝트 유무에 따라 검사를 생략하지 않는다. World 공통 restore의 알려진 참조/음수/정렬/주 집합 검사는 유지하고 경제 전용 stage/slot 검사를 보완한다. 명시 빈 경제는 기존 presence sentinel이고 current 경제 제약 producer가 없으므로 새 제한을 적용하지 않는다. None/v1~v4는 변경하지 않는다.
+
+독립 경계 기대: level0·정확 stage max3·정확 slotlimit는 수락, level4·음수·미등록 map building·등록됐지만 경제 정의 없는 building(0도 포함)·누적 slot 초과·누적 i64 overflow·missing state reference는 거부한다. 현재 level3과 이전 ledger level1이 함께 있는 정상 construction 완료 상태는 수락해야 한다. 소유권 상실/휴면/회복 targetconflict·보존 예약은 기존 검사 범위이며 현재 occupied slots 검사에 active/dormant project 예약을 임의로 더하지 않는다. 모든 복원 실패는 원 Simulation/RestoreContext·입력 save/pack/미생성 output을 보존한다.

@@ -34,3 +34,11 @@ Host 선택국에 묶인 명령과 실제 readonly Query::Economy를 제공한�
 ## 결과와 영향
 
 새 의존성·외부 버전·원 에셋·게임 수치를 추가하지 않았다. 수치는 명시 경제 정의이며 화면 문자열은 ko/en 현지화 키다. 원 None/v1~v4·원 테스트/골든·CI는 보존한다. 실제 적용·경계·codec·host/wire/repro·거부 증거는 WP-14 작업 로그를 따른다. 산업 producer를 포함해도 전체 REQ와 신규 경제 활성 부하 성능·후속 소비자·독립 P05/3OS/main CI가 완료된 것은 아니다.
+
+## M2-r3 P-06: 현재 건물 복원 경계 보완
+
+a933 독립 P05 F-01에서 초기 loader가 거부하는 industry level4(max3)를 v5 복원이 수락했다. 과거 ledger contribution 단계만 검사하고 현재 World의 occupied 건물/슬롯을 검사하지 않은 누락이다. 같은 v5 validate에서 모든 현재 주의 건물에 기존 slots checked 누적/참조 및 costs 단계 상한을 적용한다. 정의가 nonempty일 때만 해당 state_slots 상한과 대조한다. 슬롯 초과는 기존 SlotCap, 단계 초과는 기존 TargetConflict, 합계 overflow는 기존 Overflow로 거부한다.
+
+현재 권위와 historical daily ledger를 같게 만드는 방식은 택하지 않았다. 당일 완성 뒤 현재 level3/이전 ledger level1이 함께 존재할 수 있다. 예약/휴면 프로젝트를 현재 occupied 슬롯에 임의 합산하지 않으며 원 ownership-loss/recovery conflict 전 과정의 full v5 DTO/canonical/hash roundtrip을 추가 검사한다. None 및 명시 빈 경제에는 없는 stage/slot 규칙을 새로 부여하지 않는다. 기존 World 공통 restore의 음수/known map ref/정렬/주 집합 검사는 유지한다. 초기 입력 검사는 변경하지 않는다.
+
+공통 경계는 Simulation::from_save_v5이며 codec decode·encode의 후보 재검증·write_atomic readback·CLI resume·Host normal/force·repro start/replay가 같은 경로를 사용한다. movement/strait/trigger presence도 그 뒤 동일 경제 validate를 거친다. None/v1~v4 경로·format bytes·새 정의 default·의존성·벤치/CI 정책은 변경하지 않는다. 원 반례 bytes/pack과 새 dedicated tests/repro를 보존하고 새 source의 독립 P05·필수 CI는 부모가 인수한다.

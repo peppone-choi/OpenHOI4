@@ -704,6 +704,21 @@ mod national_tests {
         );
     }
     #[test]
+    fn req_eco_06_req_sav_02_host_rejects_original_p05_impossible_stage_even_force() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR"))
+            .join("../../tests/repro/WP-14-M2-r3-restore-stage");
+        let save = root.join("industry-level4.ohsave");
+        let bytes = std::fs::read(&save).unwrap();
+        for force in [false, true] {
+            let (_, shutdown) = watch::channel(false);
+            assert!(
+                Host::load_with_save(&root.join("packs"), shutdown, Some(&save), force).is_err(),
+                "accepted impossible current stage, force={force}"
+            );
+            assert_eq!(std::fs::read(&save).unwrap(), bytes);
+        }
+    }
+    #[test]
     fn req_sav_01_host_restores_actual_world_and_preserves_pending_arrival() {
         let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../data/packs");
         let (_, shutdown) = watch::channel(false);

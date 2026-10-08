@@ -237,6 +237,9 @@ fn slots(world: &World, definition: &Definition, state: u16) -> Result<i64, Econ
             .get(id)
             .ok_or(EconomyError::InvalidReference)?;
         let count = usize::try_from(*level).map_err(|_| EconomyError::InvalidValue)?;
+        if count > b.costs.len() {
+            return Err(EconomyError::TargetConflict);
+        }
         let costs = b.slots.get(..count).ok_or(EconomyError::TargetConflict)?;
         for amount in costs {
             occupied = occupied
@@ -413,6 +416,19 @@ impl Economy {
             || self.nations.keys().ne(d.nations.keys())
         {
             return Err(EconomyError::InvalidReference);
+        }
+        // Current occupied buildings and historical daily contributions have
+        // separate lifetimes. Do not count retained/dormant project reservations here.
+        if !d.is_empty() {
+            for state in world.inputs().states() {
+                let limit = d
+                    .state_slots
+                    .get(&state.id().0)
+                    .ok_or(EconomyError::InvalidReference)?;
+                if slots(world, d, state.id().0)? > *limit {
+                    return Err(EconomyError::SlotCap);
+                }
+            }
         }
         for (id, n) in &self.nations {
             let (_, capacity) = Self::derive(world, *id, n, tick)?;
@@ -1169,6 +1185,39 @@ mod test_fixture;
 #[cfg(test)]
 mod tests {
     use super::*;
+    fn assert_authoritative_restore(world: &World, economy: &Economy, tick: u64) {
+        let loaded = test_fixture::loaded();
+        let start = crate::Date::new(2000, 1, 1).unwrap();
+        let template = World::from_loaded(&loaded).unwrap();
+        let context = crate::save_state::RestoreContext {
+            scenario: "m1".into(),
+            start_date: start,
+            world: Some(template.clone()),
+        };
+        let mut sim = crate::Simulation::with_world(
+            "m1".into(),
+            start,
+            1,
+            crate::TimeConfig::from_defines(&loaded.pack.defines).unwrap(),
+            template,
+        )
+        .unwrap();
+        for _ in 0..tick {
+            sim.step().unwrap();
+        }
+        let mut current = world.clone();
+        current.evaluate(tick).unwrap();
+        sim.world = Some(current);
+        sim.economy = Some(economy.clone());
+        let dto = sim.export_save_v5().unwrap();
+        let restored = crate::Simulation::from_save_v5(dto.clone(), &context).unwrap();
+        assert_eq!(restored.export_save_v5().unwrap(), dto);
+        assert_eq!(
+            oh_core::canonical_bytes(&sim).unwrap(),
+            oh_core::canonical_bytes(&restored).unwrap()
+        );
+        assert_eq!(sim.state_hash().unwrap(), restored.state_hash().unwrap());
+    }
     fn transfer(world: &World, state: u16, owner: u16) -> World {
         let mut dto = world.export_save();
         dto.inputs
@@ -1205,6 +1254,7 @@ mod tests {
         world = transfer(&world, 1, 2);
         e.daily_economy(&world, 24).unwrap();
         e.daily_construction(&mut world, 24).unwrap();
+        assert_authoritative_restore(&world, &e, 24);
         assert_eq!(
             e.nation(NationId(1)).unwrap().projects[0].dormancy,
             Some(Dormancy::NoOwnership)
@@ -1240,6 +1290,7 @@ mod tests {
         e.nations.get_mut(&2).unwrap().projects[0].progress = Qty::from_num(19);
         e.daily_economy(&world, 48).unwrap();
         e.daily_construction(&mut world, 48).unwrap();
+        assert_authoritative_restore(&world, &e, 48);
         assert_eq!(world.state(StateId(1)).unwrap().buildings()["industry"], 2);
         world = transfer(&world, 1, 1);
         world = transfer(&world, 2, 1);
@@ -1257,6 +1308,7 @@ mod tests {
         .unwrap();
         e.daily_economy(&world, 72).unwrap();
         e.daily_construction(&mut world, 72).unwrap();
+        assert_authoritative_restore(&world, &e, 72);
         let n = e.nation(NationId(1)).unwrap();
         assert_eq!(n.projects.len(), 1);
         assert_eq!(n.projects[0].id, 7);
