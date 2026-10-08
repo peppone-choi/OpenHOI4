@@ -1,0 +1,109 @@
+# Reused provisional synthetic baseline; no production or training consumer.
+economy_category = "economy"
+conscription_category = "economy"
+[buildings.industry]
+name_key = "wp23-industry"
+costs = ["3", "20", "40"]
+slots = [1, 1, 1]
+daily_cap = "6"
+ic_per_level = "10"
+infrastructure_factors = [{ infrastructure = "0", factor = "1" }, { infrastructure = "1", factor = "1" }, { infrastructure = "1.125", factor = "1" }]
+[laws.civil]
+name_key = "wp23-law-civil"
+category = "economy"
+step = 0
+cost = "3"
+condition = { stability = { gte = "0.5" } }
+ic_multiplier = "1"
+conscription_ratio = "0.125"
+consumer_base = "0"
+instability_slope = "0"
+[laws.war]
+name_key = "wp23-law-war"
+category = "economy"
+step = 1
+cost = "5"
+condition = { all = [{ has_law = "civil" }, { mobilization = { gte = "0.5" } }] }
+ic_multiplier = "2"
+conscription_ratio = "0.25"
+consumer_base = "0.5"
+instability_slope = "0"
+[nations.1]
+laws = { economy = "civil" }
+political_capital = "0"
+political_capital_cap = "100"
+political_capital_daily = "3"
+stability = "0.5"
+mobilization = "0.5"
+allocation = ["0.25", "0.25", "0.25", "0.25"]
+ic_multiplier = "1"
+committed = 0
+reserved = 0
+[nations.2]
+laws = { economy = "civil" }
+political_capital = "0"
+political_capital_cap = "100"
+political_capital_daily = "3"
+stability = "0.5"
+mobilization = "0.5"
+allocation = ["0.25", "0.25", "0.25", "0.25"]
+ic_multiplier = "1"
+committed = 0
+reserved = 0
+[nations.3]
+laws = { economy = "civil" }
+political_capital = "0"
+political_capital_cap = "100"
+political_capital_daily = "3"
+stability = "0.5"
+mobilization = "0.5"
+allocation = ["0.25", "0.25", "0.25", "0.25"]
+ic_multiplier = "1"
+committed = 0
+reserved = 0
+[nations.4]
+laws = { economy = "civil" }
+political_capital = "0"
+political_capital_cap = "100"
+political_capital_daily = "3"
+stability = "0.5"
+mobilization = "0.5"
+allocation = ["0.25", "0.25", "0.25", "0.25"]
+ic_multiplier = "1"
+committed = 0
+reserved = 0
+[nations.5]
+laws = { economy = "civil" }
+political_capital = "0"
+political_capital_cap = "100"
+political_capital_daily = "3"
+stability = "0.5"
+mobilization = "0.5"
+allocation = ["0.25", "0.25", "0.25", "0.25"]
+ic_multiplier = "1"
+committed = 0
+reserved = 0
+[nations.6]
+laws = { economy = "civil" }
+political_capital = "0"
+political_capital_cap = "100"
+political_capital_daily = "3"
+stability = "0.5"
+mobilization = "0.5"
+allocation = ["0.25", "0.25", "0.25", "0.25"]
+ic_multiplier = "1"
+committed = 0
+reserved = 0
+[state_slots]
+1 = 4
+2 = 4
+3 = 4
+4 = 4
+5 = 4
+6 = 4
+7 = 4
+8 = 4
+9 = 4
+10 = 4
+11 = 4
+12 = 4
