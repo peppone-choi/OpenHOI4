@@ -1,0 +1,23 @@
+{
+  "product_source": "48067b702f8434decf37ad294d34ce5b0b557976",
+  "archive": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06-source48067b7.zip",
+  "bytes": 25489627,
+  "sha256": "247f8dc9a289153668ac40cc9be424be52cf08730c060cdeba26dc4127339dce",
+  "physical_files": 2886,
+  "zip_members": 2887,
+  "physical_member_crc_sha_mismatches": 0,
+  "raw_root": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06",
+  "mapping": "MEMBER_PHYSICAL.json",
+  "originals_preserved": true,
+  "actual_platform": "Windows",
+  "native_linux_gate": false,
+  "actual_three_os": false,
+  "formal_p05": "pending parent",
+  "excluded": [
+    {
+      "path": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06\\repro\\native-bu7tjmup\\case-mmrvnqc2\\alias",
+      "reason": "attack reparse fixture; never followed",
+      "link_target": "\\\\?\\E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06\\repro\\native-bu7tjmup\\case-mmrvnqc2\\real"
+    }
+  ]
+}
