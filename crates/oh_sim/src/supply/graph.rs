@@ -7,13 +7,13 @@ pub(super) fn permitted(kind: LandKind) -> bool {
         LandKind::Normal | LandKind::RiverSmall | LandKind::RiverLarge
     )
 }
-pub(super) fn controlled(input: &Input, id: ProvinceId) -> bool {
+pub(super) fn controlled(input: &Network, id: ProvinceId) -> bool {
     input
         .nodes
         .get(&id)
-        .is_some_and(|n| n.land && n.controller == input.nation)
+        .is_some_and(|n| n.land && n.controller == Some(input.nation))
 }
-pub(super) fn validate(input: &Input) -> Result<(), Error> {
+pub(super) fn validate(input: &Network) -> Result<(), Error> {
     if input.decay < Fx::ZERO {
         return Err(Error::InvalidValue);
     }
@@ -24,7 +24,7 @@ pub(super) fn validate(input: &Input) -> Result<(), Error> {
         if a >= b || !input.nodes.contains_key(&a) || !input.nodes.contains_key(&b) {
             return Err(Error::InvalidReference);
         }
-        if edge.cost <= Fx::ZERO {
+        if edge.cost <= Fx::ZERO || edge.reverse_cost <= Fx::ZERO {
             return Err(Error::InvalidValue);
         }
     }
@@ -35,7 +35,7 @@ pub(super) fn validate(input: &Input) -> Result<(), Error> {
         if !input.nodes[&key.0].land || !input.nodes[&key.1].land {
             return Err(Error::InvalidReference);
         }
-        if rail.cost <= Fx::ZERO || rail.capacity < Qty::ZERO {
+        if rail.cost <= Fx::ZERO || rail.reverse_cost <= Fx::ZERO || rail.capacity < Qty::ZERO {
             return Err(Error::InvalidValue);
         }
     }
@@ -54,25 +54,13 @@ pub(super) fn validate(input: &Input) -> Result<(), Error> {
             return Err(Error::InvalidValue);
         }
     }
-    let mut divisions = BTreeSet::new();
-    for d in &input.demands {
-        if !divisions.insert(d.division) {
-            return Err(Error::Duplicate);
-        }
-        if !input.nodes.get(&d.province).is_some_and(|n| n.land) {
-            return Err(Error::InvalidReference);
-        }
-        if d.amount < Qty::ZERO {
-            return Err(Error::InvalidValue);
-        }
-    }
     Ok(())
 }
 
 /// Positive edge costs make lexicographic path ties finite (no zero-cost cycles).
 /// Costs are explicit, already-authoritative reference travel-hours inputs.
 fn shortest(
-    input: &Input,
+    input: &Network,
     start: ProvinceId,
     rail_min: Option<Qty>,
 ) -> Result<BTreeMap<ProvinceId, (Fx, Vec<ProvinceId>)>, Error> {
@@ -110,9 +98,17 @@ fn shortest(
                 if rail.capacity < min || rail.capacity == Qty::ZERO {
                     continue;
                 }
-                rail.cost
+                if id == a {
+                    rail.cost
+                } else {
+                    rail.reverse_cost
+                }
             } else {
-                land.cost
+                if id == a {
+                    land.cost
+                } else {
+                    land.reverse_cost
+                }
             };
             let total = cost.checked_add(edge_cost).ok_or(Error::Overflow)?;
             let mut route = path.clone();
@@ -129,7 +125,7 @@ fn shortest(
 /// Widest bottleneck, then shortest cost, then lexicographic full path.
 /// Two stages avoid discarding a shorter prefix when a later edge lowers its bottleneck.
 pub(super) fn feeder(
-    input: &Input,
+    input: &Network,
     destination: ProvinceId,
 ) -> Result<Option<Vec<ProvinceId>>, Error> {
     if !controlled(input, input.capital) || !controlled(input, destination) {
@@ -173,7 +169,7 @@ pub(super) fn feeder(
         .map(|(_, path)| path))
 }
 pub(super) fn distances(
-    input: &Input,
+    input: &Network,
     start: ProvinceId,
 ) -> Result<BTreeMap<ProvinceId, Fx>, Error> {
     Ok(shortest(input, start, None)?

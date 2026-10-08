@@ -10,24 +10,26 @@ fn fx(n: i64, d: i64) -> Fx {
 }
 fn base() -> Input {
     Input {
-        nation: NationId(0),
-        capital: p(0),
-        nodes: (0..8)
-            .map(|i| {
-                (
-                    p(i),
-                    Node {
-                        controller: NationId(0),
-                        land: true,
-                    },
-                )
-            })
-            .collect(),
-        land: BTreeMap::new(),
-        rails: BTreeMap::new(),
-        sources: vec![],
+        network: Network {
+            nation: NationId(0),
+            capital: p(0),
+            nodes: (0..8)
+                .map(|i| {
+                    (
+                        p(i),
+                        Node {
+                            controller: Some(NationId(0)),
+                            land: true,
+                        },
+                    )
+                })
+                .collect(),
+            land: BTreeMap::new(),
+            rails: BTreeMap::new(),
+            sources: vec![],
+            decay: Fx::ZERO,
+        },
         demands: vec![],
-        decay: Fx::ZERO,
     }
 }
 fn land(x: &mut Input, a: u16, b: u16, c: i64) {
@@ -35,6 +37,7 @@ fn land(x: &mut Input, a: u16, b: u16, c: i64) {
         (p(a.min(b)), p(a.max(b))),
         LandEdge {
             cost: Fx::from_num(c),
+            reverse_cost: Fx::from_num(c),
             kind: LandKind::Normal,
         },
     );
@@ -45,6 +48,7 @@ fn rail(x: &mut Input, a: u16, b: u16, c: i64, cap: i64) {
         (p(a.min(b)), p(a.max(b))),
         Rail {
             cost: Fx::from_num(c),
+            reverse_cost: Fx::from_num(c),
             capacity: q(cap),
         },
     );
@@ -121,8 +125,8 @@ fn bottleneck_before_distance_and_cut() {
     let y = calculate(&x).unwrap();
     assert_eq!(y.sources[&SourceId(3)].feeder, Some(vec![p(0), p(2), p(3)]));
     assert_eq!(y.provinces[&p(3)].delivered, q(8));
-    x.nodes.get_mut(&p(1)).unwrap().controller = NationId(1);
-    x.nodes.get_mut(&p(2)).unwrap().controller = NationId(1);
+    x.nodes.get_mut(&p(1)).unwrap().controller = Some(NationId(1));
+    x.nodes.get_mut(&p(2)).unwrap().controller = Some(NationId(1));
     let z = calculate(&x).unwrap();
     assert_eq!(z.provinces[&p(3)].ratio, Fx::ZERO);
     assert_eq!(z.sources[&SourceId(3)].feeder, None);
@@ -312,7 +316,7 @@ fn no_capacity_out_of_range_and_lost_capital_control() {
         Reason::NoCapacity
     );
     x.sources[0].capacity = q(10);
-    x.nodes.get_mut(&p(0)).unwrap().controller = NationId(1);
+    x.nodes.get_mut(&p(0)).unwrap().controller = Some(NationId(1));
     assert_eq!(
         calculate(&x).unwrap().provinces[&p(1)].reason,
         Reason::Isolated
@@ -324,7 +328,8 @@ fn references_duplicates_nonpositive_costs_and_negative_values_rejected() {
     source(&mut x, 0, 0, 10);
     demand(&mut x, 0, 1, 1);
     let mut bad = x.clone();
-    bad.sources.push(bad.sources[0].clone());
+    let duplicate_source = bad.sources[0].clone();
+    bad.sources.push(duplicate_source);
     assert_eq!(calculate(&bad), Err(Error::Duplicate));
     let mut bad = x.clone();
     bad.demands.push(bad.demands[0].clone());
@@ -346,6 +351,7 @@ fn references_duplicates_nonpositive_costs_and_negative_values_rejected() {
         (p(0), p(1)),
         Rail {
             cost: Fx::ONE,
+            reverse_cost: Fx::ONE,
             capacity: q(1),
         },
     );
@@ -547,4 +553,58 @@ fn qty_above_fx_integer_range_is_not_narrowed() {
     assert_eq!(y.provinces[&p(0)].ratio, Fx::ONE);
     assert_eq!(y.sources[&SourceId(0)].dispatch, Qty::from_bits(i64::MAX));
     conserved(&x, &y);
+}
+
+#[test]
+fn directed_feeder_and_distance_use_each_orientation_with_shared_capacity() {
+    let mut x = base();
+    for (a, b) in [(0, 1), (1, 3), (0, 2), (2, 3)] {
+        rail(&mut x, a, b, 1, 8);
+    }
+    for key in [(p(0), p(1)), (p(1), p(3))] {
+        let r = x.rails.get_mut(&key).unwrap();
+        r.reverse_cost = Fx::from_num(9);
+        let e = x.land.get_mut(&key).unwrap();
+        e.reverse_cost = Fx::from_num(9);
+    }
+    for key in [(p(0), p(2)), (p(2), p(3))] {
+        let r = x.rails.get_mut(&key).unwrap();
+        r.cost = Fx::from_num(9);
+        let e = x.land.get_mut(&key).unwrap();
+        e.cost = Fx::from_num(9);
+    }
+    source(&mut x, 3, 3, 10);
+    assert_eq!(
+        x.network.feeders().unwrap()[&SourceId(3)],
+        Some(vec![p(0), p(1), p(3)])
+    );
+    assert_eq!(
+        graph::distances(&x.network, p(0)).unwrap()[&p(3)],
+        Fx::from_num(2)
+    );
+    assert_eq!(
+        graph::distances(&x.network, p(3)).unwrap()[&p(0)],
+        Fx::from_num(2)
+    );
+    x.nodes.get_mut(&p(1)).unwrap().controller = None;
+    assert_eq!(
+        x.network.feeders().unwrap()[&SourceId(3)],
+        Some(vec![p(0), p(2), p(3)])
+    );
+    x.nodes.get_mut(&p(2)).unwrap().controller = Some(NationId(1));
+    assert_eq!(x.network.feeders().unwrap()[&SourceId(3)], None);
+    // None has not become real NationId0, and capacities remain undirected canonical keys.
+    assert_eq!(x.rails.len(), 4);
+    assert_eq!(x.nodes[&p(0)].controller, Some(NationId(0)));
+}
+#[test]
+fn nonpositive_reverse_cost_is_rejected() {
+    let mut x = base();
+    land(&mut x, 0, 1, 1);
+    x.land.get_mut(&(p(0), p(1))).unwrap().reverse_cost = Fx::ZERO;
+    assert_eq!(calculate(&x), Err(Error::InvalidValue));
+    let mut x = base();
+    rail(&mut x, 0, 1, 1, 1);
+    x.rails.get_mut(&(p(0), p(1))).unwrap().reverse_cost = Fx::from_bits(-1);
+    assert_eq!(calculate(&x), Err(Error::InvalidValue));
 }

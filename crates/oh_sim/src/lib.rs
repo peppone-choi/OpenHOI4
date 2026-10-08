@@ -14,6 +14,7 @@ pub mod movement;
 pub mod production;
 pub mod production_save;
 pub mod save_state;
+pub mod supply;
 mod time;
 pub mod trigger;
 pub mod trigger_save;
