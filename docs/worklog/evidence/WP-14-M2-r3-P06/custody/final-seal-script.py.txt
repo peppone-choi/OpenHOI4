@@ -1,0 +1,47 @@
+"""One-off P06 source480 evidence sealing, preserving physical originals."""
+from pathlib import Path
+import hashlib,json,os,stat,subprocess,zipfile,zlib
+root=Path.cwd();e=root/'target/evidence/WP-14-M2-r3-P06';archive=root/'target/evidence/WP-14-M2-r3-P06-source48067b7.zip'
+def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
+head=subprocess.check_output(['git','--no-optional-locks','rev-parse','HEAD'],text=True).strip()
+assert head=='48067b702f8434decf37ad294d34ce5b0b557976' and not archive.exists()
+assert not subprocess.check_output(['git','--no-optional-locks','status','--porcelain']).strip()
+commands=[]
+for path in sorted((e/'commands').glob('*/result.json')):
+    value=json.loads(path.read_text());value['label']=path.parent.name;commands.append(value)
+assert all(row['exit']==(1 if row['label'] in ('client-tests','initial-level4-still-rejected','atomic-existing-normal','atomic-existing-force') else 0) for row in commands)
+assert json.loads((e/'native-source/result.json').read_text())['checks']==[True]*4
+assert json.loads((e/'native-red/result.json').read_text())['checks']==[False]*4
+(e/'command-matrix.json').write_text(json.dumps(dict(product_source=head,commands=commands,first_client_timeout_preserved=True,one_same_command_diagnostic_retry_only=True,formal_independent_verdict=None,remote_linux_and_3os='pending parent'),indent=2),encoding='utf-8')
+selected={};excluded=[]
+for directory,names,files in os.walk(e,followlinks=False):
+    base=Path(directory)
+    for name in list(names):
+        path=base/name;info=path.lstat()
+        if info.st_file_attributes & stat.FILE_ATTRIBUTE_REPARSE_POINT:
+            names.remove(name);excluded.append(dict(path=str(path),reason='attack reparse fixture; never followed',link_target=os.readlink(path)))
+        elif name=='__pycache__':names.remove(name)
+    for name in files:
+        path=base/name;info=path.lstat()
+        assert stat.S_ISREG(info.st_mode) and not info.st_file_attributes & stat.FILE_ATTRIBUTE_REPARSE_POINT
+        selected[path.relative_to(e).as_posix()]=path
+for name in ('oh_cli.exe','oh_server.exe','examples/economy_fixture.exe','examples/save_fixture.exe','examples/trigger_fixture.exe'):
+    selected['native-binaries/'+name]=root/'target/debug'/name
+for name in ('cli-normal','cli-force'):
+    receipt=json.loads((e/'native-final'/f'{name}.receipt.json').read_text());assert receipt['exit']==1 and not receipt['output_exists'] and receipt['exe_sha256']==sha(e/'native-binaries/oh_cli.exe')==sha(root/'target/debug/oh_cli.exe')
+for name in ('server-normal','server-force'):
+    receipt=json.loads((e/'native-final'/f'{name}.receipt.json').read_text());assert receipt['native_exit']==1 and receipt['http_status'] is None and not receipt['ctrl_c_sent'] and receipt['exe_sha256']==sha(e/'native-binaries/oh_server.exe')==sha(root/'target/debug/oh_server.exe')
+mapping=[]
+with zipfile.ZipFile(archive,'x',zipfile.ZIP_DEFLATED,compresslevel=6) as bundle:
+    for name,path in sorted(selected.items()):
+        data=path.read_bytes();row=dict(member=name,physical=str(path.resolve()),bytes=len(data),sha256=hashlib.sha256(data).hexdigest(),crc32=f'{zlib.crc32(data)&0xffffffff:08x}')
+        mapping.append(row);bundle.write(path,name)
+    bundle.writestr('MEMBER_PHYSICAL.json',json.dumps(dict(source=head,actual_platform='Windows',items=mapping,excluded=excluded),indent=2))
+with zipfile.ZipFile(archive) as bundle:
+    assert bundle.testzip() is None and len(bundle.infolist())==len(mapping)+1
+    for row in mapping:
+        data=bundle.read(row['member']);physical=Path(row['physical']).read_bytes()
+        assert data==physical and len(data)==row['bytes'] and hashlib.sha256(data).hexdigest()==row['sha256']
+        assert f"{bundle.getinfo(row['member']).CRC:08x}"==row['crc32']
+result=dict(product_source=head,archive=str(archive),bytes=archive.stat().st_size,sha256=sha(archive),physical_files=len(mapping),zip_members=len(mapping)+1,physical_member_crc_sha_mismatches=0,raw_root=str(e),mapping='MEMBER_PHYSICAL.json',originals_preserved=True,actual_platform='Windows',native_linux_gate=False,actual_three_os=False,formal_p05='pending parent',excluded=excluded)
+(root/'target/evidence/WP-14-M2-r3-P06-seal.json').write_text(json.dumps(result,indent=2),encoding='utf-8');print(json.dumps(result))

@@ -1,0 +1,64 @@
+{
+  "product_source": "48067b702f8434decf37ad294d34ce5b0b557976",
+  "earlier_cli_receipt_sha256": "38dae3b35e595632c5d02146a46940b752bdc75b1171d91b37963d7df802f87f",
+  "final_cli_physical_sha256": "471f4e3c28b3eb43402f9bb2a478e0f5faef71fd345166250a3d037c6d070fa8",
+  "earlier_cli_physical_bytes_preserved": false,
+  "initial_script": "reconstructed from retained exact tool patch; no original execution-time script hash/snapshot claim",
+  "snapshot_before_final_native_run": true,
+  "snapshot_sha_matches_final_receipts": true,
+  "read_only_attribute": "applied after final native execution and ZIP sealing; no retroactive attribute claim",
+  "original_p03_zip_sha_exact": true,
+  "p06_zip_sha_exact": true,
+  "files": [
+    {
+      "path": "current-capture-command.json",
+      "bytes": 789,
+      "sha256": "bd1f960b73417403b3c429df28c1fcd4886dd7d1862aa3df94fdc5e4bc974c88"
+    },
+    {
+      "path": "earlier-cli-receipt.json",
+      "bytes": 896,
+      "sha256": "8be3b8f439ac5be9eaddd12c89eb93535730816d4bb47646012683d0a8cdaee0"
+    },
+    {
+      "path": "final-cli-receipt.json",
+      "bytes": 893,
+      "sha256": "7c97a731a5cb98d59060b184cdee1c44e06da7f92f1a095a83a0eae17700543e"
+    },
+    {
+      "path": "final-seal-script.py",
+      "bytes": 4312,
+      "sha256": "d025fa1db8cc164be3416dccc6b63c3a0f8405173c995a2acdfa63d4c0e92ce3"
+    },
+    {
+      "path": "final-server-receipt.json",
+      "bytes": 903,
+      "sha256": "1ea844d932041a866b83c32a19c4a0285b8020b8d0b52558482527b7ce334d04"
+    },
+    {
+      "path": "initial-failure.log",
+      "bytes": 568,
+      "sha256": "e2c4e3952362b1ff2583f21228e1fdf4475e46f0ef41688e4fa1c4fb5af8df77"
+    },
+    {
+      "path": "initial-seal-script.reconstructed.py",
+      "bytes": 4237,
+      "sha256": "f66251024e04480384e049dde4a5e7fef37bf73755d3b23c501e0730bda6eebf"
+    },
+    {
+      "path": "intermediate-current-cli-build.json",
+      "bytes": 239,
+      "sha256": "43fff35fba092badc4123e33b2f3c01f2d44425aa9665b0ff98ae216f4d27222"
+    },
+    {
+      "path": "intermediate-workspace-build.json",
+      "bytes": 655,
+      "sha256": "eefc7ef579d2bae7ff956d6199e98c093ddcd843e5f120aac6dde87a88114a18"
+    },
+    {
+      "path": "native-binary-snapshot.json",
+      "bytes": 1785,
+      "sha256": "e9f5a0a5a11b64cb6fe4a3158496666bd25d5ac91c590d2bf9d1893fbb7631ec"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\debug\\oh_cli.exe",
+    "resume",
+    "--load",
+    "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06\\native-final\\industry-level4.ohsave",
+    "--pack",
+    "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06\\native-final\\packs\\testland",
+    "--ticks",
+    "0",
+    "--hash-out",
+    "--save-out",
+    "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06\\native-final\\normal-must-not-exist.ohsave"
+  ],
+  "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2",
+  "pid": 16104,
+  "exit": 1,
+  "exe_sha256": "471f4e3c28b3eb43402f9bb2a478e0f5faef71fd345166250a3d037c6d070fa8",
+  "input_sha256": "c67f5cefbba865be78643b920536678f789b8375b418b9034ddd2cd2b4db1e53",
+  "output_exists": false,
+  "expected_exit": 1
+}

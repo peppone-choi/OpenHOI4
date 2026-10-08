@@ -1,0 +1,27 @@
+{
+  "argv": [
+    "python",
+    "-X",
+    "utf8",
+    "crates/oh_save/tools/check_save_current.py",
+    "capture",
+    "--out",
+    "target/evidence/WP-14-M2-r3-P06/current"
+  ],
+  "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2",
+  "pid": 36920,
+  "exit": 0,
+  "head": "48067b702f8434decf37ad294d34ce5b0b557976",
+  "dirty": false,
+  "exe": "C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+  "exe_sha256": "bf1b03022cadfc18049a7f0ecf1f3134c7676fcb6ff6c6941ae7f77e21285c73",
+  "elapsed_seconds": 4.487281322479248,
+  "environment": {
+    "TRIGGER_TEST_CAPTURE": null,
+    "TRIGGER_SCRATCH_ROOT": null,
+    "TRIGGER_PUBLIC_EVIDENCE": null,
+    "OH_TEST_PORT": null,
+    "OH_E2E_EVIDENCE": null,
+    "OH_MALFORMED_EVIDENCE": null
+  }
+}

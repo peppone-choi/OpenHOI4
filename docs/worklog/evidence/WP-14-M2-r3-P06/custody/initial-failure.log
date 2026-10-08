@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "E:\openhoi\.orchestrator\wt\WP-14-M2-r2\target\evidence\WP-14-M2-r3-P06\seal.py", line 31, in <module>
+    receipt=json.loads((e/'native-source'/f'{name}.receipt.json').read_text());assert receipt['exit']==1 and not receipt['output_exists'] and receipt['exe_sha256']==sha(root/'target/debug/oh_cli.exe')
+                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

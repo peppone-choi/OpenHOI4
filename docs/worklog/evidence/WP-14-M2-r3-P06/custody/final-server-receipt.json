@@ -1,0 +1,26 @@
+{
+  "name": "server-normal",
+  "exe": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\debug\\oh_server.exe",
+  "exe_sha256": "6c41fc845d9d8e67088a55c56f8a9cdca4da381f4ae9eb9a65c28d08c5d4a9df",
+  "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2",
+  "args": [
+    "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\debug\\oh_server.exe",
+    "--port",
+    "10968",
+    "--pack-root",
+    "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06\\native-final\\packs",
+    "--load-save",
+    "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2\\target\\evidence\\WP-14-M2-r3-P06\\native-final\\industry-level4.ohsave"
+  ],
+  "pid": 8660,
+  "port": 10968,
+  "http_status": null,
+  "ws_status": null,
+  "ws_close": false,
+  "ctrl_c_sent": false,
+  "native_exit": 1,
+  "expect_online": false,
+  "expected_cause": null,
+  "passed": true,
+  "error": null
+}

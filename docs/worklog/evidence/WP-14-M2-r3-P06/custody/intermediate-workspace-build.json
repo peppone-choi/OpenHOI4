@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "cargo",
+    "build",
+    "--workspace",
+    "--locked"
+  ],
+  "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2",
+  "pid": 11568,
+  "exit": 0,
+  "head": "48067b702f8434decf37ad294d34ce5b0b557976",
+  "dirty": false,
+  "exe": "C:\\Users\\user\\.cargo\\bin\\rustup.exe",
+  "exe_sha256": "6f4bef66261261fcb43131be8720bab817d403a09edec7455c371974b90bdb7e",
+  "elapsed_seconds": 2.9872677326202393,
+  "environment": {
+    "TRIGGER_TEST_CAPTURE": null,
+    "TRIGGER_SCRATCH_ROOT": null,
+    "TRIGGER_PUBLIC_EVIDENCE": null,
+    "OH_TEST_PORT": null,
+    "OH_E2E_EVIDENCE": null,
+    "OH_MALFORMED_EVIDENCE": null
+  }
+}

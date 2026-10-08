@@ -1,0 +1,13 @@
+{
+  "command": [
+    "cargo",
+    "build",
+    "-p",
+    "oh_cli",
+    "--locked"
+  ],
+  "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2",
+  "pid": 9376,
+  "exit": 0,
+  "head": "48067b702f8434decf37ad294d34ce5b0b557976"
+}
