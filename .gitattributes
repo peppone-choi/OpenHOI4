@@ -5,3 +5,5 @@
 *.woff2 binary
 *.zip binary
 *.ohsave binary
+tests/repro/WP-14-M2-r3-restore-stage/packs/testland/common/economy/independent.toml -text
+tests/repro/WP-14-M2-r3-restore-stage/packs/testland/scenarios/m1/scenario.toml -text

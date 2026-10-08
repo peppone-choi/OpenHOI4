@@ -711,11 +711,39 @@ mod national_tests {
         let bytes = std::fs::read(&save).unwrap();
         for force in [false, true] {
             let (_, shutdown) = watch::channel(false);
-            assert!(
-                Host::load_with_save(&root.join("packs"), shutdown, Some(&save), force).is_err(),
-                "accepted impossible current stage, force={force}"
-            );
+            let error =
+                match Host::load_with_save(&root.join("packs"), shutdown, Some(&save), force) {
+                    Err(error) => error,
+                    Ok(_) => panic!("accepted impossible current stage"),
+                };
+            assert_eq!(error, "economy:TargetConflict");
             assert_eq!(std::fs::read(&save).unwrap(), bytes);
+        }
+    }
+    #[test]
+    fn host_target_minimum_is_semantic_rejection_with_valid_target_control() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR"))
+            .join("../../tests/repro/WP-14-M2-r3-target-range");
+        for force in [false, true] {
+            let (_, shutdown) = watch::channel(false);
+            Host::load_with_save(
+                &root.join("packs"),
+                shutdown,
+                Some(&root.join("control-valid-target2.ohsave")),
+                force,
+            )
+            .unwrap();
+            let (_, shutdown) = watch::channel(false);
+            let error = match Host::load_with_save(
+                &root.join("packs"),
+                shutdown,
+                Some(&root.join("project-target-min.ohsave")),
+                force,
+            ) {
+                Err(error) => error,
+                Ok(_) => panic!("accepted MIN target"),
+            };
+            assert_eq!(error, "economy:InvalidValue");
         }
     }
     #[test]

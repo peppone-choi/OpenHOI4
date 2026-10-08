@@ -68,3 +68,9 @@ driver/compare/test_compare의 팩 hash 계측은 초기 좁은 소유 밖에서
 v5의 **현재 World 건물**은 모든 주에서 known map building 및 해당 경제 building 참조, level>=0, level<=costs.len, 단계별 slots[0..level] checked 합계<=해당 주 state_slots를 만족해야 한다. 소유/통제나 현재 프로젝트 유무에 따라 검사를 생략하지 않는다. World 공통 restore의 알려진 참조/음수/정렬/주 집합 검사는 유지하고 경제 전용 stage/slot 검사를 보완한다. 명시 빈 경제는 기존 presence sentinel이고 current 경제 제약 producer가 없으므로 새 제한을 적용하지 않는다. None/v1~v4는 변경하지 않는다.
 
 독립 경계 기대: level0·정확 stage max3·정확 slotlimit는 수락, level4·음수·미등록 map building·등록됐지만 경제 정의 없는 building(0도 포함)·누적 slot 초과·누적 i64 overflow·missing state reference는 거부한다. 현재 level3과 이전 ledger level1이 함께 있는 정상 construction 완료 상태는 수락해야 한다. 소유권 상실/휴면/회복 targetconflict·보존 예약은 기존 검사 범위이며 현재 occupied slots 검사에 active/dormant project 예약을 임의로 더하지 않는다. 모든 복원 실패는 원 Simulation/RestoreContext·입력 save/pack/미생성 output을 보존한다.
+
+## M2-r3 P-06-2 수정 전 계약
+
+원 P05-2는 target=i64::MIN에서 unchecked target-1의 실제 native101 panic을 발견했다. 제품 FAIL과 protocol.ts mtime cache 때문에 바뀐 raw-index INVALID를 구분한다. 원 검증 WT/before/index를 수정하지 않는다. 기존 양수·정의 내 stage/range만 적용하여 project restore·historical construction ledger·예약/건설의 다섯 산술 위치를 checked 변환으로 명시 오류 반환한다. 0/-1/MIN/MAX와 유효1/정의최대, ledger변조·원자성·휴면/회복 충돌·retained reservation을 검사하며 target를현재+1로 정규화하지 않는다.
+
+F01 원 팩22파일5681B는 MIN 원 팩22파일5617B와 다르다. 두 TOML의 CRLF 총64B 차이이며 서로의 header/packhash로 대신하지 않는다. 각자 원 input/context/manifest를 보존한다. CEO 구체 소유 예외로 기존 .gitattributes 103B prefix를 그대로 두고 F01의 literal 두 TOML만 -text를 추가한다. 원458B save/header/expected hash는 변경하지 않는다. 새 Gitblob 및 별도 ignored git archive의 전체22files/path/길이/SHA/identity를 확인한 뒤 exact semantic cause를 단언한다. binary pack ZIP도 고려했으나 현재 fixture 경로를 사용하는 Rust/Host 회귀를 보존하면서 두 경로만 바인딩하는 명시 인수안을 택한다. 다른 pattern/config/전역 renormalize/원자료·production/frozen 수정은 없다.

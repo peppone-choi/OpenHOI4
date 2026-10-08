@@ -226,6 +226,16 @@ fn units(q: Qty, count: i64) -> Result<Qty, EconomyError> {
         i64::try_from(raw).map_err(|_| EconomyError::Overflow)?,
     ))
 }
+fn target_stage(target: i64, building: &oh_data::economy::Building) -> Result<usize, EconomyError> {
+    let stage = target
+        .checked_sub(1)
+        .and_then(|value| usize::try_from(value).ok())
+        .ok_or(EconomyError::InvalidValue)?;
+    if stage >= building.costs.len() || stage >= building.slots.len() {
+        return Err(EconomyError::InvalidValue);
+    }
+    Ok(stage)
+}
 fn slots(world: &World, definition: &Definition, state: u16) -> Result<i64, EconomyError> {
     let s = world
         .state(StateId(state))
@@ -442,8 +452,7 @@ impl Economy {
                     .buildings
                     .get(&p.building)
                     .ok_or(EconomyError::InvalidReference)?;
-                let stage =
-                    usize::try_from(p.target - 1).map_err(|_| EconomyError::InvalidValue)?;
+                let stage = target_stage(p.target, b)?;
                 let cost = qty(b.costs.get(stage).ok_or(EconomyError::InvalidReference)?)?;
                 if world.state(StateId(p.state)).is_none()
                     || p.progress < Qty::ZERO
@@ -585,8 +594,7 @@ impl Economy {
                     .buildings
                     .get(&e.building)
                     .ok_or(EconomyError::InvalidReference)?;
-                let stage =
-                    usize::try_from(e.target - 1).map_err(|_| EconomyError::InvalidValue)?;
+                let stage = target_stage(e.target, b)?;
                 if world.state(StateId(e.state)).is_none()
                     || world.nation(NationId(e.owner)).is_none()
                     || e.cost != qty(b.costs.get(stage).ok_or(EconomyError::InvalidReference)?)?
@@ -892,8 +900,7 @@ impl Economy {
                         .buildings
                         .get(&p.building)
                         .ok_or(EconomyError::InvalidReference)?;
-                    let i =
-                        usize::try_from(p.target - 1).map_err(|_| EconomyError::InvalidValue)?;
+                    let i = target_stage(p.target, b)?;
                     occupied = occupied
                         .checked_add(*b.slots.get(i).ok_or(EconomyError::InvalidReference)?)
                         .ok_or(EconomyError::Overflow)?;
@@ -1052,8 +1059,7 @@ impl Economy {
                     .get(&p.building)
                     .ok_or(EconomyError::InvalidReference)?;
                 let level = *s.buildings().get(&p.building).unwrap_or(&0);
-                let stage =
-                    usize::try_from(p.target - 1).map_err(|_| EconomyError::InvalidValue)?;
+                let stage = target_stage(p.target, b)?;
                 let cost = qty(b.costs.get(stage).ok_or(EconomyError::InvalidReference)?)?;
                 let mut reason = if s.owner().0 != *id {
                     Some(Dormancy::NoOwnership)
@@ -1081,8 +1087,7 @@ impl Economy {
                             .buildings
                             .get(&other.building)
                             .ok_or(EconomyError::InvalidReference)?;
-                        let stage = usize::try_from(other.target - 1)
-                            .map_err(|_| EconomyError::InvalidValue)?;
+                        let stage = target_stage(other.target, b)?;
                         occupied = occupied
                             .checked_add(*b.slots.get(stage).ok_or(EconomyError::InvalidReference)?)
                             .ok_or(EconomyError::Overflow)?;
@@ -1185,6 +1190,120 @@ mod test_fixture;
 #[cfg(test)]
 mod tests {
     use super::*;
+    fn target_candidate(
+        target: i64,
+        historical: bool,
+    ) -> (
+        crate::economy_save::SimulationSaveV5,
+        crate::save_state::RestoreContext,
+    ) {
+        let l = test_fixture::loaded();
+        let world = World::from_loaded(&l).unwrap();
+        let date = crate::Date::new(2000, 1, 1).unwrap();
+        let mut sim = crate::Simulation::with_world(
+            "m1".into(),
+            date,
+            1000,
+            crate::TimeConfig::from_defines(&l.pack.defines).unwrap(),
+            world.clone(),
+        )
+        .unwrap();
+        sim.enqueue(
+            0,
+            NationId(1),
+            1,
+            crate::Command::Economy(Action::Construct {
+                project: 91,
+                state: 1,
+                building: "industry".into(),
+            }),
+        )
+        .unwrap();
+        for _ in 0..24 {
+            sim.step().unwrap();
+        }
+        let mut dto = sim.export_save_v5().unwrap();
+        let nation = dto.economy.nations.get_mut(&1).unwrap();
+        if historical {
+            nation.construction.entries[0].target = target;
+        } else {
+            nation.projects[0].target = target;
+        }
+        (
+            dto,
+            crate::save_state::RestoreContext {
+                scenario: "m1".into(),
+                start_date: date,
+                world: Some(world),
+            },
+        )
+    }
+    macro_rules! invalid_target {
+        ($name:ident,$value:expr,$historical:expr) => {
+            #[test]
+            fn $name() {
+                let (dto, context) = target_candidate($value, $historical);
+                let before = oh_core::canonical_bytes(context.world.as_ref().unwrap()).unwrap();
+                let error = crate::Simulation::from_save_v5(dto, &context)
+                    .err()
+                    .expect("accepted invalid target");
+                assert_eq!(error, "economy:InvalidValue");
+                assert_eq!(
+                    oh_core::canonical_bytes(context.world.as_ref().unwrap()).unwrap(),
+                    before
+                );
+            }
+        };
+    }
+    invalid_target!(project_target_zero, 0, false);
+    invalid_target!(project_target_negative, -1, false);
+    invalid_target!(project_target_minimum, i64::MIN, false);
+    invalid_target!(project_target_maximum, i64::MAX, false);
+    invalid_target!(ledger_target_zero, 0, true);
+    invalid_target!(ledger_target_negative, -1, true);
+    invalid_target!(ledger_target_minimum, i64::MIN, true);
+    invalid_target!(ledger_target_maximum, i64::MAX, true);
+    #[test]
+    fn valid_target_one_and_maximum_are_not_normalized_to_current_plus_one() {
+        for target in [1, 3] {
+            let (dto, context) = target_candidate(target, false);
+            let restored = crate::Simulation::from_save_v5(dto.clone(), &context).unwrap();
+            assert_eq!(restored.export_save_v5().unwrap(), dto);
+            assert_eq!(
+                restored
+                    .economy()
+                    .unwrap()
+                    .nation(NationId(1))
+                    .unwrap()
+                    .projects()[0]
+                    .target,
+                target
+            );
+        }
+    }
+    #[test]
+    fn historical_valid_first_and_last_stage_keep_their_own_cost_snapshot() {
+        for (target, index) in [(1, 0), (3, 2)] {
+            let (mut dto, context) = target_candidate(target, true);
+            let definition = &context
+                .world
+                .as_ref()
+                .unwrap()
+                .defs()
+                .economy()
+                .unwrap()
+                .buildings["industry"];
+            dto.economy
+                .nations
+                .get_mut(&1)
+                .unwrap()
+                .construction
+                .entries[0]
+                .cost = qty(&definition.costs[index]).unwrap();
+            let restored = crate::Simulation::from_save_v5(dto.clone(), &context).unwrap();
+            assert_eq!(restored.export_save_v5().unwrap(), dto);
+        }
+    }
     fn assert_authoritative_restore(world: &World, economy: &Economy, tick: u64) {
         let loaded = test_fixture::loaded();
         let start = crate::Date::new(2000, 1, 1).unwrap();
