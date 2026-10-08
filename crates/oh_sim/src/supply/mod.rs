@@ -149,6 +149,7 @@ pub struct Day {
     pub provinces: BTreeMap<ProvinceId, ProvinceLedger>,
 }
 mod allocation;
+pub mod config_adapter;
 mod graph;
 pub mod world_adapter;
 pub use allocation::calculate;
