@@ -9,12 +9,12 @@
 - Rust 1.99.0·rustfmt·clippy, Node 24.19.0/npm 11.9.0, Python 3.12.14를 확인했다. 캐시와 빌드 산출물은 작업 환경의 쓰기 가능한 경로를 사용한다.
 - 새 검증 담당은 별도 worktree에서 실행하며 추적 소스를 수정하지 않는다. 두 fixture manifest·save hash, 문서·release 에셋·fmt·clippy, Rust 250개 검사, 클라이언트 typecheck/build와 시스템 Chromium을 사용한 M0 브라우저 12개 검사는 통과했다. full client 검사는 최초 palette timeout을 남긴 뒤 조용한 환경에서 같은 timeout으로 246개 모두 통과했다. target2 유효 server control에서는 정상 경제 응답 뒤 WebSocket close 오류가 남았다. P07은 FAIL이며 P06 수정·새 독립 검증이 필요하다. 도구/CDN 차단과 테스트 실패를 구분하고 전체 PASS로 기록하지 않는다.
 - 위 초기 FAIL 뒤 Close 응답을 flush하는 서버 수정과 전체 값 비교를 보존한 palette 검사 변경을 별도 구현 담당이 작성했다. 수정 소스 `4ae0446a01487e9d6d1415e7191a78407a8e0b6f`에 새 독립 검증이 지정한 WP-14 producer·P07 repair 범위에서 PASS를 판정했다. Rust 251개, 기본 client 246개, unchanged native target 12개·restore 4개, 저장/재개·legacy·별도 서버 lifecycle, 시스템 Chromium M0 12개·M1 3개가 통과했다. 검증 전후 HEAD·505개 추적 파일 SHA·diff/status는 동일했다. [공개 검증 요약](docs/verify/WP-14-P07-cloud-repair.md)을 따른다. 초기 FAIL은 이 후속 결과와 구분하여 보존한다.
-- 수정과 재개 문서는 [PR #2](https://github.com/peppone-choi/OpenHOI4/pull/2)에 있다. 이 문서 작성 시 main 병합·병합된 같은 main의 CI는 아직 확인하지 않았다. 독립 PASS만으로 WP-14 통합 완료나 M2 완료를 선언하지 않는다. Firefox/WebKit·추가 M1 지도 suites·대규모 성능은 이번 검증 범위가 아니다.
-- WP-23·WP-15·WP-19 구현은 WP-14 인수 뒤의 계획이며 아직 착수 완료로 기록하지 않는다. 기존 2개국·6프로빈스 M1 팩을 6개국·100~200프로빈스 M2 콘텐츠 완료로 확대하지 않는다.
+- 수정과 재개 문서는 [PR #2](https://github.com/peppone-choi/OpenHOI4/pull/2)로 정상 병합됐다. main `0776e6b5a67951821860490964c402e518310ca5`의 CI 7개가 모두 success이며 검증한 제품 tree와 같다. 지정한 WP-14 producer·P07 repair 통합 게이트를 충족했다. 후속 production/훈련/항복 consumer와 M2 전체 완료는 아니다. Firefox/WebKit·추가 M1 지도 suites·대규모 성능은 이번 검증 범위가 아니다.
+- WP-23 초기 합성 팩 구현 `b7c5b6898855a136456f7b558724f18cafa0656b`는 6개국·120개 육지 프로빈스·12개 주의 별도 `testland_m2` 입력이다. 기존 2개국·6프로빈스 M1·golden은 보존했다. [작업 로그](docs/worklog/WP-23-initial.md)와 [독립 검증](docs/verify/WP-23-initial-cloud.md)을 따른다. 한 번의 새 독립 검증은 지정한 초기 범위 PASS이며 전후535개 추적 파일 bytes·HEAD·diff/status가 동일했다. 이 문서 작성 시 WP-23 후보 병합·같은 main CI는 후속 확인 대상이다. WP-15·19는 구체 게임 정책 결정 대기이며 착수나 완료를 주장하지 않는다. WP-23 최종 플레이 입력·M2는 미완료다.
 
 아래는 이전 선별 인계의 상태와 재현 한계를 보존한 내용이다. 이전의 STOPPED 문구는 이번 사용자 재개 지시로 대체됐으며, 과거 미실행 검사를 이번에 실행한 것으로 바꾸지 않는다.
 
-## 현재 상태
+## 이전 선별 인계 상태
 
 M0·M1 완료 기록과 고유 WP 16개 통합 기록을 기준으로 한다. M2는 미완료다. 서버 권위 시뮬레이션과 브라우저 클라이언트를 사용하며 기본 서버는 M1 최소 Testland를 로드한다. WP-14 경제·정치 소스와 검증용 독립 입력은 WIP로 포함했다. WP-23 완결 Testland 본작업은 착수하지 않았다.
 
@@ -58,8 +58,8 @@ npx --prefix client playwright test
 ## 다음 작업
 
 1. 이 WIP와 01/02의 잠정·미결정 규칙, 실제 schema·저장 호환 경계를 확인한다.
-2. 이번 사용자 재개 지시에 따라 과거 P07 기록과 새 독립 검사를 구분하고 같은 main CI와 새 통합 판정을 확보한다. 이 인계만으로 WP-14 통합 완료나 M2 게이트 통과를 선언하지 않는다.
-3. 그 뒤 WP-23 완결 Testland 및 후속 소비자를 계획한다. 새 수치·현지화·에셋은 기존 defines·ko/en·출처 매니페스트 규칙을 따른다.
+2. WP-23 초기 합성 팩의 새 독립 검증·같은 main CI를 확보하고 지정한 초기 범위만 판정한다. 과거 P07 기록을 이번 실행으로 바꾸지 않는다.
+3. WP-15 생산·WP-19 보급의 구체 정책과 공식 결정을 사용자에게 요청하고 WP-15 → WP-19 → WP-23 최종 콘텐츠의 공유 schema/save/protocol 통합 순서를 따른다. WP-16은 WP-15 뒤다. 새 수치·현지화·에셋은 기존 defines·ko/en·출처 매니페스트 규칙을 따른다.
 
 ## 공개 범위
 
