@@ -10,6 +10,7 @@ pub mod economy;
 pub mod economy_save;
 pub mod formula;
 pub mod ledger;
+pub mod military_templates;
 pub mod movement;
 pub mod production;
 pub mod production_save;

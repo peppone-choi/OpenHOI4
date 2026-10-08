@@ -1,0 +1,40 @@
+version = 1
+[[components]]
+id = "line"
+role = "combat"
+manpower = 1000
+equipment = [{ family = "test_family", model = "test_model_1", items = 100 }]
+[components.stats]
+strength = "25"
+soft_fire = "3"
+hard_fire = "0.5"
+defense = "18"
+breakthrough = "2"
+frontage = "2"
+supply_use = "0.06"
+organization = "30"
+armor = "2"
+piercing = "4"
+speed_kmh = "4"
+[[components]]
+id = "support"
+role = "support"
+manpower = 100
+equipment = [{ family = "test_family", model = "test_model_1", items = 10 }]
+[components.stats]
+strength = "5"
+soft_fire = "1"
+hard_fire = "0.5"
+defense = "2"
+breakthrough = "1"
+frontage = "0"
+supply_use = "0.02"
+organization = "60"
+armor = "8"
+piercing = "10"
+speed_kmh = "2"
+[[templates]]
+id = "example"
+combat = ["line"]
+support = ["support"]
+bindings = [{ family = "test_family", model = "test_model_1" }]
