@@ -8,6 +8,8 @@
 - 같은 기준 main의 7개 push workflow가 success인 것을 새로 확인했다. [CI](https://github.com/peppone-choi/OpenHOI4/actions/runs/37783866384), [Save determinism](https://github.com/peppone-choi/OpenHOI4/actions/runs/37783866339) 등이다. 이는 새 WP-14 독립 인수 결과나 과거 P07 전체 PASS를 대신하지 않는다.
 - Rust 1.99.0·rustfmt·clippy, Node 24.19.0/npm 11.9.0, Python 3.12.14를 확인했다. 캐시와 빌드 산출물은 작업 환경의 쓰기 가능한 경로를 사용한다.
 - 새 검증 담당은 별도 worktree에서 실행하며 추적 소스를 수정하지 않는다. 두 fixture manifest·save hash, 문서·release 에셋·fmt·clippy, Rust 250개 검사, 클라이언트 typecheck/build와 시스템 Chromium을 사용한 M0 브라우저 12개 검사는 통과했다. full client 검사는 최초 palette timeout을 남긴 뒤 조용한 환경에서 같은 timeout으로 246개 모두 통과했다. target2 유효 server control에서는 정상 경제 응답 뒤 WebSocket close 오류가 남았다. P07은 FAIL이며 P06 수정·새 독립 검증이 필요하다. 도구/CDN 차단과 테스트 실패를 구분하고 전체 PASS로 기록하지 않는다.
+- 위 초기 FAIL 뒤 Close 응답을 flush하는 서버 수정과 전체 값 비교를 보존한 palette 검사 변경을 별도 구현 담당이 작성했다. 수정 소스 `4ae0446a01487e9d6d1415e7191a78407a8e0b6f`에 새 독립 검증이 지정한 WP-14 producer·P07 repair 범위에서 PASS를 판정했다. Rust 251개, 기본 client 246개, unchanged native target 12개·restore 4개, 저장/재개·legacy·별도 서버 lifecycle, 시스템 Chromium M0 12개·M1 3개가 통과했다. 검증 전후 HEAD·505개 추적 파일 SHA·diff/status는 동일했다. [공개 검증 요약](docs/verify/WP-14-P07-cloud-repair.md)을 따른다. 초기 FAIL은 이 후속 결과와 구분하여 보존한다.
+- 수정과 재개 문서는 [PR #2](https://github.com/peppone-choi/OpenHOI4/pull/2)에 있다. 이 문서 작성 시 main 병합·병합된 같은 main의 CI는 아직 확인하지 않았다. 독립 PASS만으로 WP-14 통합 완료나 M2 완료를 선언하지 않는다. Firefox/WebKit·추가 M1 지도 suites·대규모 성능은 이번 검증 범위가 아니다.
 - WP-23·WP-15·WP-19 구현은 WP-14 인수 뒤의 계획이며 아직 착수 완료로 기록하지 않는다. 기존 2개국·6프로빈스 M1 팩을 6개국·100~200프로빈스 M2 콘텐츠 완료로 확대하지 않는다.
 
 아래는 이전 선별 인계의 상태와 재현 한계를 보존한 내용이다. 이전의 STOPPED 문구는 이번 사용자 재개 지시로 대체됐으며, 과거 미실행 검사를 이번에 실행한 것으로 바꾸지 않는다.
