@@ -1,4 +1,4 @@
-//! Standalone daily supply graph/formulas; no live simulation adapter yet.
+//! Supply graph/formulas and pure World network adapter; no daily supply authority.
 use oh_core::{DivisionId, Fx, NationId, ProvinceId, Qty};
 use std::collections::BTreeMap;
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd)]
@@ -21,17 +21,21 @@ pub enum LandKind {
 }
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub struct Node {
-    pub controller: NationId,
+    pub controller: Option<NationId>,
     pub land: bool,
 }
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub struct LandEdge {
     pub cost: Fx,
+    /// Cost from canonical endpoint b to a; capacity remains undirected.
+    pub reverse_cost: Fx,
     pub kind: LandKind,
 }
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub struct Rail {
     pub cost: Fx,
+    /// Cost from canonical endpoint b to a; capacity remains undirected.
+    pub reverse_cost: Fx,
     pub capacity: Qty,
 }
 #[derive(Clone, Debug, Eq, PartialEq)]
@@ -48,15 +52,47 @@ pub struct Demand {
     pub amount: Qty,
 }
 #[derive(Clone, Debug, Eq, PartialEq)]
-pub struct Input {
+pub struct Network {
     pub nation: NationId,
     pub capital: ProvinceId,
     pub nodes: BTreeMap<ProvinceId, Node>,
     pub land: BTreeMap<RailKey, LandEdge>,
     pub rails: BTreeMap<RailKey, Rail>,
     pub sources: Vec<Source>,
-    pub demands: Vec<Demand>,
     pub decay: Fx,
+}
+/// Explicit demand input belongs to its trusted future division owner, not the graph adapter.
+#[derive(Clone, Debug, Eq, PartialEq)]
+pub struct Input {
+    pub network: Network,
+    pub demands: Vec<Demand>,
+}
+impl std::ops::Deref for Input {
+    type Target = Network;
+    fn deref(&self) -> &Network {
+        &self.network
+    }
+}
+impl std::ops::DerefMut for Input {
+    fn deref_mut(&mut self) -> &mut Network {
+        &mut self.network
+    }
+}
+impl Network {
+    pub fn with_demands(self, demands: Vec<Demand>) -> Input {
+        Input {
+            network: self,
+            demands,
+        }
+    }
+    /// Current static feeder connectivity only. No delivery/ratio/daily result exists here.
+    pub fn feeders(&self) -> Result<BTreeMap<SourceId, Option<Vec<ProvinceId>>>, Error> {
+        graph::validate(self)?;
+        self.sources
+            .iter()
+            .map(|s| Ok((s.id, graph::feeder(self, s.province)?)))
+            .collect()
+    }
 }
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum Error {
@@ -114,6 +150,7 @@ pub struct Day {
 }
 mod allocation;
 mod graph;
+pub mod world_adapter;
 pub use allocation::calculate;
 #[cfg(test)]
 mod tests;

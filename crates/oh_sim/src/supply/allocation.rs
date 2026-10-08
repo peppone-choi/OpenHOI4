@@ -109,6 +109,18 @@ fn trial_targets(
 /// Does not create division state, apply movement/combat effects, save, or expose a server query.
 pub fn calculate(input: &Input) -> Result<Day, Error> {
     graph::validate(input)?;
+    let mut divisions = BTreeSet::new();
+    for demand in &input.demands {
+        if !divisions.insert(demand.division) {
+            return Err(Error::Duplicate);
+        }
+        if !input.nodes.get(&demand.province).is_some_and(|n| n.land) {
+            return Err(Error::InvalidReference);
+        }
+        if demand.amount < Qty::ZERO {
+            return Err(Error::InvalidValue);
+        }
+    }
     let mut sources = BTreeMap::new();
     let mut source_distances = BTreeMap::new();
     for s in &input.sources {
