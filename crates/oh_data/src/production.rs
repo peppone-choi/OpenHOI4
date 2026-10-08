@@ -18,8 +18,23 @@ pub struct Model {
 #[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(deny_unknown_fields)]
 pub struct NationInput {
+    #[serde(deserialize_with = "unique_allowed_models")]
     pub allowed_models: BTreeSet<String>,
     pub stock: BTreeMap<String, i64>,
+}
+fn unique_allowed_models<'de, D: serde::Deserializer<'de>>(
+    deserializer: D,
+) -> Result<BTreeSet<String>, D::Error> {
+    let values = Vec::<String>::deserialize(deserializer)?;
+    let mut models = BTreeSet::new();
+    for model in values {
+        if !models.insert(model.clone()) {
+            return Err(serde::de::Error::custom(format!(
+                "duplicate production allowed model: {model}"
+            )));
+        }
+    }
+    Ok(models)
 }
 #[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
 pub struct Tuning {

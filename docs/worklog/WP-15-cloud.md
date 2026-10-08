@@ -2,7 +2,7 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | 독립 검증 대기 (구현자 자체 검사 결과, 완료 판정 아님) |
+| 상태 | P-05 strict-input FAIL finding의 P-06 수정 후보; targeted 확인 대기 |
 | 담당 | 구현 세션 |
 | 브랜치 | wp/15-production-cloud |
 | 기준 main | b112291c11822ffbf6da33b42670ff5cdb226fae |
@@ -89,3 +89,11 @@ node crates/oh_server/tests/production_query.cjs http://127.0.0.1:19416/ target/
 기존 로컬 서버는 연결마다 독립 simulation이다. 국가 선택은 새 local 연결을 시작/복구하는 동작이고 기존 게임의 공유 multiplayer 또는 reconnect persistence를 보장하지 않는다. 두 번째 Join 거절 정책은 보존했다. 브라우저의 기존 `/favicon.ico`404 한 건을 정확한 URL/message로 별도 ancillary로 기록했다. 다른 console/page 오류, failed/external requests는 없었다; 전체 console 무오류라고 주장하지 않는다.
 
 공개된 검증 결과는 구현자 자체 검사다. 별도 새 검증 세션의 P-05, 오케스트레이터의 다른 독립 모듈과 통합, 동일 main CI는 아직 필요하다. 이 로그는 WP-15 또는 M2 전체 완료를 선언하지 않는다.
+
+## P-06 — strict allowed-model duplicate finding
+
+독립 검증의 strict CLI valid control은 exit0, 대부분 invalid controls는 exit1이었으나 allowed_models=[test_model_1,test_model_1,test_model_2]가 exit0으로 수락됐다. 생성 schema의 uniqueItems:true와 달리 직접 BTreeSet 역직렬화가 중복을 조용히 정규화한 실제 contract FAIL이다. 이 finding을 원래 PASS 기록으로 덮어쓰지 않는다. 최초 독립 전체 리뷰는 계속 진행 중이며 이 수정은 해당 finding만 다룬다.
+
+새 `req_eco_03_allowed_model_duplicates_rejected_with_canonical_valid_control`을 먼저 추가했고 구현 전 exit101로 같은 수락 오류를 재현했다. allowed_models의 입력 배열에서 중복 삽입을 오류로 처리하는 deserializer를 추가했다. 저장·hash에 쓰는 BTreeSet 구조/직렬화는 유지한다. valid reversed source order는 기존 Definition과 identity가 그대로 일치한다. TOML adjacent/separated duplicates, JSON duplicates, strict validator rejection와 schema uniqueItems 보존을 검사한다. 새 게임 규칙·의존성·schema shape·원본 팩·골든·None legacy 변경은 없다.
+
+수정 후 `cargo test -p oh_data --test production --locked`3 tests PASS(exit0), `cargo clippy -p oh_data --all-targets --locked -- -D warnings`exit0, `cargo fmt --all --check`exit0을 확인했다. Clippy가 새 테스트의 불필요한 clone2개를 지적한 최초 출력을 보존하고 from_ref로 고친 뒤 해당 검사를 통과했다. docs/diff/frozen-input checks도 통과했다. 기존 전체 workspace/client/browser 결과는 이전 후보의 기록으로 보존하며 이 targeted 수정에서 전체 리뷰·전체 suite를 다시 실행했다고 주장하지 않는다. 기존 frozen native 바이너리를 교체하지 않았으므로 수정 후 actual CLI finding 재확인은 오케스트레이터의 통합 및 targeted 검증에 남긴다. 원시 FAIL/PASS logs는 Git 밖 scratch에 보존했다.
