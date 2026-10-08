@@ -1,0 +1,18 @@
+{
+  "original": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2-verify1\\target\\evidence\\WP-14-M2-r2-P05-1-final-FAIL.zip",
+  "whole_bytes": 136217870,
+  "whole_sha256": "ddcf54590e7285f6f48d4a8285f73da6d2012470bdff7c729d6d1866dbade8c3",
+  "parts": [
+    {
+      "path": "evidence.zip.part001",
+      "bytes": 90000000,
+      "sha256": "ff0b1273081b87c1594df33c810464c384b04cd1d57511989f4be0d1c4a1faaa"
+    },
+    {
+      "path": "evidence.zip.part002",
+      "bytes": 46217870,
+      "sha256": "ca0b3aef43e09beed170a54b1b25391f16453a8eee606486981ce7c44b8977aa"
+    }
+  ],
+  "original_not_deleted_or_changed": true
+}

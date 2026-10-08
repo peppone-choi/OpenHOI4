@@ -1,5 +1,13 @@
 # 인수인계
 
+## M2-r3 실제 인수 — 2026-10-08, RUN 진행 중
+
+C: 여유 10,531,946,496B와 E: 287,104,765,952B를 실제 관측해 storage barrier만 해제했다. 이전 M2-r2 부모와 P05 원 turn은 interrupted/final 없음이며 아래 C:0B·active 표기는 당시 역사다. 같은 P05 앱01a11877…의 새 turn01a1197e-86c8…가 실제 completed(1791429390)로 원 stage-cap FAIL 전문을 제출했다. [원 리포트](docs/verify/WP-14.M2-r2.attempt1.md)와 [부모 전수 custody](docs/verify/evidence/WP-14-M2-r3-inherited-P05-1/parent-custody.json)를 인수했다. 원ZIP/member physical 및4large원파일·whole/raw 불일치0이며 reparse metadata-only한계를 유지한다. 같은 구현앱의 P06 turn01a11984-cb41…는 실제 active다. 새 source 검증은 아직 아니다.
+
+부모의 새 전수 검사에서 원 a933 detached 검증 WT의 11,833개 각 SHA·HEAD·semantic/raw index·diff/status가 최초 parent-before와 모두 동일했다. 원 raw SHA는4d77c338769c8470b36519c468147b1736cf1fae467ce05070a1697321215a1c다. industry 정의3단계를 넘어선 v5 current level4가 CLI normal/force exit0 및 server HTTP200으로 수락된 물리 FAIL 증거는 통합을 계속 막는다. 원 WT·before·FAIL ZIP은 보존한다. actual FAIL 인수 뒤 같은 구현 앱 P06 최소 복원 검증 수정→새 clean source의 새 독립 P05/실7CI·Linux·3OS→P07/같은 main CI→같은 WP23 최종 제작/검증/통합 순서다.
+
+현재 main e475479는 clean, actual remote main2b5ca 대비 ahead4/behind0이며 e475의 CI 목록은 비어 있다. check_docs는 오류0/경고0이다. a933의 source CI 성공을 현재 main 성공으로 쓰지 않는다. W1전체1/W2전체0·고유WP16·M2게이트 없음이며 W3/M3 착수 없이 W2 인수 후 P08/실제 RUN 종료를 수행한다. 이 절은 재개 차이 기록이며 종료 P08이 아니다.
+
 ## 진행 중 WP14 실제 소스 CI·Linux 인수 — RUN 종료 아님
 
 WP14 구현 앱은 실제 final을 낸 clean source `a9333419de89caf3ba95da5097ea2e3d0fa5f694`에 도달했다. 제품은 검사 source01119ae와 같은 430 non-doc Git entries이며, 원 구현 ZIP과 전체 물리 매핑은 [P03 인수 증거](docs/worklog/evidence/WP-14-M2-r2-P03-a933-recovery2/parent-custody.json)에 보존했다. 새 P05-1 앱01a11877…는 별도 detached WT에서 최초11833/raw4d77…를 기준으로 검사한다. 최종 독립 판정·부모 종료 불변성 인수는 아직 없다.

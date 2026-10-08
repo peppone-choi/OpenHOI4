@@ -50,3 +50,17 @@ W2가 통합됐다는 기록은 WP-14/23의 실제 구현·새 독립 PASS·같�
 | 가용 인력 | 법령 변경 전후 총량과 이미 소비/예약한 인력, 초기 pool·추가/반환의 수명·음수/상한 |
 | 정치 | PC 일일 지급 시점/상한, 법령 변경 비용·조건·단계 및 효과 delta의 경계 처리 |
 | 후속 미지원 | 안정도의 생산 효율/항복 보정, 동원도의 조직력/피로 등 아직 없는 consumer를 지원 성공으로 숨기지 않기 |
+
+## M2-r3 실제 producer·후속 소비자 인수 준비
+
+2026-10-08. 위 W1 미통합/ff78 및 미정 표는 작성 당시 이력이다. 원 W1은 main2b5ca의 독립 PASS·P07·7CI/26jobs/원격3OS·Linux로 통합됐다. WP14 producer a933은 실제 schema·v5·native 입구를 갖지만 현재 권위 건물 단계 복원 FAIL로 통합 보류다. 아래는 해당 실제 타입을 읽은 후속 설계 체크 항목이며 W3 착수나 미정 소비자 공식 채택이 아니다. 최종 수정 source의 새 독립 PASS 뒤 다시 대조한다.
+
+| 인수자 | 실제 producer 계약과 필요한 대조 | 남은 설계·증거 |
+|---|---|---|
+| WP23 | economy ID→common/economy/ID.toml; costs/slots의 index0은0→1, stage cap은길이; Qty와 Fx exact 문자열, 국가/주 ID 전체 coverage와ko/en 참조 | 최종 producer 인수 뒤 새m2와 두registry 최소append·실strictvalidate/native/query/save/repro·독립검증. 원M0/M1·frozenbytes/identity 유지 |
+| WP15 | 생산 배분은 Qty(I48F16)의 일일 IC 원장, ratio는 Fx(I32F32). 자원은 소유 주의 일일 흐름이며 비축이 아님 | 실제 장비·라인·재고형/상한·자원 소요/충족률/효율·갱신 phase를01에 대응하고 미정공식은구체P10. 생산량을Fx로묵시축소하거나자원흐름을재고로재해석하지않기 |
+| WP16 | 내부 Reserve/Commit/Consume/Cancel/Return은 i64 checked transaction. capacity는floor(소유인구합×징병), committed/reserved·가용/초과조회와분리 | 실제훈련/보충객체의소유·예약수명·exactly-once·취소/실패원자성. 임의플레이어인력생성/반환명령으로노출하지않기 |
+| WP19 | 건설은현재수준+1·단계별누적slots·주권위수준이며 infrastructure base와당일modifier snapshot은다름. 이동은기존ID/거리/Fx/policy | 보급C의실제단위/상한·생산/소비/경로갱신과WP15재고인수. M4차량v2의합성k/r을기본값으로쓰지않고손실이월/반환은후속별도검증 |
+| WP20/29 | stability/mobilization과law/PC는실제값·원장시점으로제공됨. 자원흐름/건물수준과현재/실적ledger는별도수명 | 항복·군사·시장/철도consumer는미구현. producer조회만으로REQ전체완료나zero/no-op지원성공을기록하지않기 |
+
+공통 복원 경계는 실제 current 상태의 참조·단계·누적 슬롯·checked 산술을 정의와 대조해야 한다. 과거 ledger는 계산tick의 실적이며 current 값을 대신 검증하는 근거가 아니다. ownership-loss/dormancy·futurequeue·동일tick restore의 기존 허용 상태를 유지한다. 신규consumer가 추가하는 모든권위/예약/부분진행/원장입력은dto/canonical/hash/save/repro/wire와원자적실패에같이포함해야한다. None/v1~v4 및 Some(empty)/v5 존재경계와원fixture를유지한다.

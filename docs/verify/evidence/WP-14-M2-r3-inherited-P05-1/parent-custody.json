@@ -1,0 +1,76 @@
+{
+  "head": "a9333419de89caf3ba95da5097ea2e3d0fa5f694",
+  "judgement": "FAIL",
+  "verification_invariance_valid": true,
+  "parent_full_raw_invariance": true,
+  "raw_index_bytes_identical": true,
+  "tracked_count": 11833,
+  "manifest_files_checked": 14172,
+  "ZIP_members_checked": 14173,
+  "ZIP_bytes": 136217870,
+  "ZIP_sha256": "ddcf54590e7285f6f48d4a8285f73da6d2012470bdff7c729d6d1866dbade8c3",
+  "review_parts": [
+    {
+      "path": "evidence.zip.part001",
+      "bytes": 90000000,
+      "sha256": "ff0b1273081b87c1594df33c810464c384b04cd1d57511989f4be0d1c4a1faaa"
+    },
+    {
+      "path": "evidence.zip.part002",
+      "bytes": 46217870,
+      "sha256": "ca0b3aef43e09beed170a54b1b25391f16453a8eee606486981ce7c44b8977aa"
+    }
+  ],
+  "mismatches": 0,
+  "actual_final_message_count": 1,
+  "formal_report_message_id": "msg_0b1699435ddd04c4016ac70ae76c8c81919659324f91e25ca2",
+  "formal_report_chars": 6332,
+  "formal_report_exact": true,
+  "external_large_originals": [
+    {
+      "path": "bench-local/baseline-archive.stdout",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2-verify1\\target\\evidence\\WP-14-M2-r2-P05-1\\bench-local\\baseline-archive.stdout",
+      "bytes": 2006323200,
+      "sha256": "8ee7e2265bd41fbba2ffa76f8e25d112fd17fef4059428bc858957464dd756e1",
+      "reason": "large original raw retained at exact physical locator"
+    },
+    {
+      "path": "bench-local/baseline-source.tar",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2-verify1\\target\\evidence\\WP-14-M2-r2-P05-1\\bench-local\\baseline-source.tar",
+      "bytes": 2006323200,
+      "sha256": "8ee7e2265bd41fbba2ffa76f8e25d112fd17fef4059428bc858957464dd756e1",
+      "reason": "large original raw retained at exact physical locator"
+    },
+    {
+      "path": "planning/remote-final/Linux-originals/performance-linux.zip",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2-verify1\\target\\evidence\\WP-14-M2-r2-P05-1\\planning\\remote-final\\Linux-originals\\performance-linux.zip",
+      "bytes": 1735151692,
+      "sha256": "e83e3c48454aa3a282fa1361ea03fe20c8aa460d287ae29d80565bccf4b0b305",
+      "reason": "large original raw retained at exact physical locator"
+    },
+    {
+      "path": "remote-extracted/Linux/performance/baseline-archive.stdout",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2-verify1\\target\\evidence\\WP-14-M2-r2-P05-1\\remote-extracted\\Linux\\performance\\baseline-archive.stdout",
+      "bytes": 2006323200,
+      "sha256": "8ee7e2265bd41fbba2ffa76f8e25d112fd17fef4059428bc858957464dd756e1",
+      "reason": "large original raw retained at exact physical locator"
+    }
+  ],
+  "attack_links_metadata_only": [
+    {
+      "path": "repro/native-i0lxfdyb/case-gla96jx5/alias",
+      "physical": "E:\\openhoi\\.orchestrator\\wt\\WP-14-M2-r2-verify1\\target\\evidence\\WP-14-M2-r2-P05-1\\repro\\native-i0lxfdyb\\case-gla96jx5\\alias",
+      "attributes": 1040,
+      "followed": false
+    }
+  ],
+  "source_CI_not_main_CI": true,
+  "actual_resume_turn": "01a1197e-86c8-71b2-9db2-d3839a30517c",
+  "actual_resume_completed_at": 1791429390,
+  "original_interrupted_turn": "01a11877-ec5a-7990-b133-de572f4d0393",
+  "original_completed_at": null,
+  "resumed_detail_SHA256": "1f2312f23d4733c18257d1da4cd7f5fcf75c61ded76ae90fe6228b9d0e253c7d",
+  "large_excluded_physical_SHA_rechecked": 4,
+  "original_large_exclusions_retained": true,
+  "reparse_metadata_only": true
+}

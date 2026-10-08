@@ -1,0 +1,3 @@
+# WP14 새 독립 검증 원본
+
+exact `a9333419de89caf3ba95da5097ea2e3d0fa5f694`의 실제 completed app final과 원 보고서를 인수했다. 최초11833/전체SHA·HEAD·raw4d77…·diff/status는 부모 종료 검사와 동일하다. MF14172/ZIP14173를 실제 각 물리 원파일 및 원ZIP CRC·bytes/SHA로 전수 대조했다. 원 ZIP은 2개 순차 raw part로도 보존한다(0이면 evidence.zip 단일 원본). ZIP-PARTS.json이 있으면 순서대로 이어 붙인 bytes/whole SHA가 원 ZIP과 같고 원본은 지정 WT에 그대로 있다. LFS/설정 변경은 없다. 큰 원자료와 reparse fixture의 명시한 제외/metadata를 그대로 보존하며 작은review에 내장됐다고 주장하지 않는다. 원 구현/수집/검증 실행 실패와 후속 결과를 분리한다. 원 turn01a11877-ec5a는 interrupted/final 없음이며 이번 재개 turn01a1197e-86c8의 actual final을 인수했다. 과거 종료로 소급하지 않는다. 이는 독립 WP14 검증이며 P07·같은main CI·WP23/W2/M2 완료가 아니다.
