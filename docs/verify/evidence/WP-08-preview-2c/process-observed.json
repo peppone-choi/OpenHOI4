@@ -1,5 +1,0 @@
-{
-    "ProcessId":  8836,
-    "ExecutablePath":  "E:\\openhoi\\.orchestrator\\wt\\WP-08\\target\\wp08-preview-final\\preview-2c2aacc\\oh_server.exe",
-    "CommandLine":  "\"E:\\openhoi\\.orchestrator\\wt\\WP-08\\target\\wp08-preview-final\\preview-2c2aacc\\oh_server.exe\" --port 19431 --pack-root E:/openhoi/.orchestrator/wt/WP-08/data/packs"
-}

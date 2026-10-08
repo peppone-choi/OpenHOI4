@@ -1,6 +1,0 @@
-Verification source scope: 62a89ae0c332483d0198ab3b3fc0fc3db1231c68 vs 2c2aacc88bd22b0f3ba4393b22bef4b119616e69
-Official sources opened 2026-10-07 KST:
-https://playwright.dev/docs/ci (Linux headed uses xvfb-run)
-https://playwright.dev/docs/test-cli (project filtering)
-https://fetch.spec.whatwg.org/#http-redirect-fetch (redirect error)
-Pinned installed Playwright 1.63.0 program.js project <project-name...> confirms greedy argv consumption; independent list repro is authoritative for this installation.

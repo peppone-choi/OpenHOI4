@@ -1,6 +1,0 @@
-{
-  "files": 464,
-  "zipSHA256": "2f341af891183045a5c30047e40edea9ed6ceabc6ff8c44c4d216aeee1190c99",
-  "zipBytes": 17768439,
-  "excluded": "expanded historical source/dependency/build trees and missing-PNG input copy; exact git archive and historical server exe included"
-}

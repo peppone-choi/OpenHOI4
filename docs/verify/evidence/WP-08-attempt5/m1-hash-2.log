@@ -1,4 +1,0 @@
-{"args": ["cargo", "run", "-p", "oh_cli", "--locked", "--", "run", "--pack", "data/packs/testland", "--scenario", "m1", "--days", "365", "--seed", "1", "--hash-out"], "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify5", "start": "2026-10-06T17:39:15.314289+00:00"}
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.09s
-     Running `target\debug\oh_cli.exe run --pack data/packs/testland --scenario m1 --days 365 --seed 1 --hash-out`
-b595dc2a1e5b4f8c

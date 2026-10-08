@@ -1,8 +1,0 @@
-2026-10-06T17:34:01.6990000Z Requested labels: ubuntu-latest
-2026-10-06T17:34:01.6990000Z Job defined at: peppone-choi/OpenHOI4/.github/workflows/sim-determinism.yml@refs/heads/codex/wp08-map-rendering
-2026-10-06T17:34:01.6990000Z Waiting for a runner to pick up this job...
-2026-10-06T17:34:01.6890000Z Evaluating simulation.if
-2026-10-06T17:34:01.6890000Z Evaluating: success()
-2026-10-06T17:34:01.6890000Z Result: true
-2026-10-06T17:34:02.2360000Z Job is waiting for a hosted runner to come online.
-2026-10-06T17:34:02.2360000Z Job is about to start running on the hosted runner: GitHub Actions 1000068946

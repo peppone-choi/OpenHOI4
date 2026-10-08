@@ -166,3 +166,9 @@ preview-urban-separated = 원천 시가지 · 별도 구획
 preview-urban-unpartitioned = 시가지 표본 포함 · 미분리
 preview-nonurban-source = 시가지 원천 밖 · 교외/농촌 분류 미연결
 preview-urban-note = 시가지는 MODIS 2002–2003년 관측의 일반화 원천입니다. 작은 시가지는 미분리이며 역사 도시·인구·게임 값은 미연결입니다.
+
+economy-no-ownership = 소유권 없음
+economy-target-conflict = 건설 목표 충돌
+economy-slot-cap = 건설 슬롯 상한
+economy-zero-cap = 프로젝트 상한 0
+economy-zero-factor = 인프라 보정 0

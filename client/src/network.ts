@@ -1,3 +1,4 @@
+import {isEconomyView} from './economyValidation';
 import { decode, encode } from '@msgpack/msgpack';
 import { PROTOCOL_VERSION, type ClientMessage, type PackInfo, type ServerMessage, type TimeState, type WorldView, type NationView, type SupportView, type StateView, type ScalarView, type ProvinceView, type LedgerView, type LedgerRow } from './proto/protocol';
 import { MAP_DISPLAY_VERSION,type MapMetadata,type MapStyle } from './proto/protocol';
@@ -72,6 +73,7 @@ const trigger=exactShape<NonNullable<Trigger>>({definitions_hash:hash,flags:orde
 // Mapped from the generated Rust union: adding a variant/field or changing a
 // field type breaks typecheck until its runtime validator is updated.
 const serverFields = {
+  EconomyResult:{type:literal('EconomyResult'),request:string,supported:boolean,reason_key:nullable(string),economy:nullable(isEconomyView)},
   TriggerResult: {type:literal('TriggerResult'),request:string,supported:boolean,reason_key:nullable(string),trigger:nullable(trigger)},
   Welcome: { type: literal('Welcome'), engine_version: string, protocol_version: string, accepted: boolean, reason_key: nullable(string), packs: array(packInfo), sessions: array(string) },
   CommandResult: { type: literal('CommandResult'), sequence: string, accepted: boolean, reason_key: nullable(string) },
@@ -84,6 +86,7 @@ const serverFields = {
 const serverGuards = Object.values(serverFields).map(fields => shape<Record<string, unknown>>(fields));
 const triggerResult=exactShape<Extract<ServerMessage,{type:'TriggerResult'}>>(serverFields.TriggerResult);
 export function isServerMessage(value: unknown): value is ServerMessage {
+  if(typeof value==='object'&&value!==null&&(value as {type?:unknown}).type==='EconomyResult'){const g=exactShape<Extract<ServerMessage,{type:'EconomyResult'}>>(serverFields.EconomyResult);return g(value)&&value.supported===(value.economy!==null)&&(!value.supported||value.reason_key===null); }
   if(typeof value==='object'&&value!==null&&(value as Record<string,unknown>).type==='TriggerResult'){
     return triggerResult(value)&&value.supported===(value.trigger!==null)&&(!value.supported||value.reason_key===null);
   }

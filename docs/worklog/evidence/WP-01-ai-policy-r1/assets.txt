@@ -1,7 +1,0 @@
-workdir: E:\openhoi\.orchestrator\wt\WP-01-ai-policy
-command: C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe tools/check_assets.py --release
-exit: 0
-stdout:
-assets: 0 error(s)
-
-stderr:

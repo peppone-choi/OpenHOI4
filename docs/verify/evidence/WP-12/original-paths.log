@@ -1,6 +1,0 @@
-["python", "target/wp12-verify2/original.py"]
-Original paths 58 including SHA256SUMS.json; changes []
-gpl upstream bytes 34674 equal-index True equal-LF-normalized True
-cc download limitation <HTTPError 403: 'Forbidden'>
-
-EXIT=0

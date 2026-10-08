@@ -1,7 +1,0 @@
-cwd: E:\openhoi
-command: C:/Users/user/.cargo/bin/cargo.exe run -p oh_cli --locked -- run --pack data/packs/testland --scenario m1 --days 365 --seed 1 --hash-out
-b595dc2a1e5b4f8c
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.07s
-     Running `target\debug\oh_cli.exe run --pack data/packs/testland --scenario m1 --days 365 --seed 1 --hash-out`
-
-exit: 0

@@ -1,7 +1,0 @@
-Auto-merging assets/ASSETS.toml
-CONFLICT (content): Merge conflict in assets/ASSETS.toml
-Auto-merging client/public/locales/en.ftl
-CONFLICT (content): Merge conflict in client/public/locales/en.ftl
-Auto-merging client/public/locales/ko.ftl
-CONFLICT (content): Merge conflict in client/public/locales/ko.ftl
-Automatic merge failed; fix conflicts and then commit the result.

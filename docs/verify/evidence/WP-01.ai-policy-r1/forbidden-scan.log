@@ -1,4 +1,0 @@
-$ rg -n f32|f64|HashMap|thread_rng|SystemTime crates/oh_core crates/oh_sim crates/oh_ai
-crates/oh_core\src\canonical.rs:6://! `HashMap`/`HashSet`, floats, pointer-sized state integers, or custom serializers
-
-EXIT=0

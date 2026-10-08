@@ -1,6 +1,0 @@
-{
-  "own_pid": 32816,
-  "CtrlC_sent": true,
-  "listener_gone": true,
-  "stdout": "OpenHOI4: http://127.0.0.1:3800/\nPack: testland (7a35613aa8869cab) from E:\\openhoi\\.orchestrator\\wt\\WP-11-verify2\\target\\wp11-verify2\\ui\\packs\nOpen this address in a browser. Ctrl+C to shut down. --help for usage.\nShutting down OpenHOI.\nOpenHOI stopped normally.\n"
-}

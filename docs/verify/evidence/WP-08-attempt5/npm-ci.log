@@ -1,8 +1,0 @@
-{"args": ["npm.cmd", "--prefix", "client", "ci"], "cwd": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify5", "start": "2026-10-06T17:36:24.911721+00:00"}
-
-added 103 packages, and audited 104 packages in 2s
-
-22 packages are looking for funding
-  run `npm fund` for details
-
-found 0 vulnerabilities

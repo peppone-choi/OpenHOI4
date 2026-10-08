@@ -1,9 +1,0 @@
-$ node C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js --prefix client ci
-exit=0
-
-added 91 packages, and audited 92 packages in 2s
-
-22 packages are looking for funding
-  run `npm fund` for details
-
-found 0 vulnerabilities

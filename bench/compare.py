@@ -18,6 +18,10 @@ def validate_sample(sample, policy):
     h = sample['hash']
     if type(h) is not str or len(h) != 16 or any(c not in '0123456789abcdef' for c in h):
         raise ValueError('invalid hash')
+    for key in ('pack_hash','pack_hash_after'):
+        value=sample.get(key)
+        if type(value) is not str or len(value)!=16 or any(c not in '0123456789abcdef' for c in value): raise ValueError('missing/invalid actual '+key)
+    if sample['pack_hash']!=sample['pack_hash_after']: raise ValueError('native pack changed during run')
     canonical = bytes.fromhex(sample['canonical_hex'])
     value = 0xcbf29ce484222325
     for byte in canonical: value = ((value ^ byte) * 0x100000001b3) & ((1 << 64)-1)
@@ -26,7 +30,7 @@ def validate_sample(sample, policy):
 def compare_samples(baseline, current, policy):
     if len(baseline) != 2 or len(current) != 2: raise ValueError('missing pair')
     for sample in baseline + current: validate_sample(sample,policy)
-    expected={k:baseline[0][k] for k in ('dto','canonical_hex','hash','steps','seed','scenario','tick','ended')}
+    expected={k:baseline[0][k] for k in ('dto','canonical_hex','hash','pack_hash','pack_hash_after','steps','seed','scenario','tick','ended')}
     for sample in baseline + current:
         if {k:sample[k] for k in expected} != expected: raise ValueError('native completed full state mismatch')
     return regression([s['elapsed_ns'] for s in baseline],[s['elapsed_ns'] for s in current],policy['threshold_percent'])

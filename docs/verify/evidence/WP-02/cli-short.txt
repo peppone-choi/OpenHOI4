@@ -1,4 +1,0 @@
-cwd: E:\openhoi\.orchestrator\wt\WP-02-verify
-command: C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe crates/oh_core/tools/check_determinism.py compare --root E:\openhoi\.orchestrator\wt\WP-02-verify\target\evidence\WP-02-verify\cli-fixtures\short
-exit: 1
-core determinism: core hash must contain exactly 16 lowercase hex digits

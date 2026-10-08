@@ -1,6 +1,0 @@
-command: cargo deny check licenses bans advisories sources
-2026-10-06 11:53:31 [ERROR] failed to fetch advisory database https://github.com/RustSec/advisory-db with cli: failed to fetch latest changes: ["-C", "C:\\Users\\user\\.cargo\\advisory-dbs\\advisory-db-3157b0e258782691", "fetch", "--depth=1", "-u", "origin", "+main:main"]
-fatal: unable to access 'https://github.com/RustSec/advisory-db/': Could not resolve host: github.com
-
-
-exit: 1

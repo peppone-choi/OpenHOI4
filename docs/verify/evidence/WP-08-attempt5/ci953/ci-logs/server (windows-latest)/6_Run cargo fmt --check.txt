@@ -1,4 +1,0 @@
-2026-10-06T17:35:03.2443399Z ##[group]Run cargo fmt --check
-2026-10-06T17:35:03.2443778Z [36;1mcargo fmt --check[0m
-2026-10-06T17:35:03.2514571Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
-2026-10-06T17:35:03.2514949Z ##[endgroup]

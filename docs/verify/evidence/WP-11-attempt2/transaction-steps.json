@@ -1,1 +1,0 @@
-[["independent-transaction",["cargo","test","--manifest-path","target/wp11-verify2/mirror/crates/oh_save/Cargo.toml","--target-dir","target/wp11-verify2/mirror-build","--lib","verify2_direct","--","--nocapture"]]]

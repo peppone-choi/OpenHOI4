@@ -1,8 +1,0 @@
-{
-  "original_path": "E:\\openhoi\\.orchestrator\\wt\\WP-08\\target\\wp08-f04\\linux-phase\\original-artifact.zip",
-  "original_bytes": 458616866,
-  "original_sha256": "c0a6802b1d29404d762fe9b20734eca8a8466027d1bb69755e1c3a681d44b3ff",
-  "selected_files": 41,
-  "all_selected_sha_match": true,
-  "scope": "selected exact bytes from original459MB; entire original remains at actor ignored location"
-}

@@ -1,1 +1,0 @@
-{"command": ["cargo", "build", "-p", "oh_cli", "--locked"], "exit": 0}

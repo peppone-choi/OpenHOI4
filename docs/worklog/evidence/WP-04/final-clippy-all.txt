@@ -1,3 +1,0 @@
-    Checking oh_cli v0.1.0 (E:\openhoi\.orchestrator\wt\WP-04\crates\oh_cli)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.22s
-exit_code=0

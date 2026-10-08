@@ -1,6 +1,0 @@
-signed rawbits=-9223372036854775808 exact=true
-signed rawbits=9223372036854775807 exact=true
-signed rawbits=-1 exact=true
-signed rawbits=0 exact=true
-signed rawbits=1 exact=true
-fresh additional cases=16

@@ -5,6 +5,7 @@
 //! registries and pack merging belong to later WPs. `pack_validation` resolves
 //! pack order and validates the currently registered content and Fluent catalogs.
 //! Numeric defines have no defaults. I/O stays outside the simulation layer.
+pub mod economy;
 pub mod host_policy;
 pub mod localisation;
 pub mod m0;

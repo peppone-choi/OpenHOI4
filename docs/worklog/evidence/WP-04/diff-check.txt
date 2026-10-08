@@ -1,2 +1,0 @@
-git diff 3ac7c13 --check
-exit_code=0

@@ -1,5 +1,0 @@
-    Blocking waiting for file lock on build directory
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.29s
-     Running `target\debug\oh_cli.exe run --scenario testland --days 365 --seed 1 --hash-out`
-b039d35666b77fc2
-exit=0

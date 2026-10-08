@@ -1,3 +1,0 @@
-command: "C:\Program Files\Git\cmd\git.EXE" diff --cached --check
-cwd: E:\openhoi\.orchestrator\wt\WP-02
-exit: 0

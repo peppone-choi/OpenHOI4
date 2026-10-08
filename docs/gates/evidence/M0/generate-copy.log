@@ -1,3 +1,0 @@
-   Compiling oh_proto v0.1.0 (E:\openhoi\.orchestrator\wt\M0-gate-verify\target\evidence\M0-gate-verify\negative-workspace\crates\oh_proto)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.35s
-     Running `target\evidence\M0-gate-verify\negative-build\debug\examples\generate.exe`

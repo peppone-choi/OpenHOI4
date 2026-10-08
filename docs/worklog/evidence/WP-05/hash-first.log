@@ -1,4 +1,0 @@
-   Compiling oh_cli v0.1.0 (E:\openhoi\.orchestrator\wt\WP-05\crates\oh_cli)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.44s
-     Running `target\debug\oh_cli.exe run --scenario testland --ticks 1000 --seed 1 --hash-out`
-ff921fd8148e699d

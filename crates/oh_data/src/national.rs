@@ -33,6 +33,13 @@ pub struct ModifierInput {
 #[derive(Debug, Clone, Eq, PartialEq, Deserialize, Serialize, JsonSchema)]
 #[serde(deny_unknown_fields)]
 pub struct Scenario {
+    #[serde(
+        default,
+        deserialize_with = "crate::trigger::present",
+        skip_serializing_if = "Option::is_none"
+    )]
+    #[schemars(with = "String")]
+    pub economy: Option<String>,
     pub start_date: String,
     pub map: String,
     pub nations: Vec<String>,
@@ -100,6 +107,7 @@ pub struct VisualPalette {
 }
 #[derive(Debug, Clone)]
 pub struct LoadedNational {
+    pub economy: Option<crate::economy::Definition>,
     pub pack: DataPack,
     pub scenario_id: String,
     pub scenario: Scenario,
@@ -333,7 +341,27 @@ pub(crate) fn read_scenario(root: &Path, id: &str) -> Result<LoadedNational, Dat
             }
         }
     }
+    let economy = if let Some(id) = &scenario.economy {
+        if !valid_id(id) {
+            return Err(field_error(&path, "economy", "invalid economy ID"));
+        }
+        let economy_path = root.join("common/economy").join(format!("{id}.toml"));
+        let raw: toml::Value = document(&economy_path)?;
+        let raw = serde_json::to_value(raw).map_err(|e| fail(&economy_path, e.to_string()))?;
+        if let Some(laws) = raw.get("laws").and_then(|v| v.as_object()) {
+            for law in laws.values() {
+                if let Some(c) = law.get("condition") {
+                    crate::trigger::preflight_value(c)
+                        .map_err(|e| field_error(&economy_path, "condition", &e))?;
+                }
+            }
+        }
+        Some(document::<crate::economy::Definition>(&economy_path)?)
+    } else {
+        None
+    };
     let loaded = LoadedNational {
+        economy,
         pack,
         scenario_id: id.into(),
         scenario,
@@ -341,6 +369,18 @@ pub(crate) fn read_scenario(root: &Path, id: &str) -> Result<LoadedNational, Dat
         map,
         visuals,
     };
+    if let Some(e) = &loaded.economy {
+        e.validate(&loaded).map_err(|message| {
+            field_error(
+                &root.join("common/economy").join(format!(
+                    "{}.toml",
+                    loaded.scenario.economy.as_ref().unwrap()
+                )),
+                "economy",
+                &message,
+            )
+        })?;
+    }
     crate::trigger::definition(&loaded).map_err(|message| {
         let candidate = message
             .split(|c: char| c == '.' || c == ':' || c.is_ascii_whitespace())

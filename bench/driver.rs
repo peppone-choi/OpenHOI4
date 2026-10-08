@@ -13,6 +13,7 @@ fn main() -> Result<(), String> {
         seed,
         hash_out: false,
     };
+    let pack_hash_before = oh_save::pack_hash(Path::new(&args[0]))?;
     let mut sim = oh_cli::run_national(Path::new(&args[0]), &options)?;
     let started = Instant::now();
     for _ in 0..steps {
@@ -25,6 +26,10 @@ fn main() -> Result<(), String> {
     if elapsed_ns == 0 || sim.snapshot().tick() != steps || sim.is_ended() {
         return Err("benchmark incomplete/zero elapsed".into());
     }
+    let pack_hash_after = oh_save::pack_hash(Path::new(&args[0]))?;
+    if pack_hash_before != pack_hash_after {
+        return Err("measurement pack changed during native load/run".into());
+    }
     let dto = if sim.trigger_state().is_some() {
         serde_json::to_value(sim.export_save_v4()?)
     } else {
@@ -34,7 +39,7 @@ fn main() -> Result<(), String> {
     let bytes = oh_core::canonical_bytes(&sim).map_err(|e| e.to_string())?;
     println!(
         "{}",
-        serde_json::json!({"elapsed_ns":elapsed_ns,"steps":steps,"scenario":args[1],"seed":seed,"tick":sim.snapshot().tick(),"ended":sim.is_ended(),"dto":dto,"canonical_hex":bytes.iter().map(|b|format!("{b:02x}")).collect::<String>(),"hash":format!("{:016x}",sim.state_hash().map_err(|e|e.to_string())?)})
+        serde_json::json!({"pack_hash":format!("{pack_hash_before:016x}"),"pack_hash_after":format!("{pack_hash_after:016x}"),"elapsed_ns":elapsed_ns,"steps":steps,"scenario":args[1],"seed":seed,"tick":sim.snapshot().tick(),"ended":sim.is_ended(),"dto":dto,"canonical_hex":bytes.iter().map(|b|format!("{b:02x}")).collect::<String>(),"hash":format!("{:016x}",sim.state_hash().map_err(|e|e.to_string())?)})
     );
     Ok(())
 }

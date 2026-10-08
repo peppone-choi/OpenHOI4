@@ -1,3 +1,0 @@
-   Compiling oh_proto v0.1.0 (E:\openhoi\.orchestrator\wt\WP-08-verify4\crates\oh_proto)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.60s
-     Running `target\debug\examples\generate.exe`

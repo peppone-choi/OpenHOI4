@@ -1,1 +1,0 @@
-{"command": ["cargo", "build", "--locked", "-p", "oh_save", "--example", "trigger_fixture"], "cwd": "E:\\openhoi", "exit": 0}

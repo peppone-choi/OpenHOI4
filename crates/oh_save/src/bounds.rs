@@ -266,7 +266,7 @@ pub fn body_version(bytes: &[u8], limits: &Limits, version: u16) -> Result<()> {
             r.number(64)?;
         }
     }
-    if version == 3 || version == 4 {
+    if version == 3 || version == 4 || version == 5 {
         for _ in 0..r.entries(limits.map_entries_max)? {
             r.number(32)?;
             for _ in 0..r.entries(limits.map_entries_max)? {
@@ -326,5 +326,183 @@ pub fn body_version(bytes: &[u8], limits: &Limits, version: u16) -> Result<()> {
             }
         }
     }
+    if version == 5 {
+        r.boolean()?;
+        r.boolean()?;
+        if r.boolean()? {
+            r.trigger_state()?;
+        }
+        for _ in 0..r.entries(limits.queue_max_entries)? {
+            r.number(64)?;
+            r.number(16)?;
+            r.number(64)?;
+            match r.tag(5)? {
+                0 => {
+                    r.boolean()?;
+                }
+                1 => {
+                    r.byte()?;
+                }
+                2 => {
+                    r.number(32)?;
+                    r.number(16)?;
+                }
+                3 => {
+                    r.number(32)?;
+                }
+                4 => {
+                    r.string()?;
+                }
+                5 => {
+                    r.economy_action()?;
+                }
+                _ => unreachable!(),
+            }
+        }
+        r.number(64)?;
+        for _ in 0..r.entries(65536)? {
+            r.number(16)?;
+            for _ in 0..r.entries(limits.map_entries_max)? {
+                r.string()?;
+                r.string()?;
+            }
+            for _ in 0..10 {
+                r.number(64)?;
+            }
+            for _ in 0..r.entries(limits.queue_max_entries)? {
+                r.number(64)?;
+                r.number(16)?;
+                r.string()?;
+                r.number(64)?;
+                r.number(64)?;
+                if r.boolean()? {
+                    r.tag(4)?;
+                }
+            }
+            r.quantity_ledger()?;
+            r.construction_ledger()?;
+        }
+        if r.boolean()? {
+            for _ in 0..r.entries(65536)? {
+                r.number(16)?;
+                for _ in 0..5 {
+                    r.number(64)?;
+                }
+            }
+        }
+    }
     r.end()
+}
+
+impl Reader<'_> {
+    fn trigger_state(&mut self) -> Result<()> {
+        self.number(64)?;
+        for _ in 0..self.entries(65536)? {
+            self.number(16)?;
+            for _ in 0..self.entries(self.limits.map_entries_max)? {
+                self.string()?;
+            }
+        }
+        if self.boolean()? {
+            self.number(64)?;
+            self.date()?;
+            self.byte()?;
+            for _ in 0..self.entries(self.limits.map_entries_max)? {
+                if self.tag(2)? == 2 {
+                    self.string()?;
+                }
+            }
+        }
+        Ok(())
+    }
+    fn economy_action(&mut self) -> Result<()> {
+        match self.tag(4)? {
+            0 => {
+                for _ in 0..4 {
+                    self.number(64)?;
+                }
+            }
+            1 => {
+                self.number(64)?;
+                self.number(16)?;
+                self.string()?;
+            }
+            2 => {
+                self.number(64)?;
+            }
+            3 => {
+                for _ in 0..self.entries(self.limits.queue_max_entries)? {
+                    self.number(64)?;
+                }
+            }
+            4 => {
+                self.string()?;
+            }
+            _ => unreachable!(),
+        }
+        Ok(())
+    }
+    fn quantity_ledger(&mut self) -> Result<()> {
+        self.number(64)?;
+        for _ in 0..self.entries(self.limits.map_entries_max)? {
+            self.string()?;
+            self.string()?;
+        }
+        self.number(64)?;
+        self.number(64)?;
+        for _ in 0..self.entries(self.limits.map_entries_max)? {
+            self.number(16)?;
+            self.string()?;
+            for _ in 0..3 {
+                self.number(64)?;
+            }
+        }
+        for _ in 0..self.entries(65536)? {
+            self.number(16)?;
+            self.number(64)?;
+        }
+        for _ in 0..self.entries(65536)? {
+            self.number(16)?;
+            for _ in 0..self.entries(self.limits.map_entries_max)? {
+                self.string()?;
+                self.number(64)?;
+            }
+        }
+        self.number(64)?;
+        for _ in 0..self.entries(self.limits.map_entries_max)? {
+            self.string()?;
+            self.number(64)?;
+        }
+        for _ in 0..self.entries(self.limits.map_entries_max)? {
+            self.string()?;
+            self.number(64)?;
+            self.number(64)?;
+        }
+        for _ in 0..11 {
+            self.number(64)?;
+        }
+        Ok(())
+    }
+    fn construction_ledger(&mut self) -> Result<()> {
+        self.number(64)?;
+        self.number(64)?;
+        for _ in 0..self.entries(self.limits.queue_max_entries)? {
+            for _ in 0..5 {
+                self.number(64)?;
+            }
+            self.boolean()?;
+            if self.boolean()? {
+                self.tag(4)?;
+            }
+            self.number(16)?;
+            self.string()?;
+            for _ in 0..5 {
+                self.number(64)?;
+            }
+            self.number(16)?;
+            self.boolean()?;
+        }
+        self.number(64)?;
+        Ok(())
+    }
 }

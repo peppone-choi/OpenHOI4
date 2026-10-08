@@ -1,6 +1,0 @@
-{
-  "commit": "f58c0c61322287f48318bce47ca51deb7daebcc9",
-  "source": "git archive exact commit, no source mutation",
-  "archive": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify2\\target\\wp08-verify2\\f58-source.tar",
-  "exe": "E:\\openhoi\\.orchestrator\\wt\\WP-08-verify2\\target\\wp08-verify2\\f58-build\\debug\\oh_server.exe"
-}

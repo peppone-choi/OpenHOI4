@@ -1,7 +1,7 @@
 """Cold-cache preparation contract; original Linux native101 is separate evidence."""
-import os, tempfile, unittest
+import os, tempfile, unittest, json
 from pathlib import Path
-from run import prepare_metadata
+from run import prepare_metadata,linked_inventory,verify_linked
 ROOT=Path(__file__).resolve().parents[1]
 LOCK='''version = 4
 [[package]]
@@ -10,6 +10,10 @@ version = "0.2.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "460fbee9c2c2f33933d720630a6a0bac33ba7053db5344fac858d4b8952d77d5"
 '''
+def metadata(tree,driver):
+    packages=[{'name':name,'source':None,'manifest_path':str(tree/'crates'/name/'Cargo.toml')} for name in ('oh_cli','oh_core','oh_save')]
+    packages.append({'name':'oh_bench_driver','source':None,'manifest_path':str(driver/'Cargo.toml')})
+    return json.dumps({'packages':packages}).encode()
 class Metadata(unittest.TestCase):
     def fixture(self):
         base=Path(os.environ.get('OH_WP25_EVIDENCE_ROOT',ROOT/'target/evidence/WP-25-metadata'))
@@ -31,7 +35,7 @@ class Metadata(unittest.TestCase):
                 self.assertEqual(argv[-1],str(tree/'Cargo.toml'))
                 cache=True
             elif not cache: raise ValueError('baseline-metadata: native101; crunchy v0.2.4 HTTP blocked by --offline')
-            return b'{}'
+            return metadata(tree,driver)
         before=(tree/'Cargo.lock').read_bytes()
         prepare_metadata('baseline',tree,driver,command,{'build_timeout_seconds':1200})
         self.assertEqual([x[1][1] for x in calls],['fetch','metadata'])
@@ -43,7 +47,7 @@ class Metadata(unittest.TestCase):
             text=LOCK.replace('0.2.4',value) if field=='version' else LOCK.replace('460fbee9c2c2f33933d720630a6a0bac33ba7053db5344fac858d4b8952d77d5',value)
             (driver/'Cargo.lock').write_text(text,encoding='utf-8')
             with self.assertRaisesRegex(ValueError,'changed source registry resolution'):
-                prepare_metadata('current',tree,driver,lambda *args:b'{}',{'build_timeout_seconds':1200})
+                prepare_metadata('current',tree,driver,lambda *args:metadata(tree,driver),{'build_timeout_seconds':1200})
     def test_fetch_failure_is_fatal_and_does_not_try_metadata(self):
         tree,driver=self.fixture();calls=[]
         def command(name,*args):
@@ -57,8 +61,23 @@ class Metadata(unittest.TestCase):
         def command(name,*args):
             calls.append(name)
             (tree/'Cargo.lock').write_text(LOCK+'\n# mutation\n',encoding='utf-8')
-            return b'{}'
+            return metadata(tree,driver)
         with self.assertRaisesRegex(ValueError,'source lock changed'):
             prepare_metadata('baseline',tree,driver,command,{'build_timeout_seconds':1200})
         self.assertEqual(calls,['baseline-fetch'])
+
+    def test_manifest_linkage_or_external_path_drift_is_rejected(self):
+        tree,driver=self.fixture();m=json.loads(metadata(tree,driver));m['packages'][0]['manifest_path']=str(driver/'other/Cargo.toml')
+        with self.assertRaisesRegex(ValueError,'escaped source path dependency'):
+            prepare_metadata('current',tree,driver,lambda *args:json.dumps(m).encode(),{'build_timeout_seconds':1200})
+        m=json.loads(metadata(tree,driver));m['packages'][0]['manifest_path']=str(tree/'crates/wrong/Cargo.toml')
+        with self.assertRaisesRegex(ValueError,'library linkage changed'):
+            prepare_metadata('baseline',tree,driver,lambda *args:json.dumps(m).encode(),{'build_timeout_seconds':1200})
+    def test_real_library_file_changed_after_linkage_snapshot_is_fatal(self):
+        tree,driver=self.fixture();(tree/'rust-toolchain.toml').write_bytes(b'pinned actual toolchain');(driver/'src').mkdir();(driver/'src/main.rs').write_bytes(b'fn main() {}')
+        for name in ('oh_cli','oh_core','oh_save'):
+            root=tree/'crates'/name;root.mkdir(parents=True);(root/'Cargo.toml').write_bytes(b'actual path manifest');(root/'src').mkdir();(root/'src/lib.rs').write_bytes(b'pub fn actual_library() {}')
+        m=json.loads(metadata(tree,driver));expected=linked_inventory(m,tree,driver)
+        (tree/'crates/oh_core/src/lib.rs').write_bytes(b'pub fn changed_after_linkage() {}')
+        with self.assertRaisesRegex(ValueError,'linked library source identity changed'):verify_linked(m,tree,driver,expected)
 if __name__=='__main__': unittest.main(verbosity=2)

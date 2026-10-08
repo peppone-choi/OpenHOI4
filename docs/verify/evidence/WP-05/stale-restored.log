@@ -1,7 +1,0 @@
-    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.32s
-     Running tests\contract.rs (target\evidence\WP-05-verify\sandbox-build\debug\deps\contract-babfe32d2411ea2d.exe)
-
-running 1 test
-test req_net_04_generated_types_are_current ... ok
-
-test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 1 filtered out; finished in 0.00s

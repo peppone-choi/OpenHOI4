@@ -1,7 +1,0 @@
-
-> openhoi-client@0.1.0 typecheck
-> tsc --noEmit
-
-src/network.ts(31,70): error TS2345: Argument of type '{ type: Guard<"Welcome">; engine_version: Guard<string>; protocol_version: Guard<string>; accepted: Guard<boolean>; reason_key: Guard<string | null>; packs: Guard<...>; sessions: Guard<...>; } | ... 4 more ... | { ...; }' is not assignable to parameter of type 'Shape<{ type: "Welcome"; engine_version: string; protocol_version: string; accepted: boolean; reason_key: string | null; packs: PackInfo[]; sessions: string[]; }>'.
-  Type '{ type: Guard<"CommandResult">; sequence: Guard<string>; accepted: Guard<boolean>; reason_key: Guard<string | null>; }' is missing the following properties from type 'Shape<{ type: "Welcome"; engine_version: string; protocol_version: string; accepted: boolean; reason_key: string | null; packs: PackInfo[]; sessions: string[]; }>': engine_version, protocol_version, packs, sessions
-exit=1
