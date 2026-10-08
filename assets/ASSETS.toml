@@ -930,3 +930,255 @@ modified = false
 ai_generated = false
 sha256 = "2c593114e954ce1adb297ddee5465f05d9e81fa0a26deb13f8500d58a00d7051"
 notes = "FixedNE4.1.0PolygonSHPgeometryonly; MODIS2002-2003/generalized1:10M. CRC reads all raw members includingDBF; noDBFattribute parsing/population/LandScan/adminboundary/gameauthority. Terms/date/version/PRJ/CRC/acquisition/limits: data/preview/world/source-manifest.json andSOURCES.md. Offlinepreview only."
+
+[[asset]]
+path = "data/packs/testland_m2/README.md"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original provisional WP-23 synthetic initial content; inherited values and generation are documented in the pack SOURCES.md. No third-party game assets or new mechanics."
+
+[[asset]]
+path = "data/packs/testland_m2/SOURCES.md"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original provisional WP-23 synthetic initial content; inherited values and generation are documented in the pack SOURCES.md. No third-party game assets or new mechanics."
+
+[[asset]]
+path = "data/packs/testland_m2/common/buildings.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original provisional WP-23 synthetic initial content; inherited values and generation are documented in the pack SOURCES.md. No third-party game assets or new mechanics."
+
+[[asset]]
+path = "data/packs/testland_m2/common/economy/initial.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original provisional WP-23 synthetic initial content; inherited values and generation are documented in the pack SOURCES.md. No third-party game assets or new mechanics."
+
+[[asset]]
+path = "data/packs/testland_m2/common/resources.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original provisional WP-23 synthetic initial content; inherited values and generation are documented in the pack SOURCES.md. No third-party game assets or new mechanics."
+
+[[asset]]
+path = "data/packs/testland_m2/common/terrain.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original provisional WP-23 synthetic initial content; inherited values and generation are documented in the pack SOURCES.md. No third-party game assets or new mechanics."
+
+[[asset]]
+path = "data/packs/testland_m2/defines.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original provisional WP-23 synthetic initial content; inherited values and generation are documented in the pack SOURCES.md. No third-party game assets or new mechanics."
+
+[[asset]]
+path = "data/packs/testland_m2/localisation/en/map.ftl"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original provisional WP-23 synthetic initial content; inherited values and generation are documented in the pack SOURCES.md. No third-party game assets or new mechanics."
+
+[[asset]]
+path = "data/packs/testland_m2/localisation/en/national.ftl"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original provisional WP-23 synthetic initial content; inherited values and generation are documented in the pack SOURCES.md. No third-party game assets or new mechanics."
+
+[[asset]]
+path = "data/packs/testland_m2/localisation/en/pack.ftl"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original provisional WP-23 synthetic initial content; inherited values and generation are documented in the pack SOURCES.md. No third-party game assets or new mechanics."
+
+[[asset]]
+path = "data/packs/testland_m2/localisation/ko/map.ftl"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original provisional WP-23 synthetic initial content; inherited values and generation are documented in the pack SOURCES.md. No third-party game assets or new mechanics."
+
+[[asset]]
+path = "data/packs/testland_m2/localisation/ko/national.ftl"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original provisional WP-23 synthetic initial content; inherited values and generation are documented in the pack SOURCES.md. No third-party game assets or new mechanics."
+
+[[asset]]
+path = "data/packs/testland_m2/localisation/ko/pack.ftl"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original provisional WP-23 synthetic initial content; inherited values and generation are documented in the pack SOURCES.md. No third-party game assets or new mechanics."
+
+[[asset]]
+path = "data/packs/testland_m2/manifest.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original provisional WP-23 synthetic initial content; inherited values and generation are documented in the pack SOURCES.md. No third-party game assets or new mechanics."
+
+[[asset]]
+path = "data/packs/testland_m2/maps/testland_m2/adjacency_overrides.csv"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original provisional WP-23 synthetic initial content; inherited values and generation are documented in the pack SOURCES.md. No third-party game assets or new mechanics."
+
+[[asset]]
+path = "data/packs/testland_m2/maps/testland_m2/provinces.csv"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original provisional WP-23 synthetic initial content; inherited values and generation are documented in the pack SOURCES.md. No third-party game assets or new mechanics."
+
+[[asset]]
+path = "data/packs/testland_m2/maps/testland_m2/provinces.png"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original provisional WP-23 synthetic initial content; inherited values and generation are documented in the pack SOURCES.md. No third-party game assets or new mechanics."
+
+[[asset]]
+path = "data/packs/testland_m2/maps/testland_m2/regions.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original provisional WP-23 synthetic initial content; inherited values and generation are documented in the pack SOURCES.md. No third-party game assets or new mechanics."
+
+[[asset]]
+path = "data/packs/testland_m2/maps/testland_m2/states.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original provisional WP-23 synthetic initial content; inherited values and generation are documented in the pack SOURCES.md. No third-party game assets or new mechanics."
+
+[[asset]]
+path = "data/packs/testland_m2/maps/testland_m2/visuals.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original provisional WP-23 synthetic initial content; inherited values and generation are documented in the pack SOURCES.md. No third-party game assets or new mechanics."
+
+[[asset]]
+path = "data/packs/testland_m2/scenarios/m2_initial/defines.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original provisional WP-23 synthetic initial content; inherited values and generation are documented in the pack SOURCES.md. No third-party game assets or new mechanics."
+
+[[asset]]
+path = "data/packs/testland_m2/scenarios/m2_initial/nations/N01.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original provisional WP-23 synthetic initial content; inherited values and generation are documented in the pack SOURCES.md. No third-party game assets or new mechanics."
+
+[[asset]]
+path = "data/packs/testland_m2/scenarios/m2_initial/nations/N02.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original provisional WP-23 synthetic initial content; inherited values and generation are documented in the pack SOURCES.md. No third-party game assets or new mechanics."
+
+[[asset]]
+path = "data/packs/testland_m2/scenarios/m2_initial/nations/N03.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original provisional WP-23 synthetic initial content; inherited values and generation are documented in the pack SOURCES.md. No third-party game assets or new mechanics."
+
+[[asset]]
+path = "data/packs/testland_m2/scenarios/m2_initial/nations/N04.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original provisional WP-23 synthetic initial content; inherited values and generation are documented in the pack SOURCES.md. No third-party game assets or new mechanics."
+
+[[asset]]
+path = "data/packs/testland_m2/scenarios/m2_initial/nations/N05.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original provisional WP-23 synthetic initial content; inherited values and generation are documented in the pack SOURCES.md. No third-party game assets or new mechanics."
+
+[[asset]]
+path = "data/packs/testland_m2/scenarios/m2_initial/nations/N06.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original provisional WP-23 synthetic initial content; inherited values and generation are documented in the pack SOURCES.md. No third-party game assets or new mechanics."
+
+[[asset]]
+path = "data/packs/testland_m2/scenarios/m2_initial/scenario.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Original provisional WP-23 synthetic initial content; inherited values and generation are documented in the pack SOURCES.md. No third-party game assets or new mechanics."
