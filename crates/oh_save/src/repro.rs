@@ -17,10 +17,12 @@ pub enum InputCommand {
     Stop { unit: u32 },
     Effects { program: String },
     Economy(oh_sim::economy::Action),
+    Production(oh_sim::production::Action),
 }
 impl From<InputCommand> for Command {
     fn from(c: InputCommand) -> Self {
         match c {
+            InputCommand::Production(v) => Self::Production(v),
             InputCommand::Economy(v) => Self::Economy(v),
             InputCommand::Pause(v) => Self::Pause(v),
             InputCommand::SetSpeed(v) => Self::SetSpeed(v),
@@ -158,7 +160,9 @@ pub fn hash(sim: &Simulation) -> Result<String> {
     ))
 }
 pub fn report(sim: &Simulation) -> Result<Report> {
-    let (format, dto) = if sim.economy().is_some() {
+    let (format, dto) = if sim.production().is_some() {
+        (6, serde_json::to_value(sim.export_save_v6()?))
+    } else if sim.economy().is_some() {
         (5, serde_json::to_value(sim.export_save_v5()?))
     } else if sim.trigger_state().is_some() {
         (4, serde_json::to_value(sim.export_save_v4()?))

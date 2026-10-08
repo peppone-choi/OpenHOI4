@@ -11,6 +11,8 @@ pub mod economy_save;
 pub mod formula;
 pub mod ledger;
 pub mod movement;
+pub mod production;
+pub mod production_save;
 pub mod save_state;
 mod time;
 pub mod trigger;
@@ -20,6 +22,7 @@ pub use time::{Date, TimeConfig};
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum Error {
+    Production(production::ProductionError),
     Economy(economy::EconomyError),
     ScenarioEnded,
     Trigger(trigger::TriggerError),
@@ -39,6 +42,7 @@ impl std::fmt::Display for Error {
             return error.fmt(f);
         }
         f.write_str(match self {
+            Self::Production(_) => "production command or phase failed",
             Self::Economy(_) => "economy command or phase failed",
             Self::ScenarioEnded => "scenario-ended",
             Self::Trigger(_) => "trigger execution failed",
@@ -70,6 +74,7 @@ pub enum Command {
         program: String,
     },
     Economy(economy::Action),
+    Production(production::Action),
 }
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum Phase {
@@ -158,6 +163,8 @@ pub struct Simulation {
     trigger: Option<trigger::TriggerState>,
     #[serde(skip_serializing_if = "Option::is_none")]
     economy: Option<economy::Economy>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    production: Option<production::Production>,
 }
 impl Simulation {
     pub fn new(scenario: String, date: Date, seed: u64, config: TimeConfig) -> Result<Self, Error> {
@@ -180,6 +187,7 @@ impl Simulation {
             movement: None,
             trigger: None,
             economy: None,
+            production: None,
         })
     }
     pub fn with_world(
@@ -192,6 +200,10 @@ impl Simulation {
         let mut sim = Self::new(scenario, date, seed, config)?;
         if world.defs().economy().is_some() {
             sim.economy = Some(economy::Economy::initial(&world, 0).map_err(Error::Economy)?);
+        }
+        if world.defs().production().is_some() {
+            sim.production =
+                Some(production::Production::initial(&world).map_err(Error::Production)?);
         }
         sim.world = Some(world);
         if let Some(world) = sim.world.as_ref()
@@ -232,6 +244,35 @@ impl Simulation {
         let mut sim = Self::with_world(scenario, date, seed, config, world)?;
         sim.movement = Some(movement);
         Ok(sim)
+    }
+    pub fn production(&self) -> Option<&production::Production> {
+        self.production.as_ref()
+    }
+    fn apply_production(
+        command: &Command,
+        nation: NationId,
+        world: Option<&world::World>,
+        economy: Option<&economy::Economy>,
+        production: Option<&mut production::Production>,
+        tick: u64,
+    ) -> Result<(), Error> {
+        let Command::Production(a) = command else {
+            return Ok(());
+        };
+        production
+            .ok_or(Error::Production(
+                production::ProductionError::MissingContext,
+            ))?
+            .command(
+                world.ok_or(Error::InvalidWorld)?,
+                economy.ok_or(Error::Production(
+                    production::ProductionError::MissingContext,
+                ))?,
+                nation,
+                a,
+                tick,
+            )
+            .map_err(Error::Production)
     }
     pub fn economy(&self) -> Option<&economy::Economy> {
         self.economy.as_ref()
@@ -401,6 +442,17 @@ impl Simulation {
                 preview.as_mut(),
             )?;
         }
+        if matches!(command, Command::Production(_)) {
+            let mut preview = self.production.clone();
+            Self::apply_production(
+                &command,
+                nation,
+                self.world.as_ref(),
+                self.economy.as_ref(),
+                preview.as_mut(),
+                self.state.tick(),
+            )?;
+        }
         self.queue.insert(key, command);
         Ok(())
     }
@@ -415,6 +467,7 @@ impl Simulation {
         let mut next_movement = self.movement.clone();
         let mut next_trigger = self.trigger.clone();
         let mut next_economy = self.economy.clone();
+        let mut next_production = self.production.clone();
         let mut end_sources = std::collections::BTreeSet::new();
         let keys: Vec<_> = self
             .queue
@@ -425,6 +478,14 @@ impl Simulation {
         let mut commands = Vec::new();
         for key @ (_, nation, sequence) in &keys {
             let result = match &self.queue[key] {
+                c @ Command::Production(_) => Self::apply_production(
+                    c,
+                    *nation,
+                    next_world.as_ref(),
+                    next_economy.as_ref(),
+                    next_production.as_mut(),
+                    next.tick(),
+                ),
                 c @ Command::Economy(_) => Self::apply_economy(
                     c,
                     *nation,
@@ -498,6 +559,11 @@ impl Simulation {
                     economy
                         .daily_economy(world, next.tick)
                         .map_err(Error::Economy)?;
+                    if let Some(production) = next_production.as_mut() {
+                        production
+                            .daily(world, economy, next.tick)
+                            .map_err(Error::Production)?;
+                    }
                     economy
                         .daily_construction(world, next.tick)
                         .map_err(Error::Economy)?;
@@ -538,6 +604,7 @@ impl Simulation {
         self.movement = next_movement;
         self.trigger = next_trigger;
         self.economy = next_economy;
+        self.production = next_production;
         Ok(Step {
             advanced,
             commands,

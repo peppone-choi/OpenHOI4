@@ -1,3 +1,5 @@
+#[path = "../../oh_data/tests/support/production.rs"]
+mod production_fixture;
 use oh_proto::*;
 use serde::Serialize;
 fn add<T: Serialize>(fixtures: &mut Vec<serde_json::Value>, name: &str, message: T) {
@@ -200,6 +202,47 @@ fn main() {
     std::fs::write(
         path.join("economy-wire-fixtures.json"),
         serde_json::to_vec_pretty(&economic_wire).unwrap(),
+    )
+    .unwrap();
+    let production_root = production_fixture::pack();
+    let l = oh_data::national::load_scenario(&production_root, "m1").unwrap();
+    let mut p = oh_sim::Simulation::with_world(
+        "m1".into(),
+        oh_sim::Date::new(2000, 1, 1).unwrap(),
+        1,
+        oh_sim::TimeConfig::from_defines(&l.pack.defines).unwrap(),
+        oh_sim::world::World::from_loaded(&l).unwrap(),
+    )
+    .unwrap();
+    p.enqueue(
+        0,
+        oh_core::NationId(1),
+        1,
+        oh_sim::Command::Production(oh_sim::production::Action::Create {
+            model: "test_model_1".into(),
+            requested_ic: oh_core::Qty::from_num(1),
+        }),
+    )
+    .unwrap();
+    for _ in 0..24 {
+        p.step().unwrap();
+    }
+    let output = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../target/wp15");
+    std::fs::create_dir_all(&output).unwrap();
+    let message = ServerMessage::ProductionResult {
+        request: "production".into(),
+        supported: true,
+        reason_key: None,
+        production: ProductionView::from_sim(&p),
+    };
+    std::fs::write(
+        output.join("production-wire-fixture.json"),
+        serde_json::to_vec_pretty(&message).unwrap(),
+    )
+    .unwrap();
+    std::fs::write(
+        output.join("fixture-pack-path.txt"),
+        production_root.to_string_lossy().as_bytes(),
     )
     .unwrap();
 }

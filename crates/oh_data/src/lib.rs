@@ -12,6 +12,7 @@ pub mod m0;
 pub mod map;
 pub mod national;
 pub mod pack_validation;
+pub mod production;
 mod raw;
 pub mod scenario_defines;
 pub mod trigger;

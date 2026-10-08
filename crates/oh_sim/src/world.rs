@@ -8,6 +8,7 @@ use serde::Serialize;
 use std::{collections::BTreeMap, sync::Arc};
 #[derive(Clone, Debug)]
 pub struct Defs {
+    production: Option<oh_data::production::Definition>,
     trigger: Option<oh_data::trigger::Definition>,
     economy: Option<oh_data::economy::Definition>,
     nations: Vec<oh_data::national::NationDefinition>,
@@ -16,6 +17,9 @@ pub struct Defs {
     map_id: String,
 }
 impl Defs {
+    pub fn production(&self) -> Option<&oh_data::production::Definition> {
+        self.production.as_ref()
+    }
     pub fn economy(&self) -> Option<&oh_data::economy::Definition> {
         self.economy.as_ref()
     }
@@ -545,6 +549,7 @@ impl World {
             defs: Arc::new(Defs {
                 trigger: oh_data::trigger::definition(loaded)?,
                 economy: loaded.economy.clone(),
+                production: loaded.production.clone(),
                 nations: loaded.nations.clone(),
                 map: loaded.map.clone(),
                 visuals: loaded.visuals.clone(),

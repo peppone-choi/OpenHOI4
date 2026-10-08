@@ -266,7 +266,7 @@ pub fn body_version(bytes: &[u8], limits: &Limits, version: u16) -> Result<()> {
             r.number(64)?;
         }
     }
-    if version == 3 || version == 4 || version == 5 {
+    if version == 3 || version == 4 || version == 5 || version == 6 {
         for _ in 0..r.entries(limits.map_entries_max)? {
             r.number(32)?;
             for _ in 0..r.entries(limits.map_entries_max)? {
@@ -326,7 +326,7 @@ pub fn body_version(bytes: &[u8], limits: &Limits, version: u16) -> Result<()> {
             }
         }
     }
-    if version == 5 {
+    if version == 5 || version == 6 {
         r.boolean()?;
         r.boolean()?;
         if r.boolean()? {
@@ -391,10 +391,123 @@ pub fn body_version(bytes: &[u8], limits: &Limits, version: u16) -> Result<()> {
             }
         }
     }
+    if version == 6 {
+        for _ in 0..r.entries(limits.queue_max_entries)? {
+            r.number(64)?;
+            r.number(16)?;
+            r.number(64)?;
+            match r.tag(1)? {
+                0 => match r.tag(5)? {
+                    0 => {
+                        r.boolean()?;
+                    }
+                    1 => {
+                        r.byte()?;
+                    }
+                    2 => {
+                        r.number(32)?;
+                        r.number(16)?;
+                    }
+                    3 => {
+                        r.number(32)?;
+                    }
+                    4 => {
+                        r.string()?;
+                    }
+                    5 => {
+                        r.economy_action()?;
+                    }
+                    _ => unreachable!(),
+                },
+                1 => {
+                    r.production_action()?;
+                }
+                _ => unreachable!(),
+            }
+        }
+        r.number(64)?;
+        r.number(64)?;
+        for _ in 0..r.entries(limits.queue_max_entries)? {
+            r.number(64)?;
+            r.production_line()?;
+        }
+        for _ in 0..r.entries(65536)? {
+            r.number(16)?;
+            for _ in 0..r.entries(limits.map_entries_max)? {
+                r.string()?;
+                r.number(64)?;
+            }
+        }
+        if r.boolean()? {
+            r.number(64)?;
+            for _ in 0..r.entries(65536)? {
+                r.number(16)?;
+                r.number(64)?;
+                r.number(64)?;
+                r.map()?;
+                r.number(64)?;
+                for _ in 0..r.entries(limits.queue_max_entries)? {
+                    r.number(64)?;
+                    r.production_line()?;
+                    for _ in 0..8 {
+                        r.number(64)?;
+                    }
+                    for _ in 0..r.entries(limits.map_entries_max)? {
+                        r.string()?;
+                        r.number(64)?;
+                        r.number(64)?;
+                        r.number(64)?;
+                    }
+                }
+            }
+        }
+        for _ in 0..r.entries(limits.queue_max_entries)? {
+            r.number(64)?;
+            r.number(64)?;
+            r.number(16)?;
+            r.string()?;
+            r.number(64)?;
+        }
+    }
     r.end()
 }
 
 impl Reader<'_> {
+    fn production_line(&mut self) -> Result<()> {
+        self.number(64)?;
+        self.number(16)?;
+        self.string()?;
+        self.number(64)?;
+        self.boolean()?;
+        self.number(64)?;
+        self.number(64)?;
+        Ok(())
+    }
+    fn production_action(&mut self) -> Result<()> {
+        match self.tag(4)? {
+            0 => {
+                self.string()?;
+                self.number(64)?;
+            }
+            1 => {
+                self.number(64)?;
+                self.number(64)?;
+            }
+            2 => {
+                self.number(64)?;
+                self.boolean()?;
+            }
+            3 => {
+                self.number(64)?;
+                self.string()?;
+            }
+            4 => {
+                self.number(64)?;
+            }
+            _ => unreachable!(),
+        }
+        Ok(())
+    }
     fn trigger_state(&mut self) -> Result<()> {
         self.number(64)?;
         for _ in 0..self.entries(65536)? {

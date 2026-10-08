@@ -1182,3 +1182,39 @@ license = "CC-BY-SA-4.0"
 modified = false
 ai_generated = false
 notes = "Original provisional WP-23 synthetic initial content; inherited values and generation are documented in the pack SOURCES.md. No third-party game assets or new mechanics."
+
+[[asset]]
+path = "crates/oh_data/tests/fixtures/production/valid.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Independent synthetic WP-15 requirement fixture and provisional tuning; no original game material, no campaign or downstream equipment balance claim."
+
+[[asset]]
+path = "crates/oh_data/tests/fixtures/production/defines.toml"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Independent synthetic WP-15 requirement fixture and provisional tuning; no original game material, no campaign or downstream equipment balance claim."
+
+[[asset]]
+path = "crates/oh_data/tests/fixtures/production/en.ftl"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Independent synthetic WP-15 requirement fixture and provisional tuning; no original game material, no campaign or downstream equipment balance claim."
+
+[[asset]]
+path = "crates/oh_data/tests/fixtures/production/ko.ftl"
+author = "OpenHOI contributors"
+source = "original"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Independent synthetic WP-15 requirement fixture and provisional tuning; no original game material, no campaign or downstream equipment balance claim."

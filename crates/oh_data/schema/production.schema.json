@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Definition",
+  "type": "object",
+  "properties": {
+    "models": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/Model"
+      }
+    },
+    "nations": {
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^\\d+$": {
+          "$ref": "#/$defs/NationInput"
+        }
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "models",
+    "nations"
+  ],
+  "$defs": {
+    "Model": {
+      "type": "object",
+      "properties": {
+        "family": {
+          "type": "string"
+        },
+        "generation": {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0
+        },
+        "name_key": {
+          "type": "string"
+        },
+        "resources_per_item": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "unit_cost": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name_key",
+        "family",
+        "generation",
+        "unit_cost",
+        "resources_per_item"
+      ]
+    },
+    "NationInput": {
+      "type": "object",
+      "properties": {
+        "allowed_models": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "stock": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "allowed_models",
+        "stock"
+      ]
+    }
+  }
+}

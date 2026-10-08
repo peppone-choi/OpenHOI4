@@ -172,3 +172,37 @@ economy-target-conflict = 건설 목표 충돌
 economy-slot-cap = 건설 슬롯 상한
 economy-zero-cap = 프로젝트 상한 0
 economy-zero-factor = 인프라 보정 0
+
+production-title = 생산
+production-efficiency = 효율
+production-carry = 미완성 장비
+production-ic = 요청 IC
+production-set-ic = IC 설정
+production-resume = 라인 재개
+production-pause = 라인 정지
+production-model = 장비 모델
+production-switch = 모델 전환
+production-cancel = 라인 취소
+production-switch-note = 다른 모델로 전환하거나 라인을 취소하면 미완성분을 폐기합니다. 완성 장비 비축은 유지합니다.
+production-nation = 국가
+production-control = 선택 국가로 시작
+production-budget = 군수 IC 예산
+production-new-model = 새 라인 장비 모델
+production-new-ic = 새 라인 IC
+production-create = 라인 생성
+production-stock = 가용 장비
+production-day = 마지막 일일 계산 틱
+production-unused-ic = 미배정 IC
+production-effective-ic = 실효 IC
+production-fulfillment = 자원 충족률
+production-output = 완성 장비
+
+production-resources = 일일 자원 사용
+production-resource = 자원
+production-required = 필요량
+production-reserved = 배정량
+production-debited = 사용량
+
+production-unit-cost = 단위 비용
+production-cost-unit = 개당 IC일
+production-resource-unit = 개당 자원 단위
