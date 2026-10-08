@@ -553,6 +553,17 @@ async fn connection(mut socket: WebSocket, mut host: Host) {
                         let state = TimeState::from(&sim.snapshot()); current_state = Some(state.clone()); active = Some(session::Session::start(sim, host.capacity, host.delta_ms));
                         if !send(&mut socket, ServerMessage::Snapshot { state }).await { break; }
                     }
+                    ClientMessage::ProductionCommand{sequence,command}=>{
+                        let parsed=sequence.parse::<u64>();
+                        let reason=if !parsed.as_ref().is_ok_and(|s|*s>client_sequence){Some("invalid-sequence")}else if active.is_none(){Some("not-joined")}else if player_nation.is_none(){Some("unsupported-session")}else{None};
+                        if let Some(reason)=reason{if !send(&mut socket,ServerMessage::CommandResult{sequence,accepted:false,reason_key:Some(reason.into())}).await{break;}continue;}
+                        client_sequence=parsed.unwrap();let(reply,received)=oneshot::channel();
+                        if active.as_ref().unwrap().commands.try_send(session::Request::ProductionCommand{nation:player_nation.unwrap(),command,reply}).is_err(){notice(&mut socket,"session-closed").await;break;}
+                        let result=tokio::select!{result=received=>result.unwrap_or(Err("session-closed")),_=host.shutdown.changed()=>break};
+                        let reason_key=result.as_ref().err().map(|r|(*r).into());
+                        if !send(&mut socket,ServerMessage::CommandResult{sequence,accepted:result.is_ok(),reason_key}).await{break;}
+                        if let Ok(state)=result{active.as_mut().unwrap().states.borrow_and_update();current_state=Some(state.clone());if !send(&mut socket,ServerMessage::Snapshot{state}).await{break;}}
+                    },
                     ClientMessage::EconomyCommand{sequence,command}=>{
                         let parsed=sequence.parse::<u64>();
                         let reason=if !parsed.as_ref().is_ok_and(|s|*s>client_sequence){Some("invalid-sequence")}else if active.is_none(){Some("not-joined")}else if player_nation.is_none(){Some("unsupported-session")}else{None};
@@ -584,6 +595,11 @@ async fn connection(mut socket: WebSocket, mut host: Host) {
                         }
                     }
                     ClientMessage::Query { request, kind } => {
+                        if kind=="production" && host.world.as_ref().is_some_and(|w|w.defs().production().is_some()){
+                            let mut reason=Some("not-joined");let mut production=None;
+                            if let Some(session)=active.as_ref(){let(reply,received)=oneshot::channel();if session.commands.try_send(session::Request::Production{reply}).is_ok(){production=tokio::select!{value=received=>value.ok().flatten(),_=host.shutdown.changed()=>break};reason=if production.is_some(){None}else{Some("unsupported-query")};}else{reason=Some("session-closed");}}
+                            if !send(&mut socket,ServerMessage::ProductionResult{request,supported:production.is_some(),reason_key:reason.map(str::to_owned),production}).await{break;}continue;
+                        }
                         if kind=="economy" && host.world.as_ref().is_some_and(|w|w.defs().economy().is_some()){
                             let mut reason=Some("not-joined");let mut economy=None;
                             if let Some(session)=active.as_ref(){let(reply,received)=oneshot::channel();if session.commands.try_send(session::Request::Economy{reply}).is_ok(){economy=tokio::select!{value=received=>value.ok().flatten(),_=host.shutdown.changed()=>break};reason=if economy.is_some(){None}else{Some("unsupported-query")};}else{reason=Some("session-closed");}}

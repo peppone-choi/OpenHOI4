@@ -64,6 +64,9 @@
         }
       }
     },
+    "production": {
+      "type": "string"
+    },
     "score_weights": {
       "$ref": "#/$defs/ScoreWeights"
     },

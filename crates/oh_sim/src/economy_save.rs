@@ -34,6 +34,9 @@ pub struct SimulationSaveV5 {
 }
 impl Simulation {
     pub fn export_save_v5(&self) -> Result<SimulationSaveV5, String> {
+        if self.production.is_some() {
+            return Err("ProductionRequiresV6".into());
+        }
         let economy = self.economy.clone().ok_or("V5RequiresEconomy")?;
         let mut legacy = self.clone();
         legacy.economy = None;
@@ -80,6 +83,7 @@ impl Simulation {
                         program: program.clone(),
                     },
                     Command::Economy(action) => CommandV5::Economy(action.clone()),
+                    Command::Production(_) => unreachable!("production requires v6"),
                 },
             })
             .collect();

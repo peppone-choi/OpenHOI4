@@ -172,3 +172,37 @@ economy-target-conflict = Construction target conflict
 economy-slot-cap = Construction slot cap
 economy-zero-cap = Zero project capacity
 economy-zero-factor = Zero infrastructure factor
+
+production-title = Production
+production-efficiency = Efficiency
+production-carry = Unfinished equipment
+production-ic = Requested IC
+production-set-ic = Set IC
+production-resume = Resume line
+production-pause = Pause line
+production-model = Equipment model
+production-switch = Switch model
+production-cancel = Cancel line
+production-switch-note = Changing model or cancelling discards unfinished equipment. Completed stock is kept.
+production-nation = Nation
+production-control = Start as selected nation
+production-budget = Military IC budget
+production-new-model = New line equipment model
+production-new-ic = New line IC
+production-create = Create line
+production-stock = Available equipment
+production-day = Last daily calculation at tick
+production-unused-ic = Unassigned IC
+production-effective-ic = Effective IC
+production-fulfillment = Resource fulfillment
+production-output = Completed equipment
+
+production-resources = Daily resource usage
+production-resource = Resource
+production-required = Required
+production-reserved = Reserved
+production-debited = Used
+
+production-unit-cost = Unit cost
+production-cost-unit = IC-days per item
+production-resource-unit = resource units per item

@@ -165,6 +165,128 @@ pub fn weighted_score(
 
 // Economy arithmetic uses wide integer intermediates; no Qty -> Fx narrowing.
 use oh_core::Qty;
+/// WP15 proportionate shares, conserving raw units. IDs break quantization ties.
+pub fn production_split(
+    budget: i128,
+    weights: &[(u64, i128)],
+) -> Result<std::collections::BTreeMap<u64, i128>, EconomyArithmeticError> {
+    if budget < 0
+        || weights.iter().any(|(_, w)| *w < 0)
+        || weights.windows(2).any(|v| v[0].0 >= v[1].0)
+    {
+        return Err(EconomyArithmeticError::InvalidValue);
+    }
+    let total = weights.iter().try_fold(0i128, |a, (_, w)| {
+        a.checked_add(*w).ok_or(EconomyArithmeticError::Overflow)
+    })?;
+    let mut shares = std::collections::BTreeMap::new();
+    let mut remainders = vec![];
+    let mut used = 0i128;
+    for (id, w) in weights {
+        let (value, remainder) = if total == 0 {
+            (0, 0)
+        } else {
+            production_mul_div_rem(budget, *w, total)?
+        };
+        used = used
+            .checked_add(value)
+            .ok_or(EconomyArithmeticError::Overflow)?;
+        shares.insert(*id, value);
+        if *w > 0 {
+            remainders.push((remainder, *id));
+        }
+    }
+    remainders.sort_by(|a, b| b.0.cmp(&a.0).then(a.1.cmp(&b.1)));
+    if total > 0 {
+        let residual =
+            usize::try_from(budget - used).map_err(|_| EconomyArithmeticError::Overflow)?;
+        if residual > remainders.len() {
+            return Err(EconomyArithmeticError::InvalidValue);
+        }
+        for (_, id) in remainders.into_iter().take(residual) {
+            *shares.get_mut(&id).unwrap() += 1;
+        }
+    }
+    Ok(shares)
+}
+// Exact nonnegative multiplication/division without overflowing the intermediate
+// product. The split weights are <= denominator, so the quotient fits in budget.
+fn production_mul_div_rem(
+    a: i128,
+    b: i128,
+    d: i128,
+) -> Result<(i128, i128), EconomyArithmeticError> {
+    if let Some(product) = a.checked_mul(b) {
+        return Ok((product / d, product % d));
+    }
+    let base = (a / d)
+        .checked_mul(b)
+        .ok_or(EconomyArithmeticError::Overflow)?;
+    let part = a % d;
+    let mut quotient = 0i128;
+    let mut remainder = 0i128;
+    for bit in (0..127).rev() {
+        quotient = quotient
+            .checked_mul(2)
+            .ok_or(EconomyArithmeticError::Overflow)?;
+        if remainder >= d - remainder {
+            remainder -= d - remainder;
+            quotient = quotient
+                .checked_add(1)
+                .ok_or(EconomyArithmeticError::Overflow)?;
+        } else {
+            remainder *= 2;
+        }
+        if b & (1i128 << bit) != 0 {
+            if remainder >= d - part {
+                remainder -= d - part;
+                quotient = quotient
+                    .checked_add(1)
+                    .ok_or(EconomyArithmeticError::Overflow)?;
+            } else {
+                remainder += part;
+            }
+        }
+    }
+    Ok((
+        base.checked_add(quotient)
+            .ok_or(EconomyArithmeticError::Overflow)?,
+        remainder,
+    ))
+}
+pub fn production_divide(work: Qty, cost: Qty) -> Result<Qty, EconomyArithmeticError> {
+    if work < Qty::ZERO || cost <= Qty::ZERO {
+        return Err(EconomyArithmeticError::InvalidValue);
+    }
+    qty_bits(
+        i128::from(work.to_bits())
+            .checked_mul(1 << 16)
+            .ok_or(EconomyArithmeticError::Overflow)?
+            / i128::from(cost.to_bits()),
+    )
+}
+pub fn production_resource(output: Qty, cost: Qty) -> Result<Qty, EconomyArithmeticError> {
+    if output < Qty::ZERO || cost <= Qty::ZERO {
+        return Err(EconomyArithmeticError::InvalidValue);
+    }
+    let n = i128::from(output.to_bits())
+        .checked_mul(i128::from(cost.to_bits()))
+        .ok_or(EconomyArithmeticError::Overflow)?;
+    qty_bits((n >> 16) + i128::from(n & 0xffff != 0))
+}
+pub fn production_ratio(available: i128, required: i128) -> Result<Fx, EconomyArithmeticError> {
+    if available < 0 || required <= 0 {
+        return Err(EconomyArithmeticError::InvalidValue);
+    }
+    let raw = available
+        .min(required)
+        .checked_mul(1 << 32)
+        .ok_or(EconomyArithmeticError::Overflow)?
+        / required;
+    Ok(Fx::from_bits(
+        i64::try_from(raw).map_err(|_| EconomyArithmeticError::Overflow)?,
+    ))
+}
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum EconomyArithmeticError {
     InvalidValue,

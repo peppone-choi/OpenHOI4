@@ -1,6 +1,8 @@
 //! M0 MessagePack contract. Rust is the sole protocol type source.
 mod economy;
+mod production;
 pub use economy::*;
+pub use production::*;
 use serde::{Deserialize, Serialize};
 use ts_rs::TS;
 pub const PROTOCOL_VERSION: &str = "m0-v1";
@@ -33,6 +35,10 @@ pub enum ClientMessage {
     Query {
         request: String,
         kind: String,
+    },
+    ProductionCommand {
+        sequence: String,
+        command: ProductionCommand,
     },
     EconomyCommand {
         sequence: String,
@@ -167,6 +173,12 @@ pub enum ServerMessage {
     Notice {
         key: String,
     },
+    ProductionResult {
+        request: String,
+        supported: bool,
+        reason_key: Option<String>,
+        production: Option<ProductionView>,
+    },
     EconomyResult {
         request: String,
         supported: bool,
@@ -214,7 +226,10 @@ pub fn typescript() -> String {
             out.push('\n');
         }
     }
-    for declaration in economy::declarations() {
+    for declaration in economy::declarations()
+        .into_iter()
+        .chain(production::declarations())
+    {
         out.push_str("export ");
         out.push_str(&declaration);
         out.push('\n');

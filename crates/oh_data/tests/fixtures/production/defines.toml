@@ -1,0 +1,11 @@
+# Synthetic provisional values chosen under user-delegated tuning authority.
+[production]
+initial_efficiency = 0.25
+efficiency_cap = 1.0
+daily_efficiency_growth = 0.0078125
+same_family_newer_retention = 0.75
+other_retention = 0.25
+stability_output_low = 0.5
+stability_output_high = 1.5
+inventory_count_limit = 9223372036854775807
+lines_max = 1024

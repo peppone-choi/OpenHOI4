@@ -1,0 +1,19 @@
+# Independently chosen synthetic production recipes, not campaign equipment.
+[models.test_model_1]
+name_key = "production-test-model-1"
+family = "test_family"
+generation = 1
+unit_cost = "1"
+resources_per_item = { steel = "1" }
+[models.test_model_2]
+name_key = "production-test-model-2"
+family = "test_family"
+generation = 2
+unit_cost = "2"
+resources_per_item = { steel = "2" }
+[nations.1]
+allowed_models = ["test_model_1", "test_model_2"]
+stock = { test_model_1 = 0, test_model_2 = 0 }
+[nations.2]
+allowed_models = ["test_model_1", "test_model_2"]
+stock = { test_model_1 = 0, test_model_2 = 0 }

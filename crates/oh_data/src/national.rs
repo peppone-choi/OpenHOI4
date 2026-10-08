@@ -39,6 +39,13 @@ pub struct Scenario {
         skip_serializing_if = "Option::is_none"
     )]
     #[schemars(with = "String")]
+    pub production: Option<String>,
+    #[serde(
+        default,
+        deserialize_with = "crate::trigger::present",
+        skip_serializing_if = "Option::is_none"
+    )]
+    #[schemars(with = "String")]
     pub economy: Option<String>,
     pub start_date: String,
     pub map: String,
@@ -107,6 +114,7 @@ pub struct VisualPalette {
 }
 #[derive(Debug, Clone)]
 pub struct LoadedNational {
+    pub production: Option<crate::production::Definition>,
     pub economy: Option<crate::economy::Definition>,
     pub pack: DataPack,
     pub scenario_id: String,
@@ -360,7 +368,22 @@ pub(crate) fn read_scenario(root: &Path, id: &str) -> Result<LoadedNational, Dat
     } else {
         None
     };
+    let production = if let Some(id) = &scenario.production {
+        if !valid_id(id) {
+            return Err(field_error(&path, "production", "invalid production ID"));
+        }
+        let definition_path = root.join("common/production").join(format!("{id}.toml"));
+        let mut d = document::<crate::production::Definition>(&definition_path)?;
+        d.tuning = Some(
+            crate::production::Tuning::from_defines(&pack.defines)
+                .map_err(|e| field_error(&path, "production", &e))?,
+        );
+        Some(d)
+    } else {
+        None
+    };
     let loaded = LoadedNational {
+        production,
         economy,
         pack,
         scenario_id: id.into(),
@@ -380,6 +403,10 @@ pub(crate) fn read_scenario(root: &Path, id: &str) -> Result<LoadedNational, Dat
                 &message,
             )
         })?;
+    }
+    if let Some(p) = &loaded.production {
+        p.validate(&loaded)
+            .map_err(|e| field_error(&path, "production", &e))?;
     }
     crate::trigger::definition(&loaded).map_err(|message| {
         let candidate = message

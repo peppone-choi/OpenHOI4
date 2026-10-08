@@ -73,14 +73,14 @@ pub struct FixedValue {
     pub fractional_bits: u8,
 }
 impl FixedValue {
-    fn qty(v: Qty) -> Self {
+    pub(crate) fn qty(v: Qty) -> Self {
         Self {
             value: v.to_string(),
             bits: v.to_bits().to_string(),
             fractional_bits: 16,
         }
     }
-    fn fx(v: Fx) -> Self {
+    pub(crate) fn fx(v: Fx) -> Self {
         Self {
             value: v.to_string(),
             bits: v.to_bits().to_string(),
@@ -214,6 +214,7 @@ pub enum AuthorityCommandView {
     Stop { unit: u32 },
     Effects { program: String },
     Economy { command: EconomyCommand },
+    Production { command: crate::ProductionCommand },
 }
 #[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize, TS)]
 pub struct EconomyPendingView {
@@ -288,6 +289,9 @@ impl EconomyView {
                         }
                         oh_sim::Command::Effects { program } => AuthorityCommandView::Effects {
                             program: program.clone(),
+                        },
+                        oh_sim::Command::Production(action) => AuthorityCommandView::Production {
+                            command: crate::ProductionCommand::from_action(action),
                         },
                         oh_sim::Command::Economy(action) => AuthorityCommandView::Economy {
                             command: action_view(action),

@@ -1,3 +1,4 @@
+import {isProductionView} from './productionValidation';
 import {isEconomyView} from './economyValidation';
 import { decode, encode } from '@msgpack/msgpack';
 import { PROTOCOL_VERSION, type ClientMessage, type PackInfo, type ServerMessage, type TimeState, type WorldView, type NationView, type SupportView, type StateView, type ScalarView, type ProvinceView, type LedgerView, type LedgerRow } from './proto/protocol';
@@ -73,6 +74,7 @@ const trigger=exactShape<NonNullable<Trigger>>({definitions_hash:hash,flags:orde
 // Mapped from the generated Rust union: adding a variant/field or changing a
 // field type breaks typecheck until its runtime validator is updated.
 const serverFields = {
+  ProductionResult:{type:literal('ProductionResult'),request:string,supported:boolean,reason_key:nullable(string),production:nullable(isProductionView)},
   EconomyResult:{type:literal('EconomyResult'),request:string,supported:boolean,reason_key:nullable(string),economy:nullable(isEconomyView)},
   TriggerResult: {type:literal('TriggerResult'),request:string,supported:boolean,reason_key:nullable(string),trigger:nullable(trigger)},
   Welcome: { type: literal('Welcome'), engine_version: string, protocol_version: string, accepted: boolean, reason_key: nullable(string), packs: array(packInfo), sessions: array(string) },
@@ -86,6 +88,7 @@ const serverFields = {
 const serverGuards = Object.values(serverFields).map(fields => shape<Record<string, unknown>>(fields));
 const triggerResult=exactShape<Extract<ServerMessage,{type:'TriggerResult'}>>(serverFields.TriggerResult);
 export function isServerMessage(value: unknown): value is ServerMessage {
+  if(typeof value==='object'&&value!==null&&(value as {type?:unknown}).type==='ProductionResult'){const g=exactShape<Extract<ServerMessage,{type:'ProductionResult'}>>(serverFields.ProductionResult);return g(value)&&value.supported===(value.production!==null)&&(!value.supported||value.reason_key===null); }
   if(typeof value==='object'&&value!==null&&(value as {type?:unknown}).type==='EconomyResult'){const g=exactShape<Extract<ServerMessage,{type:'EconomyResult'}>>(serverFields.EconomyResult);return g(value)&&value.supported===(value.economy!==null)&&(!value.supported||value.reason_key===null); }
   if(typeof value==='object'&&value!==null&&(value as Record<string,unknown>).type==='TriggerResult'){
     return triggerResult(value)&&value.supported===(value.trigger!==null)&&(!value.supported||value.reason_key===null);
@@ -95,7 +98,7 @@ export function isServerMessage(value: unknown): value is ServerMessage {
 export function applyServerMessage(current: TimeState | null, message: ServerMessage): TimeState | null {
   return message.type === 'Snapshot' || message.type === 'Delta' ? message.state : current;
 }
-export function connect(onMessage: (message: ServerMessage) => void, onClose: (reasonKey?: 'invalid-server-message') => void) {
+export function connect(onMessage: (message: ServerMessage) => void, onClose: (reasonKey?: 'invalid-server-message') => void, nation: string|null = null) {
   const ws = new WebSocket(`${location.protocol === 'https:' ? 'wss' : 'ws'}://${location.host}/ws`);
   ws.binaryType = 'arraybuffer';
   let closed = false;
@@ -115,7 +118,7 @@ export function connect(onMessage: (message: ServerMessage) => void, onClose: (r
       const message: unknown = decode(new Uint8Array(event.data));
       if (!isServerMessage(message)) throw new Error('Invalid server message shape');
       onMessage(message);
-      if (message.type === 'Welcome' && message.accepted) send({ type: 'Join', session: 'local', nation: null });
+      if (message.type === 'Welcome' && message.accepted) send({ type: 'Join', session: 'local', nation });
     } catch { disconnect('invalid-server-message'); }
   };
   ws.onclose = () => disconnect();
