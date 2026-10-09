@@ -3,6 +3,8 @@ import { applyServerMessage, connect } from './network';
 import type { ProductionCommand, ProductionView, TimeCommand, TimeState, WorldView } from './proto/protocol';
 import { Localization, translatorFor, type Language, loadPackCatalogs, translatorWithPack } from './i18n';
 import {ProductionPanel} from './components/ProductionPanel';
+import { EconomyPanel } from './components/EconomyPanel';
+import { EconomyResponses, type EconomyDisplay } from './economyResponses';
 import { GameShell } from './components/GameShell';
 import { NationalPanels } from './components/NationalPanels';
 import { TimeControls } from './components/TimeControls';
@@ -13,6 +15,10 @@ export function App() {
   const [catalogs,setCatalogs]=useState<Record<Language,string>|null>(null);
   const t=useMemo(()=>catalogs?translatorWithPack(language,catalogs):translatorFor(language),[language,catalogs]);
   const [production,setProduction]=useState<ProductionView|null>(null);
+  const [economy,setEconomy]=useState<EconomyDisplay>({view:null,status:'loading',reasonKey:null});
+  const economyResponses=useRef(new EconomyResponses());
+  const economyNation=useRef<number|null>(null);
+  const activeConnection=useRef<object|null>(null);
   const [controlledNation,setControlledNation]=useState<number|null>(null);
   const [joinNation,setJoinNation]=useState<string|null>(null);
   const [world,setWorld]=useState<WorldView|null>(null);
@@ -27,12 +33,25 @@ export function App() {
     document.title = t('title');
   }, [language, t]);
   const [connection, setConnection] = useState('connecting');
+  const [connectionAttempt,setConnectionAttempt]=useState(0);
   const [state, setState] = useState<TimeState | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
   const socket = useRef<ReturnType<typeof connect> | null>(null);
   const sequence = useRef(0n);
+  const queryEconomy=(client:ReturnType<typeof connect>)=>{
+    const request=economyResponses.current.issue(client);
+    if(request)client.send({type:'Query',request,kind:'economy'});
+  };
+  const selectEconomyNation=(id:number|null)=>{
+    economyNation.current=id;setNationId(id??undefined);
+    setEconomy({view:null,status:activeConnection.current?'loading':'disconnected',reasonKey:null});
+    const client=socket.current;
+    if(client&&activeConnection.current===client){economyResponses.current.begin(client,id);queryEconomy(client);}
+  };
   useEffect(() => {
+    setEconomy({view:null,status:'loading',reasonKey:null});
     const client = connect(message => {
+      if(activeConnection.current!==client)return;
       if (message.type === 'Welcome') {
         setConnection(message.accepted ? 'connected' : 'disconnected');
         setNotice(message.reason_key);
@@ -40,7 +59,11 @@ export function App() {
       }
       if (message.type === 'Notice') setNotice(message.key);
       if (message.type === 'CommandResult') setNotice(message.reason_key);
-      if(message.type==='Snapshot'||message.type==='Delta'){client.send({type:'Query',request:'world',kind:'world'});client.send({type:'Query',request:'production',kind:'production'});}
+      if(message.type==='Snapshot'||message.type==='Delta'){client.send({type:'Query',request:'world',kind:'world'});client.send({type:'Query',request:'production',kind:'production'});queryEconomy(client);}
+      if(message.type==='EconomyResult'||message.type==='QueryResult'){
+        const accepted=economyResponses.current.accept(client,message);
+        if(accepted)setEconomy(accepted);
+      }
       if(message.type==='ProductionResult')setProduction(message.production);
       if(message.type==='WorldResult' && message.world){
         const incoming=message.world,previous=latestWorld.current;
@@ -51,21 +74,46 @@ export function App() {
       }
       setState(current => applyServerMessage(current, message));
     }, reasonKey => {
+      if(activeConnection.current!==client)return;
+      activeConnection.current=null;
+      economyResponses.current.end(client);
+      setEconomy(current=>({...current,status:current.view?'stale':'disconnected'}));
       setConnection('disconnected');
       if (reasonKey) setNotice(reasonKey);
     }, joinNation);
     socket.current = client;
-    return () => { client.close(); socket.current = null; };
-  }, [joinNation]);
+    activeConnection.current=client;
+    economyResponses.current.begin(client,economyNation.current);
+    return () => {
+      if(activeConnection.current===client)activeConnection.current=null;
+      economyResponses.current.end(client);
+      client.close();
+      if(socket.current===client)socket.current=null;
+    };
+  }, [joinNation,connectionAttempt]);
+  const reconnect=()=>{
+    activeConnection.current=null;
+    if(socket.current)economyResponses.current.end(socket.current);
+    setEconomy({view:null,status:'loading',reasonKey:null});
+    setConnection('connecting');setNotice(null);setState(null);
+    setConnectionAttempt(attempt=>attempt+1);
+  };
   const command = (command: TimeCommand) => socket.current?.send({ type: 'Command', sequence: (++sequence.current).toString(), command });
   const productionCommand=(command:ProductionCommand)=>socket.current?.send({type:'ProductionCommand',sequence:(++sequence.current).toString(),command});
-  const controlNation=(n:number)=>{const tag=world?.nations.find(v=>v.id===n)?.tag;if(tag){setConnection('connecting');setNotice(null);setState(null);setControlledNation(n);setProduction(null);setJoinNation(tag);}};
+  const controlNation=(n:number)=>{const tag=world?.nations.find(v=>v.id===n)?.tag;if(tag){
+    activeConnection.current=null;
+    if(socket.current)economyResponses.current.end(socket.current);
+    economyNation.current=n;setNationId(n);setEconomy({view:null,status:'loading',reasonKey:null});
+    setConnection('connecting');setNotice(null);setState(null);setControlledNation(n);setProduction(null);setJoinNation(tag);
+  }};
   const query=(kind:string)=>socket.current?.send({type:'Query',request:kind,kind});
-  const select=(id:number|null)=>{setSelected(id);const p=world?.provinces.find(p=>p.id===id);setNationId(p?.owner??undefined);setStateId(p?.state??undefined);if(p?.owner!=null)query(`nation:${p.owner}`);if(p?.state!=null)query(`state:${p.state}`);};
+  const select=(id:number|null)=>{setSelected(id);const p=world?.provinces.find(p=>p.id===id);selectEconomyNation(p?.owner??null);setStateId(p?.state??undefined);if(p?.owner!=null)query(`nation:${p.owner}`);if(p?.state!=null)query(`state:${p.state}`);};
   return <Localization.Provider value={{ language, t }}>
     <GameShell connection={connection} onLanguage={setLanguage}>
       <TimeControls state={state} connected={connection === 'connected'} onCommand={command} />
-      {world && catalogs && <div className="world-layout"><MapView world={world} packHash={packHash} selected={selected} onSelect={select}/><aside className="world-detail">{selected!==null&&world.provinces.find(p=>p.id===selected)?.state==null?<p>{t('map-no-state')}</p>:<NationalPanels world={world} nationId={nationId} stateId={stateId} onNationSelect={id=>{setNationId(id);query(`nation:${id}`);}} onStateSelect={id=>{setStateId(id);const owner=world.states.find(s=>s.id===id)?.owner;setNationId(owner);query(`state:${id}`);if(owner!==undefined)query(`nation:${owner}`);}}/>}</aside></div> }
+      {world && catalogs && <div className="world-layout"><MapView world={world} packHash={packHash} selected={selected} onSelect={select}/><aside className="world-detail">{selected!==null&&world.provinces.find(p=>p.id===selected)?.state==null?<p>{t('map-no-state')}</p>:<NationalPanels world={world} nationId={nationId} stateId={stateId} onNationSelect={id=>{selectEconomyNation(id);query(`nation:${id}`);}} onStateSelect={id=>{setStateId(id);const owner=world.states.find(s=>s.id===id)?.owner;selectEconomyNation(owner??null);query(`state:${id}`);if(owner!==undefined)query(`nation:${owner}`);}}/>}</aside></div> }
+      <EconomyPanel display={economy} world={world} nationId={nationId??null} onNationSelect={selectEconomyNation}/>
+      {connection==='disconnected'&&<button onClick={reconnect}>{t('economy-reconnect')}</button>}
       {production&&<ProductionPanel view={production} world={world} controlledNation={controlledNation} onControl={controlNation} onCommand={productionCommand} connected={connection==='connected'}/>}
       {notice && <p role="alert">{t(notice)}</p>}
     </GameShell>

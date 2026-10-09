@@ -1,5 +1,13 @@
 # OpenHOI4 WIP 인수인계
 
+## 경제 조회 UI 후보 (2026-10-09, 작성: 최병호)
+
+main `ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad` 기반 `wp/o3-economy-panel`은 읽기 전용 EconomyPanel과 현재 socket/국가 수명·최신 발행 요청의 응답 관리 단위다. 국가/연결 전환은 화면을 비우고 malformed/disconnect는 마지막 검증 view를 stale로 남긴다. 미발행 미래/역순/이전 연결/중복 응답은 수락하지 않는다. 서버의 문자열 숫자와 산업·건설 원장, 배분 위치0/1/2/3을 보존한다. Rust/protocol/validator/save·기존 팩·법령/게임 계산은 수정하지 않았다.
+
+구현자의 client255검사, 실제 소스 client/server 빌드와 실제 Chromium5검사가 통과했다. 기존 M2의 별도 임시 testland host·HTTP JS bytes·6국·ko/en, 큰 정수/빈 배열, 역순/미발행 응답·unsupported·stale·재연결을 검사했다. 경제 없는 원본 M1의 generic QueryResult도 최신 발행 ID일 때만 unsupported로 표시하며 Rust/wire를 바꾸지 않았다. 지연 프록시는 pause 중에도 발행되는 반복 Delta의 전달 창을 제어하며 정상 검사는 실제 전체 WS 흐름을 그대로 사용한다. 초기 지연 검사 실패와 최종 통과의 경계는 [작업 로그](docs/worklog/WP-14-economy-query-ui.md)에 남겼다.
+
+[ADR-1401](docs/adr/ADR-1401-economy-query-display.md)의 표시·응답 수명을 따른다. 독립 리뷰/main CI 인수 전이며 전체 WP-14/M2나 공유 멀티플레이 완료가 아니다. O2 생산 팩·O1 군사훈련 정책과 별도 브랜치다.
+
 2026-10-08 사용자 재개 지시로 새 환경에서 WP-14 독립 인수·P07 검사를 시작했다. 이번 재개는 미완성 소스의 검증부터 진행하며 릴리스나 M2 완료 판정이 아니다. 반복 감시 자동화는 PAUSED로 유지한다. 실행 계획과 공유 변경 순서는 [M2 재개 계획](docs/plans/M2.md)을 따른다.
 
 ## 새 환경 재개 상태
