@@ -64,6 +64,41 @@ fn train(s: &mut Simulation) {
     .unwrap();
 }
 #[test]
+fn req_restored_military_rejects_stale_status_ownership_and_normal_caches() {
+    let mut s = sim(5, 100, "");
+    train(&mut s);
+    until(&mut s, 24);
+    let raw = serde_json::to_value(s.military().unwrap()).unwrap();
+    let validate = |value| {
+        let m: oh_sim::military::Military = serde_json::from_value(value).unwrap();
+        m.validate(
+            s.world().unwrap(),
+            s.economy().unwrap(),
+            s.production().unwrap(),
+            s.snapshot().tick(),
+        )
+    };
+    assert!(validate(raw.clone()).is_ok());
+    for (field, bad) in [
+        ("nation", serde_json::json!(2)),
+        ("status", serde_json::json!("Ready")),
+        ("progress_days", serde_json::json!(1)),
+        ("start_tick", serde_json::json!(0)),
+        ("reserved_manpower", serde_json::json!(7)),
+        ("training_days", serde_json::json!(3)),
+    ] {
+        let mut changed = raw.clone();
+        changed["jobs"]["0"][field] = bad;
+        assert!(validate(changed).is_err(), "accepted altered {field}");
+    }
+    let mut changed = raw.clone();
+    changed["jobs"]["0"]["equipment"]["test_model_2"] = serde_json::json!(1);
+    assert!(validate(changed).is_err());
+    let mut changed = raw;
+    changed["jobs"]["0"]["normal"]["manpower"] = serde_json::json!(7);
+    assert!(validate(changed).is_err());
+}
+#[test]
 fn req_training_pending_start_next_day_ready_and_explicit_zero_equipment_deploy() {
     let mut s = sim(0, 100, "");
     train(&mut s);

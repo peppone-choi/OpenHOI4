@@ -84,3 +84,35 @@ single shared compiler slot remain in force.
 There is no new game-policy decision request. Combat, supply consumers, actual
 movement effects, editor rules, casualties/disband, and general combat modifiers
 remain outside this unit.
+
+## Continuation checkpoint
+
+The structural military schema and additive scenario schema were regenerated
+using the existing `oh_data` schema example. Before generation the new snapshot
+test failed because `military.schema.json` was absent; the strict malformed-input
+and actual opt-in loader tests passed. The loader tests retain duplicate-ID,
+unknown-field, domain, reference and missing-producer rejection cases, and an
+accepted 4,096-division input with rejection at 4,097.
+
+`cargo test -p oh_core -p oh_data -p oh_sim --locked --offline` subsequently
+passed 253 tests including doctests. `cargo clippy -p oh_core -p oh_data -p oh_sim
+--all-targets --locked --offline -- -D warnings`, formatting, whitespace, and
+document checks passed. These are implementation checks, not independent QA or
+the requested model-specific review.
+
+A later restored-state test adds altered ownership, status, timing, reservation,
+duration, equipment model and cached normal checks with a valid control. Its
+first preparation attempt failed because `oh_sim` had no direct `serde_json`
+test dependency; the existing pinned 1.0.151 dependency was added. This failure
+is not a game-rule RED result. Runtime validation of that later test remains
+pending at this checkpoint because the shared build disk guard paused Cargo.
+
+The owned module registration now references the actual separate writer's
+`military_save.rs`. Cargo metadata used unchanged borrowed writer/native files
+to generate the additive lock references (`oh_cli` to `oh_proto`, and the
+`oh_sim` test dependency); those borrowed files are not included in this core
+commit. Registration compilation requires integration of the writer's source,
+and the CLI lock reference requires the native manifest. No full workspace,
+server/client/native integration, main CI, Claude review, or selector execution
+is claimed. The orchestrator retains the remaining integration and acceptance
+work.
