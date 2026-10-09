@@ -1,5 +1,25 @@
 # OpenHOI4 WIP 인수인계
 
+## WP-22 읽기 전용 군사 표시 후보
+
+최종 통합 main `ffc166d5fc8c0fa4216119170bc076dea63c44cc`에서 PR9/10/11/12의
+선택된 단위는 모두 정상 병합되고 같은 main CI7개가 통과했다. 아래 과거
+후보 시점의 대기 문장은 당시 이력으로 보존한다. 새 `wp/22-military-query-panel`
+후보는 실제 Claude 계획 뒤 현재 군사 조회를 표시하며 명령 UI·게임 계산·
+편제 편집·server/proto 변경은 없다. 읽기 전용 필터는 조작 국가를 바꾸지
+않는다. 열린 패널의 socket/request/epoch와 성공한 send를 대조하며 닫힌
+조회0·dirty 합치기·늦은 응답 폐기·재접속 상세 초기화를 구현했다.
+
+구현자의 새 unit8·전체 client269개, 실제 군사 Chromium8·기존 경제8·M0
+전체12개가 통과했다. 실제 Ready V7·Train/Cancel/Deploy 투영과 served JS
+bytes를 확인했고 task-owned 군사 host2개는 exit0·잔존 PID0이다. 관전자
+명령/잘못된 배치 위치의 준비 실패와 수정은 [작업 로그](docs/worklog/WP-22-military-query-ui.md)에
+남겼다. 지연·malformed 응답 수명과 native feature 검사를 구분한다.
+
+실제 원장 tooltip은 MilitaryView에 LedgerView가 없어 후속 server/proto
+계약을 기다린다. 독립 기능 QA·Claude 리뷰·exact-head 후보 CI·main 통합은
+대기이며 전체 WP-22/AC-M2-01/M2 완료로 기록하지 않는다.
+
 ## O2·O3 직렬 통합 상태
 
 PR #10의 실제 독립 Claude focused 리뷰 후보5061115는 source MERGEABLE·required0이며51개 exact-head CI가 모두 통과해 main `2e1a58db87cc9e45d9508adf06b52482e0afce2c`로 정상 병합됐다. 기존 client job의 장시간 실행은 성공 종료로 확인했고 원 실패 run37930526763의 원인 UNPROVEN·실패 이력은 유지한다. 해당 main CI는 실행 중이다.
