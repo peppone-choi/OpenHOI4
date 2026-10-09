@@ -135,6 +135,21 @@ fn req_mil_query_actual_ownership_normal_counts_ready_and_wire_are_equal() {
     assert_eq!(v.background[0].reserved, "10");
     assert_eq!(v.armies[0].nation, 1);
     assert_eq!(v.armies[1].nation, 2);
+    s.enqueue(
+        100,
+        oh_core::NationId(1),
+        2,
+        oh_sim::Command::Military(oh_sim::military::Action::SetPriority {
+            army: 0,
+            priority: 2,
+        }),
+    )
+    .unwrap();
+    let economy = oh_proto::EconomyView::from_sim(&s).unwrap();
+    assert!(matches!(
+        economy.pending[0].command,
+        oh_proto::AuthorityCommandView::Military { .. }
+    ));
     let m = ServerMessage::MilitaryResult {
         request: "exact".into(),
         supported: true,
