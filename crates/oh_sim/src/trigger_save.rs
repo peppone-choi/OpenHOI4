@@ -66,6 +66,7 @@ impl Simulation {
                 command: match c {
                     Command::Economy(_) => unreachable!("economy requires v5"),
                     Command::Production(_) => unreachable!("production requires v6"),
+                    Command::Military(_) => unreachable!("military requires v7"),
                     Command::Pause(v) => CommandV4::Pause(*v),
                     Command::SetSpeed(v) => CommandV4::SetSpeed(*v),
                     Command::Move { unit, destination } => CommandV4::Move {

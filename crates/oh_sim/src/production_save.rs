@@ -27,6 +27,9 @@ pub struct SimulationSaveV6 {
 }
 impl Simulation {
     pub fn export_save_v6(&self) -> Result<SimulationSaveV6, String> {
+        if self.military.is_some() {
+            return Err("MilitaryRequiresV7".into());
+        }
         let production = self.production.clone().ok_or("V6RequiresProduction")?;
         let mut old = self.clone();
         old.production = None;
@@ -52,6 +55,7 @@ impl Simulation {
                         program: program.clone(),
                     }),
                     Command::Economy(a) => CommandV6::Legacy(CommandV5::Economy(a.clone())),
+                    Command::Military(_) => unreachable!("military requires v7"),
                 },
             })
             .collect();
