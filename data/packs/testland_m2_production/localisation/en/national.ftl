@@ -1,0 +1,12 @@
+wp23-nation-1 = Synthetic Nation 1
+wp23-nation-2 = Synthetic Nation 2
+wp23-nation-3 = Synthetic Nation 3
+wp23-nation-4 = Synthetic Nation 4
+wp23-nation-5 = Synthetic Nation 5
+wp23-nation-6 = Synthetic Nation 6
+wp23-government = Test Republic
+wp23-civic = Civic
+wp23-local = Local
+wp23-industry = Test Industry
+wp23-law-civil = Civil Test Law
+wp23-law-war = Mobilized Test Law

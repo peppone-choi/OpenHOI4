@@ -1,0 +1,12 @@
+wp23-nation-1 = 합성 시험국 1
+wp23-nation-2 = 합성 시험국 2
+wp23-nation-3 = 합성 시험국 3
+wp23-nation-4 = 합성 시험국 4
+wp23-nation-5 = 합성 시험국 5
+wp23-nation-6 = 합성 시험국 6
+wp23-government = 시험 공화정
+wp23-civic = 시민
+wp23-local = 지역
+wp23-industry = 시험 산업
+wp23-law-civil = 민간 시험 법령
+wp23-law-war = 동원 시험 법령

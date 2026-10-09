@@ -1218,3 +1218,282 @@ license = "CC-BY-SA-4.0"
 modified = false
 ai_generated = false
 notes = "Independent synthetic WP-15 requirement fixture and provisional tuning; no original game material, no campaign or downstream equipment balance claim."
+
+[[asset]]
+path = "data/packs/testland_m2_production/README.md"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2 at ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "Independent synthetic production pack; inherited CC-BY-SA-4.0 authored map/content, provisional WP-15 tuning, no original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_production/SOURCES.md"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2 at ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "Independent synthetic production pack; inherited CC-BY-SA-4.0 authored map/content, provisional WP-15 tuning, no original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_production/common/buildings.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2 at ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "Independent synthetic production pack; inherited CC-BY-SA-4.0 authored map/content, provisional WP-15 tuning, no original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_production/common/economy/initial.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2 at ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "Independent synthetic production pack; inherited CC-BY-SA-4.0 authored map/content, provisional WP-15 tuning, no original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_production/common/resources.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2 at ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "Independent synthetic production pack; inherited CC-BY-SA-4.0 authored map/content, provisional WP-15 tuning, no original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_production/common/terrain.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2 at ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "Independent synthetic production pack; inherited CC-BY-SA-4.0 authored map/content, provisional WP-15 tuning, no original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_production/defines.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2 at ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "Independent synthetic production pack; inherited CC-BY-SA-4.0 authored map/content, provisional WP-15 tuning, no original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_production/localisation/en/map.ftl"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2 at ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "Independent synthetic production pack; inherited CC-BY-SA-4.0 authored map/content, provisional WP-15 tuning, no original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_production/localisation/en/national.ftl"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2 at ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "Independent synthetic production pack; inherited CC-BY-SA-4.0 authored map/content, provisional WP-15 tuning, no original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_production/localisation/en/pack.ftl"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2 at ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "Independent synthetic production pack; inherited CC-BY-SA-4.0 authored map/content, provisional WP-15 tuning, no original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_production/localisation/ko/map.ftl"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2 at ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "Independent synthetic production pack; inherited CC-BY-SA-4.0 authored map/content, provisional WP-15 tuning, no original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_production/localisation/ko/national.ftl"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2 at ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "Independent synthetic production pack; inherited CC-BY-SA-4.0 authored map/content, provisional WP-15 tuning, no original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_production/localisation/ko/pack.ftl"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2 at ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "Independent synthetic production pack; inherited CC-BY-SA-4.0 authored map/content, provisional WP-15 tuning, no original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_production/manifest.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2 at ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "Independent synthetic production pack; inherited CC-BY-SA-4.0 authored map/content, provisional WP-15 tuning, no original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_production/maps/testland_m2/adjacency_overrides.csv"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2 at ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "Independent synthetic production pack; inherited CC-BY-SA-4.0 authored map/content, provisional WP-15 tuning, no original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_production/maps/testland_m2/provinces.csv"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2 at ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "Independent synthetic production pack; inherited CC-BY-SA-4.0 authored map/content, provisional WP-15 tuning, no original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_production/maps/testland_m2/provinces.png"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2 at ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "Independent synthetic production pack; inherited CC-BY-SA-4.0 authored map/content, provisional WP-15 tuning, no original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_production/maps/testland_m2/regions.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2 at ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "Independent synthetic production pack; inherited CC-BY-SA-4.0 authored map/content, provisional WP-15 tuning, no original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_production/maps/testland_m2/states.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2 at ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "Independent synthetic production pack; inherited CC-BY-SA-4.0 authored map/content, provisional WP-15 tuning, no original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_production/maps/testland_m2/visuals.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2 at ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "Independent synthetic production pack; inherited CC-BY-SA-4.0 authored map/content, provisional WP-15 tuning, no original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_production/scenarios/m2_production/defines.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2 at ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "Independent synthetic production pack; inherited CC-BY-SA-4.0 authored map/content, provisional WP-15 tuning, no original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_production/scenarios/m2_production/nations/N01.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2 at ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "Independent synthetic production pack; inherited CC-BY-SA-4.0 authored map/content, provisional WP-15 tuning, no original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_production/scenarios/m2_production/nations/N02.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2 at ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "Independent synthetic production pack; inherited CC-BY-SA-4.0 authored map/content, provisional WP-15 tuning, no original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_production/scenarios/m2_production/nations/N03.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2 at ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "Independent synthetic production pack; inherited CC-BY-SA-4.0 authored map/content, provisional WP-15 tuning, no original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_production/scenarios/m2_production/nations/N04.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2 at ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "Independent synthetic production pack; inherited CC-BY-SA-4.0 authored map/content, provisional WP-15 tuning, no original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_production/scenarios/m2_production/nations/N05.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2 at ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "Independent synthetic production pack; inherited CC-BY-SA-4.0 authored map/content, provisional WP-15 tuning, no original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_production/scenarios/m2_production/nations/N06.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2 at ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "Independent synthetic production pack; inherited CC-BY-SA-4.0 authored map/content, provisional WP-15 tuning, no original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_production/scenarios/m2_production/scenario.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2 at ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "Independent synthetic production pack; inherited CC-BY-SA-4.0 authored map/content, provisional WP-15 tuning, no original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_production/common/production/initial.toml"
+author = "OpenHOI contributors"
+source = "original synthetic definitions; WP-15 fixture lineage in SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Provisional synthetic production content; no new game rules or original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_production/localisation/ko/production.ftl"
+author = "OpenHOI contributors"
+source = "original synthetic definitions; WP-15 fixture lineage in SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Provisional synthetic production content; no new game rules or original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_production/localisation/en/production.ftl"
+author = "OpenHOI contributors"
+source = "original synthetic definitions; WP-15 fixture lineage in SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "Provisional synthetic production content; no new game rules or original game material."

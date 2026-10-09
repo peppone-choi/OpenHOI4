@@ -1,5 +1,11 @@
 # OpenHOI4 WIP 인수인계
 
+## O2·O3 직렬 통합 상태
+
+PR #10의 실제 독립 Claude focused 리뷰 후보5061115는 source MERGEABLE·required0이며51개 exact-head CI가 모두 통과해 main `2e1a58db87cc9e45d9508adf06b52482e0afce2c`로 정상 병합됐다. 기존 client job의 장시간 실행은 성공 종료로 확인했고 원 실패 run37930526763의 원인 UNPROVEN·실패 이력은 유지한다. 해당 main CI는 실행 중이다.
+
+O3의 실제 독립 리뷰 후보6f83304도 source MERGEABLE·required0·51개 CI 성공이었다. 이 통합은 HANDOFF 충돌의 양쪽 문장과 O2 새 자산31개/O3 현지화2개를 포함한163개 자산 내용을 보존한다. O3 client/브라우저 검사 bytes와 O2 팩/전용 검사 bytes는 검토된 두 후보와 같으며 새 게임 의미 변경은 없다. 새 통합 SHA CI·O3 정상 main 병합과 최종 결합 인수는 남아 있다. 아래 후보 시점의 대기 이력과 native 생산 접수/대체 응답 UI 수명 검사의 범위 구분을 유지한다.
+
 ## O1·준비 경계 통합 상태
 
 PR #12는 main0fe68a9로 병합돼7개 main CI가 모두 통과했다. 실제 독립 Claude 리뷰에서 required0을 받은 O1f0ba69c의 제품 bytes를 보존한 c4718e6은51개 CI가 모두 통과해 PR #9를 main9721b19ea5ff495b06ff3680eea85a3890e97387로 정상 병합했다. 해당 main CI는 확인 중이다. 이 브랜치는 해당 main을 정상 병합해 O1 military validation과 O3 실제 전송 성공 판정을 함께 유지한다. O2 생산 팩은 별도 PR이며 O3 후속 CONNECTING 수정의 실제 독립 리뷰·최종 통합 인수는 대기다. 아래 후보 시점의 대기 이력은 보존한다.
@@ -17,6 +23,18 @@ main `ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad` 기반 `wp/o3-economy-panel`은 
 구현자의 client255검사, 실제 소스 client/server 빌드와 실제 Chromium5검사가 통과했다. 기존 M2의 별도 임시 testland host·HTTP JS bytes·6국·ko/en, 큰 정수/빈 배열, 역순/미발행 응답·unsupported·stale·재연결을 검사했다. 경제 없는 원본 M1의 generic QueryResult도 최신 발행 ID일 때만 unsupported로 표시하며 Rust/wire를 바꾸지 않았다. 지연 프록시는 pause 중에도 발행되는 반복 Delta의 전달 창을 제어하며 정상 검사는 실제 전체 WS 흐름을 그대로 사용한다. 초기 지연 검사 실패와 최종 통과의 경계는 [작업 로그](docs/worklog/WP-14-economy-query-ui.md)에 남겼다.
 
 [ADR-1401](docs/adr/ADR-1401-economy-query-display.md)의 표시·응답 수명을 따른다. 독립 리뷰/main CI 인수 전이며 전체 WP-14/M2나 공유 멀티플레이 완료가 아니다. O2 생산 팩·O1 군사훈련 정책과 별도 브랜치다.
+
+PR #12의 검토된 b6b5fe8 후보는 main 0fe68a968982aeaa07809fd1769b9a00b62f9f5b로 병합돼7개 main CI가 모두 통과했다. 실제 독립 Claude 리뷰에서 required0을 받은 O1 f0ba69c의 제품 bytes를 보존한 통합 c4718e6은51개 CI가 모두 통과해 PR #9를 main 9721b19ea5ff495b06ff3680eea85a3890e97387로 정상 병합했다. 해당 main CI는 확인 중이며 아래 후보 시점의 대기 기록을 과거 이력으로 보존한다. O2는 이 main에 맞춰 다시 검사하며 팩·전용 검사 bytes를 보존한다. O3 후속 CONNECTING 전송 판정의 독립 리뷰와 최종 통합 인수는 남아 있다.
+
+## 독립 생산 입력 후보 (2026-10-09, 작성: 최병호)
+
+후속 main9721b19 통합 재검사에서 팩/전용 검사 bytes를 보존한 채 전용8·기존 회귀18·client253·실제 M0 Chromium12개가 통과했다. 새 V6/expected 입력은 원 후보와 같았고 fresh/restored6국씩 실제 서버·번들 대조·12연결 close1000·두 host exit0이었다. 최초 공유 cache의 다른 번들 실패는 보존하고 oh_server를 정리한 재검사와 구분했다. 새 SHA CI와 독립 리뷰 자료 확인·O2 main 병합은 남아 있다.
+
+main `ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad` 기반 `wp/o2-m2-production-pack`은 자체 완결 합성 팩 `testland_m2_production`과 전용 data/save/server 검사를 추가했다. 기존 M1/M2와 제품 Rust/schema/save/wire/군사훈련 정책은 바꾸지 않았다.6국/120프로빈스/12주 경제 입력에 기존 WP-15 fixture의 두 모델·9개 defines를 연결하며 잠정 밸런스/단위/라이선스 계보를 팩 SOURCES에 남겼다.
+
+구현자의 전용8검사, V6 계약5검사와 기존 서버9검사, fmt/clippy가 통과했다.6국 실제 Create 후365일 두 번과180일 V6+185일 resume의 hash `8d775068118aa67a`·저장 bytes가 같았고 steel debit은 모든 국가에서 양수였다. 불허 모델과 inventory overflow의 상태/clock/queue 보존도 검사했다. 실제 별도 서버에서 fresh/restored 각각6국 HTTP/WebSocket projection·명령 검사를 통과했고 번들 bytes 일치·12연결 close1000·두 서버 exit0을 확인했다. 각 연결은 별도 simulation이며 공유 멀티플레이나 브라우저 UI 인수는 아니다.
+
+[작업 로그](docs/worklog/WP-23-production-pack.md)와 [팩 재현 순서](data/packs/testland_m2_production/README.md)를 따른다. 독립 리뷰·main CI 인수는 대기이며 WP-23/M2 전체 완료로 기록하지 않는다. 군사훈련 상한/우선순위 정책과 경제 UI 후속은 별도다.
 
 ## O1 승인된 활성 훈련 한도 수정 후보
 

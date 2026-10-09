@@ -1,0 +1,20 @@
+production = "initial"
+# Synthetic economy and production; no military or victory rules.
+economy = "initial"
+start_date = "2000-01-01"
+map = "testland_m2"
+nations = ["N01", "N02", "N03", "N04", "N05", "N06"]
+
+[ownership]
+1 = "N01"
+2 = "N01"
+3 = "N02"
+4 = "N02"
+5 = "N03"
+6 = "N03"
+7 = "N04"
+8 = "N04"
+9 = "N05"
+10 = "N05"
+11 = "N06"
+12 = "N06"
