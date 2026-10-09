@@ -1,9 +1,16 @@
 import {readFileSync} from 'node:fs';
 import {describe, it, expect} from 'vitest';
+import {decode} from '@msgpack/msgpack';
 import {isServerMessage} from './network';
 import {isMilitaryCommand} from './militaryValidation';
 const fixture = JSON.parse(readFileSync(new URL('../../target/wp16/military-wire-fixture.json', import.meta.url), 'utf8'));
 describe('actual military authority transport', () => {
+  it('decodes and validates actual Rust MessagePack bytes in the client', () => {
+    const wire = JSON.parse(readFileSync(new URL('../../target/wp16/military-wire-bytes.json', import.meta.url), 'utf8'));
+    const message = decode(Uint8Array.from(wire.bytes));
+    expect(message).toEqual(wire.expected);
+    expect(isServerMessage(message)).toBe(true);
+  });
   it('accepts the real Rust Ready projection and pending authority', () => {
     expect(isServerMessage(fixture)).toBe(true);
     expect(fixture.military.jobs[0].reserved_manpower).toBe('8');

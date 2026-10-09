@@ -294,4 +294,12 @@ fn main() {
         serde_json::to_vec_pretty(&message).unwrap(),
     )
     .unwrap();
+    std::fs::write(
+        output.join("military-wire-bytes.json"),
+        serde_json::to_vec_pretty(&serde_json::json!({
+            "bytes": encode(&message).unwrap(), "expected": message,
+        }))
+        .unwrap(),
+    )
+    .unwrap();
 }
