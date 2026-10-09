@@ -23,14 +23,16 @@
 |---|---|---|
 | 원 타이머·지연0 | open5.8 / Snapshot97.0 / Delta508.3 | Delta1, 나머지 원 assertion 통과 |
 | 원 타이머·준비 지연350ms | open355.6 / Snapshot400.1 / 750ms 종료까지 Delta 없음 | 원 assertion 중 Delta>0만 실패하는 증상 재현 |
-| Snapshot 뒤 같은750ms·준비 지연350ms | open355.9 / Snapshot401.0 / Delta867.4 | Delta1, 모든 원 assertion 통과 |
+| Snapshot 감지 뒤 최소750ms·준비 지연350ms | open355.9 / Snapshot401.0 / Delta867.4 | Delta1, 모든 원 assertion 통과 |
 
 원 CI에는 socket open/Snapshot의 개별 수신 시각이 없다. 위 실험은 준비 지연으로 같은 증상이 생기는 것을 증명하며, 원 CI 실행의 실제 지연 원인이나 정확한 actor/browser 시각을 확정하지 않는다. 제품의 Delta 상실/정지 문제는 이 분리 실험에서 관측되지 않았다. CI의 Chromium153 실제품과 로컬 Chromium151을 같은 환경이라고 기록하지 않는다.
 
 ## 변경과 검사
 
-Create 검사에서 frame을 수신 시점부터 보존하고, bounded Playwright poll로 Snapshot 준비를 확인한 뒤 기존750ms 관찰 창을 시작한다. readiness가 실패하면 테스트도 실패한다. 모든 기존 not-joined/unsupported/invalid/Snapshot/time query assertion과 Delta count>0, count<=8, 연속 sequence1..N을 그대로 유지했다. 관찰이 끝나면 소켓을 닫고 종료 콜백까지 bounded poll로 확인한다.
+Create 검사에서 frame을 수신 시점부터 보존하고, bounded Playwright poll로 Snapshot 준비를 확인한 뒤750ms wait를 실행하므로 감지 후 최소750ms를 관찰한다. Poll 감지와 browser/host scheduling을 포함한 전체 경과 시간은 원 검사와 동일750ms라고 주장하지 않는다. readiness가 실패하면 테스트도 실패한다. 모든 기존 not-joined/unsupported/invalid/Snapshot/time query assertion과 Delta count>0, count<=8, 연속 sequence1..N을 그대로 유지했다. 관찰이 끝나면 소켓을 닫고 종료 콜백까지 bounded poll로 확인한다.
 
-변경된 실제 검사 본문은 준비 지연350ms에서3회·지연0에서3회 통과했다. 같은 baseline HTTP/실제 Rust 서버를 쓰는 network.spec.ts 전체6개 Chromium 검사도 통과했다. TypeScript typecheck·문서 검사·diff whitespace는 exit0이다. source/assertion 대조는8개 기존 expect와750ms budget 보존을 확인했다. 이 수정은 데이터 팩/경제 UI와 별도이며 Rust·생성물·제품 network 코드·CI 설정을 바꾸지 않는다. private proxy·raw job 로그·실행 결과는 Git에 넣지 않는다.
+변경된 실제 검사 본문은 준비 지연350ms에서3회·지연0에서3회 통과했다. 같은 baseline HTTP/실제 Rust 서버를 쓰는 network.spec.ts 전체6개 Chromium 검사도 통과했다. TypeScript typecheck·문서 검사·diff whitespace는 exit0이다. source/assertion 대조는8개 기존 expect와 감지 후 최소750ms 관찰(설정 wait750ms) 보존을 확인했다. 이 수정은 데이터 팩/경제 UI와 별도이며 Rust·생성물·제품 network 코드·CI 설정을 바꾸지 않는다. private proxy·raw job 로그·실행 결과는 Git에 넣지 않는다.
 
 공개 재현은 기존 `npm --prefix client run build`, `cargo build -p oh_server --locked` 뒤 client에서 `npx playwright test e2e/network.spec.ts`다. 설치된 실제 browser를 사용한다. 독립 QA/main CI 인수 전이며 전체 네트워크·성능·M2 완료 판정이 아니다.
+
+실제 독립 코드 리뷰는 b6b5fe8 후보 source의 required0을 확인했다. 동일51개 CI 성공 뒤 PR #12는 main 0fe68a968982aeaa07809fd1769b9a00b62f9f5b로 정상 병합됐다. 위 최소 관찰 시간 표현은 후속 리뷰의 문서 교정이며 테스트 본문·assertion을 바꾸지 않는다. 해당 main의 CI 인수는 별도로 확인한다.

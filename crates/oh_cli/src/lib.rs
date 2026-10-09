@@ -2,6 +2,7 @@
 use oh_sim::{Date, Simulation, TimeConfig, formula};
 use std::{collections::BTreeMap, path::Path};
 pub mod bench;
+pub mod military;
 pub mod military_templates;
 pub mod repro;
 pub mod supply_network;

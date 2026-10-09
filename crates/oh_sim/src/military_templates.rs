@@ -1,9 +1,10 @@
 //! Pure normal-template arithmetic. No live military state or equipment-derived combat.
 use oh_core::Qty;
 use oh_data::military_templates::{Definitions, Stats};
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
-#[derive(Clone, Debug, Eq, PartialEq, Serialize)]
+#[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
 pub struct Normal {
     pub stats: Stats,
     pub manpower: i64,

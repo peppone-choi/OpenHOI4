@@ -1,0 +1,79 @@
+# Independently authored acceptance values. Not campaign balance or original-game content.
+version = 1
+training_days = { small = 2, tiny = 2, large = 2 }
+background = { 1 = { committed = 60, reserved = 10 }, 2 = { committed = 60, reserved = 10 } }
+armies = [
+  { id = 0, nation = 1, general = "synthetic_north", capacity = 2, priority = 0 },
+  { id = 1, nation = 2, general = "synthetic_south", capacity = 2, priority = 0 },
+  { id = 2, nation = 1, general = "synthetic_north_second", capacity = 2, priority = 0 },
+]
+divisions = []
+normal_templates = '''
+version = 1
+[[components]]
+id = "small_component"
+role = "combat"
+manpower = 8
+equipment = [{ family = "test_family", model = "test_model_1", items = 6 }]
+[components.stats]
+strength = "1"
+soft_fire = "1"
+hard_fire = "0"
+defense = "1"
+breakthrough = "1"
+frontage = "1"
+supply_use = "1"
+organization = "1"
+armor = "0"
+piercing = "0"
+speed_kmh = "1"
+[[components]]
+id = "tiny_component"
+role = "combat"
+manpower = 2
+equipment = [{ family = "test_family", model = "test_model_1", items = 2 }]
+[components.stats]
+strength = "1"
+soft_fire = "1"
+hard_fire = "0"
+defense = "1"
+breakthrough = "1"
+frontage = "1"
+supply_use = "1"
+organization = "1"
+armor = "0"
+piercing = "0"
+speed_kmh = "1"
+[[components]]
+id = "large_component"
+role = "combat"
+manpower = 100
+equipment = [{ family = "test_family", model = "test_model_1", items = 6 }]
+[components.stats]
+strength = "1"
+soft_fire = "1"
+hard_fire = "0"
+defense = "1"
+breakthrough = "1"
+frontage = "1"
+supply_use = "1"
+organization = "1"
+armor = "0"
+piercing = "0"
+speed_kmh = "1"
+[[templates]]
+id = "small"
+combat = ["small_component"]
+support = []
+bindings = [{ family = "test_family", model = "test_model_1" }]
+[[templates]]
+id = "tiny"
+combat = ["tiny_component"]
+support = []
+bindings = [{ family = "test_family", model = "test_model_1" }]
+[[templates]]
+id = "large"
+combat = ["large_component"]
+support = []
+bindings = [{ family = "test_family", model = "test_model_1" }]
+'''

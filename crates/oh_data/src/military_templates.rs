@@ -28,7 +28,8 @@ struct StatsInput {
     piercing: String,
     speed_kmh: String,
 }
-#[derive(Clone, Debug, Eq, PartialEq, Serialize)]
+#[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
 pub struct Stats {
     pub strength: Qty,
     pub soft_fire: Qty,

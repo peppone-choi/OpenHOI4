@@ -39,6 +39,13 @@ pub struct Scenario {
         skip_serializing_if = "Option::is_none"
     )]
     #[schemars(with = "String")]
+    pub military: Option<String>,
+    #[serde(
+        default,
+        deserialize_with = "crate::trigger::present",
+        skip_serializing_if = "Option::is_none"
+    )]
+    #[schemars(with = "String")]
     pub production: Option<String>,
     #[serde(
         default,
@@ -114,6 +121,7 @@ pub struct VisualPalette {
 }
 #[derive(Debug, Clone)]
 pub struct LoadedNational {
+    pub military: Option<crate::military::Definition>,
     pub production: Option<crate::production::Definition>,
     pub economy: Option<crate::economy::Definition>,
     pub pack: DataPack,
@@ -382,7 +390,20 @@ pub(crate) fn read_scenario(root: &Path, id: &str) -> Result<LoadedNational, Dat
     } else {
         None
     };
+    let military = if let Some(id) = &scenario.military {
+        if !valid_id(id) {
+            return Err(field_error(&path, "military", "invalid military ID"));
+        }
+        let file = root.join("common/military").join(format!("{id}.toml"));
+        Some(
+            crate::military::parse(&read(&file)?.text)
+                .map_err(|e| field_error(&file, "military", &e))?,
+        )
+    } else {
+        None
+    };
     let loaded = LoadedNational {
+        military,
         production,
         economy,
         pack,
@@ -407,6 +428,10 @@ pub(crate) fn read_scenario(root: &Path, id: &str) -> Result<LoadedNational, Dat
     if let Some(p) = &loaded.production {
         p.validate(&loaded)
             .map_err(|e| field_error(&path, "production", &e))?;
+    }
+    if let Some(m) = &loaded.military {
+        m.validate(&loaded)
+            .map_err(|e| field_error(&path, "military", &e))?;
     }
     crate::trigger::definition(&loaded).map_err(|message| {
         let candidate = message
