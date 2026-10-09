@@ -4,6 +4,12 @@
 
 2026-10-09 사용자 승인과 실제 독립 리뷰 계획에 따라 국가별 Pending·Training·Ready4096건만 한도로 계산하고 Cancelled·Deployed 이력과 연속 ID는 보존했다. 기존 V7 전체4096건 범위·bytes를 유지하고 그보다 큰 이력은 같은 body layout의 V8 태그로 구분한다. 구 V7 relabel 우회는 거절하며 생산 입력 migration/reset은 없다. 우선순위0 최우선을 명시했다. 구현 담당 표적18개·전체 Rust383개(ignore0)와 전체 target clippy는 통과했다. 첫 준비/공유 cache 실패를 보존했다. [작업 로그](docs/worklog/WP-16-active-quota.md)를 따르며 실제 독립 delta 리뷰·최종 SHA CI·main 병합은 아직 대기다. 종료 이력의 선형 자원 사용·기존 저장 한도와 후속 retention/pagination은 남은 경계다.
 
+## Create 검사 준비 경계 후보 (2026-10-09, 작성: 최병호)
+
+`test/network-readiness`는 기존 REQ-NET-01 Create 검사에서 bounded Snapshot 감지 뒤 최소750ms를 관찰하고 소켓 종료를 확인하는 별도 후보다. 기존 Delta>0/<=8/연속 sequence와 모든 거부/지원 query assertion은 유지했다. Rust·제품 network/protocol·팩·CI 설정은 수정하지 않는다.
+
+바이트가 같은 baseline 권위/HTTP 자산과 실제 Chromium에서350ms WebSocket upgrade 준비 지연으로 원 검사와 같은 Delta0 증상을 재현했다. Snapshot 감지 뒤 최소750ms를 관찰하면 Delta1이며 수정 검사 본문은 지연/정상 각각3회 통과했다. 원 CI의 실제 socket 시각은 로그에 없어 지연 원인까지 확정하거나 무조건적인 flake로 선언하지 않는다. [작업 로그](docs/worklog/WP-05-network-readiness.md)의 재현·한계를 따른다. 실제 독립 코드 리뷰는 원 후보 b6b5fe8의 source required0였고 같은 후보의51개 CI가 통과해 PR #12를 정상 병합했다. main 0fe68a968982aeaa07809fd1769b9a00b62f9f5b의 CI는 별도로 확인한다. 역사 실패 run37930526763의 원인은 UNPROVEN으로 유지한다.
+
 2026-10-08 사용자 재개 지시로 새 환경에서 WP-14 독립 인수·P07 검사를 시작했다. 이번 재개는 미완성 소스의 검증부터 진행하며 릴리스나 M2 완료 판정이 아니다. 반복 감시 자동화는 PAUSED로 유지한다. 실행 계획과 공유 변경 순서는 [M2 재개 계획](docs/plans/M2.md)을 따른다.
 
 ## 새 환경 재개 상태
