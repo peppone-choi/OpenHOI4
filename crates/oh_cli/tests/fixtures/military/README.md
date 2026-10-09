@@ -60,3 +60,5 @@ commands, active-before-training flat Hamilton allocation across armies,
 capacity shrink, joint stock/returnable holding cap atomicity, and real V7
 fresh-process queue/state/byte preservation. No combat, movement, supply,
 experience, editor legality or general modifier formula is inferred here.
+The host boundary checks also cover integer overflow, noncanonical identifiers,
+unknown JSON fields, and checkpoint/pack overwrite guards with byte preservation.

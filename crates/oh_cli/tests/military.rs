@@ -351,16 +351,27 @@ fn native_strict_grammar_and_input_valid_controls() {
         "{\"op\":\"step\",\"count\":1.5}",
         "{\"op\":\"step\",\"count\":-1}",
         "{\"op\":\"step\",\"count\":1,\"count\":2}",
+        "{\"op\":\"step\",\"count\":18446744073709551616}",
+        "{\"op\":\"enqueue\",\"nation\":65536,\"sequence\":\"0\",\"tick\":\"0\",\"command\":{\"type\":\"Cancel\",\"job\":\"0\"}}",
+        "{\"op\":\"query\",\"unknown\":true}",
     ] {
         assert!(serde_json::from_str::<oh_cli::military::Input>(text).is_err());
     }
     let f = Fixture::new();
-    let bad = f.invoke(
-        &["run", "--scenario", "m1", "--seed", "1"],
-        &[enqueue(0, 1, json!({"type":"Cancel","job":"01"}))],
-    );
-    assert!(!bad.status.success());
-    assert!(String::from_utf8_lossy(&bad.stderr).contains("noncanonical military ID"));
+    for job in ["01", "+1", "-1", "18446744073709551616"] {
+        let bad = f.invoke(
+            &["run", "--scenario", "m1", "--seed", "1"],
+            &[enqueue(0, 1, json!({"type":"Cancel","job":job}))],
+        );
+        assert!(!bad.status.success());
+        let error = String::from_utf8_lossy(&bad.stderr);
+        let expected = if job == "01" || job == "+1" {
+            "noncanonical military ID"
+        } else {
+            "invalid military ID"
+        };
+        assert!(error.contains(expected), "{error}");
+    }
     let good = f.run(&[json!({"op":"query"}), step(0)]);
     assert_eq!(good[0]["state"], good[1]["state"]);
     let excessive = f.invoke(
@@ -369,6 +380,39 @@ fn native_strict_grammar_and_input_valid_controls() {
     );
     assert!(!excessive.status.success());
     assert!(String::from_utf8_lossy(&excessive.stderr).contains("step request limit"));
+}
+
+#[test]
+fn native_checkpoint_write_guards_preserve_pack_and_resume_input() {
+    let f = Fixture::new();
+    let checkpoint = f.checkpoint("guarded.ohsave");
+    let created = f.run(&[json!({"op":"save", "path":checkpoint})]);
+    assert_eq!(created[0]["format_version"], 7);
+    let before = std::fs::read(&checkpoint).unwrap();
+    let alias = checkpoint
+        .parent()
+        .unwrap()
+        .join(".")
+        .join("guarded.ohsave");
+    let blocked = f.invoke(
+        &["resume", "--load", checkpoint.to_str().unwrap()],
+        &[json!({"op":"save", "path":alias})],
+    );
+    assert!(!blocked.status.success());
+    assert!(String::from_utf8_lossy(&blocked.stderr).contains("aliases input checkpoint"));
+    assert_eq!(std::fs::read(&checkpoint).unwrap(), before);
+    let defines = f.root.join("defines.toml");
+    let pack_before = std::fs::read(&defines).unwrap();
+    let blocked = f.invoke(
+        &["run", "--scenario", "m1", "--seed", "1"],
+        &[json!({"op":"save", "path":defines})],
+    );
+    assert!(!blocked.status.success());
+    assert_eq!(std::fs::read(&defines).unwrap(), pack_before);
+    assert_eq!(
+        f.resume(&checkpoint, &[json!({"op":"query"})])[0]["state"],
+        created[0]["state"]
+    );
 }
 
 #[test]

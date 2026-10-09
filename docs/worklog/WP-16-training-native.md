@@ -20,7 +20,7 @@
 | REQ | 검사 | 구현 전 결과 | 구현 후 결과 |
 |---|---|---|---|
 | 군사 native host 진입점 | 기존 실제 `oh_cli military run ...` 실행 | exit 1, 기존 run usage 반환 | 미실행 |
-| REQ-MIL-03/05/09, REQ-ECO-07의 native 경계 | `crates/oh_cli/tests/military.rs`의 새 실제 프로세스 검사 10개 | source 준비; 정책 전체 historical RED로 주장하지 않음 | 미실행 |
+| REQ-MIL-03/05/09, REQ-ECO-07의 native 경계 | `crates/oh_cli/tests/military.rs`의 새 실제 프로세스 검사 11개 | source 준비; 정책 전체 historical RED로 주장하지 않음 | 미실행 |
 
 진입점 RED는 실제 기존 실행 파일의 명령 미지원 증거다. 기존 M1에는 군사 authority가 없으므로 그 입력을 군사 정책의 RED로 해석하지 않는다. 컴파일 실패를 요구사항 실패로 기록하지 않는다.
 
@@ -30,8 +30,10 @@
 |---|---|---|
 | 기존 `oh_cli military run --pack data/packs/testland --scenario m1 --seed 1`, stdin query | 1 | 새 command 미지원, 기존 usage |
 | Rust 1.99.0 `rustfmt --edition 2024` 담당 Rust 경로 | 0 | source 형식 정리 |
+| `python3 tools/check_docs.py` | 0 | 오류0·경고0 |
+| `git diff --check` | 0 | 담당 경로 whitespace 오류 없음 |
 
-Cargo/npm/클라이언트/서버/whole suite는 아직 실행하지 않았다. 공유 target 컴파일 슬롯은 core 담당 소유이며 native source는 API 제공 뒤 통합해야 컴파일할 수 있다.
+Cargo/npm/클라이언트/서버/whole suite는 아직 실행하지 않았다. core API와 V7/wire checkpoint는 이 worktree에 통합했다. 공유 target 컴파일 슬롯은 wire 담당 소유여서 실제 native 컴파일·동작 검사는 대기한다.
 
 ## 증거
 
@@ -60,6 +62,6 @@ Cargo/npm/클라이언트/서버/whole suite는 아직 실행하지 않았다. �
 
 ## 못 한 부분과 이유
 
-- 현재 checkpoint에서 core/wire 의존 소스가 아직 같은 worktree에 통합되지 않아 compile·semantic GREEN·whole checks는 대기한다.
-- `oh_cli`가 기존 workspace `oh_proto`를 추가하므로 shared Cargo.lock의 해당 package dependency entry는 core 담당자에게 일임했다. 새로운 crate/version은 없다.
+- core/wire 의존 소스를 통합했으나 공유 build slot 때문에 compile·semantic GREEN·whole checks는 아직 대기한다.
+- `oh_cli`가 기존 workspace `oh_proto`를 추가한 shared Cargo.lock entry는 core 담당자가 반영한 소스를 통합했다. 새로운 crate/version은 없다.
 - 독립 검증과 같은 main CI는 오케스트레이터의 고정 통합 커밋 이후에 필요하며 이 checkpoint를 완료로 기록하지 않는다.
