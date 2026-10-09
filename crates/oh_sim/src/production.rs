@@ -355,6 +355,15 @@ impl Production {
         e: &Economy,
         tick: u64,
     ) -> Result<(), ProductionError> {
+        self.daily_with_holdings(w, e, tick, &BTreeMap::new())
+    }
+    pub(crate) fn daily_with_holdings(
+        &mut self,
+        w: &World,
+        e: &Economy,
+        tick: u64,
+        held: &BTreeMap<u16, BTreeMap<String, i64>>,
+    ) -> Result<(), ProductionError> {
         let d = defs(w)?;
         let mut next = self.clone();
         let mut day = Day {
@@ -382,6 +391,26 @@ impl Production {
                 economy.stability(),
             )?;
             for (id, result) in &entry.lines {
+                let occupancy = next
+                    .stock(NationId(*n), &result.starting.model)
+                    .ok_or(ProductionError::InvalidReference)?
+                    .checked_add(
+                        held.get(n)
+                            .and_then(|v| v.get(&result.starting.model))
+                            .copied()
+                            .unwrap_or(0),
+                    )
+                    .ok_or(ProductionError::Overflow)?
+                    .checked_add(result.output)
+                    .ok_or(ProductionError::Overflow)?;
+                if occupancy
+                    > d.tuning
+                        .as_ref()
+                        .ok_or(ProductionError::MissingContext)?
+                        .inventory_count_limit
+                {
+                    return Err(ProductionError::InvalidValue);
+                }
                 next.adjust_stock(w, NationId(*n), &result.starting.model, result.output)?;
                 let l = next.lines.get_mut(id).unwrap();
                 l.carry = result.ending_carry;

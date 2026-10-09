@@ -8,6 +8,7 @@ use serde::Serialize;
 use std::{collections::BTreeMap, sync::Arc};
 #[derive(Clone, Debug)]
 pub struct Defs {
+    military: Option<oh_data::military::Definition>,
     production: Option<oh_data::production::Definition>,
     trigger: Option<oh_data::trigger::Definition>,
     economy: Option<oh_data::economy::Definition>,
@@ -17,6 +18,9 @@ pub struct Defs {
     map_id: String,
 }
 impl Defs {
+    pub fn military(&self) -> Option<&oh_data::military::Definition> {
+        self.military.as_ref()
+    }
     pub fn production(&self) -> Option<&oh_data::production::Definition> {
         self.production.as_ref()
     }
@@ -367,6 +371,9 @@ impl World {
         })
     }
     pub fn from_loaded(loaded: &oh_data::national::LoadedNational) -> Result<Self, String> {
+        if let Some(m) = &loaded.military {
+            m.validate(loaded)?;
+        }
         let mut canonical = loaded.clone();
         canonical.nations.sort_by_key(|n| n.id);
         canonical.map.states.sort_by_key(|s| s.id);
@@ -547,6 +554,7 @@ impl World {
         .map_err(|e| e.to_string())?;
         Ok(Self {
             defs: Arc::new(Defs {
+                military: loaded.military.clone(),
                 trigger: oh_data::trigger::definition(loaded)?,
                 economy: loaded.economy.clone(),
                 production: loaded.production.clone(),
@@ -555,7 +563,12 @@ impl World {
                 visuals: loaded.visuals.clone(),
                 map_id: loaded.scenario.map.clone(),
             }),
-            definitions_hash,
+            definitions_hash: if let Some(m) = &loaded.military {
+                oh_core::state_hash(&(definitions_hash, m.identity()?))
+                    .map_err(|e| e.to_string())?
+            } else {
+                definitions_hash
+            },
             inputs: WorldInputs {
                 nations,
                 states,

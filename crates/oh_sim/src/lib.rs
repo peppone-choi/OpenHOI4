@@ -10,6 +10,7 @@ pub mod economy;
 pub mod economy_save;
 pub mod formula;
 pub mod ledger;
+pub mod military;
 pub mod military_templates;
 pub mod movement;
 pub mod production;
@@ -25,6 +26,7 @@ pub use time::{Date, TimeConfig};
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum Error {
     Production(production::ProductionError),
+    Military(military::MilitaryError),
     Economy(economy::EconomyError),
     ScenarioEnded,
     Trigger(trigger::TriggerError),
@@ -44,6 +46,7 @@ impl std::fmt::Display for Error {
             return error.fmt(f);
         }
         f.write_str(match self {
+            Self::Military(_) => "military command or phase failed",
             Self::Production(_) => "production command or phase failed",
             Self::Economy(_) => "economy command or phase failed",
             Self::ScenarioEnded => "scenario-ended",
@@ -77,6 +80,7 @@ pub enum Command {
     },
     Economy(economy::Action),
     Production(production::Action),
+    Military(military::Action),
 }
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum Phase {
@@ -167,6 +171,8 @@ pub struct Simulation {
     economy: Option<economy::Economy>,
     #[serde(skip_serializing_if = "Option::is_none")]
     production: Option<production::Production>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    military: Option<military::Military>,
 }
 impl Simulation {
     pub fn new(scenario: String, date: Date, seed: u64, config: TimeConfig) -> Result<Self, Error> {
@@ -190,6 +196,7 @@ impl Simulation {
             trigger: None,
             economy: None,
             production: None,
+            military: None,
         })
     }
     pub fn with_world(
@@ -206,6 +213,16 @@ impl Simulation {
         if world.defs().production().is_some() {
             sim.production =
                 Some(production::Production::initial(&world).map_err(Error::Production)?);
+        }
+        if world.defs().military().is_some() {
+            sim.military = Some(
+                military::Military::initial(
+                    &world,
+                    sim.economy.as_ref().ok_or(Error::InvalidWorld)?,
+                    sim.production.as_ref().ok_or(Error::InvalidWorld)?,
+                )
+                .map_err(Error::Military)?,
+            );
         }
         sim.world = Some(world);
         if let Some(world) = sim.world.as_ref()
@@ -246,6 +263,43 @@ impl Simulation {
         let mut sim = Self::with_world(scenario, date, seed, config, world)?;
         sim.movement = Some(movement);
         Ok(sim)
+    }
+    pub fn military(&self) -> Option<&military::Military> {
+        self.military.as_ref()
+    }
+    pub fn validate_military_pending(
+        &self,
+        n: NationId,
+        a: &military::Action,
+    ) -> Result<(), String> {
+        self.military
+            .as_ref()
+            .ok_or("MilitaryModeMismatch")?
+            .validate_pending(self.world.as_ref().ok_or("MilitaryRequiresWorld")?, n, a)
+            .map_err(|e| e.to_string())
+    }
+    fn apply_military(
+        c: &Command,
+        n: NationId,
+        w: Option<&world::World>,
+        e: Option<&mut economy::Economy>,
+        p: Option<&mut production::Production>,
+        m: Option<&mut military::Military>,
+        tick: u64,
+    ) -> Result<(), Error> {
+        let Command::Military(a) = c else {
+            return Ok(());
+        };
+        m.ok_or(Error::Military(military::MilitaryError::MissingContext))?
+            .command(
+                w.ok_or(Error::InvalidWorld)?,
+                e.ok_or(Error::InvalidWorld)?,
+                p.ok_or(Error::InvalidWorld)?,
+                n,
+                a,
+                tick,
+            )
+            .map_err(Error::Military)
     }
     pub fn production(&self) -> Option<&production::Production> {
         self.production.as_ref()
@@ -455,6 +509,13 @@ impl Simulation {
                 self.state.tick(),
             )?;
         }
+        if let Command::Military(a) = &command {
+            self.military
+                .as_ref()
+                .ok_or(Error::Military(military::MilitaryError::MissingContext))?
+                .validate_pending(self.world.as_ref().ok_or(Error::InvalidWorld)?, nation, a)
+                .map_err(Error::Military)?;
+        }
         self.queue.insert(key, command);
         Ok(())
     }
@@ -470,6 +531,7 @@ impl Simulation {
         let mut next_trigger = self.trigger.clone();
         let mut next_economy = self.economy.clone();
         let mut next_production = self.production.clone();
+        let mut next_military = self.military.clone();
         let mut end_sources = std::collections::BTreeSet::new();
         let keys: Vec<_> = self
             .queue
@@ -480,6 +542,15 @@ impl Simulation {
         let mut commands = Vec::new();
         for key @ (_, nation, sequence) in &keys {
             let result = match &self.queue[key] {
+                c @ Command::Military(_) => Self::apply_military(
+                    c,
+                    *nation,
+                    next_world.as_ref(),
+                    next_economy.as_mut(),
+                    next_production.as_mut(),
+                    next_military.as_mut(),
+                    next.tick(),
+                ),
                 c @ Command::Production(_) => Self::apply_production(
                     c,
                     *nation,
@@ -562,13 +633,34 @@ impl Simulation {
                         .daily_economy(world, next.tick)
                         .map_err(Error::Economy)?;
                     if let Some(production) = next_production.as_mut() {
-                        production
-                            .daily(world, economy, next.tick)
-                            .map_err(Error::Production)?;
+                        if let Some(m) = next_military.as_ref() {
+                            production
+                                .daily_with_holdings(
+                                    world,
+                                    economy,
+                                    next.tick,
+                                    &m.returnable_holdings().map_err(Error::Military)?,
+                                )
+                                .map_err(Error::Production)?;
+                        } else {
+                            production
+                                .daily(world, economy, next.tick)
+                                .map_err(Error::Production)?;
+                        }
                     }
                     economy
                         .daily_construction(world, next.tick)
                         .map_err(Error::Economy)?;
+                    if let Some(military) = next_military.as_mut() {
+                        military
+                            .daily(
+                                world,
+                                economy,
+                                next_production.as_mut().ok_or(Error::InvalidWorld)?,
+                                next.tick,
+                            )
+                            .map_err(Error::Military)?;
+                    }
                     economy.daily_politics(world).map_err(Error::Economy)?;
                 }
                 if date.day() == 1 {
@@ -607,6 +699,7 @@ impl Simulation {
         self.trigger = next_trigger;
         self.economy = next_economy;
         self.production = next_production;
+        self.military = next_military;
         Ok(Step {
             advanced,
             commands,
