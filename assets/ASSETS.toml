@@ -159,7 +159,7 @@ source = "original"
 license = "CC-BY-SA-4.0"
 modified = false
 ai_generated = false
-notes = "Original Fluent Korean UI text for WP-12, extended with read-only authoritative economy labels. M0 JSON records and files preserved."
+notes = "Original Fluent Korean UI text for WP-12, extended with read-only authoritative economy and military labels. M0 JSON records and files preserved."
 
 [[asset]]
 path = "client/public/locales/en.ftl"
@@ -168,7 +168,7 @@ source = "original"
 license = "CC-BY-SA-4.0"
 modified = false
 ai_generated = false
-notes = "Original Fluent English UI text for WP-12, extended with read-only authoritative economy labels. M0 JSON records and files preserved."
+notes = "Original Fluent English UI text for WP-12, extended with read-only authoritative economy and military labels. M0 JSON records and files preserved."
 
 [[asset]]
 path = "client/public/fonts/NotoSansKR.ttf"

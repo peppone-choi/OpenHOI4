@@ -81,6 +81,16 @@ main:has(.world-layout) > section dd { font-size: 18px; margin-top: 2px; }
 .economy-panel details { margin-block: 20px; }
 .economy-panel summary { padding-block: 8px; }
 .economy-panel[data-status=stale] { border-color: var(--ui-focus); }
+.military-panel { margin-block: 24px; min-width: 0; max-width: 100%; }
+.military-panel label { display: flex; gap: 12px; flex-wrap: wrap; margin-block: 16px; }
+.military-panel select { max-width: 100%; }
+.military-records { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,290px),1fr)); gap: 16px; }
+.military-records article { border: 1px solid var(--ui-border); padding: 16px; min-width: 0; }
+.military-panel dl div { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 12px; margin-block: 8px; }
+.military-panel dd { margin: 0; }
+.military-panel dd, .military-panel code, .military-panel li { overflow-wrap: anywhere; }
+.military-panel details { margin-block: 12px; }
+.military-panel[data-status=stale] { border: 1px solid var(--ui-focus); }
 .economy-table { overflow-x: auto; max-width: 100%; }
 .economy-table table { border-collapse: collapse; width: 100%; margin-block: 12px; }
 .economy-table th, .economy-table td { white-space: nowrap; padding: 8px 12px; text-align: start; border-bottom: 1px solid var(--ui-border); }
