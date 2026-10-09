@@ -39,9 +39,9 @@ export function App() {
   const [notice, setNotice] = useState<string | null>(null);
   const socket = useRef<ReturnType<typeof connect> | null>(null);
   const sequence = useRef(0n);
+  const transmitEconomy=(client:ReturnType<typeof connect>,request:string)=>client.send({type:'Query',request,kind:'economy'});
   const queryEconomy=(client:ReturnType<typeof connect>)=>{
-    const request=economyResponses.current.issue(client);
-    if(request)client.send({type:'Query',request,kind:'economy'});
+    economyResponses.current.issue(client,request=>transmitEconomy(client,request));
   };
   const selectEconomyNation=(id:number|null)=>{
     economyNation.current=id;setNationId(id??undefined);
@@ -66,8 +66,7 @@ export function App() {
         const accepted=economyResponses.current.accept(client,message);
         if(accepted){
           setEconomy(accepted);
-          const follow=economyResponses.current.followUp(client);
-          if(follow)client.send({type:'Query',request:follow,kind:'economy'});
+          economyResponses.current.followUp(client,request=>transmitEconomy(client,request));
         }
       }
       if(message.type==='ProductionResult'&&message.request==='production'){

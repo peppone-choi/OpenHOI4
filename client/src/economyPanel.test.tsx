@@ -64,43 +64,43 @@ test('allocation projection keeps consumer/construction/military/export indices 
 test('issued in-flight request remains current until consumed; socket and nation lifecycles invalidate it', () => {
   const inbox = new EconomyResponses(); const a = {}, b = {};
   inbox.begin(a,1);
-  const first = inbox.issue(a)!;
-  expect(inbox.issue(a)).toBeNull();
+  const first = inbox.issue(a,()=>true)!;
+  expect(inbox.issue(a,()=>true)).toBeNull();
   expect(inbox.accept(a,{...result,request:first})).toEqual({view,status:'ready',reasonKey:null});
-  const second = inbox.followUp(a)!;
+  const second = inbox.followUp(a,()=>true)!;
   expect(first).toBe('economy:1'); expect(second).toBe('economy:2');
   expect(inbox.accept(a,{...result,request:'economy:999'})).toBeNull();
   expect(inbox.accept(a,{...result,request:first})).toBeNull();
   expect(inbox.accept(b,{...result,request:second})).toBeNull();
   expect(inbox.accept(a,{...result,request:second})).toEqual({view,status:'ready',reasonKey:null});
   expect(inbox.accept(a,{...result,request:second})).toBeNull();
-  const previousNation = inbox.issue(a)!;
+  const previousNation = inbox.issue(a,()=>true)!;
   inbox.begin(a,2);
   expect(inbox.accept(a,{...result,request:previousNation})).toBeNull();
-  const previousSocket = inbox.issue(a)!;
+  const previousSocket = inbox.issue(a,()=>true)!;
   inbox.begin(b,2);
-  expect(inbox.issue(a)).toBeNull();
+  expect(inbox.issue(a,()=>true)).toBeNull();
   expect(inbox.accept(a,{...result,request:previousSocket})).toBeNull();
-  const current = inbox.issue(b)!;
+  const current = inbox.issue(b,()=>true)!;
   expect(inbox.end(a)).toBe(false);
   expect(inbox.accept(b,{...result,request:current})).not.toBeNull();
   expect(inbox.end(b)).toBe(true);
-  expect(inbox.issue(b)).toBeNull();
+  expect(inbox.issue(b,()=>true)).toBeNull();
 });
 
 test('latest unsupported reply clears data and old replies cannot undo it', () => {
   const inbox = new EconomyResponses(); const socket = {};
   inbox.begin(socket,null);
-  const old = inbox.issue(socket)!;
+  const old = inbox.issue(socket,()=>true)!;
   expect(inbox.accept(socket,{...result,request:old})).not.toBeNull();
-  const current = inbox.issue(socket)!;
+  const current = inbox.issue(socket,()=>true)!;
   expect(inbox.accept(socket,{type:'EconomyResult',request:current,supported:false,reason_key:'unsupported-query',economy:null})).toEqual({view:null,status:'unsupported',reasonKey:'unsupported-query'});
   expect(inbox.accept(socket,{...result,request:old})).toBeNull();
 });
 
 test('frozen M0/M1 generic unsupported query is accepted only for the known economy request', () => {
   const inbox=new EconomyResponses(),socket={};inbox.begin(socket,null);
-  const request=inbox.issue(socket)!;
+  const request=inbox.issue(socket,()=>true)!;
   expect(inbox.accept(socket,{type:'QueryResult',request:'unrelated',supported:false,reason_key:'unsupported-query',state:null})).toBeNull();
   expect(inbox.accept(socket,{type:'QueryResult',request,supported:true,reason_key:null,state:{date:'2000-01-01',hour:0,tick:'0',paused:true,speed:1}})).toBeNull();
   expect(inbox.accept(socket,{type:'QueryResult',request,supported:false,reason_key:'unsupported-query',state:null})).toEqual({view:null,status:'unsupported',reasonKey:'unsupported-query'});
@@ -108,16 +108,37 @@ test('frozen M0/M1 generic unsupported query is accepted only for the known econ
 
 test('continuous Delta refreshes coalesce without starving the delayed in-flight reply', () => {
   const inbox=new EconomyResponses(),socket={};inbox.begin(socket,1);
-  const first=inbox.issue(socket)!;
-  for(let delta=0;delta<20;delta++)expect(inbox.issue(socket)).toBeNull();
+  const first=inbox.issue(socket,()=>true)!;
+  for(let delta=0;delta<20;delta++)expect(inbox.issue(socket,()=>true)).toBeNull();
   expect(inbox.accept(socket,{...result,request:first})).toEqual({view,status:'ready',reasonKey:null});
-  const follow=inbox.followUp(socket)!;
+  const follow=inbox.followUp(socket,()=>true)!;
   expect(follow).toBe('economy:2');
-  expect(inbox.followUp(socket)).toBeNull();
+  expect(inbox.followUp(socket,()=>true)).toBeNull();
   expect(inbox.accept(socket,{...result,request:first})).toBeNull();
   expect(inbox.accept(socket,{...result,request:follow})).not.toBeNull();
-  expect(inbox.followUp(socket)).toBeNull();
-  inbox.issue(socket);inbox.issue(socket);
+  expect(inbox.followUp(socket,()=>true)).toBeNull();
+  inbox.issue(socket,()=>true);inbox.issue(socket,()=>true);
   inbox.begin(socket,2);
-  expect(inbox.followUp(socket)).toBeNull();
+  expect(inbox.followUp(socket,()=>true)).toBeNull();
+});
+
+test('CONNECTING send refusal cannot latch a pending query across nation or socket changes', () => {
+  const inbox=new EconomyResponses(),a={},b={};let open=false;
+  const sent:string[]=[];
+  const transmit=(request:string)=>{if(!open)return false;sent.push(request);return true;};
+  inbox.begin(a,1);
+  expect(inbox.issue(a,transmit)).toBeNull();
+  expect(inbox.accept(a,{...result,request:'economy:1'})).toBeNull();
+  inbox.begin(a,2);
+  expect(inbox.issue(a,transmit)).toBeNull();
+  inbox.begin(b,4);
+  expect(inbox.issue(a,transmit)).toBeNull();
+  expect(inbox.issue(b,transmit)).toBeNull();
+  open=true;
+  const request=inbox.issue(b,transmit)!;
+  expect(sent).toEqual([request]);
+  expect(inbox.accept(a,{...result,request})).toBeNull();
+  expect(inbox.accept(b,{...result,request})).not.toBeNull();
+  expect(inbox.followUp(b,transmit)).toBeNull();
+  expect(sent).toHaveLength(1);
 });

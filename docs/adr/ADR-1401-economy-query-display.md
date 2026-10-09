@@ -29,3 +29,9 @@
 지연/역순/malformed 검사의 WS 프록시는 실제 서버 응답을 잡아 두고 순서를 제어한다. 서버는 pause 중에도 Delta를 반복 발행하므로 이 프록시에서만 명시적 시간 명령당 한 Delta를 전달한다. 제품의 최신 요청 조건이나 validator를 완화하지 않는다. 정상 흐름 검사는 이 프록시 없이 실제 반복 Delta를 사용한다. 이 검사를 O2 콘텐츠 인수, 독립 QA, 훈련 정책 또는 공유 멀티플레이로 확대하지 않는다.
 
 독립 리뷰 후 추가한 굶주림 회귀 검사는 실제 반복 Delta를 전부 전달하면서 economy 응답만 잡아 둔다. 여러 Delta 후에도 요청 하나만 대기하고 유효 응답을 표시한 뒤 후속 조회 하나만 발행하는 것을 확인한다. 재연결 생산 회귀는 기존 실제 Rust production wire fixture를 UI 제어 대조로 공급한다. 이 M2 economy 입력 자체에는 production 권위가 없으므로 이 회귀를 실제 생산 통합 인수로 기록하지 않는다. 기존 프로토콜·팩·서버 규칙은 유지한다.
+
+## CONNECTING 전송 접수 경계
+
+조회 ID는 현재 socket의 실제 send가 성공한 뒤에만 대기 요청으로 등록한다. CONNECTING/closing/closed 전송은 false이며 ID나 대기 응답을 접수하지 않는다. 재연결 중 국가 선택은 최신 조회 범위를 바꾸고, 실제 OPEN→Hello/Welcome→Join→Snapshot 뒤 그 범위의 조회를 한 번 발행한다. 기존 같은 수명의 dirty 후속 조회도 같은 전송 접수 경계를 사용한다. 별도 OPEN queue나 재전송 목록을 만들지 않아 중복 발행하지 않는다. 기존 호출자는 send의 boolean을 무시할 수 있고 protocol/validator/게임 계산은 바꾸지 않는다.
+
+추가 회귀는 실제 HTTP upgrade만 OPEN 전에 보류하며 모든 Rust 프레임을 그대로 전달한다. 실제 native WebSocket의 CONNECTING0·OPEN1을 검사하고, 보류 중 두 국가 선택→마지막 국가4의 실제 경제 표시→OPEN 후 국가2 전환·고유 발행 ID를 확인한다. 생산 응답 대체 회귀는 여전히 UI 수명 대조만이며 실제 native production 명령 인수는 합성 생산 팩에서 따로 수행한다.

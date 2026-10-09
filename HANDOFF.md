@@ -2,6 +2,8 @@
 
 ## 경제 조회 UI 후보 (2026-10-09, 작성: 최병호)
 
+후속 실제 리뷰에서 CONNECTING 중 국가 선택의 전송되지 않은 pending 문제가 발견돼, 실제 send 성공 뒤에만 조회를 접수하도록 수정했다. 실제 HTTP upgrade gate에서 기존 loading 실패를 재현하고 수정 후 OPEN·국가2→4→2 전환·고유 발행 ID를 확인했다. client257개/실제 Chromium8개가 통과했고 최종 source delta의 실제 리뷰는 대기다. 대체 production 응답 검사는 native 생산 명령 인수로 확대하지 않는다.
+
 실제 독립 리뷰가 기존 `0728903` 후보에서 연속 Delta의 조회 굶주림과 재연결의 이전 production 유지 두 결함을 찾았다. 같은 socket/국가의 대기 조회 ID를 보존하고 dirty 갱신을 후속 조회 하나로 모으며, 재연결 때 production view/검증 연결을 비워 현재 연결의 검증 응답 전에 명령을 차단하도록 수정했다. 두 실제 브라우저 실패를 재현한 뒤 client256개·실제 Chromium7개가 통과했고 최종 Playwright exit0을 기록했다. 기존 CI 성공과 이번 수정의 새 리뷰/CI를 구분한다. [작업 로그](docs/worklog/WP-14-economy-query-ui.md)의 delta 절을 따르며 새 실제 독립 리뷰와 최종 SHA CI/main 통합은 대기다.
 
 main `ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad` 기반 `wp/o3-economy-panel`은 읽기 전용 EconomyPanel과 현재 socket/국가 수명·최신 발행 요청의 응답 관리 단위다. 국가/연결 전환은 화면을 비우고 malformed/disconnect는 마지막 검증 view를 stale로 남긴다. 미발행 미래/역순/이전 연결/중복 응답은 수락하지 않는다. 서버의 문자열 숫자와 산업·건설 원장, 배분 위치0/1/2/3을 보존한다. Rust/protocol/validator/save·기존 팩·법령/게임 계산은 수정하지 않았다.

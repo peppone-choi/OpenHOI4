@@ -3,6 +3,7 @@ import { encode, decode } from '@msgpack/msgpack';
 import { readFileSync, mkdirSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { ServerMessage } from '../src/proto/protocol';
+import {upgradeGate} from './support/upgradeGate';
 
 type Reply=Extract<ServerMessage,{type:'EconomyResult'}>;
 type Held={socket:WebSocketRoute;reply:Reply};
@@ -262,4 +263,45 @@ test('immediate reconnect removes old production and blocks commands until curre
   await expect(panel.getByRole('button',{name:'Create line',exact:true})).toBeEnabled();
   await panel.getByRole('button',{name:'Create line',exact:true}).click();
   await expect.poll(()=>commands.length).toBe(1);
+});
+
+test('CONNECTING country selections through actual OPEN use the latest scope without unsent pending or duplicate requests',async({page,baseURL})=>{
+  const gate=await upgradeGate(baseURL!);
+  const requests:string[][]=[];
+  page.on('websocket',socket=>{
+    const sent:string[]=[];requests.push(sent);
+    socket.on('framesent',frame=>{
+      if(typeof frame.payload==='string')return;
+      const message=decode(frame.payload) as {type:string;kind?:string;request?:string};
+      if(message.type==='Query'&&message.kind==='economy')sent.push(message.request!);
+    });
+  });
+  await page.addInitScript(()=>{
+    const sockets:WebSocket[]=[];
+    const Native=window.WebSocket;
+    window.WebSocket=class extends Native {constructor(url:string|URL,protocols?:string|string[]){super(url,protocols);sockets.push(this);}};
+    (window as unknown as {probeSockets:WebSocket[]}).probeSockets=sockets;
+  });
+  try {
+    await page.goto(gate.url);await pause(page);
+    const panel=page.getByTestId('economy-panel');await expect(panel).toHaveAttribute('data-status','ready');
+    await page.evaluate(()=>{(window as unknown as {probeSockets:WebSocket[]}).probeSockets.at(-1)!.close(1000,'connecting regression');});
+    await expect(page.getByRole('button',{name:'Reconnect',exact:true})).toBeVisible();
+    gate.hold();await page.getByRole('button',{name:'Reconnect',exact:true}).click();
+    await expect.poll(()=>gate.count()).toBe(1);
+    expect(await page.evaluate(()=>(window as unknown as {probeSockets:WebSocket[]}).probeSockets.at(-1)!.readyState)).toBe(0);
+    await page.getByTestId('country-panel').getByRole('button').nth(1).click();
+    await page.getByTestId('country-panel').getByRole('button').nth(3).click();
+    await expect(panel.getByTestId('economy-nation-body')).toHaveCount(0);
+    expect(requests.at(-1)).toEqual([]);
+    gate.release();
+    await expect.poll(()=>page.evaluate(()=>(window as unknown as {probeSockets:WebSocket[]}).probeSockets.at(-1)!.readyState)).toBe(1);
+    await expect(panel).toHaveAttribute('data-status','ready');
+    await expect(panel.getByTestId('economy-nation-body')).toHaveAttribute('data-economy-nation','4');
+    await pause(page);
+    await panel.getByRole('combobox').selectOption('2');
+    await expect(panel).toHaveAttribute('data-status','ready');
+    await expect(panel.getByTestId('economy-nation-body')).toHaveAttribute('data-economy-nation','2');
+    const sent=requests.at(-1)!;expect(sent.length).toBeGreaterThan(0);expect(new Set(sent).size).toBe(sent.length);
+  } finally {await gate.close();}
 });

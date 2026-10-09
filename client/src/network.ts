@@ -110,7 +110,11 @@ export function connect(onMessage: (message: ServerMessage) => void, onClose: (r
     ws.close();
     onClose(reasonKey);
   };
-  const send = (message: ClientMessage) => { if (!closed && ws.readyState === WebSocket.OPEN) ws.send(encode(message)); };
+  const send = (message: ClientMessage): boolean => {
+    if (closed || ws.readyState !== WebSocket.OPEN) return false;
+    ws.send(encode(message));
+    return true;
+  };
   ws.onopen = () => send({ type: 'Hello', protocol_version: PROTOCOL_VERSION });
   ws.onmessage = event => {
     try {

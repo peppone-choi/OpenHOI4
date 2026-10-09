@@ -68,3 +68,11 @@ npx playwright test --config playwright.economy.config.ts
 수정 후 전체 client는14파일256 PASS(exit0)이며 실제 Rust pretest fixture 생성도 다시 실행해 exit0이며 production/economy fixture bytes가 이전과 일치했다. 처음 잘못된 cwd의 Vitest 실행은 relative fixture/assets ENOENT16건이었다. 올바른 client cwd에서 기존 검사를 바꾸지 않고256개가 통과했다. Typecheck/Vite build와 새 번들 native embed는 exit0이다. 기존 지연 검사3개는 같은 수명에서 Delta가 새 ID를 만들던 준비 방식 대신, 실제 국가 수명을 전환해 이전/현재 요청을 구분하도록 수정했으며 미래/이전/중복/unsupported/문자열·stale 검증을 유지했다.
 
 실제 Chromium151의 전체7개 브라우저 검사에서 두 회귀와 기존5개가 모두 통과했다. 첫 전체 실행의7 PASS 요약에도 결합 shell 결과가1로 남아 따로 보존했고, 후속 전체 실행은 실제 Playwright 종료 코드를 명시적으로 기록해7 PASS/exit0을 확인했다. 연속 Delta 회귀는 반복 publication을 필터링하지 않는다. 재연결 생산 회귀는 기존 실제 Rust projection을 공급하는 UI 수명 검사이며 M2 pack production 게임 인수가 아니다. 새 실제 독립 delta 리뷰·최종 SHA CI/main 인수는 대기다.
+
+## CONNECTING 국가 선택 후속 리뷰 수정
+
+실제 독립 리뷰는 37c13b8의 두 기존 blocker 해결을 확인했지만 CONNECTING 중 국가 선택이 실제 전송되지 않은 요청을 pending으로 기록하는 Low 결함을 발견했다. 전송 성공 뒤에만 pending을 접수하고 Snapshot에서 최신 국가 범위를 발행하도록 수정했다. network send가 실제 전송 여부 boolean을 반환하며 응답 관리자 callback이 그 결과를 사용한다. 기존 protocol/validator/Rust/팩/소유 규칙은 그대로다.
+
+새 단위 검사는 기존 코드에서 economy:1이 null이 아니라서 실패했다(exit1). 실제 이전 번들과 Rust host에 HTTP upgrade gate를 적용한 브라우저 검사는 CONNECTING 중 국가를2→4로 선택한 뒤 OPEN에서도 loading으로 남아 실패했다. WS 프레임·서버 응답을 대체하지 않았으며 initial native 연결과 해당 국가 버튼을 실제로 사용했다. 수정 후 client257개·typecheck/Vite/native build가 통과했고 실제 Chromium 전체8개가 PASS, 명시 기록한 Playwright exit0이다. 같은 socket의 coalescing·과거/미발행 응답 거절, 경제 없는 M1, 기존 reconnect 생산 UI 회귀를 보존했다.
+
+최종 delta는 실제 독립 리뷰 대기다. Native 생산 명령 접수는 대체 production 응답 회귀로 증명하지 않으며 O2 입력을 포함한 통합 서버·브라우저 인수에서 실제 accepted/거절과 자원 상태를 검사한다. main 통합·전체 M2 완료는 아직 주장하지 않는다.

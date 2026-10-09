@@ -19,17 +19,22 @@ export class EconomyResponses {
     this.latest = null;
     this.dirty = false;
   }
-  issue(socket: object): string | null {
+  issue(socket: object, transmit: (request: string) => boolean): string | null {
     if (socket !== this.socket) return null;
     if (this.latest) { this.dirty = true; return null; }
-    const request = `economy:${++this.serial}`;
+    const next = this.serial + 1n;
+    const request = `economy:${next}`;
+    // CONNECTING/closed transport cannot admit a pending response. Snapshot
+    // after OPEN retries the latest country scope without duplicate sends.
+    if (!transmit(request)) return null;
+    this.serial = next;
     this.latest = {request, nation:this.nation};
     this.dirty = false;
     return request;
   }
-  followUp(socket: object): string | null {
+  followUp(socket: object, transmit: (request: string) => boolean): string | null {
     if (socket !== this.socket || this.latest || !this.dirty) return null;
-    return this.issue(socket);
+    return this.issue(socket, transmit);
   }
   accept(socket: object, message: Extract<ServerMessage, {type:'EconomyResult'|'QueryResult'}>): EconomyDisplay | null {
     // Frozen hosts without economy answer through the existing generic query.
