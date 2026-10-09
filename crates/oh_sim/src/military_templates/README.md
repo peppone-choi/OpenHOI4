@@ -1,0 +1,9 @@
+# Normal template arithmetic
+
+`oh_data::military_templates` parses a caller-selected strict external TOML document; `oh_sim::military_templates::aggregate` combines its resolved normal component stats. `oh_cli military-template inspect --pack <root> --scenario <id> --nation <canonical-u16> --definitions <external.toml> --template <id>` also validates actual production family/model/nation allowance. See [ADR-1601](../../../../docs/adr/ADR-1601-resolved-normal-templates.md) for every field, unit, rounding and failure boundary.
+
+The synthetic [normal.toml](../../../oh_data/tests/fixtures/military_templates/normal.toml) supplies a line component and support component for `example`. Its numbers are independently authored provisional test inputs. They are not original-game or campaign equipment data. Native CLI tests copy existing M1 into test-owned temporary packs and add the existing production fixture through the actual scenario loader; unchanged M1 and M2 do not acquire a production registry implicitly.
+
+Operators sum normal strength/fire/defense/breakthrough/frontage/descriptive supply use, whole manpower and equipment requirements; organization/armor/piercing use manpower-weighted Qty raw numerators with one final floor; speed retains the minimum positive Fx. Repeated components stay repeated. Zero-personnel supports have weight zero. Empty composition or total personnel zero is undefined arithmetic, not a new gameplay legality ban.
+
+Output explicitly says `normal_template_stats`, `component_declared_resolved_normal_inputs` and editor legality `not_evaluated`. Equipment requirements are validated model references; these do not multiply item counts by nonexistent production-model combat stats. There is no Division/OOB, training, stock withdrawal, reservation/refund/reinforcement, live demand/effect/loss, save, query, or UI here. Model-dependent combat derivation and those consumers remain separate work.

@@ -10,6 +10,7 @@ pub mod host_policy;
 pub mod localisation;
 pub mod m0;
 pub mod map;
+pub mod military_templates;
 pub mod national;
 pub mod pack_validation;
 pub mod production;
