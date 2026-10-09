@@ -9,11 +9,15 @@ use oh_core::{DivisionId, NationId, ProvinceId};
 use oh_data::military::Background;
 use serde::{Deserialize, Serialize};
 use std::collections::{BTreeMap, BTreeSet};
+/// Per-country technical admission bound, not a lifetime or gameplay limit.
+/// Terminal records remain owned history and do not consume active capacity.
+pub const MAX_ACTIVE_JOBS_PER_NATION: usize = 4096;
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum MilitaryError {
     MissingContext,
     InvalidReference,
     InvalidValue,
+    ActiveLimit,
     Overflow,
     NotOwner,
     NotReady,
@@ -69,6 +73,7 @@ impl Army {
     pub fn division_limit(&self) -> u32 {
         self.division_limit
     }
+    /// Lower numeric values are served first; zero is the highest priority.
     pub fn priority(&self) -> u16 {
         self.priority
     }
@@ -118,6 +123,11 @@ pub enum JobStatus {
     Ready,
     Cancelled,
     Deployed,
+}
+impl JobStatus {
+    fn is_active(self) -> bool {
+        matches!(self, Self::Pending | Self::Training | Self::Ready)
+    }
 }
 #[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -378,8 +388,14 @@ impl Military {
         self.validate_pending(w, n, a)?;
         match a {
             Action::Train { template } => {
-                if self.jobs.len() >= oh_data::military_templates::MAX_ENTRIES {
-                    return Err(MilitaryError::InvalidValue);
+                if self
+                    .jobs
+                    .values()
+                    .filter(|job| job.nation == n.0 && job.status.is_active())
+                    .count()
+                    >= MAX_ACTIVE_JOBS_PER_NATION
+                {
+                    return Err(MilitaryError::ActiveLimit);
                 }
                 let normal = err(aggregate(defs(w)?.templates(), template))?;
                 let id = self.next_job_id;
@@ -666,7 +682,6 @@ impl Military {
         if self.definitions_hash != err(d.identity())?
             || self.background != d.background
             || self.armies.len() != d.armies.len()
-            || self.jobs.len() > oh_data::military_templates::MAX_ENTRIES
             || self.next_job_id != self.jobs.len() as u64
             || self.jobs.keys().copied().ne(0..self.next_job_id)
         {
@@ -746,7 +761,15 @@ impl Military {
                 .get_mut(&v.nation)
                 .ok_or(MilitaryError::InvalidReference)? += i128::from(v.manpower);
         }
+        let mut active_jobs = BTreeMap::<u16, usize>::new();
         for (&id, j) in &self.jobs {
+            if j.status.is_active() {
+                let count = active_jobs.entry(j.nation).or_default();
+                *count += 1;
+                if *count > MAX_ACTIVE_JOBS_PER_NATION {
+                    return Err(MilitaryError::ActiveLimit);
+                }
+            }
             if id != j.id
                 || id >= self.next_job_id
                 || j.normal != err(aggregate(d.templates(), &j.template))?

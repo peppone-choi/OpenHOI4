@@ -1,5 +1,9 @@
 # OpenHOI4 WIP 인수인계
 
+## O1 승인된 활성 훈련 한도 수정 후보
+
+2026-10-09 사용자 승인과 실제 독립 리뷰 계획에 따라 국가별 Pending·Training·Ready4096건만 한도로 계산하고 Cancelled·Deployed 이력과 연속 ID는 보존했다. 기존 V7 전체4096건 범위·bytes를 유지하고 그보다 큰 이력은 같은 body layout의 V8 태그로 구분한다. 구 V7 relabel 우회는 거절하며 생산 입력 migration/reset은 없다. 우선순위0 최우선을 명시했다. 구현 담당 표적18개·전체 Rust383개(ignore0)와 전체 target clippy는 통과했다. 첫 준비/공유 cache 실패를 보존했다. [작업 로그](docs/worklog/WP-16-active-quota.md)를 따르며 실제 독립 delta 리뷰·최종 SHA CI·main 병합은 아직 대기다. 종료 이력의 선형 자원 사용·기존 저장 한도와 후속 retention/pagination은 남은 경계다.
+
 2026-10-08 사용자 재개 지시로 새 환경에서 WP-14 독립 인수·P07 검사를 시작했다. 이번 재개는 미완성 소스의 검증부터 진행하며 릴리스나 M2 완료 판정이 아니다. 반복 감시 자동화는 PAUSED로 유지한다. 실행 계획과 공유 변경 순서는 [M2 재개 계획](docs/plans/M2.md)을 따른다.
 
 ## 새 환경 재개 상태

@@ -21,6 +21,7 @@ pub const TRIGGER_FORMAT_VERSION: u16 = 4;
 pub const ECONOMY_FORMAT_VERSION: u16 = 5;
 pub const PRODUCTION_FORMAT_VERSION: u16 = 6;
 pub const MILITARY_FORMAT_VERSION: u16 = 7;
+pub const EXTENDED_MILITARY_FORMAT_VERSION: u16 = 8;
 #[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
 pub struct PackV1 {
     pub id: String,
@@ -96,8 +97,12 @@ pub fn encode_with_limits(
     limits: &Limits,
 ) -> Result<Vec<u8>> {
     context.verify_unchanged()?;
-    let version = if sim.military().is_some() {
-        MILITARY_FORMAT_VERSION
+    let version = if let Some(military) = sim.military() {
+        if military.jobs().len() > oh_sim::military_save::LEGACY_V7_MAX_JOB_RECORDS {
+            EXTENDED_MILITARY_FORMAT_VERSION
+        } else {
+            MILITARY_FORMAT_VERSION
+        }
     } else if sim.production().is_some() {
         PRODUCTION_FORMAT_VERSION
     } else if sim.economy().is_some() {
@@ -116,6 +121,12 @@ pub fn encode_with_limits(
         (
             serialize(&dto)?,
             Simulation::from_save_v7(dto, &context.restore)?,
+        )
+    } else if version == EXTENDED_MILITARY_FORMAT_VERSION {
+        let dto = sim.export_save_v8()?;
+        (
+            serialize(&dto)?,
+            Simulation::from_save_v8(dto, &context.restore)?,
         )
     } else if version == PRODUCTION_FORMAT_VERSION {
         let dto = sim.export_save_v6()?;
@@ -229,6 +240,7 @@ pub fn inspect_header(bytes: &[u8], limits: &Limits) -> Result<HeaderV1> {
         ECONOMY_FORMAT_VERSION,
         PRODUCTION_FORMAT_VERSION,
         MILITARY_FORMAT_VERSION,
+        EXTENDED_MILITARY_FORMAT_VERSION,
     ]
     .contains(&version)
     {
@@ -276,6 +288,7 @@ pub fn decode_with_limits(
         ECONOMY_FORMAT_VERSION,
         PRODUCTION_FORMAT_VERSION,
         MILITARY_FORMAT_VERSION,
+        EXTENDED_MILITARY_FORMAT_VERSION,
     ]
     .contains(&version)
     {
@@ -333,7 +346,10 @@ pub fn decode_with_limits(
     } else {
         bounds::body_version(&body, limits, version)?;
     }
-    let (base, dto2, dto3, dto4, dto5, dto6, dto7) = if version == MILITARY_FORMAT_VERSION {
+    let (base, dto2, dto3, dto4, dto5, dto6, dto7) = if matches!(
+        version,
+        MILITARY_FORMAT_VERSION | EXTENDED_MILITARY_FORMAT_VERSION
+    ) {
         let dto: oh_sim::military_save::SimulationSaveV7 = deserialize(&body)?;
         (
             dto.base.base.base.base.base.clone(),
@@ -412,7 +428,11 @@ pub fn decode_with_limits(
     }
     context.verify_unchanged()?;
     let simulation = if let Some(dto) = dto7 {
-        Simulation::from_save_v7(dto, &context.restore)?
+        if version == MILITARY_FORMAT_VERSION {
+            Simulation::from_save_v7(dto, &context.restore)?
+        } else {
+            Simulation::from_save_v8(dto, &context.restore)?
+        }
     } else if let Some(dto) = dto6 {
         Simulation::from_save_v6(dto, &context.restore)?
     } else if let Some(dto) = dto5 {
@@ -442,7 +462,11 @@ fn check_header(h: &HeaderV1, c: &SaveContext, l: &Limits, force: bool) -> Resul
         .world
         .as_ref()
         .is_some_and(|w| w.defs().military().is_some());
-    if (h.format_version == MILITARY_FORMAT_VERSION) != has_military {
+    if (matches!(
+        h.format_version,
+        MILITARY_FORMAT_VERSION | EXTENDED_MILITARY_FORMAT_VERSION
+    )) != has_military
+    {
         return Err("MilitaryModeMismatch: save/local definitions".into());
     }
     let has_production = c
@@ -452,7 +476,7 @@ fn check_header(h: &HeaderV1, c: &SaveContext, l: &Limits, force: bool) -> Resul
         .is_some_and(|w| w.defs().production().is_some());
     if (matches!(
         h.format_version,
-        PRODUCTION_FORMAT_VERSION | MILITARY_FORMAT_VERSION
+        PRODUCTION_FORMAT_VERSION | MILITARY_FORMAT_VERSION | EXTENDED_MILITARY_FORMAT_VERSION
     )) != has_production
     {
         return Err("ProductionModeMismatch: save/local definitions".into());
@@ -469,14 +493,20 @@ fn check_header(h: &HeaderV1, c: &SaveContext, l: &Limits, force: bool) -> Resul
         .is_some_and(|w| w.defs().economy().is_some());
     if (matches!(
         h.format_version,
-        ECONOMY_FORMAT_VERSION | PRODUCTION_FORMAT_VERSION | MILITARY_FORMAT_VERSION
+        ECONOMY_FORMAT_VERSION
+            | PRODUCTION_FORMAT_VERSION
+            | MILITARY_FORMAT_VERSION
+            | EXTENDED_MILITARY_FORMAT_VERSION
     )) != has_economy
     {
         return Err("EconomyModeMismatch: save/local definitions".into());
     }
     if !matches!(
         h.format_version,
-        ECONOMY_FORMAT_VERSION | PRODUCTION_FORMAT_VERSION | MILITARY_FORMAT_VERSION
+        ECONOMY_FORMAT_VERSION
+            | PRODUCTION_FORMAT_VERSION
+            | MILITARY_FORMAT_VERSION
+            | EXTENDED_MILITARY_FORMAT_VERSION
     ) && (h.format_version == TRIGGER_FORMAT_VERSION) != has_trigger
     {
         return Err("TriggerModeMismatch: save/local definitions".into());
@@ -489,6 +519,7 @@ fn check_header(h: &HeaderV1, c: &SaveContext, l: &Limits, force: bool) -> Resul
         ECONOMY_FORMAT_VERSION,
         PRODUCTION_FORMAT_VERSION,
         MILITARY_FORMAT_VERSION,
+        EXTENDED_MILITARY_FORMAT_VERSION,
     ]
     .contains(&h.format_version)
     {

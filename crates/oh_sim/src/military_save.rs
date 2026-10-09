@@ -1,4 +1,4 @@
-//! Opt-in V7 actual military body. V1–V6 DTO shapes and queues remain frozen.
+//! Opt-in V7/V8 military body. V1–V6 DTO shapes and queues remain frozen.
 use crate::{
     Command, Simulation,
     military::{Action, Military},
@@ -25,8 +25,22 @@ pub struct SimulationSaveV7 {
     pub queue: Vec<PendingV7>,
     pub military: Military,
 }
+/// V8 preserves V7's body layout and identities, but permits extended history
+/// under per-country active quotas. The file header distinguishes the contract.
+pub type SimulationSaveV8 = SimulationSaveV7;
+pub const LEGACY_V7_MAX_JOB_RECORDS: usize = 4096;
 impl Simulation {
     pub fn export_save_v7(&self) -> Result<SimulationSaveV7, String> {
+        if self
+            .military
+            .as_ref()
+            .is_some_and(|m| m.jobs().len() > LEGACY_V7_MAX_JOB_RECORDS)
+        {
+            return Err("InvalidV7: job record limit".into());
+        }
+        self.export_save_v8()
+    }
+    pub fn export_save_v8(&self) -> Result<SimulationSaveV8, String> {
         let military = self.military.clone().ok_or("V7RequiresMilitary")?;
         let mut old = self.clone();
         old.military = None;
@@ -66,7 +80,13 @@ impl Simulation {
             military,
         })
     }
-    pub fn from_save_v7(mut dto: SimulationSaveV7, c: &RestoreContext) -> Result<Self, String> {
+    pub fn from_save_v7(dto: SimulationSaveV7, c: &RestoreContext) -> Result<Self, String> {
+        if dto.military.jobs().len() > LEGACY_V7_MAX_JOB_RECORDS {
+            return Err("InvalidV7: job record limit".into());
+        }
+        Self::from_save_v8(dto, c)
+    }
+    pub fn from_save_v8(mut dto: SimulationSaveV8, c: &RestoreContext) -> Result<Self, String> {
         if !dto.base.queue.is_empty() {
             return Err("InvalidV7: nested queue".into());
         }

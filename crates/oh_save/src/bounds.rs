@@ -266,7 +266,7 @@ pub fn body_version(bytes: &[u8], limits: &Limits, version: u16) -> Result<()> {
             r.number(64)?;
         }
     }
-    if (3..=7).contains(&version) {
+    if (3..=8).contains(&version) {
         for _ in 0..r.entries(limits.map_entries_max)? {
             r.number(32)?;
             for _ in 0..r.entries(limits.map_entries_max)? {
@@ -326,7 +326,7 @@ pub fn body_version(bytes: &[u8], limits: &Limits, version: u16) -> Result<()> {
             }
         }
     }
-    if (5..=7).contains(&version) {
+    if (5..=8).contains(&version) {
         r.boolean()?;
         r.boolean()?;
         if r.boolean()? {
@@ -391,7 +391,7 @@ pub fn body_version(bytes: &[u8], limits: &Limits, version: u16) -> Result<()> {
             }
         }
     }
-    if version == 6 || version == 7 {
+    if (6..=8).contains(&version) {
         for _ in 0..r.entries(limits.queue_max_entries)? {
             r.number(64)?;
             r.number(16)?;
@@ -442,7 +442,7 @@ pub fn body_version(bytes: &[u8], limits: &Limits, version: u16) -> Result<()> {
             r.number(64)?;
         }
     }
-    if version == 7 {
+    if matches!(version, 7 | 8) {
         for _ in 0..r.entries(limits.queue_max_entries)? {
             r.number(64)?;
             r.number(16)?;

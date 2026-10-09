@@ -215,6 +215,44 @@ fn req_active_reinforcement_before_training_and_priority() {
         76
     );
 }
+
+#[test]
+fn req_reinforcement_zero_is_highest_priority_even_when_army_ids_are_reversed() {
+    let div = "{id=0,army=0,template='example',province=10,manpower=0,equipment={}}, {id=1,army=1,template='example',province=10,manpower=0,equipment={}}";
+    let mut s = sim(4, 100, div);
+    cmd(
+        &mut s,
+        Action::SetPriority {
+            army: 0,
+            priority: u16::MAX,
+        },
+    )
+    .unwrap();
+    cmd(
+        &mut s,
+        Action::SetPriority {
+            army: 1,
+            priority: 0,
+        },
+    )
+    .unwrap();
+    train(&mut s);
+    until(&mut s, 24);
+    assert_eq!(s.military().unwrap().armies()[&0].priority(), u16::MAX);
+    assert_eq!(s.military().unwrap().armies()[&1].priority(), 0);
+    assert_eq!(
+        s.military().unwrap().divisions()[&0].equipment()["test_model_1"],
+        0
+    );
+    assert_eq!(
+        s.military().unwrap().divisions()[&1].equipment()["test_model_1"],
+        4
+    );
+    assert_eq!(
+        s.military().unwrap().jobs()[&0].equipment()["test_model_1"],
+        0
+    );
+}
 #[test]
 fn req_same_priority_flat_division_proportion_and_training_proportion() {
     let div = "{id=0,army=1,template='example',province=10,manpower=0,equipment={test_model_1=2}}, {id=1,army=1,template='example',province=10,manpower=0,equipment={test_model_1=6}}";
