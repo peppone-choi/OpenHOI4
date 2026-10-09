@@ -1,5 +1,11 @@
 # OpenHOI4 WIP 인수인계
 
+## Create 검사 준비 경계 후보 (2026-10-09, 작성: 최병호)
+
+`test/network-readiness`는 기존 REQ-NET-01 Create 검사의750ms 관찰 창을 bounded Snapshot 준비 뒤 시작하고 소켓 종료를 확인하는 별도 후보다. 기존 Delta>0/<=8/연속 sequence와 모든 거부/지원 query assertion은 유지했다. Rust·제품 network/protocol·팩·CI 설정은 수정하지 않는다.
+
+바이트가 같은 baseline 권위/HTTP 자산과 실제 Chromium에서350ms WebSocket upgrade 준비 지연으로 원 검사와 같은 Delta0 증상을 재현했다. 준비 뒤 같은750ms를 관찰하면 Delta1이며 수정 검사 본문은 지연/정상 각각3회 통과했다. 원 CI의 실제 socket 시각은 로그에 없어 지연 원인까지 확정하거나 무조건적인 flake로 선언하지 않는다. [작업 로그](docs/worklog/WP-05-network-readiness.md)의 재현·한계를 따른다. 데이터 팩/경제 UI와 별도이며 독립 리뷰·main CI 인수 전이다.
+
 2026-10-08 사용자 재개 지시로 새 환경에서 WP-14 독립 인수·P07 검사를 시작했다. 이번 재개는 미완성 소스의 검증부터 진행하며 릴리스나 M2 완료 판정이 아니다. 반복 감시 자동화는 PAUSED로 유지한다. 실행 계획과 공유 변경 순서는 [M2 재개 계획](docs/plans/M2.md)을 따른다.
 
 ## 새 환경 재개 상태
