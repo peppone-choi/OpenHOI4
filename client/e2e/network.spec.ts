@@ -79,14 +79,37 @@ test('REQ-NET-01 Create, supported query, Delta and explicit refusal', async ({ 
     { type: 'Create', scenario: 'testland', seed: '18446744073709551615', mode: 'single' },
     { type: 'Query', request: 'time', kind: 'time' },
   ];
-  const frames = await page.evaluate(bytes => new Promise<number[][]>(resolve => {
-    const frames: number[][] = [];
+  const values: ServerMessage[] = [];
+  let closed = false;
+  await page.exposeFunction('recordCreateFrame', (frame: number[]) => {
+    values.push(decode(Uint8Array.from(frame)) as ServerMessage);
+  });
+  await page.exposeFunction('recordCreateClose', () => { closed = true; });
+  await page.evaluate(bytes => {
+    const probe = window as unknown as {
+      createProbe?: WebSocket;
+      recordCreateFrame: (frame: number[]) => Promise<void>;
+      recordCreateClose: () => Promise<void>;
+    };
     const ws = new WebSocket(`ws://${location.host}/ws`); ws.binaryType = 'arraybuffer';
+    probe.createProbe = ws;
     ws.onopen = () => { for (const data of bytes) ws.send(Uint8Array.from(data)); ws.send('invalid text'); ws.send(new Uint8Array([193])); };
-    ws.onmessage = event => frames.push(Array.from(new Uint8Array(event.data)));
-    setTimeout(() => { ws.close(); resolve(frames); }, 750);
-  }), messages.map(m => Array.from(encode(m))));
-  const values = frames.map(f => decode(Uint8Array.from(f))) as ServerMessage[];
+    ws.onmessage = event => { void probe.recordCreateFrame(Array.from(new Uint8Array(event.data))); };
+    ws.onclose = () => { void probe.recordCreateClose(); };
+  }, messages.map(m => Array.from(encode(m))));
+  try {
+    // Connection setup and Create processing are readiness, not the Delta
+    // observation window. Keep the original 750ms budget and every assertion.
+    await expect.poll(() => values.some(value => value.type === 'Snapshot')).toBe(true);
+    await page.waitForTimeout(750);
+  } finally {
+    await page.evaluate(() => {
+      const probe = window as unknown as {createProbe?: WebSocket};
+      probe.createProbe?.close();
+      delete probe.createProbe;
+    });
+    await expect.poll(() => closed).toBe(true);
+  }
   expect(values).toContainEqual(expect.objectContaining({ type: 'CommandResult', accepted: false, reason_key: 'not-joined' }));
   expect(values).toContainEqual({ type: 'Notice', key: 'unsupported-create' });
   expect(values).toContainEqual({ type: 'Notice', key: 'invalid-message' });

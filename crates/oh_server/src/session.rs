@@ -10,6 +10,14 @@ use std::{
 use tokio::sync::{oneshot, watch};
 #[derive(Debug)]
 pub enum Request {
+    Military {
+        reply: oneshot::Sender<Option<oh_proto::MilitaryView>>,
+    },
+    MilitaryCommand {
+        nation: NationId,
+        command: oh_proto::MilitaryCommand,
+        reply: oneshot::Sender<Result<TimeState, &'static str>>,
+    },
     Production {
         reply: oneshot::Sender<Option<oh_proto::ProductionView>>,
     },
@@ -90,6 +98,63 @@ impl Session {
                         Ok(Request::Economy { reply }) => {
                             let _ = reply.send(oh_proto::EconomyView::from_sim(&sim));
                             continue;
+                        }
+                        Ok(Request::Military { reply }) => {
+                            let _ = reply.send(oh_proto::MilitaryView::from_sim(&sim));
+                            continue;
+                        }
+                        Ok(Request::MilitaryCommand {
+                            nation,
+                            command,
+                            reply,
+                        }) => {
+                            if sim.is_ended() {
+                                let _ = reply.send(Err("scenario-ended"));
+                                continue;
+                            }
+                            let action = match command.into_action() {
+                                Ok(action) => action,
+                                Err(_) => {
+                                    let _ = reply.send(Err("invalid-message"));
+                                    continue;
+                                }
+                            };
+                            let Some(next_arrival) = arrival.checked_add(1) else {
+                                let _ = reply.send(Err("simulation-error"));
+                                break;
+                            };
+                            if sim
+                                .enqueue(
+                                    sim.snapshot().tick(),
+                                    nation,
+                                    next_arrival,
+                                    oh_sim::Command::Military(action),
+                                )
+                                .is_err()
+                            {
+                                let _ = reply.send(Err("invalid-message"));
+                                continue;
+                            }
+                            arrival = next_arrival;
+                            match sim.step() {
+                                Ok(step) => {
+                                    let accepted = step
+                                        .commands
+                                        .iter()
+                                        .find(|c| c.sequence == arrival && c.nation == nation)
+                                        .is_some_and(|c| c.result.is_ok());
+                                    let _ = reply.send(if accepted {
+                                        Ok(TimeState::from(&step.snapshot))
+                                    } else {
+                                        Err("invalid-message")
+                                    });
+                                }
+                                Err(_) => {
+                                    let _ = reply.send(Err("simulation-error"));
+                                    continue;
+                                }
+                            }
+                            deadline = Instant::now() + Duration::from_millis(sim.ms_per_tick());
                         }
                         Ok(Request::ProductionCommand {
                             nation,

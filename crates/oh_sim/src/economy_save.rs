@@ -34,6 +34,9 @@ pub struct SimulationSaveV5 {
 }
 impl Simulation {
     pub fn export_save_v5(&self) -> Result<SimulationSaveV5, String> {
+        if self.military.is_some() {
+            return Err("MilitaryRequiresV7".into());
+        }
         if self.production.is_some() {
             return Err("ProductionRequiresV6".into());
         }
@@ -84,6 +87,7 @@ impl Simulation {
                     },
                     Command::Economy(action) => CommandV5::Economy(action.clone()),
                     Command::Production(_) => unreachable!("production requires v6"),
+                    Command::Military(_) => unreachable!("military requires v7"),
                 },
             })
             .collect();

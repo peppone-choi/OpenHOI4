@@ -483,6 +483,7 @@ fn validate_content(
     }
     let mut economic_files = BTreeSet::new();
     let mut production_files = BTreeSet::new();
+    let mut military_files = BTreeSet::new();
     for p in children(&root.join("scenarios"))? {
         let id = p
             .file_name()
@@ -493,6 +494,9 @@ fn validate_content(
         if doc.contains_key("map") {
             let national = crate::national::read_scenario(root, id)?;
             validate_date(&source, &national.scenario.start_date)?;
+            if let Some(id) = &national.scenario.military {
+                military_files.insert(root.join("common/military").join(format!("{id}.toml")));
+            }
             if let Some(id) = &national.scenario.production {
                 let path = root.join("common/production").join(format!("{id}.toml"));
                 keys.extend(crate::localisation::keys_in_toml(&path)?);
@@ -549,6 +553,14 @@ fn validate_content(
             return Err(io(
                 &file,
                 "unregistered production file: explicit scenario reference required",
+            ));
+        }
+    }
+    for file in children(&root.join("common/military"))? {
+        if !military_files.contains(&file) {
+            return Err(io(
+                &file,
+                "unregistered military file: explicit scenario reference required",
             ));
         }
     }
@@ -618,7 +630,7 @@ fn unsupported_files(
                 | "adjacency_overrides.csv"
                 | "visuals.toml",
             ] => true,
-            ["common", "economy" | "production", file] => file.ends_with(".toml"),
+            ["common", "economy" | "production" | "military", file] => file.ends_with(".toml"),
             ["scenarios", _, "scenario.toml" | "defines.toml"] => true,
             ["scenarios", _, "nations", file] => file.ends_with(".toml"),
             ["localisation", "ko" | "en", file] => file.ends_with(".ftl"),

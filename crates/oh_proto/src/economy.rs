@@ -215,6 +215,7 @@ pub enum AuthorityCommandView {
     Effects { program: String },
     Economy { command: EconomyCommand },
     Production { command: crate::ProductionCommand },
+    Military { command: crate::MilitaryCommand },
 }
 #[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize, TS)]
 pub struct EconomyPendingView {
@@ -292,6 +293,9 @@ impl EconomyView {
                         },
                         oh_sim::Command::Production(action) => AuthorityCommandView::Production {
                             command: crate::ProductionCommand::from_action(action),
+                        },
+                        oh_sim::Command::Military(action) => AuthorityCommandView::Military {
+                            command: crate::MilitaryCommand::from_action(action),
                         },
                         oh_sim::Command::Economy(action) => AuthorityCommandView::Economy {
                             command: action_view(action),

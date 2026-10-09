@@ -76,3 +76,11 @@ npx playwright test --config playwright.economy.config.ts
 새 단위 검사는 기존 코드에서 economy:1이 null이 아니라서 실패했다(exit1). 실제 이전 번들과 Rust host에 HTTP upgrade gate를 적용한 브라우저 검사는 CONNECTING 중 국가를2→4로 선택한 뒤 OPEN에서도 loading으로 남아 실패했다. WS 프레임·서버 응답을 대체하지 않았으며 initial native 연결과 해당 국가 버튼을 실제로 사용했다. 수정 후 client257개·typecheck/Vite/native build가 통과했고 실제 Chromium 전체8개가 PASS, 명시 기록한 Playwright exit0이다. 같은 socket의 coalescing·과거/미발행 응답 거절, 경제 없는 M1, 기존 reconnect 생산 UI 회귀를 보존했다.
 
 최종 delta는 실제 독립 리뷰 대기다. Native 생산 명령 접수는 대체 production 응답 회귀로 증명하지 않으며 O2 입력을 포함한 통합 서버·브라우저 인수에서 실제 accepted/거절과 자원 상태를 검사한다. main 통합·전체 M2 완료는 아직 주장하지 않는다.
+
+## O1·준비 경계 main 통합 재검사
+
+PR #12와 PR #9가 병합된 main `9721b19ea5ff495b06ff3680eea85a3890e97387`을 정상 병합했다. 유일한 HANDOFF 충돌의 양쪽 내용을 보존했고 network 자동 병합에서 기존 O1 military validator와 O3 send 성공 판정을 함께 확인했다. O3 App·응답 수명·CONNECTING 브라우저/upgrade gate 검사는 `6b75814c0ec57374e4f65df4eb3b63690aa8bc3b`와 동일하다. 제품 Rust·팩·schema·wire/저장·의존성·CI 설정은 main과 같으며 O2 팩은 별도다.
+
+새 main baseline에서 실제 Rust fixture를 생성한 client261개(15파일), typecheck/Vite·현재 번들 native embed·docs/assets/architecture가 통과했다. 공유 package/build-script 캐시는 다른 checkout의 번들을 재사용하지 않도록 먼저 정리했다. 실제 Chromium151 경제 suite8개와 M0전체12개, 별도 O2 생산 팩 bytes를 사용한 실제 native 생산 UI 검사1개가 모두 exit0이었다. 생산 조합 검사는 프레임/응답 대체 없이 국가2 제어→Create접수·실제 생산 응답의 국가/모델/IC값·경제 국가4조회가 제어국을 바꾸지 않음·정상 소켓 종료와 새 세션 Create접수를 확인했다. 각 소켓은 여전히 별도 simulation이다. 최초 조합 준비의 연결 중 Reconnect 버튼 대기 timeout은 보존하며 실제 종료 경로 재검사와 구분한다.
+
+CONNECTING 수정의 실제 독립 Claude delta 리뷰와 새 exact-head CI는 대기이며 O2/O3 main 병합·최종 V7/V8/quota/rollback 및 전체 결합 M2 인수는 남아 있다. 이전 대체 production lifecycle 검사가 실제 생산 명령 접수를 증명한다고 바꾸지 않는다.

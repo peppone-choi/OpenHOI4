@@ -619,6 +619,7 @@ dependencies = [
  "oh_ai",
  "oh_core",
  "oh_data",
+ "oh_proto",
  "oh_save",
  "oh_sim",
  "serde",
@@ -706,6 +707,7 @@ dependencies = [
  "oh_data",
  "proptest",
  "serde",
+ "serde_json",
 ]
 
 [[package]]
