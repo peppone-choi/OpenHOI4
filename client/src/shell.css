@@ -72,3 +72,16 @@ main:has(.world-layout) > section dd { font-size: 18px; margin-top: 2px; }
 .world-detail h4 { margin: 12px 0; }
 .world-detail dl { margin-bottom: 12px; }
 @media(max-width: 850px) { .world-layout { grid-template-columns: minmax(0,1fr); } .world-detail { max-height: 480px; } main:has(.world-layout) { padding: 12px; } }
+
+.economy-panel { margin-block: 24px; }
+.economy-panel > label { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 24px; }
+.economy-panel dl { gap: 24px; margin-block: 20px; }
+.economy-panel dd { font-size: 1rem; overflow-wrap: anywhere; }
+.economy-panel abbr { text-decoration: underline dotted; text-underline-offset: .2em; }
+.economy-panel details { margin-block: 20px; }
+.economy-panel summary { padding-block: 8px; }
+.economy-panel[data-status=stale] { border-color: var(--ui-focus); }
+.economy-table { overflow-x: auto; max-width: 100%; }
+.economy-table table { border-collapse: collapse; width: 100%; margin-block: 12px; }
+.economy-table th, .economy-table td { white-space: nowrap; padding: 8px 12px; text-align: start; border-bottom: 1px solid var(--ui-border); }
+.economy-table code { white-space: pre-wrap; overflow-wrap: anywhere; }

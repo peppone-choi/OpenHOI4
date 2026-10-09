@@ -1,6 +1,28 @@
 # OpenHOI4 WIP 인수인계
 
+## O2·O3 직렬 통합 상태
+
+PR #10의 실제 독립 Claude focused 리뷰 후보5061115는 source MERGEABLE·required0이며51개 exact-head CI가 모두 통과해 main `2e1a58db87cc9e45d9508adf06b52482e0afce2c`로 정상 병합됐다. 기존 client job의 장시간 실행은 성공 종료로 확인했고 원 실패 run37930526763의 원인 UNPROVEN·실패 이력은 유지한다. 해당 main CI는 실행 중이다.
+
+O3의 실제 독립 리뷰 후보6f83304도 source MERGEABLE·required0·51개 CI 성공이었다. 이 통합은 HANDOFF 충돌의 양쪽 문장과 O2 새 자산31개/O3 현지화2개를 포함한163개 자산 내용을 보존한다. O3 client/브라우저 검사 bytes와 O2 팩/전용 검사 bytes는 검토된 두 후보와 같으며 새 게임 의미 변경은 없다. 새 통합 SHA CI·O3 정상 main 병합과 최종 결합 인수는 남아 있다. 아래 후보 시점의 대기 이력과 native 생산 접수/대체 응답 UI 수명 검사의 범위 구분을 유지한다.
+
 ## O1·준비 경계 통합 상태
+
+PR #12는 main0fe68a9로 병합돼7개 main CI가 모두 통과했다. 실제 독립 Claude 리뷰에서 required0을 받은 O1f0ba69c의 제품 bytes를 보존한 c4718e6은51개 CI가 모두 통과해 PR #9를 main9721b19ea5ff495b06ff3680eea85a3890e97387로 정상 병합했다. 해당 main CI는 확인 중이다. 이 브랜치는 해당 main을 정상 병합해 O1 military validation과 O3 실제 전송 성공 판정을 함께 유지한다. O2 생산 팩은 별도 PR이며 O3 후속 CONNECTING 수정의 실제 독립 리뷰·최종 통합 인수는 대기다. 아래 후보 시점의 대기 이력은 보존한다.
+
+## 경제 조회 UI 후보 (2026-10-09, 작성: 최병호)
+
+main9721b19 통합 후보에서 App/조회 수명/CONNECTING 검사 bytes를 보존했고 military validator와 성공한 전송 판정을 함께 유지했다. 새 baseline client261·실제 경제 Chromium8·M0전체12·대체 프레임 없는 O2 생산 조합1개가 exit0이었다. 국가2 실제 Create와 경제 국가4조회, 정상 종료 뒤 새 소켓 Create접수를 확인했다. 이는 별도 O2 팩과의 병합 전 조합이며 최종 main/M2 인수가 아니다. 실제 독립 delta 리뷰·새 SHA CI와 O2/O3 정상 main 통합은 대기다.
+
+후속 실제 리뷰에서 CONNECTING 중 국가 선택의 전송되지 않은 pending 문제가 발견돼, 실제 send 성공 뒤에만 조회를 접수하도록 수정했다. 실제 HTTP upgrade gate에서 기존 loading 실패를 재현하고 수정 후 OPEN·국가2→4→2 전환·고유 발행 ID를 확인했다. client257개/실제 Chromium8개가 통과했고 최종 source delta의 실제 리뷰는 대기다. 대체 production 응답 검사는 native 생산 명령 인수로 확대하지 않는다.
+
+실제 독립 리뷰가 기존 `0728903` 후보에서 연속 Delta의 조회 굶주림과 재연결의 이전 production 유지 두 결함을 찾았다. 같은 socket/국가의 대기 조회 ID를 보존하고 dirty 갱신을 후속 조회 하나로 모으며, 재연결 때 production view/검증 연결을 비워 현재 연결의 검증 응답 전에 명령을 차단하도록 수정했다. 두 실제 브라우저 실패를 재현한 뒤 client256개·실제 Chromium7개가 통과했고 최종 Playwright exit0을 기록했다. 기존 CI 성공과 이번 수정의 새 리뷰/CI를 구분한다. [작업 로그](docs/worklog/WP-14-economy-query-ui.md)의 delta 절을 따르며 새 실제 독립 리뷰와 최종 SHA CI/main 통합은 대기다.
+
+main `ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad` 기반 `wp/o3-economy-panel`은 읽기 전용 EconomyPanel과 현재 socket/국가 수명·최신 발행 요청의 응답 관리 단위다. 국가/연결 전환은 화면을 비우고 malformed/disconnect는 마지막 검증 view를 stale로 남긴다. 미발행 미래/역순/이전 연결/중복 응답은 수락하지 않는다. 서버의 문자열 숫자와 산업·건설 원장, 배분 위치0/1/2/3을 보존한다. Rust/protocol/validator/save·기존 팩·법령/게임 계산은 수정하지 않았다.
+
+구현자의 client255검사, 실제 소스 client/server 빌드와 실제 Chromium5검사가 통과했다. 기존 M2의 별도 임시 testland host·HTTP JS bytes·6국·ko/en, 큰 정수/빈 배열, 역순/미발행 응답·unsupported·stale·재연결을 검사했다. 경제 없는 원본 M1의 generic QueryResult도 최신 발행 ID일 때만 unsupported로 표시하며 Rust/wire를 바꾸지 않았다. 지연 프록시는 pause 중에도 발행되는 반복 Delta의 전달 창을 제어하며 정상 검사는 실제 전체 WS 흐름을 그대로 사용한다. 초기 지연 검사 실패와 최종 통과의 경계는 [작업 로그](docs/worklog/WP-14-economy-query-ui.md)에 남겼다.
+
+[ADR-1401](docs/adr/ADR-1401-economy-query-display.md)의 표시·응답 수명을 따른다. 독립 리뷰/main CI 인수 전이며 전체 WP-14/M2나 공유 멀티플레이 완료가 아니다. O2 생산 팩·O1 군사훈련 정책과 별도 브랜치다.
 
 PR #12의 검토된 b6b5fe8 후보는 main 0fe68a968982aeaa07809fd1769b9a00b62f9f5b로 병합돼7개 main CI가 모두 통과했다. 실제 독립 Claude 리뷰에서 required0을 받은 O1 f0ba69c의 제품 bytes를 보존한 통합 c4718e6은51개 CI가 모두 통과해 PR #9를 main 9721b19ea5ff495b06ff3680eea85a3890e97387로 정상 병합했다. 해당 main CI는 확인 중이며 아래 후보 시점의 대기 기록을 과거 이력으로 보존한다. O2는 이 main에 맞춰 다시 검사하며 팩·전용 검사 bytes를 보존한다. O3 후속 CONNECTING 전송 판정의 독립 리뷰와 최종 통합 인수는 남아 있다.
 
