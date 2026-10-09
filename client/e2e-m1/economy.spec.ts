@@ -41,6 +41,23 @@ async function pause(page:Page) {
   await page.getByTestId('pause').click();
   await expect(page.getByTestId('pause')).toHaveText('Resume');
 }
+async function primeHeldLifecycle(page:Page,held:Held[] & {latestRequest:string|null}) {
+  await expect.poll(()=>held.length).toBeGreaterThan(0);
+  await settled(held);send(held.at(-1)!);
+  const panel=page.getByTestId('economy-panel');
+  await expect(panel).toHaveAttribute('data-status','ready');
+  // New country lifecycles supersede requests; Delta updates within the same
+  // lifecycle now preserve an in-flight request instead of superseding it.
+  let count=held.length;
+  await panel.getByRole('combobox').selectOption('2');
+  await expect.poll(()=>held.length).toBeGreaterThan(count);
+  await settled(held);send(held.at(-1)!);
+  await expect(panel).toHaveAttribute('data-status','ready');
+  count=held.length;await panel.getByRole('combobox').selectOption('1');
+  await expect.poll(()=>held.length).toBeGreaterThan(count);
+  await settled(held);
+  await expect(panel).toHaveAttribute('data-status','loading');
+}
 
 test('actual M2 server HTTP/WS projection, six nations and both languages',async({page,request,browser},info)=>{
   const errors:string[]=[],replies:Reply[]=[];
@@ -83,7 +100,7 @@ test('actual M2 server HTTP/WS projection, six nations and both languages',async
 
 test('reversed and unissued future replies are ignored; nation switch clears and latest unsupported stays empty',async({page})=>{
   const held=await intercept(page);await page.goto('/');await pause(page);
-  await expect.poll(()=>held.length).toBeGreaterThan(1);
+  await primeHeldLifecycle(page,held);
   await settled(held);
   const panel=page.getByTestId('economy-panel'),latest=held.at(-1)!,old=held[0];
   send(latest,{...latest.reply,request:'economy:999999'});
@@ -91,7 +108,7 @@ test('reversed and unissued future replies are ignored; nation switch clears and
   send(latest);
   try { await expect(panel).toHaveAttribute('data-status','ready'); }
   catch(error) { console.log({sent:latest.reply.request,newest:held.latestRequest,received:held.map(row=>row.reply.request)});throw error; }
-  const oldChanged=structuredClone(old.reply);oldChanged.economy!.nations[0].capacity='9007199254740993';
+  const oldChanged=structuredClone(old.reply);for(const nation of oldChanged.economy!.nations)nation.capacity='9007199254740993';
   send(old,oldChanged);await expect(panel).not.toContainText('9007199254740993');
   const count=held.length;
   await panel.getByRole('combobox').selectOption('2');
@@ -107,7 +124,7 @@ test('reversed and unissued future replies are ignored; nation switch clears and
 
 test('malformed frame retains stale verified view; reconnect clears it and only fresh known response restores it',async({page})=>{
   const held=await intercept(page);await page.goto('/');await pause(page);
-  await expect.poll(()=>held.length).toBeGreaterThan(1);
+  await primeHeldLifecycle(page,held);
   await settled(held);
   const panel=page.getByTestId('economy-panel'),verified=held.at(-1)!;
   send(verified);await expect(panel).toHaveAttribute('data-status','ready');
@@ -132,7 +149,7 @@ test('malformed frame retains stale verified view; reconnect clears it and only 
 
 test('large canonical strings and valid empty arrays display without precision loss or stale remnants',async({page})=>{
   const held=await intercept(page);await page.goto('/');await pause(page);
-  await expect.poll(()=>held.length).toBeGreaterThan(1);
+  await primeHeldLifecycle(page,held);
   await settled(held);
   const latest=held.at(-1)!,large=structuredClone(latest.reply);
   large.economy!.nations[0].capacity='9223372036854775807';
@@ -164,4 +181,85 @@ test('actual frozen M1 generic unsupported clears economic display without proto
   await expect(panel).toHaveAttribute('data-status','unsupported');
   await expect(panel.getByTestId('economy-nation-body')).toHaveCount(0);
   expect(replies.at(-1)).toMatchObject({supported:false,reason_key:'unsupported-query',state:null});
+});
+
+test('continuous actual Delta stream preserves a delayed economic query and coalesces one follow-up',async({page})=>{
+  const held:Held[]=[],requests:string[]=[];
+  let deltas=0;
+  await page.routeWebSocket('**/ws',socket=>{
+    const server=socket.connectToServer();
+    socket.onMessage(frame=>{
+      const message=decode(frame as Uint8Array) as {type:string;kind?:string;request?:string};
+      if(message.type==='Query'&&message.kind==='economy')requests.push(message.request!);
+      server.send(frame);
+    });
+    server.onMessage(frame=>{
+      const message=decode(frame as Uint8Array) as ServerMessage;
+      if(message.type==='Delta')deltas++;
+      if(message.type==='EconomyResult')held.push({socket,reply:message});
+      else socket.send(frame);
+    });
+  });
+  await page.goto('/');await pause(page);
+  await expect.poll(()=>held.length).toBeGreaterThan(0);
+  await expect.poll(()=>deltas).toBeGreaterThanOrEqual(4);
+  expect(requests).toHaveLength(1);
+  send(held[0]);
+  const panel=page.getByTestId('economy-panel');
+  await expect(panel).toHaveAttribute('data-status','ready');
+  await expect(panel).toContainText(held[0].reply.economy!.state_hash);
+  await expect.poll(()=>held.length).toBe(2);
+  const before=deltas;await expect.poll(()=>deltas).toBeGreaterThanOrEqual(before+4);
+  expect(requests).toHaveLength(2);
+  send(held[1]);
+  await expect(panel).toHaveAttribute('data-status','ready');
+  await expect(panel).toContainText(held[1].reply.economy!.state_hash);
+  await expect.poll(()=>held.length).toBe(3);
+});
+
+test('immediate reconnect removes old production and blocks commands until current-session verification',async({page})=>{
+  // Existing real Rust production projection supplies a UI lifecycle control;
+  // the initial M2 economy pack itself has no production authority. No pack or
+  // server rule is changed, and no production integration is claimed here.
+  const production=JSON.parse(readFileSync(resolve('../target/wp15/production-wire-fixture.json'),'utf8')) as Extract<ServerMessage,{type:'ProductionResult'}>;
+  const sockets:WebSocketRoute[]=[],commands:unknown[]=[],heldProduction:Array<{socket:WebSocketRoute;request:string}>=[];
+  let holdProduction=false;
+  await page.routeWebSocket('**/ws',socket=>{
+    sockets.push(socket);const server=socket.connectToServer();
+    socket.onMessage(frame=>{
+      const message=decode(frame as Uint8Array) as {type:string};
+      if(message.type==='ProductionCommand')commands.push(message);
+      server.send(frame);
+    });
+    server.onMessage(frame=>{
+      const message=decode(frame as Uint8Array) as ServerMessage;
+      if(message.type==='ProductionResult'||(message.type==='QueryResult'&&message.request==='production')){
+        if(holdProduction)heldProduction.push({socket,request:message.request});
+        else socket.send(Buffer.from(encode({...production,request:message.request})));
+      }else socket.send(frame);
+    });
+  });
+  await page.goto('/');await pause(page);
+  const panel=page.getByTestId('production-panel');
+  await expect(panel).toBeVisible();
+  await panel.getByRole('button',{name:'Start as selected nation',exact:true}).click();
+  await pause(page);
+  await expect(panel.getByRole('button',{name:'Create line',exact:true})).toBeEnabled();
+  const old=sockets.at(-1)!;
+  old.send(Buffer.from([193]));
+  await expect(page.getByRole('button',{name:'Reconnect',exact:true})).toBeVisible();
+  holdProduction=true;
+  await page.getByRole('button',{name:'Reconnect',exact:true}).click();
+  await pause(page);
+  await expect.poll(()=>heldProduction.length).toBeGreaterThan(0);
+  await expect(panel).toHaveCount(0);
+  // Enter cannot dispatch a stale form on the new, connected session either.
+  await page.keyboard.press('Enter');expect(commands).toHaveLength(0);
+  const fresh=heldProduction.at(-1)!;
+  fresh.socket.send(Buffer.from(encode({...production,request:'unissued-production'})));
+  await expect(panel).toHaveCount(0);
+  fresh.socket.send(Buffer.from(encode({...production,request:fresh.request})));
+  await expect(panel.getByRole('button',{name:'Create line',exact:true})).toBeEnabled();
+  await panel.getByRole('button',{name:'Create line',exact:true}).click();
+  await expect.poll(()=>commands.length).toBe(1);
 });

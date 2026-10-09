@@ -19,6 +19,7 @@ export function App() {
   const economyResponses=useRef(new EconomyResponses());
   const economyNation=useRef<number|null>(null);
   const activeConnection=useRef<object|null>(null);
+  const productionConnection=useRef<object|null>(null);
   const [controlledNation,setControlledNation]=useState<number|null>(null);
   const [joinNation,setJoinNation]=useState<string|null>(null);
   const [world,setWorld]=useState<WorldView|null>(null);
@@ -50,6 +51,7 @@ export function App() {
   };
   useEffect(() => {
     setEconomy({view:null,status:'loading',reasonKey:null});
+    productionConnection.current=null;setProduction(null);
     const client = connect(message => {
       if(activeConnection.current!==client)return;
       if (message.type === 'Welcome') {
@@ -62,9 +64,16 @@ export function App() {
       if(message.type==='Snapshot'||message.type==='Delta'){client.send({type:'Query',request:'world',kind:'world'});client.send({type:'Query',request:'production',kind:'production'});queryEconomy(client);}
       if(message.type==='EconomyResult'||message.type==='QueryResult'){
         const accepted=economyResponses.current.accept(client,message);
-        if(accepted)setEconomy(accepted);
+        if(accepted){
+          setEconomy(accepted);
+          const follow=economyResponses.current.followUp(client);
+          if(follow)client.send({type:'Query',request:follow,kind:'economy'});
+        }
       }
-      if(message.type==='ProductionResult')setProduction(message.production);
+      if(message.type==='ProductionResult'&&message.request==='production'){
+        productionConnection.current=message.supported?client:null;
+        setProduction(message.production);
+      }
       if(message.type==='WorldResult' && message.world){
         const incoming=message.world,previous=latestWorld.current;
         if(previous&&(incoming.map_id!==previous.map_id||incoming.width!==previous.width||incoming.height!==previous.height||JSON.stringify(incoming.province_ids)!==JSON.stringify(previous.province_ids)))throw new Error('map-data-error');
@@ -76,6 +85,7 @@ export function App() {
     }, reasonKey => {
       if(activeConnection.current!==client)return;
       activeConnection.current=null;
+      productionConnection.current=null;
       economyResponses.current.end(client);
       setEconomy(current=>({...current,status:current.view?'stale':'disconnected'}));
       setConnection('disconnected');
@@ -86,6 +96,7 @@ export function App() {
     economyResponses.current.begin(client,economyNation.current);
     return () => {
       if(activeConnection.current===client)activeConnection.current=null;
+      if(productionConnection.current===client)productionConnection.current=null;
       economyResponses.current.end(client);
       client.close();
       if(socket.current===client)socket.current=null;
@@ -93,15 +104,22 @@ export function App() {
   }, [joinNation,connectionAttempt]);
   const reconnect=()=>{
     activeConnection.current=null;
+    productionConnection.current=null;setProduction(null);
     if(socket.current)economyResponses.current.end(socket.current);
     setEconomy({view:null,status:'loading',reasonKey:null});
     setConnection('connecting');setNotice(null);setState(null);
     setConnectionAttempt(attempt=>attempt+1);
   };
   const command = (command: TimeCommand) => socket.current?.send({ type: 'Command', sequence: (++sequence.current).toString(), command });
-  const productionCommand=(command:ProductionCommand)=>socket.current?.send({type:'ProductionCommand',sequence:(++sequence.current).toString(),command});
+  const productionCommand=(command:ProductionCommand)=>{
+    const client=socket.current;
+    if(client&&activeConnection.current===client&&productionConnection.current===client&&connection==='connected'&&controlledNation!==null){
+      client.send({type:'ProductionCommand',sequence:(++sequence.current).toString(),command});
+    }
+  };
   const controlNation=(n:number)=>{const tag=world?.nations.find(v=>v.id===n)?.tag;if(tag){
     activeConnection.current=null;
+    productionConnection.current=null;
     if(socket.current)economyResponses.current.end(socket.current);
     economyNation.current=n;setNationId(n);setEconomy({view:null,status:'loading',reasonKey:null});
     setConnection('connecting');setNotice(null);setState(null);setControlledNation(n);setProduction(null);setJoinNation(tag);
@@ -114,7 +132,7 @@ export function App() {
       {world && catalogs && <div className="world-layout"><MapView world={world} packHash={packHash} selected={selected} onSelect={select}/><aside className="world-detail">{selected!==null&&world.provinces.find(p=>p.id===selected)?.state==null?<p>{t('map-no-state')}</p>:<NationalPanels world={world} nationId={nationId} stateId={stateId} onNationSelect={id=>{selectEconomyNation(id);query(`nation:${id}`);}} onStateSelect={id=>{setStateId(id);const owner=world.states.find(s=>s.id===id)?.owner;selectEconomyNation(owner??null);query(`state:${id}`);if(owner!==undefined)query(`nation:${owner}`);}}/>}</aside></div> }
       <EconomyPanel display={economy} world={world} nationId={nationId??null} onNationSelect={selectEconomyNation}/>
       {connection==='disconnected'&&<button onClick={reconnect}>{t('economy-reconnect')}</button>}
-      {production&&<ProductionPanel view={production} world={world} controlledNation={controlledNation} onControl={controlNation} onCommand={productionCommand} connected={connection==='connected'}/>}
+      {production&&<ProductionPanel view={production} world={world} controlledNation={controlledNation} onControl={controlNation} onCommand={productionCommand} connected={connection==='connected'&&productionConnection.current===activeConnection.current}/>}
       {notice && <p role="alert">{t(notice)}</p>}
     </GameShell>
   </Localization.Provider>;

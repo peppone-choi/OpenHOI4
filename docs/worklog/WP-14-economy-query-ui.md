@@ -56,3 +56,15 @@ npx playwright test --config playwright.economy.config.ts
 ## 한계
 
 구현자 검사이며 독립 QA·main CI 통합 판정은 아직 없다. 브라우저는 실제 Chromium만 실행했고 Firefox/WebKit 실제품을 검사했다고 기록하지 않는다. 지연/음성 프록시 인수와 정상 전체 WS 흐름을 구분한다. 재연결은 서버 저장 복원이나 공유 멀티플레이를 보장하지 않는다. 전체 경제/콘텐츠/M2 완료, 군사훈련 정책과 후속 게임 명령은 별도다.
+
+## 실제 독립 리뷰 후 delta 수정
+
+기존 후보 `07289034689b6053764c4ded04f42e6288f134c1`의 push/PR CI가 통과했지만 실제 독립 리뷰는 두 Medium 결함으로 막혔다. 같은 socket/국가에서 연속 Delta가 경제 대기 요청 ID를 덮어써 느린 응답을 영구 거절할 수 있었고, 재연결은 이전 simulation의 production view를 보존해 새 연결에서 오래된 행에 명령을 보낼 수 있었다. 이전 CI 성공을 이 결함의 해결이나 인수로 기록하지 않는다.
+
+조회는 대기 ID를 유지하고 추가 갱신을 dirty 비트로 모아, 유효 응답을 표시한 뒤 후속 조회 하나를 발행하도록 수정했다. 국가/연결 수명 변경은 여전히 즉시 무효화한다. Production은 재연결/국가 제어 전환에서 view와 검증 socket을 비우며, 현재 socket의 알려진 응답 이후에만 현재 연결·제어국을 대조해 명령을 보낸다. 이 수정은 App/응답 관리와 검사·문서뿐이며 Rust/protocol/validator/save/팩/생성물은 그대로다.
+
+새 단위 검사를 먼저 실행해 기존 코드의 두 번째 발행 ID가 null이 아닌 economy:2로 나와 실패했다(exit1). 기존 번들을 실제 Rust 서버에 embed해 새 브라우저 검사를 실행했다. 실제 Delta4개 이상을 그대로 전달하는 동안 요청이1개 대신7개여서 실패했고, 생산 회귀는 재연결 후 패널이0개 대신1개여서 실패했다. 초기 production 회귀 준비에서는 unsupported가 generic QueryResult임을 놓쳐 패널이 뜨지 않았으며, 기존 실제 Rust projection을 이 응답 경로에도 공급해 준비 오류와 제품 실패를 분리했다.
+
+수정 후 전체 client는14파일256 PASS(exit0)이며 실제 Rust pretest fixture 생성도 다시 실행해 exit0이며 production/economy fixture bytes가 이전과 일치했다. 처음 잘못된 cwd의 Vitest 실행은 relative fixture/assets ENOENT16건이었다. 올바른 client cwd에서 기존 검사를 바꾸지 않고256개가 통과했다. Typecheck/Vite build와 새 번들 native embed는 exit0이다. 기존 지연 검사3개는 같은 수명에서 Delta가 새 ID를 만들던 준비 방식 대신, 실제 국가 수명을 전환해 이전/현재 요청을 구분하도록 수정했으며 미래/이전/중복/unsupported/문자열·stale 검증을 유지했다.
+
+실제 Chromium151의 전체7개 브라우저 검사에서 두 회귀와 기존5개가 모두 통과했다. 첫 전체 실행의7 PASS 요약에도 결합 shell 결과가1로 남아 따로 보존했고, 후속 전체 실행은 실제 Playwright 종료 코드를 명시적으로 기록해7 PASS/exit0을 확인했다. 연속 Delta 회귀는 반복 publication을 필터링하지 않는다. 재연결 생산 회귀는 기존 실제 Rust projection을 공급하는 UI 수명 검사이며 M2 pack production 게임 인수가 아니다. 새 실제 독립 delta 리뷰·최종 SHA CI/main 인수는 대기다.

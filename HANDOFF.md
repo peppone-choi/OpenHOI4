@@ -2,6 +2,8 @@
 
 ## 경제 조회 UI 후보 (2026-10-09, 작성: 최병호)
 
+실제 독립 리뷰가 기존 `0728903` 후보에서 연속 Delta의 조회 굶주림과 재연결의 이전 production 유지 두 결함을 찾았다. 같은 socket/국가의 대기 조회 ID를 보존하고 dirty 갱신을 후속 조회 하나로 모으며, 재연결 때 production view/검증 연결을 비워 현재 연결의 검증 응답 전에 명령을 차단하도록 수정했다. 두 실제 브라우저 실패를 재현한 뒤 client256개·실제 Chromium7개가 통과했고 최종 Playwright exit0을 기록했다. 기존 CI 성공과 이번 수정의 새 리뷰/CI를 구분한다. [작업 로그](docs/worklog/WP-14-economy-query-ui.md)의 delta 절을 따르며 새 실제 독립 리뷰와 최종 SHA CI/main 통합은 대기다.
+
 main `ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad` 기반 `wp/o3-economy-panel`은 읽기 전용 EconomyPanel과 현재 socket/국가 수명·최신 발행 요청의 응답 관리 단위다. 국가/연결 전환은 화면을 비우고 malformed/disconnect는 마지막 검증 view를 stale로 남긴다. 미발행 미래/역순/이전 연결/중복 응답은 수락하지 않는다. 서버의 문자열 숫자와 산업·건설 원장, 배분 위치0/1/2/3을 보존한다. Rust/protocol/validator/save·기존 팩·법령/게임 계산은 수정하지 않았다.
 
 구현자의 client255검사, 실제 소스 client/server 빌드와 실제 Chromium5검사가 통과했다. 기존 M2의 별도 임시 testland host·HTTP JS bytes·6국·ko/en, 큰 정수/빈 배열, 역순/미발행 응답·unsupported·stale·재연결을 검사했다. 경제 없는 원본 M1의 generic QueryResult도 최신 발행 ID일 때만 unsupported로 표시하며 Rust/wire를 바꾸지 않았다. 지연 프록시는 pause 중에도 발행되는 반복 Delta의 전달 창을 제어하며 정상 검사는 실제 전체 WS 흐름을 그대로 사용한다. 초기 지연 검사 실패와 최종 통과의 경계는 [작업 로그](docs/worklog/WP-14-economy-query-ui.md)에 남겼다.

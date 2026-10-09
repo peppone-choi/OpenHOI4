@@ -12,7 +12,7 @@
 
 ## 응답 수명
 
-`EconomyResponses`는 현재 socket 객체, 선택 국가, 가장 최근에 실제 발행한 요청 하나를 보관한다. `economy:<n>`의 증가 정수는 bigint이며 연결/국가가 바뀌어도 다시 사용하지 않는다. Snapshot/Delta에서 기존 world/production 조회와 함께 economy를 조회한다. 접수할 응답은 현재 socket·국가 수명에서 실제 발행한 마지막 request ID와 정확히 같아야 한다. 이전 응답·발행하지 않은 미래 ID·이전 연결 응답·같은 응답의 중복은 버린다. 접수한 요청은 소비한다. 메모리는 대기 요청 수에 따라 늘어나지 않는다.
+`EconomyResponses`는 현재 socket 객체, 선택 국가, 실제 발행한 대기 요청 하나와 dirty 여부를 보관한다. `economy:<n>`의 증가 정수는 bigint이며 연결/국가가 바뀌어도 다시 사용하지 않는다. Snapshot/Delta에서 기존 world/production 조회와 함께 economy 갱신을 요청한다. 같은 socket/국가에서 응답을 기다리면 기존 ID를 유지하고 추가 갱신을 dirty 한 비트로 모은다. 현재 응답을 접수한 뒤 dirty이면 후속 조회를 정확히 하나 발행한다. 접수할 응답은 현재 socket·국가 수명에서 실제 발행한 대기 request ID와 정확히 같아야 한다. 이전 수명의 응답·발행하지 않은 미래 ID·이전 연결 응답·소비한 응답의 중복은 버린다. 메모리는 Delta 수에 따라 늘어나지 않는다. 연속 Delta가 느린 응답의 ID를 계속 덮어쓰지 않는다.
 
 전환 이벤트에서 기존 경제 view와 발행 요청을 즉시 비운다. 새 연결 또는 국가 조회의 유효한 최신 응답만 화면을 채운다. 연결 중 새 조회가 대기할 때는 현재 수명의 마지막 검증 view를 원장 틱과 함께 유지한다. 실제 연결 종료/기존 validator의 malformed 거부에서는 발행 요청을 무효화하고 마지막 검증 view를 stale로 표시한다. 검증 view가 없으면 disconnected다. 재연결 버튼은 기존 host의 새 연결을 만들며 경제 view를 먼저 지운다. 기존 서버의 연결별 독립 simulation 계약을 사용하고 게임/세션 저장 복원을 보장하지 않는다.
 
@@ -20,8 +20,12 @@
 
 경제가 없는 기존 M0/M1 host는 `EconomyResult` 대신 기존 `QueryResult`로 unsupported를 반환한다. 현재 발행 economy 요청과 같은 ID이고 supported=false/state=null인 이 응답도 빈 unsupported 표시로 접수한다. 일반 time 조회의 supported 상태는 경제 view로 사용하지 않는다. Rust/protocol/validator를 수정하지 않는 호환 처리다.
 
+재연결과 국가 제어 전환은 기존 production view와 그 검증 연결도 즉시 비운다. 기존 서버는 연결마다 새 simulation을 만들기 때문에 이전 simulation의 생산 행을 새 연결에 사용하지 않는다. 기존 생산 명령은 활성 socket이 현재 production 검증 socket과 같고 연결·국가 제어가 유효할 때만 보낸다. 현재 socket의 알려진 production 조회 응답만 검증 상태를 채운다. 이전 socket callback은 기존 activeConnection 검사로 거절한다. 일반 form의 Enter 제출도 명령 전송 함수에서 같은 경계를 따른다.
+
 ## 검사 경계
 
 기존 실제 Rust wire fixture로 SSR·정확한 문자열·ko/en 표시를 검사한다. 응답 관리 단위는 역순·발행하지 않은 미래·중복·이전 socket/국가·unsupported를 검사한다. 실제 브라우저는 기존 M2 팩을 새 `<host>/testland`로 복사한 별도 Rust 서버에서 HTTP 번들 bytes·6국 원장·한/영과 전체 정상 WS 흐름을 검사한다.
 
 지연/역순/malformed 검사의 WS 프록시는 실제 서버 응답을 잡아 두고 순서를 제어한다. 서버는 pause 중에도 Delta를 반복 발행하므로 이 프록시에서만 명시적 시간 명령당 한 Delta를 전달한다. 제품의 최신 요청 조건이나 validator를 완화하지 않는다. 정상 흐름 검사는 이 프록시 없이 실제 반복 Delta를 사용한다. 이 검사를 O2 콘텐츠 인수, 독립 QA, 훈련 정책 또는 공유 멀티플레이로 확대하지 않는다.
+
+독립 리뷰 후 추가한 굶주림 회귀 검사는 실제 반복 Delta를 전부 전달하면서 economy 응답만 잡아 둔다. 여러 Delta 후에도 요청 하나만 대기하고 유효 응답을 표시한 뒤 후속 조회 하나만 발행하는 것을 확인한다. 재연결 생산 회귀는 기존 실제 Rust production wire fixture를 UI 제어 대조로 공급한다. 이 M2 economy 입력 자체에는 production 권위가 없으므로 이 회귀를 실제 생산 통합 인수로 기록하지 않는다. 기존 프로토콜·팩·서버 규칙은 유지한다.

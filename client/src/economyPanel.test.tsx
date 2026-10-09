@@ -61,10 +61,13 @@ test('allocation projection keeps consumer/construction/military/export indices 
   expect(render(arrays)).toContain('No economic data');
 });
 
-test('only newest issued request from current socket and nation lifecycle is accepted', () => {
+test('issued in-flight request remains current until consumed; socket and nation lifecycles invalidate it', () => {
   const inbox = new EconomyResponses(); const a = {}, b = {};
   inbox.begin(a,1);
-  const first = inbox.issue(a)!; const second = inbox.issue(a)!;
+  const first = inbox.issue(a)!;
+  expect(inbox.issue(a)).toBeNull();
+  expect(inbox.accept(a,{...result,request:first})).toEqual({view,status:'ready',reasonKey:null});
+  const second = inbox.followUp(a)!;
   expect(first).toBe('economy:1'); expect(second).toBe('economy:2');
   expect(inbox.accept(a,{...result,request:'economy:999'})).toBeNull();
   expect(inbox.accept(a,{...result,request:first})).toBeNull();
@@ -88,7 +91,9 @@ test('only newest issued request from current socket and nation lifecycle is acc
 test('latest unsupported reply clears data and old replies cannot undo it', () => {
   const inbox = new EconomyResponses(); const socket = {};
   inbox.begin(socket,null);
-  const old = inbox.issue(socket)!; const current = inbox.issue(socket)!;
+  const old = inbox.issue(socket)!;
+  expect(inbox.accept(socket,{...result,request:old})).not.toBeNull();
+  const current = inbox.issue(socket)!;
   expect(inbox.accept(socket,{type:'EconomyResult',request:current,supported:false,reason_key:'unsupported-query',economy:null})).toEqual({view:null,status:'unsupported',reasonKey:'unsupported-query'});
   expect(inbox.accept(socket,{...result,request:old})).toBeNull();
 });
@@ -99,4 +104,20 @@ test('frozen M0/M1 generic unsupported query is accepted only for the known econ
   expect(inbox.accept(socket,{type:'QueryResult',request:'unrelated',supported:false,reason_key:'unsupported-query',state:null})).toBeNull();
   expect(inbox.accept(socket,{type:'QueryResult',request,supported:true,reason_key:null,state:{date:'2000-01-01',hour:0,tick:'0',paused:true,speed:1}})).toBeNull();
   expect(inbox.accept(socket,{type:'QueryResult',request,supported:false,reason_key:'unsupported-query',state:null})).toEqual({view:null,status:'unsupported',reasonKey:'unsupported-query'});
+});
+
+test('continuous Delta refreshes coalesce without starving the delayed in-flight reply', () => {
+  const inbox=new EconomyResponses(),socket={};inbox.begin(socket,1);
+  const first=inbox.issue(socket)!;
+  for(let delta=0;delta<20;delta++)expect(inbox.issue(socket)).toBeNull();
+  expect(inbox.accept(socket,{...result,request:first})).toEqual({view,status:'ready',reasonKey:null});
+  const follow=inbox.followUp(socket)!;
+  expect(follow).toBe('economy:2');
+  expect(inbox.followUp(socket)).toBeNull();
+  expect(inbox.accept(socket,{...result,request:first})).toBeNull();
+  expect(inbox.accept(socket,{...result,request:follow})).not.toBeNull();
+  expect(inbox.followUp(socket)).toBeNull();
+  inbox.issue(socket);inbox.issue(socket);
+  inbox.begin(socket,2);
+  expect(inbox.followUp(socket)).toBeNull();
 });
