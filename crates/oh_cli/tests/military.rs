@@ -25,6 +25,13 @@ impl Fixture {
         parsed(output)
     }
     fn invoke(&self, args: &[&str], inputs: &[Value]) -> Output {
+        let mut bytes = Vec::new();
+        for input in inputs {
+            writeln!(bytes, "{}", serde_json::to_string(input).unwrap()).unwrap();
+        }
+        self.invoke_raw(args, &bytes)
+    }
+    fn invoke_raw(&self, args: &[&str], bytes: &[u8]) -> Output {
         let mut child = Command::new(env!("CARGO_BIN_EXE_oh_cli"))
             .arg("military")
             .args(args)
@@ -36,8 +43,8 @@ impl Fixture {
             .spawn()
             .unwrap();
         let mut stdin = child.stdin.take().unwrap();
-        for input in inputs {
-            writeln!(stdin, "{}", serde_json::to_string(input).unwrap()).unwrap();
+        if let Err(error) = stdin.write_all(bytes) {
+            assert_eq!(error.kind(), std::io::ErrorKind::BrokenPipe);
         }
         drop(stdin);
         child.wait_with_output().unwrap()
@@ -299,9 +306,63 @@ fn native_actual_v7_fresh_resume_queue_and_deterministic_checkpoint_bytes() {
     ]);
     assert_eq!(a[3]["state"], repeat[3]["state"]);
     assert_eq!(
-        std::fs::read(checkpoint).unwrap(),
+        std::fs::read(&checkpoint).unwrap(),
         std::fs::read(second).unwrap()
     );
+    let input_bytes = std::fs::read(&checkpoint).unwrap();
+    let deployed_checkpoint = f.checkpoint("deployed.ohsave");
+    let continuous_checkpoint = f.checkpoint("deployed-repeat.ohsave");
+    let mut tail = vec![
+        step(48),
+        enqueue(72, 3, deploy("0", "0", 10, true)),
+        step(1),
+        enqueue(73, 4, train("tiny")),
+        step(1),
+        enqueue(74, 5, cancel("1")),
+        step(1),
+        json!({"op":"save","path":deployed_checkpoint}),
+    ];
+    let restored = f.resume(&checkpoint, &tail);
+    let final_state = &restored[7]["state"];
+    assert_eq!(restored[7]["format_version"], 7);
+    assert_eq!(final_state["military"]["next_job_id"], "2");
+    assert_eq!(final_state["military"]["next_division_id"], "1");
+    assert_eq!(jobs(&restored[7])[0]["status"], "Deployed");
+    assert_eq!(jobs(&restored[7])[1]["status"], "Cancelled");
+    assert_eq!(jobs(&restored[7])[0]["reserved_manpower"], "0");
+    assert!(
+        jobs(&restored[7])[0]["equipment"]
+            .as_array()
+            .unwrap()
+            .is_empty()
+    );
+    assert_eq!(nation(&restored[7], 1)["committed"], "68");
+    assert_eq!(nation(&restored[7], 1)["reserved"], "10");
+    assert_eq!(stock(&restored[7], 1), "0");
+    assert_eq!(held(&final_state["military"]["divisions"][0]), "4");
+    assert_eq!(final_state["military"]["divisions"][0]["nation"], 1);
+    assert_eq!(
+        final_state["military"]["armies"][0]["divisions"],
+        json!(["0"])
+    );
+    tail[7] = json!({"op":"save","path":continuous_checkpoint});
+    let mut continuous = vec![
+        enqueue(0, 1, train("small")),
+        step(24),
+        enqueue(71, 2, deploy("0", "0", 10, true)),
+    ];
+    continuous.extend(tail);
+    let uninterrupted = f.run(&continuous);
+    assert_eq!(final_state, &uninterrupted[10]["state"]);
+    assert_eq!(
+        std::fs::read(&deployed_checkpoint).unwrap(),
+        std::fs::read(&continuous_checkpoint).unwrap()
+    );
+    assert_eq!(
+        f.resume(&deployed_checkpoint, &[json!({"op":"query"})])[0]["state"],
+        *final_state
+    );
+    assert_eq!(std::fs::read(&checkpoint).unwrap(), input_bytes);
 }
 #[test]
 fn native_cap_shrink_preserves_holdings_cancel_releases_without_capacity_mint() {
@@ -312,14 +373,60 @@ fn native_cap_shrink_preserves_holdings_cancel_releases_without_capacity_mint() 
         "conscription_ratio = \"0.25\"",
         "conscription_ratio = \"0.06\"",
     );
-    let out=f.run(&[enqueue(0,1,train("small")),step(48),json!({"op":"enqueue_economy","nation":1,"sequence":"2","tick":"48","command":{"type":"ChangeLaw","law":"war"}}),step(1),step(23),enqueue(72,3,cancel("0")),step(1)]);
-    assert_eq!(nation(&out[3], 1)["capacity"], "60");
-    assert_eq!(nation(&out[3], 1)["available"], "0");
-    assert_eq!(jobs(&out[4])[0]["status"], "Ready");
-    assert_eq!(nation(&out[6], 1)["reserved"], "10");
-    assert_eq!(nation(&out[6], 1)["capacity"], "60");
-    assert_eq!(nation(&out[6], 1)["available"], "0");
-    assert_eq!(stock(&out[6], 1), "4");
+    let change_law = json!({"op":"enqueue_economy","nation":1,"sequence":"2","tick":"48","command":{"type":"ChangeLaw","law":"war"}});
+    // The inherited allocation is below war's consumer minimum. Rejection
+    // preserves the queue/state and cannot stand in for a capacity-shrink test.
+    let rejected = f.run(&[
+        step(48),
+        json!({"op":"query"}),
+        change_law.clone(),
+        json!({"op":"query"}),
+    ]);
+    assert_eq!(rejected[2]["ok"], false);
+    assert_eq!(rejected[2]["error"], "Economy(InvalidValue)");
+    assert_eq!(rejected[1]["state"], rejected[3]["state"]);
+    let out = f.run(&[
+        enqueue(0, 1, train("small")),
+        step(47),
+        json!({"op":"enqueue_economy","nation":1,"sequence":"2","tick":"47","command":{"type":"Allocate","ratios_bits":["2147483648","2147483648","0","0"]}}),
+        step(1),
+        json!({"op":"enqueue_economy","nation":1,"sequence":"3","tick":"48","command":{"type":"ChangeLaw","law":"war"}}),
+        step(1),
+        step(23),
+        enqueue(72, 4, cancel("0")),
+        step(1),
+    ]);
+    assert_eq!(
+        out[2]["ok"], true,
+        "allocation admission: {}",
+        out[2]["error"]
+    );
+    assert_eq!(
+        out[3]["commands"][0]["ok"], true,
+        "allocation command: {}",
+        out[3]["commands"]
+    );
+    assert_eq!(out[4]["ok"], true, "law admission: {}", out[4]["error"]);
+    assert_eq!(
+        out[5]["commands"][0]["ok"], true,
+        "law command: {}",
+        out[5]["commands"]
+    );
+    assert_eq!(nation(&out[5], 1)["laws"][0]["law"], "war");
+    assert_eq!(nation(&out[5], 1)["political_capital"]["value"], "1");
+    assert_eq!(nation(&out[5], 1)["capacity"], "60");
+    assert_eq!(nation(&out[5], 1)["available"], "0");
+    assert_eq!(nation(&out[5], 1)["overcommitted"], "18");
+    assert_eq!(nation(&out[5], 1)["reserved"], "18");
+    assert_eq!(jobs(&out[6])[0]["status"], "Ready");
+    assert_eq!(jobs(&out[6])[0]["reserved_manpower"], "8");
+    assert_eq!(jobs(&out[6])[0]["progress_days"], 2);
+    assert_eq!(held(&jobs(&out[6])[0]), "4");
+    assert_eq!(out[8]["commands"][0]["ok"], true);
+    assert_eq!(nation(&out[8], 1)["reserved"], "10");
+    assert_eq!(nation(&out[8], 1)["capacity"], "60");
+    assert_eq!(nation(&out[8], 1)["available"], "0");
+    assert_eq!(stock(&out[8], 1), "4");
 }
 #[test]
 fn native_strict_grammar_and_input_valid_controls() {
@@ -354,11 +461,40 @@ fn native_strict_grammar_and_input_valid_controls() {
         "{\"op\":\"step\",\"count\":18446744073709551616}",
         "{\"op\":\"enqueue\",\"nation\":65536,\"sequence\":\"0\",\"tick\":\"0\",\"command\":{\"type\":\"Cancel\",\"job\":\"0\"}}",
         "{\"op\":\"query\",\"unknown\":true}",
+        r#"{"op":"query","op":"query"}"#,
+        r#"{}"#,
+        r#"{"op":null}"#,
+        r#"{"op":1}"#,
+        r#"{"op":"absent"}"#,
+        r#"{"op":"step","count":null}"#,
+        r#"{"op":"step","count":"1"}"#,
+        r#"{"op":"save"}"#,
+        r#"{"op":"save","path":null}"#,
+        r#"{"op":"save","path":1}"#,
+        r#"{"op":"enqueue","nation":1,"sequence":"1","tick":"0","command":{"type":"Cancel","job":null}}"#,
+        r#"{"op":"enqueue","nation":1,"sequence":"1","tick":"0","command":{"type":"Cancel","job":1}}"#,
+        r#"{"op":"enqueue","nation":1,"sequence":"1","tick":"0","command":{"type":"Cancel","job":"0","unknown":true}}"#,
+        r#"{"op":"enqueue","nation":1,"sequence":"1","tick":"0","command":{"type":"Cancel","job":"0","job":"1"}}"#,
+        r#"{"op":"enqueue","nation":1,"sequence":"1","tick":"0","command":{"type":"Cancel","type":"Train","job":"0"}}"#,
+        r#"[]"#,
+        r#"null"#,
+        r#"1"#,
+        r#""query""#,
     ] {
-        assert!(serde_json::from_str::<oh_cli::military::Input>(text).is_err());
+        assert!(
+            serde_json::from_str::<oh_cli::military::Input>(text).is_err(),
+            "accepted malformed input: {text}"
+        );
     }
     let f = Fixture::new();
-    for job in ["01", "+1", "-1", "18446744073709551616"] {
+    let unknown_query = f.invoke(
+        &["run", "--scenario", "m1", "--seed", "1"],
+        &[json!({"op":"query","unknown":true})],
+    );
+    assert!(!unknown_query.status.success());
+    assert!(unknown_query.stdout.is_empty());
+    assert!(String::from_utf8_lossy(&unknown_query.stderr).contains("unknown field"));
+    for job in ["01", "+1", "-1", "18446744073709551616", " 1", "1 ", ""] {
         let bad = f.invoke(
             &["run", "--scenario", "m1", "--seed", "1"],
             &[enqueue(0, 1, json!({"type":"Cancel","job":job}))],
@@ -380,6 +516,64 @@ fn native_strict_grammar_and_input_valid_controls() {
     );
     assert!(!excessive.status.success());
     assert!(String::from_utf8_lossy(&excessive.stderr).contains("step request limit"));
+}
+
+#[test]
+fn native_raw_input_boundaries_and_prior_success_are_preserved() {
+    let f = Fixture::new();
+    let args = ["run", "--scenario", "m1", "--seed", "1"];
+    let empty = f.invoke_raw(&args, b"");
+    assert!(empty.status.success());
+    assert!(empty.stdout.is_empty());
+    for input in [b"\n".as_slice(), b"[]\n", b"null\n", b"1\n", b"\xff\n"] {
+        let rejected = f.invoke_raw(&args, input);
+        assert!(!rejected.status.success(), "accepted raw input: {input:?}");
+        assert!(rejected.stdout.is_empty());
+        assert!(String::from_utf8_lossy(&rejected.stderr).contains("military input:"));
+    }
+    let rejected = f.invoke_raw(
+        &args,
+        b"{\"op\":\"step\",\"count\":1}\n{\"op\":\"query\",\"unknown\":true}\n{\"op\":\"query\"}\n",
+    );
+    assert!(!rejected.status.success());
+    let prior: Vec<Value> = String::from_utf8(rejected.stdout)
+        .unwrap()
+        .lines()
+        .map(|line| serde_json::from_str(line).unwrap())
+        .collect();
+    assert_eq!(prior.len(), 1);
+    assert_eq!(prior[0]["state"], f.run(&[step(1)])[0]["state"]);
+    for extra in [0, 1] {
+        let mut input = b"{\"op\":\"query\"}".to_vec();
+        input.resize(
+            oh_cli::military::INPUT_LINE_MAX_BYTES as usize + extra - 1,
+            b' ',
+        );
+        input.push(b'\n');
+        let output = f.invoke_raw(&args, &input);
+        if extra == 0 {
+            assert_eq!(parsed(output).len(), 1);
+        } else {
+            assert!(!output.status.success());
+            assert!(output.stdout.is_empty());
+            assert!(String::from_utf8_lossy(&output.stderr).contains("input line limit"));
+        }
+    }
+}
+
+#[test]
+fn native_time_command_retains_existing_protocol_unknown_field_contract() {
+    // TimeCommand is the existing permissive protocol type. The CLI's outer
+    // envelope and MilitaryCommand remain strict without changing that contract.
+    let f = Fixture::new();
+    let out = f.run(&[
+        json!({"op":"enqueue_time","nation":1,"sequence":"1","tick":"0","command":{"type":"Pause","paused":true,"unknown":true}}),
+        step(1),
+    ]);
+    assert_eq!(out[0]["ok"], true);
+    assert_eq!(out[1]["commands"][0]["ok"], true);
+    assert_eq!(out[1]["advanced"], "0");
+    assert_eq!(out[1]["state"]["state"]["paused"], true);
 }
 
 #[test]
@@ -480,9 +674,13 @@ fn native_production_joint_return_cap_rolls_back_whole_step_including_cancel() {
     let out = f.run(&[
         enqueue(0, 1, train("small")), step(24),
         json!({"op":"enqueue_production","nation":1,"sequence":"2","tick":"24","command":{"type":"Create","model":"test_model_1","requested_ic_bits":"65536"}}),
-        step(23), json!({"op":"query"}), step(1), json!({"op":"query"}),
+        step(24), json!({"op":"query"}), step(1), json!({"op":"query"}),
         enqueue(47, 3, cancel("0")), step(1),
     ]);
+    assert_eq!(out[3]["ok"], false);
+    assert_eq!(out[3]["advanced"], "23");
+    assert_eq!(out[3]["state"]["state"]["tick"], "47");
+    assert_eq!(out[3]["commands"][0]["ok"], true);
     assert_eq!(out[5]["ok"], false);
     assert_eq!(out[5]["advanced"], "0");
     assert_eq!(out[5]["state"], out[4]["state"]);

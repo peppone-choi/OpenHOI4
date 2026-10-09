@@ -1,6 +1,6 @@
 //! Synthetic opt-in pack for actual authority codec/query contracts.
 #[path = "../../../oh_data/tests/support/production.rs"]
-mod production;
+pub(crate) mod production;
 pub fn pack() -> std::path::PathBuf {
     let root = production::pack();
     std::fs::create_dir_all(root.join("common/military")).unwrap();

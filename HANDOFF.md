@@ -98,4 +98,12 @@ npx --prefix client playwright test
 
 다음 담당은 최종 후보에서 native11개·새 MessagePack 검사·인수 입력의 별도 서버 연결, fmt/clippy·전체 workspace·legacy/native target/restore·결정론을 검사한다. 클라이언트252개 통과를253개로 확대하지 않는다. 독립 기능 QA는 준비만 했으며 고정 최종 후보의 실제 실행은 하지 않았다. 정식 Claude Opus 리뷰·셀렉션 API 실제 연결·최종 PR/main CI·병합은 미실행이다. 기존 main의 통합 게이트와 이 WIP를 구분하고 전체 WP-16/M2 완료로 기록하지 않는다.
 
+## O1 훈련 인계 수정
+
+2026-10-09 후속 승인으로 위 후보를 이어받아 native 실패 두 건을 직접 재현했다. Capacity 검사는 소비재 배분0.25가 war 하한0.5에 미달해 ChangeLaw 접수부터 `Economy(InvalidValue)`로 거절됐다. 기존 거절·상태 보존 대조를 유지하고 tick47의 Allocate(0.5,0.5,0,0) 적용 뒤 tick48 ChangeLaw를 적용한다. 법률war·정치력1·capacity60·초과 사용량18·예약 인력8과 취소 후 재고4를 확인하며 기대값이나 코어 공식을 낮추지 않는다. CLI Query는 빈 구조체 variant로 바꿔 unknown field를 거절한다. 기존 TimeCommand의 permissive wire 계약은 별도 유효 대조로 보존한다.
+
+구현 담당이 직접 실행한 native13개는 통과했다. 기존11개에 raw stdin/line limit와 기존 TimeCommand 계약 검사를 더했고, malformed/중복/누락/타입/UTF-8·정확한1MiB와+1, 앞서 성공한 요청·step 보존을 확인했다. V7 새 프로세스 재개·다음 job/division ID·소유/예약/재고·중복 차감 방지와 연속 실행의 상태/저장 bytes도 확인했다. 첫 수정 상태의 workspace374개와 이후 확장한 native13개를 각각 실행했으며 최종 전체 workspace376개를 실행했다고 확대하지 않는다. 전체 target clippy·fmt, client253개·typecheck/build·생성 protocol 보존은 통과했다. 전체 target clippy에서 발견한 wire fixture의 production 모듈 중복 import는 전용 fixture 공유로만 수정했다.
+
+최종 소스로 빌드한 별도 HTTP/WS 서버에서 CLI가 만든 장비4개 Ready V7을 조회하고 거절8개·배치·Pending 취소·중복 sequence·clean close1000·서버 exit0과 실제 served bundle 일치를 확인했다. 기존 native target12개와 restore4개도 통과하고 원 입력 bytes를 보존했다. M0/M1 각각1000tick을 두 번 실행한 해시는 `ff921fd8148e699d`/`60448355cecffa9d`로 각 반복이 일치했고 실제 서버 lifecycle도 통과했다. 이 결과는 구현 담당의 검사이며 새 독립 기능 QA나 정식 Claude 리뷰를 대신하지 않는다. Draft PR에서 같은 후보 CI와 독립 리뷰를 받은 뒤 부모가 main 통합을 판단한다. 전체 WP-16/M2·후속 생산 콘텐츠/경제 UI·LOGH 작업은 아직 완료로 판정하지 않는다.
+
 설치된 Rust/JDK/Node 도구를 재사용한다. 큰 명령 전 디스크 여유를 확인하고 실패하면 명령 연결을 즉시 중단한다. 이전 명령 연결의 여유 검사 실패 뒤 후속 실행이 이어진 오류는 보존했으며 추가 실행을 멈추고 캐시를 바이트 검증 후 압축 보존했다. 도구 설치 압축본과 일치하는 추출 캐시만 정리했고 기존 source/worktree/증거는 유지했다.

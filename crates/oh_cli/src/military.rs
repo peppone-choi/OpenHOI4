@@ -120,7 +120,7 @@ pub enum Input {
     Step {
         count: u64,
     },
-    Query,
+    Query {},
     Save {
         path: PathBuf,
     },
@@ -211,7 +211,7 @@ pub fn apply(
             tick,
             Command::Production(command.into_action()?),
         ),
-        Input::Query => Ok(json!({"op":"query", "ok":true, "state":status(sim)?})),
+        Input::Query {} => Ok(json!({"op":"query", "ok":true, "state":status(sim)?})),
         Input::Step { count } => {
             if count > REQUEST_STEP_MAX {
                 return Err("military step request limit".into());

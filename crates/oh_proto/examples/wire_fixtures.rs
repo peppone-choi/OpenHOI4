@@ -1,7 +1,6 @@
 #[path = "../../oh_save/tests/support/military.rs"]
 mod military_fixture;
-#[path = "../../oh_data/tests/support/production.rs"]
-mod production_fixture;
+use military_fixture::production as production_fixture;
 use oh_proto::*;
 use serde::Serialize;
 fn add<T: Serialize>(fixtures: &mut Vec<serde_json::Value>, name: &str, message: T) {
