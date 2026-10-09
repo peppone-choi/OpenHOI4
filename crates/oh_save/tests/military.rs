@@ -162,3 +162,77 @@ fn req_mil_v7_untrusted_bounds_immutable_definitions_and_owned_accounting_reject
         assert!(oh_save::decode(&bytes, &old, force).is_err());
     }
 }
+
+#[test]
+fn req_mil_v7_mixed_queue_order_and_structural_reference_rejections() {
+    use oh_sim::military_save::{CommandV7, PendingV7};
+    let root = fixture::pack();
+    let c = oh_save::SaveContext::national(&root, "m1").unwrap();
+    let mut s = c.simulation(1).unwrap();
+    s.enqueue(10, NationId(1), 1, Command::Pause(true)).unwrap();
+    s.enqueue(
+        10,
+        NationId(1),
+        2,
+        Command::Military(Action::Train {
+            template: "example".into(),
+        }),
+    )
+    .unwrap();
+    let dto = s.export_save_v7().unwrap();
+    let restored = oh_sim::Simulation::from_save_v7(dto.clone(), c.restore_context()).unwrap();
+    assert_eq!(
+        oh_core::canonical_bytes(&s).unwrap(),
+        oh_core::canonical_bytes(&restored).unwrap()
+    );
+    assert!(matches!(&dto.queue[0].command, CommandV7::Legacy(_)));
+    assert!(matches!(&dto.queue[1].command, CommandV7::Military(_)));
+    let mut unordered = dto.clone();
+    unordered.queue.swap(0, 1);
+    assert!(oh_sim::Simulation::from_save_v7(unordered, c.restore_context()).is_err());
+    let mut duplicate = dto.clone();
+    duplicate.queue[1].sequence = duplicate.queue[0].sequence;
+    assert!(oh_sim::Simulation::from_save_v7(duplicate, c.restore_context()).is_err());
+    let mut nested = dto.clone();
+    let CommandV7::Legacy(legacy) = dto.queue[0].command.clone() else {
+        unreachable!()
+    };
+    nested.base.queue.push(oh_sim::production_save::PendingV6 {
+        tick: 10,
+        nation: 1,
+        sequence: 1,
+        command: legacy,
+    });
+    assert!(oh_sim::Simulation::from_save_v7(nested, c.restore_context()).is_err());
+    for (nation, action) in [
+        (
+            1,
+            Action::Train {
+                template: "missing".into(),
+            },
+        ),
+        (
+            9,
+            Action::Train {
+                template: "example".into(),
+            },
+        ),
+        (1, Action::Cancel { job: 99 }),
+        (
+            1,
+            Action::SetPriority {
+                army: 1,
+                priority: 0,
+            },
+        ),
+    ] {
+        let mut bad = dto.clone();
+        bad.queue = vec![PendingV7 {
+            tick: 10,
+            nation,
+            sequence: 1,
+            command: CommandV7::Military(action),
+        }];
+        assert!(oh_sim::Simulation::from_save_v7(bad, c.restore_context()).is_err());
+    }
+}

@@ -45,16 +45,21 @@ impl Simulation {
             .map(|(&(tick, nation, sequence), command)| {
                 let command = match command {
                     Command::Military(a) => CommandV7::Military(a.clone()),
-                    _ => CommandV7::Legacy(legacy[&(tick, nation.0, sequence)].clone()),
+                    _ => CommandV7::Legacy(
+                        legacy
+                            .get(&(tick, nation.0, sequence))
+                            .ok_or("InvalidV7: missing legacy command")?
+                            .clone(),
+                    ),
                 };
-                PendingV7 {
+                Ok(PendingV7 {
                     tick,
                     nation: nation.0,
                     sequence,
                     command,
-                }
+                })
             })
-            .collect();
+            .collect::<Result<Vec<_>, String>>()?;
         Ok(SimulationSaveV7 {
             base,
             queue,
