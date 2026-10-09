@@ -1,0 +1,9 @@
+id = 2
+tag = "N02"
+name_key = "wp23-nation-2"
+color = [180, 70, 40]
+capital = 3
+government_key = "wp23-government"
+[ideology_support]
+wp23-civic = "0.75"
+wp23-local = "0.25"

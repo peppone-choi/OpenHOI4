@@ -1,5 +1,19 @@
 # OpenHOI4 WIP 인수인계
 
+## O1·준비 경계 통합 상태
+
+PR #12의 검토된 b6b5fe8 후보는 main 0fe68a968982aeaa07809fd1769b9a00b62f9f5b로 병합돼7개 main CI가 모두 통과했다. 실제 독립 Claude 리뷰에서 required0을 받은 O1 f0ba69c의 제품 bytes를 보존한 통합 c4718e6은51개 CI가 모두 통과해 PR #9를 main 9721b19ea5ff495b06ff3680eea85a3890e97387로 정상 병합했다. 해당 main CI는 확인 중이며 아래 후보 시점의 대기 기록을 과거 이력으로 보존한다. O2는 이 main에 맞춰 다시 검사하며 팩·전용 검사 bytes를 보존한다. O3 후속 CONNECTING 전송 판정의 독립 리뷰와 최종 통합 인수는 남아 있다.
+
+## 독립 생산 입력 후보 (2026-10-09, 작성: 최병호)
+
+후속 main9721b19 통합 재검사에서 팩/전용 검사 bytes를 보존한 채 전용8·기존 회귀18·client253·실제 M0 Chromium12개가 통과했다. 새 V6/expected 입력은 원 후보와 같았고 fresh/restored6국씩 실제 서버·번들 대조·12연결 close1000·두 host exit0이었다. 최초 공유 cache의 다른 번들 실패는 보존하고 oh_server를 정리한 재검사와 구분했다. 새 SHA CI와 독립 리뷰 자료 확인·O2 main 병합은 남아 있다.
+
+main `ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad` 기반 `wp/o2-m2-production-pack`은 자체 완결 합성 팩 `testland_m2_production`과 전용 data/save/server 검사를 추가했다. 기존 M1/M2와 제품 Rust/schema/save/wire/군사훈련 정책은 바꾸지 않았다.6국/120프로빈스/12주 경제 입력에 기존 WP-15 fixture의 두 모델·9개 defines를 연결하며 잠정 밸런스/단위/라이선스 계보를 팩 SOURCES에 남겼다.
+
+구현자의 전용8검사, V6 계약5검사와 기존 서버9검사, fmt/clippy가 통과했다.6국 실제 Create 후365일 두 번과180일 V6+185일 resume의 hash `8d775068118aa67a`·저장 bytes가 같았고 steel debit은 모든 국가에서 양수였다. 불허 모델과 inventory overflow의 상태/clock/queue 보존도 검사했다. 실제 별도 서버에서 fresh/restored 각각6국 HTTP/WebSocket projection·명령 검사를 통과했고 번들 bytes 일치·12연결 close1000·두 서버 exit0을 확인했다. 각 연결은 별도 simulation이며 공유 멀티플레이나 브라우저 UI 인수는 아니다.
+
+[작업 로그](docs/worklog/WP-23-production-pack.md)와 [팩 재현 순서](data/packs/testland_m2_production/README.md)를 따른다. 독립 리뷰·main CI 인수는 대기이며 WP-23/M2 전체 완료로 기록하지 않는다. 군사훈련 상한/우선순위 정책과 경제 UI 후속은 별도다.
+
 ## O1 승인된 활성 훈련 한도 수정 후보
 
 2026-10-09 사용자 승인과 실제 독립 리뷰 계획에 따라 국가별 Pending·Training·Ready4096건만 한도로 계산하고 Cancelled·Deployed 이력과 연속 ID는 보존했다. 기존 V7 전체4096건 범위·bytes를 유지하고 그보다 큰 이력은 같은 body layout의 V8 태그로 구분한다. 구 V7 relabel 우회는 거절하며 생산 입력 migration/reset은 없다. 우선순위0 최우선을 명시했다. 구현 담당 표적18개·전체 Rust383개(ignore0)와 전체 target clippy는 통과했다. 첫 준비/공유 cache 실패를 보존했다. [작업 로그](docs/worklog/WP-16-active-quota.md)를 따르며 실제 독립 delta 리뷰·최종 SHA CI·main 병합은 아직 대기다. 종료 이력의 선형 자원 사용·기존 저장 한도와 후속 retention/pagination은 남은 경계다.
