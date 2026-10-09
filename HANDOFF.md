@@ -1,12 +1,28 @@
 # OpenHOI4 WIP 인수인계
 
+## O1·준비 경계 통합 상태
+
+PR #12의 검토된 b6b5fe8 후보는 main 0fe68a968982aeaa07809fd1769b9a00b62f9f5b로 병합돼7개 main CI가 모두 통과했다. 실제 독립 Claude 리뷰에서 required0을 받은 O1 f0ba69c의 제품 bytes를 보존한 통합 c4718e6은51개 CI가 모두 통과해 PR #9를 main 9721b19ea5ff495b06ff3680eea85a3890e97387로 정상 병합했다. 해당 main CI는 확인 중이며 아래 후보 시점의 대기 기록을 과거 이력으로 보존한다. O2는 이 main에 맞춰 다시 검사하며 팩·전용 검사 bytes를 보존한다. O3 후속 CONNECTING 전송 판정의 독립 리뷰와 최종 통합 인수는 남아 있다.
+
 ## 독립 생산 입력 후보 (2026-10-09, 작성: 최병호)
+
+후속 main9721b19 통합 재검사에서 팩/전용 검사 bytes를 보존한 채 전용8·기존 회귀18·client253·실제 M0 Chromium12개가 통과했다. 새 V6/expected 입력은 원 후보와 같았고 fresh/restored6국씩 실제 서버·번들 대조·12연결 close1000·두 host exit0이었다. 최초 공유 cache의 다른 번들 실패는 보존하고 oh_server를 정리한 재검사와 구분했다. 새 SHA CI와 독립 리뷰 자료 확인·O2 main 병합은 남아 있다.
 
 main `ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad` 기반 `wp/o2-m2-production-pack`은 자체 완결 합성 팩 `testland_m2_production`과 전용 data/save/server 검사를 추가했다. 기존 M1/M2와 제품 Rust/schema/save/wire/군사훈련 정책은 바꾸지 않았다.6국/120프로빈스/12주 경제 입력에 기존 WP-15 fixture의 두 모델·9개 defines를 연결하며 잠정 밸런스/단위/라이선스 계보를 팩 SOURCES에 남겼다.
 
 구현자의 전용8검사, V6 계약5검사와 기존 서버9검사, fmt/clippy가 통과했다.6국 실제 Create 후365일 두 번과180일 V6+185일 resume의 hash `8d775068118aa67a`·저장 bytes가 같았고 steel debit은 모든 국가에서 양수였다. 불허 모델과 inventory overflow의 상태/clock/queue 보존도 검사했다. 실제 별도 서버에서 fresh/restored 각각6국 HTTP/WebSocket projection·명령 검사를 통과했고 번들 bytes 일치·12연결 close1000·두 서버 exit0을 확인했다. 각 연결은 별도 simulation이며 공유 멀티플레이나 브라우저 UI 인수는 아니다.
 
 [작업 로그](docs/worklog/WP-23-production-pack.md)와 [팩 재현 순서](data/packs/testland_m2_production/README.md)를 따른다. 독립 리뷰·main CI 인수는 대기이며 WP-23/M2 전체 완료로 기록하지 않는다. 군사훈련 상한/우선순위 정책과 경제 UI 후속은 별도다.
+
+## O1 승인된 활성 훈련 한도 수정 후보
+
+2026-10-09 사용자 승인과 실제 독립 리뷰 계획에 따라 국가별 Pending·Training·Ready4096건만 한도로 계산하고 Cancelled·Deployed 이력과 연속 ID는 보존했다. 기존 V7 전체4096건 범위·bytes를 유지하고 그보다 큰 이력은 같은 body layout의 V8 태그로 구분한다. 구 V7 relabel 우회는 거절하며 생산 입력 migration/reset은 없다. 우선순위0 최우선을 명시했다. 구현 담당 표적18개·전체 Rust383개(ignore0)와 전체 target clippy는 통과했다. 첫 준비/공유 cache 실패를 보존했다. [작업 로그](docs/worklog/WP-16-active-quota.md)를 따르며 실제 독립 delta 리뷰·최종 SHA CI·main 병합은 아직 대기다. 종료 이력의 선형 자원 사용·기존 저장 한도와 후속 retention/pagination은 남은 경계다.
+
+## Create 검사 준비 경계 후보 (2026-10-09, 작성: 최병호)
+
+`test/network-readiness`는 기존 REQ-NET-01 Create 검사에서 bounded Snapshot 감지 뒤 최소750ms를 관찰하고 소켓 종료를 확인하는 별도 후보다. 기존 Delta>0/<=8/연속 sequence와 모든 거부/지원 query assertion은 유지했다. Rust·제품 network/protocol·팩·CI 설정은 수정하지 않는다.
+
+바이트가 같은 baseline 권위/HTTP 자산과 실제 Chromium에서350ms WebSocket upgrade 준비 지연으로 원 검사와 같은 Delta0 증상을 재현했다. Snapshot 감지 뒤 최소750ms를 관찰하면 Delta1이며 수정 검사 본문은 지연/정상 각각3회 통과했다. 원 CI의 실제 socket 시각은 로그에 없어 지연 원인까지 확정하거나 무조건적인 flake로 선언하지 않는다. [작업 로그](docs/worklog/WP-05-network-readiness.md)의 재현·한계를 따른다. 실제 독립 코드 리뷰는 원 후보 b6b5fe8의 source required0였고 같은 후보의51개 CI가 통과해 PR #12를 정상 병합했다. main 0fe68a968982aeaa07809fd1769b9a00b62f9f5b의 CI는 별도로 확인한다. 역사 실패 run37930526763의 원인은 UNPROVEN으로 유지한다.
 
 2026-10-08 사용자 재개 지시로 새 환경에서 WP-14 독립 인수·P07 검사를 시작했다. 이번 재개는 미완성 소스의 검증부터 진행하며 릴리스나 M2 완료 판정이 아니다. 반복 감시 자동화는 PAUSED로 유지한다. 실행 계획과 공유 변경 순서는 [M2 재개 계획](docs/plans/M2.md)을 따른다.
 
@@ -32,7 +48,14 @@ main `ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad` 기반 `wp/o2-m2-production-pack
 
 제품 후보 `1f858ba2e174b08f8d27da8b26aaa37a2352b43e`의14경로는 한 번의 새 독립 검증에서 지정한 로컬 범위 PASS를 받았다([검증 요약](docs/verify/WP-16-normal-templates-local.md)). Finding/P06은 없었다. Rust345개·새 검사13개, 독립 계산335사례·실제 CLI1241프로세스, native target12/restore4와 추가 clean restore4 표적 확인, 기존 생성물/팩/저장·M1 결정론을 확인했다. 검증 전후592파일·HEAD/list/SHA/diff/status는 동일·clean이며 기존582파일 중4개 module/dispatch 등록 외578파일 bytes를 보존했다. 초기 준비 오류와 untracked 의존성 링크의 dirty 관측은 요약에 남겼다.
 
-별도 게시 승인 확인이 거절되어 부모 세션이 사용자 답을 기다리는 동안 로컬 구현·검사만 허용된다. Push·PR 생성·main 병합을 수행하지 않는다. 로컬 독립 PASS는 main CI 통합 게이트나 WP-16/M2 전체 완료가 아니다. 훈련 예약/반환·보충·실제 사단/OOB·감편 수요/손실·daily·save/query/wire/UI는 보류한다.
+2026-10-09 후속 사용자 승인으로 위 게시 보류는 해제됐다. [PR #8](https://github.com/peppone-choi/OpenHOI4/pull/8)는 main `ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad`로 정상 병합됐다. 검증 후보와 main tree가 같고 같은 main의 7개 push workflow가 모두 success다([CI](https://github.com/peppone-choi/OpenHOI4/actions/runs/37867482622)). 정상 편제 계산 단위만 인수했으며 후속 훈련·보충과 전체 WP-16/M2는 별도다. 기존 로컬 판정과 당시 승인 보류 이력은 보존한다. 사용자 최신 지시로 허용된 소스·리소스의 정상 main 병합과 PR별 단일 독립 리뷰 절차를 진행한다.
+
+## WP-16 실제 훈련·보충 착수
+
+사용자는 01 §4.7의 네 정책을 승인했다. main `ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad` 기반으로 core 정의·시뮬레이션, save/wire/server, native CLI·합성 입력을 분리된 구현 worktree에 배정했다. 공유 계약은 core → save/wire → native 순으로 통합하고 Cargo 빌드는 한 번에 한 담당자만 실행한다. 향후 구현·리뷰·검증 담당은 각각 사용자에게 보이는 앱 별도 채팅을 사용한다. 새 독립 기능 검증 담당은 준비 중이며 고정 후보에서 기능·보존 계약을 검사한다. 최신 사용자 지시의 코드 리뷰 모델 역할은 아래와 같이 별도로 확인한다. 현재는 구현 착수 상태이고 새 단위의 PASS·main CI·전체 WIP 완료를 주장하지 않는다.
+
+
+최신 역할 배정은 [M2 계획](docs/plans/M2.md)의 최신 역할 절을 따른다. 기본 구현 모델은 Codex GPT-6.1 Sol이며 안전한 체크포인트에서 새 세션으로 인계한다. 코드 리뷰는 Claude Opus 5.5 역할이고 현재 Claude는 미로그인, 실제 셀렉션 API 연결은 미확인이다. 기존 독립 기능 검사는 계속하되 Claude 리뷰·API 선택을 수행했다고 기록하지 않는다. 요구한 리뷰가 연결되지 않으면 최종 병합 판단의 blocker로 보고한다.
 
 아래는 이전 선별 인계의 상태와 재현 한계를 보존한 내용이다. 이전의 STOPPED 문구는 이번 사용자 재개 지시로 대체됐으며, 과거 미실행 검사를 이번에 실행한 것으로 바꾸지 않는다.
 
@@ -90,3 +113,21 @@ npx --prefix client playwright test
 일반 지침·도구와 고정 의존성·라이선스·에셋 원천은 유지한다. 내부 세션·비교/조율 기록, 증거 ZIP·실행 바이너리·raw API·비밀정보는 새 tree에서 제외한다. 라이선스가 확인된 독립 지리 원천 ZIP, 지도 런타임 데이터와 자체 회귀 save fixture는 프로젝트 입력이며 내부 증거 압축파일과 구분한다. 배포 권한 없는 원작 게임 자료는 사용하지 않는다.
 
 원본 로컬 작업·16개 미게시 commit·증거·worktree는 보존했다. 이 인계는 원본 이력의 일괄 push나 history rewrite가 아니다. 기존 공개 조상 commit에 포함됐던 증거는 이번 정상 삭제 commit으로 이력에서 없어지지 않으며 이력 정리는 범위 밖이다.
+
+## WP-16 앱 채팅 인계 체크포인트
+
+2026-10-09 사용자 지시로 현재 변경을 WIP 체크포인트에 보존하고, 후속 구현·리뷰·검증은 각각 사용자에게 보이는 앱 별도 채팅에서 이어간다. 기존 source worktree와 커밋은 보존한다. 현재 실제 사단/군·훈련/취소/배치/보충, opt-in V7·조회/명령·서버와 native CLI의 소스를 통합했다. 원자적 자원 소유·군사 입력 schema와 생성 TS를 포함하며 기존 M1/M2 팩은 유지한다.
+
+직접 실행한 검사는 core 담당 패키지253개·당시 clippy, 후속 core 표적8개, save57개, proto7개, server16개, client252개다. 생성 TS의 실제 실패 후 생성/소비 연결 수정·typecheck/build와 별도 HTTP/WebSocket 군사 검사도 통과했다. 이 수치는 서로 다른 실행 단위이며 최종 통합 후보 전체 PASS가 아니다. 마지막에 추가한 네 번째 MessagePack client 검사와 native11개는 미실행이다. native grammar의 실제 미지원 실패와 core daily 연결 전 실제 행동 실패는 해당 작업 로그에서 준비 오류와 구분한다.
+
+다음 담당은 최종 후보에서 native11개·새 MessagePack 검사·인수 입력의 별도 서버 연결, fmt/clippy·전체 workspace·legacy/native target/restore·결정론을 검사한다. 클라이언트252개 통과를253개로 확대하지 않는다. 독립 기능 QA는 준비만 했으며 고정 최종 후보의 실제 실행은 하지 않았다. 정식 Claude Opus 리뷰·셀렉션 API 실제 연결·최종 PR/main CI·병합은 미실행이다. 기존 main의 통합 게이트와 이 WIP를 구분하고 전체 WP-16/M2 완료로 기록하지 않는다.
+
+## O1 훈련 인계 수정
+
+2026-10-09 후속 승인으로 위 후보를 이어받아 native 실패 두 건을 직접 재현했다. Capacity 검사는 소비재 배분0.25가 war 하한0.5에 미달해 ChangeLaw 접수부터 `Economy(InvalidValue)`로 거절됐다. 기존 거절·상태 보존 대조를 유지하고 tick47의 Allocate(0.5,0.5,0,0) 적용 뒤 tick48 ChangeLaw를 적용한다. 법률war·정치력1·capacity60·초과 사용량18·예약 인력8과 취소 후 재고4를 확인하며 기대값이나 코어 공식을 낮추지 않는다. CLI Query는 빈 구조체 variant로 바꿔 unknown field를 거절한다. 기존 TimeCommand의 permissive wire 계약은 별도 유효 대조로 보존한다.
+
+구현 담당이 직접 실행한 native13개는 통과했다. 기존11개에 raw stdin/line limit와 기존 TimeCommand 계약 검사를 더했고, malformed/중복/누락/타입/UTF-8·정확한1MiB와+1, 앞서 성공한 요청·step 보존을 확인했다. V7 새 프로세스 재개·다음 job/division ID·소유/예약/재고·중복 차감 방지와 연속 실행의 상태/저장 bytes도 확인했다. 첫 수정 상태의 workspace374개와 이후 확장한 native13개를 각각 실행했으며 최종 전체 workspace376개를 실행했다고 확대하지 않는다. 전체 target clippy·fmt, client253개·typecheck/build·생성 protocol 보존은 통과했다. 전체 target clippy에서 발견한 wire fixture의 production 모듈 중복 import는 전용 fixture 공유로만 수정했다.
+
+최종 소스로 빌드한 별도 HTTP/WS 서버에서 CLI가 만든 장비4개 Ready V7을 조회하고 거절8개·배치·Pending 취소·중복 sequence·clean close1000·서버 exit0과 실제 served bundle 일치를 확인했다. 기존 native target12개와 restore4개도 통과하고 원 입력 bytes를 보존했다. M0/M1 각각1000tick을 두 번 실행한 해시는 `ff921fd8148e699d`/`60448355cecffa9d`로 각 반복이 일치했고 실제 서버 lifecycle도 통과했다. 이 결과는 구현 담당의 검사이며 새 독립 기능 QA나 정식 Claude 리뷰를 대신하지 않는다. Draft PR에서 같은 후보 CI와 독립 리뷰를 받은 뒤 부모가 main 통합을 판단한다. 전체 WP-16/M2·후속 생산 콘텐츠/경제 UI·LOGH 작업은 아직 완료로 판정하지 않는다.
+
+설치된 Rust/JDK/Node 도구를 재사용한다. 큰 명령 전 디스크 여유를 확인하고 실패하면 명령 연결을 즉시 중단한다. 이전 명령 연결의 여유 검사 실패 뒤 후속 실행이 이어진 오류는 보존했으며 추가 실행을 멈추고 캐시를 바이트 검증 후 압축 보존했다. 도구 설치 압축본과 일치하는 추출 캐시만 정리했고 기존 source/worktree/증거는 유지했다.

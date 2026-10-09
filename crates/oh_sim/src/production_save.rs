@@ -27,6 +27,9 @@ pub struct SimulationSaveV6 {
 }
 impl Simulation {
     pub fn export_save_v6(&self) -> Result<SimulationSaveV6, String> {
+        if self.military.is_some() {
+            return Err("MilitaryRequiresV7".into());
+        }
         let production = self.production.clone().ok_or("V6RequiresProduction")?;
         let mut old = self.clone();
         old.production = None;
@@ -52,6 +55,7 @@ impl Simulation {
                         program: program.clone(),
                     }),
                     Command::Economy(a) => CommandV6::Legacy(CommandV5::Economy(a.clone())),
+                    Command::Military(_) => unreachable!("military requires v7"),
                 },
             })
             .collect();
@@ -61,7 +65,19 @@ impl Simulation {
             production,
         })
     }
-    pub fn from_save_v6(mut dto: SimulationSaveV6, c: &RestoreContext) -> Result<Self, String> {
+    pub fn from_save_v6(dto: SimulationSaveV6, c: &RestoreContext) -> Result<Self, String> {
+        if c.world
+            .as_ref()
+            .is_some_and(|w| w.defs().military().is_some())
+        {
+            return Err("MilitaryRequiresV7".into());
+        }
+        Self::from_save_v6_base(dto, c)
+    }
+    pub(crate) fn from_save_v6_base(
+        mut dto: SimulationSaveV6,
+        c: &RestoreContext,
+    ) -> Result<Self, String> {
         if !dto.base.queue.is_empty() {
             return Err("InvalidV6: nested queue".into());
         }

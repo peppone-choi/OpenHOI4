@@ -49,6 +49,9 @@
     "map": {
       "type": "string"
     },
+    "military": {
+      "type": "string"
+    },
     "nations": {
       "type": "array",
       "items": {

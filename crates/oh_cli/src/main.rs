@@ -21,6 +21,9 @@ fn execute() -> Result<(), String> {
     if args.first().is_some_and(|s| s == "military-template") {
         return oh_cli::military_templates::execute(&args);
     }
+    if args.first().is_some_and(|s| s == "military") {
+        return oh_cli::military::execute(&args);
+    }
     let (sim, hash_out) = oh_cli::execute_invocation(&args)?;
     let hash = sim.state_hash().map_err(|err| err.to_string())?;
     if hash_out {

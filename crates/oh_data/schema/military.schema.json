@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Input",
+  "type": "object",
+  "properties": {
+    "armies": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ArmyInput"
+      }
+    },
+    "background": {
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^\\d+$": {
+          "$ref": "#/$defs/Background"
+        }
+      }
+    },
+    "divisions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/DivisionInput"
+      }
+    },
+    "normal_templates": {
+      "type": "string"
+    },
+    "training_days": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "format": "uint32",
+        "minimum": 0
+      }
+    },
+    "version": {
+      "type": "integer",
+      "format": "uint16",
+      "maximum": 65535,
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "normal_templates",
+    "training_days",
+    "background",
+    "armies",
+    "divisions"
+  ],
+  "$defs": {
+    "ArmyInput": {
+      "type": "object",
+      "properties": {
+        "capacity": {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0
+        },
+        "general": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer",
+          "format": "uint64",
+          "minimum": 0
+        },
+        "nation": {
+          "type": "integer",
+          "format": "uint16",
+          "maximum": 65535,
+          "minimum": 0
+        },
+        "priority": {
+          "type": "integer",
+          "format": "uint16",
+          "maximum": 65535,
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "nation",
+        "general",
+        "capacity",
+        "priority"
+      ]
+    },
+    "Background": {
+      "type": "object",
+      "properties": {
+        "committed": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "reserved": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "committed",
+        "reserved"
+      ]
+    },
+    "DivisionInput": {
+      "type": "object",
+      "properties": {
+        "army": {
+          "type": "integer",
+          "format": "uint64",
+          "minimum": 0
+        },
+        "equipment": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "id": {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0
+        },
+        "manpower": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "province": {
+          "type": "integer",
+          "format": "uint16",
+          "maximum": 65535,
+          "minimum": 0
+        },
+        "template": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "army",
+        "template",
+        "province",
+        "manpower",
+        "equipment"
+      ]
+    }
+  }
+}

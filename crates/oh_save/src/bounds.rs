@@ -266,7 +266,7 @@ pub fn body_version(bytes: &[u8], limits: &Limits, version: u16) -> Result<()> {
             r.number(64)?;
         }
     }
-    if version == 3 || version == 4 || version == 5 || version == 6 {
+    if (3..=8).contains(&version) {
         for _ in 0..r.entries(limits.map_entries_max)? {
             r.number(32)?;
             for _ in 0..r.entries(limits.map_entries_max)? {
@@ -326,7 +326,7 @@ pub fn body_version(bytes: &[u8], limits: &Limits, version: u16) -> Result<()> {
             }
         }
     }
-    if version == 5 || version == 6 {
+    if (5..=8).contains(&version) {
         r.boolean()?;
         r.boolean()?;
         if r.boolean()? {
@@ -391,39 +391,12 @@ pub fn body_version(bytes: &[u8], limits: &Limits, version: u16) -> Result<()> {
             }
         }
     }
-    if version == 6 {
+    if (6..=8).contains(&version) {
         for _ in 0..r.entries(limits.queue_max_entries)? {
             r.number(64)?;
             r.number(16)?;
             r.number(64)?;
-            match r.tag(1)? {
-                0 => match r.tag(5)? {
-                    0 => {
-                        r.boolean()?;
-                    }
-                    1 => {
-                        r.byte()?;
-                    }
-                    2 => {
-                        r.number(32)?;
-                        r.number(16)?;
-                    }
-                    3 => {
-                        r.number(32)?;
-                    }
-                    4 => {
-                        r.string()?;
-                    }
-                    5 => {
-                        r.economy_action()?;
-                    }
-                    _ => unreachable!(),
-                },
-                1 => {
-                    r.production_action()?;
-                }
-                _ => unreachable!(),
-            }
+            r.command_v6()?;
         }
         r.number(64)?;
         r.number(64)?;
@@ -469,10 +442,123 @@ pub fn body_version(bytes: &[u8], limits: &Limits, version: u16) -> Result<()> {
             r.number(64)?;
         }
     }
+    if matches!(version, 7 | 8) {
+        for _ in 0..r.entries(limits.queue_max_entries)? {
+            r.number(64)?;
+            r.number(16)?;
+            r.number(64)?;
+            match r.tag(1)? {
+                0 => r.command_v6()?,
+                1 => r.military_action()?,
+                _ => unreachable!(),
+            }
+        }
+        r.military()?;
+    }
     r.end()
 }
 
 impl Reader<'_> {
+    fn command_v6(&mut self) -> Result<()> {
+        match self.tag(1)? {
+            0 => match self.tag(5)? {
+                0 => {
+                    self.boolean()?;
+                }
+                1 => {
+                    self.byte()?;
+                }
+                2 => {
+                    self.number(32)?;
+                    self.number(16)?;
+                }
+                3 => {
+                    self.number(32)?;
+                }
+                4 => {
+                    self.string()?;
+                }
+                5 => self.economy_action()?,
+                _ => unreachable!(),
+            },
+            1 => self.production_action()?,
+            _ => unreachable!(),
+        }
+        Ok(())
+    }
+    fn military_action(&mut self) -> Result<()> {
+        match self.tag(3)? {
+            0 => self.string()?,
+            1 => {
+                self.number(64)?;
+            }
+            2 => {
+                self.number(64)?;
+                self.number(64)?;
+                self.number(16)?;
+                self.boolean()?;
+            }
+            3 => {
+                self.number(64)?;
+                self.number(16)?;
+            }
+            _ => unreachable!(),
+        }
+        Ok(())
+    }
+    fn military_normal(&mut self) -> Result<()> {
+        // Eleven raw Qty/Fx statistics, then manpower and two string/count maps.
+        for _ in 0..12 {
+            self.number(64)?;
+        }
+        self.map()?;
+        self.map()?;
+        Ok(())
+    }
+    fn military(&mut self) -> Result<()> {
+        self.number(64)?;
+        self.number(64)?;
+        self.number(32)?;
+        for _ in 0..self.entries(self.limits.map_entries_max)? {
+            self.number(64)?;
+            self.number(64)?;
+            self.number(16)?;
+            self.string()?;
+            self.number(32)?;
+            self.number(16)?;
+        }
+        for _ in 0..self.entries(self.limits.map_entries_max)? {
+            self.number(32)?;
+            self.number(32)?;
+            self.number(16)?;
+            self.number(64)?;
+            self.number(16)?;
+            self.string()?;
+            self.military_normal()?;
+            self.number(64)?;
+            self.map()?;
+        }
+        for _ in 0..self.entries(self.limits.queue_max_entries)? {
+            self.number(64)?;
+            self.number(64)?;
+            self.number(16)?;
+            self.string()?;
+            self.military_normal()?;
+            self.number(32)?;
+            self.tag(4)?;
+            self.number(32)?;
+            self.optional_number(64)?;
+            self.number(64)?;
+            self.map()?;
+            self.optional_number(32)?;
+        }
+        for _ in 0..self.entries(65536)? {
+            self.number(16)?;
+            self.number(64)?;
+            self.number(64)?;
+        }
+        Ok(())
+    }
     fn production_line(&mut self) -> Result<()> {
         self.number(64)?;
         self.number(16)?;

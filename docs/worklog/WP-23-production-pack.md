@@ -45,3 +45,11 @@
 전용 검사는 `crates/{oh_data,oh_save,oh_server}/tests/o2_production_pack.rs`, 별도 프로세스 검사는 `crates/oh_server/tests/o2_production_query.cjs`다. 공개 재현 순서는 팩 README를 따른다. 생성 save·raw 실행 출력은 팩이나 Git에 넣지 않는다. 고정 metadata의 실제 V6 encode/decode와 마지막 save bytes를 대조했고 기존 기대값을 재생성하지 않았다.
 
 각 서버 소켓은 별도 simulation이므로 공유 멀티플레이 인수가 아니다. 실제 브라우저의 경제 UI·OOB·훈련·보충·보급 consumer·최종 콘텐츠/역사 밸런스는 이 단위의 범위 밖이다. 독립 리뷰와 같은 main CI 통합 판정은 아직 없다.
+
+## O1·준비 경계 main 통합 재검사
+
+2026-10-09, PR #12와 PR #9가 정상 병합된 main `9721b19ea5ff495b06ff3680eea85a3890e97387`에 이 브랜치를 맞췄다. 유일한 HANDOFF 충돌의 양쪽 내용을 보존했으며 O2 팩·전용 data/save/server/Node 검사·자산 manifest bytes는 기존 `ffada8a1b5695929428af0cee6ef9d53bf92e63b`와 동일하다. 승인된 O1 V7/V8·활성 훈련 한도와 최소750ms Snapshot 준비 경계 검사를 가져왔으며 O2의 게임 규칙·기대값을 바꾸지 않았다.
+
+다시 실행한 전용8개와 기존 저장/서버 회귀18개, client253개, typecheck/Vite build·관련 all-targets clippy·fmt·docs/assets/architecture가 통과했다. 새 180일 V6 save와 expected.json은 기존 후보의 입력과 byte-identical이었다. 새 실제 Rust 서버 fresh/restored각6국 Node 검사는 HTTP 번들 bytes·생산 명령/거부/권한/중복 sequence·projection을 확인했고12연결 close1000·두 host exit0이었다. 시스템 Chromium151의 M0 전체12개도 통과했으며 최소750ms 준비 경계 검사의 assertion을 보존했다.
+
+첫 native 검사는 공유 Cargo cache의 이전 O3 번들이 embed된 것을 source bundle byte 검사에서 ENOENT로 잡았다. oh_server cache를 정리하고 현재 번들을 새로 embed한 뒤 같은 검사가 통과했다. 첫 실패를 소스 결함 수정이나 초기 PASS로 바꾸지 않는다. 독립 리뷰 자료·새 고정 SHA CI와 해당 main CI 확인은 별도이며 최종 M2 인수가 아니다.

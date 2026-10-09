@@ -1,3 +1,4 @@
+import {isMilitaryView} from './militaryValidation';
 import {isProductionView} from './productionValidation';
 import {isEconomyView} from './economyValidation';
 import { decode, encode } from '@msgpack/msgpack';
@@ -74,6 +75,7 @@ const trigger=exactShape<NonNullable<Trigger>>({definitions_hash:hash,flags:orde
 // Mapped from the generated Rust union: adding a variant/field or changing a
 // field type breaks typecheck until its runtime validator is updated.
 const serverFields = {
+  MilitaryResult:{type:literal('MilitaryResult'),request:string,supported:boolean,reason_key:nullable(string),military:nullable(isMilitaryView)},
   ProductionResult:{type:literal('ProductionResult'),request:string,supported:boolean,reason_key:nullable(string),production:nullable(isProductionView)},
   EconomyResult:{type:literal('EconomyResult'),request:string,supported:boolean,reason_key:nullable(string),economy:nullable(isEconomyView)},
   TriggerResult: {type:literal('TriggerResult'),request:string,supported:boolean,reason_key:nullable(string),trigger:nullable(trigger)},
@@ -88,6 +90,7 @@ const serverFields = {
 const serverGuards = Object.values(serverFields).map(fields => shape<Record<string, unknown>>(fields));
 const triggerResult=exactShape<Extract<ServerMessage,{type:'TriggerResult'}>>(serverFields.TriggerResult);
 export function isServerMessage(value: unknown): value is ServerMessage {
+  if(typeof value==='object'&&value!==null&&(value as {type?:unknown}).type==='MilitaryResult'){const g=exactShape<Extract<ServerMessage,{type:'MilitaryResult'}>>(serverFields.MilitaryResult);return g(value)&&value.supported===(value.military!==null)&&(!value.supported||value.reason_key===null); }
   if(typeof value==='object'&&value!==null&&(value as {type?:unknown}).type==='ProductionResult'){const g=exactShape<Extract<ServerMessage,{type:'ProductionResult'}>>(serverFields.ProductionResult);return g(value)&&value.supported===(value.production!==null)&&(!value.supported||value.reason_key===null); }
   if(typeof value==='object'&&value!==null&&(value as {type?:unknown}).type==='EconomyResult'){const g=exactShape<Extract<ServerMessage,{type:'EconomyResult'}>>(serverFields.EconomyResult);return g(value)&&value.supported===(value.economy!==null)&&(!value.supported||value.reason_key===null); }
   if(typeof value==='object'&&value!==null&&(value as Record<string,unknown>).type==='TriggerResult'){

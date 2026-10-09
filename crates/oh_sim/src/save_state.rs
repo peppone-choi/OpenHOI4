@@ -158,6 +158,9 @@ fn ordinal(d: Date) -> u64 {
 
 impl Simulation {
     pub fn export_save(&self) -> Result<SimulationSaveV1, String> {
+        if self.military.is_some() {
+            return Err("MilitaryRequiresV7".into());
+        }
         if self.production.is_some() {
             return Err("ProductionRequiresV6".into());
         }
@@ -278,6 +281,7 @@ impl Simulation {
             trigger: None,
             economy: None,
             production: None,
+            military: None,
         })
     }
 }
@@ -358,6 +362,7 @@ impl Simulation {
                     Command::Stop { unit } => CommandV2::Stop { unit: unit.0 },
                     Command::Economy(_) => unreachable!("economy requires v5"),
                     Command::Production(_) => unreachable!("production requires v6"),
+                    Command::Military(_) => unreachable!("military requires v7"),
                     Command::Effects { .. } => unreachable!("trigger requires v4"),
                 },
             })
