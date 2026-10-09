@@ -24,7 +24,12 @@
 
 제품 후보 `1f858ba2e174b08f8d27da8b26aaa37a2352b43e`의14경로는 한 번의 새 독립 검증에서 지정한 로컬 범위 PASS를 받았다([검증 요약](docs/verify/WP-16-normal-templates-local.md)). Finding/P06은 없었다. Rust345개·새 검사13개, 독립 계산335사례·실제 CLI1241프로세스, native target12/restore4와 추가 clean restore4 표적 확인, 기존 생성물/팩/저장·M1 결정론을 확인했다. 검증 전후592파일·HEAD/list/SHA/diff/status는 동일·clean이며 기존582파일 중4개 module/dispatch 등록 외578파일 bytes를 보존했다. 초기 준비 오류와 untracked 의존성 링크의 dirty 관측은 요약에 남겼다.
 
-별도 게시 승인 확인이 거절되어 부모 세션이 사용자 답을 기다리는 동안 로컬 구현·검사만 허용된다. Push·PR 생성·main 병합을 수행하지 않는다. 로컬 독립 PASS는 main CI 통합 게이트나 WP-16/M2 전체 완료가 아니다. 훈련 예약/반환·보충·실제 사단/OOB·감편 수요/손실·daily·save/query/wire/UI는 보류한다.
+2026-10-09 후속 사용자 승인으로 위 게시 보류는 해제됐다. [PR #8](https://github.com/peppone-choi/OpenHOI4/pull/8)는 main `ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad`로 정상 병합됐다. 검증 후보와 main tree가 같고 같은 main의 7개 push workflow가 모두 success다([CI](https://github.com/peppone-choi/OpenHOI4/actions/runs/37867482622)). 정상 편제 계산 단위만 인수했으며 후속 훈련·보충과 전체 WP-16/M2는 별도다. 기존 로컬 판정과 당시 승인 보류 이력은 보존한다. 사용자 최신 지시로 허용된 소스·리소스의 정상 main 병합과 PR별 단일 독립 리뷰 절차를 진행한다.
+
+## WP-16 실제 훈련·보충 착수
+
+사용자는 01 §4.7의 네 정책을 승인했다. main `ef6d1fa1fcd9b7cd6350649b25efd11995d2e7ad` 기반으로 core 정의·시뮬레이션, save/wire/server, native CLI·합성 입력을 분리된 구현 worktree에 배정했다. 공유 계약은 core → save/wire → native 순으로 통합하고 Cargo 빌드는 한 번에 한 담당자만 실행한다. 새 독립 검증 담당은 준비 중이며 고정 후보에서 전체 코드 리뷰를 한 번 수행한다. 현재는 구현 착수 상태이고 새 단위의 PASS·main CI·전체 WIP 완료를 주장하지 않는다.
+
 
 아래는 이전 선별 인계의 상태와 재현 한계를 보존한 내용이다. 이전의 STOPPED 문구는 이번 사용자 재개 지시로 대체됐으며, 과거 미실행 검사를 이번에 실행한 것으로 바꾸지 않는다.
 
