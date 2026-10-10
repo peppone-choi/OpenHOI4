@@ -1497,3 +1497,291 @@ license = "CC-BY-SA-4.0"
 modified = false
 ai_generated = false
 notes = "Provisional synthetic production content; no new game rules or original game material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/README.md"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/SOURCES.md"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/common/buildings.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/common/economy/initial.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/common/military/initial.toml"
+author = "OpenHOI contributors"
+source = "new synthetic fixture composed from accepted military training fixture at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = false
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/common/production/initial.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/common/resources.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/common/terrain.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/defines.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/localisation/en/map.ftl"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/localisation/en/national.ftl"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/localisation/en/pack.ftl"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/localisation/en/production.ftl"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/localisation/ko/map.ftl"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/localisation/ko/national.ftl"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/localisation/ko/pack.ftl"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/localisation/ko/production.ftl"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/manifest.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/maps/testland_m2/adjacency_overrides.csv"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/maps/testland_m2/provinces.csv"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/maps/testland_m2/provinces.png"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/maps/testland_m2/regions.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/maps/testland_m2/states.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/maps/testland_m2/visuals.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/scenarios/m2_military/defines.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/scenarios/m2_military/nations/N01.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/scenarios/m2_military/nations/N02.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/scenarios/m2_military/nations/N03.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/scenarios/m2_military/nations/N04.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/scenarios/m2_military/nations/N05.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/scenarios/m2_military/nations/N06.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
+
+[[asset]]
+path = "data/packs/testland_m2_military/scenarios/m2_military/scenario.toml"
+author = "OpenHOI contributors"
+source = "derived from authored testland_m2_production at 0d50a83f862bf575e8051a1c7cf12da7f0ea0428; see pack SOURCES.md"
+license = "CC-BY-SA-4.0"
+modified = true
+ai_generated = false
+notes = "AI-assisted data assembly and documentation by Codex; no image generation. Inherited PNG bytes are unchanged. ai_generated=false follows the image classification in OPEN-09/check_assets.py; this is not a claim of unassisted human authorship. Provisional synthetic fixture, CC-BY-SA-4.0, no proprietary material."
