@@ -1,0 +1,11 @@
+# Design resource IDs; initial non-steel flow is zero (absent from state outputs).
+[[resource]]
+id = "oil"
+[[resource]]
+id = "steel"
+[[resource]]
+id = "aluminium"
+[[resource]]
+id = "rubber"
+[[resource]]
+id = "rare_metals"

@@ -1,0 +1,43 @@
+version = 1
+training_days = { m2_small = 2 }
+divisions = []
+armies = [
+ {id = 0, nation = 1, general = "synthetic_n01", capacity = 2, priority = 0},
+ {id = 1, nation = 2, general = "synthetic_n02", capacity = 2, priority = 0},
+ {id = 2, nation = 3, general = "synthetic_n03", capacity = 2, priority = 0},
+ {id = 3, nation = 4, general = "synthetic_n04", capacity = 2, priority = 0},
+ {id = 4, nation = 5, general = "synthetic_n05", capacity = 2, priority = 0},
+ {id = 5, nation = 6, general = "synthetic_n06", capacity = 2, priority = 0},
+]
+normal_templates = '''
+version = 1
+[[components]]
+id = "m2_small_component"
+role = "combat"
+manpower = 8
+equipment = [{ family = "m2_equipment", model = "m2_equipment_1", items = 6 }]
+[components.stats]
+strength = "1"
+soft_fire = "1"
+hard_fire = "0"
+defense = "1"
+breakthrough = "1"
+frontage = "1"
+supply_use = "1"
+organization = "1"
+armor = "0"
+piercing = "0"
+speed_kmh = "1"
+[[templates]]
+id = "m2_small"
+combat = ["m2_small_component"]
+support = []
+bindings = [{ family = "m2_equipment", model = "m2_equipment_1" }]
+'''
+[background]
+1 = { committed = 0, reserved = 0 }
+2 = { committed = 0, reserved = 0 }
+3 = { committed = 0, reserved = 0 }
+4 = { committed = 0, reserved = 0 }
+5 = { committed = 0, reserved = 0 }
+6 = { committed = 0, reserved = 0 }

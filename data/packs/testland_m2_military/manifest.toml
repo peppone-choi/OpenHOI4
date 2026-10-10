@@ -1,0 +1,8 @@
+# Standalone provisional synthetic content; CC-BY-SA-4.0.
+id = "testland_m2_military"
+name_key = "m2-military-pack-name"
+version = "0.1.0"
+engine = ">=0.1, <0.2"
+depends = []
+conflicts = []
+load_after = []

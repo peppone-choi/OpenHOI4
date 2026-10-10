@@ -1,0 +1,137 @@
+[[state]]
+id = 1
+name_key = "wp23-state-1"
+provinces = [1, 2, 13, 14, 25, 26, 37, 38, 49, 50]
+population = 1000
+resources = { steel = 2 }
+buildings = { industry = 1 }
+infrastructure = 1
+
+[[state]]
+id = 2
+name_key = "wp23-state-2"
+provinces = [61, 62, 73, 74, 85, 86, 97, 98, 109, 110]
+population = 1000
+resources = { steel = 2 }
+buildings = { industry = 1 }
+infrastructure = 1
+
+[[victory_point]]
+province = 1
+points = 1
+name_key = "wp23-capital-1"
+
+[[state]]
+id = 3
+name_key = "wp23-state-3"
+provinces = [3, 4, 15, 16, 27, 28, 39, 40, 51, 52]
+population = 1000
+resources = { steel = 2 }
+buildings = { industry = 1 }
+infrastructure = 1
+
+[[state]]
+id = 4
+name_key = "wp23-state-4"
+provinces = [63, 64, 75, 76, 87, 88, 99, 100, 111, 112]
+population = 1000
+resources = { steel = 2 }
+buildings = { industry = 1 }
+infrastructure = 1
+
+[[victory_point]]
+province = 3
+points = 1
+name_key = "wp23-capital-2"
+
+[[state]]
+id = 5
+name_key = "wp23-state-5"
+provinces = [5, 6, 17, 18, 29, 30, 41, 42, 53, 54]
+population = 1000
+resources = { steel = 2 }
+buildings = { industry = 1 }
+infrastructure = 1
+
+[[state]]
+id = 6
+name_key = "wp23-state-6"
+provinces = [65, 66, 77, 78, 89, 90, 101, 102, 113, 114]
+population = 1000
+resources = { steel = 2 }
+buildings = { industry = 1 }
+infrastructure = 1
+
+[[victory_point]]
+province = 5
+points = 1
+name_key = "wp23-capital-3"
+
+[[state]]
+id = 7
+name_key = "wp23-state-7"
+provinces = [7, 8, 19, 20, 31, 32, 43, 44, 55, 56]
+population = 1000
+resources = { steel = 2 }
+buildings = { industry = 1 }
+infrastructure = 1
+
+[[state]]
+id = 8
+name_key = "wp23-state-8"
+provinces = [67, 68, 79, 80, 91, 92, 103, 104, 115, 116]
+population = 1000
+resources = { steel = 2 }
+buildings = { industry = 1 }
+infrastructure = 1
+
+[[victory_point]]
+province = 7
+points = 1
+name_key = "wp23-capital-4"
+
+[[state]]
+id = 9
+name_key = "wp23-state-9"
+provinces = [9, 10, 21, 22, 33, 34, 45, 46, 57, 58]
+population = 1000
+resources = { steel = 2 }
+buildings = { industry = 1 }
+infrastructure = 1
+
+[[state]]
+id = 10
+name_key = "wp23-state-10"
+provinces = [69, 70, 81, 82, 93, 94, 105, 106, 117, 118]
+population = 1000
+resources = { steel = 2 }
+buildings = { industry = 1 }
+infrastructure = 1
+
+[[victory_point]]
+province = 9
+points = 1
+name_key = "wp23-capital-5"
+
+[[state]]
+id = 11
+name_key = "wp23-state-11"
+provinces = [11, 12, 23, 24, 35, 36, 47, 48, 59, 60]
+population = 1000
+resources = { steel = 2 }
+buildings = { industry = 1 }
+infrastructure = 1
+
+[[state]]
+id = 12
+name_key = "wp23-state-12"
+provinces = [71, 72, 83, 84, 95, 96, 107, 108, 119, 120]
+population = 1000
+resources = { steel = 2 }
+buildings = { industry = 1 }
+infrastructure = 1
+
+[[victory_point]]
+province = 11
+points = 1
+name_key = "wp23-capital-6"
