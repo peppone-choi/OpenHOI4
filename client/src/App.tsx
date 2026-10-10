@@ -7,6 +7,8 @@ import { EconomyPanel } from './components/EconomyPanel';
 import { EconomyResponses, type EconomyDisplay } from './economyResponses';
 import { MilitaryResponses, type MilitaryDisplay } from './militaryResponses';
 import { MilitaryPanel } from './components/MilitaryPanel';
+import {CommandLedger} from './commandLedger';
+import {MilitaryCommands,emptyTrainingFeedback,type TrainingCommand} from './militaryCommands';
 import {MilitaryLedgerResponses,emptyMilitaryLedger,type MilitaryLedgerDisplay} from './militaryLedgerResponses';
 import { GameShell } from './components/GameShell';
 import { NationalPanels } from './components/NationalPanels';
@@ -23,6 +25,9 @@ export function App() {
   const [militaryOpen,setMilitaryOpen]=useState(false);
   const militaryOpenRef=useRef(false);
   const militaryResponses=useRef(new MilitaryResponses());
+  const militaryCommands=useRef(new MilitaryCommands());
+  const commandLedger=useRef(new CommandLedger());
+  const [trainingFeedback,setTrainingFeedback]=useState(emptyTrainingFeedback);
   const militaryLedgerResponses=useRef(new MilitaryLedgerResponses());
   const [militaryLedger,setMilitaryLedger]=useState<MilitaryLedgerDisplay>(emptyMilitaryLedger);
   const militaryToggle=useRef<HTMLButtonElement|null>(null);
@@ -49,7 +54,7 @@ export function App() {
   const [state, setState] = useState<TimeState | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
   const socket = useRef<ReturnType<typeof connect> | null>(null);
-  const sequence = useRef(0n);
+
   const transmitEconomy=(client:ReturnType<typeof connect>,request:string)=>client.send({type:'Query',request,kind:'economy'});
   const queryEconomy=(client:ReturnType<typeof connect>)=>{
     economyResponses.current.issue(client,request=>transmitEconomy(client,request));
@@ -62,6 +67,11 @@ export function App() {
   };
   const selectMilitaryNation=(nation:number|null)=>{
     setMilitaryNation(nation);const client=socket.current;
+    militaryCommands.current.close();setTrainingFeedback(emptyTrainingFeedback());
+    if(client&&activeConnection.current===client){
+      setMilitary({view:null,status:'loading',reasonKey:null});
+      militaryCommands.current.begin(client,controlledNation,militaryResponses.current.issuedSerial);queryMilitary(client);
+    }
     militaryLedgerResponses.current.close();
     if(client&&activeConnection.current===client){militaryLedgerResponses.current.begin(client);militaryLedgerResponses.current.setBase(military.view);}
     setMilitaryLedger(emptyMilitaryLedger());
@@ -71,6 +81,7 @@ export function App() {
   };
   const closeMilitary=()=>{
     militaryOpenRef.current=false;setMilitaryOpen(false);militaryResponses.current.close();
+    militaryCommands.current.close();setTrainingFeedback(emptyTrainingFeedback());
     militaryLedgerResponses.current.close();setMilitaryLedger(emptyMilitaryLedger());
     setMilitary({view:null,status:'disconnected',reasonKey:null});setMilitaryNation(null);
     militaryToggle.current?.focus();
@@ -80,10 +91,11 @@ export function App() {
     const client=socket.current;
     const active=client&&activeConnection.current===client;
     setMilitary({view:null,status:active?'loading':'disconnected',reasonKey:null});
-    if(active){militaryResponses.current.begin(client);militaryLedgerResponses.current.begin(client);setMilitaryLedger(emptyMilitaryLedger());queryMilitary(client);}
+    if(active){militaryCommands.current.begin(client,controlledNation);setTrainingFeedback(emptyTrainingFeedback());militaryResponses.current.begin(client);militaryLedgerResponses.current.begin(client);setMilitaryLedger(emptyMilitaryLedger());queryMilitary(client);}
   };
   const resetMilitary=()=>{
     militaryResponses.current.close();setMilitaryNation(null);
+    militaryCommands.current.close();setTrainingFeedback(emptyTrainingFeedback());
     militaryLedgerResponses.current.close();setMilitaryLedger(emptyMilitaryLedger());
     setMilitary({view:null,status:'loading',reasonKey:null});
   };
@@ -105,11 +117,19 @@ export function App() {
         setPackHash(message.packs[0]?.hash??'');
       }
       if (message.type === 'Notice') setNotice(message.key);
-      if (message.type === 'CommandResult') setNotice(message.reason_key);
+      if(message.type==='CommandResult'){
+        const kind=commandLedger.current.accept(client,message);
+        if(kind){
+          setNotice(message.reason_key);
+          if(kind==='MilitaryCommand'&&militaryCommands.current.accept(client,message,militaryResponses.current.issuedSerial)){
+            setTrainingFeedback({...militaryCommands.current.feedback});queryMilitary(client);
+          }
+        }
+      }
       if(message.type==='Snapshot'||message.type==='Delta'){client.send({type:'Query',request:'world',kind:'world'});client.send({type:'Query',request:'production',kind:'production'});queryEconomy(client);queryMilitary(client);queryMilitaryLedger(client);}
       if(message.type==='MilitaryResult'||message.type==='QueryResult'){
         const accepted=militaryResponses.current.accept(client,message);
-        if(accepted){setMilitary(accepted);setMilitaryLedger({...militaryLedgerResponses.current.setBase(accepted.view)});queryMilitaryLedger(client);militaryResponses.current.followUp(client,request=>transmitMilitary(client,request));}
+        if(accepted){militaryCommands.current.setAuthority(client,accepted.view,militaryResponses.current.issuedSerial);setTrainingFeedback({...militaryCommands.current.feedback});setMilitary(accepted);setMilitaryLedger({...militaryLedgerResponses.current.setBase(accepted.view)});queryMilitaryLedger(client);militaryResponses.current.followUp(client,request=>transmitMilitary(client,request));}
       }
       if(message.type==='MilitaryNormalLedgerCapabilityResult'||message.type==='MilitaryNormalLedgerResult'||message.type==='QueryResult'){
         const accepted=militaryLedgerResponses.current.accept(client,message);
@@ -139,7 +159,7 @@ export function App() {
       if(activeConnection.current!==client)return;
       activeConnection.current=null;
       productionConnection.current=null;
-      militaryResponses.current.end(client);
+      militaryResponses.current.end(client);militaryCommands.current.end(client);setTrainingFeedback(emptyTrainingFeedback());commandLedger.current.end(client);
       militaryLedgerResponses.current.end(client);setMilitaryLedger({...militaryLedgerResponses.current.display});
       setMilitary(current=>({...current,status:current.view?'stale':'disconnected'}));
       economyResponses.current.end(client);
@@ -148,14 +168,15 @@ export function App() {
       if (reasonKey) setNotice(reasonKey);
     }, joinNation);
     socket.current = client;
-    activeConnection.current=client;
+    activeConnection.current=client;commandLedger.current.begin(client);
+    if(militaryOpenRef.current)militaryCommands.current.begin(client,controlledNation);
     if(militaryOpenRef.current){militaryResponses.current.begin(client);militaryLedgerResponses.current.begin(client);}
     economyResponses.current.begin(client,economyNation.current);
     return () => {
       if(activeConnection.current===client)activeConnection.current=null;
       if(productionConnection.current===client)productionConnection.current=null;
       economyResponses.current.end(client);
-      militaryResponses.current.end(client);
+      militaryResponses.current.end(client);militaryCommands.current.end(client);setTrainingFeedback(emptyTrainingFeedback());commandLedger.current.end(client);
       militaryLedgerResponses.current.end(client);
       client.close();
       if(socket.current===client)socket.current=null;
@@ -170,13 +191,21 @@ export function App() {
     setConnection('connecting');setNotice(null);setState(null);
     setConnectionAttempt(attempt=>attempt+1);
   };
-  const command = (command: TimeCommand) => socket.current?.send({ type: 'Command', sequence: (++sequence.current).toString(), command });
+  const command = (command: TimeCommand) => {const client=socket.current;if(client&&activeConnection.current===client)commandLedger.current.issue(client,{type:'Command',command},message=>client.send(message));};
   const productionCommand=(command:ProductionCommand)=>{
     const client=socket.current;
     if(client&&activeConnection.current===client&&productionConnection.current===client&&connection==='connected'&&controlledNation!==null){
-      client.send({type:'ProductionCommand',sequence:(++sequence.current).toString(),command});
+      commandLedger.current.issue(client,{type:'ProductionCommand',command},message=>client.send(message));
     }
   };
+  const trainingCommand=(command:TrainingCommand)=>{
+    const client=socket.current;
+    if(client&&activeConnection.current===client&&connection==='connected'){
+      militaryCommands.current.issue(client,militaryNation,command,()=>commandLedger.current.issue(client,{type:'MilitaryCommand',command},message=>client.send(message)));
+      setTrainingFeedback({...militaryCommands.current.feedback});
+    }
+  };
+  const canTrain=(command:TrainingCommand)=>{const client=socket.current;return !!client&&activeConnection.current===client&&connection==='connected'&&militaryCommands.current.can(client,militaryNation,command);};
   const controlNation=(n:number)=>{const tag=world?.nations.find(v=>v.id===n)?.tag;if(tag){
     resetMilitary();
     activeConnection.current=null;
@@ -193,7 +222,7 @@ export function App() {
       {world && catalogs && <div className="world-layout"><MapView world={world} packHash={packHash} selected={selected} onSelect={select}/><aside className="world-detail">{selected!==null&&world.provinces.find(p=>p.id===selected)?.state==null?<p>{t('map-no-state')}</p>:<NationalPanels world={world} nationId={nationId} stateId={stateId} onNationSelect={id=>{selectEconomyNation(id);query(`nation:${id}`);}} onStateSelect={id=>{setStateId(id);const owner=world.states.find(s=>s.id===id)?.owner;selectEconomyNation(owner??null);query(`state:${id}`);if(owner!==undefined)query(`nation:${owner}`);}}/>}</aside></div> }
       <EconomyPanel display={economy} world={world} nationId={nationId??null} onNationSelect={selectEconomyNation}/>
       <button ref={militaryToggle} aria-expanded={militaryOpen} aria-controls="military-panel" onClick={militaryOpen?closeMilitary:openMilitary}>{t(militaryOpen?'military-close':'military-open')}</button>
-      {militaryOpen&&<MilitaryPanel display={military} world={world} nationId={militaryNation} onNationSelect={selectMilitaryNation} onClose={closeMilitary} ledger={militaryLedger} onLedgerSelect={selectMilitaryLedger}/>}
+      {militaryOpen&&<MilitaryPanel display={military} world={world} nationId={militaryNation} onNationSelect={selectMilitaryNation} onClose={closeMilitary} ledger={militaryLedger} onLedgerSelect={selectMilitaryLedger} controls={{nation:controlledNation,feedback:trainingFeedback,can:canTrain,send:trainingCommand}}/>}
       {connection==='disconnected'&&<button onClick={reconnect}>{t('economy-reconnect')}</button>}
       {production&&<ProductionPanel view={production} world={world} controlledNation={controlledNation} onControl={controlNation} onCommand={productionCommand} connected={connection==='connected'&&productionConnection.current===activeConnection.current}/>}
       {notice && <p role="alert">{t(notice)}</p>}

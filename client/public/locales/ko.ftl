@@ -376,3 +376,13 @@ ledger-too-large = 편제 기여 내역이 이 호스트의 응답 크기 제한
 unknown-template = 이 편제는 사용할 수 없습니다.
 invalid-template = 편제 식별자가 올바르지 않습니다.
 ledger-aggregation-failed = 서버에서 편제 기여 내역을 합산하지 못했습니다.
+
+# Authoritative training actions
+military-training-start = 훈련 시작
+military-training-cancel = 훈련 취소
+military-training-spectator = 훈련을 관리하려면 생산 패널에서 국가로 시작하세요.
+military-training-idle = 훈련 명령 준비됨
+military-training-pending = 훈련 명령 결과 기다리는 중
+military-training-refreshing = 서버 훈련 상태 갱신 중
+military-training-success = 훈련 명령 처리됨
+military-training-rejected = 훈련 명령 거부됨

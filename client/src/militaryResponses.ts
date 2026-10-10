@@ -9,6 +9,7 @@ export class MilitaryResponses {
   private serial=0n;
   private pending:{request:string;epoch:number}|null=null;
   private dirty=false;
+  get issuedSerial(){return this.serial;}
   begin(socket:object){this.close();this.socket=socket;}
   close(){this.epoch++;this.socket=null;this.pending=null;this.dirty=false;}
   end(socket:object):boolean{if(socket!==this.socket)return false;this.close();return true;}

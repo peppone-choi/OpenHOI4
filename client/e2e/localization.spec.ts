@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { encode, decode } from '@msgpack/msgpack';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
-import type { ClientMessage } from '../src/proto/protocol';
+import type { ClientMessage, ServerMessage } from '../src/proto/protocol';
 const evidence = process.env.OH_E2E_EVIDENCE ?? '../docs/worklog/evidence/WP-12';
 mkdirSync(evidence, { recursive: true });
 
@@ -55,16 +55,34 @@ test('REQ-LOC-01 REQ-LOC-02 actual Rust executable ko/en switch and local CJK fo
   writeFileSync(`${evidence}/${info.project.name}-font.json`, JSON.stringify({ project: info.project.name, browser: browser.version(), viewport: { width: 1280, height: 720 }, server: 'Rust embedded executable, no Vite', locale: 'ko then en; paused authoritative time', font, requests, mime: response.headers()['content-type'], bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex') }, null, 2));
 });
 
-test('REQ-LOC-01 actual server Notice and CommandResult failure translate on language switch', async ({ page }) => {
+test('REQ-LOC-01 correlated actual server CommandResult failures translate on language switch', async ({ page }) => {
+  let injected = false;
+  let unissuedAcknowledged = false;
+  page.on('websocket', socket => socket.on('framereceived', event => {
+    if (!(event.payload instanceof Buffer)) return;
+    const message = decode(event.payload) as ServerMessage;
+    if (message.type === 'CommandResult' && message.sequence === '99' && message.accepted) unissuedAcknowledged = true;
+  }));
   await page.routeWebSocket('**/ws', route => {
     const server = route.connectToServer();
     route.onMessage(data => {
-      server.send(data);
       const message = decode(data as Buffer) as ClientMessage;
-      if (message.type === 'Join') server.send(Buffer.from(encode({ type: 'Command', sequence: '99', command: { type: 'SetSpeed', speed: 9 } } satisfies ClientMessage)));
+      if (!injected && message.type === 'Command' && message.command.type === 'SetSpeed') {
+        injected = true;
+        // Keep the UI-issued sequence; only inject the invalid payload sent to Rust.
+        server.send(Buffer.from(encode({ ...message, command: { type: 'SetSpeed', speed: 9 } } satisfies ClientMessage)));
+        // A native unissued ACK must not clear that correlated failure. This also
+        // raises the server watermark so the next actual UI command is rejected.
+        server.send(Buffer.from(encode({ type: 'Command', sequence: '99', command: { type: 'Pause', paused: true } } satisfies ClientMessage)));
+        return;
+      }
+      server.send(data);
     });
   });
   await page.goto('/');
+  await expect(page.getByTestId('connection')).toHaveText('Connected');
+  await page.getByTestId('speed-3').click();
+  await expect.poll(() => unissuedAcknowledged).toBe(true);
   await expect(page.getByRole('alert')).toHaveText('Speed must be from 1 to 5');
   await page.getByRole('combobox').selectOption('ko');
   await expect(page.getByRole('alert')).toHaveText('속도는 1~5 단계입니다');
