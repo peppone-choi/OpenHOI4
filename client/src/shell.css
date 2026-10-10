@@ -91,6 +91,10 @@ main:has(.world-layout) > section dd { font-size: 18px; margin-top: 2px; }
 .military-panel dd, .military-panel code, .military-panel li { overflow-wrap: anywhere; }
 .military-panel details { margin-block: 12px; }
 .military-panel[data-status=stale] { border: 1px solid var(--ui-focus); }
+.military-qty-ledger { min-width: 0; margin-block: 16px; }
+.military-qty-ledger summary { cursor: pointer; padding-block: 8px; overflow-wrap: anywhere; }
+.military-ledger-tooltip { border-inline-start: 2px solid var(--ui-border); padding-inline: 12px; }
+.military-qty-ledger[data-status=stale] { border: 1px solid var(--ui-focus); padding: 8px; }
 .economy-table { overflow-x: auto; max-width: 100%; }
 .economy-table table { border-collapse: collapse; width: 100%; margin-block: 12px; }
 .economy-table th, .economy-table td { white-space: nowrap; padding: 8px 12px; text-align: start; border-bottom: 1px solid var(--ui-border); }

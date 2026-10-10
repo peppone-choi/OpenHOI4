@@ -35,7 +35,8 @@ async fn run(args: Vec<String>) -> Result<(), String> {
     let host = match prepared {
         Some(host) => host,
         None => oh_server::Host::load(&options.pack_root, stopped)?,
-    };
+    }
+    .with_military_ledger_budget(options.military_ledger_budget_bytes)?;
     let url = format!("http://127.0.0.1:{}/", options.port);
     println!(
         "OpenHOI4: {url}\nPack: {} ({}) from {}\nOpen this address in a browser. Ctrl+C to shut down. --help for usage.",

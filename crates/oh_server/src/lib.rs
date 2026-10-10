@@ -1,5 +1,6 @@
 //! Local authoritative host. All I/O and clocks stay here, never in oh_sim.
 mod map;
+mod military_ledger;
 mod session;
 use axum::{
     Router,
@@ -23,7 +24,7 @@ use tokio::sync::{oneshot, watch};
 mod embedded {
     include!(concat!(env!("OUT_DIR"), "/assets.rs"));
 }
-pub const USAGE: &str = "OpenHOI4 local server\nUsage: oh_server [--open] [--port <1..65535>] [--pack-root <directory>] [--scenario <national-ID>] [--load-save <file>] [--force]\nDefault: http://127.0.0.1:8080/ (loopback only)\nDefault pack-root: data/packs (M1 testland scenario m1); explicit data/packs/examples/m0 preserves M0\nBuild first: npm --prefix client ci; npm --prefix client run build; cargo build -p oh_server\nThe executable serves the built client; no Node/Vite server is needed to play.\n--open opens the address in your default browser. Ctrl+C shuts down normally.\n--help prints this help.";
+pub const USAGE: &str = "OpenHOI4 local server\nUsage: oh_server [--open] [--port <1..65535>] [--pack-root <directory>] [--scenario <national-ID>] [--load-save <file>] [--force] [--military-ledger-budget-bytes <bytes>]\nDefault: http://127.0.0.1:8080/ (loopback only)\nDefault pack-root: data/packs (M1 testland scenario m1); explicit data/packs/examples/m0 preserves M0\nBuild first: npm --prefix client ci; npm --prefix client run build; cargo build -p oh_server\nThe executable serves the built client; no Node/Vite server is needed to play.\n--open opens the address in your default browser. Ctrl+C shuts down normally.\n--military-ledger-budget-bytes limits only the opt-in normal-template ledger response.\n--help prints this help.";
 #[derive(Debug)]
 pub struct Options {
     pub port: u16,
@@ -32,6 +33,7 @@ pub struct Options {
     pub load_save: Option<PathBuf>,
     pub scenario: Option<String>,
     pub force: bool,
+    pub military_ledger_budget_bytes: Option<usize>,
 }
 impl Options {
     pub fn parse(args: &[String]) -> Result<Self, String> {
@@ -42,6 +44,7 @@ impl Options {
             load_save: None,
             scenario: None,
             force: false,
+            military_ledger_budget_bytes: None,
         };
         let mut seen = std::collections::BTreeSet::new();
         let mut i = 0;
@@ -53,13 +56,25 @@ impl Options {
             match key {
                 "--open" => options.open = true,
                 "--force" => options.force = true,
-                "--port" | "--pack-root" | "--load-save" | "--scenario" => {
+                "--port"
+                | "--pack-root"
+                | "--load-save"
+                | "--scenario"
+                | "--military-ledger-budget-bytes" => {
                     i += 1;
                     let value = args
                         .get(i)
                         .filter(|v| !v.starts_with("--"))
                         .ok_or_else(|| format!("missing value for {key}"))?;
-                    if key == "--port" {
+                    if key == "--military-ledger-budget-bytes" {
+                        let budget = value
+                            .parse::<usize>()
+                            .ok()
+                            .filter(|n| n.to_string() == *value)
+                            .ok_or("invalid military ledger budget")?;
+                        military_ledger::validate_budget(budget)?;
+                        options.military_ledger_budget_bytes = Some(budget);
+                    } else if key == "--port" {
                         options.port = value
                             .parse()
                             .ok()
@@ -98,6 +113,7 @@ pub struct Host {
     delta_ms: u64,
     capacity: usize,
     max_message: usize,
+    military_ledger_budget_bytes: usize,
     handshake_ms: u64,
     default_seed: u64,
     shutdown: watch::Receiver<bool>,
@@ -111,6 +127,14 @@ fn positive(defines: &oh_data::Defines, key: &str) -> Result<u64, String> {
     }
 }
 impl Host {
+    /// Transport-only limit. This never changes definitions or pack hashes.
+    pub fn with_military_ledger_budget(mut self, budget: Option<usize>) -> Result<Self, String> {
+        if let Some(budget) = budget {
+            military_ledger::validate_budget(budget)?;
+            self.military_ledger_budget_bytes = budget;
+        }
+        Ok(self)
+    }
     pub fn load_with_save(
         root: &Path,
         shutdown: watch::Receiver<bool>,
@@ -323,6 +347,7 @@ impl Host {
             delta_ms,
             capacity,
             max_message,
+            military_ledger_budget_bytes: max_message.max(military_ledger::minimum_budget()),
             handshake_ms,
             default_seed,
             shutdown,
@@ -606,6 +631,32 @@ async fn connection(mut socket: WebSocket, mut host: Host) {
                         }
                     }
                     ClientMessage::Query { request, kind } => {
+                        if kind == military_ledger::KIND || kind.starts_with(military_ledger::PREFIX) {
+                            if !military_ledger::valid_request(&request) {
+                                // Never echo an unbounded malformed request into this bounded channel.
+                                if !military_ledger::send(&mut socket, ServerMessage::Notice { key:"invalid-message".into() }, "", host.military_ledger_budget_bytes).await { break; }
+                                continue;
+                            }
+                            if kind == military_ledger::KIND {
+                                let supported = host.world.as_ref().is_some_and(|w| w.defs().military().is_some());
+                                let message = ServerMessage::MilitaryNormalLedgerCapabilityResult { request:request.clone(), supported, reason_key:if supported {None} else {Some("unsupported-query".into())} };
+                                if !military_ledger::send(&mut socket, message, &request, host.military_ledger_budget_bytes).await { break; }
+                                continue;
+                            }
+                            let template = kind.strip_prefix(military_ledger::PREFIX).unwrap();
+                            let result = if template.len() > 64 || !oh_data::valid_id(template) {
+                                Err("invalid-template")
+                            } else if let Some(session) = active.as_ref() {
+                                let (reply, received) = oneshot::channel();
+                                if session.commands.try_send(session::Request::MilitaryNormalLedger { template:template.into(), reply }).is_ok() {
+                                    tokio::select! { value=received => value.unwrap_or(Err("session-closed")), _=host.shutdown.changed()=>break }
+                                } else { Err("session-closed") }
+                            } else { Err("not-joined") };
+                            let (ledger, reason_key) = match result { Ok(v)=>(Some(v),None), Err(reason)=>(None,Some(reason.into())) };
+                            let message = ServerMessage::MilitaryNormalLedgerResult { request:request.clone(), supported:ledger.is_some(), reason_key, ledger };
+                            if !military_ledger::send(&mut socket, message, &request, host.military_ledger_budget_bytes).await { break; }
+                            continue;
+                        }
                         if kind=="military" && host.world.as_ref().is_some_and(|w|w.defs().military().is_some()){
                             let mut reason=Some("not-joined");let mut military=None;
                             if let Some(session)=active.as_ref(){let(reply,received)=oneshot::channel();if session.commands.try_send(session::Request::Military{reply}).is_ok(){military=tokio::select!{value=received=>value.ok().flatten(),_=host.shutdown.changed()=>break};reason=if military.is_some(){None}else{Some("unsupported-query")};}else{reason=Some("session-closed");}}

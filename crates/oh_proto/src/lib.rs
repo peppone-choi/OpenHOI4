@@ -1,9 +1,11 @@
 //! M0 MessagePack contract. Rust is the sole protocol type source.
 mod economy;
 mod military;
+mod military_ledger;
 mod production;
 pub use economy::*;
 pub use military::*;
+pub use military_ledger::*;
 pub use production::*;
 use serde::{Deserialize, Serialize};
 use ts_rs::TS;
@@ -185,6 +187,17 @@ pub enum ServerMessage {
         reason_key: Option<String>,
         military: Option<MilitaryView>,
     },
+    MilitaryNormalLedgerCapabilityResult {
+        request: String,
+        supported: bool,
+        reason_key: Option<String>,
+    },
+    MilitaryNormalLedgerResult {
+        request: String,
+        supported: bool,
+        reason_key: Option<String>,
+        ledger: Option<MilitaryNormalLedgerView>,
+    },
     ProductionResult {
         request: String,
         supported: bool,
@@ -242,6 +255,7 @@ pub fn typescript() -> String {
         .into_iter()
         .chain(production::declarations())
         .chain(military::declarations())
+        .chain(military_ledger::declarations())
     {
         out.push_str("export ");
         out.push_str(&declaration);

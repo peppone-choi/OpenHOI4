@@ -25,6 +25,36 @@ const fixed = (bits: 16 | 32): Guard<P.FixedValue> => {
   };
 };
 const qty = fixed(16), fx = fixed(32);
+export const normalQtyFields=['strength','soft_fire','hard_fire','defense','breakthrough','frontage','supply_use'] as const;
+const boundedId:Guard<string>=(v):v is string=>id(v)&&v.length<=64;
+const role:Guard<string>=(v):v is string=>v==='combat'||v==='support';
+const entry=exact<P.MilitaryNormalLedgerEntry>({id:text,role,position:number(11),component:boundedId,value:qty,accumulated:qty});
+const fieldShape=exact<P.MilitaryNormalLedgerField>({field:text,base:qty,value:qty,entries:array(entry)});
+const ledgerShape=exact<P.MilitaryNormalLedgerView>({definitions_hash:hash,state_hash:hash,tick:u64,template:boundedId,fields:array(fieldShape)});
+export const isMilitaryNormalLedgerView:Guard<P.MilitaryNormalLedgerView>=(v):v is P.MilitaryNormalLedgerView=>{
+  if(!ledgerShape(v)||v.fields.length!==normalQtyFields.length)return false;
+  let reference:string[]|null=null;
+  return v.fields.every((field,i)=>{
+    if(field.field!==normalQtyFields[i]||field.base.bits!=='0'||field.entries.length===0||field.entries.length>16)return false;
+    let combat=0,support=0,inSupport=false,previousCombat='',previousSupport='';
+    const ids=new Set<string>();
+    for(const e of field.entries){
+      if(e.role==='support')inSupport=true;
+      else if(inSupport)return false;
+      const position=e.role==='combat'?combat++:support++;
+      if(e.position!==position||combat>12||support>4||e.id!==`${field.field}:${e.role}:${e.position}`||ids.has(e.id))return false;
+      ids.add(e.id);
+      const previous=e.role==='combat'?previousCombat:previousSupport;
+      if(e.component<previous)return false;
+      if(e.role==='combat')previousCombat=e.component;else previousSupport=e.component;
+    }
+    if(!combat||field.entries.at(-1)!.accumulated.bits!==field.value.bits)return false;
+    const refs=field.entries.map(e=>`${e.role}:${e.position}:${e.component}`);
+    if(reference&&!refs.every((r,j)=>r===reference![j]))return false;
+    if(reference&&refs.length!==reference.length)return false;
+    reference=refs;return true;
+  });
+};
 const commands = {
   Train: exact<Extract<P.MilitaryCommand, {type: 'Train'}>>({type: literal('Train'), template: id}),
   Cancel: exact<Extract<P.MilitaryCommand, {type: 'Cancel'}>>({type: literal('Cancel'), job: u64}),

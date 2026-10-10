@@ -1,5 +1,42 @@
 # OpenHOI4 WIP 인수인계
 
+## PR16 실제 리뷰 HOLD 필수 수정 (2026-10-10)
+
+원 c0b4468의 actual Claude source review는 required1·HOLD였다. 작성자는
+V→null→원장 응답→V에서 recovery request가 null인 unit RED와, 원 embedded
+client의 served App에서 base 없는 ledger query가 추가되는 browser RED를
+직접 재현했다. MilitaryLedgerResponses의 base 복구 generation·base 없는
+data request/response 보류만 수정하며 App/서버/wire는 유지한다. focused
+unit9개·전체 client278개·production build·baseline/current 재빌드와 실제
+Chromium12개가 통과했다. 새 case는 injected authority loss이며 native
+backend failure로 확대하지 않는다. 소유 host4개 exit0·잔존 PID0이고 guard
+중단이 없었다. 정확한 새 SHA의 실제 독립 delta 재검토·새 CI는 대기다.
+아래 원 후보 검사 이력은 보존한다.
+
+## WP-22 정상 편제 Qty 사용자 기능 후보 (2026-10-10)
+
+producer PR15는 exact source `bbebbe111dcea346234f1249ed9d391fac095090`의
+실제 독립 source review required0과51개 성공 checkrun 뒤 정상 병합됐다.
+merge main은 `f94f2c0376621f5f507fff0a4bfe562e4cbc418b`이며 같은 main CI7개도
+성공했다. 기존 producer 작업트리와 이전 이력은 보존한다.
+
+그 main에서 시작한 `wp/22-normal-ledger-ui`는7개 additive Qty의
+실제 서버 조회→versioned 응답→client 검증→ko/en 툴팁을 구현한다.
+legacy 군사 응답을 유지하고 capability probe 후 편제 하나만 요청한다.
+전송 예산은 팩을 바꾸지 않는 호스트 옵션이며, A→B→A의 선택generation과
+socket/epoch/serial을 대조한다. 선언된 normal supply_use는 실제 사단
+소비로 표시하지 않는다. [계약](docs/adr/ADR-2203-normal-qty-ledger-channel.md),
+[후보 작업 로그](docs/worklog/WP-22-normal-qty-ledger-ui.md),
+[직접 재현 절차](tests/repro/WP-22-normal-qty-ledger/README.md)를 따른다.
+
+작성자 protocol9·server23·client276·현재 팩 V7 저장/복원2·실제 Chromium11
+검사가 통과했다. 복원 tick144/state hash와 served JS bytes를 확인했고,
+actual baseline 서버+새 client fallback을 주입 검사와 구분했다.
+마지막 수명 표시 보완 뒤 client276개와 실제 최대 fixture budget을 포함한
+server23개를 다시 통과했고 fmt·수정 뒤 clippy all-targets도 exit0이다.
+독립 QA·실제 Claude review·후속 후보 CI/병합/main CI는 대기이며,
+아래 과거 후보 상태는 당시 이력으로 유지한다. 전체 WP-22/M2 완료가 아니다.
+
 ## WP-22 읽기 전용 군사 표시 후보
 
 최종 통합 main `ffc166d5fc8c0fa4216119170bc076dea63c44cc`에서 PR9/10/11/12의
