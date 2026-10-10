@@ -80,6 +80,27 @@ test('real CONNECTING upgrade holds revoke command authority until fresh joined 
     gate.release();const train=page.getByRole('button',{name:'Start training',exact:true});await expect(train).toBeEnabled();await train.click();await expect(page.locator('[data-military-job="0"]')).toContainText('Pending');
   }finally{await gate.close();}
 });
+test('real disconnected proxy: nation filters preserve stale data and never issue commands',async({page,hosts},info)=>{
+  const gate=await upgradeGate(hosts.restored),wire=observe(page);let closed=false;
+  try{
+    await player(page,gate.url);const panel=page.getByTestId('military-panel');
+    await expect(panel.locator('[data-military-job]')).toHaveCount(6);
+    await gate.close();closed=true;await expect(panel).toHaveAttribute('data-status','stale');
+    const queries=wire.sent.filter(m=>m.type==='Query'&&m.kind==='military').length;
+    const filter=panel.locator('select');await filter.selectOption('2');
+    await expect(panel).toHaveAttribute('data-status','stale');await expect(filter).toHaveValue('2');
+    await expect(panel.locator('[data-military-job]')).toHaveCount(1);await expect(panel.locator('[data-military-job="1"]')).toContainText('Training');
+    await expect(panel.getByRole('button',{name:'Start training',exact:true})).toBeDisabled();
+    await expect(panel.getByRole('button',{name:'Cancel training',exact:true})).toBeDisabled();
+    await filter.selectOption('1');await expect(panel).toHaveAttribute('data-status','stale');await expect(filter).toHaveValue('1');
+    await expect(panel.locator('[data-military-job="0"]')).toContainText('Training');
+    await expect(panel.getByRole('button',{name:'Start training',exact:true})).toBeDisabled();
+    await expect(panel.getByRole('button',{name:'Cancel training',exact:true})).toBeDisabled();
+    expect(wire.sent.filter(m=>m.type==='Query'&&m.kind==='military')).toHaveLength(queries);
+    expect(wire.sent.some(m=>m.type==='MilitaryCommand')).toBe(false);
+    writeFileSync(info.outputPath('native-disconnected-filter-wire.json'),JSON.stringify({wire,queries,scope:'real localhost proxy shutdown; no response injection'},null,2));
+  }finally{if(!closed)await gate.close();}
+});
 async function bridge(page:Page){
   const heldBases:Array<{send:(frame:Buffer)=>void;frame:Buffer}>=[],heldResults:Array<{send:(frame:Buffer)=>void;frame:Buffer}>=[];let hold=false,disconnect=()=>{},inject=(_m:ServerMessage)=>{};
   await page.routeWebSocket('**/ws',route=>{const server=route.connectToServer();disconnect=()=>server.close({code:1000,reason:'test-close'});inject=m=>route.send(Buffer.from(encode(m)));

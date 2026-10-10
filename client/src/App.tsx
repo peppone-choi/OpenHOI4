@@ -68,8 +68,10 @@ export function App() {
   const selectMilitaryNation=(nation:number|null)=>{
     setMilitaryNation(nation);const client=socket.current;
     militaryCommands.current.close();setTrainingFeedback(emptyTrainingFeedback());
-    setMilitary({view:null,status:'loading',reasonKey:null});
-    if(client&&activeConnection.current===client){militaryCommands.current.begin(client,controlledNation,militaryResponses.current.issuedSerial);queryMilitary(client);}
+    if(client&&activeConnection.current===client){
+      setMilitary({view:null,status:'loading',reasonKey:null});
+      militaryCommands.current.begin(client,controlledNation,militaryResponses.current.issuedSerial);queryMilitary(client);
+    }
     militaryLedgerResponses.current.close();
     if(client&&activeConnection.current===client){militaryLedgerResponses.current.begin(client);militaryLedgerResponses.current.setBase(military.view);}
     setMilitaryLedger(emptyMilitaryLedger());

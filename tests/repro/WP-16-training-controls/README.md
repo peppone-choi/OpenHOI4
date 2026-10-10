@@ -44,12 +44,13 @@ PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/chromium \
 ```
 
 When a resource guard stops a full run, retain that stopped result and run the same
-assertions as three sequential groups, with a fresh browser and owned hosts per group:
+assertions as four sequential groups (3+4+2+1 cases), with a fresh browser and owned hosts per group:
 
 ```sh
 node_modules/.bin/playwright test -c playwright.training-controls.config.ts --grep 'native buttons|native restored|spectator'
 node_modules/.bin/playwright test -c playwright.training-controls.config.ts --grep 'real CONNECTING|injected timing|injected close|injected missing'
 node_modules/.bin/playwright test -c playwright.training-controls.config.ts --grep 'native time controls|actual pre-ledger'
+node_modules/.bin/playwright test -c playwright.training-controls.config.ts --grep 'real disconnected proxy'
 ```
 
 Keep the environment variables above for each group. No assertion or worker limit
@@ -70,7 +71,7 @@ stops both with exit0, preserving a pid ledger. Confirm each PID is absent.
 | Spectator/foreign/terminal authority | UI restrictions and authority unit checks |
 | send=true and shared bounded correlation | Unit failed-send, monotonic sequence,64 issued bound and unknown/duplicate/socket results |
 | ACK requires a later issued query | Unit barrier and injected actual-frame timing with duplicate clicks and unknown ACK |
-| CONNECTING and reconnect | Real HTTP upgrade hold; labeled close injection then manual fresh local session |
+| CONNECTING, disconnected filter and reconnect | Real HTTP upgrade hold; actual proxy shutdown retains stale rows/filter and disables commands; labeled close injection then manual fresh local session |
 | Missing/unsupported | Labeled replacement response plus fresh correlated native recovery |
 | Actual old client/current server | Legacy source/dist hashes, exact served old JS bytes and native military frames |
 

@@ -1,5 +1,17 @@
 # OpenHOI4 WIP 인수인계
 
+## PR18 독립 리뷰 P2 수정 후보 (2026-10-10)
+
+98d755e의 실제 source review는 disconnected filter 전환이 stale 정보를
+지우고 loading에 남기는 필수 P2 하나로 HOLD였다. 현지화 delta 신규필수는0.
+실제 localhost proxy 종료 후 필터 변경 UI RED를 재현했고, App의 loading
+초기화만 활성 연결 조건으로 이동한다. 마지막 view·stale·선택창을 보존하며
+명령 권위 철회와 조회 correlation은 유지한다. 수정 뒤 client282·build·
+실제 disconnected filter UI1개와 native UI3개가 통과했다. 기존98d755e의
+CI13개/51개 checkrun 모두 success와 source HOLD를 구분한다. 나머지 재검사·
+실제 재리뷰·새 CI는
+별도 게이트이며 기존 CI 결과/작업트리는 보존한다.
+
 ## issue17 훈련 시작·취소 UI 후보 (2026-10-10)
 
 PR16은 main9cbc93f로 정상 병합됐고 같은 main CI7개/26개 checkrun이 성공했다.

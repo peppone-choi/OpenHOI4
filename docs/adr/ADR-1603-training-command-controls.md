@@ -21,7 +21,9 @@ send=true 뒤에만 sequence와 발행 원장에 접수한다. 원장은 최대6
 군사 명령은 scope마다 pending1개다. 실제 Join 국가와 현재 검증된 군사 view가
 필요하다. foreign 표시 필터·foreign job·종료 job·missing/unsupported/stale
 권위는 명령을 허용하지 않는다. close/filter/player/socket 전환은 이전 명령
-권위를 비우며 최신 scope의 검증된 조회를 다시 받아야 한다. filter 전환 시
+권위를 비우며 최신 scope의 검증된 조회를 다시 받아야 한다. disconnected
+filter 전환은 마지막 view·stale 표시를 보존한다. 명령 권위는 계속 없으며
+새 조회를 발행할 연결이 없는데 loading으로 바꾸지 않는다. filter 전환 시
 기존 query pending slot은 유지하고 전환 시점 serial보다 새로운 조회만 명령
 권위를 복구한다. 이전 명령을
 자동 재전송하지 않는다.

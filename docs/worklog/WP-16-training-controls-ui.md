@@ -69,6 +69,26 @@ GREEN(exit0, guard-stop false)과 TypeScript typecheck(exit0)를 확인했다.
 새 SHA의 독립 delta review와
 fresh exact-head CI는 필요하며 기존 실패 run을 재실행으로 숨기지 않는다.
 
+## 독립 리뷰 P2: disconnected 필터의 stale 정보 보존
+
+후보98d755e의 실제 독립 source review는 필수 P2 하나로 HOLD였다. ready→
+disconnect 뒤 filter 전환이 view를 지우고, query를 발행할 연결이 없는데
+loading으로 남기는 회귀다. 현지화 delta의 신규 필수 지적은0이었다.
+
+작성자는 실제 localhost proxy 종료 뒤 국가2를 선택하는 새 UI case로
+stale 대신 loading이 되는 동일 assertion RED(exit1, guard-stop false)를
+재현했다. App의 loading/view 초기화만 활성 연결 조건 안으로 옮긴다.
+disconnected filter 변경은 마지막 view·stale 표시와 선택창을 보존하고,
+MilitaryCommands.close의 권위 철회·query serial floor·one-pending/dirty
+조회는 유지한다. 외국/본국 filter 양쪽에서 Train/Cancel disabled와 추가
+military query0·명령0을 검사한다. 응답 frame을 대체하지 않는다.
+
+수정 뒤 client282개·production/embedded build, 새 disconnected filter UI1개
+GREEN과 native UI3개가 exit0다. 나머지 연결 수명4개·Ready/legacy2개와
+native12세션의 재검사는 진행 중이며, 새 exact SHA의 실제 delta 리뷰·CI는
+별도다. 기존98d755e CI는13개 workflow·51개 checkrun 전부 success로 종료했고
+source review HOLD와 구분한다.
+
 ## 남은 범위
 
 실제 게임 QA·독립 runtime 판정·전체 WP-16/M2는 미완료다. 이 candidate는
