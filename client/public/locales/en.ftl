@@ -376,3 +376,13 @@ ledger-too-large = Template contributions exceed this host's response limit.
 unknown-template = This template is not available.
 invalid-template = The template identifier is invalid.
 ledger-aggregation-failed = The server could not aggregate template contributions.
+
+# Authoritative training actions
+military-training-start = Start training
+military-training-cancel = Cancel training
+military-training-spectator = Start as a nation using the production panel to manage training.
+military-training-idle = Training controls ready
+military-training-pending = Waiting for the training command result
+military-training-refreshing = Refreshing authoritative training state
+military-training-success = Training command completed
+military-training-rejected = Training command rejected

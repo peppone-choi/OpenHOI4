@@ -1,12 +1,22 @@
 import {createServer,request as httpRequest,type IncomingMessage} from 'node:http';
 import {connect,type Socket} from 'node:net';
+import {existsSync,readFileSync,statSync} from 'node:fs';
+import {resolve,extname} from 'node:path';
 
 /** Holds the real HTTP upgrade before OPEN; forwards all actual Rust frames. */
-export async function upgradeGate(upstream:string) {
+export async function upgradeGate(upstream:string,staticRoot?:string) {
   const target=new URL(upstream),sockets=new Set<Socket>();
   let hold=false;
   const pending:Array<()=>void>=[];
   const server=createServer((req,res)=>{
+    if(staticRoot){
+      const root=resolve(staticRoot),path=new URL(req.url??'/',target).pathname;
+      const file=resolve(root,path==='/'?'index.html':path.slice(1));
+      if(file.startsWith(root+'/')&&existsSync(file)&&statSync(file).isFile()){
+        const types:Record<string,string>={'.html':'text/html','.js':'application/javascript','.css':'text/css','.json':'application/json','.svg':'image/svg+xml','.png':'image/png','.ftl':'text/plain','.ttf':'font/ttf'};
+        res.writeHead(200,{'Content-Type':types[extname(file)]??'application/octet-stream'});res.end(readFileSync(file));return;
+      }
+    }
     const forwarded=httpRequest(new URL(req.url??'/',target),{method:req.method,headers:req.headers},reply=>{
       res.writeHead(reply.statusCode??502,reply.headers);reply.pipe(res);
     });

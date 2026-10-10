@@ -1,5 +1,19 @@
 # OpenHOI4 WIP 인수인계
 
+## issue17 훈련 시작·취소 UI 후보 (2026-10-10)
+
+PR16은 main9cbc93f로 정상 병합됐고 같은 main CI7개/26개 checkrun이 성공했다.
+그 기준의 wp/16-training-controls-ui는 실제 Claude 계획을 받은 뒤 군사
+패널의 기존 Train/Cancel을 Join 국가·현재 권위·공용 sequence와 연결한다.
+실제 버튼 부재 UI RED 뒤 native Pending 시작/취소 GREEN을 확인했다.
+마지막 filter 수명 보완 뒤 client282개·production build가 통과했다. 직전
+후보의 전용 UI9개·native12세션·실제 legacy client 호환 대조는 통과했다.
+마지막 embedded bundle은90% memory guard 중단 뒤 단일 codegen 빌드를
+통과했고 같은 native/UI 재검사는 진행 중이다.
+독립 리뷰·후보 CI·병합은
+대기다. [작업 로그](docs/worklog/WP-16-training-controls-ui.md)를 따른다.
+아래 PR16 pending prose는 후보 시점의 이력이며 전체 WP16/M2 완료가 아니다.
+
 ## PR16 실제 리뷰 HOLD 필수 수정 (2026-10-10)
 
 원 c0b4468의 actual Claude source review는 required1·HOLD였다. 작성자는

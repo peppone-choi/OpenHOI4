@@ -4,6 +4,8 @@ import type {MilitaryDisplay} from '../militaryResponses';
 import {useLocalization} from '../i18n';
 import {MilitaryQtyLedger} from './MilitaryQtyLedger';
 import type {MilitaryLedgerDisplay} from '../militaryLedgerResponses';
+import type {TrainingCommand,TrainingFeedback} from '../militaryCommands';
+type TrainingControls={nation:number|null;feedback:TrainingFeedback;can:(command:TrainingCommand)=>boolean;send:(command:TrainingCommand)=>void};
 
 const normalFields=['strength','soft_fire','hard_fire','defense','breakthrough','frontage','supply_use','organization','armor','piercing','speed_kmh'] as const;
 function Fixed({value}:{value:FixedValue}){
@@ -32,7 +34,7 @@ function Records({name,children,empty}:{name:string;children:ReactNode;empty:boo
   const {t}=useLocalization();
   return <section data-testid={`military-${name}`}><h3>{t(`military-${name}`)}</h3>{empty?<p>{t('military-empty')}</p>:<div className="military-records">{children}</div>}</section>;
 }
-export function MilitaryPanel({display,world,nationId,onNationSelect,onClose,ledger,onLedgerSelect}:{display:MilitaryDisplay;world:WorldView|null;nationId:number|null;onNationSelect:(nation:number|null)=>void;onClose:()=>void;ledger?:MilitaryLedgerDisplay;onLedgerSelect?:(template:string|null)=>void}){
+export function MilitaryPanel({display,world,nationId,onNationSelect,onClose,ledger,onLedgerSelect,controls}:{display:MilitaryDisplay;world:WorldView|null;nationId:number|null;onNationSelect:(nation:number|null)=>void;onClose:()=>void;ledger?:MilitaryLedgerDisplay;onLedgerSelect?:(template:string|null)=>void;controls?:TrainingControls}){
   const {t}=useLocalization(),view=display.view;
   const belongs=(row:{nation:number})=>nationId===null||row.nation===nationId;
   // A display filter only. It never changes Join, ownership or query authority.
@@ -43,6 +45,10 @@ export function MilitaryPanel({display,world,nationId,onNationSelect,onClose,led
     <h2>{t('military-title')}</h2><button onClick={onClose}>{t('military-close')}</button>
     <p role="status">{t(`military-${display.status}`)}</p>
     {display.reasonKey&&<p>{t(display.reasonKey)}</p>}
+    {controls&&<div data-testid="military-command-feedback" data-status={controls.feedback.status}>
+      <p role="status">{t(controls.nation===null?'military-training-spectator':`military-training-${controls.feedback.status}`)}</p>
+      {controls.feedback.reasonKey&&<p>{t(controls.feedback.reasonKey)}</p>}
+    </div>}
     {view&&<>
       <label>{t('military-nation')}<select aria-label={t('military-nation')} value={nationId??''} onChange={event=>onNationSelect(event.target.value===''?null:Number(event.target.value))}>
         <option value="">{t('military-all-nations')}</option>
@@ -51,6 +57,7 @@ export function MilitaryPanel({display,world,nationId,onNationSelect,onClose,led
       </select></label>
       <Records name="templates" empty={!view.templates.length}>{view.templates.map(row=><article key={row.template} data-military-template={row.template}>
         <Fields rows={[[ 'template',row.template],['training-days',row.training_days]]}/><Normal normal={row.normal}/>
+        {controls&&<button disabled={!controls.can({type:'Train',template:row.template})} onClick={()=>controls.send({type:'Train',template:row.template})}>{t('military-training-start')}</button>}
         {onLedgerSelect&&<button aria-expanded={ledger?.template===row.template} onClick={()=>onLedgerSelect(ledger?.template===row.template?null:row.template)}>{t('military-ledger-title')}</button>}
         {ledger?.template===row.template&&<MilitaryQtyLedger display={ledger}/>}
       </article>)}</Records>
@@ -62,6 +69,7 @@ export function MilitaryPanel({display,world,nationId,onNationSelect,onClose,led
       </article>)}</Records>
       <Records name="jobs" empty={!jobs.length}>{jobs.map(row=><article key={row.id} data-military-job={row.id}>
         <Fields rows={[[ 'id',row.id],['nation',name(row.nation)],['template',row.template],['job-status',t(`military-status-${row.status}`)],['training-days',row.training_days],['progress-days',row.progress_days],['start-tick',row.start_tick],['reserved-manpower',row.reserved_manpower],['equipment',<Equipment items={row.equipment}/>],['division',row.division]]}/><Normal normal={row.normal}/>
+        {controls&&['Pending','Training','Ready'].includes(row.status)&&<button disabled={!controls.can({type:'Cancel',job:row.id})} onClick={()=>controls.send({type:'Cancel',job:row.id})}>{t('military-training-cancel')}</button>}
       </article>)}</Records>
       <Records name="background" empty={!background.length}>{background.map(row=><article key={row.nation}><Fields rows={[[ 'nation',name(row.nation)],['committed',row.committed],['reserved-manpower',row.reserved]]}/></article>)}</Records>
       <details><summary>{t('military-authority')}</summary>
