@@ -13,9 +13,49 @@ pub struct Normal {
     /// Raw Qty numerator remainder, denominator manpower. Informational, not a carry state.
     pub weighted_remainders: BTreeMap<String, i64>,
 }
+
+/// Diagnostic contributions to the seven additive normal-template Qty fields.
+/// This is deliberately not serializable and is never part of a stored Normal,
+/// military state, definition identity, canonical hash or save body.
+#[derive(Clone, Debug, Eq, PartialEq)]
+pub struct NormalQtyLedger {
+    pub fields: Vec<NormalQtyLedgerField>,
+}
+
+#[derive(Clone, Debug, Eq, PartialEq)]
+pub struct NormalQtyLedgerField {
+    pub field: &'static str,
+    pub base: Qty,
+    pub value: Qty,
+    pub entries: Vec<NormalQtyLedgerEntry>,
+}
+
+#[derive(Clone, Debug, Eq, PartialEq)]
+pub struct NormalQtyLedgerEntry {
+    /// Stable field/role/position identity, including repeated component uses.
+    pub id: String,
+    pub role: &'static str,
+    /// Zero-based position after the data loader's existing per-role sorting.
+    pub position: u8,
+    pub component: String,
+    pub value: Qty,
+    pub accumulated: Qty,
+}
+
 /// Quantize each declared input once; weighted numerators divide only once at the end.
 /// Empty/zero-weight composition is an undefined arithmetic result, not an editor rule.
 pub fn aggregate(definitions: &Definitions, template: &str) -> Result<Normal, String> {
+    aggregate_with_ledger(definitions, template).map(|(normal, _)| normal)
+}
+
+/// Emit contributions from the actual checked sum loop. All historical error
+/// strings and evaluation precedence remain intact; errors return no partial
+/// result. Weighted averages and minimum speed retain their existing arithmetic
+/// and do not acquire an Add/Mul modifier interpretation or a diagnostic carry.
+pub fn aggregate_with_ledger(
+    definitions: &Definitions,
+    template: &str,
+) -> Result<(Normal, NormalQtyLedger), String> {
     let template = definitions
         .templates()
         .get(template)
@@ -25,6 +65,19 @@ pub fn aggregate(definitions: &Definitions, template: &str) -> Result<Normal, St
         .iter()
         .chain(&template.support)
         .map(|id| &definitions.components()[id])
+        .collect::<Vec<_>>();
+    let occurrences = template
+        .combat
+        .iter()
+        .enumerate()
+        .map(|(position, id)| ("combat", position, id))
+        .chain(
+            template
+                .support
+                .iter()
+                .enumerate()
+                .map(|(position, id)| ("support", position, id)),
+        )
         .collect::<Vec<_>>();
     let manpower = components.iter().try_fold(0i64, |a, c| {
         a.checked_add(c.manpower).ok_or("Overflow: manpower")
@@ -37,11 +90,34 @@ pub fn aggregate(definitions: &Definitions, template: &str) -> Result<Normal, St
     if manpower == 0 {
         return Err("UndefinedArithmetic: zero personnel weight".into());
     }
-    let sum = |field: fn(&Stats) -> Qty| -> Result<Qty, String> {
-        components.iter().try_fold(Qty::ZERO, |a, c| {
-            a.checked_add(field(&c.stats))
-                .ok_or_else(|| "Overflow: Qty sum".into())
-        })
+    let mut fields = Vec::with_capacity(7);
+    let mut sum = |name: &'static str, field: fn(&Stats) -> Qty| -> Result<Qty, String> {
+        let mut entries = Vec::with_capacity(components.len());
+        let value = components
+            .iter()
+            .enumerate()
+            .try_fold(Qty::ZERO, |a, (i, c)| {
+                let value = field(&c.stats);
+                let accumulated = a.checked_add(value).ok_or("Overflow: Qty sum")?;
+                let (role, position, component) = occurrences[i];
+                entries.push(NormalQtyLedgerEntry {
+                    id: format!("{name}:{role}:{position}"),
+                    role,
+                    // Definitions enforce 12 combat / 4 support before aggregation.
+                    position: u8::try_from(position).expect("validated composition bound"),
+                    component: component.clone(),
+                    value,
+                    accumulated,
+                });
+                Ok::<Qty, String>(accumulated)
+            })?;
+        fields.push(NormalQtyLedgerField {
+            field: name,
+            base: Qty::ZERO,
+            value,
+            entries,
+        });
+        Ok(value)
     };
     let weighted = |field: fn(&Stats) -> Qty| -> Result<(Qty, i64), String> {
         let numerator = components.iter().try_fold(0i128, |a, c| {
@@ -69,15 +145,15 @@ pub fn aggregate(definitions: &Definitions, template: &str) -> Result<Normal, St
                 .ok_or("Overflow: equipment count")?;
         }
     }
-    Ok(Normal {
+    let normal = Normal {
         stats: Stats {
-            strength: sum(|s| s.strength)?,
-            soft_fire: sum(|s| s.soft_fire)?,
-            hard_fire: sum(|s| s.hard_fire)?,
-            defense: sum(|s| s.defense)?,
-            breakthrough: sum(|s| s.breakthrough)?,
-            frontage: sum(|s| s.frontage)?,
-            supply_use: sum(|s| s.supply_use)?,
+            strength: sum("strength", |s| s.strength)?,
+            soft_fire: sum("soft_fire", |s| s.soft_fire)?,
+            hard_fire: sum("hard_fire", |s| s.hard_fire)?,
+            defense: sum("defense", |s| s.defense)?,
+            breakthrough: sum("breakthrough", |s| s.breakthrough)?,
+            frontage: sum("frontage", |s| s.frontage)?,
+            supply_use: sum("supply_use", |s| s.supply_use)?,
             organization,
             armor,
             piercing,
@@ -91,5 +167,6 @@ pub fn aggregate(definitions: &Definitions, template: &str) -> Result<Normal, St
             ("piercing".into(), piercing_remainder),
         ]
         .into(),
-    })
+    };
+    Ok((normal, NormalQtyLedger { fields }))
 }
