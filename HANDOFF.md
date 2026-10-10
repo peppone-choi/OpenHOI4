@@ -1,5 +1,18 @@
 # OpenHOI4 WIP 인수인계
 
+## PR16 실제 리뷰 HOLD 필수 수정 (2026-10-10)
+
+원 c0b4468의 actual Claude source review는 required1·HOLD였다. 작성자는
+V→null→원장 응답→V에서 recovery request가 null인 unit RED와, 원 embedded
+client의 served App에서 base 없는 ledger query가 추가되는 browser RED를
+직접 재현했다. MilitaryLedgerResponses의 base 복구 generation·base 없는
+data request/response 보류만 수정하며 App/서버/wire는 유지한다. focused
+unit9개·전체 client278개·production build·baseline/current 재빌드와 실제
+Chromium12개가 통과했다. 새 case는 injected authority loss이며 native
+backend failure로 확대하지 않는다. 소유 host4개 exit0·잔존 PID0이고 guard
+중단이 없었다. 정확한 새 SHA의 실제 독립 delta 재검토·새 CI는 대기다.
+아래 원 후보 검사 이력은 보존한다.
+
 ## WP-22 정상 편제 Qty 사용자 기능 후보 (2026-10-10)
 
 producer PR15는 exact source `bbebbe111dcea346234f1249ed9d391fac095090`의

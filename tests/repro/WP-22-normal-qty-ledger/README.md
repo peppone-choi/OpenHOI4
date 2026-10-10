@@ -58,6 +58,7 @@ Original packs are never edited. One browser worker is used.
 | Actual checked Qty contributions and final normal bits | oh_proto military_normal_ledger; actual served browser native case |
 | 64-character IDs, 12/4 occurrences, duplicate IDs separated, large raw Qty | shared synthetic maximum fixture; Rust codec and client guard |
 | Read-only state and definition binding | projection state hash invariant; client base/hash/final-bits checks |
+| Base query loss and recovery | V→null→ledger reply→V unit RED/GREEN; injected authority loss in actual served App; late reply after recovery |
 | Whole MessagePack envelope budget and valid controls | server exact-byte/one-byte-short unit; actual256-byte host stays connected |
 | Malformed request cannot echo past budget | native1024-digit bad serial receives a bounded invalid-message Notice, then legacy control succeeds |
 | Legacy response unchanged | old query exact keys; actual baseline server/new client fallback |

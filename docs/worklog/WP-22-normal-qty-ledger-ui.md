@@ -1,5 +1,34 @@
 # WP-22 정상 편제 Qty 기여 조회·툴팁 후보
 
+## PR16 실제 독립 리뷰 필수 수정
+
+원 후보 `c0b44687186ce79ca3fc5ce192e911f9e4f73b93`는 실제 독립 Claude
+source review에서 required1·HOLD였다. 리뷰 자체의 실행 재현은 없었다.
+V→null 이후 base 없이 발행한 원장 응답이 빈 hash의 definition-mismatch
+잠금을 만들고 null→V를 변경으로 보지 않아 복구되지 않는 결함이었다.
+
+작성자가 새 requirement test로 원 소스의 recovery request=null 실패를
+재현했고, 원 c0 embedded client의 실제 served App에서도 base가 없는
+동안 ledger query가2개 대신3개가 되는 실패를 재현했다. 둘 다 guard 중단이
+아닌 assertion RED다. App 검사는 실제 서버의 응답을 의도적으로 보류/대체한
+권위 소실 수명 검사이며 native 서버 실패로 확대하지 않는다.
+
+최소 수정은 MilitaryLedgerResponses에 한정한다. base 없는 data 요청을
+보류하고 상관 응답은 slot만 해제한 뒤 dirty 재시도를 남긴다. null→V도
+generation을 변경하며 빈 hash를 blockedHash에 넣지 않는다. App callback,
+서버·wire·게임 정책은 바꾸지 않았다. 기존 수명 tests에는 실제 Rust DTO의
+유효한 base를 제공해 새 precondition을 만족시키며 기존 assertions를 유지했다.
+
+작성자 재검사: focused unit9개·전체 client278개·production build·baseline/current
+embedded server 재빌드·실제 Chromium12개 모두 exit0이다. 새 browser case는
+V→null→원장 응답→V 뒤 새 serial로 ready가 되는 실제 served App 검사다.
+정상 native·baseline/current 새 bundle bytes·V7 복원 회귀도 유지했다. 소유
+host4개 exit0·잔존 PID0이며 guard 중단은 없었다. Chromium의 peak memory
+14748114944bytes, quota 대비 샘플 CPU50.49%였다. Rust 제품 코드는 바꾸지
+않았으므로 c0의 protocol9/server23/save2 결과는 이전 이력으로 구분한다.
+정확한 새 SHA의 실제 범위 한정 재검토와 새 CI는 대기다. 아래 c0 후보의
+통과 이력은 새 source gate로 대신 쓰지 않는다.
+
 ## 범위와 출발점
 
 producer PR15는 source `bbebbe111dcea346234f1249ed9d391fac095090`에서 실제

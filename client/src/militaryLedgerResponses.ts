@@ -23,7 +23,7 @@ export class MilitaryLedgerResponses {
     this.display={ledger:null,template,status:!template?'idle':this.capability==='no'?'unsupported':reasonKey?'unavailable':'loading',reasonKey};
   }
   setBase(base:MilitaryView|null){
-    const changed=this.base!==null&&this.base.definitions_hash!==base?.definitions_hash;
+    const changed=this.base?.definitions_hash!==base?.definitions_hash;
     this.base=base;
     if(changed){this.generation++;this.blockedHash=null;this.dirty=this.desired!==null;this.display={ledger:null,template:this.desired,status:this.desired?'loading':'idle',reasonKey:null};}
     if(this.desired&&base&&!base.templates.some(t=>t.template===this.desired))this.select(null);
@@ -32,7 +32,7 @@ export class MilitaryLedgerResponses {
   issue(socket:object,transmit:Transmit):string|null{
     if(socket!==this.socket||this.pending||!this.desired||this.capability==='no'||this.blockedHash!==null)return null;
     const probe=this.capability==='unknown';
-    if(!probe&&!this.dirty)return null;
+    if(!probe&&(!this.base||!this.dirty))return null;
     if(this.serial===18446744073709551615n)return null;
     const next=this.serial+1n,request=`military-ledger:${next}`;
     const kind=probe?'military-normal-ledger.v1':`military-normal-ledger.v1:${this.desired}`;
@@ -55,12 +55,14 @@ export class MilitaryLedgerResponses {
     }
     if(message.type!=='MilitaryNormalLedgerResult')return null;
     this.pending=null;
+    // A missing base is temporary authority loss, not a definitions mismatch.
+    if(!this.base){this.dirty=this.desired!==null;return null;}
     // A -> B -> A must not admit the first A reply.
     if(pending.generation!==this.generation||pending.template!==this.desired)return null;
     if(!message.supported)return this.display={ledger:null,template:this.desired,status:'unavailable',reasonKey:message.reason_key};
-    const ledger=message.ledger!,normal=this.base?.templates.find(t=>t.template===ledger.template)?.normal;
-    if(!this.base||ledger.definitions_hash!==this.base.definitions_hash||ledger.template!==this.desired||!normal||!ledger.fields.every((f,i)=>f.value.bits===normal[normalQtyFields[i]].bits)){
-      this.blockedHash=this.base?.definitions_hash??'';this.dirty=false;
+    const ledger=message.ledger!,normal=this.base.templates.find(t=>t.template===ledger.template)?.normal;
+    if(ledger.definitions_hash!==this.base.definitions_hash||ledger.template!==this.desired||!normal||!ledger.fields.every((f,i)=>f.value.bits===normal[normalQtyFields[i]].bits)){
+      this.blockedHash=this.base.definitions_hash;this.dirty=false;
       return this.display={ledger:null,template:this.desired,status:'unavailable',reasonKey:'military-ledger-definition-mismatch'};
     }
     return this.display={ledger,template:this.desired,status:'ready',reasonKey:null};

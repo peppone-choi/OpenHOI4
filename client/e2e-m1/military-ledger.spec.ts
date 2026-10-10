@@ -50,6 +50,8 @@ async function open(page:Page){await page.getByRole('button',{name:'Open militar
 async function select(page:Page,id='m2_small'){await page.locator(`[data-military-template="${id}"]`).getByRole('button',{name:'Normal template contributions',exact:true}).click();}
 async function intercept(page:Page,unsupported=false){
   const held:Array<{route:WebSocketRoute;reply:LedgerReply}>=[],queries:Array<{request:string;kind:string}>=[];let disconnect=()=>{};
+  const baseHeld:Array<{route:WebSocketRoute;reply:Extract<ServerMessage,{type:'MilitaryResult'}>}>=[];
+  let baseMode:'normal'|'fail'|'hold'='normal';
   await page.routeWebSocket('**/ws',route=>{
     const server=route.connectToServer();disconnect=()=>server.close({code:1000,reason:'test-disconnect'});
     route.onMessage(frame=>{
@@ -60,9 +62,16 @@ async function intercept(page:Page,unsupported=false){
       }
       server.send(frame);
     });
-    server.onMessage(frame=>{const m=decode(frame as Uint8Array) as ServerMessage;if(m.type==='MilitaryNormalLedgerResult'){held.push({route,reply:m});return;}route.send(frame);});
+    server.onMessage(frame=>{
+      const m=decode(frame as Uint8Array) as ServerMessage;
+      if(m.type==='MilitaryResult'){
+        if(baseMode==='fail'){baseMode='hold';route.send(Buffer.from(encode({...m,supported:false,reason_key:'session-closed',military:null})));return;}
+        if(baseMode==='hold'){baseHeld.push({route,reply:m});return;}
+      }
+      if(m.type==='MilitaryNormalLedgerResult'){held.push({route,reply:m});return;}route.send(frame);
+    });
   });
-  return {held,queries,disconnect:()=>disconnect()};
+  return {held,queries,baseHeld,loseBase:()=>{baseMode='fail';},restoreBase:()=>{baseMode='normal';const row=baseHeld.shift();if(!row)throw Error('base reply not held');row.route.send(Buffer.from(encode(row.reply)));},disconnect:()=>disconnect()};
 }
 const release=(row:{route:WebSocketRoute;reply:LedgerReply},reply=row.reply)=>row.route.send(Buffer.from(encode(reply)));
 
@@ -162,4 +171,16 @@ test('malformed long v1 request never echoes past a small budget and socket stil
     const index=received.findIndex(m=>m.type==='Notice'&&m.key==='invalid-message');expect(sizes[index]).toBeLessThanOrEqual(256);
     send({type:'Query',request:'legacy-control',kind:'military'});await expect.poll(()=>received.some(m=>m.type==='MilitaryResult'&&m.request==='legacy-control'&&m.supported)).toBe(true);
   }finally{socket.close();}
+});
+test('base query failure V -> null -> ledger reply -> V resumes in served App (injected authority loss)',async({page,hosts})=>{
+  const wire=await intercept(page),frames=observe(page);
+  await page.goto(hosts.native);await open(page);await select(page);await expect.poll(()=>wire.held.length).toBe(1);
+  const old=wire.held[0];wire.loseBase();await expect(page.getByTestId('military-panel')).toHaveAttribute('data-status','unsupported');
+  release(old);await expect.poll(()=>wire.baseHeld.length).toBe(1);
+  const delta=frames.deltas();await expect.poll(()=>frames.deltas()).toBeGreaterThan(delta+2);
+  expect(wire.queries).toHaveLength(2);expect(wire.held).toHaveLength(1);
+  wire.restoreBase();await expect(page.getByTestId('military-panel')).toHaveAttribute('data-status','ready');await expect.poll(()=>wire.held.length).toBe(2);
+  expect(wire.held[1].reply.request).not.toBe(old.reply.request);release(wire.held[1]);
+  await expect(page.getByTestId('military-qty-ledger')).toHaveAttribute('data-status','ready');
+  await expect(page.getByTestId('military-qty-ledger').locator('[data-qty-ledger-field]')).toHaveCount(7);
 });

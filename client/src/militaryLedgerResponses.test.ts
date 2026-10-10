@@ -1,5 +1,9 @@
 import {expect,test} from 'vitest';
 import {MilitaryLedgerResponses} from './militaryLedgerResponses';
+import {readFileSync} from 'node:fs';
+import type {MilitaryView} from './proto/protocol';
+const authority=JSON.parse(readFileSync(new URL('../../target/wp16/military-wire-fixture.json',import.meta.url),'utf8')).military as MilitaryView;
+const base={...authority,templates:['a','b'].map(template=>({...authority.templates[0],template}))};
 
 test('capability first, one pending, and A-B-A selection invalidates the first A reply',()=>{
   const inbox=new MilitaryLedgerResponses(),socket={},sent:{request:string;kind:string}[]=[];
@@ -7,6 +11,7 @@ test('capability first, one pending, and A-B-A selection invalidates the first A
   inbox.begin(socket);inbox.select('a');inbox.issue(socket,send);
   expect(sent[0].kind).toBe('military-normal-ledger.v1');
   inbox.accept(socket,{type:'MilitaryNormalLedgerCapabilityResult',request:sent[0].request,supported:true,reason_key:null});
+  inbox.setBase(base);
   inbox.issue(socket,send);const first=sent[1];expect(first.kind).toBe('military-normal-ledger.v1:a');
   inbox.select('b');inbox.issue(socket,send);inbox.select('a');inbox.issue(socket,send);
   expect(sent).toHaveLength(2);
@@ -20,7 +25,7 @@ test('old-server capability fallback stops only this channel; domain failure doe
   expect(inbox.accept(socket,{type:'QueryResult',request:sent[0],supported:false,reason_key:'unsupported-query',state:null})?.status).toBe('unsupported');
   inbox.select('b');inbox.issue(socket,send);expect(sent).toHaveLength(1);
   inbox.begin(socket);inbox.select('a');inbox.issue(socket,send);
-  inbox.accept(socket,{type:'MilitaryNormalLedgerCapabilityResult',request:sent[1],supported:true,reason_key:null});inbox.issue(socket,send);
+  inbox.accept(socket,{type:'MilitaryNormalLedgerCapabilityResult',request:sent[1],supported:true,reason_key:null});inbox.setBase(base);inbox.issue(socket,send);
   expect(inbox.accept(socket,{type:'MilitaryNormalLedgerResult',request:sent[2],supported:false,reason_key:'ledger-too-large',ledger:null})?.status).toBe('unavailable');
   inbox.select('b');inbox.issue(socket,send);expect(sent).toHaveLength(4);
 });
@@ -32,5 +37,6 @@ test('CONNECTING, close/reopen, old/future/duplicate replies, and wrong socket c
   const reply={type:'MilitaryNormalLedgerCapabilityResult' as const,request:sent[1],supported:true,reason_key:null};
   expect(inbox.accept(oldSocket,reply)).toBeNull();expect(inbox.accept(socket,{...reply,request:old})).toBeNull();expect(inbox.accept(socket,{...reply,request:'military-ledger:999'})).toBeNull();
   expect(inbox.accept(socket,reply)).not.toBeNull();expect(inbox.accept(socket,reply)).toBeNull();
+  inbox.setBase(base);
   inbox.issue(socket,send);expect(sent).toHaveLength(3);expect(inbox.end(oldSocket)).toBe(false);expect(inbox.end(socket)).toBe(true);
 });

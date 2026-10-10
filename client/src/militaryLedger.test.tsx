@@ -54,3 +54,37 @@ test('definitions, template existence and final bits bind to base; provenance ti
     inbox.setBase({...base,definitions_hash:'2222222222222222'});inbox.select('example');expect(inbox.issue(socket,send)).not.toBeNull();
   }
 });
+test('V -> null -> ledger reply -> V resumes with a fresh request without a definition-mismatch lock',()=>{
+  const inbox=new MilitaryLedgerResponses(),socket={},sent:string[]=[];
+  const send=(request:string)=>{sent.push(request);return true;};
+  inbox.begin(socket);inbox.setBase(base);inbox.select('example');inbox.issue(socket,send);
+  inbox.accept(socket,{type:'MilitaryNormalLedgerCapabilityResult',request:sent[0],supported:true,reason_key:null});
+  const beforeLoss=inbox.issue(socket,send)!;
+  inbox.setBase(null);
+  expect(inbox.accept(socket,{...result,request:beforeLoss})).toBeNull();
+  // App attempts a follow-up after the correlated reply releases the slot.
+  const withoutBase=inbox.issue(socket,send);
+  if(withoutBase)inbox.accept(socket,{...result,request:withoutBase});
+  for(let i=0;i<20;i++)expect(inbox.issue(socket,send)).toBeNull();
+  inbox.setBase(base);
+  const recovery=inbox.issue(socket,send);
+  expect(recovery).not.toBeNull();
+  expect(withoutBase).toBeNull();
+  expect(inbox.display.reasonKey).toBeNull();
+  expect(recovery).not.toBe(beforeLoss);
+  expect(inbox.accept(socket,{...result,request:beforeLoss})).toBeNull();
+  expect(inbox.accept(socket,{...result,request:recovery!})?.status).toBe('ready');
+  expect(inbox.display.ledger).toEqual(result.ledger);
+});
+test('restored V waits for the one old slot, discards its late reply and fetches fresh authority',()=>{
+  const inbox=new MilitaryLedgerResponses(),socket={},sent:string[]=[];
+  const send=(request:string)=>{sent.push(request);return true;};
+  inbox.begin(socket);inbox.setBase(base);inbox.select('example');inbox.issue(socket,send);
+  inbox.accept(socket,{type:'MilitaryNormalLedgerCapabilityResult',request:sent[0],supported:true,reason_key:null});
+  const old=inbox.issue(socket,send)!;
+  inbox.setBase(null);inbox.setBase(base);
+  expect(inbox.issue(socket,send)).toBeNull();expect(sent).toHaveLength(2);
+  expect(inbox.accept(socket,{...result,request:old})).toBeNull();
+  const fresh=inbox.issue(socket,send)!;expect(fresh).not.toBe(old);expect(sent).toHaveLength(3);
+  expect(inbox.accept(socket,{...result,request:fresh})?.status).toBe('ready');
+});
