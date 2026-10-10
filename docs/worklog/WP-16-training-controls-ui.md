@@ -28,7 +28,8 @@ real CONNECTING·수동 reconnect·ko/en 키보드/mobile·실제 구형 client�
 native WebSocket frame을 그대로 사용했다. browser 보안 설정 예외는 없다.
 기존 native wire 검사는 fresh6+restored6 세션·host2개 exit0로 통과했다.
 마지막 filter 수명 보완을 포함한 embedded bundle 재빌드는 단일 codegen으로
-exit0다. 같은 native/UI 재검사는 대기다.
+exit0다. 그 후보 d3e35bb의 전용 UI9개·native12세션 재검사도 모두 exit0이며
+served JS가 후보 dist와 일치한다. 소유 host8개 exit0·PID 부재를 확인했다.
 
 첫 full UI run은 장비 반환 기대값이 초기 stock2를 빠뜨린 점, 한국어 전환 뒤
 영어 Language selector를 찾은 점, route.fulfill static 대체가 Chromium의
@@ -50,6 +51,23 @@ heavy job1개, Cargo jobs1·browser worker1과 자식 CPU2개 제한을 유지�
 
 독립 변경 리뷰·exact-head CI/main 병합은 대기다. 작성자의 실행은 독립 QA
 판정이 아니며 개인 세션/내부 실행 기록은 저장소에 추가하지 않는다.
+
+## CI 현지화 상관 대조 보완
+
+후보 d3e35bb의 push client CI는 기존 현지화 case가 UI 미발행 sequence99의
+ACK를 alert로 기대해 Chromium/Firefox/WebKit3개에서 실패했다. 새 공용
+원장의 미발행 ACK 폐기는 유지한다. 작성자는 같은 embedded binary와 실제
+Chromium에서 원 case의 동일 assertion RED(exit1, guard-stop false)를 재현했다.
+
+현지화 case만 실제 UI speed3 클릭의 발행 sequence를 유지한 채 invalid speed9
+payload를 native 서버로 보내도록 보완했다. server가 실제로 응답한 실패의
+영문·한국어 assertion을 유지한다. 별도 미발행 sequence99의 native Pause
+ACK가 관측돼도 alert를 지우지 않아야 하며, 그 server watermark 뒤 실제 UI
+Pause 명령의 invalid-sequence 한국어 assertion도 유지한다. 주입 payload는
+표시했고 product source·정책·게임 계산은 바꾸지 않았다. 해당 Chromium case
+GREEN(exit0, guard-stop false)과 TypeScript typecheck(exit0)를 확인했다.
+새 SHA의 독립 delta review와
+fresh exact-head CI는 필요하며 기존 실패 run을 재실행으로 숨기지 않는다.
 
 ## 남은 범위
 

@@ -9,7 +9,10 @@ PR16은 main9cbc93f로 정상 병합됐고 같은 main CI7개/26개 checkrun이 
 마지막 filter 수명 보완 뒤 client282개·production build가 통과했다. 직전
 후보의 전용 UI9개·native12세션·실제 legacy client 호환 대조는 통과했다.
 마지막 embedded bundle은90% memory guard 중단 뒤 단일 codegen 빌드를
-통과했고 같은 native/UI 재검사는 진행 중이다.
+통과했고 같은 후보의 UI9개·native12세션 재검사도 통과했다.
+후보 CI의 기존 현지화 case는 미발행 ACK 표시 기대 때문에3개 browser에서
+실패했고, 실제 UI 발행 sequence로 native 실패를 대조하도록 case만 보완한다.
+영문/한국어·invalid-sequence assertion과 미발행 ACK 폐기는 유지한다.
 독립 리뷰·후보 CI·병합은
 대기다. [작업 로그](docs/worklog/WP-16-training-controls-ui.md)를 따른다.
 아래 PR16 pending prose는 후보 시점의 이력이며 전체 WP16/M2 완료가 아니다.
