@@ -1,3 +1,5 @@
+#[path = "../tests/support/military_ledger.rs"]
+mod ledger_fixture;
 #[path = "../../oh_save/tests/support/military.rs"]
 mod military_fixture;
 use military_fixture::production as production_fixture;
@@ -291,6 +293,40 @@ fn main() {
     std::fs::write(
         output.join("military-wire-fixture.json"),
         serde_json::to_vec_pretty(&message).unwrap(),
+    )
+    .unwrap();
+    let ledger = oh_proto::ServerMessage::MilitaryNormalLedgerResult {
+        request: "military-ledger:1".into(),
+        supported: true,
+        reason_key: None,
+        ledger: Some(oh_proto::MilitaryNormalLedgerView::from_sim(&military, "example").unwrap()),
+    };
+    std::fs::write(
+        output.join("military-ledger-wire-fixture.json"),
+        serde_json::to_vec_pretty(&ledger).unwrap(),
+    )
+    .unwrap();
+    let (root, template) = ledger_fixture::maximum_pack(military_fixture::pack());
+    let loaded = oh_data::national::load_scenario(&root, "m1").unwrap();
+    let sim = oh_sim::Simulation::with_world(
+        "m1".into(),
+        oh_sim::Date::new(2000, 1, 1).unwrap(),
+        1,
+        oh_sim::TimeConfig::from_defines(&loaded.pack.defines).unwrap(),
+        oh_sim::world::World::from_loaded(&loaded).unwrap(),
+    )
+    .unwrap();
+    let worst = oh_proto::ServerMessage::MilitaryNormalLedgerResult {
+        request: format!("military-ledger:{}", u64::MAX),
+        supported: true,
+        reason_key: None,
+        ledger: Some(oh_proto::MilitaryNormalLedgerView::from_sim(&sim, &template).unwrap()),
+    };
+    let worst_output = output.parent().unwrap().join("wp22");
+    std::fs::create_dir_all(&worst_output).unwrap();
+    std::fs::write(
+        worst_output.join("ledger-worst.json"),
+        serde_json::to_vec_pretty(&worst).unwrap(),
     )
     .unwrap();
     std::fs::write(

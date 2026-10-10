@@ -10,6 +10,10 @@ use std::{
 use tokio::sync::{oneshot, watch};
 #[derive(Debug)]
 pub enum Request {
+    MilitaryNormalLedger {
+        template: String,
+        reply: oneshot::Sender<Result<oh_proto::MilitaryNormalLedgerView, &'static str>>,
+    },
     Military {
         reply: oneshot::Sender<Option<oh_proto::MilitaryView>>,
     },
@@ -98,6 +102,11 @@ impl Session {
                         Ok(Request::Economy { reply }) => {
                             let _ = reply.send(oh_proto::EconomyView::from_sim(&sim));
                             continue;
+                        }
+                        Ok(Request::MilitaryNormalLedger { template, reply }) => {
+                            let _ = reply.send(oh_proto::MilitaryNormalLedgerView::from_sim(
+                                &sim, &template,
+                            ));
                         }
                         Ok(Request::Military { reply }) => {
                             let _ = reply.send(oh_proto::MilitaryView::from_sim(&sim));

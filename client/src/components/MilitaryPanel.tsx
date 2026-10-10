@@ -2,6 +2,8 @@ import type {ReactNode} from 'react';
 import type {FixedValue,MilitaryEquipmentView,MilitaryNormalView,WorldView} from '../proto/protocol';
 import type {MilitaryDisplay} from '../militaryResponses';
 import {useLocalization} from '../i18n';
+import {MilitaryQtyLedger} from './MilitaryQtyLedger';
+import type {MilitaryLedgerDisplay} from '../militaryLedgerResponses';
 
 const normalFields=['strength','soft_fire','hard_fire','defense','breakthrough','frontage','supply_use','organization','armor','piercing','speed_kmh'] as const;
 function Fixed({value}:{value:FixedValue}){
@@ -30,7 +32,7 @@ function Records({name,children,empty}:{name:string;children:ReactNode;empty:boo
   const {t}=useLocalization();
   return <section data-testid={`military-${name}`}><h3>{t(`military-${name}`)}</h3>{empty?<p>{t('military-empty')}</p>:<div className="military-records">{children}</div>}</section>;
 }
-export function MilitaryPanel({display,world,nationId,onNationSelect,onClose}:{display:MilitaryDisplay;world:WorldView|null;nationId:number|null;onNationSelect:(nation:number|null)=>void;onClose:()=>void}){
+export function MilitaryPanel({display,world,nationId,onNationSelect,onClose,ledger,onLedgerSelect}:{display:MilitaryDisplay;world:WorldView|null;nationId:number|null;onNationSelect:(nation:number|null)=>void;onClose:()=>void;ledger?:MilitaryLedgerDisplay;onLedgerSelect?:(template:string|null)=>void}){
   const {t}=useLocalization(),view=display.view;
   const belongs=(row:{nation:number})=>nationId===null||row.nation===nationId;
   // A display filter only. It never changes Join, ownership or query authority.
@@ -49,6 +51,8 @@ export function MilitaryPanel({display,world,nationId,onNationSelect,onClose}:{d
       </select></label>
       <Records name="templates" empty={!view.templates.length}>{view.templates.map(row=><article key={row.template} data-military-template={row.template}>
         <Fields rows={[[ 'template',row.template],['training-days',row.training_days]]}/><Normal normal={row.normal}/>
+        {onLedgerSelect&&<button aria-expanded={ledger?.template===row.template} onClick={()=>onLedgerSelect(ledger?.template===row.template?null:row.template)}>{t('military-ledger-title')}</button>}
+        {ledger?.template===row.template&&<MilitaryQtyLedger display={ledger}/>}
       </article>)}</Records>
       <Records name="armies" empty={!armies.length}>{armies.map(row=><article key={row.id} data-military-army={row.id}>
         <Fields rows={[[ 'id',row.id],['nation',name(row.nation)],['general',row.general],['division-limit',row.division_limit],['priority',row.priority],['division-ids',row.divisions.length?row.divisions.join(', '):null]]}/>

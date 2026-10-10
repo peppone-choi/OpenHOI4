@@ -7,6 +7,7 @@ import { EconomyPanel } from './components/EconomyPanel';
 import { EconomyResponses, type EconomyDisplay } from './economyResponses';
 import { MilitaryResponses, type MilitaryDisplay } from './militaryResponses';
 import { MilitaryPanel } from './components/MilitaryPanel';
+import {MilitaryLedgerResponses,emptyMilitaryLedger,type MilitaryLedgerDisplay} from './militaryLedgerResponses';
 import { GameShell } from './components/GameShell';
 import { NationalPanels } from './components/NationalPanels';
 import { TimeControls } from './components/TimeControls';
@@ -22,6 +23,8 @@ export function App() {
   const [militaryOpen,setMilitaryOpen]=useState(false);
   const militaryOpenRef=useRef(false);
   const militaryResponses=useRef(new MilitaryResponses());
+  const militaryLedgerResponses=useRef(new MilitaryLedgerResponses());
+  const [militaryLedger,setMilitaryLedger]=useState<MilitaryLedgerDisplay>(emptyMilitaryLedger);
   const militaryToggle=useRef<HTMLButtonElement|null>(null);
   const [militaryNation,setMilitaryNation]=useState<number|null>(null);
   const economyResponses=useRef(new EconomyResponses());
@@ -52,11 +55,23 @@ export function App() {
     economyResponses.current.issue(client,request=>transmitEconomy(client,request));
   };
   const transmitMilitary=(client:ReturnType<typeof connect>,request:string)=>client.send({type:'Query',request,kind:'military'});
+  const queryMilitaryLedger=(client:ReturnType<typeof connect>)=>militaryLedgerResponses.current.issue(client,(request,kind)=>client.send({type:'Query',request,kind}));
+  const selectMilitaryLedger=(template:string|null)=>{
+    militaryLedgerResponses.current.select(template);setMilitaryLedger({...militaryLedgerResponses.current.display});
+    const client=socket.current;if(client&&activeConnection.current===client)queryMilitaryLedger(client);
+  };
+  const selectMilitaryNation=(nation:number|null)=>{
+    setMilitaryNation(nation);const client=socket.current;
+    militaryLedgerResponses.current.close();
+    if(client&&activeConnection.current===client){militaryLedgerResponses.current.begin(client);militaryLedgerResponses.current.setBase(military.view);}
+    setMilitaryLedger(emptyMilitaryLedger());
+  };
   const queryMilitary=(client:ReturnType<typeof connect>)=>{
     if(militaryOpenRef.current)militaryResponses.current.issue(client,request=>transmitMilitary(client,request));
   };
   const closeMilitary=()=>{
     militaryOpenRef.current=false;setMilitaryOpen(false);militaryResponses.current.close();
+    militaryLedgerResponses.current.close();setMilitaryLedger(emptyMilitaryLedger());
     setMilitary({view:null,status:'disconnected',reasonKey:null});setMilitaryNation(null);
     militaryToggle.current?.focus();
   };
@@ -65,10 +80,11 @@ export function App() {
     const client=socket.current;
     const active=client&&activeConnection.current===client;
     setMilitary({view:null,status:active?'loading':'disconnected',reasonKey:null});
-    if(active){militaryResponses.current.begin(client);queryMilitary(client);}
+    if(active){militaryResponses.current.begin(client);militaryLedgerResponses.current.begin(client);setMilitaryLedger(emptyMilitaryLedger());queryMilitary(client);}
   };
   const resetMilitary=()=>{
     militaryResponses.current.close();setMilitaryNation(null);
+    militaryLedgerResponses.current.close();setMilitaryLedger(emptyMilitaryLedger());
     setMilitary({view:null,status:'loading',reasonKey:null});
   };
   const selectEconomyNation=(id:number|null)=>{
@@ -90,10 +106,15 @@ export function App() {
       }
       if (message.type === 'Notice') setNotice(message.key);
       if (message.type === 'CommandResult') setNotice(message.reason_key);
-      if(message.type==='Snapshot'||message.type==='Delta'){client.send({type:'Query',request:'world',kind:'world'});client.send({type:'Query',request:'production',kind:'production'});queryEconomy(client);queryMilitary(client);}
+      if(message.type==='Snapshot'||message.type==='Delta'){client.send({type:'Query',request:'world',kind:'world'});client.send({type:'Query',request:'production',kind:'production'});queryEconomy(client);queryMilitary(client);queryMilitaryLedger(client);}
       if(message.type==='MilitaryResult'||message.type==='QueryResult'){
         const accepted=militaryResponses.current.accept(client,message);
-        if(accepted){setMilitary(accepted);militaryResponses.current.followUp(client,request=>transmitMilitary(client,request));}
+        if(accepted){setMilitary(accepted);setMilitaryLedger({...militaryLedgerResponses.current.setBase(accepted.view)});queryMilitaryLedger(client);militaryResponses.current.followUp(client,request=>transmitMilitary(client,request));}
+      }
+      if(message.type==='MilitaryNormalLedgerCapabilityResult'||message.type==='MilitaryNormalLedgerResult'||message.type==='QueryResult'){
+        const accepted=militaryLedgerResponses.current.accept(client,message);
+        if(accepted)setMilitaryLedger({...accepted});
+        queryMilitaryLedger(client);
       }
       if(message.type==='EconomyResult'||message.type==='QueryResult'){
         const accepted=economyResponses.current.accept(client,message);
@@ -119,6 +140,7 @@ export function App() {
       activeConnection.current=null;
       productionConnection.current=null;
       militaryResponses.current.end(client);
+      militaryLedgerResponses.current.end(client);setMilitaryLedger({...militaryLedgerResponses.current.display});
       setMilitary(current=>({...current,status:current.view?'stale':'disconnected'}));
       economyResponses.current.end(client);
       setEconomy(current=>({...current,status:current.view?'stale':'disconnected'}));
@@ -127,13 +149,14 @@ export function App() {
     }, joinNation);
     socket.current = client;
     activeConnection.current=client;
-    if(militaryOpenRef.current)militaryResponses.current.begin(client);
+    if(militaryOpenRef.current){militaryResponses.current.begin(client);militaryLedgerResponses.current.begin(client);}
     economyResponses.current.begin(client,economyNation.current);
     return () => {
       if(activeConnection.current===client)activeConnection.current=null;
       if(productionConnection.current===client)productionConnection.current=null;
       economyResponses.current.end(client);
       militaryResponses.current.end(client);
+      militaryLedgerResponses.current.end(client);
       client.close();
       if(socket.current===client)socket.current=null;
     };
@@ -170,7 +193,7 @@ export function App() {
       {world && catalogs && <div className="world-layout"><MapView world={world} packHash={packHash} selected={selected} onSelect={select}/><aside className="world-detail">{selected!==null&&world.provinces.find(p=>p.id===selected)?.state==null?<p>{t('map-no-state')}</p>:<NationalPanels world={world} nationId={nationId} stateId={stateId} onNationSelect={id=>{selectEconomyNation(id);query(`nation:${id}`);}} onStateSelect={id=>{setStateId(id);const owner=world.states.find(s=>s.id===id)?.owner;selectEconomyNation(owner??null);query(`state:${id}`);if(owner!==undefined)query(`nation:${owner}`);}}/>}</aside></div> }
       <EconomyPanel display={economy} world={world} nationId={nationId??null} onNationSelect={selectEconomyNation}/>
       <button ref={militaryToggle} aria-expanded={militaryOpen} aria-controls="military-panel" onClick={militaryOpen?closeMilitary:openMilitary}>{t(militaryOpen?'military-close':'military-open')}</button>
-      {militaryOpen&&<MilitaryPanel display={military} world={world} nationId={militaryNation} onNationSelect={setMilitaryNation} onClose={closeMilitary}/>}
+      {militaryOpen&&<MilitaryPanel display={military} world={world} nationId={militaryNation} onNationSelect={selectMilitaryNation} onClose={closeMilitary} ledger={militaryLedger} onLedgerSelect={selectMilitaryLedger}/>}
       {connection==='disconnected'&&<button onClick={reconnect}>{t('economy-reconnect')}</button>}
       {production&&<ProductionPanel view={production} world={world} controlledNation={controlledNation} onControl={controlNation} onCommand={productionCommand} connected={connection==='connected'&&productionConnection.current===activeConnection.current}/>}
       {notice && <p role="alert">{t(notice)}</p>}

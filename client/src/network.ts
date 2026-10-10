@@ -1,4 +1,4 @@
-import {isMilitaryView} from './militaryValidation';
+import {isMilitaryView,isMilitaryNormalLedgerView} from './militaryValidation';
 import {isProductionView} from './productionValidation';
 import {isEconomyView} from './economyValidation';
 import { decode, encode } from '@msgpack/msgpack';
@@ -75,6 +75,8 @@ const trigger=exactShape<NonNullable<Trigger>>({definitions_hash:hash,flags:orde
 // Mapped from the generated Rust union: adding a variant/field or changing a
 // field type breaks typecheck until its runtime validator is updated.
 const serverFields = {
+  MilitaryNormalLedgerCapabilityResult:{type:literal('MilitaryNormalLedgerCapabilityResult'),request:string,supported:boolean,reason_key:nullable(string)},
+  MilitaryNormalLedgerResult:{type:literal('MilitaryNormalLedgerResult'),request:string,supported:boolean,reason_key:nullable(string),ledger:nullable(isMilitaryNormalLedgerView)},
   MilitaryResult:{type:literal('MilitaryResult'),request:string,supported:boolean,reason_key:nullable(string),military:nullable(isMilitaryView)},
   ProductionResult:{type:literal('ProductionResult'),request:string,supported:boolean,reason_key:nullable(string),production:nullable(isProductionView)},
   EconomyResult:{type:literal('EconomyResult'),request:string,supported:boolean,reason_key:nullable(string),economy:nullable(isEconomyView)},
@@ -90,6 +92,14 @@ const serverFields = {
 const serverGuards = Object.values(serverFields).map(fields => shape<Record<string, unknown>>(fields));
 const triggerResult=exactShape<Extract<ServerMessage,{type:'TriggerResult'}>>(serverFields.TriggerResult);
 export function isServerMessage(value: unknown): value is ServerMessage {
+  if(typeof value==='object'&&value!==null&&(value as {type?:unknown}).type==='MilitaryNormalLedgerCapabilityResult'){
+    const g=exactShape<Extract<ServerMessage,{type:'MilitaryNormalLedgerCapabilityResult'}>>(serverFields.MilitaryNormalLedgerCapabilityResult);
+    return g(value)&&(value.supported?value.reason_key===null:value.reason_key==='unsupported-query');
+  }
+  if(typeof value==='object'&&value!==null&&(value as {type?:unknown}).type==='MilitaryNormalLedgerResult'){
+    const g=exactShape<Extract<ServerMessage,{type:'MilitaryNormalLedgerResult'}>>(serverFields.MilitaryNormalLedgerResult);
+    return g(value)&&value.supported===(value.ledger!==null)&&(value.supported?value.reason_key===null:typeof value.reason_key==='string');
+  }
   if(typeof value==='object'&&value!==null&&(value as {type?:unknown}).type==='MilitaryResult'){const g=exactShape<Extract<ServerMessage,{type:'MilitaryResult'}>>(serverFields.MilitaryResult);return g(value)&&value.supported===(value.military!==null)&&(!value.supported||value.reason_key===null); }
   if(typeof value==='object'&&value!==null&&(value as {type?:unknown}).type==='ProductionResult'){const g=exactShape<Extract<ServerMessage,{type:'ProductionResult'}>>(serverFields.ProductionResult);return g(value)&&value.supported===(value.production!==null)&&(!value.supported||value.reason_key===null); }
   if(typeof value==='object'&&value!==null&&(value as {type?:unknown}).type==='EconomyResult'){const g=exactShape<Extract<ServerMessage,{type:'EconomyResult'}>>(serverFields.EconomyResult);return g(value)&&value.supported===(value.economy!==null)&&(!value.supported||value.reason_key===null); }
