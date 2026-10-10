@@ -78,3 +78,20 @@
 AI가 TOML/문서/검사 구현을 보조했다. 새32 asset notes와 SOURCES에 명시했다. ai_generated=false는 기존 OPEN-09/check_assets의 이미지 분류이며 PNG 바이트 복사·이미지 생성 없음에 따른다. 인간 저작 단독 주장이나 허위 배포 승인 기록을 만들지 않았다. 별도 실제 Claude 독립 코드 리뷰와 독립 QA는 **대기**다.
 
 이 구현 세션은 merge하지 않는다. Draft PR/exact-head CI와 independent review/QA/main 인수는 부모 오케스트레이터가 관리한다. 별도 개발 lane의 도구 설치/LOGH 원본 실행 승인/BP 사용자 요구 대기는 이 군사 팩 검증으로 해소된 것으로 기록하지 않는다.
+
+## P-06 — Windows 상대경로 검사 수정
+
+원래 head `68b8996e2054d98ab89e1e9b08c8b87e4bbb465a`에 대한 실제 독립 Claude 소스 리뷰는 부모가 SOURCE_MERGEABLE/필수0으로 전달했다. 리뷰 환경에서 기존 Rust401/client269/newbrowser13/regression8은 재실행하지 않았으므로 **AUTHOR_REPORTED**로 유지한다. 원래 로그 SHA·명령/exit 작업 로그·0ignored 요약과 host exit0/no PID 증거는 Git 밖 `execution-evidence-audit.json`에서 다시 대조했다. 별도 원래 shell-exit JSON이 없던 명령에는 사후 원본 레코드를 꾸며 만들지 않았다.
+
+그 head의 CI7개는4성공·3실패였다. Save determinism38009000021/CI38009000015/Trigger determinism38008999966의 Windows job114084369881/114084369895/114084370137 모두 새 `immutable_inherited_bytes_and_only_authorized_production_delta`가 `common\production\initial.toml`에서 실패했다. 원래 `strip_prefix` 이후 `to_str`은 Windows 구분자를 유지하는데 제외 목록은 `/` 문자열을 사용해 허용된 생산 delta를 원본 동일 파일로 오인했다. 각 실패 raw log와 미실행 후속 단계는 `ci-job-*.log` 및 `ci-failed-snapshot.json`에 보존한다. 이 실패를 네트워크/도구 실패로 분류하거나 Windows를 skip하지 않았다.
+
+부모의 CI 수정 승인 후 **이 전용 테스트 파일과 이 작업 로그만** 수정했다. 상대 키에서 `\`를 `/`로 바꾸고 empty/dot/dotdot/drive 형식을 거부한다. 제외 목록은 기존9개의 정확한 이름 그대로이며 glob/디렉터리 전체 제외는 없다. 경로 매핑은 정확한 `scenarios/m2_production/` 접두에만 적용한다. 기존32파일·바이트 동일성·생산/FTL/시나리오의 정확한 delta 조건은 재사용 가능한 audit 함수로 유지했다. 새 두 회귀는 Linux/Windows 표현에서 같은9개 허용 경로와 인접·중첩·다른 언어·상속 파일 거부를 검사하고, 각 표현에서 실제 복사 팩의 경제/PNG/생산/FTL/시나리오 바이트를 변조해 모두 계속 거부되는지 검사한다. 새 schema/game rule/UI/팩/asset 변경은 없다.
+
+| 후속 실제 명령 | 종료 | 증거/결과 |
+|---|---|---|
+| `cargo test -p oh_data --test m2_military_pack`(원래 key 동작 + 새 회귀) |101| path-fix/red.log 및 red-exit.json: 기존5 PASS, 새2 FAIL; Windows key 불일치 재현 |
+| `cargo fmt --all -- --check` |0| path-fix/fmt.log |
+| `cargo clippy -p oh_data --all-targets --locked -- -D warnings` |0| path-fix/clippy.log |
+| `cargo test -p oh_data --test m2_military_pack --locked` |0| path-fix/data.log:7 PASS/0fail/ignored |
+
+후속 명령·실제 exit code는 subprocess로 `path-fix/validation-exits.json`에 함께 저장했다. 현재 환경에서 직접 실행했으며 Linux의 Windows **경로 표현** 회귀를 실제 Windows OS 실행 성공으로 대신 기록하지 않는다. 제품/팩 bytes가 같으므로 기존 native/wire/browser 실행은 재실행하지 않았고 original head의 AUTHOR_REPORTED 증거로 유지한다. 새 exact-head Windows 포함 CI와 delta 소스 리뷰는 별도 단계다. required gate의 기존 gh GraphQL/REST 조회는 Forbidden이어서 **미확인**이며 우회/새 자격증명/설정 변경은 없다. 수정 후 CI 결과도 보이는7workflow와 required gate 미확인을 구분한다. 병합·전체WP23/M2 완료는 이 수정으로 선언하지 않는다.
