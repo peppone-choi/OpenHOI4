@@ -1,5 +1,20 @@
 # OpenHOI4 WIP 인수인계
 
+## PR19 실제 리뷰 HOLD의 P2 수정 후보 (2026-10-11)
+
+원9f073f1의 실제 source review는 필수 P2 하나로 HOLD였다. 열린 군사
+패널의 Join 변경/수동 재연결 때 Welcome의 전용 world 조회가 Join보다
+먼저 나가 not-joined 뒤 배치가 비활성으로 남았다. 실제 native UI2개에서
+그 순서와 disabled RED를 기록했다. App의 전용 조회만 연결별 첫 Snapshot으로
+옮겨 network/wire/ACK 장벽을 유지한다. 수정 뒤 client288·build와 현재
+served Ready UI8개(새 열린 패널 전환2 포함), 기존 연결 전환 Train/Cancel4개가
+통과했다. source/build 준비 실패는 보존하며 최종 두 묶음 host4개는
+exit0·잔존PID0이다. 실제 리뷰의 runtime은 도구/fixture 부재로 NOT_RUN이었다.
+[작업 로그](docs/worklog/WP-16-ready-deployment-ui.md)의 P2 기록과
+[재현 준비](tests/repro/WP-16-ready-deployment/README.md)를 따른다.
+수정 후보의 실제 delta 재리뷰·새 head CI·별도 독립 실행 검증·병합은
+대기이며 원9f의 CI13개/51개 success를 새 head 증거로 대체하지 않는다.
+
 ## Ready 배치 UI 작성자 수용 후보 (2026-10-11)
 
 PR18은 정확한 source dc0d33b의 실제 독립 delta review 필수0과

@@ -22,7 +22,7 @@ WorldView의 ProvinceView.state와 StateView.provinces는 그 연결의 양방�
 - `WorldAuthority`는 전용 full-world `deploy-world:N` 요청 하나와 dirty를
   관리한다. 현재 socket/epoch의 발행한 요청과 일치하는 supported 응답만
   권위를 준다. ID·소속·참조 검증 실패, missing/unsupported는 권위를 닫는다.
-- panel open, Join의 Welcome, filter 변경, 군사 ACK에서 요청한다. Delta마다
+- panel open, Join 이후 연결별 첫 Snapshot, filter 변경, 군사 ACK에서 요청한다. Delta마다
   추가하지 않는다. 새 요청·ACK·scope 종료는 권위를 폐기하며 dirty는 응답
   뒤 한 번 재조회한다. 기존 군사 조회 slot·dirty와 sequence 원장은 유지한다.
 - 선택 후보는 검증된 state 소속 육지이면서 controller가 Join 국가인 곳이다.
@@ -52,3 +52,10 @@ WorldView의 ProvinceView.state와 StateView.provinces는 그 연결의 양방�
 변경과 정원 변화는 기존 서버의 최종 검증에 맡긴다. semantic 거절은 현재
 서버의 `invalid-message`로 표시하며 정밀한 새 거절 이유를 발명하지 않는다.
 SetPriority·이동·전투·보급·공유 multiplayer 지속성은 후속 범위다.
+
+### PR19 P2 수명 수정
+
+network는 App의 Welcome callback이 반환된 뒤 Join을 보낸다. 따라서
+Welcome에서 전용 query를 보내면 not-joined로 닫힐 수 있다. 연결별 첫
+Snapshot을 Join 완료의 조회 시작점으로 사용한다. 추가 Snapshot/Delta마다
+전용 query를 보내지 않으며 filter 조작이나 자동 Join/retry로 회복시키지 않는다.

@@ -105,3 +105,27 @@ test('native ko/en keyboard mobile deployment and real disconnected filter prese
  const foreign=panel.locator('[data-military-job="1"]');await expect(foreign.getByRole('button',{name:'Deploy',exact:true})).toBeDisabled();await expect(foreign.getByLabel('Deployment army',{exact:true})).toBeDisabled();expect(wire.sent.filter(m=>m.type==='MilitaryCommand'&&m.command.type==='Deploy')).toHaveLength(1);writeFileSync(info.outputPath('native-ko-mobile-disconnected.json'),JSON.stringify(wire,null,2));
  }finally{if(!closed)await gate.close();}
 });
+
+test('native panel kept open through Join activates Deploy after Snapshot without changing filters',async({page,hosts},info)=>{
+ const wire=observe(page);
+ try{
+  await page.goto(hosts.restored);await page.getByRole('button',{name:'Open military information',exact:true}).click();await expect(page.getByTestId('military-panel')).toHaveAttribute('data-status','ready');
+  await page.getByRole('button',{name:'Start as selected nation',exact:true}).click();await ready(page,'0');
+  const card=page.locator('[data-military-job="0"]');await expect(card.getByLabel('Deployment army',{exact:true})).toBeEnabled();
+  const {army,province}=inputs(wire),deploy=await choose(page,'0',army,province);await expect(deploy).toBeEnabled();
+  const afterHello=wire.sent.slice(wire.sent.reduce((index,m,i)=>m.type==='Hello'?i:index,-1)),join=afterHello.findIndex(m=>m.type==='Join'),world=afterHello.findIndex(m=>m.type==='Query'&&m.request.startsWith('deploy-world:'));
+  expect(join).toBeGreaterThanOrEqual(0);expect(world).toBeGreaterThan(join);expect(afterHello.some(m=>m.type==='Query'&&m.request==='deploy-world:0')).toBe(false);
+  await deploy.click();await expect(card).toContainText('Deployed');await expect(page.getByTestId('military-command-feedback')).toHaveAttribute('data-status','success');
+ }finally{writeFileSync(info.outputPath('native-open-panel-join-wire.json'),JSON.stringify({scope:'real Join with panel kept open; no filter manipulation or response injection',wire},null,2));}
+});
+test('native manual reconnect with panel kept open activates Deploy after Snapshot without changing filters',async({page,hosts},info)=>{
+ const proxy=await bridge(page),wire=observe(page);
+ try{
+  await player(page,hosts.restored);await ready(page,'0');const {army,province}=inputs(wire);await choose(page,'0',army,province,true);
+  proxy.disconnect();await expect(page.getByTestId('military-panel')).toHaveAttribute('data-status','stale');await page.getByRole('button',{name:'Reconnect',exact:true}).click();await expect(page.getByTestId('military-panel')).toHaveAttribute('data-status','ready');await ready(page,'0');
+  const card=page.locator('[data-military-job="0"]');await expect(card.getByLabel('Deployment army',{exact:true})).toBeEnabled();await expect(card.getByLabel('Deployment army',{exact:true})).toHaveValue('');await expect(card.getByLabel('Allow understrength deployment',{exact:true})).not.toBeChecked();
+  const current=inputs(wire),deploy=await choose(page,'0',current.army,current.province);await expect(deploy).toBeEnabled();
+  const afterHello=wire.sent.slice(wire.sent.reduce((index,m,i)=>m.type==='Hello'?i:index,-1));expect(afterHello.findIndex(m=>m.type==='Query'&&m.request.startsWith('deploy-world:'))).toBeGreaterThan(afterHello.findIndex(m=>m.type==='Join'));
+  await deploy.click();await expect(card).toContainText('Deployed');await expect(page.getByTestId('military-command-feedback')).toHaveAttribute('data-status','success');
+ }finally{writeFileSync(info.outputPath('native-open-panel-reconnect-wire.json'),JSON.stringify({scope:'native session reset on manual reconnect; actual socket close, no filter manipulation',wire},null,2));}
+});

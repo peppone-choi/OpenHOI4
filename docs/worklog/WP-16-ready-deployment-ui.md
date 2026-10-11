@@ -91,3 +91,41 @@ militaryResponses의 기존 serial·pending·dirty로 충분해 파일 자체는
 같은 main CI는 아직 별도 게이트다. 작성자 수용은 전체 WP-16/M2·전체 QA
 완료 판정이 아니며 Rust 전체/clippy 반복은 이번 변경에서 실행하지 않았다.
 재현은 [Ready 배치 절차](../../tests/repro/WP-16-ready-deployment/README.md)를 따른다.
+
+## PR19 실제 독립 리뷰 P2 수정 후보 (2026-10-11)
+
+원 head9f073f1의 실제 독립 source review는 필수 P2 하나로 HOLD였다.
+군사 패널을 연 채 Join 변경/수동 재연결하면 App Welcome callback의 전용
+world 조회가 network의 Join 송신보다 먼저 나갔다. native not-joined 이후
+새 전용 응답이 없어 군사 view는 Ready여도 배치 선택창이 비활성이었다.
+리뷰의 Train/Cancel 군사 장벽 호환 조정은 안전 판정이었다. 리뷰 담당의
+runtime 환경에는 Cargo/Rust와 실제 wire fixtures가 없어 NOT_RUN이며
+source review를 독립 runtime PASS로 확대하지 않는다.
+
+실제 native server의 패널 열린 Join 변경과 수동 reconnect2개 UI RED를
+확보했다. 각 wire는 Hello→deploy-world:2→Join과 not-joined를 기록했고,
+TimeControls로 Ready에 도달한 뒤 군 선택창 disabled로 실패했다. filter
+조작이나 raw command 송신으로 회복시키지 않았다.
+
+제품 수정은 App의 Welcome 전용 조회를 제거하고 연결별 첫 Snapshot에서만
+전용 조회를 보내는3행 delta다. network/wire/군사 ACK 장벽은 고치지 않았다.
+추가 회귀는 native Join/reconnect 후 filter 조작 없이 선택·Deploy를 활성화하고
+실제 Deployed까지 확인하며 첫 전용 query가 Join 이후인지 대조한다.
+
+수정 뒤 client288·production build는 통과했다. 추가 시험의 findLastIndex가
+기존 ES2022 타입 설정에 맞지 않아 build 실패를 남겼고 reduce로 바꿨다.
+한 편집 명령의 cwd 오류와 그 뒤 실패 build도 보존했다. 첫 stale-bundle
+no-op server build는 새 UI 검증으로 세지 않았고, client 성공 뒤 native server를
+다시 빌드했다. 새 Ready8개와 범위 지정 Train/Cancel4개는 모두 통과했고 각 소유 host4개는
+exit0·잔존PID0이다. 새 head CI·실제 delta 재리뷰·독립 실행 검증은 별도다. 원 head의 CI13개/51개 success는 원 source HOLD와
+구분하며 수정 후보의 CI/재리뷰/독립 runtime 검증을 대신하지 않는다.
+
+독립 검증자는 exact 새 head의 별도 clean worktree에서
+`cargo run -p oh_proto --example wire_fixtures --locked`를 먼저 실행한다.
+이는 target/wp09/national-wire-fixtures.json과 target/wp16/military-wire-fixture.json을
+생성한다. 새 빈 OH_M2_MILITARY_OUTPUT_DIR에서 기존 oh_save m2_military_pack
+2개 generator 시험을 실행하고 PackMismatch를 해제하지 않는다. 그 뒤
+client 표적13개·build·exact-source native embedding·Ready8개·실제 legacy를
+포함한 training-controls10개를 직접 실행하고 tracked identity 전후 동일성과
+host exit/PID를 보고한다. 전체 Rust 재실행은 같은-head CI 증거가 있으면
+하지 않는다. 작성자 실행을 독립 PASS로 기록하지 않는다.

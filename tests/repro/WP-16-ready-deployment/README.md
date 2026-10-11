@@ -48,3 +48,17 @@ mismatch를 강제 해제하지 않는다. 브라우저 worker1, Cargo jobs1과 
 EconomyResult로 비교하고 background 자체는 보존 여부를 비교한다.
 독립 리뷰/검증·정확한 head CI·main 통합은 이 재현 문서의 실행만으로
 충족되지 않는다. 전체 WP-16/M2와 전체 게임 QA 완료가 아니다.
+
+## PR19 P2 열린 패널 Join/reconnect 회귀
+
+Ready config는 기존6개에 실제 열린 패널 Join 변경/수동 reconnect2개를
+추가한8개다. 패널을 열고 Start as selected nation 또는 Reconnect를 사용한
+뒤 filter를 바꾸지 않는다. 실제 TimeControls로 Ready에 도달하여 군·위치
+선택과 Deploy 클릭을 확인한다. Hello/Join/전용 Query 송신 순서를 wire에
+기록하고 최초 전용 query가 Join 이후인지 확인한다. reconnect는 기존
+local 세션 생성 정책에 따라 checkpoint에서 새 simulation이며 저장 지속성
+기능으로 주장하지 않는다.
+
+새 검증 환경의 national/military JSON fixture는 위 첫 Rust generator가
+만든다. Cargo/Rust·fixture가 없으면 source review만 가능하며 native 검증은
+NOT_RUN이다. 생성물을 추적 파일로 만들거나 가짜 JSON으로 채우지 않는다.

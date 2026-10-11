@@ -122,13 +122,13 @@ export function App() {
     resetMilitary();
     setEconomy({view:null,status:'loading',reasonKey:null});
     productionConnection.current=null;setProduction(null);
+    let joinedSnapshot=false;
     const client = connect(message => {
       if(activeConnection.current!==client)return;
       if (message.type === 'Welcome') {
         setConnection(message.accepted ? 'connected' : 'disconnected');
         setNotice(message.reason_key);
         setPackHash(message.packs[0]?.hash??'');
-        if(message.accepted)queryDeploymentWorld(client);
       }
       if (message.type === 'Notice') setNotice(message.key);
       if(message.type==='CommandResult'){
@@ -145,6 +145,7 @@ export function App() {
           deploymentWorld.current.followUp(client,request=>client.send({type:'Query',request,kind:'world'}));syncDeploymentWorld(client);
         }
       }
+      if(message.type==='Snapshot'&&!joinedSnapshot){joinedSnapshot=true;queryDeploymentWorld(client);}
       if(message.type==='Snapshot'||message.type==='Delta'){client.send({type:'Query',request:'world',kind:'world'});client.send({type:'Query',request:'production',kind:'production'});queryEconomy(client);queryMilitary(client);queryMilitaryLedger(client);}
       if(message.type==='MilitaryResult'||message.type==='QueryResult'){
         const accepted=militaryResponses.current.accept(client,message);
