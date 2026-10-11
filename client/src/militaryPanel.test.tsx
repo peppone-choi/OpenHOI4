@@ -33,3 +33,14 @@ test('loading, stale, disconnected, unsupported and empty states have distinct l
   expect(render({view:empty,status:'ready',reasonKey:null})).toContain('No military records');
   expect(render({view:null,status:'unsupported',reasonKey:'unsupported-query'})).toContain('data-status="unsupported"');
 });
+
+test('Ready deployment fields are localized, require explicit choices and default understrength false; terminal jobs have no form',()=>{
+ const ready={...view,jobs:[{...view.jobs[0],nation:1,status:'Ready' as const}],armies:[{...view.armies[0],nation:1}]};
+ const world=JSON.parse(readFileSync(new URL('../../target/wp09/national-wire-fixtures.json',import.meta.url),'utf8'))[0].expected.world;
+ for(const language of ['en','ko'] as const){
+  const html=renderToStaticMarkup(<Localization.Provider value={{language,t:translatorFor(language)}}><MilitaryPanel display={{view:ready,status:'ready',reasonKey:null}} world={world} nationId={null} onNationSelect={()=>{}} onClose={()=>{}} controls={{nation:1,world,generation:1,feedback:{status:'idle',reasonKey:null},can:()=>false,send:()=>{}}}/></Localization.Provider>);
+  expect(html).toContain('data-testid="military-deployment-controls"');expect(html).toContain('type="checkbox"');expect(html).not.toContain('checked=""');expect(html).toContain('value="" selected=""');expect(html).not.toMatch(/Unknown message|알 수 없는 메시지/);
+ }
+ const terminal={...ready,jobs:[{...ready.jobs[0],status:'Deployed' as const}]};
+ expect(renderToStaticMarkup(<Localization.Provider value={{language:'en',t:translatorFor('en')}}><MilitaryPanel display={{view:terminal,status:'ready',reasonKey:null}} world={world} nationId={null} onNationSelect={()=>{}} onClose={()=>{}} controls={{nation:1,world,generation:2,feedback:{status:'success',reasonKey:null},can:()=>true,send:()=>{}}}/></Localization.Provider>)).not.toContain('military-deployment-controls');
+});

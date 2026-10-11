@@ -1,12 +1,27 @@
-import type {ReactNode} from 'react';
+import {useState,type ReactNode} from 'react';
 import type {FixedValue,MilitaryEquipmentView,MilitaryNormalView,WorldView} from '../proto/protocol';
 import type {MilitaryDisplay} from '../militaryResponses';
 import {useLocalization} from '../i18n';
 import {MilitaryQtyLedger} from './MilitaryQtyLedger';
 import type {MilitaryLedgerDisplay} from '../militaryLedgerResponses';
 import type {TrainingCommand,TrainingFeedback} from '../militaryCommands';
-type TrainingControls={nation:number|null;feedback:TrainingFeedback;can:(command:TrainingCommand)=>boolean;send:(command:TrainingCommand)=>void};
+type TrainingControls={nation:number|null;feedback:TrainingFeedback;can:(command:TrainingCommand)=>boolean;send:(command:TrainingCommand)=>void;world?:WorldView|null;generation?:number};
 
+function DeploymentControls({job,nation,view,controls}:{job:string;nation:number;view:NonNullable<MilitaryDisplay['view']>;controls:TrainingControls}){
+  const {t}=useLocalization();
+  const [army,setArmy]=useState(''),[province,setProvince]=useState(''),[under,setUnder]=useState(false);
+  const active=!!controls.world&&controls.nation===nation&&!['pending','refreshing'].includes(controls.feedback.status);
+  const armies=view.armies.filter(a=>a.nation===controls.nation);
+  const provinces=controls.world?.provinces.filter(p=>p.state!==null&&p.controller===controls.nation)??[];
+  const command={type:'Deploy' as const,job,army,province:province===''?-1:Number(province),allow_understrength:under};
+  return <div data-testid="military-deployment-controls">
+    <label>{t('military-deploy-army')}<select aria-label={t('military-deploy-army')} value={army} disabled={!active} onChange={event=>setArmy(event.target.value)}><option value="">{t('military-deploy-select')}</option>{armies.map(a=><option key={a.id} value={a.id}>{a.id}</option>)}</select></label>
+    <label>{t('military-deploy-province')}<select aria-label={t('military-deploy-province')} value={province} disabled={!active} onChange={event=>setProvince(event.target.value)}><option value="">{t('military-deploy-select')}</option>{provinces.map(p=><option key={p.id} value={p.id}>{p.id}</option>)}</select></label>
+    <label><input type="checkbox" checked={under} disabled={!active} onChange={event=>setUnder(event.target.checked)}/>{t('military-deploy-understrength')}</label>
+    <p>{t('military-deploy-understrength-help')}</p>
+    <button disabled={!active||!controls.can(command)} onClick={()=>controls.send(command)}>{t('military-deploy')}</button>
+  </div>;
+}
 const normalFields=['strength','soft_fire','hard_fire','defense','breakthrough','frontage','supply_use','organization','armor','piercing','speed_kmh'] as const;
 function Fixed({value}:{value:FixedValue}){
   return <span data-bits={value.bits} data-fractional-bits={value.fractional_bits}>{value.value}</span>;
@@ -69,6 +84,7 @@ export function MilitaryPanel({display,world,nationId,onNationSelect,onClose,led
       </article>)}</Records>
       <Records name="jobs" empty={!jobs.length}>{jobs.map(row=><article key={row.id} data-military-job={row.id}>
         <Fields rows={[[ 'id',row.id],['nation',name(row.nation)],['template',row.template],['job-status',t(`military-status-${row.status}`)],['training-days',row.training_days],['progress-days',row.progress_days],['start-tick',row.start_tick],['reserved-manpower',row.reserved_manpower],['equipment',<Equipment items={row.equipment}/>],['division',row.division]]}/><Normal normal={row.normal}/>
+        {controls&&row.status==='Ready'&&<DeploymentControls key={`${row.id}:${controls.generation??0}:${controls.feedback.status}`} job={row.id} nation={row.nation} view={view} controls={controls}/>}
         {controls&&['Pending','Training','Ready'].includes(row.status)&&<button disabled={!controls.can({type:'Cancel',job:row.id})} onClick={()=>controls.send({type:'Cancel',job:row.id})}>{t('military-training-cancel')}</button>}
       </article>)}</Records>
       <Records name="background" empty={!background.length}>{background.map(row=><article key={row.nation}><Fields rows={[[ 'nation',name(row.nation)],['committed',row.committed],['reserved-manpower',row.reserved]]}/></article>)}</Records>

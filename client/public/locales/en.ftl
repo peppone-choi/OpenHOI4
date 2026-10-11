@@ -386,3 +386,10 @@ military-training-pending = Waiting for the training command result
 military-training-refreshing = Refreshing authoritative training state
 military-training-success = Training command completed
 military-training-rejected = Training command rejected
+
+military-deploy = Deploy
+military-deploy-army = Deployment army
+military-deploy-province = Deployment location
+military-deploy-select = Select…
+military-deploy-understrength = Allow understrength deployment
+military-deploy-understrength-help = Explicitly allow deployment with the held equipment, including zero equipment. The server checks readiness, ownership and army capacity.
