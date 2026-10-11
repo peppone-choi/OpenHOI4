@@ -46,3 +46,32 @@ test('filter scope preserves the query slot but requires a query issued after th
   channel.setAuthority(socket,view,3n);expect(channel.can(socket,null,train)).toBe(false);
   channel.setAuthority(socket,view,4n);expect(channel.can(socket,null,train)).toBe(true);
 });
+
+test('REQ-MIL-03 Deploy requires canonical owned Ready references and controlled land; two ACK barriers prevent reactivation',()=>{
+ const c=new MilitaryCommands(),socket={};c.begin(socket,1);
+ const ready={...view,jobs:[{...view.jobs[0],nation:1,status:'Ready' as const}],armies:[{...view.armies[0],nation:1}]};c.setAuthority(socket,ready,1n);
+ const w=JSON.parse(readFileSync(new URL('../../target/wp09/national-wire-fixtures.json',import.meta.url),'utf8'))[0].expected.world;
+ const province=w.provinces.find((p:{state:number|null;controller:number|null})=>p.state!==null&&p.controller===1).id;
+ const deploy={type:'Deploy' as const,job:ready.jobs[0].id,army:ready.armies[0].id,province,allow_understrength:false};
+ expect(c.can(socket,null,deploy)).toBe(false);c.setWorldAuthority(socket,w,1n);expect(c.can(socket,null,deploy)).toBe(true);
+ for(const invalid of [{...deploy,job:'01'},{...deploy,army:'18446744073709551616'},{...deploy,province:65536},{...deploy,allow_understrength:undefined},{...deploy,army:'999'},{...deploy,province:w.provinces.find((p:{state:number|null;controller:number|null})=>p.state!==null&&p.controller!==1).id},{...deploy,province:w.provinces.find((p:{state:number|null})=>p.state===null).id}])expect(c.can(socket,null,invalid as typeof deploy)).toBe(false);
+ expect(c.can(socket,2,deploy)).toBe(false);expect(c.can(socket,null,{...deploy,allow_understrength:true})).toBe(true);
+ for(const status of ['Pending','Training','Cancelled','Deployed'] as const){c.setAuthority(socket,{...ready,jobs:[{...ready.jobs[0],status}]},2n);expect(c.can(socket,null,deploy)).toBe(false);}
+ c.setAuthority(socket,{...ready,armies:[{...ready.armies[0],nation:2}]},3n);expect(c.can(socket,null,deploy)).toBe(false);
+ c.setAuthority(socket,{...ready,jobs:[{...ready.jobs[0],nation:2}]},4n);expect(c.can(socket,null,deploy)).toBe(false);
+ c.setAuthority(socket,ready,5n);c.issue(socket,null,deploy,()=>'55');expect(c.accept(socket,reply('55'),5n,1n)).toBe(true);
+ c.setAuthority(socket,ready,6n);expect(c.feedback.status).toBe('refreshing');c.setWorldAuthority(socket,w,1n);expect(c.feedback.status).toBe('refreshing');
+ c.setWorldAuthority(socket,w,2n);expect(c.feedback.status).toBe('success');expect(c.can(socket,null,deploy)).toBe(true);
+ c.setWorldAuthority(socket,null,2n);expect(c.can(socket,null,deploy)).toBe(false);expect(c.can(socket,null,train)).toBe(true);
+});
+
+test('Deploy world-first ACK refresh still waits for newer military; rejection and new scope do not revive old authority',()=>{
+ const c=new MilitaryCommands(),a={},b={};c.begin(a,1);
+ const ready={...view,jobs:[{...view.jobs[0],nation:1,status:'Ready' as const}],armies:[{...view.armies[0],nation:1}]};
+ const w=JSON.parse(readFileSync(new URL('../../target/wp09/national-wire-fixtures.json',import.meta.url),'utf8'))[0].expected.world;
+ const province=w.provinces.find((p:{state:number|null;controller:number|null})=>p.state!==null&&p.controller===1).id;
+ const deploy={type:'Deploy' as const,job:ready.jobs[0].id,army:ready.armies[0].id,province,allow_understrength:true};
+ c.setAuthority(a,ready,2n);c.setWorldAuthority(a,w,3n);c.issue(a,null,deploy,()=>'12');c.accept(a,reply('12',false),2n,3n);
+ c.setWorldAuthority(a,w,4n);expect(c.feedback.status).toBe('refreshing');c.setAuthority(a,ready,2n);expect(c.feedback.status).toBe('refreshing');c.setAuthority(a,ready,3n);expect(c.feedback.status).toBe('rejected');
+ c.begin(b,1,3n,4n);c.setAuthority(b,ready,4n);c.setWorldAuthority(a,w,5n);c.setWorldAuthority(b,w,4n);expect(c.can(b,null,deploy)).toBe(false);c.setWorldAuthority(b,w,5n);expect(c.can(b,null,deploy)).toBe(true);
+});

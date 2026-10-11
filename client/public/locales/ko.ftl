@@ -386,3 +386,10 @@ military-training-pending = 훈련 명령 결과 기다리는 중
 military-training-refreshing = 서버 훈련 상태 갱신 중
 military-training-success = 훈련 명령 처리됨
 military-training-rejected = 훈련 명령 거부됨
+
+military-deploy = 배치
+military-deploy-army = 배치할 군
+military-deploy-province = 배치 위치
+military-deploy-select = 선택…
+military-deploy-understrength = 부족한 장비로 배치 허용
+military-deploy-understrength-help = 장비가 0인 경우를 포함해 현재 확보한 장비로 배치를 명시적으로 허용합니다. 서버가 준비 상태·소유권·군 정원을 판정합니다.

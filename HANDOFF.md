@@ -1,5 +1,24 @@
 # OpenHOI4 WIP 인수인계
 
+## Ready 배치 UI 작성자 수용 후보 (2026-10-11)
+
+PR18은 정확한 source dc0d33b의 실제 독립 delta review 필수0과
+source CI13개/51개 성공 checkrun 뒤 main30e63654c06a8cf44ee3193a4900dd8dabd8045a로
+정상 병합됐고 같은 main CI7개/26개가 성공했다. 아래 PR18 pending 문구는
+후보 당시의 역사이며 현재 새 blocker가 아니다.
+
+그 main의 `wp/16-ready-deployment-ui`는 실제 Claude 계획 전달 뒤 기존
+Deploy의 소유 Ready·군·현재 통제 육지 선택과 명시적 understrength를
+구현한 후보다. retained 지도와 별도 full-world 상관 권위를 분리하며
+Deploy ACK 뒤 military/world 장벽을 기다린다. Train/Cancel은 기존 군사
+장벽을 보존한다. 실제 버튼 부재 RED 뒤 client288·build, 새 native UI6개,
+기존 Train/Cancel·실제 legacy bundle10개, 기존 native CLI13개가 통과했다.
+실패·준비 중단은 보존하며 성공 수용의 host6은 exit0·잔존PID0이다.
+[작업 로그](docs/worklog/WP-16-ready-deployment-ui.md)와
+[권위 ADR](docs/adr/ADR-1604-ready-deployment-world-authority.md)를 따른다.
+실제 독립 리뷰/검증·최종 head CI·병합은 아직 별도 게이트이며
+전체 WP16/M2·전체 QA 완료가 아니다. 기존 작업트리·팩·저장·wire는 보존한다.
+
 ## PR18 독립 리뷰 P2 수정 후보 (2026-10-10)
 
 98d755e의 실제 source review는 disconnected filter 전환이 stale 정보를
