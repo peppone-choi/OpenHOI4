@@ -1,6 +1,6 @@
 import {defineConfig} from '@playwright/test';
 export default defineConfig({
-  testDir:'./e2e-m1',testMatch:'m2-military.spec.ts',workers:1,
+  testDir:'./e2e-m1',testMatch:['m2-military.spec.ts','division-markers.spec.ts'],workers:1,
   outputDir:'../target/wp23/browser-military',
   use:{viewport:{width:1280,height:900},locale:'en-US'},
   projects:[{name:'chromium',use:{browserName:'chromium',launchOptions:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE?{executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE}:undefined}}],

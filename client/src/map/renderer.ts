@@ -3,6 +3,7 @@ import { Fn, float, vec2, vec3, vec4, textureLoad, uniform, uv, mix } from 'thre
 import type Node from 'three/src/nodes/core/Node.js';
 import type { PixelFormat } from 'three';
 import type { MapMetadata, WorldView } from '../proto/protocol';
+import type {MapPresentation} from './divisionMarkers';
 import { LOOKUP_SIZE, palettes, pick, updateColors,validateWorldDisplay } from './model';
 
 function dataTexture(bytes:Uint8Array,width:number,height:number,format:PixelFormat=RGBAFormat){
@@ -10,7 +11,7 @@ function dataTexture(bytes:Uint8Array,width:number,height:number,format:PixelFor
  t.minFilter=t.magFilter=NearestFilter;t.generateMipmaps=false;t.flipY=false;t.colorSpace=NoColorSpace;t.needsUpdate=true;return t;
 }
 export type MapCamera={x:number;y:number;zoom:number};
-export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8Array,index:Uint16Array,initial:WorldView,onHover:(id:number|null)=>void,onPick:(id:number|null)=>void,onFailure:()=>void,onResize:(camera:MapCamera)=>void,forceWebGL=false,presentation?:{camera?:MapCamera;mode:string;selected:number|null;signal?:AbortSignal;sceneExtension?:(scene:Scene,camera:OrthographicCamera)=>Promise<()=>void>;paletteAdapter?:{palettes:typeof palettes;updateColors:typeof updateColors};coastKinds?:Uint8Array;seaBorderColor?:[number,number,number]}){
+export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8Array,index:Uint16Array,initial:WorldView,onHover:(id:number|null)=>void,onPick:(id:number|null)=>void,onFailure:()=>void,onResize:(camera:MapCamera)=>void,forceWebGL=false,presentation?:{onCamera?:(camera:MapPresentation)=>void;camera?:MapCamera;mode:string;selected:number|null;signal?:AbortSignal;sceneExtension?:(scene:Scene,camera:OrthographicCamera)=>Promise<()=>void>;paletteAdapter?:{palettes:typeof palettes;updateColors:typeof updateColors};coastKinds?:Uint8Array;seaBorderColor?:[number,number,number]}){
  const {width,height,style}=meta;
  const renderer=new WebGPURenderer({forceWebGL,antialias:false,alpha:false});
  let disposed=false;
@@ -88,7 +89,7 @@ export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8
  const camera=new OrthographicCamera();camera.position.z=1;
  camera.position.x=presentation?.camera?.x??0;camera.position.y=presentation?.camera?.y??0;
  let viewWidth=width,viewHeight=height,zoom=presentation?.camera?.zoom??1,frame=0,started=performance.now(),mode=presentation?.mode??'map-mode-owner',world=initial,presented=false,lastWidth=0,lastHeight=0,lastRatio=0,recreateRaf=0;
- const publishCamera=()=>{units.value=viewWidth/host.clientWidth/zoom;if(presented)host.dataset.camera=JSON.stringify({width:viewWidth/zoom,height:viewHeight/zoom,x:camera.position.x+width/2,y:height/2-camera.position.y,zoom});};
+ const publishCamera=()=>{units.value=viewWidth/host.clientWidth/zoom;if(presented){const next={width:viewWidth/zoom,height:viewHeight/zoom,x:camera.position.x+width/2,y:height/2-camera.position.y,zoom};host.dataset.camera=JSON.stringify(next);presentation?.onCamera?.(next);}};
  const resize=()=>{
   if(disposed||recreateRaf)return;
   const w=host.clientWidth,h=host.clientHeight;if(!w||!h)return;
