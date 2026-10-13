@@ -1,4 +1,4 @@
-//! Authoritative training ownership and roster. No combat or movement effects.
+//! Authoritative training ownership and roster. Movement owns travel; this roster mirrors its province.
 use crate::{
     economy::{Economy, ManpowerOperation},
     military_templates::{Normal, aggregate},
@@ -228,6 +228,13 @@ pub fn proportional(
     Ok(result)
 }
 impl Military {
+    pub(crate) fn sync_positions(&mut self, movement: &crate::movement::Movement) {
+        for division in self.divisions.values_mut() {
+            if let Some(unit) = movement.unit(division.id()) {
+                division.province = unit.province().0;
+            }
+        }
+    }
     pub fn definitions_hash(&self) -> u64 {
         self.definitions_hash
     }

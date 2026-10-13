@@ -39,3 +39,16 @@ companyQuestionId=be0117e2-2868-459c-ba0e-40d136b5da43
 
 다음 담당: 총괄이 질문을 openhoi-plan에 중계 → 수정 결정 후
 openhoi-implement 재개 → openhoi-review.
+
+## 재개 — 실제 기획 답변 수신
+
+총괄이 위 companyQuestionId의 답변 @c4d298f를 전달했다. D1 자국 통제
+육지 스냅샷(controller 없으면 owner), D2 해협 아닌 양방향 인접 간선의
+항등 Factors로 정정되어 blocker 해소. 기획 문서 수정은 NOT_RUN.
+ADR-1701에 D1~D3 기록. same-id 원자적 등록/lazy Movement 생성,
+Movement phase roster 동기화 및 codec 명시적 호환 거부를 구현했다.
+
+로컬 구조 RED: 기준 lib.rs에 배치 이동 등록 호출이 없음을 확인했다.
+행동 Rust RED: NOT_RUN(착수 당시 cargo 없음). 빌드/무거운 시험은 hosted만.
+인수 테스트: oh_save/tests/deployed_movement.rs (m2_military 실제 입력).
+실제 세계지도/WebGPU/Windows 제품 QA, 병합/배포/GCP/초기화 NOT_RUN.
