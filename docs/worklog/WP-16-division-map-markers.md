@@ -47,6 +47,8 @@
 
 - head cd9f0ed의 PR CI 38353217456: 기존 M1 82개와 신규 injected 2개 PASS(84 PASS). native 2개는 실제 Deploy/마커 내부점/pan/zoom/reset/resize를 지난 뒤 Language locator를 기다리다 30초 timeout. 저장된 화면은 Connected/정상 Language/마커를 보였고 wire에 understrength=true Deploy 성공이 있다. 처음 예산 소진으로 보고 일시적으로 60초를 설정했으나, Playwright getElementLabels/elementText와 기존 테스트를 확인하여 exact getByLabel이 select 옵션 텍스트까지 포함하는 것이 실제 원인임을 확인했다. 기존 combobox 접근성 이름 locator를 재사용하고 신규 테스트 예산도 다시 30초로 유지했다. 제품/기준선 변경 없음.
 
+- head 4bd370d의 PR CI 38354368278: native Deploy/내부점/모든 카메라 전환/ko/en 라벨/키보드 선택까지 PASS. 새 native 2개는 마지막 닫기 locator가 상단 토글과 패널 내부 버튼 둘을 찾는 strict violation으로 실패(기존 82+injected 2 = 84 PASS). 패널 내부 닫기 버튼으로 신규 locator를 한정했다. 제품 버튼/기존 테스트/예산은 변경하지 않는다.
+
 ## 미실행 / 경계
 
 독립 리뷰, 병합, Windows GUI/HOI4, GCP, 배포/초기화 모두 NOT_RUN. testland 검증은 실제 세계 지도 제품 완료를 뜻하지 않는다. 과거 47a1a14/5b6b4f7 후보 회수는 별개 총괄 작업이다. 다음 담당 openhoi-review는 총괄이 배정한다.

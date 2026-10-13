@@ -48,7 +48,7 @@ test('native Deploy marker stays inside its province through pan zoom reset resi
  await marker.hover();await page.mouse.wheel(0,-100);await follows();await page.getByRole('button',{name:'Reset view',exact:true}).click();await follows();
  await page.setViewportSize({width:1000,height:900});await follows();await page.getByRole('combobox',{name:'Language',exact:true}).selectOption('ko');await expect(marker).toHaveAccessibleName(`프로빈스 ${province}, 국가 1: 사단 1개`);
  await page.getByRole('button',{name:'선택 해제',exact:true}).click();await marker.focus();await page.keyboard.press('Enter');await expect(page.getByTestId('selected-province')).toHaveText(String(province));await page.getByRole('combobox',{name:'언어',exact:true}).selectOption('en');
- await page.getByRole('button',{name:'Close military information',exact:true}).click();await expect(page.locator('.division-marker')).toHaveCount(0);
+ await page.getByTestId('military-panel').getByRole('button',{name:'Close military information',exact:true}).click();await expect(page.locator('.division-marker')).toHaveCount(0);
  const queries=wire.sent.filter(m=>m.type==='Query'&&m.kind==='military').length;await page.getByTestId('speed-1').click();await expect(page.getByTestId('speed')).toHaveText('1');expect(wire.sent.filter(m=>m.type==='Query'&&m.kind==='military')).toHaveLength(queries);
  writeFileSync(info.outputPath('native-marker-wire.json'),JSON.stringify(wire,null,2));
 });
