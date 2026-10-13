@@ -45,7 +45,7 @@
 
 - head 0d5660c의 PR CI 38352067927: server 3 OS/licenses/docs/assets 및 client typecheck/unit/build/M0 브라우저 PASS. 기존 M1 82 PASS; 새 4개는 fresh job Deploy가 rejected라 실패했다. fresh 팩은 장비 stock=0이고 기본 understrength=false이므로 기존 서버의 정상 거부였다. 새 fixture만 체크박스를 명시적으로 선택하도록 수정; 기존 기본값/규칙/기준선은 유지. 실패에서도 wire를 보존하도록 신규 fixture 기록 보강. 실패 시험 host4개는 exit0/잔존PID0 증거를 확인했다.
 
-- head cd9f0ed의 PR CI 38353217456: 기존 M1 82개와 신규 injected 2개 PASS(84 PASS). native 2개는 실제 Deploy/마커 내부점/pan/zoom/reset/resize를 지난 뒤 Language 전환에서 전체 30초 예산 소진. 저장된 화면은 Connected/정상 Language/마커를 보였고 wire에 understrength=true Deploy 성공이 있다. 새 장시간 native 시나리오 하나에만 60초를 설정(훈련 2일+GPU 재생성+ko/en/키보드); 기존 테스트 예산/기준선은 유지.
+- head cd9f0ed의 PR CI 38353217456: 기존 M1 82개와 신규 injected 2개 PASS(84 PASS). native 2개는 실제 Deploy/마커 내부점/pan/zoom/reset/resize를 지난 뒤 Language locator를 기다리다 30초 timeout. 저장된 화면은 Connected/정상 Language/마커를 보였고 wire에 understrength=true Deploy 성공이 있다. 처음 예산 소진으로 보고 일시적으로 60초를 설정했으나, Playwright getElementLabels/elementText와 기존 테스트를 확인하여 exact getByLabel이 select 옵션 텍스트까지 포함하는 것이 실제 원인임을 확인했다. 기존 combobox 접근성 이름 locator를 재사용하고 신규 테스트 예산도 다시 30초로 유지했다. 제품/기준선 변경 없음.
 
 ## 미실행 / 경계
 
