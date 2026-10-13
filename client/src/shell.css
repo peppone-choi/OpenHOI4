@@ -99,3 +99,9 @@ main:has(.world-layout) > section dd { font-size: 18px; margin-top: 2px; }
 .economy-table table { border-collapse: collapse; width: 100%; margin-block: 12px; }
 .economy-table th, .economy-table td { white-space: nowrap; padding: 8px 12px; text-align: start; border-bottom: 1px solid var(--ui-border); }
 .economy-table code { white-space: pre-wrap; overflow-wrap: anywhere; }
+
+.province-map-container { position: relative; }
+.division-markers { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.division-marker-group { position: absolute; display: flex; gap: 2px; transform: translate(-50%,-50%); }
+.division-marker { pointer-events: auto; min-width: 28px; padding: 2px 5px; border: 3px solid; border-radius: 2px; background: #161b22; color: #fff; font-weight: 700; cursor: pointer; }
+.division-marker:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }

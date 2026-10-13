@@ -393,3 +393,5 @@ military-deploy-province = Deployment location
 military-deploy-select = Select…
 military-deploy-understrength = Allow understrength deployment
 military-deploy-understrength-help = Explicitly allow deployment with the held equipment, including zero equipment. The server checks readiness, ownership and army capacity.
+
+map-division-marker = Province { $province }, nation { $nation }: { $count } divisions

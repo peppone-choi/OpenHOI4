@@ -1,5 +1,14 @@
 # OpenHOI4 WIP 인수인계
 
+## 지도 사단 마커 구현 후보 (2026-10-13)
+
+main 7c9ded8 기준의 읽기 전용 province+nation 사단 count overlay다.
+ready 군사 view만 전달하고 실제 프로빈스 내부 픽셀 중심, 카메라 추종,
+선택/키보드/ko·en, unknown reference 오류와 stale 숨김을 연결했다.
+로컬 typecheck 및 신규 의미있는 unit 5개 PASS; build/브라우저는 GitHub CI에 맡긴다.
+[작업 로그](docs/worklog/WP-16-division-map-markers.md)의 인수조건/미실행 경계를 따른다.
+독립 리뷰·병합·Windows·GCP·배포·초기화는 미실행이며 실제 세계 지도 완료가 아니다.
+
 ## PR19 실제 리뷰 HOLD의 P2 수정 후보 (2026-10-11)
 
 원9f073f1의 실제 source review는 필수 P2 하나로 HOLD였다. 열린 군사

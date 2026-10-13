@@ -393,3 +393,5 @@ military-deploy-province = 배치 위치
 military-deploy-select = 선택…
 military-deploy-understrength = 부족한 장비로 배치 허용
 military-deploy-understrength-help = 장비가 0인 경우를 포함해 현재 확보한 장비로 배치를 명시적으로 허용합니다. 서버가 준비 상태·소유권·군 정원을 판정합니다.
+
+map-division-marker = 프로빈스 { $province }, 국가 { $nation }: 사단 { $count }개
