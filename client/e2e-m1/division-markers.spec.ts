@@ -36,7 +36,8 @@ test('native Deploy marker stays inside its province through pan zoom reset resi
  await expect(page.locator('.division-marker')).toHaveCount(0);await page.getByRole('button',{name:'Open military information',exact:true}).click();await expect(page.getByTestId('military-panel')).toHaveAttribute('data-status','ready');await expect(page.locator('.division-marker')).toHaveCount(0);
  const {province,world}=await trainAndDeploy(page,wire),marker=page.locator(`[data-division-province="${province}"][data-division-nation="1"]`),map=page.getByTestId('province-map');
  await expect(marker).toHaveCount(1);await expect(marker).toHaveText('1');await expect(marker).toHaveAccessibleName(`Province ${province}, nation 1: 1 divisions`);
- const index=decodeIndex(await(await fetch(`${host}/maps/${world.map_id}/index.bin`)).arrayBuffer(),world.width,world.height,world.province_ids);
+ const meta=await(await fetch(`${host}/maps/${world.map_id}/metadata`)).json() as {pack_hash:string};
+ const index=decodeIndex(await(await fetch(`${host}/maps/${world.map_id}/index.bin?pack=${encodeURIComponent(meta.pack_hash)}`)).arrayBuffer(),world.width,world.height,world.province_ids);
  const follows=async()=>{await expect.poll(async()=>{
   const geometry=await marker.evaluate(el=>{const host=document.querySelector('[data-testid="province-map"]') as HTMLElement,rect=host.getBoundingClientRect(),box=el.getBoundingClientRect(),camera=JSON.parse(host.dataset.camera!);return {x:camera.x+((box.x+box.width/2-rect.x)/rect.width-.5)*camera.width,y:camera.y+((box.y+box.height/2-rect.y)/rect.height-.5)*camera.height,anchorX:Number((el as HTMLElement).dataset.mapX),anchorY:Number((el as HTMLElement).dataset.mapY)};});
   return Math.abs(geometry.x-geometry.anchorX)<.05&&Math.abs(geometry.y-geometry.anchorY)<.05&&pick(index,world.province_ids,world.width,world.height,geometry.x,geometry.y)===province;
