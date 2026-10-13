@@ -99,27 +99,26 @@ fn deployed_m2_same_id_move_roster_rejections_stop_and_codec_resume() {
         s.military().unwrap().divisions()[&id.0].province(),
         destination
     );
+    // Pause first: Stop of an unstarted edge resets to the existing empty route.
+    apply(&mut s, 4, Command::Pause(true));
     apply(
         &mut s,
-        4,
+        5,
         Command::Move {
             unit: id,
             destination: ProvinceId(1),
         },
     );
-    // Stop at an unstarted edge retains no route, per existing movement semantics.
-    s.enqueue(s.snapshot().tick(), NationId(1), 5, Command::Pause(true))
-        .unwrap();
-    s.step().unwrap();
-    // Existing Stop preserves an in-progress first edge; it discards subsequent legs.
     apply(&mut s, 6, Command::Stop { unit: id });
+    let unit = s.movement().unwrap().unit(id).unwrap();
+    assert_eq!(unit.elapsed(), oh_core::Fx::ZERO);
+    assert!(unit.remaining_route().is_empty());
+    let mut legacy = s.export_save_v7().unwrap();
+    legacy.base.base.base.base.units.clear();
+    let legacy = Simulation::from_save_v7(legacy, c.restore_context()).unwrap();
     assert!(
-        s.movement()
-            .unwrap()
-            .unit(id)
-            .unwrap()
-            .remaining_route()
-            .len()
-            <= 1
+        oh_save::encode(&legacy, &c, 0, vec![1])
+            .unwrap_err()
+            .contains("DeployedMovementMissing")
     );
 }

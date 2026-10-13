@@ -52,3 +52,9 @@ Movement phase roster 동기화 및 codec 명시적 호환 거부를 구현했�
 행동 Rust RED: NOT_RUN(착수 당시 cargo 없음). 빌드/무거운 시험은 hosted만.
 인수 테스트: oh_save/tests/deployed_movement.rs (m2_military 실제 입력).
 실제 세계지도/WebGPU/Windows 제품 QA, 병합/배포/GCP/초기화 NOT_RUN.
+
+로컬 추가 검사: rustfmt, git diff --check PASS. 임시 /tmp Rust 도구로
+check_architecture.py PASS (metadata만, 제품 빌드 없음). PR #21 생성.
+첫 구현 head e463247fb463c9f79f1a75693dfc614db13e7de3.
+CI run 38382767605 시작 확인, docs success / 주요 jobs queued 당시.
+최종 head는 인계 메시지 참조. 전체 CI PASS 및 독립 리뷰는 아직 미완료.

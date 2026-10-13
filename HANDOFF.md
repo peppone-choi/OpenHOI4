@@ -1,5 +1,20 @@
 # OpenHOI4 WIP 인수인계
 
+## 배치 사단 Movement 연결 (2026-10-13)
+
+taskId=openhoi-deployed-division-movement-20261013-1010, stage=implement.
+branch=buzz/openhoi-deployed-division-movement-20261013-1010/openhoi-implement.
+PR #21: https://github.com/peppone-choi/OpenHOI4/pull/21
+Deploy same-id 등록/lazy 컨텍스트/roster 위치 동기화/codec 명시 호환 거부.
+D1/D2 정정 근거와 D3는 docs/adr/ADR-1701-deployed-division-movement.md.
+산출물: crates/oh_save/tests/deployed_movement.rs 및 WP-17 작업기록.
+로컬 rustfmt, diff --check, architecture 경계 검사 PASS. 행동 RED NOT_RUN.
+hosted CI 시작: e463247fb463c9f79f1a75693dfc614db13e7de3 /
+CI run 38382767605 (docs success, 나머지 queued/in_progress 당시).
+최종 head와 최종 head CI run은 총괄 인계 메시지 참조. CI 전체 PASS 아님.
+다음 openhoi-review. blocker: CI 최종 결과와 독립 리뷰 미완료.
+실제 세계지도/WebGPU/Windows 제품 QA 및 병합/배포/GCP/초기화 NOT_RUN.
+
 ## 지도 사단 마커 구현 후보 (2026-10-13)
 
 main 7c9ded8 기준의 읽기 전용 province+nation 사단 count overlay다.
