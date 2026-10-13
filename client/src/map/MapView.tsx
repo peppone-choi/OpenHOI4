@@ -4,7 +4,7 @@ import { useLocalization } from '../i18n';
 import { decodeIndex,fnv,validateWorldDisplay } from './model';
 import { createMap,type MapCamera } from './renderer';
 import { isMapMetadata } from '../network';
-import {DivisionMarkers} from './DivisionMarkers';
+import {DivisionMarkers} from './DivisionMarkersOverlay';
 import {buildDivisionMarkers,provinceAnchors,type MapPresentation} from './divisionMarkers';
 type MapInstance=Awaited<ReturnType<typeof createMap>>;
 /** Reject redirects before any target request; map files belong to this host. */

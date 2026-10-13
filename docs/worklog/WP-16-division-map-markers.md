@@ -37,6 +37,12 @@
 - injected correlated unknown/unsupported 군사 결과는 native와 명시적으로 구분. 실제 socket disconnect 뒤 stale 마커 숨김.
 - CI run URL/최종 source SHA와 결과는 PR 및 총괄 인계에 기록. 로컬 build/browser/heavy suite는 실행하지 않는다.
 
+## CI 작성자 수정 기록
+
+- 최초 head 676a2ec의 CI 38351724503: docs/assets PASS. macOS/windows의 클라이언트 build 단계에서 `divisionMarkers.ts`와 `DivisionMarkers.tsx`의 대소문자 파일 충돌 발견(TS1149/TS2724). 서버/의존성 변경 없이 overlay 파일을 `DivisionMarkersOverlay.tsx`로 분리했다.
+- native browser fixture 인덱스 fetch에 metadata의 pack_hash를 포함하도록 수정(기존 HTTP 계약; 프로토콜 변경 아님).
+- 수정 후 로컬 typecheck/new unit 5개를 재검증하고 새 head를 push. 이전 head CI를 수정 head의 PASS 근거로 사용하지 않는다.
+
 ## 미실행 / 경계
 
 독립 리뷰, 병합, Windows GUI/HOI4, GCP, 배포/초기화 모두 NOT_RUN. testland 검증은 실제 세계 지도 제품 완료를 뜻하지 않는다. 과거 47a1a14/5b6b4f7 후보 회수는 별개 총괄 작업이다. 다음 담당 openhoi-review는 총괄이 배정한다.
