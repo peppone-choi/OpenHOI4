@@ -33,6 +33,8 @@ async function trainAndDeploy(page:Page,wire:ReturnType<typeof observe>){
  await expect(page.getByTestId('military-command-feedback')).toHaveAttribute('data-status','success');return {province,world};
 }
 test('native Deploy marker stays inside its province through pan zoom reset resize, keyboard ko/en and close',async({page,host,wire},info)=>{
+ // Includes native two-day training plus three GPU camera lifecycle transitions.
+ test.setTimeout(60000);
  await page.goto(host+'/?forceWebGL=1');await page.getByRole('button',{name:'Start as selected nation',exact:true}).click();
  await expect(page.locator('.division-marker')).toHaveCount(0);await page.getByRole('button',{name:'Open military information',exact:true}).click();await expect(page.getByTestId('military-panel')).toHaveAttribute('data-status','ready');await expect(page.locator('.division-marker')).toHaveCount(0);
  const {province,world}=await trainAndDeploy(page,wire),marker=page.locator(`[data-division-province="${province}"][data-division-nation="1"]`),map=page.getByTestId('province-map');
