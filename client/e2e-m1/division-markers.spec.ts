@@ -7,7 +7,7 @@ import {resolve} from 'node:path';
 import {decode,encode} from '@msgpack/msgpack';
 import type {ServerMessage,ClientMessage} from '../src/proto/protocol';
 import {decodeIndex,pick} from '../src/map/model';
-const test=base.extend<{host:string}>({host:async({},use,info)=>{
+const test=base.extend<{host:string;wire:ReturnType<typeof observe>}>({wire:async({page},use,info)=>{const wire=observe(page);try{await use(wire);}finally{writeFileSync(info.outputPath('marker-wire.json'),JSON.stringify(wire,null,2));}},host:async({},use,info)=>{
  const root=mkdtempSync(resolve(tmpdir(),'openhoi-markers-'));cpSync(resolve('../data/packs/testland_m2_military'),resolve(root,'testland'),{recursive:true});
  const listener=createServer();await new Promise<void>(done=>listener.listen(0,'127.0.0.1',done));const port=(listener.address() as {port:number}).port;await new Promise<void>(done=>listener.close(()=>done()));
  const child=spawn(resolve('../target/debug',process.platform==='win32'?'oh_server.exe':'oh_server'),['--port',String(port),'--pack-root',root,'--scenario','m2_military'],{cwd:resolve('..'),stdio:'ignore'});
@@ -28,11 +28,12 @@ async function trainAndDeploy(page:Page,wire:ReturnType<typeof observe>){
  const military=wire.received.filter((m):m is Extract<ServerMessage,{type:'MilitaryResult'}>=>m.type==='MilitaryResult'&&!!m.military).at(-1)!.military!;
  const world=wire.received.filter((m):m is Extract<ServerMessage,{type:'WorldResult'}>=>m.type==='WorldResult'&&m.request.startsWith('deploy-world:')&&!!m.world).at(-1)!.world!;
  const army=military.armies.find(a=>a.nation===1)!.id,province=world.provinces.find(p=>p.controller===1&&p.state!==null)!.id;
- await job.getByLabel('Deployment army',{exact:true}).selectOption(army);await job.getByLabel('Deployment location',{exact:true}).selectOption(String(province));await job.getByRole('button',{name:'Deploy',exact:true}).click();
+ await job.getByLabel('Deployment army',{exact:true}).selectOption(army);await job.getByLabel('Deployment location',{exact:true}).selectOption(String(province));// Fresh jobs reserve the fixture's initially empty stock; opt in explicitly.
+ await job.getByLabel('Allow understrength deployment',{exact:true}).check();await job.getByRole('button',{name:'Deploy',exact:true}).click();
  await expect(page.getByTestId('military-command-feedback')).toHaveAttribute('data-status','success');return {province,world};
 }
-test('native Deploy marker stays inside its province through pan zoom reset resize, keyboard ko/en and close',async({page,host},info)=>{
- const wire=observe(page);await page.goto(host+'/?forceWebGL=1');await page.getByRole('button',{name:'Start as selected nation',exact:true}).click();
+test('native Deploy marker stays inside its province through pan zoom reset resize, keyboard ko/en and close',async({page,host,wire},info)=>{
+ await page.goto(host+'/?forceWebGL=1');await page.getByRole('button',{name:'Start as selected nation',exact:true}).click();
  await expect(page.locator('.division-marker')).toHaveCount(0);await page.getByRole('button',{name:'Open military information',exact:true}).click();await expect(page.getByTestId('military-panel')).toHaveAttribute('data-status','ready');await expect(page.locator('.division-marker')).toHaveCount(0);
  const {province,world}=await trainAndDeploy(page,wire),marker=page.locator(`[data-division-province="${province}"][data-division-nation="1"]`),map=page.getByTestId('province-map');
  await expect(marker).toHaveCount(1);await expect(marker).toHaveText('1');await expect(marker).toHaveAccessibleName(`Province ${province}, nation 1: 1 divisions`);
@@ -51,7 +52,7 @@ test('native Deploy marker stays inside its province through pan zoom reset resi
  const queries=wire.sent.filter(m=>m.type==='Query'&&m.kind==='military').length;await page.getByTestId('speed-1').click();await expect(page.getByTestId('speed')).toHaveText('1');expect(wire.sent.filter(m=>m.type==='Query'&&m.kind==='military')).toHaveLength(queries);
  writeFileSync(info.outputPath('native-marker-wire.json'),JSON.stringify(wire,null,2));
 });
-test('injected unsupported/unknown province and real disconnect hide markers without silent bad data',async({page,host})=>{
+test('injected unsupported/unknown province and real disconnect hide markers without silent bad data',async({page,host,wire})=>{
  let mode:'native'|'unknown'|'unsupported'='native',disconnect=()=>{};
  await page.routeWebSocket('**/ws',route=>{const server=route.connectToServer();disconnect=()=>server.close({code:1000,reason:'marker-test'});route.onMessage(frame=>server.send(frame));server.onMessage(frame=>{
   const m=decode(frame as Uint8Array) as ServerMessage;
@@ -61,7 +62,7 @@ test('injected unsupported/unknown province and real disconnect hide markers wit
    route.send(Buffer.from(encode(m)));
   }else route.send(frame);
  });});
- const wire=observe(page);await page.goto(host+'/?forceWebGL=1');await page.getByRole('button',{name:'Start as selected nation',exact:true}).click();await page.getByRole('button',{name:'Open military information',exact:true}).click();await expect(page.getByTestId('military-panel')).toHaveAttribute('data-status','ready');await trainAndDeploy(page,wire);await expect(page.locator('.division-marker')).toHaveCount(1);
+ await page.goto(host+'/?forceWebGL=1');await page.getByRole('button',{name:'Start as selected nation',exact:true}).click();await page.getByRole('button',{name:'Open military information',exact:true}).click();await expect(page.getByTestId('military-panel')).toHaveAttribute('data-status','ready');await trainAndDeploy(page,wire);await expect(page.locator('.division-marker')).toHaveCount(1);
  mode='unknown';await page.getByTestId('speed-1').click();await expect(page.getByRole('alert').filter({hasText:'Map data'})).toBeVisible();await expect(page.locator('.division-marker')).toHaveCount(0);
  mode='unsupported';await page.getByTestId('speed-2').click();await expect(page.getByTestId('military-panel')).toHaveAttribute('data-status','unsupported');await expect(page.locator('.division-marker')).toHaveCount(0);
  mode='native';await page.getByTestId('speed-3').click();await expect(page.getByTestId('military-panel')).toHaveAttribute('data-status','ready');await expect(page.locator('.division-marker')).toHaveCount(1);disconnect();await expect(page.getByTestId('military-panel')).toHaveAttribute('data-status','stale');await expect(page.locator('.division-marker')).toHaveCount(0);

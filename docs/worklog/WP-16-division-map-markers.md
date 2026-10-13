@@ -43,6 +43,8 @@
 - native browser fixture 인덱스 fetch에 metadata의 pack_hash를 포함하도록 수정(기존 HTTP 계약; 프로토콜 변경 아님).
 - 수정 후 로컬 typecheck/new unit 5개를 재검증하고 새 head를 push. 이전 head CI를 수정 head의 PASS 근거로 사용하지 않는다.
 
+- head 0d5660c의 PR CI 38352067927: server 3 OS/licenses/docs/assets 및 client typecheck/unit/build/M0 브라우저 PASS. 기존 M1 82 PASS; 새 4개는 fresh job Deploy가 rejected라 실패했다. fresh 팩은 장비 stock=0이고 기본 understrength=false이므로 기존 서버의 정상 거부였다. 새 fixture만 체크박스를 명시적으로 선택하도록 수정; 기존 기본값/규칙/기준선은 유지. 실패에서도 wire를 보존하도록 신규 fixture 기록 보강. 실패 시험 host4개는 exit0/잔존PID0 증거를 확인했다.
+
 ## 미실행 / 경계
 
 독립 리뷰, 병합, Windows GUI/HOI4, GCP, 배포/초기화 모두 NOT_RUN. testland 검증은 실제 세계 지도 제품 완료를 뜻하지 않는다. 과거 47a1a14/5b6b4f7 후보 회수는 별개 총괄 작업이다. 다음 담당 openhoi-review는 총괄이 배정한다.
