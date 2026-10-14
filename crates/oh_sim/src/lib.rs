@@ -313,7 +313,7 @@ impl Simulation {
                     .ok_or("DeployedMovementMissing: explicit migration required")?;
                 if unit.nation() != division.nation()
                     || unit.province() != division.province()
-                    || unit.speed() != division.normal().speed_kmh
+                    || unit.speed() != division.normal().stats.speed_kmh
                 {
                     return Err("DeployedMovementMismatch".into());
                 }
@@ -387,7 +387,7 @@ impl Simulation {
                         id,
                         nation: n,
                         province: division.province(),
-                        speed: division.normal().speed_kmh,
+                        speed: division.normal().stats.speed_kmh,
                         allowed,
                         corrections,
                     },
