@@ -97,6 +97,7 @@ pub fn encode_with_limits(
     limits: &Limits,
 ) -> Result<Vec<u8>> {
     context.verify_unchanged()?;
+    sim.validate_deployed_movement()?;
     let version = if let Some(military) = sim.military() {
         if military.jobs().len() > oh_sim::military_save::LEGACY_V7_MAX_JOB_RECORDS {
             EXTENDED_MILITARY_FORMAT_VERSION
@@ -446,6 +447,7 @@ pub fn decode_with_limits(
     } else {
         Simulation::from_save(base, &context.restore)?
     };
+    simulation.validate_deployed_movement()?;
     check_players(&header, &simulation)?;
     if simulation.state_hash().map_err(|e| e.to_string())? != header.state_hash {
         return Err("StateHashMismatch".into());

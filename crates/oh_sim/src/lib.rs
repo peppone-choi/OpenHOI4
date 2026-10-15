@@ -302,6 +302,104 @@ impl Simulation {
             )
             .map_err(Error::Military)
     }
+    /// Reject legacy deployed rosters without matching travel authority; never migrate silently.
+    pub fn validate_deployed_movement(&self) -> Result<(), String> {
+        if let Some(military) = &self.military {
+            for division in military.divisions().values() {
+                let unit = self
+                    .movement
+                    .as_ref()
+                    .and_then(|m| m.unit(division.id()))
+                    .ok_or("DeployedMovementMissing: explicit migration required")?;
+                if unit.nation() != division.nation()
+                    || unit.province() != division.province()
+                    || unit.speed() != division.normal().stats.speed_kmh
+                {
+                    return Err("DeployedMovementMismatch".into());
+                }
+            }
+        }
+        Ok(())
+    }
+    #[allow(clippy::too_many_arguments)]
+    fn apply_deployed_military(
+        c: &Command,
+        n: NationId,
+        w: Option<&world::World>,
+        e: &mut Option<economy::Economy>,
+        p: &mut Option<production::Production>,
+        m: &mut Option<military::Military>,
+        movement: &mut Option<movement::Movement>,
+        tick: u64,
+    ) -> Result<(), Error> {
+        let mut ne = e.clone();
+        let mut np = p.clone();
+        let mut nm = m.clone();
+        let mut travel = movement.clone();
+        Self::apply_military(c, n, w, ne.as_mut(), np.as_mut(), nm.as_mut(), tick)?;
+        if let Command::Military(military::Action::Deploy { job, .. }) = c {
+            let world = w.ok_or(Error::InvalidWorld)?;
+            let military = nm.as_ref().ok_or(Error::InvalidWorld)?;
+            let id = military.jobs()[job].division().ok_or(Error::InvalidWorld)?;
+            let division = &military.divisions()[&id.0];
+            let allowed = world
+                .inputs()
+                .provinces()
+                .iter()
+                .filter(|p| {
+                    p.controller().or(p.owner()) == Some(n)
+                        && movement::land(world.defs().map(), p.id())
+                })
+                .map(|p| p.id())
+                .collect::<std::collections::BTreeSet<_>>();
+            let identity = movement::Factors {
+                terrain: oh_core::Fx::ONE,
+                infrastructure: oh_core::Fx::ONE,
+                supply: oh_core::Fx::ONE,
+                river: oh_core::Fx::ONE,
+            };
+            let mut corrections = BTreeMap::new();
+            for edge in &world.defs().map().edges {
+                let a = ProvinceId(edge.a);
+                let b = ProvinceId(edge.b);
+                if allowed.contains(&a)
+                    && allowed.contains(&b)
+                    && matches!(
+                        edge.kind,
+                        oh_data::map::EdgeKind::Normal
+                            | oh_data::map::EdgeKind::RiverSmall
+                            | oh_data::map::EdgeKind::RiverLarge
+                    )
+                {
+                    corrections.insert((a, b), identity);
+                    corrections.insert((b, a), identity);
+                }
+            }
+            if travel.is_none() {
+                travel = Some(movement::Movement::new(world, vec![]).map_err(Error::Movement)?);
+            }
+            travel
+                .as_mut()
+                .ok_or(Error::InvalidWorld)?
+                .register(
+                    world,
+                    movement::UnitInput {
+                        id,
+                        nation: n,
+                        province: division.province(),
+                        speed: division.normal().stats.speed_kmh,
+                        allowed,
+                        corrections,
+                    },
+                )
+                .map_err(Error::Movement)?;
+        }
+        *e = ne;
+        *p = np;
+        *m = nm;
+        *movement = travel;
+        Ok(())
+    }
     pub fn production(&self) -> Option<&production::Production> {
         self.production.as_ref()
     }
@@ -543,13 +641,14 @@ impl Simulation {
         let mut commands = Vec::new();
         for key @ (_, nation, sequence) in &keys {
             let result = match &self.queue[key] {
-                c @ Command::Military(_) => Self::apply_military(
+                c @ Command::Military(_) => Self::apply_deployed_military(
                     c,
                     *nation,
                     next_world.as_ref(),
-                    next_economy.as_mut(),
-                    next_production.as_mut(),
-                    next_military.as_mut(),
+                    &mut next_economy,
+                    &mut next_production,
+                    &mut next_military,
+                    &mut next_movement,
                     next.tick(),
                 ),
                 c @ Command::Production(_) => Self::apply_production(
@@ -611,6 +710,9 @@ impl Simulation {
             phases.extend([Phase::Movement, Phase::Combat, Phase::RetreatAndControl]);
             if let Some(movement) = next_movement.as_mut() {
                 movement.advance().map_err(Error::Movement)?;
+                if let Some(military) = next_military.as_mut() {
+                    military.sync_positions(movement);
+                }
             }
             if hour == 0 {
                 phases.extend([

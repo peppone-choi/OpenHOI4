@@ -399,6 +399,23 @@ impl Movement {
         m.validate(world)?;
         Ok(m)
     }
+    pub(crate) fn register(
+        &mut self,
+        world: &World,
+        input: UnitInput,
+    ) -> Result<(), MovementError> {
+        let unit = Self::new(world, vec![input])?.units.remove(0);
+        let index = self.units.binary_search_by_key(&unit.id, |u| u.id);
+        let index = match index {
+            Ok(_) => return Err(MovementError::DuplicateUnit),
+            Err(index) => index,
+        };
+        if let Some(straits) = self.straits.as_mut() {
+            straits.insert(unit.id, BTreeMap::new());
+        }
+        self.units.insert(index, unit);
+        Ok(())
+    }
     /// Trusted, explicit crossing authority. Legacy constructors keep v2 policy.
     pub fn with_straits(
         world: &World,
