@@ -1,15 +1,16 @@
 # OpenHOI4 WIP 인수인계
 
-## S1 이동 명령 wire·조회 stacked 후보 (2026-10-15)
+## S1 이동 명령 wire·조회 + transport 보완 후보 (2026-10-15)
 
 taskId=openhoi-s1-movement-wire-20261015, stage=implement, contract=be6b4ef3-6ceb-4ada-a800-b0077be15519.
 branch=buzz/openhoi-s1-movement-wire-20261015/openhoi-implement.
-draft PR #22: https://github.com/peppone-choi/OpenHOI4/pull/22 (main diff의 PR21 포함분과 S1 소유 diff를 구분).
+draft PR #22: https://github.com/peppone-choi/OpenHOI4/pull/22 (PR21 병합 main과 비강제 merge 정합, main diff는 S1 14파일만).
 exact base=fb1539adc231e34eccf42895d46d456448bff1dc (PR21 head), main=33d6fb19388477b3687102e5c2a52978d6cf37ac.
 서버 Move/Stop wire, movement query, 단일 current_leg_hours getter, ts-rs 생성물과 protocol/native 인수검사만 소유한다.
 [ADR-1702](docs/adr/ADR-1702-movement-wire.md), [WP-17 S1](docs/worklog/WP-17-movement-wire.md)에 근거와 검사 경계를 기록했다.
 RED는 hosted Ubuntu에서 미지 MovementCommand decode 실패로 확인했다. 최종 head/CI 영수증은 본 작업 reports/dispatch 인계를 따른다.
-**PR21 영수증 차단 유지. PR21 병합 전 S1 병합 금지. 그 뒤 main 정합/rebase와 새 exact-head 검증 필요.**
+**PR21은 외부에서 main 3b7ac90f로 병합됨. 원 base와 tree 동일성 확인 뒤 비강제 merge 정합. 새 exact-head hosted CI·독립 리뷰·검증 필요.**
+총괄 승인 보완은 network.ts/networkValidation.test.ts의 MovementResult transport guard·시험만이며, 원 head/RED/실패 로그는 별도 ref·reports에 보존했다.
 S2 UI·M-1 지도 로딩·국가 레이어·oh_sim/src/lib.rs·저장 형식은 변경하지 않았다. 1936 요구 유지, 1939 미확정.
 독립 리뷰·제품 QA·실제 세계지도·Windows GUI·HOI4·GCP·배포·초기화 NOT_RUN. 다음 담당 main.
 

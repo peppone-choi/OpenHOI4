@@ -46,3 +46,22 @@ TS는 hosted CI run 38822260564 client job 116721369216의 실제 ts-rs 생성 d
 
 독립 리뷰, 병합, 실제 세계지도·클릭 이동·화살표·움직이는 엔티티 제품 QA, WebGPU, Windows GUI, 원작 HOI4, GCP, 운영 배포, 게임 초기화는 NOT_RUN이다.
 부분 서버 검사로 전체 제품/실제 지도 QA 완료를 선언하지 않는다. 산출물은 main에 반환하고 다른 담당을 배정하지 않는다.
+
+
+## 승인된 transport 보완 및 비강제 main 정합
+
+총괄이 질문 `e8fcf5c4-a6e5-4882-ad68-7e08706b0c6c`의 기획 답변을 확인하고 H1–H4 범위를 승인했다.
+보완 원문 SHA256: `d6cdf2955da3d71d0a9a24a245eb84f9ff7778e6972181e4117edea445c568c9`.
+`network.ts`와 `networkValidation.test.ts`만 제품 소유에 추가한다. 기존 guard와 satisfies, P-06 valid/invalid 및 fixture 6건은 유지한다.
+새 guard는 exact envelope/view/unit/fixed, canonical u32/u64, dense route/units, division 수치 오름차순·중복 거부,
+I32F32 half-even value/bits 일치만 검사한다. 게임 의미·UI·S2·지도는 변경하지 않는다.
+
+- 원 후보 head `ceccc9adf2d61a5031a79e74a4176adac9c32f79`, RED `24a6f21f1f297af89853ecf9529b6e303be753db`.
+- 원 base `fb1539adc231e34eccf42895d46d456448bff1dc`와 PR21 squash main `3b7ac90f4420043e50a2f8605c34a7327d9bd01d`의 tree는 실제 git 확인에서 모두 `59617d3784d57e8f8046ec303cdf6aa9049716c2`다.
+- rebase 게시의 강제 갱신을 피하기 위해 동일 main tree를 merge했다. 정합 commit `b1d637192712d5322116c22c0db8852858d58d96`의 tree는 원 후보와 동일하다. 원 PR21 코드 중복 변경 없이 S1의 HANDOFF 추가만 보존해 문서 충돌을 해소했다.
+- 원 head와 RED는 `archive/openhoi-s1-pre-sync-ceccc9a`, `archive/openhoi-s1-red-24a6f21` ref 및 `reports/s1-amend/pre-sync.bundle`로 보존했다. 기존 `reports/s1/`의 모든 파일 SHA를 별도로 기록했으며 덮어쓰지 않는다.
+- 원 실패 CI `38822700197`/`38822695989`의 TS2741 및 RED CI `38821667927`의 unknown MovementCommand 실패는 그대로 보존한다. 새 시험의 RED를 별도로 꾸미지 않는다.
+- 이 보완까지의 exact head·14파일 diff·새 hosted CI 실행/로그는 `reports/s1-amend/`와 별도 RESULT에 기록한다. 과거 NOT_RUN을 과거 PASS로 변경하지 않는다.
+
+앞 절의 stacked/PR21 차단 설명은 당시 사실 기록이다. 현재 PR21은 외부에서 병합되었고 본 후보는 main을 조상으로 포함한다.
+PR22의 최신 diff는 main 기준 S1 12파일+transport 보완 2파일만이다. 새 exact-head 독립 리뷰와 검증은 총괄이 다음 담당에게 배정하며 이번 구현에서는 NOT_RUN이다.
