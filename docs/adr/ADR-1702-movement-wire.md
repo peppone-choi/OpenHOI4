@@ -15,7 +15,7 @@ ADR-1603과 기존 MilitaryCommand는 Join 국가, 공용 단조 sequence, 실�
 구 서버는 미지 명령을 invalid-message로, movement query를 unsupported-query로 거부한다.
 새 클라이언트는 명령 전에 `movement` 조회의 supported를 확인할 수 있다. client 구현은 S2 소유다.
 
-명령은 canonical u64 division/sequence와 u16 destination만 받는다. 국가·속도·계수·allowed를 받지 않는다.
+명령은 canonical u32 division/u64 sequence와 u16 destination만 받는다. 국가·속도·계수·allowed를 받지 않는다.
 Join 국가만 sim::Command::Move/Stop의 nation이 된다. 군사 명령과 같은 시뮬레이션 큐·step 경로를 사용한다.
 조회는 같은 sim thread에서 state_hash/tick/Unit getter를 읽고 FixedValue I32F32로 투영한다.
 현재 간선이 없으면 current_leg_hours=0이다. movement 컨텍스트가 없어도 빈 units로 성공한다.
