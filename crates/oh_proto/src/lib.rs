@@ -271,8 +271,10 @@ pub fn typescript() -> String {
         .chain(movement::declarations())
     {
         out.push_str("export ");
-        out.push_str(&declaration);
-        out.push('\n');
+        for line in declaration.lines() {
+            out.push_str(line.trim_end());
+            out.push('\n');
+        }
     }
     out
 }
