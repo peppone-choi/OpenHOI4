@@ -20,6 +20,7 @@ const test=base.extend<{host:string;wire:ReturnType<typeof observe>}>({wire:asyn
   writeFileSync(info.outputPath('marker-host-cleanup.json'),JSON.stringify({pid:child.pid,...result,alive}));rmSync(root,{recursive:true});expect(alive).toBe(false);expect(result.code).toBe(0);
  }
 }});
+test.use({trace:'retain-on-failure'});
 function observe(page:Page){const sent:ClientMessage[]=[],received:ServerMessage[]=[];page.on('websocket',socket=>{socket.on('framesent',e=>{if(e.payload instanceof Buffer)sent.push(decode(e.payload) as ClientMessage);});socket.on('framereceived',e=>{if(e.payload instanceof Buffer)received.push(decode(e.payload) as ServerMessage);});});return {sent,received};}
 async function trainAndDeploy(page:Page,wire:ReturnType<typeof observe>){
  await page.getByRole('button',{name:'Start training',exact:true}).click();await expect(page.getByTestId('military-command-feedback')).toHaveAttribute('data-status','success');
@@ -66,4 +67,33 @@ test('injected unsupported/unknown province and real disconnect hide markers wit
  mode='unknown';await page.getByTestId('speed-1').click();await expect(page.getByRole('alert').filter({hasText:'Map data'})).toBeVisible();await expect(page.locator('.division-marker')).toHaveCount(0);
  mode='unsupported';await page.getByTestId('speed-2').click();await expect(page.getByTestId('military-panel')).toHaveAttribute('data-status','unsupported');await expect(page.locator('.division-marker')).toHaveCount(0);
  mode='native';await page.getByTestId('speed-3').click();await expect(page.getByTestId('military-panel')).toHaveAttribute('data-status','ready');await expect(page.locator('.division-marker')).toHaveCount(1);disconnect();await expect(page.getByTestId('military-panel')).toHaveAttribute('data-status','stale');await expect(page.locator('.division-marker')).toHaveCount(0);
+});
+
+// Joining clears the economy above the toggle. Deliver its real response between
+// pointer down/up to exercise the layout race without sleeps or synthetic clicks.
+test('military toggle remains clickable while joined economy becomes ready',async({page,host,wire},info)=>{
+ let joined=false,release=()=>{};
+ const held: Array<()=>void>=[];
+ await page.routeWebSocket('**/ws',route=>{
+  const server=route.connectToServer();
+  route.onMessage(frame=>{const m=decode(frame as Uint8Array) as ClientMessage;if(m.type==='Join'&&m.nation==='N01')joined=true;server.send(frame);});
+  server.onMessage(frame=>{const m=decode(frame as Uint8Array) as ServerMessage;if(joined&&m.type==='EconomyResult')held.push(()=>route.send(frame));else route.send(frame);});
+  release=()=>{for(const send of held.splice(0))send();};
+ });
+ await page.goto(host+'/?forceWebGL=1');
+ await expect(page.getByTestId('economy-panel')).toHaveAttribute('data-status','ready');
+ await expect(page.getByTestId('province-map')).toBeVisible();await page.evaluate(()=>document.fonts.ready);
+ await page.getByRole('button',{name:'Start as selected nation',exact:true}).click();
+ await expect(page.getByTestId('connection')).toHaveText('Connected');
+ await expect.poll(()=>held.length).toBeGreaterThan(0);
+ await expect(page.getByTestId('economy-panel')).toHaveAttribute('data-status','loading');
+ const toggle=page.getByRole('button',{name:'Open military information',exact:true});await toggle.scrollIntoViewIfNeeded();
+ const before=(await toggle.boundingBox())!;const x=before.x+before.width/2,y=before.y+before.height/2;
+ await page.mouse.move(x,y);await page.mouse.down();release();
+ await expect(page.getByTestId('economy-panel')).toHaveAttribute('data-status','ready');
+ const after=await toggle.boundingBox();await page.mouse.up();
+ await info.attach('toggle-layout',{body:JSON.stringify({before,after,x,y}),contentType:'application/json'});
+ writeFileSync(info.outputPath('toggle-layout.json'),JSON.stringify({before,after,x,y}));
+ await expect(page.getByTestId('military-panel')).toHaveAttribute('data-status','ready');
+ expect(wire.sent.some(m=>m.type==='Query'&&m.kind==='military')).toBe(true);
 });
