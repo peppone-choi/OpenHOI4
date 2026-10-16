@@ -22,7 +22,7 @@ const test=base.extend<{host:string;wire:ReturnType<typeof observe>}>({wire:asyn
  }
 }});
 test.use({trace:'retain-on-failure'});
-function observe(page:Page){const sent:ClientMessage[]=[],received:ServerMessage[]=[];page.on('websocket',socket=>{socket.on('framesent',e=>{if(e.payload instanceof Buffer)sent.push(decode(e.payload) as ClientMessage);});socket.on('framereceived',e=>{if(e.payload instanceof Buffer)received.push(decode(e.payload) as ServerMessage);});});return {sent,received};}
+function observe(page:Page){const sent:ClientMessage[]=[],received:ServerMessage[]=[],events:Array<{direction:'sent'|'received';message:ClientMessage|ServerMessage}>=[];page.on('websocket',socket=>{socket.on('framesent',e=>{if(e.payload instanceof Buffer){const message=decode(e.payload) as ClientMessage;sent.push(message);events.push({direction:'sent',message});}});socket.on('framereceived',e=>{if(e.payload instanceof Buffer){const message=decode(e.payload) as ServerMessage;received.push(message);events.push({direction:'received',message});}});});return {sent,received,events};}
 async function startAsNation(page:Page,host:string,wire:ReturnType<typeof observe>){
  await page.goto(host+'/?forceWebGL=1');
  // The production button exists before the initial map/font/economy layout is ready.
@@ -86,7 +86,7 @@ test('native selection/right click, authoritative route through camera changes, 
  await provinceClick(page,world,anchors,14);await settled(page);await expect(page.locator('[data-movement-result]')).toHaveAttribute('data-status','accepted');
  expect(commands(wire).map(m=>m.command)).toEqual([{type:'Move',division:'0',destination:14}]);await expect(page.getByTestId('selected-province')).toHaveText(selected!);
  const sequence=commands(wire)[0].sequence,ack=wire.received.find(m=>m.type==='CommandResult'&&m.sequence===sequence);expect(ack).toMatchObject({accepted:true});
- const finalQuery=wire.sent.filter(m=>m.type==='Query'&&m.kind==='movement').at(-1)!;expect(finalQuery.type==='Query'&&Number(finalQuery.request.split(':')[1])).toBeGreaterThan(1);
+ const ackIndex=wire.events.findIndex(e=>e.direction==='received'&&e.message.type==='CommandResult'&&e.message.sequence===sequence);expect(ackIndex).toBeGreaterThan(-1);expect(wire.events.slice(ackIndex+1).some(e=>e.direction==='sent'&&e.message.type==='Query'&&e.message.kind==='movement')).toBe(true);
  await assertRoute(page,wire,world,index);
  const map=page.getByTestId('province-map');await map.scrollIntoViewIfNeeded();const rect=(await map.boundingBox())!;
  await page.mouse.move(rect.x+20,rect.y+20);await page.mouse.down();await page.mouse.move(rect.x+30,rect.y+28,{steps:4});await page.mouse.up();await assertRoute(page,wire,world,index);
@@ -94,6 +94,7 @@ test('native selection/right click, authoritative route through camera changes, 
  await page.setViewportSize({width:1000,height:900});await assertRoute(page,wire,world,index);
  await runUntilProgress(page,wire);
  await expect.poll(async()=>{const u=latest(wire).units.find(u=>u.division==='0')!;if(!u.route.length)return false;const ratio=Number(BigInt(u.elapsed.bits)*1000000000n/BigInt(u.current_leg_hours.bits))/1000000000;return Math.abs(Number(await page.locator('[data-moving-division="0"]').getAttribute('data-ratio'))-ratio)<1e-9;}).toBe(true);
+ const pausedTick=(await page.getByTestId('tick').textContent())!;await expect.poll(()=>latest(wire).tick).toBe(pausedTick);const frozen=await page.locator('[data-moving-division="0"]').getAttribute('data-ratio'),frame=Number(await map.getAttribute('data-frames'));await expect.poll(async()=>Number(await map.getAttribute('data-frames'))).toBeGreaterThan(frame+3);await expect(page.locator('[data-moving-division="0"]')).toHaveAttribute('data-ratio',frozen!);await page.screenshot({path:info.outputPath('server-route-paused.png'),fullPage:true});
  const before=latest(wire).units.find(u=>u.division==='0')!;expect(before.route.at(-1)).toBe(14);
  await page.getByTestId('pause').click();await expect.poll(()=>latest(wire).units.find(u=>u.division==='0')?.route.length,{timeout:20000}).toBe(0);await page.getByTestId('pause').click();
  await expect(page.locator('[data-movement-division]')).toHaveCount(0);await expect(page.locator('[data-moving-division]')).toHaveCount(0);await expect(page.locator('[data-division-province="14"][data-division-nation="1"]')).toHaveText('1');
@@ -140,4 +141,17 @@ test('unsupported movement keeps static roster, unknown reference hides all over
  mode='unknown';await page.getByTestId('speed-2').click();await expect(page.getByRole('alert').filter({hasText:'Map data'})).toBeVisible();await expect(page.locator('.division-marker')).toHaveCount(0);await expect(page.locator('[data-movement-division]')).toHaveCount(0);
  mode='native';await page.getByTestId('speed-3').click();await expect(page.locator('[data-movement-division]')).toHaveCount(1);disconnect();await expect(page.getByTestId('connection')).toHaveText('Disconnected');await expect(page.locator('[data-movement-division]')).toHaveCount(0);await expect(page.locator('[data-moving-division]')).toHaveCount(0);
  await page.getByRole('button',{name:'Reconnect',exact:true}).click();await expect(page.getByTestId('connection')).toHaveText('Connected');await expect(page.getByRole('button',{name:'Choose movement destination',exact:true})).toBeDisabled();
+});
+
+test('spectator never selects or commands; Join epoch and missing roster ids reset selection',async({page,host,wire})=>{
+ let remove=false;
+ await page.routeWebSocket('**/ws',route=>{const server=route.connectToServer();route.onMessage(frame=>server.send(frame));server.onMessage(frame=>{
+  const m=decode(frame as Uint8Array) as ServerMessage;
+  if(m.type==='MilitaryResult'&&m.military&&!remove){const template=m.military.templates[0];m.military.divisions.push({id:'999',nation:1,province:1,army:'0',template:template.template,normal:template.normal,manpower:'0',equipment:[]});}
+  route.send(Buffer.from(encode(m)));
+ });});
+ await page.goto(host+'/?forceWebGL=1');await expect(page.getByTestId('province-map')).toHaveAttribute('data-backend','webgl2');await expect(page.getByTestId('economy-panel')).toHaveAttribute('data-status','ready');await page.evaluate(()=>document.fonts.ready);
+ await page.getByRole('button',{name:'Open military information',exact:true}).click();const marker=page.locator('[data-division-nation="1"]');await expect(marker).toHaveCount(1);await marker.focus();await page.keyboard.press('Enter');await expect(marker).toHaveAttribute('aria-pressed','false');expect(commands(wire)).toHaveLength(0);await expect(page.locator('[data-movement-division]')).toHaveCount(0);
+ await page.getByRole('button',{name:'Start as selected nation',exact:true}).click();await expect.poll(()=>wire.sent.some(m=>m.type==='Join'&&m.nation==='N01')).toBe(true);await expect(page.getByTestId('military-panel')).toHaveAttribute('data-status','ready');await expect(marker).toHaveAttribute('aria-pressed','false');
+ const target=page.getByRole('button',{name:'Choose movement destination',exact:true});await expect(target).toBeDisabled();await marker.focus();await page.keyboard.press('Enter');await expect(marker).toHaveAttribute('aria-pressed','true');await expect(target).toBeEnabled();remove=true;await page.getByTestId('speed-1').click();await expect(marker).toHaveCount(0);await expect(target).toBeDisabled();expect(commands(wire)).toHaveLength(0);
 });
