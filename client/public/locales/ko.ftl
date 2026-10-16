@@ -395,3 +395,13 @@ military-deploy-understrength = 부족한 장비로 배치 허용
 military-deploy-understrength-help = 장비가 0인 경우를 포함해 현재 확보한 장비로 배치를 명시적으로 허용합니다. 서버가 준비 상태·소유권·군 정원을 판정합니다.
 
 map-division-marker = 프로빈스 { $province }, 국가 { $nation }: 사단 { $count }개
+
+movement-select = 선택한 사단: { $count }개
+movement-target-mode = 이동 목적지 지정
+movement-stop = 선택 사단 정지
+movement-pending = 사단 { $division }: 서버 갱신 대기 중
+movement-accepted = 사단 { $division }: 이동 수락됨
+movement-rejected = 사단 { $division }: 이동 거부됨
+movement-not-sent = 사단 { $division }: 미전송
+movement-remaining = 남은 시간 { $remaining }시간
+map-moving-division = 사단 { $division }, 국가 { $nation }: 남은 시간 { $remaining }시간
