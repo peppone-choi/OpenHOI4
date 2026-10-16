@@ -240,9 +240,10 @@ export function App() {
     <GameShell connection={connection} onLanguage={setLanguage}>
       <TimeControls state={state} connected={connection === 'connected'} onCommand={command} />
       {world && catalogs && <div className="world-layout"><MapView divisions={militaryOpen&&military.status==='ready'?military.view:null} world={world} packHash={packHash} selected={selected} onSelect={select}/><aside className="world-detail">{selected!==null&&world.provinces.find(p=>p.id===selected)?.state==null?<p>{t('map-no-state')}</p>:<NationalPanels world={world} nationId={nationId} stateId={stateId} onNationSelect={id=>{selectEconomyNation(id);query(`nation:${id}`);}} onStateSelect={id=>{setStateId(id);const owner=world.states.find(s=>s.id===id)?.owner;selectEconomyNation(owner??null);query(`state:${id}`);if(owner!==undefined)query(`nation:${owner}`);}}/>}</aside></div> }
-      <EconomyPanel display={economy} world={world} nationId={nationId??null} onNationSelect={selectEconomyNation}/>
+      {/* Keep military controls together, above the asynchronously populated economy. */}
       <button ref={militaryToggle} aria-expanded={militaryOpen} aria-controls="military-panel" onClick={militaryOpen?closeMilitary:openMilitary}>{t(militaryOpen?'military-close':'military-open')}</button>
       {militaryOpen&&<MilitaryPanel display={military} world={world} nationId={militaryNation} onNationSelect={selectMilitaryNation} onClose={closeMilitary} ledger={militaryLedger} onLedgerSelect={selectMilitaryLedger} controls={{nation:controlledNation,feedback:trainingFeedback,can:canTrain,send:trainingCommand,world:deployment.authority?.world??null,generation:deployment.generation}}/>}
+      <EconomyPanel display={economy} world={world} nationId={nationId??null} onNationSelect={selectEconomyNation}/>
       {connection==='disconnected'&&<button onClick={reconnect}>{t('economy-reconnect')}</button>}
       {production&&<ProductionPanel view={production} world={world} controlledNation={controlledNation} onControl={controlNation} onCommand={productionCommand} connected={connection==='connected'&&productionConnection.current===activeConnection.current}/>}
       {notice && <p role="alert">{t(notice)}</p>}
