@@ -11,7 +11,7 @@ function dataTexture(bytes:Uint8Array,width:number,height:number,format:PixelFor
  t.minFilter=t.magFilter=NearestFilter;t.generateMipmaps=false;t.flipY=false;t.colorSpace=NoColorSpace;t.needsUpdate=true;return t;
 }
 export type MapCamera={x:number;y:number;zoom:number};
-export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8Array,index:Uint16Array,initial:WorldView,onHover:(id:number|null)=>void,onPick:(id:number|null)=>void,onFailure:()=>void,onResize:(camera:MapCamera)=>void,forceWebGL=false,presentation?:{onCamera?:(camera:MapPresentation)=>void;camera?:MapCamera;mode:string;selected:number|null;signal?:AbortSignal;sceneExtension?:(scene:Scene,camera:OrthographicCamera)=>Promise<()=>void>;paletteAdapter?:{palettes:typeof palettes;updateColors:typeof updateColors};coastKinds?:Uint8Array;seaBorderColor?:[number,number,number]}){
+export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8Array,index:Uint16Array,initial:WorldView,onHover:(id:number|null)=>void,onPick:(id:number|null)=>void,onFailure:()=>void,onResize:(camera:MapCamera)=>void,forceWebGL=false,presentation?:{onContextPick?:(id:number|null)=>boolean;onCamera?:(camera:MapPresentation)=>void;camera?:MapCamera;mode:string;selected:number|null;signal?:AbortSignal;sceneExtension?:(scene:Scene,camera:OrthographicCamera)=>Promise<()=>void>;paletteAdapter?:{palettes:typeof palettes;updateColors:typeof updateColors};coastKinds?:Uint8Array;seaBorderColor?:[number,number,number]}){
  const {width,height,style}=meta;
  const renderer=new WebGPURenderer({forceWebGL,antialias:false,alpha:false});
  let disposed=false;
@@ -108,6 +108,7 @@ export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8
  const down=(e:PointerEvent)=>{if(e.button!==0)return;drag={x:e.clientX,y:e.clientY,cx:camera.position.x,cy:camera.position.y,moved:false};host.setPointerCapture(e.pointerId);};
  const move=(e:PointerEvent)=>{if(drag){const dx=e.clientX-drag.x,dy=e.clientY-drag.y;drag.moved||=Math.hypot(dx,dy)>style.drag_threshold;if(drag.moved){camera.position.x=drag.cx-dx*viewWidth/host.clientWidth/zoom;camera.position.y=drag.cy+dy*viewHeight/host.clientHeight/zoom;publishCamera();}}hover(e);};
  const up=(e:PointerEvent)=>{if(!drag)return;if(!drag.moved){const p=coordinates(e);const id=pick(index,world.province_ids,width,height,p.x,p.y);onPick(id);}drag=null;host.releasePointerCapture(e.pointerId);};
+ const contextmenu=(e:MouseEvent)=>{const p=coordinates(e),id=pick(index,world.province_ids,width,height,p.x,p.y);if(presentation?.onContextPick?.(id))e.preventDefault();};
  const leave=()=>{hovered.value=-1;host.dataset.hover='';onHover(null);};
  const cancel=()=>{drag=null;leave();};
  const wheel=(e:WheelEvent)=>{e.preventDefault();const before=coordinates(e);zoom=Math.min(style.zoom_max_milli/1000,Math.max(style.zoom_min_milli/1000,zoom*Math.exp(-e.deltaY*style.wheel_milli/100000)));camera.zoom=zoom;camera.updateProjectionMatrix();const after=coordinates(e);camera.position.x+=before.x-after.x;camera.position.y-=before.y-after.y;publishCamera();};
@@ -120,7 +121,7 @@ export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8
   resize();renderer.render(scene,camera);presented=true;publishCamera();
   host.dataset.shaderLanguage=shader.fragmentShader?.includes('@fragment')?'wgsl':'glsl';host.dataset.shaderLength=String(shader.fragmentShader?.length??0);
  }catch(e){disposed=true;observer.disconnect();disposeSceneExtension();await renderer.dispose();geometry.dispose();material.dispose();coastKinds?.dispose();for(const t of [indexTexture,colors,nations,states])t.dispose();clearCanvas();throw e;}
- host.addEventListener('pointerdown',down);host.addEventListener('pointermove',move);host.addEventListener('pointerup',up);host.addEventListener('pointercancel',cancel);host.addEventListener('pointerleave',leave);host.addEventListener('wheel',wheel,{passive:false});
+ host.addEventListener('contextmenu',contextmenu);host.addEventListener('pointerdown',down);host.addEventListener('pointermove',move);host.addEventListener('pointerup',up);host.addEventListener('pointercancel',cancel);host.addEventListener('pointerleave',leave);host.addEventListener('wheel',wheel,{passive:false});
  host.dataset.frames='1';
  let raf=0;
  // CSS ResizeObserver does not signal a DPR-only change. The existing render
@@ -145,6 +146,6 @@ export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8
    if(ranges.length){host.dataset.lastChangedBytes=host.dataset.updatedBytes;host.dataset.lastUpdateMs=host.dataset.updateMs;host.dataset.totalChangedBytes=String(Number(host.dataset.totalChangedBytes??0)+Number(host.dataset.updatedBytes));}
   },
   reset(){zoom=1;camera.position.x=camera.position.y=0;resize();},
-  dispose(){disposed=true;cancelAnimationFrame(raf);cancelAnimationFrame(recreateRaf);observer.disconnect();host.removeEventListener('pointerdown',down);host.removeEventListener('pointermove',move);host.removeEventListener('pointerup',up);host.removeEventListener('pointercancel',cancel);host.removeEventListener('pointerleave',leave);host.removeEventListener('wheel',wheel);disposeSceneExtension();renderer.dispose();geometry.dispose();material.dispose();coastKinds?.dispose();for(const t of [indexTexture,colors,nations,states])t.dispose();clearCanvas();},
+  dispose(){disposed=true;cancelAnimationFrame(raf);cancelAnimationFrame(recreateRaf);observer.disconnect();host.removeEventListener('contextmenu',contextmenu);host.removeEventListener('pointerdown',down);host.removeEventListener('pointermove',move);host.removeEventListener('pointerup',up);host.removeEventListener('pointercancel',cancel);host.removeEventListener('pointerleave',leave);host.removeEventListener('wheel',wheel);disposeSceneExtension();renderer.dispose();geometry.dispose();material.dispose();coastKinds?.dispose();for(const t of [indexTexture,colors,nations,states])t.dispose();clearCanvas();},
  };
 }

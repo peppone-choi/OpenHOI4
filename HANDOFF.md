@@ -1,5 +1,15 @@
 # OpenHOI4 WIP 인수인계
 
+## S2 지도 이동 UI 구현 후보 (2026-10-16)
+
+taskId=openhoi-s2-map-movement-ui-20261016, stage=implement, contract=a69fdb74-3960-4ee6-a9bd-309d8a7adc3f.
+base=876375c58c411f1641eb98844f3903e8ba7b1285, branch=buzz/openhoi-s2-map-movement-ui-20261016/openhoi-implement.
+사단 선택 → 우클릭/1회성 목적지 → 서버 route SVG와 tick별 이동 마커, Stop, 사단별 결과를 구현했다.
+CommandLedger 공용 sequence/64건과 마지막 ACK 뒤 조회 장벽을 지킨다. 보간/경로·시간 재계산 없음.
+[WP-17 S2](docs/worklog/WP-17-map-movement-ui.md)에 RED/GREEN·인수조건·NOT_RUN을 기록했다.
+exact head·draft PR·hosted CI의 최종 결과는 담당 reports/dispatch/a69fdb74-3960-4ee6-a9bd-309d8a7adc3f 인계 영수증을 따른다.
+실제 세계 지도 AC10(M-1 뒤), 독립 리뷰·제품 검증·병합 및 Windows/HOI4/GCP/배포/초기화 NOT_RUN. 다음 담당 openhoi-review.
+
 ## S1 이동 명령 wire·조회 + transport 보완 후보 (2026-10-15)
 
 taskId=openhoi-s1-movement-wire-20261015, stage=implement, contract=be6b4ef3-6ceb-4ada-a800-b0077be15519.

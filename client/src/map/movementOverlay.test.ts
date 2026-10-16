@@ -5,7 +5,7 @@ import {pick} from './model';
 import {provinceAnchors} from './divisionMarkers';
 const world={width:3,height:1,province_ids:[1,14,40],provinces:[1,14,40].map(id=>({id})),nations:[{id:1,color:[10,20,30]},{id:2,color:[30,20,10]}]} as WorldView;
 const index=new Uint16Array([0,1,2]),anchors=provinceAnchors(world,index),camera={x:1.5,y:.5,width:3,height:1};
-const fixed=(bits:string,value=bits)=>({bits,value});
+const fixed=(bits:string,value=bits)=>({bits,value,fractional_bits:32});
 const unit=(division='0',nation=1)=>({division,nation,province:1,route:[14,40],elapsed:fixed('1'),current_leg_hours:fixed('4'),remaining_hours:fixed('99','server-hours')});
 const view=(units=[unit()]):MovementView=>({state_hash:'s',tick:'0',units});
 test('server route order, destination real pixel, own arrows only; all nations move',()=>{

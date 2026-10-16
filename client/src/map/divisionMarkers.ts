@@ -20,17 +20,23 @@ export function provinceAnchors(world:WorldView,index:Uint16Array):Map<number,Po
  }return points;
 }
 /** Display only: references/colours come from world, never inferred game rules. */
-export function buildDivisionMarkers(view:MilitaryView|null,world:WorldView,anchors:Map<number,Point>):DivisionMarker[]{
+export function buildDivisionMarkers(view:MilitaryView|null,world:WorldView,anchors:Map<number,Point>,excluded:ReadonlySet<string>=new Set()):DivisionMarker[]{
  if(!view)return [];
  const provinces=new Set(world.provinces.map(p=>p.id)),nations=new Map(world.nations.map(n=>[n.id,n]));
  const groups=new Map<string,DivisionMarker>();
  for(const division of view.divisions){
   const point=anchors.get(division.province),nation=nations.get(division.nation);
   if(!provinces.has(division.province)||!point||!nation)throw new Error('map-data-error');
+  if(excluded.has(division.id))continue;
   const key=`${division.province}:${division.nation}`,existing=groups.get(key);
   if(existing)existing.count++;else groups.set(key,{province:division.province,nation:division.nation,count:1,...point,color:nation.color});
  }return [...groups.values()].sort((a,b)=>a.province-b.province||a.nation-b.nation);
 }
 export function projectMarker(point:Point,camera:MapPresentation){
  return {left:50+(point.x-camera.x)/camera.width*100,top:50+(point.y-camera.y)/camera.height*100};
+}
+
+/** Selection uses only the joined nation's exact roster ids in this stack. */
+export function divisionIdsForMarker(view:MilitaryView|null,marker:Pick<DivisionMarker,'province'|'nation'>,controlledNation:number|null):string[]{
+ return marker.nation===controlledNation?(view?.divisions??[]).filter(d=>d.province===marker.province&&d.nation===controlledNation).map(d=>d.id):[];
 }

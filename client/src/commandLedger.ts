@@ -1,5 +1,5 @@
 import type {ClientMessage,ServerMessage} from './proto/protocol';
-type Envelope=Extract<ClientMessage,{type:'Command'|'ProductionCommand'|'EconomyCommand'|'MilitaryCommand'}>;
+type Envelope=Extract<ClientMessage,{type:'Command'|'ProductionCommand'|'EconomyCommand'|'MilitaryCommand'|'MovementCommand'}>;
 type Body=Envelope extends infer E?E extends Envelope?Omit<E,'sequence'>:never:never;
 /** Shared canonical sequence; at most 64 unacknowledged successful sends. */
 export class CommandLedger {

@@ -1,7 +1,7 @@
 import {useEffect,useRef,type RefObject} from 'react';
 import {useLocalization} from '../i18n';
 import {projectMarker,type DivisionMarker,type MapPresentation} from './divisionMarkers';
-export function DivisionMarkers({markers,camera,onSelect,host}:{markers:DivisionMarker[];camera:MapPresentation;onSelect:(id:number)=>void;host:RefObject<HTMLDivElement|null>}){
+export function DivisionMarkers({markers,camera,onSelect,host,isSelected,onContextPick}:{markers:DivisionMarker[];camera:MapPresentation;onSelect:(marker:DivisionMarker)=>void;host:RefObject<HTMLDivElement|null>;isSelected?:(marker:DivisionMarker)=>boolean;onContextPick?:(id:number)=>boolean}){
  const {t}=useLocalization(),overlay=useRef<HTMLDivElement>(null);
  // The overlay is a sibling of the renderer-owned host. Keep native wheel zoom
  // available over its buttons without changing the renderer's input handlers.
@@ -14,6 +14,6 @@ export function DivisionMarkers({markers,camera,onSelect,host}:{markers:Division
  return <div ref={overlay} className="division-markers" data-testid="division-markers">{[...groups].map(([province,group])=>{
   const point=projectMarker(group[0],camera);
   if(point.left<0||point.left>100||point.top<0||point.top>100)return null;
-  return <div key={province} className="division-marker-group" style={{left:`${point.left}%`,top:`${point.top}%`}}>{group.map(marker=><button key={marker.nation} type="button" className="division-marker" data-division-province={province} data-division-nation={marker.nation} data-map-x={marker.x} data-map-y={marker.y} style={{borderColor:`rgb(${marker.color.join(',')})`}} aria-label={t('map-division-marker',{province,nation:marker.nation,count:marker.count})} onClick={()=>onSelect(province)}>{marker.count}</button>)}</div>;
+  return <div key={province} className="division-marker-group" style={{left:`${point.left}%`,top:`${point.top}%`}}>{group.map(marker=><button key={marker.nation} type="button" className="division-marker" data-division-province={province} data-division-nation={marker.nation} data-map-x={marker.x} data-map-y={marker.y} style={{borderColor:`rgb(${marker.color.join(',')})`}} aria-label={t('map-division-marker',{province,nation:marker.nation,count:marker.count})} aria-pressed={isSelected?.(marker)??false} onClick={()=>onSelect(marker)} onContextMenu={e=>{if(onContextPick?.(province))e.preventDefault();}}>{marker.count}</button>)}</div>;
  })}</div>;
 }
