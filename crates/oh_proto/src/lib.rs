@@ -2,10 +2,12 @@
 mod economy;
 mod military;
 mod military_ledger;
+mod movement;
 mod production;
 pub use economy::*;
 pub use military::*;
 pub use military_ledger::*;
+pub use movement::*;
 pub use production::*;
 use serde::{Deserialize, Serialize};
 use ts_rs::TS;
@@ -43,6 +45,10 @@ pub enum ClientMessage {
     MilitaryCommand {
         sequence: String,
         command: MilitaryCommand,
+    },
+    MovementCommand {
+        sequence: String,
+        command: MovementCommand,
     },
     ProductionCommand {
         sequence: String,
@@ -198,6 +204,12 @@ pub enum ServerMessage {
         reason_key: Option<String>,
         ledger: Option<MilitaryNormalLedgerView>,
     },
+    MovementResult {
+        request: String,
+        supported: bool,
+        reason_key: Option<String>,
+        movement: Option<MovementView>,
+    },
     ProductionResult {
         request: String,
         supported: bool,
@@ -256,10 +268,13 @@ pub fn typescript() -> String {
         .chain(production::declarations())
         .chain(military::declarations())
         .chain(military_ledger::declarations())
+        .chain(movement::declarations())
     {
         out.push_str("export ");
-        out.push_str(&declaration);
-        out.push('\n');
+        for line in declaration.lines() {
+            out.push_str(line.trim_end());
+            out.push('\n');
+        }
     }
     out
 }

@@ -578,6 +578,17 @@ async fn connection(mut socket: WebSocket, mut host: Host) {
                         let state = TimeState::from(&sim.snapshot()); current_state = Some(state.clone()); active = Some(session::Session::start(sim, host.capacity, host.delta_ms));
                         if !send(&mut socket, ServerMessage::Snapshot { state }).await { break; }
                     }
+                    ClientMessage::MovementCommand{sequence,command}=>{
+                        let parsed=sequence.parse::<u64>();
+                        let reason=if !parsed.as_ref().is_ok_and(|s|*s>client_sequence&&s.to_string()==sequence){Some("invalid-sequence")}else if active.is_none(){Some("not-joined")}else if player_nation.is_none(){Some("unsupported-session")}else{None};
+                        if let Some(reason)=reason{if !send(&mut socket,ServerMessage::CommandResult{sequence,accepted:false,reason_key:Some(reason.into())}).await{break;}continue;}
+                        client_sequence=parsed.unwrap();let(reply,received)=oneshot::channel();
+                        if active.as_ref().unwrap().commands.try_send(session::Request::MovementCommand{nation:player_nation.unwrap(),command,reply}).is_err(){notice(&mut socket,"session-closed").await;break;}
+                        let result=tokio::select!{result=received=>result.unwrap_or(Err("session-closed")),_=host.shutdown.changed()=>break};
+                        let reason_key=result.as_ref().err().map(|r|(*r).into());
+                        if !send(&mut socket,ServerMessage::CommandResult{sequence,accepted:result.is_ok(),reason_key}).await{break;}
+                        if let Ok(state)=result{active.as_mut().unwrap().states.borrow_and_update();current_state=Some(state.clone());if !send(&mut socket,ServerMessage::Snapshot{state}).await{break;}}
+                    },
                     ClientMessage::MilitaryCommand{sequence,command}=>{
                         let parsed=sequence.parse::<u64>();
                         let reason=if !parsed.as_ref().is_ok_and(|s|*s>client_sequence&&s.to_string()==sequence){Some("invalid-sequence")}else if active.is_none(){Some("not-joined")}else if player_nation.is_none(){Some("unsupported-session")}else{None};
@@ -656,6 +667,16 @@ async fn connection(mut socket: WebSocket, mut host: Host) {
                             let message = ServerMessage::MilitaryNormalLedgerResult { request:request.clone(), supported:ledger.is_some(), reason_key, ledger };
                             if !military_ledger::send(&mut socket, message, &request, host.military_ledger_budget_bytes).await { break; }
                             continue;
+                        }
+                        if kind=="movement" {
+                            let result = if let Some(session)=active.as_ref(){
+                                let(reply,received)=oneshot::channel();
+                                if session.commands.try_send(session::Request::Movement{reply}).is_ok(){
+                                    tokio::select!{value=received=>value.unwrap_or(Err("session-closed")),_=host.shutdown.changed()=>break}
+                                }else{Err("session-closed")}
+                            }else{Err("not-joined")};
+                            let(movement,reason_key)=match result{Ok(view)=>(Some(view),None),Err(reason)=>(None,Some(reason.into()))};
+                            if !send(&mut socket,ServerMessage::MovementResult{request,supported:movement.is_some(),reason_key,movement}).await{break;}continue;
                         }
                         if kind=="military" && host.world.as_ref().is_some_and(|w|w.defs().military().is_some()){
                             let mut reason=Some("not-joined");let mut military=None;

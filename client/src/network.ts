@@ -2,7 +2,7 @@ import {isMilitaryView,isMilitaryNormalLedgerView} from './militaryValidation';
 import {isProductionView} from './productionValidation';
 import {isEconomyView} from './economyValidation';
 import { decode, encode } from '@msgpack/msgpack';
-import { PROTOCOL_VERSION, type ClientMessage, type PackInfo, type ServerMessage, type TimeState, type WorldView, type NationView, type SupportView, type StateView, type ScalarView, type ProvinceView, type LedgerView, type LedgerRow } from './proto/protocol';
+import { PROTOCOL_VERSION, type ClientMessage, type PackInfo, type ServerMessage, type TimeState, type WorldView, type NationView, type SupportView, type StateView, type ScalarView, type ProvinceView, type LedgerView, type LedgerRow, type FixedValue, type MovementView, type MovementUnitView } from './proto/protocol';
 import { MAP_DISPLAY_VERSION,type MapMetadata,type MapStyle } from './proto/protocol';
 
 type Guard<T> = (value: unknown) => value is T;
@@ -72,9 +72,29 @@ const causes:Guard<import('./proto/protocol').EndCauseView[]>=(value):value is i
 const flags=exactShape<import('./proto/protocol').NationFlagsView>({nation:u16,keys:orderedArray(triggerId,(a,b)=>a<b)});
 const end=exactShape<import('./proto/protocol').EndView>({tick:u64Decimal,date:string,hour:u8,causes});
 const trigger=exactShape<NonNullable<Trigger>>({definitions_hash:hash,flags:orderedArray(flags,(a,b)=>a.nation<b.nation),ended:nullable(end)});
+// Validate movement transport only; movement rules and time calculations remain in Rust.
+const divisionId:Guard<string>=(value):value is string=>decimal(value)&&value.length<=10
+  &&(value.length<10||value<='4294967295');
+const fx:Guard<FixedValue>=(()=>{
+  const fields=exactShape<FixedValue>({
+    value:(v):v is string=>string(v)&&v.length<=128&&/^(0|[1-9]\d*)(\.\d+)?$/.test(v),
+    bits:(v):v is string=>decimal(v)&&v.length<=19&&(v.length<19||v<='9223372036854775807'),
+    fractional_bits:(v):v is number=>v===32,
+  });
+  return (value):value is FixedValue=>{
+    if(!fields(value))return false;
+    const [whole,fraction='']=value.value.split('.'),denominator=10n**BigInt(fraction.length),n=BigInt(whole+fraction)*(1n<<32n);
+    let raw=n/denominator;const r=n%denominator;
+    if(r*2n>denominator||(r*2n===denominator&&raw%2n!==0n))raw++;
+    return raw===BigInt(value.bits);
+  };
+})();
+const movementUnit=exactShape<MovementUnitView>({division:divisionId,nation:u16,province:u16,route:orderedArray(u16,()=>true),elapsed:fx,current_leg_hours:fx,remaining_hours:fx});
+const movementView=exactShape<MovementView>({state_hash:hash,tick:u64Decimal,units:orderedArray(movementUnit,(a,b)=>BigInt(a.division)<BigInt(b.division))});
 // Mapped from the generated Rust union: adding a variant/field or changing a
 // field type breaks typecheck until its runtime validator is updated.
 const serverFields = {
+  MovementResult:{type:literal('MovementResult'),request:string,supported:boolean,reason_key:nullable(string),movement:nullable(movementView)},
   MilitaryNormalLedgerCapabilityResult:{type:literal('MilitaryNormalLedgerCapabilityResult'),request:string,supported:boolean,reason_key:nullable(string)},
   MilitaryNormalLedgerResult:{type:literal('MilitaryNormalLedgerResult'),request:string,supported:boolean,reason_key:nullable(string),ledger:nullable(isMilitaryNormalLedgerView)},
   MilitaryResult:{type:literal('MilitaryResult'),request:string,supported:boolean,reason_key:nullable(string),military:nullable(isMilitaryView)},
@@ -92,6 +112,10 @@ const serverFields = {
 const serverGuards = Object.values(serverFields).map(fields => shape<Record<string, unknown>>(fields));
 const triggerResult=exactShape<Extract<ServerMessage,{type:'TriggerResult'}>>(serverFields.TriggerResult);
 export function isServerMessage(value: unknown): value is ServerMessage {
+  if(typeof value==='object'&&value!==null&&(value as {type?:unknown}).type==='MovementResult'){
+    const g=exactShape<Extract<ServerMessage,{type:'MovementResult'}>>(serverFields.MovementResult);
+    return g(value)&&value.supported===(value.movement!==null)&&(value.supported?value.reason_key===null:typeof value.reason_key==='string');
+  }
   if(typeof value==='object'&&value!==null&&(value as {type?:unknown}).type==='MilitaryNormalLedgerCapabilityResult'){
     const g=exactShape<Extract<ServerMessage,{type:'MilitaryNormalLedgerCapabilityResult'}>>(serverFields.MilitaryNormalLedgerCapabilityResult);
     return g(value)&&(value.supported?value.reason_key===null:value.reason_key==='unsupported-query');

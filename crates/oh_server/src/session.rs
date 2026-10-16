@@ -14,6 +14,14 @@ pub enum Request {
         template: String,
         reply: oneshot::Sender<Result<oh_proto::MilitaryNormalLedgerView, &'static str>>,
     },
+    Movement {
+        reply: oneshot::Sender<Result<oh_proto::MovementView, &'static str>>,
+    },
+    MovementCommand {
+        nation: NationId,
+        command: oh_proto::MovementCommand,
+        reply: oneshot::Sender<Result<TimeState, &'static str>>,
+    },
     Military {
         reply: oneshot::Sender<Option<oh_proto::MilitaryView>>,
     },
@@ -111,6 +119,58 @@ impl Session {
                         Ok(Request::Military { reply }) => {
                             let _ = reply.send(oh_proto::MilitaryView::from_sim(&sim));
                             continue;
+                        }
+                        Ok(Request::Movement { reply }) => {
+                            let _ = reply.send(oh_proto::MovementView::from_sim(&sim));
+                            continue;
+                        }
+                        Ok(Request::MovementCommand {
+                            nation,
+                            command,
+                            reply,
+                        }) => {
+                            if sim.is_ended() {
+                                let _ = reply.send(Err("scenario-ended"));
+                                continue;
+                            }
+                            let action = match command.into_action() {
+                                Ok(action) => action,
+                                Err(_) => {
+                                    let _ = reply.send(Err("invalid-message"));
+                                    continue;
+                                }
+                            };
+                            let Some(next_arrival) = arrival.checked_add(1) else {
+                                let _ = reply.send(Err("simulation-error"));
+                                break;
+                            };
+                            if sim
+                                .enqueue(sim.snapshot().tick(), nation, next_arrival, action)
+                                .is_err()
+                            {
+                                let _ = reply.send(Err("invalid-message"));
+                                continue;
+                            }
+                            arrival = next_arrival;
+                            match sim.step() {
+                                Ok(step) => {
+                                    let accepted = step
+                                        .commands
+                                        .iter()
+                                        .find(|c| c.sequence == arrival && c.nation == nation)
+                                        .is_some_and(|c| c.result.is_ok());
+                                    let _ = reply.send(if accepted {
+                                        Ok(TimeState::from(&step.snapshot))
+                                    } else {
+                                        Err("invalid-message")
+                                    });
+                                }
+                                Err(_) => {
+                                    let _ = reply.send(Err("simulation-error"));
+                                    continue;
+                                }
+                            }
+                            deadline = Instant::now() + Duration::from_millis(sim.ms_per_tick());
                         }
                         Ok(Request::MilitaryCommand {
                             nation,

@@ -209,6 +209,10 @@ impl Unit {
     pub fn elapsed(&self) -> Fx {
         self.elapsed
     }
+    /// Duration of the current leg, or zero when stationary.
+    pub fn current_leg_hours(&self) -> Fx {
+        self.route.first().map_or(Fx::ZERO, |leg| leg.hours)
+    }
     pub fn remaining_route(&self) -> Vec<ProvinceId> {
         self.route.iter().map(|l| l.to).collect()
     }
