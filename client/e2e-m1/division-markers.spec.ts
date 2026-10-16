@@ -22,6 +22,19 @@ const test=base.extend<{host:string;wire:ReturnType<typeof observe>}>({wire:asyn
 }});
 test.use({trace:'retain-on-failure'});
 function observe(page:Page){const sent:ClientMessage[]=[],received:ServerMessage[]=[];page.on('websocket',socket=>{socket.on('framesent',e=>{if(e.payload instanceof Buffer)sent.push(decode(e.payload) as ClientMessage);});socket.on('framereceived',e=>{if(e.payload instanceof Buffer)received.push(decode(e.payload) as ServerMessage);});});return {sent,received};}
+async function startAsNation(page:Page,host:string,wire:ReturnType<typeof observe>){
+ await page.goto(host+'/?forceWebGL=1');
+ // The production button exists before the initial map/font/economy layout is ready.
+ // Confirm actual readiness and the new Join, not merely a completed pointer action.
+ const map=page.getByTestId('province-map');
+ await expect(map).toHaveAttribute('data-backend','webgl2');
+ await expect.poll(async()=>Number(await map.getAttribute('data-frames'))).toBeGreaterThan(0);
+ await expect(page.getByTestId('economy-panel')).toHaveAttribute('data-status','ready');
+ await page.evaluate(()=>document.fonts.ready);
+ const start=page.getByRole('button',{name:'Start as selected nation',exact:true});await start.click();
+ await expect.poll(()=>wire.sent.filter(m=>m.type==='Join'&&m.nation==='N01').length).toBe(1);
+ await expect(start).toHaveCount(0);await expect(page.getByTestId('connection')).toHaveText('Connected');
+}
 async function trainAndDeploy(page:Page,wire:ReturnType<typeof observe>){
  await page.getByRole('button',{name:'Start training',exact:true}).click();await expect(page.getByTestId('military-command-feedback')).toHaveAttribute('data-status','success');
  await page.getByTestId('speed-3').click();if(await page.getByTestId('pause').textContent()==='Resume')await page.getByTestId('pause').click();
@@ -34,7 +47,7 @@ async function trainAndDeploy(page:Page,wire:ReturnType<typeof observe>){
  await expect(page.getByTestId('military-command-feedback')).toHaveAttribute('data-status','success');return {province,world};
 }
 test('native Deploy marker stays inside its province through pan zoom reset resize, keyboard ko/en and close',async({page,host,wire},info)=>{
- await page.goto(host+'/?forceWebGL=1');await page.getByRole('button',{name:'Start as selected nation',exact:true}).click();
+ await startAsNation(page,host,wire);
  await expect(page.locator('.division-marker')).toHaveCount(0);await page.getByRole('button',{name:'Open military information',exact:true}).click();await expect(page.getByTestId('military-panel')).toHaveAttribute('data-status','ready');await expect(page.locator('.division-marker')).toHaveCount(0);
  const {province,world}=await trainAndDeploy(page,wire),marker=page.locator(`[data-division-province="${province}"][data-division-nation="1"]`),map=page.getByTestId('province-map');
  await expect(marker).toHaveCount(1);await expect(marker).toHaveText('1');await expect(marker).toHaveAccessibleName(`Province ${province}, nation 1: 1 divisions`);
@@ -63,7 +76,7 @@ test('injected unsupported/unknown province and real disconnect hide markers wit
    route.send(Buffer.from(encode(m)));
   }else route.send(frame);
  });});
- await page.goto(host+'/?forceWebGL=1');await page.getByRole('button',{name:'Start as selected nation',exact:true}).click();await page.getByRole('button',{name:'Open military information',exact:true}).click();await expect(page.getByTestId('military-panel')).toHaveAttribute('data-status','ready');await trainAndDeploy(page,wire);await expect(page.locator('.division-marker')).toHaveCount(1);
+ await startAsNation(page,host,wire);await page.getByRole('button',{name:'Open military information',exact:true}).click();await expect(page.getByTestId('military-panel')).toHaveAttribute('data-status','ready');await trainAndDeploy(page,wire);await expect(page.locator('.division-marker')).toHaveCount(1);
  mode='unknown';await page.getByTestId('speed-1').click();await expect(page.getByRole('alert').filter({hasText:'Map data'})).toBeVisible();await expect(page.locator('.division-marker')).toHaveCount(0);
  mode='unsupported';await page.getByTestId('speed-2').click();await expect(page.getByTestId('military-panel')).toHaveAttribute('data-status','unsupported');await expect(page.locator('.division-marker')).toHaveCount(0);
  mode='native';await page.getByTestId('speed-3').click();await expect(page.getByTestId('military-panel')).toHaveAttribute('data-status','ready');await expect(page.locator('.division-marker')).toHaveCount(1);disconnect();await expect(page.getByTestId('military-panel')).toHaveAttribute('data-status','stale');await expect(page.locator('.division-marker')).toHaveCount(0);
