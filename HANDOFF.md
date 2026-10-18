@@ -1,5 +1,15 @@
 # OpenHOI4 WIP 인수인계
 
+## M-1c 시험 전용 세계지도 기하 변환 후보 (2026-10-18)
+
+taskId=t_200364e3, project=openhoi, stage=implement, branch=impl/t_200364e3.
+base=092938b5aec9b50ad056205c8066987d420f1243, draft PR https://github.com/peppone-choi/OpenHOI4/pull/28.
+[WP-32 geometry harness](docs/worklog/WP-32-world-preview-geometry.md)에 D1–D5·입출력·hash 신뢰 경계·독립 oracle·실제 load_map 검사 계약을 기록했다.
+geometry harness, not product pack. 원본 preview/data·제품 src·기존 시험/골든 불변, 기술용 주·registry는 임시 디렉터리만 사용한다.
+RED cd57696에서 hosted ModuleNotFoundError를 확인했다. 최종 exact SHA·run/log/artifact·실제 결과는 외부 results/t_200364e3-RESULT.json 및 evidence/t_200364e3/IMPLEMENT.md를 따른다.
+다음 담당 openhoi-lead(독립리뷰 배정). productComplete=false; Q1 미결정, 제품QA/M-1/AC10/실제 팩·게임플레이·리뷰·병합 NOT_RUN.
+Windows PC/HOI4/GCP/운영/배포/초기화/신규 유료 서비스 NOT_RUN.
+
 ## M-1a 서버 팩 선택 후보 (2026-10-18)
 
 taskId=t_8df84cc9, project=openhoi, stage=implement, branch=implement/t_8df84cc9.
