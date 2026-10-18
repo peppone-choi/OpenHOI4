@@ -232,7 +232,7 @@ fn invalid_projection_extent_and_unknown_fields() {
 
 #[test]
 fn exact_source_numbers_and_checked_small_extent_overflow() {
-    let f = stripes();
+    let f = Fixture::new(5, 2, &[1, 1, 2, 2, 2].repeat(2));
     f.regions("[-1.00000000023283064365386962890625,-1,1,1]");
     let MapProjection::Equirectangular { west, wrap_x, .. } = f.load().projection else {
         panic!()
