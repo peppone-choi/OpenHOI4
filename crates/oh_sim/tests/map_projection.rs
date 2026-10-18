@@ -102,13 +102,14 @@ fn projection_identity_covers_every_extent_raw_bit_and_wrap() {
         Fx::from_num(180),
         Fx::from_num(90),
     ];
-    let projection = |[west, south, east, north], wrap_x| MapProjection::Equirectangular {
-        west,
-        south,
-        east,
-        north,
-        wrap_x,
-    };
+    let projection =
+        |[west, south, east, north]: [Fx; 4], wrap_x: bool| MapProjection::Equirectangular {
+            west,
+            south,
+            east,
+            north,
+            wrap_x,
+        };
     // Leave every other field byte-identical to isolate the projection identity.
     data.map.projection = projection(extent, true);
     let projected = hash(&data);
