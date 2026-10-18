@@ -77,6 +77,8 @@ jobs:
               global interrupted
               interrupted = True
           signal.signal(signal.SIGTERM, stop); signal.signal(signal.SIGINT, stop)
+          baseline = {pid: row[1] for pid, row in table().items()}
+          (out/'baseline-processes.json').write_text(json.dumps(baseline))
           child = subprocess.Popen(['npm','run','test:e2e','--','--config','playwright.world-scale.config.ts'], cwd='client', start_new_session=True)
           started = time.monotonic(); code = 1; timed_out = False
           try:
@@ -107,6 +109,8 @@ jobs:
           out = pathlib.Path('target/world-scale'); out.mkdir(parents=True, exist_ok=True)
           manifest = out/'owned-processes.json'
           owned = json.loads(manifest.read_text()) if manifest.exists() else {}
+          baseline_file = out/'baseline-processes.json'
+          baseline = json.loads(baseline_file.read_text()) if baseline_file.exists() else {}
           def remaining():
               result = []
               for pid, start in owned.items():
@@ -122,8 +126,18 @@ jobs:
                   except ProcessLookupError: pass
               if found: time.sleep(2)
           residual = remaining()
-          (out/'final-cleanup.json').write_text(json.dumps({'status':'CLEANUP_FAILED' if found or residual else 'PASS' if manifest.exists() else 'NOT_RUN','foundBeforeFallback':found,'remaining':residual},indent=2))
-          if found or residual: raise SystemExit('CLEANUP_FAILED')
+          unexpected = []
+          if baseline_file.exists():
+              for path in pathlib.Path('/proc').glob('[0-9]*/cmdline'):
+                  try:
+                      command = path.read_bytes().replace(b'\0', b' ').decode(errors='replace')
+                      text = (path.parent/'stat').read_text(); fields = text[text.rfind(')')+2:].split()
+                      pid = path.parent.name
+                      if baseline.get(pid) != fields[19] and fields[0] != 'Z' and any(marker in command for marker in ['/oh_server','chrome-headless-shell','chrome_crashpad_handler','playwright/cli','playwright-core/cli']):
+                          unexpected.append({'pid':pid,'command':command})
+                  except FileNotFoundError: pass
+          (out/'final-cleanup.json').write_text(json.dumps({'status':'CLEANUP_FAILED' if found or residual or unexpected else 'PASS' if manifest.exists() else 'NOT_RUN','foundBeforeFallback':found,'remaining':residual,'unexpectedRelated':unexpected},indent=2))
+          if found or residual or unexpected: raise SystemExit('CLEANUP_FAILED')
           PY
           git status --porcelain > target/world-scale/checkout-status.txt
           test ! -s target/world-scale/checkout-status.txt

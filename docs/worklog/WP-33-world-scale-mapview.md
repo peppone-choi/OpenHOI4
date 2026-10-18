@@ -31,7 +31,7 @@ VPS에서 빌드·계측·브라우저를 실행하지 않는다.
 - validateWorldDisplay/palettes/updateColors는 n=3,111/6,222/12,444/24,889 각 3회 및 log-log 기울기. 시간 임계값은 없다.
 - B1: 첫 주입부터 2프레임·loading 소멸까지 wall ms, 실제 backend/texture limit/frame ms, CDP Performance metrics 전후.
 - B2/B3: terrain 전환·가장 큰 land의 raster anchor 선택, wall/update ms.
-- B4: 가장 큰 land/sea의 입력 raster 내부 5×5 화면 이웃 점에서 geography_color와 스크린샷 RGB 비교(채널별 오차 ≤1). 제품 렌더러에서 기대색을 가져오지 않는다.
+- B4: 가장 큰 land/sea의 raster anchor를 확대하고 입력 raster 내부 5×5 화면 이웃 점에서 geography_color와 스크린샷 RGB 비교(채널별 오차 ≤1). 제품 렌더러에서 기대색을 가져오지 않는다.
 - 실제 HTTP/WebSocket 요청의 host/protocol을 검사한다. 지도 metadata/index 요청을 확인한다.
 
 함수 호출·단계 완료 때마다 JSON을 저장한다. 실패/시간초과는 FAIL이며 앞 단계 수치는 유지한다.
@@ -39,7 +39,14 @@ MapView는 texture-limit 원인을 backend-unavailable로 합치므로 UI가 노
 오류 분류, 마지막 단계, 경과 시간, 브라우저 버전, exact SHA, runner, screenshot, trace/report/server log를 항상 업로드한다.
 Linux supervisor는 자신이 시작한 프로세스 자손의 PID+시작 시각을 기록하고 성공·실패·시간초과 시 소유 프로세스만 종료·부재 확인한다.
 후속 always 검사에서 잔존이 발견되면 정리 후에도 CLEANUP_FAILED이다. checkout 변경도 실패로 처리한다.
+시작 전 PID+시작 시각 baseline과 비교해 새로 남은 서버·브라우저·Playwright 관련 프로세스도 검사한다. 소유 확인이 안 된 프로세스는 종료하지 않고 실패로 보고한다.
 하드 runner 소실은 finally 실행을 보장할 수 없으며 GitHub가 runner를 폐기하는 경계를 따른다.
+
+## 실제 첫 실행 및 수정
+
+`e6c2b03229d75fc30576148e356a6a894a54fd5e`, hosted run 39130455066에서 build/신뢰 경계/Node 계측/브라우저 적재·전환·선택은 성공했다.
+픽셀 단계는 축소한 세계 화면에서 가장 큰 land(ID18014)의 5×5 내부 화면 점을 찾지 못해 실제 FAIL했다. 부분 JSON·스크린샷과 정리 PASS가 업로드되었다.
+시험은 해당 입력 anchor에서 확대 후 내부 점을 찾도록 수정했다. RGB 허용치·입력·제품 코드는 그대로다. 최종 재실행 결과는 RESULT.json을 따른다.
 
 ## 인수 및 한계
 

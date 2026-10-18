@@ -99,7 +99,7 @@ test('W1 Chromium actual App world-scale load, terrain, pick and source pixel or
   const index=decodeIndex(Uint8Array.from(input.bytes).buffer,fixture!.world.width,fixture!.world.height,fixture!.world.province_ids);
   const largest=(kind:'land'|'sea')=>input.provinces.filter(p=>p.kind===kind).sort((a,b)=>b.pixels-a.pixels||a.id-b.id)[0];
   const land=largest('land'),sea=largest('sea');
-  const anchor=provinceAnchors(fixture!.world,index).get(land.id)!;
+  const anchors=provinceAnchors(fixture!.world,index),anchor=anchors.get(land.id)!;
   // Zoom at the exact independent raster anchor to make pointer quantization safe.
   const p=await mapPoint(map,anchor.x,anchor.y),box=(await map.boundingBox())!;
   await page.mouse.move(box.x+p.x,box.y+p.y);await page.mouse.wheel(0,-800);
@@ -110,15 +110,22 @@ test('W1 Chromium actual App world-scale load, terrain, pick and source pixel or
   report.phase='pixels';
   // Choose screenshot pixel centres whose entire 5x5 screen neighbourhood maps
   // to the target in the INPUT raster. Never derive expected RGB from rendering.
-  const camera=JSON.parse((await map.getAttribute('data-camera'))!),rect=(await map.boundingBox())!;
-  const image=png(await map.screenshot({path:resolve(evidence,'chromium-terrain.png'),scale:'css'}));
   const pixels=[];
   for(const province of [land,sea]){
+   await page.getByRole('button',{name:'Reset view'}).click();
+   const target=anchors.get(province.id)!,position=await mapPoint(map,target.x,target.y),bounds=(await map.boundingBox())!;
+   await page.mouse.move(bounds.x+position.x,bounds.y+position.y);
+   const oldCamera=await map.getAttribute('data-camera');await page.mouse.wheel(0,-2400);
+   await expect.poll(()=>map.getAttribute('data-camera')).not.toBe(oldCamera);
+   await page.mouse.move(0,0);
+   const frame=Number(await map.getAttribute('data-frames'));await expect.poll(async()=>Number(await map.getAttribute('data-frames'))).toBeGreaterThan(frame+1);
+   const camera=JSON.parse((await map.getAttribute('data-camera'))!),rect=(await map.boundingBox())!;
+   const image=png(await map.screenshot({path:resolve(evidence,`chromium-terrain-${province.kind}.png`),scale:'css'}));
    const dense=fixture!.world.province_ids.indexOf(province.id);let point:{x:number;y:number}|undefined;
    const at=(x:number,y:number)=>{const sx=Math.floor((x+.5-rect.width/2)/rect.width*camera.width+camera.x),sy=Math.floor((y+.5-rect.height/2)/rect.height*camera.height+camera.y);return sx>=0&&sx<8192&&sy>=0&&sy<4096?index[sy*8192+sx]:-1;};
    for(let y=3;y<image.height-3&&!point;y++)for(let x=3;x<image.width-3;x++)if([-2,-1,0,1,2].every(dy=>[-2,-1,0,1,2].every(dx=>at(x+dx,y+dy)===dense))){point={x,y};break;}
    expect(point,`input interior for ${province.kind} ${province.id}`).toBeDefined();
-   const actual=image.pixel(point!.x,point!.y),expected=province.geography_color;pixels.push({id:province.id,kind:province.kind,point,actual,expected,tolerance:1});stages.pixels=pixels;flush();
+   const actual=image.pixel(point!.x,point!.y),expected=province.geography_color;pixels.push({id:province.id,kind:province.kind,point,camera,actual,expected,tolerance:1});stages.pixels=pixels;flush();
    expect(actual).toHaveLength(3);for(let channel=0;channel<3;channel++)expect(Math.abs(actual[channel]-expected[channel])).toBeLessThanOrEqual(1);
   }
   expect(errors).toEqual([]);
@@ -131,7 +138,8 @@ test('W1 Chromium actual App world-scale load, terrain, pick and source pixel or
   report.failureClass=detail.includes('texture-limit')?'map-texture-limit':detail.includes('initialize WebGPU or WebGL2')?'map-backend-unavailable':detail.includes('Map data could not')?'map-data-error':info.status==='timedOut'||/Timeout|timed out|exceeded/i.test(detail)?'execution-timeout':'assertion-or-runtime';
   throw error;
  }finally{
-  report.elapsedMs=performance.now()-began;report.suppressedWorldResults=suppressedWorldResults;report.testStatus=info.status;flush();
+  report.elapsedMs=performance.now()-began;report.suppressedWorldResults=suppressedWorldResults;report.testStatus=report.status==='FAIL'?'failed':info.status;
+  report.sameOrigin=requests.every(u=>{const a=new URL(u),b=new URL(page.url());return a.host===b.host&&(a.protocol===b.protocol||a.protocol==='ws:');});flush();
   if(!page.isClosed()){
    report.finalDiagnostics=await diagnostics(map).catch(()=>null);
    await page.screenshot({path:resolve(evidence,'chromium-final.png'),timeout:5000}).catch(error=>{report.screenshotError=String(error);});flush();
