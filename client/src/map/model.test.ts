@@ -1,9 +1,30 @@
 import { expect, test } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { deepStrictEqual } from 'node:assert/strict';
-import { decodeIndex, pick, palettes, updateColors,validateWorldDisplay } from './model';
+import { decodeIndex, pick, palettes, updateColors,validateWorldDisplay,fnv } from './model';
 import type { WorldView } from '../proto/protocol';
 const world = (): WorldView => JSON.parse(readFileSync('../target/wp09/national-wire-fixtures.json','utf8'))[0].expected.world;
+// Frozen BigInt reference preserves the pre-optimization FNV-1a 64 contract.
+function referenceFNV(bytes:Uint8Array){let h=0xcbf29ce484222325n;for(const byte of bytes)h=BigInt.asUintN(64,(h^BigInt(byte))*0x100000001b3n);return h.toString(16).padStart(16,'0');}
+test('FNV-1a 64 matches Rust core vectors and hello',()=>{
+ for(const [input,hash] of [['','cbf29ce484222325'],['a','af63dc4c8601ec8c'],['foobar','85944171f73967e8'],['hello','a430d84680aabd0b']]){
+  expect(fnv(new TextEncoder().encode(input))).toBe(hash);
+ }
+});
+test('FNV uint32 carry and wrap match frozen BigInt for deterministic and repeated bytes',()=>{
+ let seed=0x12345678;
+ for(const length of [0,1,255,256,4097]){
+  const bytes=Uint8Array.from({length},()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed>>>24;});
+  for(const input of [bytes,new Uint8Array(length),new Uint8Array(length).fill(0xff)])expect(fnv(input)).toBe(referenceFNV(input));
+ }
+});
+test('FNV keeps 16-digit output when the upper uint32 limb starts with zero',()=>{
+ const bytes=new Uint8Array([0,0]),hash=fnv(bytes);
+ expect(hash).toBe('08328807b4eb6fed');
+ expect(hash).toHaveLength(16);
+ expect(hash).toMatch(/^[0-9a-f]{16}$/);
+ expect(hash).toBe(referenceFNV(bytes));
+});
 // Frozen find-based reference preserves the pre-optimization byte/range contract.
 function referenceUpdate(colors:Uint8Array,w:WorldView,mode:string){
  const ranges:{start:number;count:number}[]=[];
