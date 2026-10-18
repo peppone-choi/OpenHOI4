@@ -81,7 +81,15 @@ pub struct StatesDocument {
 pub fn regions_schema() -> Schema {
     schemars::json_schema!({"type":"object", "additionalProperties":false,
         "required":["km_per_pixel"], "properties":{"km_per_pixel":{"type":"number", "exclusiveMinimum":0,
-        "description":"Positive I32F32 scale parsed from its exact TOML lexeme; edge distances must fit I32F32."}}})
+        "description":"Positive I32F32 scale parsed from its exact TOML lexeme; edge distances must fit I32F32."},
+        "projection":{"const":"equirectangular", "type":"string"},
+        "extent":{"type":"array", "minItems":4, "maxItems":4,
+            "prefixItems":[{"type":"number","minimum":-180,"maximum":180},
+                {"type":"number","minimum":-90,"maximum":90},
+                {"type":"number","minimum":-180,"maximum":180},
+                {"type":"number","minimum":-90,"maximum":90}],
+            "description":"[west,south,east,north] degrees; runtime requires west < east and south < north."}},
+        "dependentRequired":{"projection":["extent"], "extent":["projection"]}})
 }
 pub fn states_schema() -> Schema {
     schemars::schema_for!(StatesDocument)
@@ -99,6 +107,18 @@ pub struct MapWarning {
     pub message: String,
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum MapProjection {
+    Uniform,
+    Equirectangular {
+        west: Fixed,
+        south: Fixed,
+        east: Fixed,
+        north: Fixed,
+        wrap_x: bool,
+    },
+}
+
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct MapData {
     pub width: u32,
@@ -113,6 +133,7 @@ pub struct MapData {
     pub states: Vec<StateDefinition>,
     pub victory_points: Vec<VictoryPoint>,
     pub km_per_pixel: Fixed,
+    pub projection: MapProjection,
     pub warnings: Vec<MapWarning>,
     province_states: BTreeMap<u16, u16>,
     resource_ids: BTreeSet<String>,
@@ -194,16 +215,34 @@ pub fn load_map(pack: impl AsRef<Path>, map_id: &str) -> Result<MapData, DataErr
         };
         index.push(i);
     }
-    let (centers, warnings) =
+    let (mut centers, warnings) =
         geometry(width, height, &index, &provinces, &csv, &offsets, &png_path)?;
     let mut kinds = adjacency(width, height, &index, &provinces);
+    // Defer regions errors until after overrides, preserving Uniform's error
+    // precedence as well as its messages and numeric calculations.
+    let regions = read(&root.join("regions.toml")).and_then(|source| {
+        let (scale, projection) = scale(&source)?;
+        Ok((source, scale, projection))
+    });
+    let mut polar = vec![false; provinces.len()];
+    if let Ok((source, _, MapProjection::Equirectangular { wrap_x: true, .. })) = &regions {
+        polar = wrap_centers(width, height, &index, &mut centers)
+            .ok_or_else(|| error(&source.path, "extent centroid overflow"))?;
+        for row in index.chunks_exact(width as usize) {
+            let (a, b) = (row[0] as usize, row[row.len() - 1] as usize);
+            if a != b {
+                kinds.insert(ordered(provinces[a].id, provinces[b].id), EdgeKind::Normal);
+            }
+        }
+    }
     overrides(
         &read(&root.join("adjacency_overrides.csv"))?,
         &provinces,
         &mut kinds,
     )?;
-    let scale_source = read(&root.join("regions.toml"))?;
-    let km_per_pixel = scale(&scale_source)?;
+    let (scale_source, km_per_pixel, projection) = regions?;
+    let metric = ProjectionMetric::new(projection, width, height)
+        .ok_or_else(|| error(&scale_source.path, "extent distance overflow"))?;
     let mut edges = Vec::with_capacity(kinds.len());
     for ((a, b), kind) in kinds {
         let ai = provinces
@@ -212,8 +251,20 @@ pub fn load_map(pack: impl AsRef<Path>, map_id: &str) -> Result<MapData, DataErr
         let bi = provinces
             .binary_search_by_key(&b, |p| p.id)
             .expect("validated endpoint");
-        let distance_km = distance(centers[ai], centers[bi], km_per_pixel)
+        let distance_km = metric
+            .distance(
+                centers[ai],
+                centers[bi],
+                polar[ai] || polar[bi],
+                km_per_pixel,
+            )
             .ok_or_else(|| error(&scale_source.path, format!("distance overflow for {a}/{b}")))?;
+        if projection != MapProjection::Uniform && distance_km == Fixed::ZERO {
+            return Err(error(
+                &scale_source.path,
+                format!("zero distance for {a}/{b}"),
+            ));
+        }
         edges.push(Edge {
             a,
             b,
@@ -237,6 +288,7 @@ pub fn load_map(pack: impl AsRef<Path>, map_id: &str) -> Result<MapData, DataErr
         states,
         victory_points,
         km_per_pixel,
+        projection,
         warnings,
         province_states,
         resource_ids: resources,
@@ -641,10 +693,167 @@ fn overrides(
     }
     Ok(())
 }
-fn scale(source: &Source) -> Result<Fixed, DataError> {
+/// Compare the two unwrapped candidates using doubled integer coordinates: this
+/// represents W/2 exactly even for odd widths. No floating-point circular mean.
+fn wrap_centers(
+    width: u32,
+    height: u32,
+    index: &[u16],
+    centers: &mut [[Fixed; 2]],
+) -> Option<Vec<bool>> {
+    let n = centers.len();
+    let w = width as usize;
+    let mut count = vec![0_u128; n];
+    let mut sum = vec![[0_u128; 2]; n];
+    let mut squares = vec![[0_u128; 2]; n];
+    let mut columns = vec![0_usize; n];
+    let mut last_column = vec![None; n];
+    for x in 0..w {
+        for y in 0..height as usize {
+            let i = index[y * w + x] as usize;
+            count[i] = count[i].checked_add(1)?;
+            if last_column[i] != Some(x) {
+                columns[i] += 1;
+                last_column[i] = Some(x);
+            }
+            for (axis, v) in [(2 * x) as u128, ((2 * x + w) % (2 * w)) as u128]
+                .into_iter()
+                .enumerate()
+            {
+                sum[i][axis] = sum[i][axis].checked_add(v)?;
+                squares[i][axis] = squares[i][axis].checked_add(v.checked_mul(v)?)?;
+            }
+        }
+    }
+    let mut polar = vec![false; n];
+    for i in 0..n {
+        polar[i] = columns[i] == w;
+        let variance = |axis: usize| {
+            count[i]
+                .checked_mul(squares[i][axis])?
+                .checked_sub(sum[i][axis].checked_mul(sum[i][axis])?)
+        };
+        // shortcut: W/2 초과 비극관 프로빈스 중심은 근사, 실제 팩 생성기가
+        // 이런 프로빈스를 만들 때 원형 평균으로 교체.
+        if !polar[i] && variance(1)? < variance(0)? {
+            let mean = sum[i][1]
+                .checked_shl(31)?
+                .checked_div(count[i])?
+                .checked_add(1_u128 << 31)?;
+            let period = u128::from(width) << 32;
+            let bits = mean
+                .checked_add(period)?
+                .checked_sub(u128::from(width) << 31)?
+                % period;
+            centers[i][0] = Fixed::from_bits(i64::try_from(bits).ok()?);
+        }
+    }
+    Some(polar)
+}
+
+/// Internal load-time constants; Uniform always takes the original distance path.
+struct ProjectionMetric {
+    projection: MapProjection,
+    width_bits: i128,
+    height: i128,
+    ratio: Fixed,
+}
+impl ProjectionMetric {
+    fn new(projection: MapProjection, width: u32, height: u32) -> Option<Self> {
+        let ratio = match projection {
+            MapProjection::Uniform => Fixed::ONE,
+            MapProjection::Equirectangular {
+                west,
+                south,
+                east,
+                north,
+                ..
+            } => {
+                let horizontal = (east - west).to_bits() / i64::from(width);
+                let vertical = (north - south).to_bits() / i64::from(height);
+                Fixed::from_bits(horizontal).checked_div(Fixed::from_bits(vertical))?
+            }
+        };
+        Some(Self {
+            projection,
+            width_bits: i128::from(width) << 32,
+            height: i128::from(height),
+            ratio,
+        })
+    }
+    fn distance(&self, a: [Fixed; 2], b: [Fixed; 2], polar: bool, scale: Fixed) -> Option<Fixed> {
+        let MapProjection::Equirectangular {
+            south,
+            north,
+            wrap_x,
+            ..
+        } = self.projection
+        else {
+            return distance(a, b, scale);
+        };
+        let mut dx = (i128::from(a[0].to_bits()) - i128::from(b[0].to_bits())).abs();
+        if wrap_x && dx > self.width_bits / 2 {
+            dx = self.width_bits.checked_sub(dx)?;
+        }
+        if polar {
+            dx = 0;
+        }
+        let dy = (i128::from(a[1].to_bits()) - i128::from(b[1].to_bits())).unsigned_abs();
+        let mean_y = (i128::from(a[1].to_bits()) + i128::from(b[1].to_bits())) / 2;
+        let latitude = i128::from(north.to_bits()).checked_sub(
+            mean_y
+                .checked_mul(i128::from((north - south).to_bits()))?
+                .checked_div(self.height.checked_shl(32)?)?,
+        )?;
+        let radians = latitude
+            .abs()
+            .checked_mul(i128::from(Fixed::from_num(fixed::consts::PI).to_bits()))?
+            .checked_div(180_i128 << 32)?;
+        let c = cos_fx(Fixed::from_bits(i64::try_from(radians).ok()?));
+        let ex = Fixed::from_bits(i64::try_from(dx).ok()?)
+            .checked_mul(self.ratio)?
+            .checked_mul(c)?
+            .to_bits() as u128;
+        let bits = ex
+            .checked_mul(ex)?
+            .checked_add(dy.checked_mul(dy)?)?
+            .isqrt();
+        Fixed::from_bits(i64::try_from(bits).ok()?).checked_mul(scale)
+    }
+}
+
+/// Integer-only x^18 Taylor Horner on [0, pi/2]. Q64.64 coefficients keep
+/// 1/18! nonzero; Q32.32 x²/products round down, including negative terms.
+/// Final conversion floors once to Q32.32 and clamps to [0,1]. Inputs outside
+/// the load-time latitude domain are clamped to [0, pi/2] before evaluation.
+pub fn cos_fx(x: Fixed) -> Fixed {
+    let x = i128::from(x.to_bits()).clamp(
+        0,
+        i128::from(Fixed::from_num(fixed::consts::PI).to_bits()) / 2,
+    );
+    let z = (x * x) >> 32;
+    let mut factorial = 1_i128;
+    let mut coefficients = [0_i128; 10];
+    for degree in 0..=18 {
+        if degree > 0 {
+            factorial *= degree;
+        }
+        if degree % 2 == 0 {
+            let sign = if degree % 4 == 0 { 1 } else { -1 };
+            coefficients[degree as usize / 2] = (sign * (1_i128 << 64)).div_euclid(factorial);
+        }
+    }
+    let mut value = coefficients[9];
+    for coefficient in coefficients[..9].iter().rev() {
+        value = ((value * z) >> 32) + coefficient;
+    }
+    Fixed::from_bits((value >> 32).clamp(0, 1_i128 << 32) as i64)
+}
+
+fn scale(source: &Source) -> Result<(Fixed, MapProjection), DataError> {
     let doc = source.document()?;
     for (key, _) in &doc {
-        if key.get_ref() != "km_per_pixel" {
+        if !matches!(key.get_ref(), "km_per_pixel" | "projection" | "extent") {
             return Err(source.error(key.span().start, ErrorKind::Schema, "unknown regions field"));
         }
     }
@@ -669,7 +878,69 @@ fn scale(source: &Source) -> Result<Fixed, DataError> {
     if fx <= Fixed::ZERO {
         return Err(fail());
     }
-    Ok(fx)
+    let Some(mode) = doc.get("projection") else {
+        if let Some(extent) = doc.get("extent") {
+            return Err(source.error(
+                extent.span().start,
+                ErrorKind::Schema,
+                "extent requires projection",
+            ));
+        }
+        return Ok((fx, MapProjection::Uniform));
+    };
+    if !matches!(mode.get_ref(), Raw::String(s) if s == "equirectangular") {
+        return Err(source.error(
+            mode.span().start,
+            ErrorKind::Schema,
+            "projection must be equirectangular",
+        ));
+    }
+    let value = doc.get("extent").ok_or_else(|| {
+        source.error(
+            mode.span().start,
+            ErrorKind::Schema,
+            "projection requires extent",
+        )
+    })?;
+    let fail = || {
+        source.error(value.span().start, ErrorKind::Schema, "extent must be four finite I32F32 numbers with -180 <= west < east <= 180 and -90 <= south < north <= 90")
+    };
+    let Raw::Array(values) = value.get_ref() else {
+        return Err(fail());
+    };
+    if values.len() != 4 {
+        return Err(fail());
+    }
+    let mut extent = [Fixed::ZERO; 4];
+    for (out, value) in extent.iter_mut().zip(values) {
+        if !matches!(value.get_ref(), Raw::Integer(_) | Raw::Float(_)) {
+            return Err(fail());
+        }
+        *out = match crate::parse_number(source, value).map_err(|_| fail())? {
+            crate::Number::Fixed(n) => n,
+            crate::Number::Integer(n) => Fixed::checked_from_num(n).ok_or_else(fail)?,
+        };
+    }
+    let [west, south, east, north] = extent;
+    if west < Fixed::from_num(-180)
+        || east > Fixed::from_num(180)
+        || west >= east
+        || south < Fixed::from_num(-90)
+        || north > Fixed::from_num(90)
+        || south >= north
+    {
+        return Err(fail());
+    }
+    Ok((
+        fx,
+        MapProjection::Equirectangular {
+            west,
+            south,
+            east,
+            north,
+            wrap_x: east - west == Fixed::from_num(360),
+        },
+    ))
 }
 /// sqrt(dx^2+dy^2) on Q64.64 integer bits, floor to Q32.32, then
 /// fixed's checked multiplication by scale. No float or platform libm.
