@@ -256,15 +256,9 @@ fn default_pack_preserves_m0_and_national_hashes_and_explicit_id_contract() {
     for root in [repo.join("data/packs"), repo.join("data/packs/examples/m0")] {
         let (_, shutdown) = tokio::sync::watch::channel(false);
         let legacy = oh_server::Host::load(&root, shutdown.clone()).unwrap();
-        let implicit = oh_server::Host::load_pack_selected(
-            &root,
-            shutdown.clone(),
-            None,
-            None,
-            None,
-            false,
-        )
-        .unwrap();
+        let implicit =
+            oh_server::Host::load_pack_selected(&root, shutdown.clone(), None, None, None, false)
+                .unwrap();
         assert_eq!(legacy.pack, implicit.pack);
         let explicit = oh_server::Host::load_pack_selected(
             &root,
