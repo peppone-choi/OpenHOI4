@@ -65,7 +65,8 @@ async function provinceClick(page:Page,world:WorldView,anchors:ReturnType<typeof
 async function settled(page:Page){await expect(page.getByTestId('movement-controls')).toHaveAttribute('data-busy','false');}
 async function selectOwn(page:Page){await page.locator('.division-marker[data-division-nation="1"]').click();await expect(page.locator('.division-marker[data-division-nation="1"]')).toHaveAttribute('aria-pressed','true');}
 async function runUntilProgress(page:Page,wire:ReturnType<typeof observe>){
- await page.getByTestId('speed-5').click();await page.getByTestId('pause').click();
+ // Speed 5 is unbounded: the complete route can finish between observations.
+ await page.getByTestId('speed-3').click();await expect(page.getByTestId('speed')).toHaveText('3');await page.getByTestId('pause').click();
  await expect.poll(()=>latest(wire).units.some(u=>u.route.length>0&&BigInt(u.elapsed.bits)>0n)).toBe(true);
  await page.getByTestId('pause').click();await expect(page.getByTestId('pause')).toHaveText('Resume');
 }

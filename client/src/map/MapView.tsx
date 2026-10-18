@@ -6,7 +6,7 @@ import { createMap,type MapCamera } from './renderer';
 import { isMapMetadata } from '../network';
 import {DivisionMarkers} from './DivisionMarkersOverlay';
 import {buildDivisionMarkers,divisionIdsForMarker,provinceAnchors,type MapPresentation,type DivisionMarker} from './divisionMarkers';
-import {MovementOverlay,MovementControls} from './MovementOverlay';
+import {MovementOverlay,MovementControls} from './MovementDisplayOverlay';
 import {buildMovementOverlay,type MovingMarker} from './movementOverlay';
 import type {MovementDisplay,MovementFeedback} from '../movementCommands';
 type MapInstance=Awaited<ReturnType<typeof createMap>>;
