@@ -12,6 +12,16 @@ permissions:
   contents: read
 
 jobs:
+  world-preview-geometry:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.11'
+      - name: Synthetic geometry contracts
+        run: python -m unittest discover -s tools/maps -p test_export_pack_geometry.py -v
+
   server:
     strategy:
       fail-fast: false
