@@ -104,6 +104,7 @@ const [binary, root] = process.argv.slice(1);
       [['--pack', 'absent_pack'], /absent_pack/],
       [['--pack', 'testland', '--pack', 'testland'], /duplicate option --pack/],
       [['--pack', 'testland', '--scenario', 'absent_scenario'], /InvalidSelectedScenario/],
+      [['--pack', 'testland_m2_military', '--scenario', 'm1'], /InvalidSelectedScenario/],
       [['--pack-root', root, '--pack', 'renamed'], /pack ID mismatch/],
       [['--pack'], /missing value for --pack/],
     ];
@@ -121,6 +122,148 @@ const [binary, root] = process.argv.slice(1);
         &[&root],
     );
 }
+#[test]
+fn named_pack_reuses_native_movement_acceptance() {
+    use oh_core::{NationId, ProvinceId};
+    use oh_sim::{Command, Simulation, military::Action};
+    fn apply(sim: &mut Simulation, nation: u16, command: Command) {
+        sim.enqueue(sim.snapshot().tick(), NationId(nation), 1, command)
+            .unwrap();
+        assert!(
+            sim.step()
+                .unwrap()
+                .commands
+                .iter()
+                .all(|c| c.result.is_ok())
+        );
+    }
+    let root = fixture();
+    let pack = root.join("testland_m2_military");
+    copy(
+        &Path::new(env!("CARGO_MANIFEST_DIR")).join("../../data/packs/testland_m2_military"),
+        &pack,
+    );
+    let context = oh_save::SaveContext::national(&pack, "m2_military").unwrap();
+    let mut sim = context.simulation(1).unwrap();
+    for nation in 1..=2 {
+        apply(
+            &mut sim,
+            nation,
+            Command::Military(Action::Train {
+                template: "m2_small".into(),
+            }),
+        );
+    }
+    while sim.snapshot().tick() < 80 {
+        sim.step().unwrap();
+    }
+    apply(&mut sim, 1, Command::Pause(true));
+    apply(
+        &mut sim,
+        2,
+        Command::Military(Action::Deploy {
+            job: 1,
+            army: 1,
+            province: ProvinceId(3),
+            allow_understrength: true,
+        }),
+    );
+    let ready = root.join("ready.ohsave");
+    let ready_bytes = oh_save::encode(&sim, &context, 0, vec![1, 2]).unwrap();
+    fs::write(&ready, &ready_bytes).unwrap();
+    apply(
+        &mut sim,
+        1,
+        Command::Military(Action::Deploy {
+            job: 0,
+            army: 0,
+            province: ProvinceId(1),
+            allow_understrength: true,
+        }),
+    );
+    let mut dto = sim.export_save_v7().unwrap();
+    let unit = dto
+        .base
+        .base
+        .base
+        .base
+        .units
+        .iter_mut()
+        .find(|unit| unit.nation == 1)
+        .unwrap();
+    unit.allowed = vec![1, 2, 110];
+    unit.corrections
+        .retain(|edge| unit.allowed.contains(&edge.from) && unit.allowed.contains(&edge.to));
+    let isolated = Simulation::from_save_v7(dto, context.restore_context()).unwrap();
+    let isolated_path = root.join("isolated.ohsave");
+    let isolated_bytes = oh_save::encode(&isolated, &context, 0, vec![1, 2]).unwrap();
+    fs::write(&isolated_path, &isolated_bytes).unwrap();
+    // Reuse the exact native assertions; only the host's pack selection differs.
+    let original = include_str!("movement_query.cjs");
+    let needle = "'--pack-root', root,";
+    assert_eq!(original.matches(needle).count(), 1);
+    let script = format!(
+        "process.argv.splice(1, 0, 'movement_query.cjs');\n{}",
+        original.replace(
+            needle,
+            "'--pack-root', root, '--pack', 'testland_m2_military',"
+        )
+    );
+    node(&script, &[&root, &ready, &isolated_path]);
+    assert_eq!(fs::read(ready).unwrap(), ready_bytes);
+    assert_eq!(fs::read(isolated_path).unwrap(), isolated_bytes);
+}
+
+#[test]
+fn named_pack_restore_rejects_other_pack_before_binding() {
+    let root = fixture();
+    let context = oh_save::SaveContext::national(&root.join("testland"), "m1").unwrap();
+    let bytes = oh_save::encode(&context.simulation(7).unwrap(), &context, 0, vec![]).unwrap();
+    let save = root.join("a.ohsave");
+    fs::write(&save, &bytes).unwrap();
+    node(
+        r#"
+const assert = require('node:assert/strict');
+const net = require('node:net');
+const {spawn} = require('node:child_process');
+const [binary, save] = process.argv.slice(1);
+(async () => {
+  const probe = net.createServer(); await new Promise(r => probe.listen(0, '127.0.0.1', r));
+  try {
+    const child = spawn(binary, ['--port', String(probe.address().port), '--pack', 'testland_m2_military', '--scenario', 'm2_military', '--load-save', save], {windowsHide:true});
+    let stderr = ''; child.stderr.on('data', b => stderr += b); child.stdout.resume();
+    const timer = setTimeout(() => child.kill('SIGKILL'), 10000);
+    const code = await new Promise((resolve, reject) => {child.once('error', reject); child.once('close', resolve);});
+    clearTimeout(timer); assert.notEqual(code, 0);
+    assert.match(stderr, /[Ss]cenario|[Pp]ack|[Hh]ash/); assert.doesNotMatch(stderr, /unknown option|cannot bind/);
+    console.log(JSON.stringify({code, stderr}));
+  } finally { await new Promise(r => probe.close(r)); }
+})().catch(e => {console.error(e); process.exitCode = 1;});
+"#,
+        &[&save],
+    );
+    assert_eq!(fs::read(save).unwrap(), bytes);
+}
+
+#[test]
+fn explicit_default_pack_preserves_m0_and_national_hashes() {
+    let repo = Path::new(env!("CARGO_MANIFEST_DIR")).join("../..");
+    for root in [repo.join("data/packs"), repo.join("data/packs/examples/m0")] {
+        let (_, shutdown) = tokio::sync::watch::channel(false);
+        let legacy = oh_server::Host::load(&root, shutdown.clone()).unwrap();
+        let explicit = oh_server::Host::load_pack_selected(
+            &root,
+            shutdown,
+            Some("testland"),
+            None,
+            None,
+            false,
+        )
+        .unwrap();
+        assert_eq!(legacy.pack, explicit.pack);
+    }
+}
+
 fn fixture() -> PathBuf {
     static N: AtomicU64 = AtomicU64::new(0);
     let root = Path::new(env!("CARGO_MANIFEST_DIR"))
