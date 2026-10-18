@@ -24,12 +24,13 @@ use tokio::sync::{oneshot, watch};
 mod embedded {
     include!(concat!(env!("OUT_DIR"), "/assets.rs"));
 }
-pub const USAGE: &str = "OpenHOI4 local server\nUsage: oh_server [--open] [--port <1..65535>] [--pack-root <directory>] [--scenario <national-ID>] [--load-save <file>] [--force] [--military-ledger-budget-bytes <bytes>]\nDefault: http://127.0.0.1:8080/ (loopback only)\nDefault pack-root: data/packs (M1 testland scenario m1); explicit data/packs/examples/m0 preserves M0\nBuild first: npm --prefix client ci; npm --prefix client run build; cargo build -p oh_server\nThe executable serves the built client; no Node/Vite server is needed to play.\n--open opens the address in your default browser. Ctrl+C shuts down normally.\n--military-ledger-budget-bytes limits only the opt-in normal-template ledger response.\n--help prints this help.";
+pub const USAGE: &str = "OpenHOI4 local server\nUsage: oh_server [--open] [--port <1..65535>] [--pack-root <directory>] [--pack <pack-ID>] [--scenario <national-ID>] [--load-save <file>] [--force] [--military-ledger-budget-bytes <bytes>]\nDefault: http://127.0.0.1:8080/ (loopback only)\nDefault pack-root: data/packs (M1 testland scenario m1); explicit data/packs/examples/m0 preserves M0\nDefault pack: testland; --pack selects a matching manifest ID under pack-root.\nBuild first: npm --prefix client ci; npm --prefix client run build; cargo build -p oh_server\nThe executable serves the built client; no Node/Vite server is needed to play.\n--open opens the address in your default browser. Ctrl+C shuts down normally.\n--military-ledger-budget-bytes limits only the opt-in normal-template ledger response.\n--help prints this help.";
 #[derive(Debug)]
 pub struct Options {
     pub port: u16,
     pub open: bool,
     pub pack_root: PathBuf,
+    pub pack: Option<String>,
     pub load_save: Option<PathBuf>,
     pub scenario: Option<String>,
     pub force: bool,
@@ -41,6 +42,7 @@ impl Options {
             port: 8080,
             open: false,
             pack_root: "data/packs".into(),
+            pack: None,
             load_save: None,
             scenario: None,
             force: false,
@@ -58,6 +60,7 @@ impl Options {
                 "--force" => options.force = true,
                 "--port"
                 | "--pack-root"
+                | "--pack"
                 | "--load-save"
                 | "--scenario"
                 | "--military-ledger-budget-bytes" => {
@@ -80,6 +83,11 @@ impl Options {
                             .ok()
                             .filter(|p| *p != 0)
                             .ok_or("--port must be an integer in 1..65535")?;
+                    } else if key == "--pack" {
+                        if !oh_data::valid_id(value) {
+                            return Err("invalid pack ID".into());
+                        }
+                        options.pack = Some(value.into());
                     } else if key == "--scenario" {
                         if !oh_data::valid_id(value) {
                             return Err("invalid scenario ID".into());
@@ -150,6 +158,20 @@ impl Host {
         file: Option<&Path>,
         force: bool,
     ) -> Result<Self, String> {
+        Self::load_pack_selected(root, shutdown, None, scenario, file, force)
+    }
+    pub fn load_pack_selected(
+        root: &Path,
+        shutdown: watch::Receiver<bool>,
+        pack: Option<&str>,
+        scenario: Option<&str>,
+        file: Option<&Path>,
+        force: bool,
+    ) -> Result<Self, String> {
+        let pack_id = pack.unwrap_or("testland");
+        if !oh_data::valid_id(pack_id) {
+            return Err("invalid pack ID".into());
+        }
         let limits = oh_save::Limits::default();
         let prepared = if let Some(file) = file {
             let bytes = oh_save::read_file(file, &limits)?;
@@ -159,7 +181,7 @@ impl Host {
             None
         };
         let mut host = if let Some((_, header)) = &prepared {
-            let (scenario_id, kind) = selected_input(root, scenario)?;
+            let (scenario_id, kind) = selected_input(root, pack_id, scenario)?;
             let binding = oh_data::host_policy::HeaderBinding {
                 format_version: header.format_version,
                 scenario_id: header.scenario_id.clone(),
@@ -177,6 +199,7 @@ impl Host {
             Self::load_for_purpose(
                 root,
                 shutdown,
+                pack_id,
                 oh_data::pack_validation::ValidationPurpose::ServerRestore {
                     scenario_id,
                     kind,
@@ -184,13 +207,20 @@ impl Host {
                 },
             )?
         } else {
-            let (scenario_id, kind) = selected_input(root, scenario)?;
+            let (scenario_id, kind) = selected_input(root, pack_id, scenario)?;
             Self::load_for_purpose(
                 root,
                 shutdown,
+                pack_id,
                 oh_data::pack_validation::ValidationPurpose::ServerStartup { scenario_id, kind },
             )?
         };
+        if pack.is_some() && host.pack.id != pack_id {
+            return Err(format!(
+                "pack ID mismatch: selected {pack_id}, manifest {}",
+                host.pack.id
+            ));
+        }
         if let Some((bytes, _)) = prepared {
             let context = if host.world.is_some() {
                 oh_save::SaveContext::national(&host.root, &host.loaded.scenario_id)?
@@ -219,10 +249,11 @@ impl Host {
         Ok(host)
     }
     pub fn load(root: &Path, shutdown: watch::Receiver<bool>) -> Result<Self, String> {
-        let (scenario_id, kind) = selected_scenario(root);
+        let (scenario_id, kind) = selected_scenario(root, "testland");
         Self::load_for_purpose(
             root,
             shutdown,
+            "testland",
             oh_data::pack_validation::ValidationPurpose::ServerStartup {
                 scenario_id: scenario_id.into(),
                 kind,
@@ -232,16 +263,19 @@ impl Host {
     fn load_for_purpose(
         root: &Path,
         shutdown: watch::Receiver<bool>,
+        pack_id: &str,
         purpose: oh_data::pack_validation::ValidationPurpose,
     ) -> Result<Self, String> {
-        let selected = match &purpose {
-            oh_data::pack_validation::ValidationPurpose::ServerStartup { scenario_id, .. }
-            | oh_data::pack_validation::ValidationPurpose::ServerRestore { scenario_id, .. } => {
-                scenario_id.clone()
-            }
+        let (selected, kind) = match &purpose {
+            oh_data::pack_validation::ValidationPurpose::ServerStartup { scenario_id, kind }
+            | oh_data::pack_validation::ValidationPurpose::ServerRestore {
+                scenario_id,
+                kind,
+                ..
+            } => (scenario_id.clone(), *kind),
             _ => return Err("InvalidHostPurpose".into()),
         };
-        let active = root.join("testland");
+        let active = root.join(pack_id);
         let report =
             oh_data::pack_validation::validate_for_purpose(std::slice::from_ref(&active), purpose);
         for d in &report.diagnostics {
@@ -260,16 +294,9 @@ impl Host {
         }
         let validated_hash = report.packs[0].content_hash;
         let validated_files = report.packs[0].source_files.clone();
-        let (loaded, world) = if root
-            .join("testland")
-            .join("scenarios")
-            .join(&selected)
-            .join("scenario.toml")
-            .exists()
-            && selected != "testland"
-        {
-            let national = oh_data::national::load_scenario(&root.join("testland"), &selected)
-                .map_err(|e| e.to_string())?;
+        let (loaded, world) = if kind == oh_data::host_policy::ScenarioKind::National {
+            let national =
+                oh_data::national::load_scenario(&active, &selected).map_err(|e| e.to_string())?;
             let world = oh_sim::world::World::from_loaded(&national)?;
             (
                 oh_data::m0::LoadedM0 {
@@ -280,7 +307,7 @@ impl Host {
                 Some(world),
             )
         } else {
-            (oh_data::m0::load_m0_scenario(root, "testland")?, None)
+            (oh_data::m0::load_m0_scenario(root, pack_id)?, None)
         };
         oh_data::pack_validation::verify_source(&active, validated_hash, &validated_files)
             .map_err(|e| e.to_string())?;
@@ -316,11 +343,11 @@ impl Host {
                 .map_err(|_| "message size overflow")?;
         let default_seed = positive(&loaded.pack.defines, "network.default_seed")?;
         let handshake_ms = positive(&loaded.pack.defines, "network.handshake_timeout_ms")?;
-        let path = root.join("testland");
+        let path = active;
         let scenario_file = if world.is_some() {
             format!("scenarios/{selected}/scenario.toml")
         } else {
-            "scenarios/testland/scenario.toml".to_string()
+            format!("scenarios/{pack_id}/scenario.toml")
         };
         let files = ["manifest.toml", "defines.toml", &scenario_file]
             .into_iter()
@@ -390,17 +417,19 @@ impl Host {
 }
 fn selected_input(
     root: &Path,
+    pack_id: &str,
     scenario: Option<&str>,
 ) -> Result<(String, oh_data::host_policy::ScenarioKind), String> {
     match scenario {
         None => {
-            let (id, kind) = selected_scenario(root);
+            let (id, kind) = selected_scenario(root, pack_id);
             Ok((id.into(), kind))
         }
         Some(id) => {
             if !oh_data::valid_id(id)
                 || !root
-                    .join("testland/scenarios")
+                    .join(pack_id)
+                    .join("scenarios")
                     .join(id)
                     .join("scenario.toml")
                     .is_file()
@@ -411,11 +440,18 @@ fn selected_input(
         }
     }
 }
-fn selected_scenario(root: &Path) -> (&'static str, oh_data::host_policy::ScenarioKind) {
-    if root.join("testland/scenarios/m1/scenario.toml").exists() {
+fn selected_scenario<'a>(
+    root: &Path,
+    pack_id: &'a str,
+) -> (&'a str, oh_data::host_policy::ScenarioKind) {
+    if root
+        .join(pack_id)
+        .join("scenarios/m1/scenario.toml")
+        .exists()
+    {
         ("m1", oh_data::host_policy::ScenarioKind::National)
     } else {
-        ("testland", oh_data::host_policy::ScenarioKind::Empty)
+        (pack_id, oh_data::host_policy::ScenarioKind::Empty)
     }
 }
 fn pack_hash(root: &Path) -> Result<u64, String> {

@@ -1,5 +1,15 @@
 # OpenHOI4 WIP 인수인계
 
+## M-1a 서버 팩 선택 후보 (2026-10-18)
+
+taskId=t_8df84cc9, project=openhoi, stage=implement, branch=implement/t_8df84cc9.
+base=ba9cb0305c15afbb772659f147bf00a1ccbdf377, draft PR https://github.com/peppone-choi/OpenHOI4/pull/26.
+`--pack <pack-ID>` 선택과 명시적 manifest ID 검사를 추가하고 기존 기본 API·복사 fixture를 유지한다.
+[WP-32 M-1a](docs/worklog/WP-32-server-pack-selection.md)에 계약·시험 범위를 기록했다.
+RED a72b4ae에서 실제 hosted startup error: unknown option --pack을 확인했다.
+최종 exact head·hosted 결과는 evidence/t_8df84cc9 및 results/t_8df84cc9-RESULT.json 외부 영수증을 따른다.
+다음 담당 openhoi-review. 제품완료=false, 독립 리뷰·제품 QA·M-1/AC10·병합·Windows PC/HOI4/GCP/배포/초기화 NOT_RUN.
+
 ## S2 지도 이동 UI 구현 후보 (2026-10-16)
 
 taskId=openhoi-s2-map-movement-ui-20261016, stage=implement, contract=a69fdb74-3960-4ee6-a9bd-309d8a7adc3f.
