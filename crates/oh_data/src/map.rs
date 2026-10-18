@@ -853,7 +853,10 @@ pub fn cos_fx(x: Fixed) -> Fixed {
 fn scale(source: &Source) -> Result<(Fixed, MapProjection), DataError> {
     let doc = source.document()?;
     for (key, _) in &doc {
-        if !matches!(key.get_ref(), "km_per_pixel" | "projection" | "extent") {
+        if !matches!(
+            key.get_ref().as_ref(),
+            "km_per_pixel" | "projection" | "extent"
+        ) {
             return Err(source.error(key.span().start, ErrorKind::Schema, "unknown regions field"));
         }
     }
