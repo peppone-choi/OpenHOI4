@@ -134,7 +134,9 @@ fn wrap_adjacency_then_override_and_no_latitude_wrap() {
 #[test]
 fn dateline_centroid_even_odd_and_tie_a() {
     for (width, row) in [(8, vec![1, 2, 2, 2, 2, 2, 2, 1]), (5, vec![1, 2, 2, 2, 1])] {
-        let f = Fixture::new(width, 2, &row.repeat(2));
+        // Give province 2 a different y centroid: in non-wrapping mode the
+        // symmetric x centroids coincide, but this is not a zero-edge fixture.
+        let f = Fixture::new(width, 3, &[row.repeat(2), vec![2; width as usize]].concat());
         assert_eq!(f.load().centers[0][0], Fixed::ZERO);
         f.regions("[-90,-90,90,90]");
         assert_eq!(f.load().centers[0][0], Fixed::from_num(width) / 2);
