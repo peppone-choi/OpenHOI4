@@ -94,49 +94,52 @@ fn uniform_preserves_pre_projection_definitions_tuple() {
 
 #[test]
 fn projection_identity_covers_every_extent_raw_bit_and_wrap() {
-    let mut data = oh_data::national::load_scenario(&pack(), "m1").unwrap();
-    let uniform = hash(&data);
-    let extent = [
-        Fx::from_num(-180),
-        Fx::from_num(-90),
-        Fx::from_num(180),
-        Fx::from_num(90),
-    ];
-    let projection =
-        |[west, south, east, north]: [Fx; 4], wrap_x: bool| MapProjection::Equirectangular {
-            west,
-            south,
-            east,
-            north,
-            wrap_x,
-        };
-    // Leave every other field byte-identical to isolate the projection identity.
-    data.map.projection = projection(extent, true);
-    let projected = hash(&data);
-    assert_ne!(uniform, projected);
-    assert_eq!(
-        projected,
-        state_hash(&(
-            uniform,
-            (
-                "equirectangular",
-                extent[0].to_bits(),
-                extent[1].to_bits(),
-                extent[2].to_bits(),
-                extent[3].to_bits(),
-                true
-            )
-        ))
-        .unwrap()
-    );
-    for axis in 0..4 {
-        let mut changed = extent;
-        changed[axis] = Fx::from_bits(changed[axis].to_bits() + if axis < 2 { 1 } else { -1 });
-        data.map.projection = projection(changed, true);
-        assert_ne!(hash(&data), projected, "extent axis {axis}");
+    for (pack_id, scenario) in [("testland", "m1"), ("testland_m2_military", "m2_military")] {
+        let root = pack().parent().unwrap().join(pack_id);
+        let mut data = oh_data::national::load_scenario(&root, scenario).unwrap();
+        let uniform = hash(&data);
+        let extent = [
+            Fx::from_num(-180),
+            Fx::from_num(-90),
+            Fx::from_num(180),
+            Fx::from_num(90),
+        ];
+        let projection =
+            |[west, south, east, north]: [Fx; 4], wrap_x: bool| MapProjection::Equirectangular {
+                west,
+                south,
+                east,
+                north,
+                wrap_x,
+            };
+        // Leave every other field byte-identical to isolate the projection identity.
+        data.map.projection = projection(extent, true);
+        let projected = hash(&data);
+        assert_ne!(uniform, projected);
+        assert_eq!(
+            projected,
+            state_hash(&(
+                uniform,
+                (
+                    "equirectangular",
+                    extent[0].to_bits(),
+                    extent[1].to_bits(),
+                    extent[2].to_bits(),
+                    extent[3].to_bits(),
+                    true
+                )
+            ))
+            .unwrap()
+        );
+        for axis in 0..4 {
+            let mut changed = extent;
+            changed[axis] = Fx::from_bits(changed[axis].to_bits() + if axis < 2 { 1 } else { -1 });
+            data.map.projection = projection(changed, true);
+            assert_ne!(hash(&data), projected, "extent axis {axis}");
+        }
+        data.map.projection = projection(extent, false);
+        assert_ne!(hash(&data), projected);
     }
-    data.map.projection = projection(extent, false);
-    assert_ne!(hash(&data), projected);
 }
 
 static NEXT: AtomicU64 = AtomicU64::new(0);
