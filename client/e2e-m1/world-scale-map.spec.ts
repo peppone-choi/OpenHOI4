@@ -90,7 +90,8 @@ test('W1 Chromium actual App world-scale load, terrain, pick and source pixel or
   await expect.poll(async()=>{
    const alert=await page.locator('.map-section [role=alert]').textContent({timeout:100}).catch(()=>null);
    if(alert)throw new Error(`MapView alert: ${alert}`);
-   return Number(await map.getAttribute('data-frames',{timeout:1000}))>=2&&await page.locator('.map-section [role=status]').count()===0;
+   const frames=await map.getAttribute('data-frames',{timeout:1000}).catch(()=>null);
+   return Number(frames)>=2&&await page.locator('.map-section [role=status]').count()===0;
   },{timeout:840000,intervals:[250,1000]}).toBe(true);
   stages.load={wallMs:performance.now()-injectedAt,diagnostics:await diagnostics(map)};report.metricsAfter=await cdp.send('Performance.getMetrics');flush();
   expect(requests.filter(u=>new URL(u).pathname.startsWith('/maps/')).some(u=>u.includes('/world_scale_harness/index.bin?'))).toBe(true);
