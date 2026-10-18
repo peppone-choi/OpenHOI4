@@ -1,5 +1,5 @@
 import {expect,test} from 'vitest';
-import {buildDivisionMarkers,provinceAnchors,projectMarker} from './divisionMarkers';
+import {buildDivisionMarkers,divisionIdsForMarker,provinceAnchors,projectMarker} from './divisionMarkers';
 import {pick} from './model';
 import type {MilitaryView,WorldView} from '../proto/protocol';
 const world:WorldView={tick:'0',map_id:'fixture',width:3,height:3,province_ids:[0,99],neutral_color:[0,0,0],mode_keys:[],states:[],provinces:[0,99].map(id=>({id,state:null,owner:null,controller:null,owner_color:null,controller_color:null,terrain_key:'terrain',terrain_color:[0,0,0],state_color:null})),nations:[1,2].map(id=>({id,tag:`N${id}`,name_key:'nation',color:[id,2,3],capital:0,government_key:'government',support:[]}))};
@@ -30,4 +30,12 @@ test('unknown province/nation or absent province pixels is map-data-error, never
 test('camera projection follows panning and zoom; dimensions remain percentages on resize',()=>{
  const p={x:1.5,y:.5};const projected=projectMarker(p,{x:1.5,y:1.5,width:3,height:3});expect(projected.left).toBe(50);expect(projected.top).toBeCloseTo(100/6);
  expect(projectMarker(p,{x:.5,y:.5,width:2,height:2})).toEqual({left:100,top:50});
+});
+
+test('own stack selects exact ids; foreign/spectator cannot select and moving ids are excluded',()=>{
+ const v=view([[0,1],[0,1],[0,2]]),anchor=provinceAnchors(world,index);
+ expect(divisionIdsForMarker(v,{province:0,nation:1},1)).toEqual(['0','1']);
+ expect(divisionIdsForMarker(v,{province:0,nation:2},1)).toEqual([]);
+ expect(divisionIdsForMarker(v,{province:0,nation:1},null)).toEqual([]);
+ expect(buildDivisionMarkers(v,world,anchor,new Set(['0']))).toEqual([{province:0,nation:1,count:1,x:1.5,y:.5,color:[1,2,3]},{province:0,nation:2,count:1,x:1.5,y:.5,color:[2,2,3]}]);
 });

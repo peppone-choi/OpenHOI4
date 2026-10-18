@@ -395,3 +395,13 @@ military-deploy-understrength = Allow understrength deployment
 military-deploy-understrength-help = Explicitly allow deployment with the held equipment, including zero equipment. The server checks readiness, ownership and army capacity.
 
 map-division-marker = Province { $province }, nation { $nation }: { $count } divisions
+
+movement-select = Selected divisions: { $count }
+movement-target-mode = Choose movement destination
+movement-stop = Stop selected divisions
+movement-pending = Division { $division }: waiting for server refresh
+movement-accepted = Division { $division }: movement accepted
+movement-rejected = Division { $division }: movement rejected
+movement-not-sent = Division { $division }: not sent
+movement-remaining = { $remaining } hours remaining
+map-moving-division = Division { $division }, nation { $nation }: { $remaining } hours remaining
