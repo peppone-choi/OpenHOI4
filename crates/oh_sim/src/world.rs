@@ -552,6 +552,32 @@ impl World {
             loaded.map.km_per_pixel,
         ))
         .map_err(|e| e.to_string())?;
+        let definitions_hash = if let Some(m) = &loaded.military {
+            oh_core::state_hash(&(definitions_hash, m.identity()?)).map_err(|e| e.to_string())?
+        } else {
+            definitions_hash
+        };
+        let definitions_hash = match loaded.map.projection {
+            oh_data::map::MapProjection::Uniform => definitions_hash,
+            oh_data::map::MapProjection::Equirectangular {
+                west,
+                south,
+                east,
+                north,
+                wrap_x,
+            } => {
+                let projection_identity = (
+                    "equirectangular",
+                    west.to_bits(),
+                    south.to_bits(),
+                    east.to_bits(),
+                    north.to_bits(),
+                    wrap_x,
+                );
+                oh_core::state_hash(&(definitions_hash, projection_identity))
+                    .map_err(|e| e.to_string())?
+            }
+        };
         Ok(Self {
             defs: Arc::new(Defs {
                 military: loaded.military.clone(),
@@ -563,12 +589,7 @@ impl World {
                 visuals: loaded.visuals.clone(),
                 map_id: loaded.scenario.map.clone(),
             }),
-            definitions_hash: if let Some(m) = &loaded.military {
-                oh_core::state_hash(&(definitions_hash, m.identity()?))
-                    .map_err(|e| e.to_string())?
-            } else {
-                definitions_hash
-            },
+            definitions_hash,
             inputs: WorldInputs {
                 nations,
                 states,
