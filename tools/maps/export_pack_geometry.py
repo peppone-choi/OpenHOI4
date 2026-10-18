@@ -53,7 +53,7 @@ def neighbours(position, width, height):
 
 
 def absorb(index, width, height, kinds):
-    """Freeze original areas; decide every singleton before writing any pixels."""
+    """D1-R2: at most two simultaneous snapshots, original singletons only."""
     if len(index) != width * height or width < 2 or height < 2:
         raise ValueError('index dimensions must match and be at least 2x2')
     counts = Counter(index)
@@ -61,20 +61,35 @@ def absorb(index, width, height, kinds):
         raise ValueError('province IDs and index IDs differ')
     positions = {province: i for i, province in enumerate(index) if counts[province] == 1}
     merges = []
-    for province, position in sorted(positions.items()):
-        borders = Counter(index[n] for n in neighbours(position, width, height)
-                          if counts[index[n]] >= 2)
-        if not borders:
-            raise ValueError(f'singleton {province}: no original area>=2 neighbour')
-        same = [p for p in borders if kinds[p] == kinds[province]]
-        target = min(same or borders, key=lambda p: (-borders[p], p))
-        y, x = divmod(position, width)
-        merges.append(dict(id=province, target=target, old_kind=kinds[province],
-                           new_kind=kinds[target], pixel=[x, y]))
     result = array.array('H', index)
-    for merge in merges:
-        x, y = merge['pixel']
-        result[y * width + x] = merge['target']
+    pending = set(positions)
+    areas = counts.copy()
+    for stage in (1, 2):
+        decisions = []
+        for province in sorted(pending):
+            position = positions[province]
+            borders = Counter(result[n] for n in neighbours(position, width, height)
+                              if areas[result[n]] >= 2)
+            if not borders:
+                continue
+            same = [p for p in borders if kinds[p] == kinds[province]]
+            target = min(same or borders, key=lambda p: (-borders[p], p))
+            y, x = divmod(position, width)
+            decisions.append(dict(id=province, target=target, old_kind=kinds[province],
+                                  new_kind=kinds[target], pixel=[x, y], stage=stage))
+        # Apply only after all decisions; no within-stage chain or area growth.
+        for merge in decisions:
+            province, target = merge['id'], merge['target']
+            result[positions[province]] = target
+            areas[target] += 1
+            del areas[province]
+            pending.remove(province)
+        merges.extend(decisions)
+    if pending:
+        raise ValueError(f'singletons {sorted(pending)}: no snapshot area>=2 neighbour after stage 2')
+    removed = {m['id'] for m in merges}
+    if any(m['target'] in removed for m in merges) or set(result) != set(kinds) - removed:
+        raise ValueError('removed target reference or empty province')
     return result, merges
 
 
@@ -168,6 +183,8 @@ def export(source, out, terrain):
             raise ValueError(f'provinces.json: invalid province {province}')
         kinds[province] = p['kind']
     normalized, merges = absorb(index, width, height, kinds)
+    if any(normalized[i] != p for i, p in enumerate(index) if original_counts[p] >= 2):
+        raise ValueError('original non-singleton pixel changed')
     counts = Counter(normalized)
     pairs = edges(normalized, width, height)
     coastal = coastal_from_edges(pairs, kinds)
@@ -185,15 +202,26 @@ def export(source, out, terrain):
     seam = {tuple(sorted((normalized[y * width], normalized[(y + 1) * width - 1])))
             for y in range(height)
             if normalized[y * width] != normalized[(y + 1) * width - 1]}
+    next_targets = {m['id']: m['target'] for m in merges}
     report = dict(marker=MARKER, width=width, height=height,
                   input_sha256={**declared, 'metadata.json': digest(metadata_raw)},
                   hash_scope='metadata.json is recorded, not authenticated; schema declares only the other three input hashes. report.json is excluded from its own output hashes.',
                   output_sha256={name: digest(raw) for name, raw in files.items()},
                   terrain_map=terrain, km_per_pixel=KM_PER_PIXEL,
                   original_count=len(kinds), province_count=len(counts),
+                  original_2_to_8_provinces=sum(2 <= n <= 8 for n in original_counts.values()),
+                  original_2_to_8_pixels=sum(n for n in original_counts.values() if 2 <= n <= 8),
+                  original_non_singleton_pixels_unchanged=True,
+                  remaining_singletons=sum(n == 1 for n in counts.values()),
                   original_kind_pixels={k: sum(n for p, n in original_counts.items() if kinds[p] == k) for k in sorted(KINDS)},
                   kind_pixels={k: sum(n for p, n in counts.items() if kinds[p] == k) for k in sorted(KINDS)},
                   merged_count=len(merges), merges=merges,
+                  policy='D1-R2: at most two simultaneous snapshots; geometry harness only',
+                  stages=[dict(stage=s, merged_count=sum(m['stage'] == s for m in merges),
+                               mapping={str(m['id']): m['target'] for m in merges if m['stage'] == s},
+                               changed_kind_pixels=sum(m['stage'] == s and m['old_kind'] != m['new_kind'] for m in merges))
+                          for s in (1, 2)],
+                  original_to_surviving={str(p): next_targets.get(p, p) for p in sorted(kinds)},
                   changed_kind_pixels=sum(m['old_kind'] != m['new_kind'] for m in merges),
                   edge_count=len(pairs), seam_samples=sorted(seam)[:3],
                   png_bytes=len(files['provinces.png']))
