@@ -1,0 +1,68 @@
+name: World singleton diagnostic
+
+on:
+  push:
+    branches: ['diagnostic/t_92961c89']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.11'
+      - name: Tiny synthetic contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/singleton-diagnostic"
+          python -m unittest discover -s scripts -p test_diagnose_world_singletons.py -v 2>&1 | tee "$RUNNER_TEMP/singleton-diagnostic/tests.log"
+      - name: Read-only full-world diagnosis
+        shell: bash
+        run: |
+          set -euo pipefail
+          /usr/bin/time -f '%e' -o "$RUNNER_TEMP/singleton-diagnostic/seconds.txt" \
+            python scripts/diagnose_world_singletons.py --input client/public/preview/world \
+            --out "$RUNNER_TEMP/singleton-diagnostic/report"
+          cat "$RUNNER_TEMP/singleton-diagnostic/report/summary.txt" >> "$GITHUB_STEP_SUMMARY"
+      - name: Verify receipts, full counts, known blocker, and read-only boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os
+          from collections import Counter
+          from pathlib import Path
+          r = json.loads((Path(os.environ['RUNNER_TEMP']) / 'singleton-diagnostic/report/diagnostic.json').read_text())
+          assert r['head_sha'] == os.environ['GITHUB_SHA']
+          rows = r['singletons']
+          assert len(rows) == r['singleton_count'] == len({p['id'] for p in rows})
+          blocked = [p for p in rows if p['first_target'] is None]
+          assert len(blocked) == r['blocked_count']
+          assert dict(Counter(p['kind'] for p in rows)) == {k: v for k, v in r['singleton_by_kind'].items() if v}
+          assert dict(Counter(p['kind'] for p in blocked)) == {k: v for k, v in r['blocked_by_kind'].items() if v}
+          assert len(r['first_mapping']) + len(blocked) == len(rows)
+          assert len(r['hypothetical_second_mapping']) + r['hypothetical_remaining_count'] == len(blocked)
+          p = next(p for p in blocked if p['id'] == 4037)
+          assert p['pixel'] == [2766, 1889] and p['kind'] == 'sea'
+          assert {d: n['id'] for d, n in p['neighbours'].items()} == {'N': 13790, 'W': 13791, 'E': 13792, 'S': 12153}
+          assert all(n['original_area'] == 1 and n['kind'] == 'land' for n in p['neighbours'].values())
+          assert r['source_unchanged'] and not r['productComplete'] and not r['policy_changed'] and not r['exporter_executed']
+          print('Exact SHA, counts, 4037 and non-product diagnostic boundary verified')
+          PY
+          git diff --exit-code
+          test -z "$(git ls-files --others --exclude-standard)"
+      - name: Upload diagnostic reports only
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: world-singleton-diagnostic-${{ github.sha }}
+          path: ${{ runner.temp }}/singleton-diagnostic/
+          if-no-files-found: error
+          archive: true
