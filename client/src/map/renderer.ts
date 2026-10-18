@@ -133,8 +133,8 @@ export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8
    world=next;mode=nextMode;selected.value=id===null?-1:world.province_ids.indexOf(id);host.dataset.selected=String(id??'');host.dataset.mode=mode;
    const began=performance.now();const ranges=updatePalette(arrays.colors,world,mode);
    // Upload only changed texels through Three's public cross-backend copy API.
-   if(presentation?.paletteAdapter&&ranges.length>LOOKUP_SIZE){
-    // Preview has many simultaneous art-colour changes; upload one bounded
+   if(ranges.length>LOOKUP_SIZE){
+    // For many simultaneous colour changes, upload one bounded
     // lookup rather than creating thousands of one-texel GPU textures.
     const patch=dataTexture(arrays.colors,LOOKUP_SIZE,LOOKUP_SIZE);renderer.copyTextureToTexture(patch,colors);patch.dispose();
    }else for(const range of ranges){const dense=range.start/4;const patch=dataTexture(arrays.colors.slice(range.start,range.start+range.count),1,1);renderer.copyTextureToTexture(patch,colors,null,new Vector2(dense%256,Math.floor(dense/256)));patch.dispose();}
@@ -143,6 +143,7 @@ export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8
     world.province_ids.forEach((_,i)=>{const start=i*4;if(next.subarray(start,start+4).some((v,j)=>data[start+j]!==v)){data.set(next.subarray(start,start+4),start);const patch=dataTexture(data.slice(start,start+4),1,1);renderer.copyTextureToTexture(patch,texture,null,new Vector2(i%256,Math.floor(i/256)));patch.dispose();}});
    }
    host.dataset.updatedBytes=String(ranges.reduce((n,r)=>n+r.count,0));host.dataset.updateMs=String(performance.now()-began);
+   host.dataset.uploadPath=ranges.length===0?'none':ranges.length>LOOKUP_SIZE?'lookup':'texel';
    if(ranges.length){host.dataset.lastChangedBytes=host.dataset.updatedBytes;host.dataset.lastUpdateMs=host.dataset.updateMs;host.dataset.totalChangedBytes=String(Number(host.dataset.totalChangedBytes??0)+Number(host.dataset.updatedBytes));}
   },
   reset(){zoom=1;camera.position.x=camera.position.y=0;resize();},

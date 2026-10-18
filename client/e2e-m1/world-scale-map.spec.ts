@@ -119,6 +119,7 @@ test('W1 Chromium actual App world-scale load, terrain, pick and source pixel or
   expect(requests.filter(u=>new URL(u).pathname.startsWith('/maps/')).some(u=>u.includes('/world_scale_harness/index.bin?'))).toBe(true);
   report.phase='terrain';const modeStart=performance.now();await page.getByRole('button',{name:'Terrain',exact:true}).click();await expect(map).toHaveAttribute('data-mode','map-mode-terrain');
   stages.terrain={wallMs:performance.now()-modeStart,diagnostics:await diagnostics(map)};flush();
+  await expect(map).toHaveAttribute('data-upload-path','lookup');await expect(map).toHaveAttribute('data-last-changed-bytes','99556');
   const index=decodeIndex(Uint8Array.from(input.bytes).buffer,fixture!.world.width,fixture!.world.height,fixture!.world.province_ids);
   const largest=(kind:'land'|'sea')=>input.provinces.filter(p=>p.kind===kind).sort((a,b)=>b.pixels-a.pixels||a.id-b.id)[0];
   const land=largest('land'),sea=largest('sea');
@@ -129,6 +130,7 @@ test('W1 Chromium actual App world-scale load, terrain, pick and source pixel or
   await expect.poll(async()=>JSON.parse((await map.getAttribute('data-camera'))!).zoom).toBeGreaterThan(1);
   report.phase='selection';const selectStart=performance.now();await map.click({position:await mapPoint(map,anchor.x,anchor.y)});await expect(map).toHaveAttribute('data-selected',String(land.id));
   stages.selection={id:land.id,anchor,wallMs:performance.now()-selectStart,diagnostics:await diagnostics(map)};flush();
+  await expect(map).toHaveAttribute('data-selected','18014');await expect(map).toHaveAttribute('data-hover','18014');await expect(map).toHaveAttribute('data-updated-bytes','0');await expect(map).toHaveAttribute('data-upload-path','none');
   await page.getByRole('button',{name:'Clear selection'}).click();await page.getByRole('button',{name:'Reset view'}).click();await page.mouse.move(0,0);
   report.phase='pixels';
   // Choose screenshot pixel centres whose entire 5x5 screen neighbourhood maps
