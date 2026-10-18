@@ -59,10 +59,14 @@ async function inspect(args) {
   };
   ws.send(encode({type:'Hello', protocol_version:'m0-v1'})); assert.equal((await wait('Welcome')).accepted, true);
   ws.send(encode({type:'Join', session:'local', nation:'N01'}));
-  const snapshot = await wait('Snapshot'); assert.ok(snapshot.world.map_id);
-  const response = await fetch(`${url}/maps/${snapshot.world.map_id}/metadata`); assert.equal(response.status, 200);
+  await wait('Snapshot');
+  ws.send(encode({type:'Query', request:'pack-world', kind:'world'}));
+  const result = await wait('WorldResult'); assert.equal(result.supported, true); assert.equal(result.request, 'pack-world');
+  const world = result.world; assert.ok(world.map_id);
+  const response = await fetch(`${url}/maps/${world.map_id}/metadata`); assert.equal(response.status, 200);
   const metadata = await response.json(); assert.ok(metadata.pack_hash);
-  return {map_id:snapshot.world.map_id, pack_hash:metadata.pack_hash};
+  assert.equal(metadata.map_id, world.map_id);
+  return {map_id:world.map_id, pack_hash:metadata.pack_hash};
 }
 (async () => {
   try {
@@ -235,7 +239,8 @@ const [binary, save] = process.argv.slice(1);
     const timer = setTimeout(() => child.kill('SIGKILL'), 10000);
     const code = await new Promise((resolve, reject) => {child.once('error', reject); child.once('close', resolve);});
     clearTimeout(timer); assert.notEqual(code, 0);
-    assert.match(stderr, /[Ss]cenario|[Pp]ack|[Hh]ash/); assert.doesNotMatch(stderr, /unknown option|cannot bind/);
+    assert.match(stderr, /startup error: MilitaryModeMismatch: save\/local definitions/);
+    assert.doesNotMatch(stderr, /unknown option|cannot bind|InvalidSelectedScenario/);
     console.log(JSON.stringify({code, stderr}));
   } finally { await new Promise(r => probe.close(r)); }
 })().catch(e => {console.error(e); process.exitCode = 1;});
@@ -246,11 +251,21 @@ const [binary, save] = process.argv.slice(1);
 }
 
 #[test]
-fn explicit_default_pack_preserves_m0_and_national_hashes() {
+fn default_pack_preserves_m0_and_national_hashes_and_explicit_id_contract() {
     let repo = Path::new(env!("CARGO_MANIFEST_DIR")).join("../..");
     for root in [repo.join("data/packs"), repo.join("data/packs/examples/m0")] {
         let (_, shutdown) = tokio::sync::watch::channel(false);
         let legacy = oh_server::Host::load(&root, shutdown.clone()).unwrap();
+        let implicit = oh_server::Host::load_pack_selected(
+            &root,
+            shutdown.clone(),
+            None,
+            None,
+            None,
+            false,
+        )
+        .unwrap();
+        assert_eq!(legacy.pack, implicit.pack);
         let explicit = oh_server::Host::load_pack_selected(
             &root,
             shutdown,
@@ -258,9 +273,13 @@ fn explicit_default_pack_preserves_m0_and_national_hashes() {
             None,
             None,
             false,
-        )
-        .unwrap();
-        assert_eq!(legacy.pack, explicit.pack);
+        );
+        if legacy.pack.id == "testland" {
+            assert_eq!(legacy.pack, explicit.unwrap().pack);
+        } else {
+            assert_eq!(legacy.pack.id, "m0_testland");
+            assert!(explicit.err().unwrap().contains("pack ID mismatch"));
+        }
     }
 }
 
