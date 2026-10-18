@@ -1,5 +1,14 @@
 # OpenHOI4 WIP 인수인계
 
+## W-1 비제품 세계 규모 MapView 계측 후보 (2026-10-18)
+
+taskId=t_5b8653e8, project=openhoi, stage=implement, branch=impl/t_5b8653e8.
+base=092938b5aec9b50ad056205c8066987d420f1243. PR28·제품 코드·기존 시험은 변경하지 않는다.
+[WP-33](docs/worklog/WP-33-world-scale-mapview.md)의 신뢰 경계·Node/Chromium 계측·입력 RGB oracle·부분 증거·소유 프로세스 정리를 새 harness와 workflow에 구현한다.
+최종 exact SHA·draft PR·실제 hosted 결과는 외부 results/t_5b8653e8-RESULT.json을 따른다.
+nonProduct=true, productComplete=false. actualProductPack/gameplay/M1/AC10/productQA NOT_RUN.
+사단 마커·이동·주 경계 NOT_RUN(Q1). 다음 담당 openhoi-review; 독립 리뷰·main 병합·Windows/HOI4/GCP/배포/초기화 NOT_RUN.
+
 ## M-1a 서버 팩 선택 후보 (2026-10-18)
 
 taskId=t_8df84cc9, project=openhoi, stage=implement, branch=implement/t_8df84cc9.
