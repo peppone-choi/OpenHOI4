@@ -3,6 +3,124 @@ use std::{
     path::{Path, PathBuf},
     sync::atomic::{AtomicU64, Ordering},
 };
+
+fn node(script: &str, args: &[&Path]) {
+    let repo = Path::new(env!("CARGO_MANIFEST_DIR")).join("../..");
+    let result = std::process::Command::new("node")
+        .current_dir(repo)
+        .args(["-e", script, env!("CARGO_BIN_EXE_oh_server")])
+        .args(args)
+        .output()
+        .unwrap();
+    println!("{}", String::from_utf8_lossy(&result.stdout));
+    assert!(
+        result.status.success(),
+        "pack acceptance: {}",
+        String::from_utf8_lossy(&result.stderr)
+    );
+}
+
+#[test]
+fn named_pack_join_snapshot_and_metadata_match_legacy_copy() {
+    let root = fixture();
+    let source =
+        Path::new(env!("CARGO_MANIFEST_DIR")).join("../../data/packs/testland_m2_military");
+    copy(&source, &root.join("legacy/testland"));
+    node(
+        r#"
+const assert = require('node:assert/strict');
+const net = require('node:net');
+const {spawn} = require('node:child_process');
+const {encode, decode} = require(process.cwd() + '/client/node_modules/@msgpack/msgpack');
+const [binary, root] = process.argv.slice(1);
+const children = [], sockets = [];
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const watchdog = setTimeout(() => { for (const c of children) c.kill('SIGKILL'); process.exitCode = 1; }, 30000);
+async function inspect(args) {
+  const probe = net.createServer(); await new Promise(r => probe.listen(0, '127.0.0.1', r));
+  const port = probe.address().port; await new Promise(r => probe.close(r));
+  const child = spawn(binary, ['--port', String(port), ...args], {windowsHide: true}); children.push(child);
+  let stderr = ''; child.stderr.on('data', b => stderr += b); child.stdout.resume();
+  const url = `http://127.0.0.1:${port}`;
+  let ready = false;
+  for (let i = 0; i < 200; i++) {
+    assert.equal(child.exitCode, null, stderr);
+    try { if ((await fetch(url)).ok) { ready = true; break; } } catch {}
+    await sleep(25);
+  }
+  assert.ok(ready, stderr);
+  const ws = new WebSocket(url.replace('http', 'ws') + '/ws'); sockets.push(ws); ws.binaryType = 'arraybuffer';
+  const messages = [];
+  ws.addEventListener('message', e => messages.push(decode(new Uint8Array(e.data))));
+  await new Promise((resolve, reject) => { ws.addEventListener('open', resolve, {once:true}); ws.addEventListener('error', reject, {once:true}); });
+  const wait = async type => {
+    for (let i = 0; i < 200; i++) { const m = messages.find(m => m.type === type); if (m) return m; await sleep(25); }
+    throw Error(`no ${type}`);
+  };
+  ws.send(encode({type:'Hello', protocol_version:'m0-v1'})); assert.equal((await wait('Welcome')).accepted, true);
+  ws.send(encode({type:'Join', session:'local', nation:'N01'}));
+  const snapshot = await wait('Snapshot'); assert.ok(snapshot.world.map_id);
+  const response = await fetch(`${url}/maps/${snapshot.world.map_id}/metadata`); assert.equal(response.status, 200);
+  const metadata = await response.json(); assert.ok(metadata.pack_hash);
+  return {map_id:snapshot.world.map_id, pack_hash:metadata.pack_hash};
+}
+(async () => {
+  try {
+    const named = await inspect(['--pack-root', 'data/packs', '--pack', 'testland_m2_military', '--scenario', 'm2_military']);
+    const legacy = await inspect(['--pack-root', root + '/legacy', '--scenario', 'm2_military']);
+    assert.deepEqual(named, legacy); console.log(JSON.stringify({named, legacy}));
+  } finally {
+    for (const ws of sockets) ws.close();
+    for (const child of children) {
+      if (child.exitCode === null && child.signalCode === null) {
+        const exited = new Promise(r => child.once('exit', r)); child.kill('SIGKILL'); await exited;
+      }
+      assert.ok(child.exitCode !== null || child.signalCode !== null, 'owned server exited');
+    }
+    clearTimeout(watchdog);
+  }
+})().catch(e => {console.error(e); process.exitCode = 1;});
+"#,
+        &[&root],
+    );
+}
+
+#[test]
+fn named_pack_errors_precede_port_binding() {
+    let root = fixture();
+    copy(&root.join("testland"), &root.join("renamed"));
+    node(
+        r#"
+const assert = require('node:assert/strict');
+const net = require('node:net');
+const {spawn} = require('node:child_process');
+const [binary, root] = process.argv.slice(1);
+(async () => {
+  const probe = net.createServer(); await new Promise(r => probe.listen(0, '127.0.0.1', r));
+  try {
+    const cases = [
+      [['--pack', '../x'], /invalid pack ID/],
+      [['--pack', 'Testland'], /invalid pack ID/],
+      [['--pack', 'absent_pack'], /absent_pack/],
+      [['--pack', 'testland', '--pack', 'testland'], /duplicate option --pack/],
+      [['--pack', 'testland', '--scenario', 'absent_scenario'], /InvalidSelectedScenario/],
+      [['--pack-root', root, '--pack', 'renamed'], /pack ID mismatch/],
+      [['--pack'], /missing value for --pack/],
+    ];
+    for (const [args, expected] of cases) {
+      const child = spawn(binary, ['--port', String(probe.address().port), ...args], {windowsHide:true});
+      let stderr = ''; child.stderr.on('data', b => stderr += b); child.stdout.resume();
+      const timer = setTimeout(() => child.kill('SIGKILL'), 10000);
+      const code = await new Promise((resolve, reject) => { child.once('error', reject); child.once('close', resolve); });
+      clearTimeout(timer); assert.notEqual(code, 0); assert.match(stderr, expected); assert.doesNotMatch(stderr, /cannot bind/);
+      console.log(JSON.stringify({args, code, stderr}));
+    }
+  } finally { await new Promise(r => probe.close(r)); }
+})().catch(e => {console.error(e); process.exitCode = 1;});
+"#,
+        &[&root],
+    );
+}
 fn fixture() -> PathBuf {
     static N: AtomicU64 = AtomicU64::new(0);
     let root = Path::new(env!("CARGO_MANIFEST_DIR"))
