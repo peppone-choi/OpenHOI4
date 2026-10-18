@@ -27,7 +27,7 @@ Chromium만 사용하며 시험당 15분/job 45분은 실행 상한이지 성능
 Node 24.4.0/Rust 1.99.0, 실제 제품 build와 oh_server, 전용 19429 포트, reuseExistingServer=false이다.
 VPS에서 빌드·계측·브라우저를 실행하지 않는다.
 
-- N1: validateWorldDisplay/decodeIndex/fnv/palettes(owner)/updateColors(terrain)/provinceAnchors 각 3회.
+- N1: Node 내장 WebSocket으로 실제 Hello/Join/Query를 수행해 입력을 취득한다. 브라우저 fixture 없이 validateWorldDisplay/decodeIndex/fnv/palettes(owner)/updateColors(terrain)/provinceAnchors 각 3회.
 - validateWorldDisplay/palettes/updateColors는 n=3,111/6,222/12,444/24,889 각 3회 및 log-log 기울기. 시간 임계값은 없다.
 - B1: 첫 주입부터 2프레임·loading 소멸까지 wall ms, 실제 backend/texture limit/frame ms, CDP Performance metrics 전후.
 - B2/B3: terrain 전환·가장 큰 land의 raster anchor 선택, wall/update ms.
@@ -48,6 +48,7 @@ Linux supervisor는 자신이 시작한 프로세스 자손의 PID+시작 시각
 픽셀 단계는 축소한 세계 화면에서 가장 큰 land(ID18014)의 5×5 내부 화면 점을 찾지 못해 실제 FAIL했다. 부분 JSON·스크린샷과 정리 PASS가 업로드되었다.
 시험은 해당 입력 anchor에서 확대 후 내부 점을 찾도록 수정했다. RGB 허용치·입력·제품 코드는 그대로다. 최종 재실행 결과는 RESULT.json을 따른다.
 두 번째 run 39130839035는 초기 DOM 조회의 1초 locator timeout이 상위 polling을 중단한 harness 오류였다. 이후 진단에는 정상 WebGL2 프레임이 기록되었다. 초기 미표시는 polling의 미준비 상태로 처리하도록 수정하고, 15분 시험 상한·실제 지도 alert 실패는 유지했다. 이 실패도 증거에 보존한다.
+세 번째 run 39131250905는 3개 시험·정리·입력 RGB 비교 모두 성공했다. 최종 자체 점검에서 Node 입력 취득에도 브라우저가 쓰인 계약 불일치를 찾아 Node 직접 WebSocket으로 교체했다. afterEach는 실제 최종 시험 상태로 부분 JSON을 마감한다. 이 후속 변경의 exact-head 재실행을 별도로 확인한다.
 
 ## 인수 및 한계
 

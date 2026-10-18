@@ -1,9 +1,10 @@
 import { expect,test,type Locator,type APIRequestContext } from '@playwright/test';
-import { mkdirSync,writeFileSync } from 'node:fs';
+import { existsSync,mkdirSync,readFileSync,writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { performance } from 'node:perf_hooks';
 import { decode,encode } from '@msgpack/msgpack';
 import type { MapMetadata,ServerMessage,WorldView } from '../src/proto/protocol';
+import { PROTOCOL_VERSION } from '../src/proto/protocol';
 import { decodeIndex,fnv,palettes,updateColors,validateWorldDisplay } from '../src/map/model';
 import { provinceAnchors } from '../src/map/divisionMarkers';
 import { fixtureFNV,loadWorldScale,scope,verifyPayload,worldScaleFixture } from './worldScaleFixture';
@@ -18,9 +19,32 @@ function slope(points:{n:number;ms:number[]}[]){
  return xs.reduce((s,x,i)=>s+(x-mx)*(ys[i]-my),0)/xs.reduce((s,x)=>s+(x-mx)**2,0);
 }
 async function baseWorld(request:APIRequestContext){
- // WorldView must come from the real server, via its actual WebSocket/App below.
  return (await (await request.get('/maps/testland/metadata')).json()) as MapMetadata;
 }
+/** Browser-free real server handshake, matching network.ts Hello/Join/Query. */
+async function serverWorld(baseURL:string):Promise<WorldView>{
+ return new Promise((resolve,reject)=>{
+  const ws=new WebSocket(baseURL.replace('http:','ws:')+'/ws');ws.binaryType='arraybuffer';let world:WorldView|undefined;
+  const timer=setTimeout(()=>{ws.close();reject(new Error('Node server WorldResult timeout'));},60000);
+  ws.onopen=()=>ws.send(encode({type:'Hello',protocol_version:PROTOCOL_VERSION}));
+  ws.onmessage=event=>{try{
+   const m=decode(new Uint8Array(event.data as ArrayBuffer)) as ServerMessage;
+   if(m.type==='Welcome'){if(!m.accepted)throw new Error('Node server Hello rejected');ws.send(encode({type:'Join',session:'local',nation:null}));}
+   if(m.type==='Snapshot')ws.send(encode({type:'Query',request:'world',kind:'world'}));
+   if(m.type==='WorldResult'){if(!m.world)throw new Error('Node server world unavailable');world=m.world;ws.close();}
+  }catch(error){clearTimeout(timer);ws.close();reject(error);}};
+  ws.onerror=()=>{clearTimeout(timer);ws.close();reject(new Error('Node server WebSocket error'));};
+  ws.onclose=()=>{clearTimeout(timer);if(world)resolve(world);else reject(new Error('Node server closed before WorldResult'));};
+ });
+}
+test.afterEach(async({},info)=>{
+ const name=info.title.includes('Node three runs')?'world-scale-node.json':info.title.includes('Chromium actual App')?'world-scale-chromium.json':null;
+ if(!name||!existsSync(resolve(evidence,name)))return;
+ const report=JSON.parse(readFileSync(resolve(evidence,name),'utf8'));
+ report.testStatus=info.status;
+ if(info.status!=='passed'){report.status='FAIL';report.failureClass??=info.status==='timedOut'?'execution-timeout':'assertion-or-runtime';report.error??=info.errors.map(e=>e.message).join('\n');}
+ save(name,report);
+});
 
 test('W1 trust boundary rejects corrupted payloads and independent FNV vectors',async()=>{
  for(const name of ['index.bin','provinces.json'])expect(()=>verifyPayload(name,Buffer.from('corrupt'),'0'.repeat(64))).toThrow(`${name}: sha256 mismatch`);
@@ -28,16 +52,14 @@ test('W1 trust boundary rejects corrupted payloads and independent FNV vectors',
  expect(fixtureFNV(Buffer.from('hello'))).toBe('a430d84680aabd0b');
 });
 
-test('W1 Node three runs and four input sizes (measurements, not performance gates)',async({page,request},info)=>{
+test('W1 Node three runs and four input sizes (measurements, not performance gates)',async({request,baseURL},info)=>{
  const report:Record<string,unknown>={...scope,status:'RUNNING',exactSHA:process.env.OH_EXACT_SHA,runner:process.env.RUNNER_OS,node:process.version,functions:{},series:{}};
  const flush=()=>save('world-scale-node.json',report);flush();
  const began=performance.now();
  try{
   const input=loadWorldScale();report.input=input.hashes;flush();
-  const meta=await baseWorld(request);let world:WorldView|undefined;
-  await page.routeWebSocket('**/ws',route=>{const server=route.connectToServer();server.onMessage(data=>{const m=decode(data as Buffer) as ServerMessage;if(m.type==='WorldResult'&&m.world&&!world)world=worldScaleFixture(input,m.world,meta).world;route.send(data);});});
-  await page.goto('/');await expect.poll(()=>!!world).toBe(true);await page.close();
-  const full=world!;validateWorldDisplay(full);
+  const meta=await baseWorld(request),full=worldScaleFixture(input,await serverWorld(baseURL!),meta).world;
+  report.inputTransport='Node native WebSocket; no browser fixture';validateWorldDisplay(full);
   expect(full.nations).toEqual([]);expect(full.states).toEqual([]);
   expect(full.provinces.every(p=>p.owner===null&&p.controller===null&&p.state===null&&p.owner_color===null&&p.controller_color===null&&p.state_color===null)).toBe(true);
   const buffer=Uint8Array.from(input.bytes).buffer;
