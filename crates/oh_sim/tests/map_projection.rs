@@ -87,14 +87,14 @@ fn legacy_hash(data: &LoadedNational) -> u64 {
 
 #[test]
 fn uniform_preserves_pre_projection_definitions_tuple() {
-    let data = oh_data::national::load_scenario(pack(), "m1").unwrap();
+    let data = oh_data::national::load_scenario(&pack(), "m1").unwrap();
     assert_eq!(data.map.projection, MapProjection::Uniform);
     assert_eq!(hash(&data), legacy_hash(&data));
 }
 
 #[test]
 fn projection_identity_covers_every_extent_raw_bit_and_wrap() {
-    let mut data = oh_data::national::load_scenario(pack(), "m1").unwrap();
+    let mut data = oh_data::national::load_scenario(&pack(), "m1").unwrap();
     let uniform = hash(&data);
     let extent = [
         Fx::from_num(-180),
@@ -182,6 +182,6 @@ fn repeated_projected_pack_loads_have_identical_world_hash() {
     assert_eq!(hash(&a), hash(&b));
     assert_ne!(
         hash(&a),
-        hash(&oh_data::national::load_scenario(pack(), "m1").unwrap())
+        hash(&oh_data::national::load_scenario(&pack(), "m1").unwrap())
     );
 }
