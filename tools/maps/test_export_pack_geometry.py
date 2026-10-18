@@ -19,7 +19,7 @@ class GeometryTests(unittest.TestCase):
         result, merges = geometry.absorb(pixels, 4, 2, kinds)
         self.assertEqual(result[5], 3)  # same kind beats two sea borders
         self.assertEqual(merges, [{'id': 1, 'target': 3, 'old_kind': 'land',
-                                   'new_kind': 'land', 'pixel': [1, 1]}])
+                                   'new_kind': 'land', 'pixel': [1, 1], 'stage': 1}])
         kinds[3] = 'sea'
         tied = array.array('H', [2, 2, 3, 3, 2, 1, 3, 3, 2, 3, 3, 3])
         result, _ = geometry.absorb(tied, 4, 3, kinds)
@@ -44,14 +44,60 @@ class GeometryTests(unittest.TestCase):
             self.assertEqual(b, 0)
 
     def test_no_candidate_fails_without_singleton_chain(self):
-        with self.assertRaisesRegex(ValueError, 'singleton 1.*no original'):
+        with self.assertRaisesRegex(ValueError, 'no snapshot.*after stage 2'):
             geometry.absorb(array.array('H', [1, 2, 3, 4]), 2, 2,
                             {i: 'land' for i in range(1, 5)})
-        # 1 touches singleton 2, but cannot chain through it to province 3.
+        # No within-stage chain; 1 becomes eligible only in stage 2.
         pixels = array.array('H', [3, 3, 4, 3, 3, 3, 2, 1, 5, 3, 3, 3, 6, 3, 3])
-        with self.assertRaisesRegex(ValueError, 'singleton 1.*no original'):
-            geometry.absorb(pixels, 5, 3, {i: 'sea' for i in range(1, 7)})
+        result, merges = geometry.absorb(pixels, 5, 3, {i: 'sea' for i in range(1, 7)})
+        self.assertEqual(next(m['stage'] for m in merges if m['id'] == 1), 2)
+        self.assertEqual(set(result), {3})
         self.assertEqual(pixels[7], 1)  # no partial input mutation
+
+    def test_two_stage_bound_and_snapshot_order_independence(self):
+        pixels = array.array('H', [9, 9, 1, 2, 3, 4, 5, 9, 9,
+                                   9, 9, 6, 7, 8, 10, 11, 9, 9])
+        with self.assertRaisesRegex(ValueError, 'after stage 2'):
+            geometry.absorb(pixels, 9, 2, {p: 'land' for p in pixels})
+        import random
+        rng = random.Random(18)
+        for _ in range(100):
+            w, h = 5, 4
+            index = array.array('H', [rng.randrange(1, 14) for _ in range(w * h)])
+            kinds = {p: rng.choice(sorted(geometry.KINDS)) for p in index}
+            expected, rounds, pending = snapshot_oracle(index, w, h, kinds)
+            if pending:
+                with self.assertRaises(ValueError):
+                    geometry.absorb(index, w, h, kinds)
+            else:
+                actual, merges = geometry.absorb(index, w, h, dict(reversed(list(kinds.items()))))
+                self.assertEqual(actual, expected)
+                self.assertEqual([{m['id']: m['target'] for m in merges if m['stage'] == s}
+                                  for s in (1, 2)], rounds)
+                renamed = {p: 100 - p for p in kinds}
+                other = array.array('H', [renamed[p] for p in index])
+                other_kinds = {renamed[p]: k for p, k in kinds.items()}
+                want, _, left = snapshot_oracle(other, w, h, other_kinds)
+                self.assertFalse(left)
+                self.assertEqual(geometry.absorb(other, w, h, other_kinds)[0], want)
+
+    def test_horizontal_wrap_and_vertical_nonwrap(self):
+        pixels = array.array('H', [1, 2, 2, 3, 2, 2, 3, 3])
+        kinds = {1: 'sea', 2: 'land', 3: 'sea'}
+        self.assertEqual(geometry.absorb(pixels, 4, 2, kinds)[0][0], 3)
+        pixels = array.array('H', [2, 1, 2, 2, 2, 2, 3, 3, 3])
+        self.assertEqual(geometry.absorb(pixels, 3, 3, kinds)[0][1], 2)
+
+    def test_every_original_area_two_through_eight_is_unchanged(self):
+        values = [p for p in range(2, 9) for _ in range(p)]
+        values += [1, 9, 9, 9, 9]
+        original = array.array('H', values)
+        result, merges = geometry.absorb(original, 8, 5, {p: 'land' for p in values})
+        self.assertEqual(len(merges), 1)
+        self.assertEqual(merges[0]['id'], 1)
+        for i, p in enumerate(original):
+            if p != 1:
+                self.assertEqual(result[i], p)
 
     def fixture(self, root):
         pixels = array.array('H', [1, 1, 2, 2, 3, 3, 3, 3] * 4)
@@ -102,6 +148,31 @@ class GeometryTests(unittest.TestCase):
                                 geometry.parse_terrain('land=plains,sea=ocean,lake=inland_water'))
 
 
+def snapshot_oracle(original, w, h, kinds):
+    """Independent reverse-order decisions, with full snapshot area recounts."""
+    from collections import Counter
+    areas = Counter(original)
+    positions = {p: i for i, p in enumerate(original) if areas[p] == 1}
+    pending = set(positions)
+    snapshot = array.array('H', original)
+    rounds = []
+    for _ in range(2):
+        areas = Counter(snapshot)
+        selected = {}
+        for p in sorted(pending, reverse=True):
+            y, x = divmod(positions[p], w)
+            adjacent = [snapshot[y * w + (x + dx) % w] for dx in (-1, 1)]
+            adjacent += [snapshot[ny * w + x] for ny in (y - 1, y + 1) if 0 <= ny < h]
+            candidates = [t for t in areas if areas[t] >= 2 and t in adjacent]
+            if candidates:
+                selected[p] = min(candidates, key=lambda t: (kinds[t] != kinds[p], -adjacent.count(t), t))
+        for p, t in selected.items():
+            snapshot[positions[p]] = t
+        pending -= set(selected)
+        rounds.append(selected)
+    return snapshot, rounds, pending
+
+
 def world_check(source, first, second, expected_path):
     """Independent oracle: decode PNG; replay report against ORIGINAL pixels.
 
@@ -122,19 +193,29 @@ def world_check(source, first, second, expected_path):
     from collections import Counter
     areas = Counter(original)
     kinds = {p['id']: p['kind'] for p in json.loads((source / 'provinces.json').read_text())}
+    assert report['original_2_to_8_provinces'] == sum(2 <= n <= 8 for n in areas.values())
+    assert report['original_2_to_8_pixels'] == sum(n for n in areas.values() if 2 <= n <= 8)
+    assert report['original_non_singleton_pixels_unchanged'] is True
+    assert report['remaining_singletons'] == 0
     remap = {m['id']: m['target'] for m in report['merges']}
     assert set(remap) == {p for p, n in areas.items() if n == 1}
+    expected_pixels, rounds, pending = snapshot_oracle(original, w, h, kinds)
+    assert not pending
+    assert len(report['merges']) == len(remap)
+    assert report['marker'] == 'geometry harness, not product pack'
+    for s, mapping in enumerate(rounds, 1):
+        assert {m['id']: m['target'] for m in report['merges'] if m['stage'] == s} == mapping
+        stage = report['stages'][s - 1]
+        assert stage['stage'] == s and stage['merged_count'] == len(mapping)
+        assert stage['mapping'] == {str(p): t for p, t in mapping.items()}
+        assert stage['changed_kind_pixels'] == sum(kinds[p] != kinds[t] for p, t in mapping.items())
+    assert all(m['stage'] in (1, 2) for m in report['merges'])
+    assert report['original_to_surviving'] == {str(p): remap.get(p, p) for p in kinds}
+    assert not (set(remap.values()) & set(remap))
     for m in report['merges']:
         x, y = m['pixel']
-        i = y * w + x
-        assert original[i] == m['id']
-        adjacent = [original[y * w + (x + dx) % w] for dx in (-1, 1)]
-        adjacent += [original[ny * w + x] for ny in (y - 1, y + 1) if 0 <= ny < h]
-        candidates = Counter(p for p in adjacent if areas[p] >= 2)
-        same = {p: n for p, n in candidates.items() if kinds[p] == kinds[m['id']]}
-        best = sorted((same or candidates), key=lambda p: (-(same or candidates)[p], p))[0]
-        assert best == m['target'] and best not in remap
-        assert m['old_kind'] == kinds[m['id']] and m['new_kind'] == kinds[best]
+        assert original[y * w + x] == m['id']
+        assert m['old_kind'] == kinds[m['id']] and m['new_kind'] == kinds[m['target']]
     # Decode the restricted RGB PNG independently, including chunk CRCs.
     png = (first / 'provinces.png').read_bytes()
     assert png[:8] == b'\x89PNG\r\n\x1a\n'
@@ -160,6 +241,9 @@ def world_check(source, first, second, expected_path):
         normalized.extend((r << 8) | g for r, g in zip(row[0::3], row[1::3]))
     for i, p in enumerate(original):
         assert normalized[i] == remap.get(p, p), (i, p)
+        assert normalized[i] == expected_pixels[i]
+        if areas[p] >= 2:
+            assert normalized[i] == p
     # Deliberately different traversal from exporter: columns, then rows.
     pairs = set()
     def add(a, b):
@@ -177,6 +261,8 @@ def world_check(source, first, second, expected_path):
               if remap.get(a, a) != remap.get(b, b)}
     assert pairs == mapped  # no non-local edges created by singleton absorption
     counts = Counter(normalized)
+    assert set(counts) == set(kinds) - set(remap)
+    assert all(n >= 2 for n in counts.values())
     assert len(counts) == 24889 - len(remap) == report['province_count']
     kind_pixels = {k: sum(n for p, n in counts.items() if kinds[p] == k)
                    for k in ('land', 'sea', 'lake')}
