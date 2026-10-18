@@ -3,8 +3,11 @@ import array
 import hashlib
 import json
 from pathlib import Path
+import struct
+import sys
 import tempfile
 import unittest
+import zlib
 
 import export_pack_geometry as geometry
 
@@ -18,7 +21,8 @@ class GeometryTests(unittest.TestCase):
         self.assertEqual(merges, [{'id': 1, 'target': 3, 'old_kind': 'land',
                                    'new_kind': 'land', 'pixel': [1, 1]}])
         kinds[3] = 'sea'
-        result, _ = geometry.absorb(pixels, 4, 2, kinds)
+        tied = array.array('H', [2, 2, 3, 3, 2, 1, 3, 3, 2, 3, 3, 3])
+        result, _ = geometry.absorb(tied, 4, 3, kinds)
         self.assertEqual(result[5], 2)  # shared-border tie => smaller ID
         pixels = array.array('H', [2, 2, 3, 3, 2, 1, 2, 3])
         result, _ = geometry.absorb(pixels, 4, 2, kinds)
@@ -51,7 +55,7 @@ class GeometryTests(unittest.TestCase):
 
     def fixture(self, root):
         pixels = array.array('H', [1, 1, 2, 2, 3, 3, 3, 3] * 4)
-        raw = b''.join(i.to_bytes(2, 'little') for i in pixels)
+        raw = b''.join((i - 1).to_bytes(2, 'little') for i in pixels)
         (root / 'index.bin').write_bytes(raw)
         provinces = [{'id': i, 'kind': k, 'pixels': pixels.count(i)}
                      for i, k in [(1, 'land'), (2, 'lake'), (3, 'sea')]]
@@ -98,5 +102,105 @@ class GeometryTests(unittest.TestCase):
                                 geometry.parse_terrain('land=plains,sea=ocean,lake=inland_water'))
 
 
+def world_check(source, first, second, expected_path):
+    """Independent oracle: decode PNG; replay report against ORIGINAL pixels.
+
+    No exporter adjacency/absorb/PNG function is used here. The oracle is stored
+    outside the generated map so Rust compares against a separate implementation.
+    """
+    source, first, second = map(Path, (source, first, second))
+    assert {p.name: p.read_bytes() for p in first.iterdir()} == {
+        p.name: p.read_bytes() for p in second.iterdir()}
+    report = json.loads((first / 'report.json').read_text())
+    metadata = json.loads((source / 'metadata.json').read_text())
+    w, h = metadata['width'], metadata['height']
+    original = array.array('H')
+    original.frombytes((source / 'index.bin').read_bytes())
+    if sys.byteorder != 'little':
+        original.byteswap()
+    original = array.array('H', (p + 1 for p in original))
+    from collections import Counter
+    areas = Counter(original)
+    kinds = {p['id']: p['kind'] for p in json.loads((source / 'provinces.json').read_text())}
+    remap = {m['id']: m['target'] for m in report['merges']}
+    assert set(remap) == {p for p, n in areas.items() if n == 1}
+    for m in report['merges']:
+        x, y = m['pixel']
+        i = y * w + x
+        assert original[i] == m['id']
+        adjacent = [original[y * w + (x + dx) % w] for dx in (-1, 1)]
+        adjacent += [original[ny * w + x] for ny in (y - 1, y + 1) if 0 <= ny < h]
+        candidates = Counter(p for p in adjacent if areas[p] >= 2)
+        same = {p: n for p, n in candidates.items() if kinds[p] == kinds[m['id']]}
+        best = sorted((same or candidates), key=lambda p: (-(same or candidates)[p], p))[0]
+        assert best == m['target'] and best not in remap
+        assert m['old_kind'] == kinds[m['id']] and m['new_kind'] == kinds[best]
+    # Decode the restricted RGB PNG independently, including chunk CRCs.
+    png = (first / 'provinces.png').read_bytes()
+    assert png[:8] == b'\x89PNG\r\n\x1a\n'
+    offset, compressed = 8, bytearray()
+    while offset < len(png):
+        size = struct.unpack_from('>I', png, offset)[0]
+        tag = png[offset + 4:offset + 8]
+        data = png[offset + 8:offset + 8 + size]
+        assert zlib.crc32(tag + data) == struct.unpack_from('>I', png, offset + 8 + size)[0]
+        if tag == b'IHDR':
+            assert struct.unpack('>IIBBBBB', data) == (w, h, 8, 2, 0, 0, 0)
+        if tag == b'IDAT':
+            compressed.extend(data)
+        offset += size + 12
+    raw = zlib.decompress(compressed)
+    assert len(raw) == h * (1 + w * 3)
+    normalized = array.array('H')
+    for y in range(h):
+        start = y * (1 + w * 3)
+        assert raw[start] == 0
+        row = raw[start + 1:start + 1 + w * 3]
+        assert not any(row[2::3])
+        normalized.extend((r << 8) | g for r, g in zip(row[0::3], row[1::3]))
+    for i, p in enumerate(original):
+        assert normalized[i] == remap.get(p, p), (i, p)
+    # Deliberately different traversal from exporter: columns, then rows.
+    pairs = set()
+    def add(a, b):
+        if a != b:
+            pairs.add(tuple(sorted((a, b))))
+    for x in range(w):
+        column = normalized[x::w]
+        for a, b in zip(column, column[1:]):
+            add(a, b)
+        right = normalized[(x + 1) % w::w]
+        for a, b in zip(column, right):
+            add(a, b)
+    before = {tuple(pair) for pair in json.loads((source / 'adjacency.json').read_text())}
+    mapped = {tuple(sorted((remap.get(a, a), remap.get(b, b)))) for a, b in before
+              if remap.get(a, a) != remap.get(b, b)}
+    assert pairs == mapped  # no non-local edges created by singleton absorption
+    counts = Counter(normalized)
+    assert len(counts) == 24889 - len(remap) == report['province_count']
+    kind_pixels = {k: sum(n for p, n in counts.items() if kinds[p] == k)
+                   for k in ('land', 'sea', 'lake')}
+    assert kind_pixels == report['kind_pixels']
+    assert report['changed_kind_pixels'] == sum(kinds[p] != kinds[t] for p, t in remap.items())
+    assert report['edge_count'] == len(pairs)
+    for name, sha in report['output_sha256'].items():
+        assert hashlib.sha256((first / name).read_bytes()).hexdigest() == sha
+    seam = sorted({tuple(sorted((normalized[y * w], normalized[(y + 1) * w - 1])))
+                   for y in range(h) if normalized[y * w] != normalized[(y + 1) * w - 1]})
+    assert len(seam) >= 3 and seam[:3] == [tuple(p) for p in report['seam_samples']]
+    for cap in (6788, 18014):
+        assert cap not in remap
+        assert all(cap in normalized[x::w] for x in range(w))
+    expected = dict(width=w, height=h, provinces=sorted(counts),
+                    counts={str(p): n for p, n in counts.items()},
+                    kinds={str(p): kinds[p] for p in counts}, kind_pixels=kind_pixels,
+                    edges=sorted(pairs), seam_samples=seam[:3], polar=[6788, 18014])
+    Path(expected_path).write_text(json.dumps(expected, sort_keys=True) + '\n')
+    print('independent PNG/pixel/kind/edge/determinism oracle PASS', len(counts), len(pairs))
+
+
 if __name__ == '__main__':
-    unittest.main()
+    if len(sys.argv) > 1 and sys.argv[1] == '--world-check':
+        world_check(*sys.argv[2:])
+    else:
+        unittest.main()
