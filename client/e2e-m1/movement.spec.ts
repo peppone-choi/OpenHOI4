@@ -89,6 +89,12 @@ test('native selection/right click, authoritative route through camera changes, 
  const sequence=commands(wire)[0].sequence,ack=wire.received.find(m=>m.type==='CommandResult'&&m.sequence===sequence);expect(ack).toMatchObject({accepted:true});
  const ackIndex=wire.events.findIndex(e=>e.direction==='received'&&e.message.type==='CommandResult'&&e.message.sequence===sequence);expect(ackIndex).toBeGreaterThan(-1);expect(wire.events.slice(ackIndex+1).some(e=>e.direction==='sent'&&e.message.type==='Query'&&e.message.kind==='movement')).toBe(true);
  await assertRoute(page,wire,world,index);
+ const routeProvinces=async()=>{
+  const points=JSON.parse((await page.locator('[data-movement-division="0"]').getAttribute('data-map-points'))!) as Array<{x:number;y:number}>;
+  return points.map(p=>pick(index,world.province_ids,world.width,world.height,p.x,p.y));
+ };
+ expect(latest(wire).units.find(u=>u.division==='0')).toMatchObject({province:1,route:[2,14]});
+ await expect.poll(routeProvinces).toEqual([1,2,14]);const initialRoute=await routeProvinces();
  const map=page.getByTestId('province-map');await map.scrollIntoViewIfNeeded();const rect=(await map.boundingBox())!;
  await page.mouse.move(rect.x+20,rect.y+20);await page.mouse.down();await page.mouse.move(rect.x+30,rect.y+28,{steps:4});await page.mouse.up();await assertRoute(page,wire,world,index);
  await map.hover();await page.mouse.wheel(0,-100);await assertRoute(page,wire,world,index);await page.getByRole('button',{name:'Reset view',exact:true}).click();await assertRoute(page,wire,world,index);
@@ -97,10 +103,22 @@ test('native selection/right click, authoritative route through camera changes, 
  await expect.poll(async()=>{const u=latest(wire).units.find(u=>u.division==='0')!;if(!u.route.length)return false;const ratio=Number(BigInt(u.elapsed.bits)*1000000000n/BigInt(u.current_leg_hours.bits))/1000000000;return Math.abs(Number(await page.locator('[data-moving-division="0"]').getAttribute('data-ratio'))-ratio)<1e-9;}).toBe(true);
  const pausedTick=(await page.getByTestId('tick').textContent())!;await expect.poll(()=>latest(wire).tick).toBe(pausedTick);const frozen=await page.locator('[data-moving-division="0"]').getAttribute('data-ratio'),frame=Number(await map.getAttribute('data-frames'));await expect.poll(async()=>Number(await map.getAttribute('data-frames'))).toBeGreaterThan(frame+3);await expect(page.locator('[data-moving-division="0"]')).toHaveAttribute('data-ratio',frozen!);await page.screenshot({path:info.outputPath('server-route-paused.png'),fullPage:true});
  const before=latest(wire).units.find(u=>u.division==='0')!;expect(before.route.at(-1)).toBe(14);
+ // Observe the real first-leg arrival, then freeze the server before inspecting DOM.
+ // Poll state rather than sleeping; speed 3 leaves the next leg observable.
+ await page.getByTestId('pause').click();
+ await expect.poll(()=>{const u=latest(wire).units.find(u=>u.division==='0');return {province:u?.province,route:u?.route};},{timeout:20000,intervals:[50,100,250]}).toEqual({province:2,route:[14]});
+ await page.getByTestId('pause').click();await expect(page.getByTestId('pause')).toHaveText('Resume');
+ const intermediateTick=(await page.getByTestId('tick').textContent())!;await expect.poll(()=>latest(wire).tick).toBe(intermediateTick);
+ const intermediate=latest(wire).units.find(u=>u.division==='0')!;expect(intermediate).toMatchObject({province:2,route:[14]});
+ await assertRoute(page,wire,world,index);
+ // The reached province is now the origin, not a retained waypoint/duplicate.
+ await expect.poll(routeProvinces).toEqual([2,14]);const intermediateRoute=await routeProvinces();
+ await expect(page.locator('[data-movement-division="0"]')).toHaveAttribute('points',/^\S+ \S+$/);
+ await page.screenshot({path:info.outputPath('server-route-intermediate.png'),fullPage:true});
  await page.getByTestId('pause').click();await expect.poll(()=>latest(wire).units.find(u=>u.division==='0')?.route.length,{timeout:20000}).toBe(0);await page.getByTestId('pause').click();
  await expect(page.locator('[data-movement-division]')).toHaveCount(0);await expect(page.locator('[data-moving-division]')).toHaveCount(0);await expect(page.locator('[data-division-province="14"][data-division-nation="1"]')).toHaveText('1');
  await expect.poll(()=>wire.received.filter((m):m is Extract<ServerMessage,{type:'MilitaryResult'}>=>m.type==='MilitaryResult'&&!!m.military).at(-1)!.military!.divisions.find(d=>d.id==='0')?.province).toBe(14);
- writeFileSync(info.outputPath('native-route-arrival.json'),JSON.stringify({before,arrived:latest(wire),wire},null,2));
+ writeFileSync(info.outputPath('native-route-arrival.json'),JSON.stringify({before,initialRoute,intermediate,intermediateRoute,arrived:latest(wire),wire},null,2));
 });
 test('native Stop retains one current leg, server rejection is generic in ko/en, no invented arrow',async({page,host,wire})=>{
  test.setTimeout(60000);const {world,anchors}=await prepared(page,host,wire);await selectOwn(page);await provinceClick(page,world,anchors,14);await settled(page);await runUntilProgress(page,wire);

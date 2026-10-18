@@ -44,3 +44,13 @@ SVG 점은 서버 province와 route 순서, 색은 world nation 색이다. 자�
 - 첫 수정 `a09f96dadf00690dfacb1a03f98ef13fc17f780d`: 로컬 typecheck 및 대상 unit 17 PASS. hosted CI `39089868162`의 server 3OS PASS, save `39089868176`의 3OS/compare PASS. M1 Chromium/WebKit 97/98 PASS: 원 실패 10개는 해소됐으나 WebKit 관전자 시험에서 패널 열기 클릭 미반영(군사 조회 0건)이 발생했다. 관전자 시험의 패널 열기를 키보드 활성화로 바꾸고 military ready 확인을 추가했다. 실패 원문/trace를 보존했다.
 - 최종 exact-head hosted 결과는 `/srv/hermes-workspace/projects/openhoi/results/t_a87b80c5-RESULT.json`, 상세 로그는 `/srv/hermes-workspace/projects/openhoi/evidence/t_a87b80c5/`를 따른다. 이 이력의 앞선 커밋 결과를 최종 HEAD 결과로 대신하지 않는다.
 - 실제 세계 지도 M-1/AC10, Windows PC/GUI, 로컬 Rust 빌드/서버/브라우저, GCP, 배포/초기화는 NOT_RUN. 독립 리뷰·제품 인수·병합은 다음 담당 게이트다.
+
+## AC4 중간 도착 DOM 회귀시험 보강 (t_f88ce99a)
+
+- 기준 main: `917f8e39740731838812e160c2533a149d3cffde`. 새 전용 worktree와 `implement/t_f88ce99a`에서 기존 native 이동 시험만 보강했다. 제품 코드·서버·wire·데이터·지도 생성·CI 설정 변경 없음.
+- 일시정지 상태에서 서버 `province:1, route:[2,14]`와 DOM 지도점 `[1,2,14]`를 확인한다. 기존 유한 speed3와 상태 polling으로 `province:2, route:[14]`를 관측하고 다시 일시정지한 뒤 tick 동기화를 확인한다. 임의 sleep이나 메시지 변조는 사용하지 않는다.
+- 중간 도착 시 DOM 지도점은 정확히 `[2,14]`, 실제 SVG `points`는 두 점이어야 한다. 기존 `assertRoute`로 서버 경로와 SVG 화면 투영도 재검증한다. 이전 출발점 유지·도착점 중복·화살표 조기 삭제는 실패한다. 최종 도착의 두 오버레이 제거 및 province14 정적 마커/군사 roster 검사는 그대로 유지한다.
+- `native-route-arrival.json`에 초기/중간 DOM 경로와 중간 서버 unit을 추가하고 `server-route-intermediate.png`를 남긴다. GitHub artifact의 마지막 Firefox 실행이 이전 브라우저 산출물을 덮을 수 있으므로 각 브라우저 실행 여부는 hosted 로그와 함께 확인한다.
+- 로컬 `npm --prefix client run typecheck`: exit0. `cd client && npx vitest run src/map/movementOverlay.test.ts src/movementCommands.test.ts`: 2 files, 9 tests PASS. `git diff --check`: exit0. 로그: `/srv/hermes-workspace/projects/openhoi/evidence/t_f88ce99a/`.
+- 브라우저·빌드·전체 회귀는 기존 GitHub hosted CI에서 실행한다. exact SHA/PR/최종 CI 결과는 `/srv/hermes-workspace/projects/openhoi/results/t_f88ce99a-RESULT.json`을 따른다. 이 문서 작성 시 hosted 결과·독립 리뷰·검증·병합은 NOT_RUN이다.
+- 실제 세계 지도 AC10/M-1 및 제품 최종 인수는 NOT_RUN, `productComplete=false`를 유지한다. 로컬 Rust 빌드/서버/브라우저, Windows PC/HOI4, GCP/배포/초기화는 NOT_RUN이다. 다음 담당: openhoi-review → openhoi-verify. 구현자 자기 승인·병합 없음.
