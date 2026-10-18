@@ -269,7 +269,9 @@ impl Host {
         let (selected, kind) = match &purpose {
             oh_data::pack_validation::ValidationPurpose::ServerStartup { scenario_id, kind }
             | oh_data::pack_validation::ValidationPurpose::ServerRestore {
-                scenario_id, kind, ..
+                scenario_id,
+                kind,
+                ..
             } => (scenario_id.clone(), *kind),
             _ => return Err("InvalidHostPurpose".into()),
         };
@@ -293,8 +295,8 @@ impl Host {
         let validated_hash = report.packs[0].content_hash;
         let validated_files = report.packs[0].source_files.clone();
         let (loaded, world) = if kind == oh_data::host_policy::ScenarioKind::National {
-            let national = oh_data::national::load_scenario(&active, &selected)
-                .map_err(|e| e.to_string())?;
+            let national =
+                oh_data::national::load_scenario(&active, &selected).map_err(|e| e.to_string())?;
             let world = oh_sim::world::World::from_loaded(&national)?;
             (
                 oh_data::m0::LoadedM0 {
@@ -442,7 +444,11 @@ fn selected_scenario<'a>(
     root: &Path,
     pack_id: &'a str,
 ) -> (&'a str, oh_data::host_policy::ScenarioKind) {
-    if root.join(pack_id).join("scenarios/m1/scenario.toml").exists() {
+    if root
+        .join(pack_id)
+        .join("scenarios/m1/scenario.toml")
+        .exists()
+    {
         ("m1", oh_data::host_policy::ScenarioKind::National)
     } else {
         (pack_id, oh_data::host_policy::ScenarioKind::Empty)
