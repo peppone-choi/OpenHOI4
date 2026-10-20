@@ -1,5 +1,17 @@
 # OpenHOI4 WIP 인수인계
 
+## M-1c 시험 전용 세계지도 기하 변환 후보 (2026-10-18)
+
+taskId=t_200364e3, project=openhoi, stage=implement, branch=impl/t_200364e3.
+base=092938b5aec9b50ad056205c8066987d420f1243, draft PR https://github.com/peppone-choi/OpenHOI4/pull/28.
+[WP-32 geometry harness](docs/worklog/WP-32-world-preview-geometry.md)에 D1–D5·입출력·hash 신뢰 경계·독립 oracle·실제 load_map 검사 계약을 기록했다.
+위 D1–D5 후보 설명과 아래 RED/NOT_RUN은 당시 구현 인계 이력이다. 현행 비제품 D1 계약은 [D1-R2 singleton fix](docs/worklog/singleton-fix-t_f9e1528d.md)가 구 D1보다 우선한다. 최대 2회의 동시 snapshot 결정만 허용하며, 1단계는 원본 면적>=2 직접 4방향 이웃, 2단계는 1단계 후보가 없던 원본 singleton에 직전 snapshot 면적>=2 직접 이웃을 사용한다. 가로 wrap/세로 nonwrap·same-kind/공유변 최다/작은 ID 순위를 유지하고 단계별 결정 완료 후 적용한다. 단계 내 chain·순차 갱신/3단계/원거리 fallback은 금지하며 2단계 뒤 잔존 singleton은 입력 변경 없이 명시 FAIL이다.
+D2~D5/Q1은 제품 정책 미정이다. 기존 harness 기술 계약·인수 PASS를 제품 승인으로 확대하지 않는다. 새 SHA에는 기존 exact-head 승인을 재사용하지 않으며, 다음 openhoi-lead가 문서 delta 리뷰와 새 통합 head 검증 필요성을 판단한다. productComplete=false; actual product pack/gameplay/M1/AC10/productQA NOT_RUN.
+geometry harness, not product pack. 원본 preview/data·제품 src·기존 시험/골든 불변, 기술용 주·registry는 임시 디렉터리만 사용한다.
+RED cd57696에서 hosted ModuleNotFoundError를 확인했다. 최종 exact SHA·run/log/artifact·실제 결과는 외부 results/t_200364e3-RESULT.json 및 evidence/t_200364e3/IMPLEMENT.md를 따른다.
+다음 담당 openhoi-lead(독립리뷰 배정). productComplete=false; Q1 미결정, 제품QA/M-1/AC10/실제 팩·게임플레이·리뷰·병합 NOT_RUN.
+Windows PC/HOI4/GCP/운영/배포/초기화/신규 유료 서비스 NOT_RUN.
+
 ## M-1a 서버 팩 선택 후보 (2026-10-18)
 
 taskId=t_8df84cc9, project=openhoi, stage=implement, branch=implement/t_8df84cc9.
