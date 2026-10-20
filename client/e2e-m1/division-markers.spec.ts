@@ -82,6 +82,39 @@ test('injected unsupported/unknown province and real disconnect hide markers wit
  mode='native';await page.getByTestId('speed-3').click();await expect(page.getByTestId('military-panel')).toHaveAttribute('data-status','ready');await expect(page.locator('.division-marker')).toHaveCount(1);disconnect();await expect(page.getByTestId('military-panel')).toHaveAttribute('data-status','stale');await expect(page.locator('.division-marker')).toHaveCount(0);
 });
 
+test('nation startup waits for the initial map despite spectator readiness',async({page,host,wire})=>{
+ let release=()=>{},indexHeld=false;
+ const gate=new Promise<void>(done=>{release=done;});
+ const indexRoute='**/maps/testland_m2/index.bin?*';
+ await page.route(indexRoute,async route=>{indexHeld=true;await gate;await route.continue();});
+ // Record the real input boundary too: an early click must fail even if it
+ // lands between the spectator assertions below and the first rendered frame.
+ await page.addInitScript(()=>{
+  document.addEventListener('pointerdown',event=>{
+   if((event.target as Element).closest('button')?.textContent!=='Start as selected nation')return;
+   const root=document.documentElement,events=JSON.parse(root.dataset.markerStartPointers??'[]');
+   events.push({trusted:event.isTrusted,frames:Number(document.querySelector('[data-testid="province-map"]')?.getAttribute('data-frames'))});
+   root.dataset.markerStartPointers=JSON.stringify(events);
+  },true);
+ });
+ const starting=startAsNation(page,host,wire);void starting.catch(()=>{});
+ try{
+  await expect.poll(()=>indexHeld).toBe(true);
+  await expect(page.getByTestId('connection')).toHaveText('Connected');
+  await expect(page.getByTestId('economy-panel')).toHaveAttribute('data-status','ready');
+  expect(wire.sent.some(m=>m.type==='Join'&&m.nation===null)).toBe(true);
+  expect(Number(await page.getByTestId('province-map').getAttribute('data-frames'))).toBe(0);
+  await expect(page.getByRole('button',{name:'Start as selected nation',exact:true})).toHaveCount(1);
+  expect(wire.sent.filter(m=>m.type==='Join'&&m.nation==='N01')).toHaveLength(0);
+  expect(await page.evaluate(()=>JSON.parse(document.documentElement.dataset.markerStartPointers??'[]'))).toEqual([]);
+  release();await starting;
+  const pointers=await page.evaluate(()=>JSON.parse(document.documentElement.dataset.markerStartPointers??'[]'));
+  expect(pointers).toHaveLength(1);expect(pointers[0].trusted).toBe(true);expect(pointers[0].frames).toBeGreaterThan(0);
+  expect(wire.sent.filter(m=>m.type==='Join'&&m.nation==='N01')).toHaveLength(1);
+  await expect(page.getByRole('button',{name:'Start as selected nation',exact:true})).toHaveCount(0);
+ }finally{release();await page.unrouteAll({behavior:'wait'});await starting.catch(()=>{});}
+});
+
 // Joining clears the economy above the toggle. Deliver its real response between
 // pointer down/up to exercise the layout race without sleeps or synthetic clicks.
 test('military toggle remains clickable while joined economy becomes ready',async({page,host,wire},info)=>{
@@ -93,11 +126,7 @@ test('military toggle remains clickable while joined economy becomes ready',asyn
   server.onMessage(frame=>{const m=decode(frame as Uint8Array) as ServerMessage;if(joined&&m.type==='EconomyResult')held.push(()=>route.send(frame));else route.send(frame);});
   release=()=>{for(const send of held.splice(0))send();};
  });
- await page.goto(host+'/?forceWebGL=1');
- await expect(page.getByTestId('economy-panel')).toHaveAttribute('data-status','ready');
- await expect(page.getByTestId('province-map')).toBeVisible();await page.evaluate(()=>document.fonts.ready);
- await page.getByRole('button',{name:'Start as selected nation',exact:true}).click();
- await expect(page.getByTestId('connection')).toHaveText('Connected');
+ await startAsNation(page,host,wire);
  await expect.poll(()=>held.length).toBeGreaterThan(0);
  await expect(page.getByTestId('economy-panel')).toHaveAttribute('data-status','loading');
  const toggle=page.getByRole('button',{name:'Open military information',exact:true});await toggle.scrollIntoViewIfNeeded();
