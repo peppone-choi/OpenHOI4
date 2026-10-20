@@ -1,0 +1,151 @@
+name: World-scale browser (non-product)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'client/e2e-m1/world-scale-map.spec.ts'
+      - 'client/e2e-m1/worldScaleFixture.ts'
+      - 'client/playwright.world-scale.config.ts'
+      - 'client/src/map/**'
+      - 'client/src/App.tsx'
+      - 'client/public/preview/world/**'
+      - '.github/workflows/world-scale-browser.yml'
+permissions:
+  contents: read
+jobs:
+  world-scale:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      OH_EXACT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - name: Record exact input and runner (not product acceptance)
+        run: |
+          mkdir -p target/world-scale
+          git rev-parse HEAD > target/world-scale/exact-sha.txt
+          test "$(git rev-parse HEAD)" = "$OH_EXACT_SHA"
+          uname -a > target/world-scale/runner.txt
+          lscpu >> target/world-scale/runner.txt
+          free -b >> target/world-scale/runner.txt
+          printf '%s\n' 'nonProduct=true productComplete=false actualProductPack/gameplay/M1/AC10/productQA=NOT_RUN' > target/world-scale/scope.txt
+      - uses: actions/setup-node@v7.0.0
+        with:
+          node-version: '24.4.0'
+          cache: npm
+          cache-dependency-path: client/package-lock.json
+      - name: Build unchanged client and actual server
+        run: |
+          rustup toolchain install 1.99.0 --profile minimal
+          npm --prefix client ci
+          npm --prefix client run build
+          cargo +1.99.0 build -p oh_server --locked
+      - name: Install Chromium only
+        working-directory: client
+        run: npx playwright install --with-deps chromium
+      - name: Owned process supervisor, measurements and cleanup
+        run: |
+          python3 - <<'PY'
+          import json, os, pathlib, signal, subprocess, time
+          out = pathlib.Path('target/world-scale')
+          owned = {}
+          def table():
+              result = {}
+              for path in pathlib.Path('/proc').glob('[0-9]*/stat'):
+                  try:
+                      text = path.read_text(); fields = text[text.rfind(')')+2:].split()
+                      result[int(path.parent.name)] = (int(fields[1]), fields[19], fields[0])
+                  except (OSError, ValueError, IndexError): pass
+              return result
+          def capture(root):
+              current = table(); parents = {root}
+              while True:
+                  added = {pid for pid, (ppid, _, _) in current.items() if ppid in parents} - parents
+                  if not added: break
+                  parents |= added
+              for pid in parents:
+                  if pid in current: owned[pid] = current[pid][1]
+              (out/'owned-processes.json').write_text(json.dumps(owned))
+          def alive():
+              current = table()
+              return [pid for pid, start in owned.items() if pid in current and current[pid][1] == start and current[pid][2] != 'Z']
+          interrupted = False
+          def stop(*_):
+              global interrupted
+              interrupted = True
+          signal.signal(signal.SIGTERM, stop); signal.signal(signal.SIGINT, stop)
+          baseline = {pid: row[1] for pid, row in table().items()}
+          (out/'baseline-processes.json').write_text(json.dumps(baseline))
+          child = subprocess.Popen(['npm','run','test:e2e','--','--config','playwright.world-scale.config.ts'], cwd='client', start_new_session=True)
+          started = time.monotonic(); code = 1; timed_out = False
+          try:
+              while child.poll() is None:
+                  capture(child.pid)
+                  if interrupted or time.monotonic()-started > 31*60:
+                      timed_out = True; break
+                  time.sleep(.2)
+              code = child.poll() if child.poll() is not None else 1
+          finally:
+              capture(child.pid)
+              for sig in (signal.SIGTERM, signal.SIGKILL):
+                  for pid in alive():
+                      try: os.kill(pid, sig)
+                      except ProcessLookupError: pass
+                  time.sleep(2)
+              child.wait(timeout=10)
+              remaining = alive()
+              (out/'cleanup.json').write_text(json.dumps({'status':'CLEANUP_FAILED' if remaining else 'PASS','owned':owned,'remaining':remaining,'executionTimeout':timed_out,'interrupted':interrupted,'exitCode':code}, indent=2))
+              if remaining or timed_out: code = 1
+          raise SystemExit(code)
+          PY
+      - name: Always verify owned-process absence and clean checkout
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json, pathlib, os, signal, time
+          out = pathlib.Path('target/world-scale'); out.mkdir(parents=True, exist_ok=True)
+          manifest = out/'owned-processes.json'
+          owned = json.loads(manifest.read_text()) if manifest.exists() else {}
+          baseline_file = out/'baseline-processes.json'
+          baseline = json.loads(baseline_file.read_text()) if baseline_file.exists() else {}
+          def remaining():
+              result = []
+              for pid, start in owned.items():
+                  try:
+                      text = pathlib.Path(f'/proc/{pid}/stat').read_text(); fields = text[text.rfind(')')+2:].split()
+                      if fields[19] == start and fields[0] != 'Z': result.append(int(pid))
+                  except FileNotFoundError: pass
+              return result
+          found = remaining()
+          for sig in (signal.SIGTERM, signal.SIGKILL):
+              for pid in remaining():
+                  try: os.kill(pid, sig)
+                  except ProcessLookupError: pass
+              if found: time.sleep(2)
+          residual = remaining()
+          unexpected = []
+          if baseline_file.exists():
+              for path in pathlib.Path('/proc').glob('[0-9]*/cmdline'):
+                  try:
+                      command = path.read_bytes().replace(b'\0', b' ').decode(errors='replace')
+                      text = (path.parent/'stat').read_text(); fields = text[text.rfind(')')+2:].split()
+                      pid = path.parent.name
+                      if baseline.get(pid) != fields[19] and fields[0] != 'Z' and any(marker in command for marker in ['/oh_server','chrome-headless-shell','chrome_crashpad_handler','playwright/cli','playwright-core/cli']):
+                          unexpected.append({'pid':pid,'command':command})
+                  except FileNotFoundError: pass
+          (out/'final-cleanup.json').write_text(json.dumps({'status':'CLEANUP_FAILED' if found or residual or unexpected else 'PASS' if manifest.exists() else 'NOT_RUN','foundBeforeFallback':found,'remaining':residual,'unexpectedRelated':unexpected},indent=2))
+          if found or residual or unexpected: raise SystemExit('CLEANUP_FAILED')
+          PY
+          git status --porcelain > target/world-scale/checkout-status.txt
+          test ! -s target/world-scale/checkout-status.txt
+      - name: Always upload partial evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: world-scale-evidence
+          path: target/world-scale/
+          if-no-files-found: error
+          archive: true
