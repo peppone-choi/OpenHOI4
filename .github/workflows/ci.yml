@@ -12,6 +12,55 @@ permissions:
   contents: read
 
 jobs:
+  world-preview-geometry:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.11'
+      - name: Synthetic geometry contracts
+        run: python -m unittest discover -s tools/maps -p test_export_pack_geometry.py -v
+      - name: Convert twice and independently verify pixels, kinds and edges
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/world-geometry"
+          /usr/bin/time -f '%e' -o "$RUNNER_TEMP/world-geometry/export-seconds.txt" \
+            python tools/maps/export_pack_geometry.py --input client/public/preview/world \
+            --out "$RUNNER_TEMP/world-geometry/first" --terrain-map land=plains,sea=ocean,lake=inland_water
+          /usr/bin/time -f '%e' -o "$RUNNER_TEMP/world-geometry/export-repeat-seconds.txt" \
+            python tools/maps/export_pack_geometry.py --input client/public/preview/world \
+            --out "$RUNNER_TEMP/world-geometry/second" --terrain-map land=plains,sea=ocean,lake=inland_water
+          python tools/maps/test_export_pack_geometry.py --world-check client/public/preview/world \
+            "$RUNNER_TEMP/world-geometry/first" "$RUNNER_TEMP/world-geometry/second" \
+            "$RUNNER_TEMP/world-geometry/expected.json"
+      - name: Install pinned Rust toolchain
+        run: rustup toolchain install 1.99.0 --profile minimal
+      - name: Actual load_map compatibility (temporary non-product pack)
+        env:
+          OH_WORLD_GEOMETRY: ${{ runner.temp }}/world-geometry/first
+          OH_WORLD_EXPECTED: ${{ runner.temp }}/world-geometry/expected.json
+        shell: bash
+        run: |
+          set -euo pipefail
+          cargo test -p oh_data --locked --test world_preview_geometry -- --nocapture 2>&1 | tee "$RUNNER_TEMP/world-geometry/load-map.log"
+      - name: Verify non-product diff boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code
+          test -z "$(git ls-files --others --exclude-standard)"
+          echo 'geometry harness, not product pack'
+      - name: Upload geometry evidence (never committed)
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: world-preview-geometry-evidence
+          path: ${{ runner.temp }}/world-geometry/
+          if-no-files-found: warn
+          archive: true
+
   server:
     strategy:
       fail-fast: false
