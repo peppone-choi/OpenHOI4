@@ -24,11 +24,11 @@ export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8
   throw e;
  }
  if(presentation?.signal?.aborted){disposed=true;await renderer.dispose();throw new Error('map-aborted');}
- const clearCanvas=()=>{if(renderer.domElement.parentElement===host){renderer.domElement.remove();delete host.dataset.backend;delete host.dataset.frames;}};
+ const clearCanvas=()=>{if(renderer.domElement.parentElement===host){renderer.domElement.remove();delete host.dataset.backend;delete host.dataset.frames;delete host.dataset.lastUploadPath;}};
  const backend=renderer.backend as typeof renderer.backend & {isWebGPUBackend?:boolean;device?:GPUDevice;gl?:WebGL2RenderingContext};
  const limit=backend.device?.limits.maxTextureDimension2D??backend.gl?.getParameter(backend.gl.MAX_TEXTURE_SIZE)??0;
  if(Math.max(width,height,LOOKUP_SIZE)>limit){renderer.dispose();throw new Error('map-texture-limit');}
- host.replaceChildren(renderer.domElement);host.dataset.backend=backend.isWebGPUBackend?'webgpu':'webgl2';host.dataset.textureLimit=String(limit);
+ host.replaceChildren(renderer.domElement);host.dataset.lastUploadPath='none';host.dataset.backend=backend.isWebGPUBackend?'webgpu':'webgl2';host.dataset.textureLimit=String(limit);
  if(backend.device){const info=backend.device.adapterInfo;host.dataset.adapter=JSON.stringify({vendor:info.vendor,architecture:info.architecture,device:info.device,description:info.description});host.dataset.device=backend.device.label||'WebGPU device';}
  if(backend.gl){const ext=backend.gl.getExtension('WEBGL_debug_renderer_info');host.dataset.adapter=String(backend.gl.getParameter(ext?.UNMASKED_RENDERER_WEBGL??backend.gl.RENDERER));host.dataset.device=String(backend.gl.getParameter(backend.gl.VERSION));}
  renderer.onDeviceLost=()=>{if(!disposed)onFailure();};
@@ -144,7 +144,7 @@ export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8
    }
    host.dataset.updatedBytes=String(ranges.reduce((n,r)=>n+r.count,0));host.dataset.updateMs=String(performance.now()-began);
    host.dataset.uploadPath=ranges.length===0?'none':ranges.length>LOOKUP_SIZE?'lookup':'texel';
-   if(ranges.length){host.dataset.lastChangedBytes=host.dataset.updatedBytes;host.dataset.lastUpdateMs=host.dataset.updateMs;host.dataset.totalChangedBytes=String(Number(host.dataset.totalChangedBytes??0)+Number(host.dataset.updatedBytes));}
+   if(ranges.length){host.dataset.lastUploadPath=host.dataset.uploadPath;host.dataset.lastChangedBytes=host.dataset.updatedBytes;host.dataset.lastUpdateMs=host.dataset.updateMs;host.dataset.totalChangedBytes=String(Number(host.dataset.totalChangedBytes??0)+Number(host.dataset.updatedBytes));}
   },
   reset(){zoom=1;camera.position.x=camera.position.y=0;resize();},
   dispose(){disposed=true;cancelAnimationFrame(raf);cancelAnimationFrame(recreateRaf);observer.disconnect();host.removeEventListener('contextmenu',contextmenu);host.removeEventListener('pointerdown',down);host.removeEventListener('pointermove',move);host.removeEventListener('pointerup',up);host.removeEventListener('pointercancel',cancel);host.removeEventListener('pointerleave',leave);host.removeEventListener('wheel',wheel);disposeSceneExtension();renderer.dispose();geometry.dispose();material.dispose();coastKinds?.dispose();for(const t of [indexTexture,colors,nations,states])t.dispose();clearCanvas();},
