@@ -24,11 +24,11 @@ export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8
   throw e;
  }
  if(presentation?.signal?.aborted){disposed=true;await renderer.dispose();throw new Error('map-aborted');}
- const clearCanvas=()=>{if(renderer.domElement.parentElement===host){renderer.domElement.remove();delete host.dataset.backend;delete host.dataset.frames;}};
+ const clearCanvas=()=>{if(renderer.domElement.parentElement===host){renderer.domElement.remove();delete host.dataset.backend;delete host.dataset.frames;delete host.dataset.lastUploadPath;}};
  const backend=renderer.backend as typeof renderer.backend & {isWebGPUBackend?:boolean;device?:GPUDevice;gl?:WebGL2RenderingContext};
  const limit=backend.device?.limits.maxTextureDimension2D??backend.gl?.getParameter(backend.gl.MAX_TEXTURE_SIZE)??0;
  if(Math.max(width,height,LOOKUP_SIZE)>limit){renderer.dispose();throw new Error('map-texture-limit');}
- host.replaceChildren(renderer.domElement);host.dataset.backend=backend.isWebGPUBackend?'webgpu':'webgl2';host.dataset.textureLimit=String(limit);
+ host.replaceChildren(renderer.domElement);host.dataset.lastUploadPath='none';host.dataset.backend=backend.isWebGPUBackend?'webgpu':'webgl2';host.dataset.textureLimit=String(limit);
  if(backend.device){const info=backend.device.adapterInfo;host.dataset.adapter=JSON.stringify({vendor:info.vendor,architecture:info.architecture,device:info.device,description:info.description});host.dataset.device=backend.device.label||'WebGPU device';}
  if(backend.gl){const ext=backend.gl.getExtension('WEBGL_debug_renderer_info');host.dataset.adapter=String(backend.gl.getParameter(ext?.UNMASKED_RENDERER_WEBGL??backend.gl.RENDERER));host.dataset.device=String(backend.gl.getParameter(backend.gl.VERSION));}
  renderer.onDeviceLost=()=>{if(!disposed)onFailure();};
@@ -133,8 +133,8 @@ export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8
    world=next;mode=nextMode;selected.value=id===null?-1:world.province_ids.indexOf(id);host.dataset.selected=String(id??'');host.dataset.mode=mode;
    const began=performance.now();const ranges=updatePalette(arrays.colors,world,mode);
    // Upload only changed texels through Three's public cross-backend copy API.
-   if(presentation?.paletteAdapter&&ranges.length>LOOKUP_SIZE){
-    // Preview has many simultaneous art-colour changes; upload one bounded
+   if(ranges.length>LOOKUP_SIZE){
+    // For many simultaneous colour changes, upload one bounded
     // lookup rather than creating thousands of one-texel GPU textures.
     const patch=dataTexture(arrays.colors,LOOKUP_SIZE,LOOKUP_SIZE);renderer.copyTextureToTexture(patch,colors);patch.dispose();
    }else for(const range of ranges){const dense=range.start/4;const patch=dataTexture(arrays.colors.slice(range.start,range.start+range.count),1,1);renderer.copyTextureToTexture(patch,colors,null,new Vector2(dense%256,Math.floor(dense/256)));patch.dispose();}
@@ -143,7 +143,8 @@ export async function createMap(host:HTMLDivElement,meta:MapMetadata,bytes:Uint8
     world.province_ids.forEach((_,i)=>{const start=i*4;if(next.subarray(start,start+4).some((v,j)=>data[start+j]!==v)){data.set(next.subarray(start,start+4),start);const patch=dataTexture(data.slice(start,start+4),1,1);renderer.copyTextureToTexture(patch,texture,null,new Vector2(i%256,Math.floor(i/256)));patch.dispose();}});
    }
    host.dataset.updatedBytes=String(ranges.reduce((n,r)=>n+r.count,0));host.dataset.updateMs=String(performance.now()-began);
-   if(ranges.length){host.dataset.lastChangedBytes=host.dataset.updatedBytes;host.dataset.lastUpdateMs=host.dataset.updateMs;host.dataset.totalChangedBytes=String(Number(host.dataset.totalChangedBytes??0)+Number(host.dataset.updatedBytes));}
+   host.dataset.uploadPath=ranges.length===0?'none':ranges.length>LOOKUP_SIZE?'lookup':'texel';
+   if(ranges.length){host.dataset.lastUploadPath=host.dataset.uploadPath;host.dataset.lastChangedBytes=host.dataset.updatedBytes;host.dataset.lastUpdateMs=host.dataset.updateMs;host.dataset.totalChangedBytes=String(Number(host.dataset.totalChangedBytes??0)+Number(host.dataset.updatedBytes));}
   },
   reset(){zoom=1;camera.position.x=camera.position.y=0;resize();},
   dispose(){disposed=true;cancelAnimationFrame(raf);cancelAnimationFrame(recreateRaf);observer.disconnect();host.removeEventListener('contextmenu',contextmenu);host.removeEventListener('pointerdown',down);host.removeEventListener('pointermove',move);host.removeEventListener('pointerup',up);host.removeEventListener('pointercancel',cancel);host.removeEventListener('pointerleave',leave);host.removeEventListener('wheel',wheel);disposeSceneExtension();renderer.dispose();geometry.dispose();material.dispose();coastKinds?.dispose();for(const t of [indexTexture,colors,nations,states])t.dispose();clearCanvas();},
