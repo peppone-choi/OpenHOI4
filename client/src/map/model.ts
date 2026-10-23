@@ -56,4 +56,14 @@ export function palettes(world:WorldView,mode:string){
   for(const [target,ref] of [[nations,p.owner],[states,p.state]] as const)target.set([ref===null?0:ref&255,ref===null?0:ref>>>8,ref===null?0:255,255],i*4);
  });return {colors,nations,states};
 }
-export function fnv(bytes:Uint8Array){let h=0xcbf29ce484222325n;for(const byte of bytes)h=BigInt.asUintN(64,(h^BigInt(byte))*0x100000001b3n);return h.toString(16).padStart(16,'0');}
+// FNV-1a 64 with two uint32 limbs; same output as oh_core::fnv1a64.
+export function fnv(bytes:Uint8Array){
+ let hi=0xcbf29ce4,lo=0x84222325;
+ for(let i=0;i<bytes.length;i++){
+  lo=(lo^bytes[i])>>>0;
+  const product=lo*0x1b3; // At most 1,868,310,773,325 (< 2^53), so product and carry are exact.
+  hi=(Math.imul(hi,0x1b3)+Math.imul(lo,0x100)+Math.floor(product/0x100000000))>>>0;
+  lo=product>>>0;
+ }
+ return hi.toString(16).padStart(8,'0')+lo.toString(16).padStart(8,'0');
+}
