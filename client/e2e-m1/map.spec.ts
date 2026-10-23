@@ -46,8 +46,18 @@ test('REQ-PLAT-03 preferred actual backend produces the same map RGB and source 
  writeFileSync(`${evidence}/${info.project.name}-preferred.json`,JSON.stringify({browser:browser.version(),diagnostics:await map.evaluate(el=>({... (el as HTMLElement).dataset})),performanceScope:'tiny synthetic map; renderer frame interval, not global hardware benchmark'},null,2));
 });
 test('REQ-MAP-04 changed server RGB updates only affected lookup texel on actual backend',async({page},info)=>{
- let inject=false;await page.routeWebSocket('**/ws',route=>{const server=route.connectToServer();server.onMessage(data=>{const m=decode(data as Buffer) as ServerMessage;if(inject&&m.type==='WorldResult'&&m.world&&m.request==='world'){m.world.provinces[0].owner_color=[18,44,110];route.send(Buffer.from(encode(m)));}else route.send(data);});});
- await page.goto('/');const map=page.getByTestId('province-map');await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);inject=true;await expect(map).toHaveAttribute('data-last-changed-bytes','4');await page.mouse.move(0,0);const point=await mapPoint(map,1,1);closeRGB(png(await map.screenshot()).pixel(point.x,point.y),[18,44,110]);const untouched=await mapPoint(map,3,1);closeRGB(png(await map.screenshot()).pixel(untouched.x,untouched.y),[40,100,180]);writeFileSync(`${evidence}/${info.project.name}-partial-update.json`,JSON.stringify(await map.evaluate(el=>({... (el as HTMLElement).dataset})),null,2));
+ let hold=false,worldMessage:Extract<ServerMessage,{type:'WorldResult'}>|undefined,sendWorld=()=>{};
+ await page.routeWebSocket('**/ws',route=>{const server=route.connectToServer();sendWorld=()=>route.send(Buffer.from(encode(worldMessage!)));server.onMessage(data=>{const m=decode(data as Buffer) as ServerMessage;if(m.type==='WorldResult'&&m.world&&m.request==='world'){if(hold)return;worldMessage=m;}route.send(data);});});
+ await page.goto('/');const map=page.getByTestId('province-map');await expect(map).toHaveAttribute('data-frames',/^[1-9]\d*$/);
+ hold=true;const initialLastUploadPath=await map.getAttribute('data-last-upload-path');
+ expect(worldMessage?.world).toBeTruthy();worldMessage!.world!.provinces[0].owner_color=[18,44,110];sendWorld();
+ await expect(map).toHaveAttribute('data-last-changed-bytes','4');
+ // Observe an actual subsequent update, even if its diagnostic value is already zero.
+ await map.evaluate(el=>{el.setAttribute('data-test-update-processed','false');const observer=new MutationObserver(()=>{observer.disconnect();el.setAttribute('data-test-update-processed','true');});observer.observe(el,{attributes:true,attributeFilter:['data-updated-bytes']});});
+ sendWorld();await expect(map).toHaveAttribute('data-test-update-processed','true');
+ await expect.poll(()=>map.evaluate(el=>({... (el as HTMLElement).dataset}))).toMatchObject({uploadPath:'none',updatedBytes:'0',lastUploadPath:'texel',lastChangedBytes:'4'});
+ expect(initialLastUploadPath).toBe('none');
+ await page.mouse.move(0,0);const point=await mapPoint(map,1,1);closeRGB(png(await map.screenshot()).pixel(point.x,point.y),[18,44,110]);const untouched=await mapPoint(map,3,1);closeRGB(png(await map.screenshot()).pixel(untouched.x,untouched.y),[40,100,180]);writeFileSync(`${evidence}/${info.project.name}-partial-update.json`,JSON.stringify(await map.evaluate(el=>({... (el as HTMLElement).dataset})),null,2));
 });
 test('REQ-MAP-04/05 RG8 high dense byte and LUT second row pick real ID65535',async({page,request},info)=>{
  const meta=await (await request.get('/maps/testland/metadata')).json() as MapMetadata;let fixture:ReturnType<typeof wideDisplayFixture>|undefined;
