@@ -136,10 +136,9 @@ pub fn header(bytes: &[u8], limits: &Limits) -> Result<()> {
     r.number(64)?;
     r.end()
 }
+/// Walks `oh_sim::save::SimulationSave`: a variant index, then one layered DTO.
+/// `version` below is that layer's historic number, kept as the walker's key.
 pub fn body(bytes: &[u8], limits: &Limits) -> Result<()> {
-    body_version(bytes, limits, 1)
-}
-pub fn body_version(bytes: &[u8], limits: &Limits, version: u16) -> Result<()> {
     if bytes.len() as u64 > limits.body_max_bytes {
         return Err("Limit: body".into());
     }
@@ -149,6 +148,8 @@ pub fn body_version(bytes: &[u8], limits: &Limits, version: u16) -> Result<()> {
         limits,
         charged: 0,
     };
+    const LAYERS: [u16; 7] = [1, 2, 3, 4, 5, 6, 8];
+    let version = LAYERS[r.tag(LAYERS.len() as u64 - 1)? as usize];
     r.string()?;
     r.number(64)?;
     r.number(64)?;

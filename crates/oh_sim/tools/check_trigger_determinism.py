@@ -58,7 +58,7 @@ def files(folder):
 def header(path):
     raw = path.read_bytes()
     limits = tomllib.loads((ROOT / 'crates/oh_save/defines.toml').read_text(encoding='utf-8'))['save']
-    assert raw[:4] == b'OHSV' and int.from_bytes(raw[4:6], 'little') == 4
+    assert raw[:4] == b'OHSV' and int.from_bytes(raw[4:6], 'little') == 9
     assert 10 < len(raw) <= limits['file_max_bytes']
     length = int.from_bytes(raw[6:10], 'little')
     assert 0 < length <= limits['header_max_bytes'] and 10 + length < len(raw)
@@ -99,7 +99,7 @@ def header(path):
     assert tag in (0, 1)
     value['definitions_hash'] = uint() if tag else None
     value['effective_defines_hash'] = uint()
-    assert at == len(data) and value['format_version'] == 4
+    assert at == len(data) and value['format_version'] == 9
     return value
 
 
@@ -218,7 +218,7 @@ def check_state(report, pack):
     numeric_types(dto)
     for nation, keys in dto['trigger']['flags']:
         assert type(nation) is int and 0 <= nation <= 65535 and all(type(k) is str for k in keys)
-    assert report['format'] == 4
+    assert report['format'] == 9
     assert type(report['ended']) is bool and report['ended'] == (dto['trigger']['ended'] is not None)
     encoded = canonical4(dto)
     assert encoded.hex() == report['canonical_hex'] and fnv(encoded) == report['hash']
@@ -322,7 +322,7 @@ def verify_folder(folder, require_clean=True):
             assert (run / f'{name}.ohsave').read_bytes() == (folder / f'resume-{i}-{name}/reencoded.ohsave').read_bytes()
             h = header(run / f'{name}.ohsave')
             base = case['dto']['base']['base']['base']
-            assert h['format_version'] == 4 and h['state_hash'] == case['hash']
+            assert h['format_version'] == 9 and h['state_hash'] == case['hash']
             assert h['tick'] == base['state']['tick'] and h['game_date'] == base['state']['date']
             assert h['packs'] == [case['pack']] and h['effective_defines_hash'] == case['effective_defines_hash']
         continued, r = verify_native(folder / f'native-continued-{i}', result['exe_sha256'], 'resume', result['executable'])

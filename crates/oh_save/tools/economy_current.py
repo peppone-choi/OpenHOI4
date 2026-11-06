@@ -15,7 +15,7 @@ def load(path):
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def header(path):
-    raw=path.read_bytes();assert raw[:4]==b'OHSV' and int.from_bytes(raw[4:6],'little')==5
+    raw=path.read_bytes();assert raw[:4]==b'OHSV' and int.from_bytes(raw[4:6],'little')==9
     length=int.from_bytes(raw[6:10],'little');assert 0<length<=tomllib.loads((ROOT/'crates/oh_save/defines.toml').read_text())['save']['header_max_bytes']
     data=raw[10:10+length];at=0
     def byte():
@@ -33,7 +33,7 @@ def header(path):
     engine=text();version=uint(16);scenario=text();count=uint();assert count==1
     packs=[dict(id=text(),version=text(),content_hash=uint()) for _ in range(count)]
     date=dict(year=uint(32),month=byte(),day=byte());tick=uint();seed=uint();h=uint();count=uint();assert count<=65536
-    players=[uint(16) for _ in range(count)];saved=uint();saved=(saved>>1)^-(saved&1);tag=byte();assert tag in (0,1);definition=uint() if tag else None;defines=uint();assert at==len(data) and version==5
+    players=[uint(16) for _ in range(count)];saved=uint();saved=(saved>>1)^-(saved&1);tag=byte();assert tag in (0,1);definition=uint() if tag else None;defines=uint();assert at==len(data) and version==9
     return dict(engine_version=engine,format_version=version,scenario_id=scenario,packs=packs,game_date=date,tick=tick,seed=seed,state_hash=h,player_nations=players,saved_at_utc=saved,definitions_hash=definition,effective_defines_hash=defines)
 
 def native(folder,parent,stage,index,executable,argv):

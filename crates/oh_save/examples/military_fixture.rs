@@ -24,5 +24,5 @@ fn main() {
     s.step().unwrap();
     let bytes = oh_save::encode(&s, &c, 0, vec![1]).unwrap();
     std::fs::write(out.join("ready.ohsave"), bytes).unwrap();
-    std::fs::write(out.join("expected.json"),serde_json::to_vec_pretty(&serde_json::json!({"pack":root,"tick":s.snapshot().tick().to_string(),"hash":format!("{:016x}",s.state_hash().unwrap()),"format_version":7})).unwrap()).unwrap();
+    std::fs::write(out.join("expected.json"),serde_json::to_vec_pretty(&serde_json::json!({"pack":root,"tick":s.snapshot().tick().to_string(),"hash":format!("{:016x}",s.state_hash().unwrap()),"format_version":oh_save::FORMAT_VERSION})).unwrap()).unwrap();
 }

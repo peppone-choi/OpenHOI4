@@ -42,7 +42,7 @@ fn req_time_04_v4_codec_limits_trailing_full_state_and_future_queue() {
         s.step().unwrap();
     }
     let bytes = encode(&s, &c, 0, vec![]).unwrap();
-    assert_eq!(bytes[4], 4);
+    assert_eq!(bytes[4..6], oh_save::FORMAT_VERSION.to_le_bytes());
     let loaded = decode(&bytes, &c, false).unwrap();
     assert!(loaded.simulation.is_ended());
     assert_eq!(

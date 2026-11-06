@@ -1,6 +1,6 @@
 # 경제 target 범위 회귀 입력
 
-`project-target-min.ohsave`는 I32 최소 target을 가진 의미 오류 입력이며 SHA256은 `da9462945dca0d308f23b1caa0778de7fd59ec681482a44ff2c399dcc69db359`다. `control-valid-target2.ohsave`는 target2 유효 control이며 SHA256은 `1c07adbd4b7e145ef38efa87b46966cf5a5c484659dc304e20ac5cc19dbb8275`다. 이들은 직접 작성한 합성 Testland 입력이며 게임 콘텐츠 기본값이 아니다.
+`project-target-min.ohsave`는 I32 최소 target을 가진 의미 오류 입력이며 SHA256은 `25c2baa00df670a0e80b2c3fbb1bf202ff7acdc518408cab3dd3fa0c484f1b97`다. `control-valid-target2.ohsave`는 target2 유효 control이며 SHA256은 `87ead5fed7519188abf9f34b7354e35270be114332222ef95973a5646d6e61d6`다. 이들은 직접 작성한 합성 Testland 입력이며 게임 콘텐츠 기본값이 아니다.
 
 `INPUT_MANIFEST.json`의 상대 경로·길이·SHA256과 해당 팩22파일/5617bytes를 유지한다. restore-stage 팩5681bytes와는 두 TOML의 CRLF64bytes 차이가 있으므로 각 save에 맞는 팩을 사용한다. save/header/pack identity·기대값·개행을 바꾸지 않는다.
 

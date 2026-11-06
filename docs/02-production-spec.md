@@ -407,7 +407,7 @@ WP-17/REQ-MIL-04의 중간 edge Stop/reroute는 REQUEST-0006 A (기술 범위: [
 
 육지 간 해협 edge는 REQUEST-0007 A (기술 범위: [공개 인계 기술 메모](technical-notes.md))의 같은 날짜 CEO 한정 잠정을 적용한다. MapData의 실제 Strait kind·서버 allowed 양끝점·방향별 명시 양수 strait 계수만 사용하며 하천/해협의 적용 슬롯·raw bit/순서를 분리한다. 9/10틱·대체 경로·동점·누락/0/음수/overflow/underflow/잘못된 kind·ref/비육지/권한의 원자성과 kind/계수 hash·v2 저장/새 process 재개·기존 v1 호환을 독립 검사한다. 미래 함대 통제/통행권/해상 수송 행동을 이 기술 인접 계약으로 구현하지 않는다.
 
-WP-17의 원 source `97f6887`이 만든 v2 표현도 보존한다. typed strait context의 추가 저장은 원 v1/v2 DTO·reader/writer/canonical/hash를 동결한 별도 v3 확장으로 설계할 수 있다. 실제 v1/v2/v3 선택은 새/정지 unit·빈 경로·예약 명령·explicit strait context의 존재를 대조해 손실을 막는다. 원 v2 bytes의 읽기·쓰기/새 process 재개와 v3의 별도 bounded preflight·raw kind/계수·큐·진행 상태를 각각 검증한다. 문서의 v2 저장 검사는 기존 이동 body의 보존 요구이며 새 context를 구 v2 구조에 덧붙여 호환을 깨라는 뜻이 아니다. 기존 저장 거부·migration은 승인하지 않았다.
+(2026-11-06 ADR-1001로 대체: 원 v2 bytes 보존과 v1/v2/v3 동결은 폐지했다.) WP-17의 원 source `97f6887`이 만든 v2 표현도 보존한다. typed strait context의 추가 저장은 원 v1/v2 DTO·reader/writer/canonical/hash를 동결한 별도 v3 확장으로 설계할 수 있다. 실제 v1/v2/v3 선택은 새/정지 unit·빈 경로·예약 명령·explicit strait context의 존재를 대조해 손실을 막는다. 원 v2 bytes의 읽기·쓰기/새 process 재개와 v3의 별도 bounded preflight·raw kind/계수·큐·진행 상태를 각각 검증한다. 문서의 v2 저장 검사는 기존 이동 body의 보존 요구이며 새 context를 구 v2 구조에 덧붙여 호환을 깨라는 뜻이 아니다. 기존 저장 거부·migration은 승인하지 않았다.
 
 WP-24 actual server/CLI restore의 검증 입구는 REQUEST-0008 A (기술 범위: [공개 인계 기술 메모](technical-notes.md))의 CEO 한정 기술 호환 잠정을 따른다. engine-owned 원 M0 3파일 및 원 mutable-v1 fixture 19파일의 전체 상대 목록/길이/SHA256·FNV/id/version/scenario/kind와 내부 caller 및 실제 bounded v1 header/context가 일치할 때만 manifest.name_key=testland_name의 typed ko/en missing_message_value 두 진단을 warning_unavailable로 남긴다. 원 file/line/column/code/cause를 보존하며 모든 다른 FTL/사용키/dep/version/schema/ref/defines 오류·source 변경·다른 목적/형·force는 면제하지 않는다. 원 M0 standalone validate 실패, codec 원 bytes·전체state/hash/preflight·현재 active 팩 strict와 역사/현재 팩 차이를 독립 검사한다. headless M0 empty-definition 계약과 full active/server/restore 진입을 구분하고 blanket legacy 면제를 추가하지 않는다.
 
@@ -515,9 +515,10 @@ magic "OHSV" (4B) | format_version u16 | header_len u32 | header (postcard) | bo
 
 ### 7.2 버전 관리 (REQ-SAV-04)
 
-- `oh_save::migrate`에 `v(N) → v(N+1)` 변환 함수를 쌓는다.
-- 경로가 없으면 이런 메시지를 낸다: "이 저장 파일은 포맷 vN입니다. 이 버전은 vK 이상만 열 수 있습니다."
-- 포맷을 바꾸는 PR은 마이그레이션 테스트(이전 포맷 샘플 파일 → 로드 → 해시 기록)를 함께 넣는다.
+0.1 출시 전까지는 사용자 결정(2026-11-06, [ADR-1001](adr/ADR-1001-single-save-format.md))에 따라 형식 하나만 읽는다. 이 결정이 아래 0.1 이후 규칙과 이 문서의 v1~v8 보존·동결 문구에 우선한다.
+
+- 0.1 전: `FORMAT_VERSION` 하나. 다른 버전은 "UnsupportedFormat: file vN, supported vK"로 거부한다. 본문 모양을 바꾸는 PR은 버전을 올리고 커밋된 `.ohsave` fixture를 새 형식으로 다시 만든다.
+- 0.1 이후: `oh_save::migrate`에 `v(N) → v(N+1)` 변환 함수를 쌓는다. 경로가 없으면 "이 저장 파일은 포맷 vN입니다. 이 버전은 vK 이상만 열 수 있습니다."를 낸다. 포맷을 바꾸는 PR은 마이그레이션 테스트(이전 포맷 샘플 파일 → 로드 → 해시 기록)를 함께 넣는다.
 
 ### 7.3 재현 번들 (REQ-SAV-05)
 

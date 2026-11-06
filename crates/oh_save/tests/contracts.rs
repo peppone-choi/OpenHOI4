@@ -17,8 +17,12 @@ fn context() -> SaveContext {
 fn mutate_body(bytes: &[u8], change: impl FnOnce(&mut SimulationSaveV1)) -> Vec<u8> {
     let end = 10 + u32::from_le_bytes(bytes[6..10].try_into().unwrap()) as usize;
     let body = zstd::stream::decode_all(&bytes[end..]).unwrap();
-    let mut dto: SimulationSaveV1 = oh_core::from_canonical_bytes(&body).unwrap();
+    let Ok(oh_sim::save::SimulationSave::Core(mut dto)) = oh_core::from_canonical_bytes(&body)
+    else {
+        panic!("core save body expected");
+    };
     change(&mut dto);
+    let dto = oh_sim::save::SimulationSave::Core(dto);
     let mut result = bytes[..end].to_vec();
     result.extend(zstd::stream::encode_all(canonical_bytes(&dto).unwrap().as_slice(), 3).unwrap());
     result

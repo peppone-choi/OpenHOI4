@@ -102,7 +102,7 @@ fn movement_v2_mid_edge_pending_pause_and_exact_resume() {
     assert!(s.export_save().unwrap_err().contains("MovementRequiresV2"));
     let before = s.export_save_v2().unwrap();
     let bytes = encode(&s, &c, 0, vec![]).unwrap();
-    assert_eq!(&bytes[4..6], &2u16.to_le_bytes());
+    assert_eq!(&bytes[4..6], &oh_save::FORMAT_VERSION.to_le_bytes());
     let mut r = decode(&bytes, &c, false).unwrap().simulation;
     assert_eq!(before, r.export_save_v2().unwrap());
     assert_eq!(s.state_hash().unwrap(), r.state_hash().unwrap());
@@ -124,15 +124,23 @@ fn v2_idle_empty_and_legacy_format_selection() {
         inspect_header(&bytes, &Limits::default())
             .unwrap()
             .format_version,
-        2
+        oh_save::FORMAT_VERSION
     );
+    assert!(matches!(
+        s.export_current_save().unwrap(),
+        oh_sim::save::SimulationSave::Movement(_)
+    ));
     let base = c.simulation(7).unwrap();
     assert_eq!(
         inspect_header(&encode(&base, &c, 0, vec![]).unwrap(), &Limits::default())
             .unwrap()
             .format_version,
-        1
+        oh_save::FORMAT_VERSION
     );
+    assert!(matches!(
+        base.export_current_save().unwrap(),
+        oh_sim::save::SimulationSave::Core(_)
+    ));
     let w = base.world().unwrap().clone();
     let m = Movement::new(&w, vec![]).unwrap();
     let empty = Simulation::with_movement(
@@ -145,7 +153,7 @@ fn v2_idle_empty_and_legacy_format_selection() {
     )
     .unwrap();
     let b = encode(&empty, &c, 0, vec![]).unwrap();
-    assert_eq!(&b[4..6], &2u16.to_le_bytes());
+    assert_eq!(&b[4..6], &oh_save::FORMAT_VERSION.to_le_bytes());
     assert!(
         decode(&b, &c, false)
             .unwrap()
@@ -393,7 +401,8 @@ fn v2_new_queue_limit_and_oversized_unit_vector_preflight() {
     );
     // A tiny forged body advertises more units than policy before any allocation.
     let end = 10 + u32::from_le_bytes(bytes[6..10].try_into().unwrap()) as usize;
-    let mut body = oh_core::canonical_bytes(&s.export_save_v2().unwrap().base).unwrap();
+    let mut body = vec![1u8]; // SimulationSave::Movement
+    body.extend(oh_core::canonical_bytes(&s.export_save_v2().unwrap().base).unwrap());
     body.push(0);
     let mut count = 65537u64;
     while count >= 128 {

@@ -63,7 +63,7 @@ fn dedicated_pack_starts_and_restores_real_v6_six_nation_lines() {
         oh_save::inspect_header(&bytes, &Default::default())
             .unwrap()
             .format_version,
-        6
+        oh_save::FORMAT_VERSION
     );
     let file = pack.root().join("resume.ohsave");
     std::fs::write(&file, bytes).unwrap();

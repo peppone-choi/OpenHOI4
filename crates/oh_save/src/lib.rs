@@ -6,22 +6,13 @@ pub mod repro;
 pub mod repro_zip;
 pub use context::{SaveContext, effective_defines_hash, pack_hash};
 pub use file::{SaveOutcome, read_file, write_atomic};
-use oh_sim::{
-    Simulation,
-    save_state::{DateV1, SimulationSaveV1, SimulationSaveV2, SimulationSaveV3},
-};
+use oh_sim::{Simulation, save::SimulationSave, save_state::DateV1};
 use serde::{Deserialize, Serialize};
 use std::io::{Read, Write};
 pub type Result<T> = std::result::Result<T, String>;
-pub const FORMAT_VERSION: u16 = 1;
-/// Additive format; legacy writers still produce version 1.
-pub const MOVEMENT_FORMAT_VERSION: u16 = 2;
-pub const STRAIT_FORMAT_VERSION: u16 = 3;
-pub const TRIGGER_FORMAT_VERSION: u16 = 4;
-pub const ECONOMY_FORMAT_VERSION: u16 = 5;
-pub const PRODUCTION_FORMAT_VERSION: u16 = 6;
-pub const MILITARY_FORMAT_VERSION: u16 = 7;
-pub const EXTENDED_MILITARY_FORMAT_VERSION: u16 = 8;
+/// The only readable format. Any body shape change bumps it; older files are
+/// rejected, not migrated, until 0.1 (ADR-1001). 1..=8 were earlier layouts.
+pub const FORMAT_VERSION: u16 = 9;
 #[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize)]
 pub struct PackV1 {
     pub id: String,
@@ -98,74 +89,9 @@ pub fn encode_with_limits(
 ) -> Result<Vec<u8>> {
     context.verify_unchanged()?;
     sim.validate_deployed_movement()?;
-    let version = if let Some(military) = sim.military() {
-        if military.jobs().len() > oh_sim::military_save::LEGACY_V7_MAX_JOB_RECORDS {
-            EXTENDED_MILITARY_FORMAT_VERSION
-        } else {
-            MILITARY_FORMAT_VERSION
-        }
-    } else if sim.production().is_some() {
-        PRODUCTION_FORMAT_VERSION
-    } else if sim.economy().is_some() {
-        ECONOMY_FORMAT_VERSION
-    } else if sim.trigger_state().is_some() {
-        TRIGGER_FORMAT_VERSION
-    } else if sim.movement().is_some_and(|m| m.has_strait_context()) {
-        STRAIT_FORMAT_VERSION
-    } else if sim.movement().is_some() {
-        MOVEMENT_FORMAT_VERSION
-    } else {
-        FORMAT_VERSION
-    };
-    let (body, candidate) = if version == MILITARY_FORMAT_VERSION {
-        let dto = sim.export_save_v7()?;
-        (
-            serialize(&dto)?,
-            Simulation::from_save_v7(dto, &context.restore)?,
-        )
-    } else if version == EXTENDED_MILITARY_FORMAT_VERSION {
-        let dto = sim.export_save_v8()?;
-        (
-            serialize(&dto)?,
-            Simulation::from_save_v8(dto, &context.restore)?,
-        )
-    } else if version == PRODUCTION_FORMAT_VERSION {
-        let dto = sim.export_save_v6()?;
-        (
-            serialize(&dto)?,
-            Simulation::from_save_v6(dto, &context.restore)?,
-        )
-    } else if version == ECONOMY_FORMAT_VERSION {
-        let dto = sim.export_save_v5()?;
-        (
-            serialize(&dto)?,
-            Simulation::from_save_v5(dto, &context.restore)?,
-        )
-    } else if version == TRIGGER_FORMAT_VERSION {
-        let dto = sim.export_save_v4()?;
-        (
-            serialize(&dto)?,
-            Simulation::from_save_v4(dto, &context.restore)?,
-        )
-    } else if version == STRAIT_FORMAT_VERSION {
-        let dto = sim.export_save_v3()?;
-        (
-            serialize(&dto)?,
-            Simulation::from_save_v3(dto, &context.restore)?,
-        )
-    } else if version == MOVEMENT_FORMAT_VERSION {
-        let dto = sim.export_save_v2()?;
-        (
-            serialize(&dto)?,
-            Simulation::from_save_v2(dto, &context.restore)?,
-        )
-    } else {
-        let dto = sim.export_save()?;
-        (
-            serialize(&dto)?,
-            Simulation::from_save(dto, &context.restore)?,
-        )
-    };
+    let dto = sim.export_current_save()?;
+    let body = serialize(&dto)?;
+    let candidate = Simulation::from_current_save(dto.clone(), &context.restore)?;
     if candidate.state_hash().map_err(|e| e.to_string())?
         != sim.state_hash().map_err(|e| e.to_string())?
     {
@@ -174,7 +100,7 @@ pub fn encode_with_limits(
     let s = sim.snapshot();
     let header = HeaderV1 {
         engine_version: env!("CARGO_PKG_VERSION").into(),
-        format_version: version,
+        format_version: FORMAT_VERSION,
         scenario_id: s.scenario().into(),
         packs: vec![context.pack.clone()],
         game_date: s.date().into(),
@@ -186,15 +112,12 @@ pub fn encode_with_limits(
         definitions_hash: sim.world().map(|w| w.definitions_hash()),
         effective_defines_hash: context.defines_hash,
     };
+    check_modes(&dto, context)?;
     check_header(&header, context, limits, false)?;
     check_players(&header, &candidate)?;
     let header_bytes = serialize(&header)?;
     bounds::header(&header_bytes, limits)?;
-    if version == FORMAT_VERSION {
-        bounds::body(&body, limits)?;
-    } else {
-        bounds::body_version(&body, limits, version)?;
-    }
+    bounds::body(&body, limits)?;
     let mut compressor = zstd::stream::write::Encoder::new(Vec::new(), limits.compression_level)
         .map_err(|e| format!("Compression: {e}"))?;
     compressor
@@ -212,7 +135,7 @@ pub fn encode_with_limits(
     let length = u32::try_from(header_bytes.len()).map_err(|_| "Limit: header u32")?;
     let mut bytes = Vec::new();
     bytes.extend_from_slice(b"OHSV");
-    bytes.extend_from_slice(&version.to_le_bytes());
+    bytes.extend_from_slice(&FORMAT_VERSION.to_le_bytes());
     bytes.extend_from_slice(&length.to_le_bytes());
     bytes.extend(header_bytes);
     bytes.extend(compressed);
@@ -233,20 +156,9 @@ pub fn inspect_header(bytes: &[u8], limits: &Limits) -> Result<HeaderV1> {
         return Err("BadMagic/Truncated: prefix".into());
     }
     let version = u16::from_le_bytes([bytes[4], bytes[5]]);
-    if ![
-        FORMAT_VERSION,
-        MOVEMENT_FORMAT_VERSION,
-        STRAIT_FORMAT_VERSION,
-        TRIGGER_FORMAT_VERSION,
-        ECONOMY_FORMAT_VERSION,
-        PRODUCTION_FORMAT_VERSION,
-        MILITARY_FORMAT_VERSION,
-        EXTENDED_MILITARY_FORMAT_VERSION,
-    ]
-    .contains(&version)
-    {
+    if version != FORMAT_VERSION {
         return Err(format!(
-            "UnsupportedFormat: file v{version}, supported v{FORMAT_VERSION}/v{MOVEMENT_FORMAT_VERSION}/v{STRAIT_FORMAT_VERSION}"
+            "UnsupportedFormat: file v{version}, supported v{FORMAT_VERSION}"
         ));
     }
     let length =
@@ -281,20 +193,9 @@ pub fn decode_with_limits(
         return Err("BadMagic".into());
     }
     let version = u16::from_le_bytes([bytes[4], bytes[5]]);
-    if ![
-        FORMAT_VERSION,
-        MOVEMENT_FORMAT_VERSION,
-        STRAIT_FORMAT_VERSION,
-        TRIGGER_FORMAT_VERSION,
-        ECONOMY_FORMAT_VERSION,
-        PRODUCTION_FORMAT_VERSION,
-        MILITARY_FORMAT_VERSION,
-        EXTENDED_MILITARY_FORMAT_VERSION,
-    ]
-    .contains(&version)
-    {
+    if version != FORMAT_VERSION {
         return Err(format!(
-            "UnsupportedFormat: file v{version}, supported v{FORMAT_VERSION}/v{MOVEMENT_FORMAT_VERSION}/v{STRAIT_FORMAT_VERSION}"
+            "UnsupportedFormat: file v{version}, supported v{FORMAT_VERSION}"
         ));
     }
     let length =
@@ -311,7 +212,6 @@ pub fn decode_with_limits(
     if header.format_version != version {
         return Err("UnsupportedFormat: prefix/header version mismatch".into());
     }
-    let warnings = check_header(&header, context, limits, force)?;
     let compressed = bytes.get(end..).ok_or("Truncated: body")?;
     if !compressed.starts_with(&[0x28, 0xb5, 0x2f, 0xfd]) {
         return Err("Compression: standard frame required".into());
@@ -342,83 +242,12 @@ pub fn decode_with_limits(
     if !decoder.finish().is_empty() {
         return Err("Trailing: compressed frame".into());
     }
-    if version == FORMAT_VERSION {
-        bounds::body(&body, limits)?;
-    } else {
-        bounds::body_version(&body, limits, version)?;
-    }
-    let (base, dto2, dto3, dto4, dto5, dto6, dto7) = if matches!(
-        version,
-        MILITARY_FORMAT_VERSION | EXTENDED_MILITARY_FORMAT_VERSION
-    ) {
-        let dto: oh_sim::military_save::SimulationSaveV7 = deserialize(&body)?;
-        (
-            dto.base.base.base.base.base.clone(),
-            None,
-            None,
-            None,
-            None,
-            None,
-            Some(dto),
-        )
-    } else if version == PRODUCTION_FORMAT_VERSION {
-        let dto: oh_sim::production_save::SimulationSaveV6 = deserialize(&body)?;
-        (
-            dto.base.base.base.base.clone(),
-            None,
-            None,
-            None,
-            None,
-            Some(dto),
-            None,
-        )
-    } else if version == ECONOMY_FORMAT_VERSION {
-        let dto: oh_sim::economy_save::SimulationSaveV5 = deserialize(&body)?;
-        (
-            dto.base.base.base.clone(),
-            None,
-            None,
-            None,
-            Some(dto),
-            None,
-            None,
-        )
-    } else if version == TRIGGER_FORMAT_VERSION {
-        let dto: oh_sim::trigger_save::SimulationSaveV4 = deserialize(&body)?;
-        (
-            dto.base.base.base.clone(),
-            None,
-            None,
-            Some(dto),
-            None,
-            None,
-            None,
-        )
-    } else if version == STRAIT_FORMAT_VERSION {
-        let dto: SimulationSaveV3 = deserialize(&body)?;
-        (
-            dto.base.base.clone(),
-            None,
-            Some(dto),
-            None,
-            None,
-            None,
-            None,
-        )
-    } else if version == MOVEMENT_FORMAT_VERSION {
-        let dto: SimulationSaveV2 = deserialize(&body)?;
-        (dto.base.clone(), Some(dto), None, None, None, None, None)
-    } else {
-        (
-            deserialize::<SimulationSaveV1>(&body)?,
-            None,
-            None,
-            None,
-            None,
-            None,
-            None,
-        )
-    };
+    bounds::body(&body, limits)?;
+    let dto: SimulationSave = deserialize(&body)?;
+    // Mode first: it names the real cause when a pack gained or lost a system.
+    check_modes(&dto, context)?;
+    let warnings = check_header(&header, context, limits, force)?;
+    let base = dto.core();
     if header.scenario_id != base.state.scenario
         || header.game_date != base.state.date
         || header.tick != base.state.tick
@@ -428,25 +257,7 @@ pub fn decode_with_limits(
         return Err("MetadataMismatch: header/body".into());
     }
     context.verify_unchanged()?;
-    let simulation = if let Some(dto) = dto7 {
-        if version == MILITARY_FORMAT_VERSION {
-            Simulation::from_save_v7(dto, &context.restore)?
-        } else {
-            Simulation::from_save_v8(dto, &context.restore)?
-        }
-    } else if let Some(dto) = dto6 {
-        Simulation::from_save_v6(dto, &context.restore)?
-    } else if let Some(dto) = dto5 {
-        Simulation::from_save_v5(dto, &context.restore)?
-    } else if let Some(dto) = dto4 {
-        Simulation::from_save_v4(dto, &context.restore)?
-    } else if let Some(dto) = dto3 {
-        Simulation::from_save_v3(dto, &context.restore)?
-    } else if let Some(dto) = dto2 {
-        Simulation::from_save_v2(dto, &context.restore)?
-    } else {
-        Simulation::from_save(base, &context.restore)?
-    };
+    let simulation = Simulation::from_current_save(dto, &context.restore)?;
     simulation.validate_deployed_movement()?;
     check_players(&header, &simulation)?;
     if simulation.state_hash().map_err(|e| e.to_string())? != header.state_hash {
@@ -458,73 +269,25 @@ pub fn decode_with_limits(
         warnings,
     })
 }
-fn check_header(h: &HeaderV1, c: &SaveContext, l: &Limits, force: bool) -> Result<Vec<String>> {
-    let has_military = c
-        .restore
-        .world
-        .as_ref()
-        .is_some_and(|w| w.defs().military().is_some());
-    if (matches!(
-        h.format_version,
-        MILITARY_FORMAT_VERSION | EXTENDED_MILITARY_FORMAT_VERSION
-    )) != has_military
-    {
+/// Save content must run the same systems as the local definitions.
+fn check_modes(dto: &SimulationSave, c: &SaveContext) -> Result<()> {
+    let defs = c.restore.world.as_ref().map(|w| w.defs());
+    if dto.has_military() != defs.is_some_and(|d| d.military().is_some()) {
         return Err("MilitaryModeMismatch: save/local definitions".into());
     }
-    let has_production = c
-        .restore
-        .world
-        .as_ref()
-        .is_some_and(|w| w.defs().production().is_some());
-    if (matches!(
-        h.format_version,
-        PRODUCTION_FORMAT_VERSION | MILITARY_FORMAT_VERSION | EXTENDED_MILITARY_FORMAT_VERSION
-    )) != has_production
-    {
+    if dto.has_production() != defs.is_some_and(|d| d.production().is_some()) {
         return Err("ProductionModeMismatch: save/local definitions".into());
     }
-    let has_trigger = c
-        .restore
-        .world
-        .as_ref()
-        .is_some_and(|w| w.defs().trigger().is_some());
-    let has_economy = c
-        .restore
-        .world
-        .as_ref()
-        .is_some_and(|w| w.defs().economy().is_some());
-    if (matches!(
-        h.format_version,
-        ECONOMY_FORMAT_VERSION
-            | PRODUCTION_FORMAT_VERSION
-            | MILITARY_FORMAT_VERSION
-            | EXTENDED_MILITARY_FORMAT_VERSION
-    )) != has_economy
-    {
+    if dto.has_economy() != defs.is_some_and(|d| d.economy().is_some()) {
         return Err("EconomyModeMismatch: save/local definitions".into());
     }
-    if !matches!(
-        h.format_version,
-        ECONOMY_FORMAT_VERSION
-            | PRODUCTION_FORMAT_VERSION
-            | MILITARY_FORMAT_VERSION
-            | EXTENDED_MILITARY_FORMAT_VERSION
-    ) && (h.format_version == TRIGGER_FORMAT_VERSION) != has_trigger
-    {
+    if !dto.has_economy() && dto.is_trigger() != defs.is_some_and(|d| d.trigger().is_some()) {
         return Err("TriggerModeMismatch: save/local definitions".into());
     }
-    if ![
-        FORMAT_VERSION,
-        MOVEMENT_FORMAT_VERSION,
-        STRAIT_FORMAT_VERSION,
-        TRIGGER_FORMAT_VERSION,
-        ECONOMY_FORMAT_VERSION,
-        PRODUCTION_FORMAT_VERSION,
-        MILITARY_FORMAT_VERSION,
-        EXTENDED_MILITARY_FORMAT_VERSION,
-    ]
-    .contains(&h.format_version)
-    {
+    Ok(())
+}
+fn check_header(h: &HeaderV1, c: &SaveContext, l: &Limits, force: bool) -> Result<Vec<String>> {
+    if h.format_version != FORMAT_VERSION {
         return Err("UnsupportedFormat: prefix/header version mismatch".into());
     }
     semver::Version::parse(&h.engine_version).map_err(|_| "InvalidHeader: engine version")?;

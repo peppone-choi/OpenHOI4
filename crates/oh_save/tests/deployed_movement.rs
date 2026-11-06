@@ -113,9 +113,9 @@ fn deployed_m2_same_id_move_roster_rejections_stop_and_codec_resume() {
     let unit = s.movement().unwrap().unit(id).unwrap();
     assert_eq!(unit.elapsed(), oh_core::Fx::ZERO);
     assert!(unit.remaining_route().is_empty());
-    let mut legacy = s.export_save_v7().unwrap();
+    let mut legacy = s.export_save_v8().unwrap();
     legacy.base.base.base.base.units.clear();
-    let legacy = Simulation::from_save_v7(legacy, c.restore_context()).unwrap();
+    let legacy = Simulation::from_save_v8(legacy, c.restore_context()).unwrap();
     assert!(
         oh_save::encode(&legacy, &c, 0, vec![1])
             .unwrap_err()

@@ -122,7 +122,7 @@ fn fresh_process_measures_all_nations_then_v7_resume_equals_continuous_and_repea
     first.push(json!({"op":"save","path":checkpoint}));
     let a = invoke(p.root(), None, &first);
     let paused = &a.last().unwrap()["state"];
-    assert_eq!(a.last().unwrap()["format_version"], 7);
+    assert_eq!(a.last().unwrap()["format_version"], oh_save::FORMAT_VERSION);
     assert_eq!(paused["state"]["tick"], "144");
     assert_eq!(paused["state"]["paused"], true);
     for (i, j) in paused["military"]["jobs"]

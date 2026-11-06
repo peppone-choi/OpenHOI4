@@ -287,7 +287,7 @@ fn native_actual_v7_fresh_resume_queue_and_deterministic_checkpoint_bytes() {
         json!({"op":"query"}),
     ];
     let a = f.run(&begin);
-    assert_eq!(a[3]["format_version"], 7);
+    assert_eq!(a[3]["format_version"], oh_save::FORMAT_VERSION);
     let resumed = f.resume(&checkpoint, &[json!({"op":"query"}), step(48)]);
     assert_eq!(a[4]["state"], resumed[0]["state"]);
     let full = f.run(&[
@@ -324,7 +324,7 @@ fn native_actual_v7_fresh_resume_queue_and_deterministic_checkpoint_bytes() {
     ];
     let restored = f.resume(&checkpoint, &tail);
     let final_state = &restored[7]["state"];
-    assert_eq!(restored[7]["format_version"], 7);
+    assert_eq!(restored[7]["format_version"], oh_save::FORMAT_VERSION);
     assert_eq!(final_state["military"]["next_job_id"], "2");
     assert_eq!(final_state["military"]["next_division_id"], "1");
     assert_eq!(jobs(&restored[7])[0]["status"], "Deployed");
@@ -581,7 +581,7 @@ fn native_checkpoint_write_guards_preserve_pack_and_resume_input() {
     let f = Fixture::new();
     let checkpoint = f.checkpoint("guarded.ohsave");
     let created = f.run(&[json!({"op":"save", "path":checkpoint})]);
-    assert_eq!(created[0]["format_version"], 7);
+    assert_eq!(created[0]["format_version"], oh_save::FORMAT_VERSION);
     let before = std::fs::read(&checkpoint).unwrap();
     let alias = checkpoint
         .parent()

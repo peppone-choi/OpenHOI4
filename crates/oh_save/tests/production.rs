@@ -35,7 +35,7 @@ fn req_eco_mil_v6_actual_codec_fractional_carry_future_queue_and_resume() {
         oh_save::inspect_header(&bytes, &Default::default())
             .unwrap()
             .format_version,
-        6
+        oh_save::FORMAT_VERSION
     );
     let mut restored = oh_save::decode(&bytes, &c, false).unwrap().simulation;
     assert_eq!(

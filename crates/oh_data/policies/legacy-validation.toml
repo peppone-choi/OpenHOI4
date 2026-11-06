@@ -128,7 +128,7 @@ name_key = "testland_name"
 diagnostic_code = "missing_message_value"
 locales = ["ko", "en"]
 disposition = "warning_unavailable"
-save_format = 1
+save_format = 9
 
 [[entries]]
 policy_id = "original-m0-cli_v1_resume"
@@ -144,7 +144,7 @@ name_key = "testland_name"
 diagnostic_code = "missing_message_value"
 locales = ["ko", "en"]
 disposition = "warning_unavailable"
-save_format = 1
+save_format = 9
 
 [[entries]]
 policy_id = "mutable-v1-cli_v1_resume"
@@ -160,4 +160,4 @@ name_key = "testland_name"
 diagnostic_code = "missing_message_value"
 locales = ["ko", "en"]
 disposition = "warning_unavailable"
-save_format = 1
+save_format = 9

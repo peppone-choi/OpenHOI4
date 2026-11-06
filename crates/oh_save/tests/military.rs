@@ -46,7 +46,7 @@ fn req_mil_v7_real_codec_pending_training_ready_deployed_cancelled_and_resume() 
             oh_save::inspect_header(&bytes, &Default::default())
                 .unwrap()
                 .format_version,
-            7
+            oh_save::FORMAT_VERSION
         );
         let mut restored = oh_save::decode(&bytes, &c, false).unwrap().simulation;
         assert_eq!(
@@ -95,7 +95,7 @@ fn req_mil_v7_real_codec_pending_training_ready_deployed_cancelled_and_resume() 
     );
     assert_eq!(restored.military().unwrap().divisions()[&0].manpower(), 8);
     assert!(s.export_save_v6().is_err());
-    let dto = s.export_save_v7().unwrap();
+    let dto = s.export_save_v8().unwrap();
     assert!(dto.base.queue.is_empty());
     assert!(dto.base.base.queue.is_empty());
 }
@@ -134,7 +134,7 @@ fn req_mil_v7_untrusted_bounds_immutable_definitions_and_owned_accounting_reject
     ] {
         assert!(oh_save::decode_with_limits(&bytes, &c, false, &limits).is_err());
     }
-    let dto = s.export_save_v7().unwrap();
+    let dto = s.export_save_v8().unwrap();
     let raw = serde_json::to_value(&dto).unwrap();
     for (pointer, value) in [
         ("/military/definitions_hash", serde_json::json!(0)),
@@ -149,7 +149,7 @@ fn req_mil_v7_untrusted_bounds_immutable_definitions_and_owned_accounting_reject
         *bad.pointer_mut(pointer).unwrap() = value;
         let bad = serde_json::from_value::<oh_sim::military_save::SimulationSaveV7>(bad).unwrap();
         assert!(
-            oh_sim::Simulation::from_save_v7(bad, c.restore_context()).is_err(),
+            oh_sim::Simulation::from_save_v8(bad, c.restore_context()).is_err(),
             "{pointer}"
         );
     }
@@ -179,8 +179,8 @@ fn req_mil_v7_mixed_queue_order_and_structural_reference_rejections() {
         }),
     )
     .unwrap();
-    let dto = s.export_save_v7().unwrap();
-    let restored = oh_sim::Simulation::from_save_v7(dto.clone(), c.restore_context()).unwrap();
+    let dto = s.export_save_v8().unwrap();
+    let restored = oh_sim::Simulation::from_save_v8(dto.clone(), c.restore_context()).unwrap();
     assert_eq!(
         oh_core::canonical_bytes(&s).unwrap(),
         oh_core::canonical_bytes(&restored).unwrap()
@@ -189,10 +189,10 @@ fn req_mil_v7_mixed_queue_order_and_structural_reference_rejections() {
     assert!(matches!(&dto.queue[1].command, CommandV7::Military(_)));
     let mut unordered = dto.clone();
     unordered.queue.swap(0, 1);
-    assert!(oh_sim::Simulation::from_save_v7(unordered, c.restore_context()).is_err());
+    assert!(oh_sim::Simulation::from_save_v8(unordered, c.restore_context()).is_err());
     let mut duplicate = dto.clone();
     duplicate.queue[1].sequence = duplicate.queue[0].sequence;
-    assert!(oh_sim::Simulation::from_save_v7(duplicate, c.restore_context()).is_err());
+    assert!(oh_sim::Simulation::from_save_v8(duplicate, c.restore_context()).is_err());
     let mut nested = dto.clone();
     let CommandV7::Legacy(legacy) = dto.queue[0].command.clone() else {
         unreachable!()
@@ -203,7 +203,7 @@ fn req_mil_v7_mixed_queue_order_and_structural_reference_rejections() {
         sequence: 1,
         command: legacy,
     });
-    assert!(oh_sim::Simulation::from_save_v7(nested, c.restore_context()).is_err());
+    assert!(oh_sim::Simulation::from_save_v8(nested, c.restore_context()).is_err());
     for (nation, action) in [
         (
             1,
@@ -233,7 +233,7 @@ fn req_mil_v7_mixed_queue_order_and_structural_reference_rejections() {
             sequence: 1,
             command: CommandV7::Military(action),
         }];
-        assert!(oh_sim::Simulation::from_save_v7(bad, c.restore_context()).is_err());
+        assert!(oh_sim::Simulation::from_save_v8(bad, c.restore_context()).is_err());
     }
 }
 
@@ -311,11 +311,7 @@ fn assert_military_resume(s: &oh_sim::Simulation, c: &oh_save::SaveContext) -> o
         oh_save::inspect_header(&bytes, &Default::default())
             .unwrap()
             .format_version,
-        if s.military().unwrap().jobs().len() > 4096 {
-            8
-        } else {
-            7
-        }
+        oh_save::FORMAT_VERSION
     );
     let restored = oh_save::decode(&bytes, c, false).unwrap().simulation;
     assert_eq!(s.state_hash().unwrap(), restored.state_hash().unwrap());
@@ -599,7 +595,7 @@ fn req_mil_quota_apply_order_rollback_and_ready_cancel_release() {
 }
 
 #[test]
-fn req_mil_extended_history_v8_is_distinct_and_v7_rejection_is_preserved() {
+fn req_mil_extended_history_roundtrips_and_old_versions_are_rejected() {
     let root = fixture::pack();
     let c = oh_save::SaveContext::national(&root, "m1").unwrap();
     let small = paused_job(&c, 1);
@@ -608,7 +604,7 @@ fn req_mil_extended_history_v8_is_distinct_and_v7_rejection_is_preserved() {
         oh_save::inspect_header(&old, &Default::default())
             .unwrap()
             .format_version,
-        7
+        oh_save::FORMAT_VERSION
     );
     assert_eq!(
         oh_save::encode(
@@ -621,29 +617,27 @@ fn req_mil_extended_history_v8_is_distinct_and_v7_rejection_is_preserved() {
         old
     );
     let s = quota_fixture(&small, &c, &[(1, JobStatus::Cancelled, 4096)]);
-    assert!(s.export_save_v7().is_err());
-    assert!(
-        oh_sim::Simulation::from_save_v7(s.export_save_v8().unwrap(), c.restore_context()).is_err()
-    );
     let bytes = oh_save::encode(&s, &c, 0, vec![1]).unwrap();
-    assert_eq!(&bytes[4..6], &8u16.to_le_bytes());
+    assert_eq!(&bytes[4..6], &oh_save::FORMAT_VERSION.to_le_bytes());
     let length = u32::from_le_bytes(bytes[6..10].try_into().unwrap()) as usize;
-    let mut header: oh_save::HeaderV1 =
-        oh_core::from_canonical_bytes(&bytes[10..10 + length]).unwrap();
-    header.format_version = 7;
-    let header = oh_core::canonical_bytes(&header).unwrap();
-    let mut relabelled = b"OHSV".to_vec();
-    relabelled.extend_from_slice(&7u16.to_le_bytes());
-    relabelled.extend_from_slice(&(header.len() as u32).to_le_bytes());
-    relabelled.extend(header);
-    relabelled.extend_from_slice(&bytes[10 + length..]);
-    for force in [false, true] {
-        assert!(
-            oh_save::decode(&relabelled, &c, force)
-                .err()
-                .unwrap()
-                .contains("InvalidV7: job record limit")
-        );
+    for version in 1..oh_save::FORMAT_VERSION {
+        let mut header: oh_save::HeaderV1 =
+            oh_core::from_canonical_bytes(&bytes[10..10 + length]).unwrap();
+        header.format_version = version;
+        let header = oh_core::canonical_bytes(&header).unwrap();
+        let mut relabelled = b"OHSV".to_vec();
+        relabelled.extend_from_slice(&version.to_le_bytes());
+        relabelled.extend_from_slice(&(header.len() as u32).to_le_bytes());
+        relabelled.extend(header);
+        relabelled.extend_from_slice(&bytes[10 + length..]);
+        for force in [false, true] {
+            assert!(
+                oh_save::decode(&relabelled, &c, force)
+                    .err()
+                    .unwrap()
+                    .contains("UnsupportedFormat")
+            );
+        }
     }
     assert_military_resume(&s, &c);
 }

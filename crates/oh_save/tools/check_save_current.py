@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parents[3]
 RUNNERS = ('ubuntu-latest', 'windows-latest', 'macos-latest')
 PLATFORMS = dict(zip(RUNNERS, ('Linux', 'Windows', 'Darwin')))
 MODE = 'current-m1-v1'
+SAVE_FORMAT = 9  # oh_save::FORMAT_VERSION
 
 
 def sha(path):
@@ -84,7 +85,7 @@ def header(path):
     raw = path.read_bytes()
     limits = tomllib.loads((ROOT / 'crates/oh_save/defines.toml').read_text(encoding='utf-8'))['save']
     assert 10 < len(raw) <= limits['file_max_bytes'] and raw[:4] == b'OHSV'
-    assert int.from_bytes(raw[4:6], 'little') == 1
+    assert int.from_bytes(raw[4:6], 'little') == SAVE_FORMAT
     length = int.from_bytes(raw[6:10], 'little')
     assert 0 < length <= limits['header_max_bytes'] and 10 + length < len(raw)
     data = raw[10:10 + length]; offset = 0
@@ -114,7 +115,7 @@ def header(path):
     saved_at = uint(); saved_at = (saved_at >> 1) ^ -(saved_at & 1)
     tag = byte(); assert tag in (0, 1)
     definitions = uint() if tag else None
-    defines = uint(); assert offset == len(data) and version == 1
+    defines = uint(); assert offset == len(data) and version == SAVE_FORMAT
     return dict(engine_version=engine, format_version=version, scenario_id=scenario, packs=packs,
                 game_date=date, tick=tick, seed=seed, state_hash=f'{state_hash:016x}',
                 player_nations=players, saved_at_utc=saved_at, definitions_hash=definitions,
@@ -130,7 +131,7 @@ def paused_dto(report):
 
 def check_header(value, dto, pack, defines_hash):
     assert value['engine_version'] == tomllib.loads((ROOT / 'Cargo.toml').read_text(encoding='utf-8'))['workspace']['package']['version']
-    assert value['format_version'] == 1 and value['scenario_id'] == dto['state']['scenario'] == 'm1'
+    assert value['format_version'] == SAVE_FORMAT and value['scenario_id'] == dto['state']['scenario'] == 'm1'
     assert value['packs'] == [pack]
     assert value['game_date'] == dto['state']['date'] and value['tick'] == dto['state']['tick']
     assert value['seed'] == dto['state']['seed'] == 7
