@@ -9,7 +9,7 @@ cargo run -p oh_cli --locked -- validate --deny-warnings data/packs/testland_m2
 cargo run -p oh_cli --locked -- run --pack data/packs/testland_m2 --scenario m2_initial --days 365 --seed 1 --hash-out
 ```
 
-The current server selects a `testland` child folder. To view this separate pack without changing engine routing, copy it byte-for-byte to a fresh temporary `<host>/testland`, verify sorted relative lengths/SHA256, and launch `oh_server --pack-root <host> --scenario m2_initial`. The manifest remains `testland_m2`. This staging is required; direct arbitrary-pack server selection is not implemented. 
+Run it in the browser with `cargo run -p oh_server -- --pack testland_m2 --scenario m2_initial`. Older tests still stage a byte copy as `<host>/testland` with `--pack-root <host>`; both paths load the same manifest `testland_m2`.
 
 ## Deterministic map recipe
 

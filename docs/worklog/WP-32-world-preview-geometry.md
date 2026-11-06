@@ -1,5 +1,7 @@
 # WP-32 M-1c world-preview geometry harness
 
+> 번호 주의(2026-11-06): 이 기록은 02 §12.2 WP-32(유럽 지도 파이프라인)의 제품 완료가 아니라 M3 선행 비제품 기하 하네스다.
+
 ## Scope and ownership
 
 - taskId: t_200364e3; project: openhoi; stage: implement.
