@@ -7,6 +7,8 @@ use crate::{
 use schemars::{JsonSchema, Schema};
 use serde::Deserialize;
 use std::collections::BTreeSet;
+/// Mirrors `oh_save::FORMAT_VERSION`; oh_data cannot depend on oh_save.
+const SAVE_FORMAT: u16 = 9;
 pub const POLICY_TEXT: &str = include_str!("../policies/legacy-validation.toml");
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Deserialize, JsonSchema)]
@@ -174,7 +176,7 @@ fn parse(text: &str) -> Result<Policy, DataError> {
             return Err(error(&s, "invalid engine policy entry constraints"));
         }
         if (e.caller == Caller::ServerStartup && e.save_format.is_some())
-            || (e.caller != Caller::ServerStartup && e.save_format != Some(1))
+            || (e.caller != Caller::ServerStartup && e.save_format != Some(SAVE_FORMAT))
         {
             return Err(error(
                 &s,

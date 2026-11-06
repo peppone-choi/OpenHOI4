@@ -1,6 +1,6 @@
 # Synthetic Testland M2 initial content
 
-Standalone content slice: six fictional test nations, 120 land provinces and 12 states, with the existing economy producer. This is not full WP-23 or a playable M2 campaign. No equipment, rail, OOB, supply, combat, diplomacy, AI, agenda or victory rules are included. Neutral numbered labels have no permanent lore. Existing M1 and golden/repro inputs remain separate.
+The one M2 test pack: six fictional test nations, 120 land provinces and 12 states, with economy, production and minimal military (training) content in one scenario `m2_initial`. The former `testland_m2_production` and `testland_m2_military` packs were merged here on 2026-11-06 (backlog A1). This is not a playable M2 campaign. No rail, OOB, supply, combat, diplomacy, AI, agenda or victory rules are included. Neutral numbered labels have no permanent lore. Existing M1 and golden/repro inputs remain separate.
 
 Validate and run from the repository root:
 
@@ -9,7 +9,7 @@ cargo run -p oh_cli --locked -- validate --deny-warnings data/packs/testland_m2
 cargo run -p oh_cli --locked -- run --pack data/packs/testland_m2 --scenario m2_initial --days 365 --seed 1 --hash-out
 ```
 
-The current server selects a `testland` child folder. To view this separate pack without changing engine routing, copy it byte-for-byte to a fresh temporary `<host>/testland`, verify sorted relative lengths/SHA256, and launch `oh_server --pack-root <host> --scenario m2_initial`. The manifest remains `testland_m2`. This staging is required; direct arbitrary-pack server selection is not implemented. The existing client displays nation/state/map data; economy is verified with its supported server query, not a production UI.
+Run it in the browser with `cargo run -p oh_server -- --pack testland_m2 --scenario m2_initial`. Older tests still stage a byte copy as `<host>/testland` with `--pack-root <host>`; both paths load the same manifest `testland_m2`.
 
 ## Deterministic map recipe
 
@@ -20,5 +20,11 @@ Nation n=1..6 owns columns 2(n−1),2(n−1)+1. State 2n−1 covers rows0..4 and
 PNG SHA256: `e3eeb968006ecd7c557b55b55a6d9b55e3d05cbc7bbecc252cbac4802a8b527c`. CSV SHA256: `aa6079ea7816196b2ebee8633ee1407fcb379bb75cd5a27a5baf1f44d8207b3a`.
 
 Every initial nation owns two states: population2000, steel daily flow4, IC20, sector IC5 each, conscription capacity250 and available250. PC starts0, gains3/day up to100. All numeric inputs are provisional test balance, not historical facts. Existing laws/formulas are reused; no new economy mechanics were defined. See [SOURCES.md](SOURCES.md) for values and licensing.
+
+## Production and military inputs
+
+- Production: two synthetic equipment models `m2_equipment_1/2` in family `m2_equipment`, nine provisional production defines in `defines.toml`. All initial equipment stock is 0.
+- Military: template `m2_small` (one combat component, manpower 8, model1 equipment 6, 2 training days, values from `crates/oh_cli/tests/fixtures/military/training.toml` small). Six armies (id 0..5, nation 1..6, capacity 2, priority 0), synthetic commanders, no initial divisions or jobs. Every nation may bind model1, because the loader checks each template binding in every nation; this is data, not a per-nation template policy.
+- Observed, not a balance rule: with `allocation[2]` production lines every nation reaches equipment 6 on day 5. Train at tick 120 shows Training at tick 144; Cancel returns manpower 8 and equipment 6.
 
 Pack data and original bitmap: CC BY-SA4.0, OpenHOI contributors. No third-party game material or AI image was used.

@@ -9,9 +9,9 @@ import type {ServerMessage,ClientMessage,WorldView} from '../src/proto/protocol'
 import {provinceAnchors} from '../src/map/divisionMarkers';
 import {decodeIndex,pick} from '../src/map/model';
 const test=base.extend<{host:string;wire:ReturnType<typeof observe>}>({wire:async({page},use,info)=>{const wire=observe(page);try{await use(wire);}finally{writeFileSync(info.outputPath('movement-wire.json'),JSON.stringify(wire,null,2));}},host:async({},use,info)=>{
- const root=mkdtempSync(resolve(tmpdir(),'openhoi-movement-'));cpSync(resolve('../data/packs/testland_m2_military'),resolve(root,'testland'),{recursive:true});
+ const root=mkdtempSync(resolve(tmpdir(),'openhoi-movement-'));cpSync(resolve('../data/packs/testland_m2'),resolve(root,'testland'),{recursive:true});
  const listener=createServer();await new Promise<void>(done=>listener.listen(0,'127.0.0.1',done));const port=(listener.address() as {port:number}).port;await new Promise<void>(done=>listener.close(()=>done()));
- const child=spawn(resolve('../target/debug',process.platform==='win32'?'oh_server.exe':'oh_server'),['--port',String(port),'--pack-root',root,'--scenario','m2_military'],{cwd:resolve('..'),stdio:'ignore'});
+ const child=spawn(resolve('../target/debug',process.platform==='win32'?'oh_server.exe':'oh_server'),['--port',String(port),'--pack-root',root,'--scenario','m2_initial'],{cwd:resolve('..'),stdio:'ignore'});
  const exited=new Promise<{code:number|null;signal:string|null}>(done=>child.once('exit',(code,signal)=>done({code,signal})));
  try{const url=`http://127.0.0.1:${port}`;await expect.poll(async()=>{if(child.exitCode!==null)throw Error('host exited');try{return(await fetch(url)).status;}catch{return 0;}}).toBe(200);await use(url);}
  finally{

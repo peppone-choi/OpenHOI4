@@ -83,7 +83,7 @@ fn six_nation_365_days_twice_and_180_plus_185_real_v6_resume() {
         oh_save::inspect_header(&bytes, &Default::default())
             .unwrap()
             .format_version,
-        6
+        oh_save::FORMAT_VERSION
     );
     let mut resumed = oh_save::decode(&bytes, &context, false).unwrap().simulation;
     assert_eq!(

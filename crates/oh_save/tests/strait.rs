@@ -1,5 +1,3 @@
-#[path = "support/strait_pack.rs"]
-mod historical;
 use oh_core::{DivisionId, Fx, ProvinceId};
 use oh_save::{SaveContext, decode, encode};
 use oh_sim::{
@@ -90,7 +88,7 @@ fn strait_v3_tick9_full_context_pending_and_resume() {
     assert_eq!(dto.base.units[0].elapsed, 38654705664);
     assert!(s.export_save_v2().is_err());
     let bytes = encode(&s, &c, 0, vec![]).unwrap();
-    assert_eq!(&bytes[4..6], &3u16.to_le_bytes());
+    assert_eq!(&bytes[4..6], &oh_save::FORMAT_VERSION.to_le_bytes());
     let mut r = decode(&bytes, &c, false).unwrap().simulation;
     assert_eq!(dto, r.export_save_v3().unwrap());
     assert_eq!(s.state_hash().unwrap(), r.state_hash().unwrap());
@@ -100,48 +98,11 @@ fn strait_v3_tick9_full_context_pending_and_resume() {
     assert_eq!(s.state_hash().unwrap(), r.state_hash().unwrap());
 }
 #[test]
-fn frozen_97f_v2_reader_writer_hash_dto_native_contract_unchanged() {
-    let c = historical::context();
-    let bytes = include_bytes!("fixtures/movement-v2-97f.ohsave");
-    let expected: serde_json::Value =
-        serde_json::from_str(include_str!("fixtures/movement-v2-97f.expected.json")).unwrap();
-    let mut s = decode(bytes, &c, false).unwrap().simulation;
-    assert!(!s.movement().unwrap().has_strait_context());
-    assert_eq!(
-        format!("{:016x}", s.state_hash().unwrap()),
-        "18bff036731f4f26"
-    );
-    assert_eq!(
-        serde_json::to_value(s.export_save_v2().unwrap()).unwrap(),
-        expected["split"]["dto"]
-    );
-    assert_eq!(encode(&s, &c, 0, vec![]).unwrap().as_slice(), bytes);
-    while s.snapshot().tick() < 24 {
-        s.step().unwrap();
-    }
-    assert_eq!(
-        format!("{:016x}", s.state_hash().unwrap()),
-        "a145b72ad0ad25e6"
-    );
-    assert_eq!(
-        serde_json::to_value(s.export_save_v2().unwrap()).unwrap(),
-        expected["continuous"]["dto"]
-    );
-    assert_eq!(
-        oh_core::canonical_bytes(&s)
-            .unwrap()
-            .iter()
-            .map(|b| format!("{b:02x}"))
-            .collect::<String>(),
-        expected["continuous"]["canonical_hex"].as_str().unwrap()
-    );
-}
-#[test]
 fn v3_kind_direction_context_raw_bits_and_idle_empty_version_selection() {
     let c = context();
     let s = sim(&c);
     let bytes = encode(&s, &c, 0, vec![]).unwrap();
-    assert_eq!(&bytes[4..6], &3u16.to_le_bytes());
+    assert_eq!(&bytes[4..6], &oh_save::FORMAT_VERSION.to_le_bytes());
     let dto = s.export_save_v3().unwrap();
     assert_eq!(dto.straits[0].corrections[0].kind, 3);
     assert_eq!(
@@ -171,7 +132,7 @@ fn v3_kind_direction_context_raw_bits_and_idle_empty_version_selection() {
     )
     .unwrap();
     let b = encode(&empty, &c, 0, vec![]).unwrap();
-    assert_eq!(&b[4..6], &3u16.to_le_bytes());
+    assert_eq!(&b[4..6], &oh_save::FORMAT_VERSION.to_le_bytes());
     assert!(
         decode(&b, &c, false)
             .unwrap()
@@ -242,7 +203,13 @@ fn v3_context_vector_and_kind_preflight_and_unknown_version() {
     dto.straits[0].corrections[0].kind = 0;
     let mut b = bytes[..end].to_vec();
     b.extend(
-        zstd::stream::encode_all(oh_core::canonical_bytes(&dto).unwrap().as_slice(), 3).unwrap(),
+        zstd::stream::encode_all(
+            oh_core::canonical_bytes(&oh_sim::save::SimulationSave::Strait(dto))
+                .unwrap()
+                .as_slice(),
+            3,
+        )
+        .unwrap(),
     );
     assert!(
         decode(&b, &c, false)
@@ -250,7 +217,8 @@ fn v3_context_vector_and_kind_preflight_and_unknown_version() {
             .unwrap()
             .contains("Postcard: strait crossing kind")
     );
-    let mut body = oh_core::canonical_bytes(&s.export_save_v3().unwrap().base).unwrap();
+    let mut body = vec![2u8]; // SimulationSave::Strait
+    body.extend(oh_core::canonical_bytes(&s.export_save_v3().unwrap().base).unwrap());
     let mut count = 65537u64;
     while count >= 128 {
         body.push((count as u8 & 127) | 128);
@@ -338,7 +306,7 @@ fn v3_request6_stop_pause_reroute_pending_restore_boundary() {
     assert_eq!(s.state_hash().unwrap(), r.state_hash().unwrap());
 }
 #[test]
-fn original_v2_refuses_changed_pack_without_force_and_current_v3_roundtrips() {
+fn changed_pack_refuses_save_without_force_and_current_v3_roundtrips() {
     fn copy(src: &std::path::Path, dst: &std::path::Path) {
         std::fs::create_dir_all(dst).unwrap();
         for entry in std::fs::read_dir(src).unwrap() {
@@ -367,9 +335,9 @@ fn original_v2_refuses_changed_pack_without_force_and_current_v3_roundtrips() {
     .unwrap();
     let changed = SaveContext::national(&root, "m1").unwrap();
     assert_ne!(changed.pack().content_hash, current.pack().content_hash);
-    let original = include_bytes!("fixtures/movement-v2-97f.ohsave");
+    let original = encode(&sim(&current), &current, 0, vec![]).unwrap();
     assert!(
-        decode(original, &changed, false)
+        decode(&original, &changed, false)
             .err()
             .unwrap()
             .contains("PackMismatch")

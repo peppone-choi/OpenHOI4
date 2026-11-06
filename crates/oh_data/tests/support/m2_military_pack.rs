@@ -1,9 +1,9 @@
 #![allow(dead_code)]
 use std::path::{Path, PathBuf};
 use std::sync::atomic::{AtomicU64, Ordering};
-pub const SCENARIO: &str = "m2_military";
+pub const SCENARIO: &str = "m2_initial";
 pub fn root() -> PathBuf {
-    Path::new(env!("CARGO_MANIFEST_DIR")).join("../../data/packs/testland_m2_military")
+    Path::new(env!("CARGO_MANIFEST_DIR")).join("../../data/packs/testland_m2")
 }
 pub struct CopyPack(PathBuf, PathBuf);
 impl CopyPack {

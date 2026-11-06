@@ -13,7 +13,7 @@ async function freePort(){const server=createServer();await new Promise<void>(do
 const test=base.extend<{}, {hosts:Hosts}>({hosts:[async({},use,info)=>{
   const binary=resolve(process.env.OH_SERVER_EXECUTABLE??'../target/debug/oh_server');
   const output=resolve(info.project.outputDir,`ledger-hosts-${info.workerIndex}`);mkdirSync(output,{recursive:true});
-  const root=mkdtempSync(resolve(tmpdir(),'openhoi-ledger-'));cpSync(resolve('../data/packs/testland_m2_military'),resolve(root,'testland'),{recursive:true});
+  const root=mkdtempSync(resolve(tmpdir(),'openhoi-ledger-'));cpSync(resolve('../data/packs/testland_m2'),resolve(root,'testland'),{recursive:true});
   const path=resolve(root,'testland/common/military/initial.toml');
   const source=readFileSync(path,'utf8').replace('training_days = { m2_small = 2 }','training_days = { m2_small = 2, m2_other = 2 }')
     .replace("\n'''\n",'\n[[templates]]\nid = "m2_other"\ncombat = ["m2_small_component", "m2_small_component"]\nsupport = []\nbindings = [{ family = "m2_equipment", model = "m2_equipment_1" }]\n\'\'\'\n');
@@ -21,7 +21,7 @@ const test=base.extend<{}, {hosts:Hosts}>({hosts:[async({},use,info)=>{
   const children:ChildProcess[]=[],records:Array<{pid:number|undefined;args:string[];exitCode:number|null;signal:NodeJS.Signals|null;alive:boolean}>=[];
   const ledger=()=>writeFileSync(resolve(output,'pid-ledger.json'),JSON.stringify({owner:process.pid,records},null,2));
   const start=async(budget?:number,executable=binary,packRoot=root,save?:string)=>{
-    const port=await freePort(),args=['--port',String(port),'--pack-root',packRoot,'--scenario','m2_military',...(budget?['--military-ledger-budget-bytes',String(budget)]:[]),...(save?['--load-save',save]:[])];
+    const port=await freePort(),args=['--port',String(port),'--pack-root',packRoot,'--scenario','m2_initial',...(budget?['--military-ledger-budget-bytes',String(budget)]:[]),...(save?['--load-save',save]:[])];
     const child=spawn(executable,args,{cwd:resolve('..'),stdio:['ignore','pipe','pipe']});children.push(child);
     const row={pid:child.pid,args,exitCode:null as number|null,signal:null as NodeJS.Signals|null,alive:true};records.push(row);ledger();
     child.stdout!.pipe(createWriteStream(resolve(output,`server-${port}.stdout`)));child.stderr!.pipe(createWriteStream(resolve(output,`server-${port}.stderr`)));
@@ -33,7 +33,7 @@ const test=base.extend<{}, {hosts:Hosts}>({hosts:[async({},use,info)=>{
   const oldBinary=process.env.OH_LEGACY_SERVER_EXECUTABLE;
   if(!oldBinary)throw Error('OH_LEGACY_SERVER_EXECUTABLE must name an independently built baseline binary');
   const checkpoint=resolve(process.env.OH_M2_MILITARY_OUTPUT_DIR??'../target/wp23/checkpoint');
-  const restoredRoot=mkdtempSync(resolve(tmpdir(),'openhoi-ledger-restored-'));cpSync(resolve('../data/packs/testland_m2_military'),resolve(restoredRoot,'testland'),{recursive:true});
+  const restoredRoot=mkdtempSync(resolve(tmpdir(),'openhoi-ledger-restored-'));cpSync(resolve('../data/packs/testland_m2'),resolve(restoredRoot,'testland'),{recursive:true});
   const restoredHash=JSON.parse(readFileSync(resolve(checkpoint,'expected.json'),'utf8')).paused_hash as string;
   try{await use({native:await start(),limited:await start(256),legacy:await start(undefined,resolve(oldBinary)),restored:await start(undefined,binary,restoredRoot,resolve(checkpoint,'paused-training.ohsave')),restoredHash});}
   finally{

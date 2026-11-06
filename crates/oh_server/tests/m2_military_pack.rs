@@ -29,7 +29,7 @@ fn host_accepts_fresh_and_real_paused_v7() {
         false,
     )
     .unwrap();
-    assert_eq!(fresh.pack.id, "testland_m2_military");
+    assert_eq!(fresh.pack.id, "testland_m2");
     let context = oh_save::SaveContext::national(&root, fixture::SCENARIO).unwrap();
     let mut sim = context.simulation(1).unwrap();
     for n in 1..=6 {
@@ -115,11 +115,11 @@ fn host_rejects_unused_military_missing_translation_and_missing_producer_with_co
             "translation" => {
                 let path = root.join("localisation/en/pack.ftl");
                 let text = std::fs::read_to_string(&path).unwrap();
-                assert!(text.contains("m2-military-pack-name ="));
+                assert!(text.contains("wp23-pack-name ="));
                 std::fs::write(path, "").unwrap();
             }
             "production" => {
-                let path = root.join("scenarios/m2_military/scenario.toml");
+                let path = root.join("scenarios/m2_initial/scenario.toml");
                 let text = std::fs::read_to_string(&path).unwrap();
                 assert!(text.contains("production ="));
                 std::fs::write(

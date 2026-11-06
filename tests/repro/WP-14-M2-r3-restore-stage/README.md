@@ -1,6 +1,6 @@
 # 경제 restore-stage 회귀 입력
 
-`industry-level4.ohsave`는 직접 작성한 합성 Testland의 v5 save fixture다. 458 bytes, SHA256 `c67f5cefbba865be78643b920536678f789b8375b418b9034ddd2cd2b4db1e53`. `packs/testland`는 대응하는22파일·5681bytes 입력이며 `INPUT_MANIFEST.json`은 각 상대 경로·길이·SHA256을 고정한다. save/header/pack identity와 입력 개행은 변경하지 않는다. 기존 production/frozen fixture를 대체하지 않는다.
+`industry-level4.ohsave`는 직접 작성한 합성 Testland의 save fixture다(현재 저장 형식 v9). 460 bytes, SHA256 `9a6c4e969deb6b3ac03cccb2087a25946144894b41af8046ee53370e4b82ce11`. `packs/testland`는 대응하는22파일·5681bytes 입력이며 `INPUT_MANIFEST.json`은 각 상대 경로·길이·SHA256을 고정한다. save/header/pack identity와 입력 개행은 변경하지 않는다. 기존 production/frozen fixture를 대체하지 않는다.
 
 현재 건물 level4가 경제 정의의 costs/slots max3을 초과하는 의미 오류를 검사한다. CLI/server normal/force를 포함해 복원 시 `economy:TargetConflict`로 거부해야 한다. PackMismatch나 panic은 기대하는 거부를 대신하지 못한다. journal ZIP이 아닌 저장 파일이며 합성 계수를 게임 기본값으로 쓰지 않는다.
 

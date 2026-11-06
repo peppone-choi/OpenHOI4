@@ -1,7 +1,0 @@
-id,r,g,b,kind,terrain,coastal
-10,200,40,40,land,plains,true
-20,40,200,40,land,hills,true
-30,40,40,200,land,plains,false
-40,200,200,40,land,hills,true
-50,40,160,200,sea,ocean,false
-60,120,80,200,lake,inland_water,false

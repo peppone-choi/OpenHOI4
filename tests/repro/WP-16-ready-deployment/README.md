@@ -1,6 +1,6 @@
 # WP-16 Ready 배치 UI 재현
 
-기존 clean-room `testland_m2_military`와 기존 save generator를 사용한다.
+기존 clean-room `testland_m2`와 기존 save generator를 사용한다.
 소유한 Ready 작업을 실제 웹 화면에서 군·위치 선택 후 Deploy로 배치한다.
 WebSocket 직접 명령 주입으로 UI 클릭을 대신하지 않는다.
 

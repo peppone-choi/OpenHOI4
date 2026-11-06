@@ -1,5 +1,7 @@
 # WP-32 M-1a 서버 팩 선택
 
+> 번호 주의(2026-11-06): 이 기록의 "WP-32"는 02 §12.2의 WP-32(유럽 지도 파이프라인)가 아니다. 서버 `--pack` 선택 기능으로, 02 WP 표에 대응 행이 없는 M1 후속 작업이다. 파일 이름은 링크 보존을 위해 그대로 둔다.
+
 - taskId: t_8df84cc9, project: openhoi, stage: implement
 - repository: https://github.com/peppone-choi/OpenHOI4
 - base: ba9cb0305c15afbb772659f147bf00a1ccbdf377

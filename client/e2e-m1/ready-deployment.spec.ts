@@ -12,12 +12,12 @@ async function freePort(){const server=createServer();await new Promise<void>(do
 const test=base.extend<{}, {hosts:Hosts}>({hosts:[async({},use,info)=>{
   const binary=resolve(process.env.OH_SERVER_EXECUTABLE??'../target/debug/oh_server');
   const output=resolve(info.project.outputDir,`training-hosts-${info.workerIndex}`);mkdirSync(output,{recursive:true});
-  const root=mkdtempSync(resolve(tmpdir(),'openhoi-training-ui-'));cpSync(resolve('../data/packs/testland_m2_military'),resolve(root,'testland'),{recursive:true});
+  const root=mkdtempSync(resolve(tmpdir(),'openhoi-training-ui-'));cpSync(resolve('../data/packs/testland_m2'),resolve(root,'testland'),{recursive:true});
   const checkpoint=resolve(process.env.OH_M2_MILITARY_OUTPUT_DIR??'../target/wp23/checkpoint');
   const children:ChildProcess[]=[],records:Array<{pid:number|undefined;exitCode:number|null;alive:boolean}>=[];
   const ledger=()=>writeFileSync(resolve(output,'pid-ledger.json'),JSON.stringify(records,null,2));
   const start=async(save?:string)=>{
-    const port=await freePort(),args=['--port',String(port),'--pack-root',root,'--scenario','m2_military',...(save?['--load-save',save]:[])];
+    const port=await freePort(),args=['--port',String(port),'--pack-root',root,'--scenario','m2_initial',...(save?['--load-save',save]:[])];
     const child=spawn(binary,args,{cwd:resolve('..'),stdio:['ignore','pipe','pipe']});children.push(child);
     const row={pid:child.pid,exitCode:null as number|null,alive:true};records.push(row);ledger();
     child.stdout!.pipe(createWriteStream(resolve(output,`server-${port}.stdout`)));child.stderr!.pipe(createWriteStream(resolve(output,`server-${port}.stderr`)));

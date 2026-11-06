@@ -7,7 +7,7 @@ fn req_eco_06_req_sav_02_original_p05_stage_overflow_is_rejected_normal_and_forc
         Path::new(env!("CARGO_MANIFEST_DIR")).join("../../tests/repro/WP-14-M2-r3-restore-stage");
     let context = SaveContext::national(&root.join("packs/testland"), "m1").unwrap();
     let bytes = std::fs::read(root.join("industry-level4.ohsave")).unwrap();
-    assert_eq!(bytes.len(), 458);
+    assert_eq!(bytes.len(), 460);
     let original = context.simulation(1000).unwrap();
     assert_eq!(
         oh_save::inspect_header(&bytes, &oh_save::Limits::default())

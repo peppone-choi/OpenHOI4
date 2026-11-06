@@ -20,7 +20,7 @@ fn purpose() -> Purpose {
 }
 fn binding() -> HeaderBinding {
     HeaderBinding {
-        format_version: 1,
+        format_version: 9,
         scenario_id: "testland".into(),
         has_world: false,
         packs: vec![BoundPack {
@@ -97,7 +97,7 @@ fn approved_callers_keep_exact_context_and_typed_warning() {
     for i in 0..7 {
         let mut h = binding();
         match i {
-            0 => h.format_version = 2,
+            0 => h.format_version = 1,
             1 => h.scenario_id = "other".into(),
             2 => h.has_world = true,
             3 => h.packs[0].id = "other".into(),

@@ -7,9 +7,9 @@ fn apply(s: &mut Simulation, sequence: u64, command: Command) {
 }
 #[test]
 fn deployed_m2_same_id_move_roster_rejections_stop_and_codec_resume() {
-    let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
-        .join("../../data/packs/testland_m2_military");
-    let c = oh_save::SaveContext::national(&root, "m2_military").unwrap();
+    let root =
+        std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../data/packs/testland_m2");
+    let c = oh_save::SaveContext::national(&root, "m2_initial").unwrap();
     let mut s = c.simulation(1).unwrap();
     let empty = oh_save::encode(&s, &c, 0, vec![1]).unwrap();
     let restored = oh_save::decode(&empty, &c, false).unwrap().simulation;
@@ -113,9 +113,9 @@ fn deployed_m2_same_id_move_roster_rejections_stop_and_codec_resume() {
     let unit = s.movement().unwrap().unit(id).unwrap();
     assert_eq!(unit.elapsed(), oh_core::Fx::ZERO);
     assert!(unit.remaining_route().is_empty());
-    let mut legacy = s.export_save_v7().unwrap();
+    let mut legacy = s.export_save_v8().unwrap();
     legacy.base.base.base.base.units.clear();
-    let legacy = Simulation::from_save_v7(legacy, c.restore_context()).unwrap();
+    let legacy = Simulation::from_save_v8(legacy, c.restore_context()).unwrap();
     assert!(
         oh_save::encode(&legacy, &c, 0, vec![1])
             .unwrap_err()

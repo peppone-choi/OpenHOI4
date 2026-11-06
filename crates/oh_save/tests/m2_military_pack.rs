@@ -25,7 +25,7 @@ fn observed_production_training_cancel_conservation_and_v7_resume() {
         oh_save::inspect_header(&bytes, &Default::default())
             .unwrap()
             .format_version,
-        7
+        oh_save::FORMAT_VERSION
     );
     if let Some(out) = std::env::var_os("OH_M2_MILITARY_OUTPUT_DIR") {
         let out = std::path::PathBuf::from(out);

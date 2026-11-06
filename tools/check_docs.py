@@ -357,7 +357,7 @@ if TAG:
         err("C13", f"AGENTS.md {n}줄 (권장 200줄 이하)")
     if size > 32 * 1024:
         err("C13", f"AGENTS.md {size}바이트 — Codex 기본 로드 한도 32 KiB 초과")
-    for role in ("오케스트레이터", "구현 세션", "검증 세션"):
+    for role in ("오케스트레이터", "구현 세션", "리뷰 세션"):
         if role not in TAG:
             err("C13", f"AGENTS.md에 역할 '{role}' 규칙 없음")
 subcmds = set()

@@ -13,7 +13,7 @@ def main():
     out=parser.parse_args().out.resolve();assert out.is_relative_to(ROOT/'target/evidence/WP-14-M2-r3-P06-2');out.mkdir(parents=True,exist_ok=False)
     source=ROOT/'tests/repro/WP-14-M2-r3-restore-stage';shutil.copytree(source/'packs',out/'packs');shutil.copyfile(source/'industry-level4.ohsave',out/'industry-level4.ohsave')
     save=out/'industry-level4.ohsave';before=files(out/'packs');digest=sha(save)
-    assert save.stat().st_size==458 and digest=='c67f5cefbba865be78643b920536678f789b8375b418b9034ddd2cd2b4db1e53'
+    assert save.stat().st_size==460 and digest=='9a6c4e969deb6b3ac03cccb2087a25946144894b41af8046ee53370e4b82ce11'
     expected=json.loads((source/'INPUT_MANIFEST.json').read_text())['files']
     assert files(out/'packs/testland')=={row['path']:row['sha256'] for row in expected}
     assert all((out/'packs/testland'/row['path']).stat().st_size==row['bytes'] for row in expected)

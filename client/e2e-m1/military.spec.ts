@@ -16,7 +16,7 @@ const test=base.extend<{}, {hosts:Hosts}>({hosts:[async({},use,info)=>{
   const pack=JSON.parse(readFileSync(resolve(fixture,'expected.json'),'utf8')).pack as string;
   const binary=resolve(process.env.OH_SERVER_EXECUTABLE??'../target/debug/oh_server');
   const output=resolve(info.project.outputDir,`military-hosts-${info.workerIndex}`);mkdirSync(output,{recursive:true});
-  const legacy=mkdtempSync(resolve(tmpdir(),'openhoi-wp22-legacy-'));cpSync(resolve('../data/packs/testland_m2'),resolve(legacy,'testland'),{recursive:true});
+  const legacy=mkdtempSync(resolve(tmpdir(),'openhoi-wp22-legacy-'));cpSync(resolve('../data/packs/testland'),resolve(legacy,'testland'),{recursive:true});
   const processes:ChildProcess[]=[];
   const records:Array<{pid:number|undefined;args:string[];exitCode:number|null;signal:NodeJS.Signals|null;alive:boolean}>=[];
   const ledger=()=>writeFileSync(resolve(output,'pid-ledger.json'),JSON.stringify({owner:process.pid,records},null,2));
@@ -32,7 +32,7 @@ const test=base.extend<{}, {hosts:Hosts}>({hosts:[async({},use,info)=>{
   };
   try{
     const active=await start(resolve(pack,'..'),'m1',resolve(fixture,'ready.ohsave'));
-    const old=await start(legacy,'m2_initial');
+    const old=await start(legacy,'m1');
     await use({active,legacy:old,fixture});
   }finally{
     for(const child of processes){

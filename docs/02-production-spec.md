@@ -28,7 +28,7 @@
 | 구성 요소 | 버전 | 라이선스 | 비고 |
 |---|---|---|---|
 | Rust (stable) | 1.99.0 (2026-10-01) | MIT/Apache-2.0 | 툴체인은 `rust-toolchain.toml`로 고정 |
-| `tokio` | 1.53.2 | MIT | 비동기 런타임(네트워크 전용) |
+| `tokio` | 1.53.3 | MIT | 비동기 런타임(네트워크 전용) |
 | `axum` | 0.8.9 | MIT | HTTP·WebSocket, 정적 파일 제공 |
 | `rmp-serde` | 1.3.1 | MIT | 프로토콜 MessagePack 직렬화 |
 | `ts-rs` | 12.0.1 | MIT | 프로토콜 타입 → TypeScript 생성 |
@@ -102,7 +102,7 @@
 
 ## 3. 결정론 규칙 (DR)
 
-REQ-GEN-04를 지키기 위한 규칙이다. 구현·검증 세션은 이 목록으로 점검한다.
+REQ-GEN-04를 지키기 위한 규칙이다. 구현·리뷰 세션은 이 목록으로 점검한다.
 
 | ID | 규칙 |
 |---|---|
@@ -407,7 +407,7 @@ WP-17/REQ-MIL-04의 중간 edge Stop/reroute는 REQUEST-0006 A (기술 범위: [
 
 육지 간 해협 edge는 REQUEST-0007 A (기술 범위: [공개 인계 기술 메모](technical-notes.md))의 같은 날짜 CEO 한정 잠정을 적용한다. MapData의 실제 Strait kind·서버 allowed 양끝점·방향별 명시 양수 strait 계수만 사용하며 하천/해협의 적용 슬롯·raw bit/순서를 분리한다. 9/10틱·대체 경로·동점·누락/0/음수/overflow/underflow/잘못된 kind·ref/비육지/권한의 원자성과 kind/계수 hash·v2 저장/새 process 재개·기존 v1 호환을 독립 검사한다. 미래 함대 통제/통행권/해상 수송 행동을 이 기술 인접 계약으로 구현하지 않는다.
 
-WP-17의 원 source `97f6887`이 만든 v2 표현도 보존한다. typed strait context의 추가 저장은 원 v1/v2 DTO·reader/writer/canonical/hash를 동결한 별도 v3 확장으로 설계할 수 있다. 실제 v1/v2/v3 선택은 새/정지 unit·빈 경로·예약 명령·explicit strait context의 존재를 대조해 손실을 막는다. 원 v2 bytes의 읽기·쓰기/새 process 재개와 v3의 별도 bounded preflight·raw kind/계수·큐·진행 상태를 각각 검증한다. 문서의 v2 저장 검사는 기존 이동 body의 보존 요구이며 새 context를 구 v2 구조에 덧붙여 호환을 깨라는 뜻이 아니다. 기존 저장 거부·migration은 승인하지 않았다.
+(2026-11-06 ADR-1001로 대체: 원 v2 bytes 보존과 v1/v2/v3 동결은 폐지했다.) WP-17의 원 source `97f6887`이 만든 v2 표현도 보존한다. typed strait context의 추가 저장은 원 v1/v2 DTO·reader/writer/canonical/hash를 동결한 별도 v3 확장으로 설계할 수 있다. 실제 v1/v2/v3 선택은 새/정지 unit·빈 경로·예약 명령·explicit strait context의 존재를 대조해 손실을 막는다. 원 v2 bytes의 읽기·쓰기/새 process 재개와 v3의 별도 bounded preflight·raw kind/계수·큐·진행 상태를 각각 검증한다. 문서의 v2 저장 검사는 기존 이동 body의 보존 요구이며 새 context를 구 v2 구조에 덧붙여 호환을 깨라는 뜻이 아니다. 기존 저장 거부·migration은 승인하지 않았다.
 
 WP-24 actual server/CLI restore의 검증 입구는 REQUEST-0008 A (기술 범위: [공개 인계 기술 메모](technical-notes.md))의 CEO 한정 기술 호환 잠정을 따른다. engine-owned 원 M0 3파일 및 원 mutable-v1 fixture 19파일의 전체 상대 목록/길이/SHA256·FNV/id/version/scenario/kind와 내부 caller 및 실제 bounded v1 header/context가 일치할 때만 manifest.name_key=testland_name의 typed ko/en missing_message_value 두 진단을 warning_unavailable로 남긴다. 원 file/line/column/code/cause를 보존하며 모든 다른 FTL/사용키/dep/version/schema/ref/defines 오류·source 변경·다른 목적/형·force는 면제하지 않는다. 원 M0 standalone validate 실패, codec 원 bytes·전체state/hash/preflight·현재 active 팩 strict와 역사/현재 팩 차이를 독립 검사한다. headless M0 empty-definition 계약과 full active/server/restore 진입을 구분하고 blanket legacy 면제를 추가하지 않는다.
 
@@ -515,9 +515,10 @@ magic "OHSV" (4B) | format_version u16 | header_len u32 | header (postcard) | bo
 
 ### 7.2 버전 관리 (REQ-SAV-04)
 
-- `oh_save::migrate`에 `v(N) → v(N+1)` 변환 함수를 쌓는다.
-- 경로가 없으면 이런 메시지를 낸다: "이 저장 파일은 포맷 vN입니다. 이 버전은 vK 이상만 열 수 있습니다."
-- 포맷을 바꾸는 PR은 마이그레이션 테스트(이전 포맷 샘플 파일 → 로드 → 해시 기록)를 함께 넣는다.
+0.1 출시 전까지는 사용자 결정(2026-11-06, [ADR-1001](adr/ADR-1001-single-save-format.md))에 따라 형식 하나만 읽는다. 이 결정이 아래 0.1 이후 규칙과 이 문서의 v1~v8 보존·동결 문구에 우선한다.
+
+- 0.1 전: `FORMAT_VERSION` 하나. 다른 버전은 "UnsupportedFormat: file vN, supported vK"로 거부한다. 본문 모양을 바꾸는 PR은 버전을 올리고 커밋된 `.ohsave` fixture를 새 형식으로 다시 만든다.
+- 0.1 이후: `oh_save::migrate`에 `v(N) → v(N+1)` 변환 함수를 쌓는다. 경로가 없으면 "이 저장 파일은 포맷 vN입니다. 이 버전은 vK 이상만 열 수 있습니다."를 낸다. 포맷을 바꾸는 PR은 마이그레이션 테스트(이전 포맷 샘플 파일 → 로드 → 해시 기록)를 함께 넣는다.
 
 ### 7.3 재현 번들 (REQ-SAV-05)
 
@@ -643,14 +644,14 @@ Three.js WebGPURenderer의 WebGPU 우선·WebGL2 대체 백엔드를 사용해 �
 
 ### 12.1 역할
 
-D-15에 따른 역할이다. 모두 Codex다.
+D-15에 따른 역할이다(사용자 결정 2026-11-06).
 
 | 역할 | 실행 방식 | 하는 일 |
 |---|---|---|
-| 오케스트레이터 | 사용자가 시작한 Codex 세션 1개 | 계획, 세션 생성·분배, 통합, 문서 갱신, 결정 요청, 오케스트레이터 담당 WP. 제품 코드는 쓰지 않는다 |
-| 구현 | Codex 구현 세션 (`tools/orch.sh start impl`, WP마다 1개, 별도 worktree) | 코드 WP 구현과 테스트(P-03, P-06) |
-| 콘텐츠 | Codex 구현 세션 (같은 방식) | 데이터 팩 콘텐츠 작성: 클린룸, 출처 기록(P-11) |
-| 검증 | Codex 검증 세션 (`tools/orch.sh start verify`, 구현 브랜치의 분리된 worktree) | 독립 검증(P-05, P-12). 추적 파일을 바꾸면 검증 무효 |
+| 오케스트레이터 | 사용자가 시작한 세션 1개 | 계획, 세션 생성·분배, 통합, 문서 갱신, 결정 요청 |
+| 구현 | 구현 세션 (`tools/orch.sh start impl` 또는 직접 시작, WP마다 1개, 별도 worktree) | 코드 WP 구현과 테스트(P-03, P-06), PR 생성 |
+| 콘텐츠 | 구현 세션 (같은 방식) | 데이터 팩 콘텐츠 작성: 클린룸, 출처 기록(P-11) |
+| 리뷰 | 구현에 참여하지 않은 새 세션 (`tools/orch.sh start verify`도 가능) | PR 리뷰 1회(P-05), 마일스톤 게이트(P-12). 리뷰 중 파일을 바꾸지 않는다 |
 
 **Codex 네이티브 서브에이전트를 쓰지 않는 이유.** Codex 서브에이전트(`.codex/agents/*.toml`)는 병렬로 실행된다. 하지만 공식 문서에 서브에이전트별 작업 폴더(worktree) 분리가 없다. 병렬 구현에 쓰면 같은 작업 폴더를 동시에 고치게 된다. 그래서 구현과 검증은 worktree별 별도 세션으로 돌린다. 쓰기가 없는 조사·검토 같은 보조 작업에는 서브에이전트를 써도 된다.
 
@@ -724,16 +725,12 @@ D-15에 따른 역할이다. 모두 Codex다.
 
 ### 12.4 세션 생성과 병렬 실행 (D-15)
 
-**앱 채팅 실행 경로.** 오케스트레이터와 WP별 구현·독립 검증은 별도 채팅과 지정 Git worktree를 사용한다. 기본 cwd와 관계없이 지정 worktree에서 명령을 실행한다. 실제 권한과 사용자 지시 범위를 확인하며 자동 실행은 별도 승인 없이 재개하지 않는다.
-
-오케스트레이터 Codex 세션은 `tools/orch.sh`로 구현 세션과 검증 세션을 만든다.
-
-**구현과 검증의 분리.** 검증 전후 HEAD·추적 파일 목록·diff/status가 같아야 유효하다. 앱 turn 종료와 CLI 종료 코드는 구분하며 미수신 종료 코드를 성공으로 추정하지 않는다. 실행 실패를 이유로 모델·인증·샌드박스 설정이나 검사를 우회하지 않는다.
+**간소화(사용자 결정 2026-11-06).** 완료 판정은 §15의 CI 녹색 + PR 리뷰 1회다. 아래 `orch.sh`는 세션을 병렬로 띄우는 선택 도구로 남긴다. `verify` 모드는 리뷰 세션을 띄우는 데 쓸 수 있으며, 검증 리포트 파일을 따로 저장하지 않는다.
 
 ```
 tools/orch.sh selftest                                   # 최초 1회: codex 호출·분리 실행 가능 여부
 tools/orch.sh start impl   <WP> <브랜치> <프롬프트 파일>   # 구현 세션 분리 실행 후 바로 반환
-tools/orch.sh start verify <WP> <브랜치> <프롬프트 파일>   # 검증 세션 분리 실행 후 바로 반환
+tools/orch.sh start verify <WP> <브랜치> <프롬프트 파일>   # 리뷰 세션 분리 실행 후 바로 반환
 tools/orch.sh status                                     # 세션 상태 표
 tools/orch.sh wait <WP>[:impl|:verify] ... [--timeout 초] # 대체 수단: 끝날 때까지 대기
 ```
@@ -742,12 +739,12 @@ tools/orch.sh wait <WP>[:impl|:verify] ... [--timeout 초] # 대체 수단: 끝�
 
 **`orch.sh`가 하는 일**
 
-| 단계 | 구현 세션 (`impl`) | 검증 세션 (`verify`) |
+| 단계 | 구현 세션 (`impl`) | 리뷰 세션 (`verify`) |
 |---|---|---|
 | 작업 폴더 | `.orchestrator/wt/<WP>`에 WP 브랜치 worktree. 기본 브랜치 HEAD에서 새로 만들거나, 있으면 재사용 | `.orchestrator/wt/<WP>-verify`에 구현 브랜치 최신 커밋을 분리(detached) 체크아웃 |
 | 의존성 | `cargo fetch`로 미리 받음(샌드박스 네트워크 차단 대비) | 같음 |
 | 실행 | 작업 폴더에서 `codex exec --sandbox workspace-write --json -o <마지막 메시지> -`. 프롬프트는 표준 입력 | 같음 |
-| 사후 검사 | — | 추적 파일이 바뀌었으면 검증 무효(exit 4) |
+| 사후 검사 | — | 추적 파일이 바뀌었으면 리뷰 무효(exit 4) |
 
 - Codex는 각 worktree 루트의 `AGENTS.md`를 자동으로 읽는다.
 - 모든 세션은 새 세션이라 이전 대화를 공유하지 않는다. 검증의 독립성은 여기서 나온다.
@@ -770,8 +767,8 @@ tools/orch.sh wait <WP>[:impl|:verify] ... [--timeout 초] # 대체 수단: 끝�
 | 병렬 시작 | 같은 병렬 묶음의 WP를 `start impl`로 연달아 시작한다. 구현 세션은 동시에 3~4개 이하 |
 | 대기 중 | 기다리지 않는다. `docs/plans/M#.md`의 오케스트레이터 작업을 하고, 작업 단위 사이에 `status`를 확인한다 |
 | 구현 종료 | `exit`가 0이 아니거나 작업 로그가 없으면 실패다. P-06으로 다시 `start impl`(같은 WP·브랜치, worktree 재사용) |
-| 검증 | 구현이 끝난 WP는 바로 `start verify`(P-05). `out/<WP>.verify.last.md`의 리포트를 `docs/verify/<WP>.md`로 저장한다. exit 4는 무효이므로 새 검증 세션으로 다시 검증한다 |
-| 통합 | PASS를 받은 브랜치를 P-07로 병합한다 |
+| 리뷰 | 구현이 끝난 WP는 PR을 열고 리뷰 세션이 한 번 리뷰한다(P-05). 수정 요청은 구현 세션이 고치고 지적한 부분만 다시 본다 |
+| 통합 | CI 녹색이고 리뷰 승인된 PR을 P-07로 병합한다 |
 | 정리 | 기본 브랜치 병합이 확인된 worktree만 `git worktree remove`로 지운다 |
 
 **실행 환경 조건** (`orch.sh selftest`로 확인하고 WP-06에서 결과를 ADR로 남긴다)
@@ -804,7 +801,7 @@ tools/orch.sh wait <WP>[:impl|:verify] ... [--timeout 초] # 대체 수단: 끝�
 | 성능 | `oh bench` | REQ-PERF-01·02·03 |
 | 퍼징 | `cargo fuzz`(가능할 때) | 데이터 로더, 저장 파일 파서 |
 
-**골든 기대값 변경 규칙.** 골든 기대값은 `oh golden update --reason "<WP와 규칙 변경 이유>"`로만 바꾼다. 이 명령은 변경 이유를 `tests/golden/CHANGELOG.md`에 기록한다. 테스트를 통과시키려고 기대값만 바꾸는 것은 금지다. 검증 세션은 CHANGELOG의 이유와 실제 규칙 변경이 맞는지 확인한다.
+**골든 기대값 변경 규칙.** 골든 기대값은 `oh golden update --reason "<WP와 규칙 변경 이유>"`로만 바꾼다. 이 명령은 변경 이유를 `tests/golden/CHANGELOG.md`에 기록한다. 테스트를 통과시키려고 기대값만 바꾸는 것은 금지다. 리뷰 세션은 CHANGELOG의 이유와 실제 규칙 변경이 맞는지 확인한다.
 
 ---
 
@@ -889,11 +886,10 @@ OPEN-09 사용자 결정은 검토된 AI 이미지에 한해서 배포물 포함
 
 ## 15. 완료 판정 규칙
 
-**작업 패키지 완료 조건 (셋 다 필요하다)**
+**작업 패키지 완료 조건 (사용자 결정 2026-11-06, 둘 다 필요하다)**
 
-1. **구현 증거**: 아래 증거 종류 중 WP 표의 `완료 증거`에 해당하는 것. 경로, 명령, 출력, 종료 코드가 남아 있어야 한다.
-2. **독립 검증 통과**: 구현에 참여하지 않은 새 Codex 검증 세션이 03 P-05로 검증하고 `PASS`를 낸다. 검증 세션이 추적 파일을 바꾸지 않았음을 `orch.sh`가 확인한 경우에만 유효하다.
-3. **통합 확인**: 오케스트레이터가 기본 브랜치에 병합한 뒤 CI가 녹색이다.
+1. **CI 녹색**: PR과 병합 후 기본 브랜치의 CI가 녹색이다. CI가 돌리지 않는 검사(로컬 전용 E2E 등)는 PR 본문에 실행 명령·결과(E1~E3)를 적는다.
+2. **PR 리뷰 1회**: 구현에 참여하지 않은 새 세션이 PR을 한 번 리뷰하고 승인한다(03 P-05). 별도 독립 검증 세션과 `docs/verify/` 리포트는 더 이상 요구하지 않는다.
 
 **증거 종류**
 
@@ -904,7 +900,7 @@ OPEN-09 사용자 결정은 검토된 AI 이미지에 한해서 배포물 포함
 | E3 | 스크린샷 파일과 캡처 조건(시나리오, 날짜, 카메라) |
 | E4 | 벤치·AI 리포트 JSON과 기준선 비교 |
 | E5 | 재현 번들과 재생 결과 |
-| E6 | 검증 세션 리포트 |
+| E6 | PR 리뷰 기록 |
 
 **증거가 아닌 것**
 

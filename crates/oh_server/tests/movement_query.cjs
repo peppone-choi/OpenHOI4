@@ -12,7 +12,7 @@ const watchdog = setTimeout(() => { console.error('S1 native deadline'); for (co
 async function start(save) {
   const probe = net.createServer(); await new Promise(resolve => probe.listen(0, '127.0.0.1', resolve));
   const port = probe.address().port; await new Promise(resolve => probe.close(resolve));
-  const args = ['--port', String(port), '--pack-root', root, '--scenario', 'm2_military', ...(save ? ['--load-save', save] : [])];
+  const args = ['--port', String(port), '--pack-root', root, '--scenario', 'm2_initial', ...(save ? ['--load-save', save] : [])];
   const child = spawn(binary, args, {stdio: ['ignore', 'pipe', 'pipe'], windowsHide: true}); hosts.push(child);
   let stderr = ''; child.stderr.on('data', b => { stderr += b; }); child.stdout.resume();
   const row = {pid: child.pid, args}; receipts.processes.push(row);

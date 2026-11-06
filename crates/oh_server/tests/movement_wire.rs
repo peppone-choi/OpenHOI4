@@ -66,7 +66,7 @@ fn s1_native_movement_wire_authority_rejections_stop_and_arrival() {
             allow_understrength: true,
         }),
     );
-    let mut dto = sim.export_save_v7().unwrap();
+    let mut dto = sim.export_save_v8().unwrap();
     let unit = dto
         .base
         .base
@@ -79,7 +79,7 @@ fn s1_native_movement_wire_authority_rejections_stop_and_arrival() {
     unit.allowed = vec![1, 2, 110];
     unit.corrections
         .retain(|edge| unit.allowed.contains(&edge.from) && unit.allowed.contains(&edge.to));
-    let isolated = Simulation::from_save_v7(dto, context.restore_context()).unwrap();
+    let isolated = Simulation::from_save_v8(dto, context.restore_context()).unwrap();
     let isolated_path = pack.root().join("isolated.ohsave");
     let isolated_bytes = oh_save::encode(&isolated, &context, 0, vec![1, 2]).unwrap();
     std::fs::write(&isolated_path, &isolated_bytes).unwrap();

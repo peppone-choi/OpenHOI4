@@ -219,7 +219,7 @@ mod tests {
         );
         assert_eq!(
             sha256(include_bytes!("../tests/fixtures/m1-v1.ohsave")),
-            "57b13c62ef1a6f88ade1851d0b3ae398157f95ca5bc246068eac3b2a964322fa"
+            "0a39335a9c30f76d25ccb35f9e9ad7aa642659a600a2b6c185d9cc23fa329a75"
         );
     }
     #[derive(Clone, Copy, Debug, PartialEq, Eq)]

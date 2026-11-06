@@ -34,7 +34,7 @@ fn req_eco_nat_actual_v5_codec_bounds_and_replay_full_state() {
         oh_save::inspect_header(&bytes, &oh_save::Limits::default())
             .unwrap()
             .format_version,
-        5
+        oh_save::FORMAT_VERSION
     );
     let restored = oh_save::decode(&bytes, &c, false).unwrap().simulation;
     assert_eq!(

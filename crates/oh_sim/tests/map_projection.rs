@@ -94,7 +94,7 @@ fn uniform_preserves_pre_projection_definitions_tuple() {
 
 #[test]
 fn projection_identity_covers_every_extent_raw_bit_and_wrap() {
-    for (pack_id, scenario) in [("testland", "m1"), ("testland_m2_military", "m2_military")] {
+    for (pack_id, scenario) in [("testland", "m1"), ("testland_m2", "m2_initial")] {
         let root = pack().parent().unwrap().join(pack_id);
         let mut data = oh_data::national::load_scenario(&root, scenario).unwrap();
         let uniform = hash(&data);
