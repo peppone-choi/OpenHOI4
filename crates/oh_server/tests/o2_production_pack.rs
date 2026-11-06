@@ -30,7 +30,7 @@ fn dedicated_pack_starts_and_restores_real_v6_six_nation_lines() {
         false,
     )
     .unwrap();
-    assert_eq!(host.pack.id, "testland_m2_production");
+    assert_eq!(host.pack.id, "testland_m2");
     let context =
         oh_save::SaveContext::national(&pack.root().join("testland"), fixture::SCENARIO).unwrap();
     let mut sim = context.simulation(7).unwrap();

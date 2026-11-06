@@ -12,11 +12,11 @@ use oh_proto::{FixedValue, MovementCommand, MovementView, ServerMessage};
 use oh_sim::{Command, Simulation, military::Action};
 
 fn simulation() -> Simulation {
-    let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
-        .join("../../data/packs/testland_m2_military");
-    let loaded = oh_data::national::load_scenario(&root, "m2_military").unwrap();
+    let root =
+        std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../data/packs/testland_m2");
+    let loaded = oh_data::national::load_scenario(&root, "m2_initial").unwrap();
     Simulation::with_world(
-        "m2_military".into(),
+        "m2_initial".into(),
         oh_sim::Date::new(2000, 1, 1).unwrap(),
         1,
         oh_sim::TimeConfig::from_defines(&loaded.pack.defines).unwrap(),

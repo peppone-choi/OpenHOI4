@@ -80,7 +80,7 @@
 
 | ID | 단위 | 완료 조건 | 상태 |
 |---|---|---|---|
-| A1 | `testland_m2` 하나로 경제·생산·군사 정의 통합. `_production`·`_military`는 회귀 fixture로 이동하거나 폐기 | `oh validate --deny-warnings` 통과, `--pack testland_m2`에서 경제·생산·훈련이 한 세션에 동작 | ⛔ 기존 팩 폐기 여부 |
+| A1 | `testland_m2` 하나로 경제·생산·군사 정의 통합. `_production`·`_military`는 폐기 | `oh validate --deny-warnings` 통과, `--pack testland_m2`에서 경제·생산·훈련이 한 세션에 동작 | ✅ 2026-11-06 |
 | A2 | VP 프로빈스 지도 표시 | 지도에 VP 표식, 툴팁에 값 | 🟡 데이터만 있음 |
 | A3 | 시나리오 시작·종료일과 종료 조건 데이터 작성 | 종료일 도달 시 서버가 종료 상태 보고 | ⬜ |
 | A4 | 장군: 기술 수준 1~5·특성 데이터와 상태, 국가 지도자 (REQ-NAT-05) | 조회 패널에 장군 정보 표시 | 🟡 장군은 ID 문자열만 |

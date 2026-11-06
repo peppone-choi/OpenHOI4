@@ -23,8 +23,7 @@ fn node(script: &str, args: &[&Path]) {
 #[test]
 fn named_pack_join_snapshot_and_metadata_match_legacy_copy() {
     let root = fixture();
-    let source =
-        Path::new(env!("CARGO_MANIFEST_DIR")).join("../../data/packs/testland_m2_military");
+    let source = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../data/packs/testland_m2");
     copy(&source, &root.join("legacy/testland"));
     node(
         r#"
@@ -70,8 +69,8 @@ async function inspect(args) {
 }
 (async () => {
   try {
-    const named = await inspect(['--pack-root', 'data/packs', '--pack', 'testland_m2_military', '--scenario', 'm2_military']);
-    const legacy = await inspect(['--pack-root', root + '/legacy', '--scenario', 'm2_military']);
+    const named = await inspect(['--pack-root', 'data/packs', '--pack', 'testland_m2', '--scenario', 'm2_initial']);
+    const legacy = await inspect(['--pack-root', root + '/legacy', '--scenario', 'm2_initial']);
     assert.deepEqual(named, legacy); console.log(JSON.stringify({named, legacy}));
   } finally {
     for (const ws of sockets) ws.close();
@@ -108,7 +107,7 @@ const [binary, root] = process.argv.slice(1);
       [['--pack', 'absent_pack'], /absent_pack/],
       [['--pack', 'testland', '--pack', 'testland'], /duplicate option --pack/],
       [['--pack', 'testland', '--scenario', 'absent_scenario'], /InvalidSelectedScenario/],
-      [['--pack', 'testland_m2_military', '--scenario', 'm1'], /InvalidSelectedScenario/],
+      [['--pack', 'testland_m2', '--scenario', 'm1'], /InvalidSelectedScenario/],
       [['--pack-root', root, '--pack', 'renamed'], /pack ID mismatch/],
       [['--pack'], /missing value for --pack/],
     ];
@@ -142,12 +141,12 @@ fn named_pack_reuses_native_movement_acceptance() {
         );
     }
     let root = fixture();
-    let pack = root.join("testland_m2_military");
+    let pack = root.join("testland_m2");
     copy(
-        &Path::new(env!("CARGO_MANIFEST_DIR")).join("../../data/packs/testland_m2_military"),
+        &Path::new(env!("CARGO_MANIFEST_DIR")).join("../../data/packs/testland_m2"),
         &pack,
     );
-    let context = oh_save::SaveContext::national(&pack, "m2_military").unwrap();
+    let context = oh_save::SaveContext::national(&pack, "m2_initial").unwrap();
     let mut sim = context.simulation(1).unwrap();
     for nation in 1..=2 {
         apply(
@@ -208,10 +207,7 @@ fn named_pack_reuses_native_movement_acceptance() {
     assert_eq!(original.matches(needle).count(), 1);
     let script = format!(
         "process.argv.splice(1, 0, 'movement_query.cjs');\n{}",
-        original.replace(
-            needle,
-            "'--pack-root', root, '--pack', 'testland_m2_military',"
-        )
+        original.replace(needle, "'--pack-root', root, '--pack', 'testland_m2',")
     );
     node(&script, &[&root, &ready, &isolated_path]);
     assert_eq!(fs::read(ready).unwrap(), ready_bytes);
@@ -234,7 +230,7 @@ const [binary, save] = process.argv.slice(1);
 (async () => {
   const probe = net.createServer(); await new Promise(r => probe.listen(0, '127.0.0.1', r));
   try {
-    const child = spawn(binary, ['--port', String(probe.address().port), '--pack', 'testland_m2_military', '--scenario', 'm2_military', '--load-save', save], {windowsHide:true});
+    const child = spawn(binary, ['--port', String(probe.address().port), '--pack', 'testland_m2', '--scenario', 'm2_initial', '--load-save', save], {windowsHide:true});
     let stderr = ''; child.stderr.on('data', b => stderr += b); child.stdout.resume();
     const timer = setTimeout(() => child.kill('SIGKILL'), 10000);
     const code = await new Promise((resolve, reject) => {child.once('error', reject); child.once('close', resolve);});

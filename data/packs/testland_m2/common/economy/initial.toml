@@ -1,4 +1,4 @@
-# Reused provisional synthetic baseline; no production or training consumer.
+# Reused provisional synthetic baseline; production enabled; no training consumer.
 economy_category = "economy"
 conscription_category = "economy"
 [buildings.industry]

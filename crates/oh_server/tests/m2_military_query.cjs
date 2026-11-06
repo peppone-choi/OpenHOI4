@@ -19,7 +19,7 @@ async function freePort() {
   const port = server.address().port;await new Promise(resolve => server.close(resolve));return port;
 }
 async function start(root, save) {
-  const port = await freePort(), args = ['--port',String(port),'--pack-root',root,'--scenario','m2_military',...(save?['--load-save',save]:[])];
+  const port = await freePort(), args = ['--port',String(port),'--pack-root',root,'--scenario','m2_initial',...(save?['--load-save',save]:[])];
   const child = spawn(binary,args,{cwd:process.cwd(),stdio:['ignore','pipe','pipe']});hosts.push(child);
   const row = {pid:child.pid,args,exitCode:null,signal:null,alive:true};records.push(row);ledger();
   child.stdout.pipe(fs.createWriteStream(path.join(output,`server-${port}.stdout`)));
@@ -46,7 +46,7 @@ const economyNation=(e,n)=>e.nations.find(row=>row.nation===n);
 const stock=(p,n)=>BigInt(p.nations.find(row=>row.nation===n).stock.find(row=>row.model==='m2_equipment_1').available);
 async function servedIdentity(url){const html=await(await fetch(url)).text(),match=html.match(/<script[^>]*src="([^"]+)"/);assert.ok(match);const bytes=Buffer.from(await(await fetch(new URL(match[1],url))).arrayBuffer());assert.deepEqual(bytes,fs.readFileSync(path.join(process.cwd(),'client/dist',match[1])));return {script:match[1],bytes:bytes.length};}
 async function main(){
-  const root=fs.mkdtempSync(path.join(os.tmpdir(),'openhoi-wp23-wire-'));fs.cpSync('data/packs/testland_m2_military',path.join(root,'testland'),{recursive:true});
+  const root=fs.mkdtempSync(path.join(os.tmpdir(),'openhoi-wp23-wire-'));fs.cpSync('data/packs/testland_m2',path.join(root,'testland'),{recursive:true});
   const expected=JSON.parse(fs.readFileSync(path.join(fixture,'expected.json'),'utf8'));
   try{
     const fresh=await start(root), restored=await start(root,path.join(fixture,'paused-training.ohsave'));

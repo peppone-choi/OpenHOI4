@@ -7,9 +7,9 @@ fn apply(s: &mut Simulation, sequence: u64, command: Command) {
 }
 #[test]
 fn deployed_m2_same_id_move_roster_rejections_stop_and_codec_resume() {
-    let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
-        .join("../../data/packs/testland_m2_military");
-    let c = oh_save::SaveContext::national(&root, "m2_military").unwrap();
+    let root =
+        std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../data/packs/testland_m2");
+    let c = oh_save::SaveContext::national(&root, "m2_initial").unwrap();
     let mut s = c.simulation(1).unwrap();
     let empty = oh_save::encode(&s, &c, 0, vec![1]).unwrap();
     let restored = oh_save::decode(&empty, &c, false).unwrap().simulation;

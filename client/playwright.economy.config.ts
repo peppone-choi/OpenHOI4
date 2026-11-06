@@ -6,7 +6,7 @@ import { defineConfig } from '@playwright/test';
 const port=Number(process.env.OH_TEST_PORT??19415);
 if(!Number.isInteger(port)||port<1||port>65534)throw new Error('OH_TEST_PORT and its next port must be valid');
 // Existing server contract: self-contained M2 is staged as <host>/testland.
-// No dependency on the separate production-content PR or a protocol extension.
+// The pack also carries production and military; this suite checks economy only.
 const host=mkdtempSync(resolve(tmpdir(),'openhoi-o3-economy-host-'));
 cpSync(resolve('../data/packs/testland_m2'),resolve(host,'testland'),{recursive:true});
 const legacy=mkdtempSync(resolve(tmpdir(),'openhoi-o3-economy-legacy-'));

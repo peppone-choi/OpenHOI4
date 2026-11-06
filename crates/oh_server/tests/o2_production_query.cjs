@@ -35,7 +35,7 @@ async function country(url, expected, mode, nation) {
     send({ type: 'Hello', protocol_version: 'm0-v1' });
     const welcome = await wait(message => message.type === 'Welcome');
     assert.equal(welcome.accepted, true);
-    assert.equal(welcome.packs[0].id, 'testland_m2_production');
+    assert.equal(welcome.packs[0].id, 'testland_m2');
     send({ type: 'Join', session: 'local', nation: 'N' + String(nation).padStart(2, '0') });
     const snapshot = await wait(message => message.type === 'Snapshot');
     let sequence = 0;
