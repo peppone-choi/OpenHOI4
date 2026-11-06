@@ -28,7 +28,7 @@
 | 구성 요소 | 버전 | 라이선스 | 비고 |
 |---|---|---|---|
 | Rust (stable) | 1.99.0 (2026-10-01) | MIT/Apache-2.0 | 툴체인은 `rust-toolchain.toml`로 고정 |
-| `tokio` | 1.53.2 | MIT | 비동기 런타임(네트워크 전용) |
+| `tokio` | 1.53.3 | MIT | 비동기 런타임(네트워크 전용) |
 | `axum` | 0.8.9 | MIT | HTTP·WebSocket, 정적 파일 제공 |
 | `rmp-serde` | 1.3.1 | MIT | 프로토콜 MessagePack 직렬화 |
 | `ts-rs` | 12.0.1 | MIT | 프로토콜 타입 → TypeScript 생성 |
